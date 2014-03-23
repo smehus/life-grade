@@ -25,6 +25,7 @@
 		655EC64318DF62550036515F /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655EC64118DF62550036515F /* MenuViewController.xib */; };
 		655EC64718DF626E0036515F /* OpeningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655EC64518DF626E0036515F /* OpeningViewController.m */; };
 		655EC64818DF626E0036515F /* OpeningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655EC64618DF626E0036515F /* OpeningViewController.xib */; };
+		655EC64B18DF63580036515F /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655EC64A18DF63580036515F /* SWRevealViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		655EC64418DF626E0036515F /* OpeningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpeningViewController.h; sourceTree = "<group>"; };
 		655EC64518DF626E0036515F /* OpeningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpeningViewController.m; sourceTree = "<group>"; };
 		655EC64618DF626E0036515F /* OpeningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpeningViewController.xib; sourceTree = "<group>"; };
+		655EC64918DF63580036515F /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		655EC64A18DF63580036515F /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 		655EC60E18DF5FE20036515F /* life-grade */ = {
 			isa = PBXGroup;
 			children = (
+				655EC64918DF63580036515F /* SWRevealViewController.h */,
+				655EC64A18DF63580036515F /* SWRevealViewController.m */,
 				655EC61718DF5FE20036515F /* MainAppDelegate.h */,
 				655EC61818DF5FE20036515F /* MainAppDelegate.m */,
 				655EC61A18DF5FE20036515F /* Main.storyboard */,
@@ -269,6 +274,7 @@
 			files = (
 				655EC61518DF5FE20036515F /* main.m in Sources */,
 				655EC64718DF626E0036515F /* OpeningViewController.m in Sources */,
+				655EC64B18DF63580036515F /* SWRevealViewController.m in Sources */,
 				655EC61918DF5FE20036515F /* MainAppDelegate.m in Sources */,
 				655EC64218DF62550036515F /* MenuViewController.m in Sources */,
 			);

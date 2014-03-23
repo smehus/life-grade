@@ -8,7 +8,8 @@
 
 #import "MainAppDelegate.h"
 #import <Parse/Parse.h>
-#import "MainViewController.h"
+#import "OpeningViewController.h"
+#import "MenuViewController.h"
 
 
 @implementation MainAppDelegate
@@ -21,6 +22,16 @@
                   clientKey:@"wlekFFzBkkMAitOQQqrKjmrrFD4iEPKafI7LWxWt"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = window;
+    
+    MenuViewController *rearViewController = [[MenuViewController alloc] init];
+    self.openingViewController = [[OpeningViewController alloc] init];
+    
+    
+    
+    
     
     
     

@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MainViewController.h"
+#import "OpeningViewController.h"
 
 @interface MainAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong) MainViewController *mainViewController;
+@property (nonatomic, strong) OpeningViewController *openingViewController;
 
 
 
