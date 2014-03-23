@@ -7,6 +7,7 @@
 //
 
 #import "MainAppDelegate.h"
+#import <Parse/Parse.h>
 
 @implementation MainAppDelegate
 
@@ -14,7 +15,14 @@
 {
     // Override point for customization after application launch.
     
-    NSLog(@"BALLLLLZZ");
+    [Parse setApplicationId:@"fuDs7uKFyITlO84J52WVmB123rN5XhxGDTTY4Hsl"
+                  clientKey:@"wlekFFzBkkMAitOQQqrKjmrrFD4iEPKafI7LWxWt"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
+    
+    
     return YES;
 }
 							
