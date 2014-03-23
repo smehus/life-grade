@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "OpeningViewController.h"
 #import "MenuViewController.h"
+#import "SWRevealViewController.h"
 
 
 @implementation MainAppDelegate
@@ -29,11 +30,18 @@
     MenuViewController *rearViewController = [[MenuViewController alloc] init];
     self.openingViewController = [[OpeningViewController alloc] init];
     
+    SWRevealViewController *mainRevealController = [[SWRevealViewController alloc]
+                                                    initWithRearViewController:rearViewController frontViewController:self.openingViewController];
     
     
+    mainRevealController.rearViewRevealWidth = 60;
+    mainRevealController.rearViewRevealOverdraw = 120;
+    mainRevealController.bounceBackOnOverdraw = NO;
+    mainRevealController.stableDragOnOverdraw = YES;
+    mainRevealController.delegate = self;
     
-    
-    
+    self.window.rootViewController = mainRevealController;
+    [self.window makeKeyAndVisible];
     
     
     return YES;

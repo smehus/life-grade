@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "OpeningViewController.h"
+#import "SWRevealViewController.h"
 
-@interface MainAppDelegate : UIResponder <UIApplicationDelegate>
+@interface MainAppDelegate : UIResponder <UIApplicationDelegate, SWRevealViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) OpeningViewController *openingViewController;
