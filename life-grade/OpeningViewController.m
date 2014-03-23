@@ -7,8 +7,10 @@
 //
 
 #import "OpeningViewController.h"
+#import "SWRevealViewController.h"
 
 @interface OpeningViewController ()
+@property (nonatomic, strong) SWRevealViewController *myRevealController;
 
 @end
 
@@ -26,7 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    self.myRevealController = [self revealViewController];
+    [self.view addGestureRecognizer:self.myRevealController.panGestureRecognizer];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
