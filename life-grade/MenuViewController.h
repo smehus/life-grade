@@ -1,5 +1,5 @@
 //
-//  MainViewController.h
+//  MenuViewController.h
 //  life-grade
 //
 //  Created by scott mehus on 3/23/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController
+@interface MenuViewController : UITableViewController
 
 @end

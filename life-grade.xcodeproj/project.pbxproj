@@ -14,7 +14,6 @@
 		655EC61518DF5FE20036515F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 655EC61418DF5FE20036515F /* main.m */; };
 		655EC61918DF5FE20036515F /* MainAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 655EC61818DF5FE20036515F /* MainAppDelegate.m */; };
 		655EC61C18DF5FE20036515F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 655EC61A18DF5FE20036515F /* Main.storyboard */; };
-		655EC61F18DF5FE20036515F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655EC61E18DF5FE20036515F /* MainViewController.m */; };
 		655EC62118DF5FE20036515F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 655EC62018DF5FE20036515F /* Images.xcassets */; };
 		655EC62818DF5FE20036515F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655EC62718DF5FE20036515F /* XCTest.framework */; };
 		655EC62918DF5FE20036515F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655EC60818DF5FE20036515F /* Foundation.framework */; };
@@ -22,6 +21,10 @@
 		655EC63218DF5FE20036515F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 655EC63018DF5FE20036515F /* InfoPlist.strings */; };
 		655EC63418DF5FE20036515F /* life_gradeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 655EC63318DF5FE20036515F /* life_gradeTests.m */; };
 		655EC63E18DF60280036515F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655EC63D18DF60280036515F /* Parse.framework */; };
+		655EC64218DF62550036515F /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655EC64018DF62550036515F /* MenuViewController.m */; };
+		655EC64318DF62550036515F /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655EC64118DF62550036515F /* MenuViewController.xib */; };
+		655EC64718DF626E0036515F /* OpeningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655EC64518DF626E0036515F /* OpeningViewController.m */; };
+		655EC64818DF626E0036515F /* OpeningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655EC64618DF626E0036515F /* OpeningViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +49,6 @@
 		655EC61718DF5FE20036515F /* MainAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainAppDelegate.h; sourceTree = "<group>"; };
 		655EC61818DF5FE20036515F /* MainAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainAppDelegate.m; sourceTree = "<group>"; };
 		655EC61B18DF5FE20036515F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		655EC61D18DF5FE20036515F /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		655EC61E18DF5FE20036515F /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		655EC62018DF5FE20036515F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		655EC62618DF5FE20036515F /* life-gradeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "life-gradeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		655EC62718DF5FE20036515F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -55,6 +56,12 @@
 		655EC63118DF5FE20036515F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		655EC63318DF5FE20036515F /* life_gradeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = life_gradeTests.m; sourceTree = "<group>"; };
 		655EC63D18DF60280036515F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		655EC63F18DF62550036515F /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		655EC64018DF62550036515F /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		655EC64118DF62550036515F /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		655EC64418DF626E0036515F /* OpeningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpeningViewController.h; sourceTree = "<group>"; };
+		655EC64518DF626E0036515F /* OpeningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpeningViewController.m; sourceTree = "<group>"; };
+		655EC64618DF626E0036515F /* OpeningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpeningViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,10 +126,14 @@
 				655EC61718DF5FE20036515F /* MainAppDelegate.h */,
 				655EC61818DF5FE20036515F /* MainAppDelegate.m */,
 				655EC61A18DF5FE20036515F /* Main.storyboard */,
-				655EC61D18DF5FE20036515F /* MainViewController.h */,
-				655EC61E18DF5FE20036515F /* MainViewController.m */,
 				655EC62018DF5FE20036515F /* Images.xcassets */,
 				655EC60F18DF5FE20036515F /* Supporting Files */,
+				655EC63F18DF62550036515F /* MenuViewController.h */,
+				655EC64018DF62550036515F /* MenuViewController.m */,
+				655EC64118DF62550036515F /* MenuViewController.xib */,
+				655EC64418DF626E0036515F /* OpeningViewController.h */,
+				655EC64518DF626E0036515F /* OpeningViewController.m */,
+				655EC64618DF626E0036515F /* OpeningViewController.xib */,
 			);
 			path = "life-grade";
 			sourceTree = "<group>";
@@ -233,9 +244,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				655EC64818DF626E0036515F /* OpeningViewController.xib in Resources */,
 				655EC62118DF5FE20036515F /* Images.xcassets in Resources */,
 				655EC61318DF5FE20036515F /* InfoPlist.strings in Resources */,
 				655EC61C18DF5FE20036515F /* Main.storyboard in Resources */,
+				655EC64318DF62550036515F /* MenuViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,8 +268,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				655EC61518DF5FE20036515F /* main.m in Sources */,
-				655EC61F18DF5FE20036515F /* MainViewController.m in Sources */,
+				655EC64718DF626E0036515F /* OpeningViewController.m in Sources */,
 				655EC61918DF5FE20036515F /* MainAppDelegate.m in Sources */,
+				655EC64218DF62550036515F /* MenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

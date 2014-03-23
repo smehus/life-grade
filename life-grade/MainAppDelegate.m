@@ -8,6 +8,8 @@
 
 #import "MainAppDelegate.h"
 #import <Parse/Parse.h>
+#import "MainViewController.h"
+
 
 @implementation MainAppDelegate
 
