@@ -9,8 +9,12 @@
 #import "OpeningViewController.h"
 #import "SWRevealViewController.h"
 
+
 @interface OpeningViewController ()
 @property (nonatomic, strong) SWRevealViewController *myRevealController;
+@property (strong, nonatomic) IBOutlet UILabel *LifeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *GradeLabel;
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -28,11 +32,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   
+      self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width *3, self.view.frame.size.height);
 
     self.myRevealController = [self revealViewController];
     [self.view addGestureRecognizer:self.myRevealController.panGestureRecognizer];
     
+    self.scrollView.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
     
+    self.LifeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, 150, 50)];
+    self.LifeLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+    self.LifeLabel.text = @"Life";
+    
+    self.GradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.LifeLabel.frame.size.width + 50,
+                                                                self.LifeLabel.frame.size.height + 60, 150, 50)];
+    self.GradeLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+    self.GradeLabel.text = @"Grade";
+    
+    
+    
+    
+    
+  
+    
+    [self.scrollView addSubview:self.LifeLabel];
+    [self.scrollView addSubview:self.GradeLabel];
+    
+    
+    
+    [self.view addSubview:self.scrollView];
 }
 
 - (void)didReceiveMemoryWarning
