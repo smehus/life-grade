@@ -40,14 +40,21 @@
     
     self.scrollView.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
     
-    self.LifeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, 150, 50)];
+    self.LifeLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 50, 150, 50)];
     self.LifeLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+    self.LifeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:90];
+    CGFloat fontSize = self.LifeLabel.font.pointSize;
+    self.LifeLabel.frame = CGRectMake(50, 50, 150, fontSize);
     self.LifeLabel.text = @"Life";
     
     self.GradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.LifeLabel.frame.size.width + 50,
                                                                 self.LifeLabel.frame.size.height + 60, 150, 50)];
     self.GradeLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
     self.GradeLabel.text = @"Grade";
+    self.GradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:90];
+    CGFloat gradeSize = self.GradeLabel.font.pointSize;
+    self.GradeLabel.frame = CGRectMake(self.LifeLabel.frame.origin.x + 25,
+                                       self.LifeLabel.frame.size.height + 60, 320, gradeSize);
     
     
     
