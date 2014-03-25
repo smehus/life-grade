@@ -12,8 +12,12 @@
 
 @interface OpeningViewController ()
 @property (nonatomic, strong) SWRevealViewController *myRevealController;
-@property (strong, nonatomic) IBOutlet UILabel *LifeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *GradeLabel;
+@property (strong, nonatomic) UILabel *LifeLabel;
+@property (strong, nonatomic) UILabel *GradeLabel;
+@property (nonatomic, strong) UILabel *stepOne;
+@property (nonatomic, strong) UIButton *startButton;
+
+
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 
 @end
@@ -44,7 +48,7 @@
     self.LifeLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
     self.LifeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:90];
     CGFloat fontSize = self.LifeLabel.font.pointSize;
-    self.LifeLabel.frame = CGRectMake(50, 50, 150, fontSize);
+    self.LifeLabel.frame = CGRectMake(25, 50, 150, fontSize);
     self.LifeLabel.text = @"Life";
     
     self.GradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.LifeLabel.frame.size.width + 50,
@@ -57,11 +61,23 @@
                                        self.LifeLabel.frame.size.height + 60, 320, gradeSize);
     
     
+
+    self.stepOne = [[UILabel alloc] initWithFrame:CGRectMake(350, 50, 150, 50)];
+    self.stepOne.text = @"Step One";
+    self.stepOne.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+    
+    
+    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(640, 375, self.view.frame.size.width, 50)];
+    [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    [self.startButton addTarget:self action:@selector(openGradeController) forControlEvents:UIControlEventTouchUpInside];
+    [self.startButton setTitle:@"Start Grading" forState:UIControlStateNormal];
+
     
     
     
-  
     
+    [self.scrollView addSubview:self.startButton];
+    [self.scrollView addSubview:self.stepOne];
     [self.scrollView addSubview:self.LifeLabel];
     [self.scrollView addSubview:self.GradeLabel];
     
@@ -74,6 +90,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)openGradeController {
+    
+    
 }
 
 @end
