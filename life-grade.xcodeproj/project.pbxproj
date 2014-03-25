@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6533F55618E190360017C7D6 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6533F55318E190360017C7D6 /* CollectionCell.xib */; };
+		6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F55518E190360017C7D6 /* CoverFlowLayout.m */; };
+		6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F55918E190560017C7D6 /* CollectionCell.m */; };
+		6533F55E18E190630017C7D6 /* DesiredGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F55C18E190630017C7D6 /* DesiredGradeViewController.m */; };
+		6533F55F18E190630017C7D6 /* DesiredGradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6533F55D18E190630017C7D6 /* DesiredGradeViewController.xib */; };
+		6533F56A18E194810017C7D6 /* QuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F56918E194810017C7D6 /* QuestionView.m */; };
+		6533F56D18E1954F0017C7D6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F56C18E1954F0017C7D6 /* Grade.m */; };
+		6533F57018E195700017C7D6 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F56F18E195700017C7D6 /* Question.m */; };
 		655EC60918DF5FE20036515F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655EC60818DF5FE20036515F /* Foundation.framework */; };
 		655EC60B18DF5FE20036515F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655EC60A18DF5FE20036515F /* CoreGraphics.framework */; };
 		655EC60D18DF5FE20036515F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655EC60C18DF5FE20036515F /* UIKit.framework */; };
@@ -41,6 +49,20 @@
 
 /* Begin PBXFileReference section */
 		01B288485E7041259E32B3EF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		6533F55318E190360017C7D6 /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
+		6533F55418E190360017C7D6 /* CoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverFlowLayout.h; sourceTree = "<group>"; };
+		6533F55518E190360017C7D6 /* CoverFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverFlowLayout.m; sourceTree = "<group>"; };
+		6533F55818E190560017C7D6 /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
+		6533F55918E190560017C7D6 /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
+		6533F55B18E190630017C7D6 /* DesiredGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesiredGradeViewController.h; sourceTree = "<group>"; };
+		6533F55C18E190630017C7D6 /* DesiredGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesiredGradeViewController.m; sourceTree = "<group>"; };
+		6533F55D18E190630017C7D6 /* DesiredGradeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DesiredGradeViewController.xib; sourceTree = "<group>"; };
+		6533F56818E194810017C7D6 /* QuestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionView.h; sourceTree = "<group>"; };
+		6533F56918E194810017C7D6 /* QuestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionView.m; sourceTree = "<group>"; };
+		6533F56B18E1954F0017C7D6 /* Grade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grade.h; sourceTree = "<group>"; };
+		6533F56C18E1954F0017C7D6 /* Grade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grade.m; sourceTree = "<group>"; };
+		6533F56E18E195700017C7D6 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		6533F56F18E195700017C7D6 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
 		655EC60518DF5FE20036515F /* life-grade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "life-grade.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		655EC60818DF5FE20036515F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		655EC60A18DF5FE20036515F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -145,6 +167,20 @@
 				655EC64418DF626E0036515F /* OpeningViewController.h */,
 				655EC64518DF626E0036515F /* OpeningViewController.m */,
 				655EC64618DF626E0036515F /* OpeningViewController.xib */,
+				6533F55318E190360017C7D6 /* CollectionCell.xib */,
+				6533F55418E190360017C7D6 /* CoverFlowLayout.h */,
+				6533F55518E190360017C7D6 /* CoverFlowLayout.m */,
+				6533F55818E190560017C7D6 /* CollectionCell.h */,
+				6533F55918E190560017C7D6 /* CollectionCell.m */,
+				6533F55B18E190630017C7D6 /* DesiredGradeViewController.h */,
+				6533F55C18E190630017C7D6 /* DesiredGradeViewController.m */,
+				6533F55D18E190630017C7D6 /* DesiredGradeViewController.xib */,
+				6533F56818E194810017C7D6 /* QuestionView.h */,
+				6533F56918E194810017C7D6 /* QuestionView.m */,
+				6533F56B18E1954F0017C7D6 /* Grade.h */,
+				6533F56C18E1954F0017C7D6 /* Grade.m */,
+				6533F56E18E195700017C7D6 /* Question.h */,
+				6533F56F18E195700017C7D6 /* Question.m */,
 			);
 			path = "life-grade";
 			sourceTree = "<group>";
@@ -260,6 +296,8 @@
 				655EC64818DF626E0036515F /* OpeningViewController.xib in Resources */,
 				655EC62118DF5FE20036515F /* Images.xcassets in Resources */,
 				655EC61318DF5FE20036515F /* InfoPlist.strings in Resources */,
+				6533F55618E190360017C7D6 /* CollectionCell.xib in Resources */,
+				6533F55F18E190630017C7D6 /* DesiredGradeViewController.xib in Resources */,
 				655EC61C18DF5FE20036515F /* Main.storyboard in Resources */,
 				655EC64318DF62550036515F /* MenuViewController.xib in Resources */,
 			);
@@ -314,10 +352,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				655EC61518DF5FE20036515F /* main.m in Sources */,
+				6533F56D18E1954F0017C7D6 /* Grade.m in Sources */,
+				6533F55E18E190630017C7D6 /* DesiredGradeViewController.m in Sources */,
 				655EC64718DF626E0036515F /* OpeningViewController.m in Sources */,
 				655EC64B18DF63580036515F /* SWRevealViewController.m in Sources */,
 				655EC61918DF5FE20036515F /* MainAppDelegate.m in Sources */,
+				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
+				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
+				6533F57018E195700017C7D6 /* Question.m in Sources */,
 				655EC64218DF62550036515F /* MenuViewController.m in Sources */,
+				6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

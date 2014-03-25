@@ -8,6 +8,7 @@
 
 #import "OpeningViewController.h"
 #import "SWRevealViewController.h"
+#import "DesiredGradeViewController.h"
 
 
 @interface OpeningViewController ()
@@ -93,6 +94,9 @@
 }
 
 - (void)openGradeController {
+    
+    DesiredGradeViewController *desiredController = [[DesiredGradeViewController alloc] init];
+    [self.myRevealController setFrontViewController:desiredController];
     
     
 }
