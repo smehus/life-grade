@@ -34,8 +34,8 @@
                                                     initWithRearViewController:rearViewController frontViewController:self.openingViewController];
     
     
-    mainRevealController.rearViewRevealWidth = 60;
-    mainRevealController.rearViewRevealOverdraw = 120;
+    mainRevealController.rearViewRevealWidth = 200;
+    mainRevealController.rearViewRevealOverdraw = 200;
     mainRevealController.bounceBackOnOverdraw = NO;
     mainRevealController.stableDragOnOverdraw = YES;
     mainRevealController.delegate = self;

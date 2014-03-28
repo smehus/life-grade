@@ -67,6 +67,7 @@
     self.layout = [[CoverFlowLayout alloc] init];
     self.collectionView.collectionViewLayout = self.layout;
     self.collectionView.scrollEnabled = YES;
+    self.collectionView.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
     
     items = [[NSMutableArray alloc] init];
     for (int i = 0; i <= 10; i++) {

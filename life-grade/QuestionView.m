@@ -8,10 +8,12 @@
 
 #import "QuestionView.h"
 #import "CollectionCell.h"
+#import "SimpleCoverFlowLayout.h"
 
 @interface QuestionView () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) SimpleCoverFlowLayout *simpleLayout;
 
 @end
 
@@ -46,7 +48,9 @@
     
     UICollectionViewFlowLayout *coverFlow = [[UICollectionViewFlowLayout alloc] init];
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 100, self.frame.size.width, 100) collectionViewLayout:coverFlow];
+    self.simpleLayout = [[SimpleCoverFlowLayout alloc] init];
+    
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 100, self.frame.size.width, 100) collectionViewLayout:self.simpleLayout];
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -77,6 +81,13 @@
     cell.text.text = @"A++";
     return cell;
     
+}
+
+
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+    return UIEdgeInsetsMake(50.0f, 20.0f, 50.0f, 20.0f);
 }
 
 

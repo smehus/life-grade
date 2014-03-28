@@ -15,6 +15,7 @@
 		6533F56A18E194810017C7D6 /* QuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F56918E194810017C7D6 /* QuestionView.m */; };
 		6533F56D18E1954F0017C7D6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F56C18E1954F0017C7D6 /* Grade.m */; };
 		6533F57018E195700017C7D6 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F56F18E195700017C7D6 /* Question.m */; };
+		6533F57318E4F19E0017C7D6 /* SimpleCoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F57218E4F19E0017C7D6 /* SimpleCoverFlowLayout.m */; };
 		655EC60918DF5FE20036515F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655EC60818DF5FE20036515F /* Foundation.framework */; };
 		655EC60B18DF5FE20036515F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655EC60A18DF5FE20036515F /* CoreGraphics.framework */; };
 		655EC60D18DF5FE20036515F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655EC60C18DF5FE20036515F /* UIKit.framework */; };
@@ -63,6 +64,8 @@
 		6533F56C18E1954F0017C7D6 /* Grade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grade.m; sourceTree = "<group>"; };
 		6533F56E18E195700017C7D6 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		6533F56F18E195700017C7D6 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		6533F57118E4F19E0017C7D6 /* SimpleCoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCoverFlowLayout.h; sourceTree = "<group>"; };
+		6533F57218E4F19E0017C7D6 /* SimpleCoverFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleCoverFlowLayout.m; sourceTree = "<group>"; };
 		655EC60518DF5FE20036515F /* life-grade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "life-grade.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		655EC60818DF5FE20036515F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		655EC60A18DF5FE20036515F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -181,6 +184,8 @@
 				6533F56C18E1954F0017C7D6 /* Grade.m */,
 				6533F56E18E195700017C7D6 /* Question.h */,
 				6533F56F18E195700017C7D6 /* Question.m */,
+				6533F57118E4F19E0017C7D6 /* SimpleCoverFlowLayout.h */,
+				6533F57218E4F19E0017C7D6 /* SimpleCoverFlowLayout.m */,
 			);
 			path = "life-grade";
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
 				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
+				6533F57318E4F19E0017C7D6 /* SimpleCoverFlowLayout.m in Sources */,
 				655EC64218DF62550036515F /* MenuViewController.m in Sources */,
 				6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */,
 			);
