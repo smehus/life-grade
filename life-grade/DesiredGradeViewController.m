@@ -192,7 +192,7 @@
     if (indexPath == nil)
         NSLog(@"tap on collection view but not on cell");
     else
-        NSLog(@"tap on collection view at row %d", indexPath.row);
+        NSLog(@"tap on collection view at row %ld", (long)indexPath.row);
     BOOL select = [self collectionView:self.collectionView shouldSelectItemAtIndexPath:indexPath];
     if (select == YES) {
         
