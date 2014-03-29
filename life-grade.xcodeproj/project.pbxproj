@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65004BA018E70C9100749A82 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65004B9E18E70C9100749A82 /* SWRevealViewController.m */; };
 		6533F55618E190360017C7D6 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6533F55318E190360017C7D6 /* CollectionCell.xib */; };
 		6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F55518E190360017C7D6 /* CoverFlowLayout.m */; };
 		6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F55918E190560017C7D6 /* CollectionCell.m */; };
@@ -34,7 +35,6 @@
 		655EC64318DF62550036515F /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655EC64118DF62550036515F /* MenuViewController.xib */; };
 		655EC64718DF626E0036515F /* OpeningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655EC64518DF626E0036515F /* OpeningViewController.m */; };
 		655EC64818DF626E0036515F /* OpeningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655EC64618DF626E0036515F /* OpeningViewController.xib */; };
-		655EC64B18DF63580036515F /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655EC64A18DF63580036515F /* SWRevealViewController.m */; };
 		E336CAD8806747469A293CAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A960DAF569C04584853BD49B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		01B288485E7041259E32B3EF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		65004B9E18E70C9100749A82 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		65004B9F18E70C9100749A82 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		6533F55318E190360017C7D6 /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
 		6533F55418E190360017C7D6 /* CoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverFlowLayout.h; sourceTree = "<group>"; };
 		6533F55518E190360017C7D6 /* CoverFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverFlowLayout.m; sourceTree = "<group>"; };
@@ -90,8 +92,6 @@
 		655EC64418DF626E0036515F /* OpeningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpeningViewController.h; sourceTree = "<group>"; };
 		655EC64518DF626E0036515F /* OpeningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpeningViewController.m; sourceTree = "<group>"; };
 		655EC64618DF626E0036515F /* OpeningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpeningViewController.xib; sourceTree = "<group>"; };
-		655EC64918DF63580036515F /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		655EC64A18DF63580036515F /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		A960DAF569C04584853BD49B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -157,8 +157,8 @@
 		655EC60E18DF5FE20036515F /* life-grade */ = {
 			isa = PBXGroup;
 			children = (
-				655EC64918DF63580036515F /* SWRevealViewController.h */,
-				655EC64A18DF63580036515F /* SWRevealViewController.m */,
+				65004B9F18E70C9100749A82 /* SWRevealViewController.h */,
+				65004B9E18E70C9100749A82 /* SWRevealViewController.m */,
 				655EC61718DF5FE20036515F /* MainAppDelegate.h */,
 				655EC61818DF5FE20036515F /* MainAppDelegate.m */,
 				655EC61A18DF5FE20036515F /* Main.storyboard */,
@@ -360,7 +360,6 @@
 				6533F56D18E1954F0017C7D6 /* Grade.m in Sources */,
 				6533F55E18E190630017C7D6 /* DesiredGradeViewController.m in Sources */,
 				655EC64718DF626E0036515F /* OpeningViewController.m in Sources */,
-				655EC64B18DF63580036515F /* SWRevealViewController.m in Sources */,
 				655EC61918DF5FE20036515F /* MainAppDelegate.m in Sources */,
 				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
 				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
@@ -368,6 +367,7 @@
 				6533F57318E4F19E0017C7D6 /* SimpleCoverFlowLayout.m in Sources */,
 				655EC64218DF62550036515F /* MenuViewController.m in Sources */,
 				6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */,
+				65004BA018E70C9100749A82 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

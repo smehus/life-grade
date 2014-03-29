@@ -7,8 +7,13 @@
 //
 
 #import "MenuViewController.h"
+#import "SWRevealViewController.h"
+#import "DesiredGradeViewController.h"
 
 @interface MenuViewController ()
+
+
+@property (nonatomic, strong) SWRevealViewController *myRevealController;
 
 @end
 
@@ -26,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.myRevealController = [self revealViewController];
     self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
     self.tableView.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
     
@@ -67,6 +72,18 @@
     cell.textLabel.text = @"Item";
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 0) {
+        DesiredGradeViewController *desiredView = [[DesiredGradeViewController alloc] init];
+        [self.myRevealController setFrontViewController:desiredView];
+        
+    }
+    
+    
+    
 }
 
 

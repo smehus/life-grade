@@ -1,4 +1,4 @@
-/*
+ /*
 
  Copyright (c) 2013 Joan Lluch <joan.lluch@sweetwilliamsl.com>
  
@@ -511,6 +511,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 #pragma mark - Public methods and property accessors
 
+
 - (void)setFrontViewController:(UIViewController *)frontViewController
 {
     [self setFrontViewController:frontViewController animated:NO];
@@ -597,7 +598,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
     if (_frontViewPosition >= FrontViewPositionLeft)
         toogledFrontViewPosition = FrontViewPositionLeftSide;
     
-    //My Doing!!
+    // TODO: figure why it isn't fixing frame
     
     [UIView animateWithDuration:0.2 animations:^{
         _frontViewController.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.25, 1.25);
@@ -611,7 +612,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 - (void)setFrontViewPosition:(FrontViewPosition)frontViewPosition
 {
-    [self setFrontViewPosition:frontViewPosition animated:NO];
+    [self setFrontViewPosition:frontViewPosition animated:YES];
 }
 
 

@@ -35,7 +35,7 @@
     
     
     mainRevealController.rearViewRevealWidth = 200;
-    mainRevealController.rearViewRevealOverdraw = 200;
+    mainRevealController.rearViewRevealOverdraw = 320;
     mainRevealController.bounceBackOnOverdraw = NO;
     mainRevealController.stableDragOnOverdraw = YES;
     mainRevealController.delegate = self;
