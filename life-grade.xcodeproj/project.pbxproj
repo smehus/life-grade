@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		65004BA018E70C9100749A82 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65004B9E18E70C9100749A82 /* SWRevealViewController.m */; };
+		65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65004BA518E7110100749A82 /* SWRevealViewController.m */; };
 		6533F55618E190360017C7D6 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6533F55318E190360017C7D6 /* CollectionCell.xib */; };
 		6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F55518E190360017C7D6 /* CoverFlowLayout.m */; };
 		6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F55918E190560017C7D6 /* CollectionCell.m */; };
@@ -50,8 +50,8 @@
 
 /* Begin PBXFileReference section */
 		01B288485E7041259E32B3EF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		65004B9E18E70C9100749A82 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		65004B9F18E70C9100749A82 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		65004BA418E7110100749A82 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		65004BA518E7110100749A82 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		6533F55318E190360017C7D6 /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
 		6533F55418E190360017C7D6 /* CoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverFlowLayout.h; sourceTree = "<group>"; };
 		6533F55518E190360017C7D6 /* CoverFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverFlowLayout.m; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 		655EC60E18DF5FE20036515F /* life-grade */ = {
 			isa = PBXGroup;
 			children = (
-				65004B9F18E70C9100749A82 /* SWRevealViewController.h */,
-				65004B9E18E70C9100749A82 /* SWRevealViewController.m */,
+				65004BA418E7110100749A82 /* SWRevealViewController.h */,
+				65004BA518E7110100749A82 /* SWRevealViewController.m */,
 				655EC61718DF5FE20036515F /* MainAppDelegate.h */,
 				655EC61818DF5FE20036515F /* MainAppDelegate.m */,
 				655EC61A18DF5FE20036515F /* Main.storyboard */,
@@ -367,7 +367,7 @@
 				6533F57318E4F19E0017C7D6 /* SimpleCoverFlowLayout.m in Sources */,
 				655EC64218DF62550036515F /* MenuViewController.m in Sources */,
 				6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */,
-				65004BA018E70C9100749A82 /* SWRevealViewController.m in Sources */,
+				65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

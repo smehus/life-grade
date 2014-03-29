@@ -77,8 +77,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
+        
         DesiredGradeViewController *desiredView = [[DesiredGradeViewController alloc] init];
-        [self.myRevealController setFrontViewController:desiredView];
+        [self.myRevealController pushFrontViewController:desiredView animated:YES];
         
     }
     
