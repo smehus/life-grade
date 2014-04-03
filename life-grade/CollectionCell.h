@@ -11,5 +11,6 @@
 @interface CollectionCell : UICollectionViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *text;
+@property (nonatomic, assign) BOOL isCompleted;
 
 @end

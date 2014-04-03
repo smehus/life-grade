@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) SimpleCoverFlowLayout *simpleLayout;
+@property (nonatomic, strong) UIButton *nextButton;
 
 @end
 
@@ -39,6 +40,7 @@
 */
 
 - (void)setUpView {
+    self.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 50, 50, 50)];
     label.text = @"works";
@@ -58,6 +60,13 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
     
     [self addSubview:self.collectionView];
+    
+    
+    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 375, self.frame.size.width, 50)];
+    [self.nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    [self.nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.nextButton setTitle:@"Next Question" forState:UIControlStateNormal];
+    [self addSubview:self.nextButton];
     
     
 }
@@ -90,6 +99,10 @@
     return UIEdgeInsetsMake(50.0f, 20.0f, 50.0f, 20.0f);
 }
 
-
+- (void)nextPressed {
+    
+    NSLog(@"NEXT PRESSED");
+    [self.delegate didPickAnswer:self.theIndexPath];
+}
 
 @end

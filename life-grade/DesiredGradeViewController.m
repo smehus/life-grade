@@ -14,7 +14,10 @@
 #import "QuestionView.h"
 
 
-@interface DesiredGradeViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
+@interface DesiredGradeViewController () <UICollectionViewDataSource,
+                                            UICollectionViewDelegateFlowLayout,
+                                            UICollectionViewDelegate,
+                                            QuestionViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) CoverFlowLayout *layout;
@@ -130,7 +133,7 @@
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     NSArray *subViews = [cell subviews];
-    UIView *view = [subViews lastObject];
+    QuestionView *view = [subViews lastObject];
 
     if (cell.selected) {
 
@@ -168,7 +171,9 @@
     self.selectedCellDefaultTransform = cell.transform;
     
     QuestionView *view = [[QuestionView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    view.backgroundColor = [UIColor purpleColor];
+    view.delegate = self;
+    view.theIndexPath = indexPath;
+
     
     
     
@@ -203,7 +208,20 @@
     
 }
 
+#pragma mark - QuestonView Delegate
 
+
+- (void)didPickAnswer:(NSIndexPath *)idx {
+    
+    NSLog(@"DID PICK ANSWER %@", idx);
+    NSIndexPath *path = [NSIndexPath indexPathForRow:idx.row+1 inSection:0];
+    [self collectionView:self.collectionView shouldSelectItemAtIndexPath:idx];
+    if (idx.row <= 11) {
+    [self.collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
+    
+    
+}
 
 
 

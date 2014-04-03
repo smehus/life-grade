@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class QuestionView;
 
-@interface DesiredGradeViewController : UIViewController
+@interface DesiredGradeViewController : UIViewController 
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 

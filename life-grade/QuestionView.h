@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class QuestionView;
+@protocol QuestionViewDelegate <NSObject>
+
+
+- (void)didPickAnswer:(NSIndexPath *)idx;
+
+@end
+
 @interface QuestionView : UIView
+
+@property (nonatomic, strong) id<QuestionViewDelegate> delegate;
+@property (nonatomic, strong) NSIndexPath *theIndexPath;
+
 
 @end
