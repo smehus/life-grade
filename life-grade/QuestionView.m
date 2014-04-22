@@ -9,6 +9,7 @@
 #import "QuestionView.h"
 #import "CollectionCell.h"
 #import "SimpleCoverFlowLayout.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define kOffset 10.0
 
@@ -61,6 +62,7 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.showsVerticalScrollIndicator = NO;
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, -100, 0, 0);
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
     
@@ -107,8 +109,9 @@
     
    CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
     
+    cell.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
-    
+    cell.layer.cornerRadius = 8.0f;
     cell.text.text = self.grades[indexPath.row];
     return cell;
     
@@ -122,7 +125,7 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
-    return UIEdgeInsetsMake(10, 10, 0, 10);
+    return UIEdgeInsetsMake(-10, 10, 0, 10);
 }
 
 - (void)nextPressed {
