@@ -71,7 +71,7 @@
     self.collectionView.collectionViewLayout = self.layout;
     self.collectionView.scrollEnabled = YES;
     self.collectionView.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
-    
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
     items = [[NSMutableArray alloc] init];
     for (int i = 0; i <= 10; i++) {
         
@@ -104,6 +104,8 @@
 
     CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
     
+    
+    cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
     cell.text.text = items[indexPath.row];
     
     return cell;

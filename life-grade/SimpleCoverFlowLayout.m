@@ -12,7 +12,7 @@
 
 - (id)init {
     if ((self = [super init])) {
-        self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        self.scrollDirection = UICollectionViewScrollDirectionVertical;
         self.minimumLineSpacing = 10.0f;
     }
     return self;
