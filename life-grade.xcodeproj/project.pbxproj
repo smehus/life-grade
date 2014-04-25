@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65004BA518E7110100749A82 /* SWRevealViewController.m */; };
+		6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6520A6321909FDD5006FD28C /* SignupViewController.m */; };
+		6520A635190A8B56006FD28C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6520A634190A8B56006FD28C /* CoreData.framework */; };
+		6520A639190A8B82006FD28C /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6520A637190A8B82006FD28C /* DataModel.xcdatamodeld */; };
 		6533F55618E190360017C7D6 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6533F55318E190360017C7D6 /* CollectionCell.xib */; };
 		6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F55518E190360017C7D6 /* CoverFlowLayout.m */; };
 		6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F55918E190560017C7D6 /* CollectionCell.m */; };
@@ -53,6 +56,10 @@
 		01B288485E7041259E32B3EF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		65004BA418E7110100749A82 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		65004BA518E7110100749A82 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		6520A6311909FDD5006FD28C /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		6520A6321909FDD5006FD28C /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		6520A634190A8B56006FD28C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6520A638190A8B82006FD28C /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		6533F55318E190360017C7D6 /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
 		6533F55418E190360017C7D6 /* CoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverFlowLayout.h; sourceTree = "<group>"; };
 		6533F55518E190360017C7D6 /* CoverFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverFlowLayout.m; sourceTree = "<group>"; };
@@ -103,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6520A635190A8B56006FD28C /* CoreData.framework in Frameworks */,
 				655EC60B18DF5FE20036515F /* CoreGraphics.framework in Frameworks */,
 				655EC60D18DF5FE20036515F /* UIKit.framework in Frameworks */,
 				655EC60918DF5FE20036515F /* Foundation.framework in Frameworks */,
@@ -124,6 +132,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6520A636190A8B64006FD28C /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				6520A637190A8B82006FD28C /* DataModel.xcdatamodeld */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		655EC5FC18DF5FE20036515F = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +164,7 @@
 		655EC60718DF5FE20036515F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6520A634190A8B56006FD28C /* CoreData.framework */,
 				655EC60818DF5FE20036515F /* Foundation.framework */,
 				655EC60A18DF5FE20036515F /* CoreGraphics.framework */,
 				655EC60C18DF5FE20036515F /* UIKit.framework */,
@@ -160,6 +177,7 @@
 		655EC60E18DF5FE20036515F /* life-grade */ = {
 			isa = PBXGroup;
 			children = (
+				6520A636190A8B64006FD28C /* Core Data */,
 				65004BA418E7110100749A82 /* SWRevealViewController.h */,
 				65004BA518E7110100749A82 /* SWRevealViewController.m */,
 				655EC61718DF5FE20036515F /* MainAppDelegate.h */,
@@ -191,6 +209,8 @@
 				6533F57218E4F19E0017C7D6 /* SimpleCoverFlowLayout.m */,
 				A5A216A418F99B3900E06BE8 /* GradeCell.h */,
 				A5A216A518F99B3900E06BE8 /* GradeCell.m */,
+				6520A6311909FDD5006FD28C /* SignupViewController.h */,
+				6520A6321909FDD5006FD28C /* SignupViewController.m */,
 			);
 			path = "life-grade";
 			sourceTree = "<group>";
@@ -370,12 +390,14 @@
 				655EC64718DF626E0036515F /* OpeningViewController.m in Sources */,
 				655EC61918DF5FE20036515F /* MainAppDelegate.m in Sources */,
 				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
+				6520A639190A8B82006FD28C /* DataModel.xcdatamodeld in Sources */,
 				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
 				6533F57318E4F19E0017C7D6 /* SimpleCoverFlowLayout.m in Sources */,
 				A5A216A618F99B3900E06BE8 /* GradeCell.m in Sources */,
 				655EC64218DF62550036515F /* MenuViewController.m in Sources */,
 				6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */,
+				6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */,
 				65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,6 +640,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6520A637190A8B82006FD28C /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6520A638190A8B82006FD28C /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 6520A638190A8B82006FD28C /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 655EC5FD18DF5FE20036515F /* Project object */;
 }

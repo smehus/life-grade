@@ -27,6 +27,8 @@
 @property (nonatomic, assign) CGAffineTransform selectedCellDefaultTransform;
 
 @property (nonatomic, assign) CGRect *screenRect;
+@property (nonatomic, assign) CGPoint cellCenter;
+@property (nonatomic, assign) BOOL isGrown;
 
 @end
 
@@ -56,12 +58,11 @@
 - (void)setUpView {
     
 
-    
+    self.isGrown = NO;
     self.grades = @[@"A+", @"A", @"A-", @"B+", @"B", @"B-", @"C+", @"C", @"C-", @"D+", @"D", @"D-", @"F"];
     self.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
     
-    UILongPressGestureRecognizer *dragGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pressDetected:)];
-    dragGesture.minimumPressDuration = 0.2;
+    UIPanGestureRecognizer *dragGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pressDetected:)];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
     
     UICollectionViewFlowLayout *coverFlow = [[UICollectionViewFlowLayout alloc] init];
@@ -151,44 +152,57 @@
 }
 
 
-- (void)pressDetected:(UILongPressGestureRecognizer *)pressRecognizer//7
+- (void)pressDetected:(UIPanGestureRecognizer *)recognizer//7
 {
     
     
-    CGPoint pt = [pressRecognizer locationInView:self.collectionView];
+    CGPoint pt = [recognizer locationInView:self.collectionView];
     NSIndexPath *idx = [self.collectionView indexPathForItemAtPoint:pt];
-    
+    CGPoint translation = [recognizer translationInView:self];
     
     //8
-    if (pressRecognizer.state == UIGestureRecognizerStateBegan) {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"<<<<<<<<<< Tab en Cell");
         
     }
     
-    if (pressRecognizer.state == UIGestureRecognizerStateChanged) {
+    if (recognizer.state == UIGestureRecognizerStateChanged) {
+        
         
         CollectionCell *cell = (CollectionCell *)[self.collectionView cellForItemAtIndexPath:idx];
-        /*
-         cell.center = CGPointMake(pt.x, cell.center.y);
-         */
-        self.selectedCellDefaultFrame = cell.frame;
-        self.selectedCellDefaultTransform = cell.transform;
-        
-        [UIView transitionWithView:cell
-                          duration:0.2
-                           options:UIViewAnimationOptionTransitionNone
-                        animations:^{
-                            
-                            cell.frame = CGRectMake(CELL_INSET, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+           
+            /*
+             cell.center = CGPointMake(pt.x, cell.center.y);
+             */
+            self.selectedCellDefaultFrame = cell.frame;
+            self.selectedCellDefaultTransform = cell.transform;
+            self.cellCenter = cell.center;
+            
+            [UIView transitionWithView:cell
+                              duration:0.2
+                               options:UIViewAnimationOptionTransitionNone
+                            animations:^{
+                                
+                                //cell.frame = CGRectMake(CELL_INSET, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+                                
+                                 //[cell setCenter:CGPointMake([cell center].x + translation.x, [cell center].y + translation.y)];
+                                 [cell setCenter:CGPointMake(cell.center.x + translation.x/2, cell.center.y)];
 
+                                
+                            }
+                            completion:^(BOOL finished) {
                             
-                        }
-                        completion:^(BOOL finished) {}];
+                            
+                            
+                            }];
+        
+        
+
         
     }
     
     //9
-    if (pressRecognizer.state == UIGestureRecognizerStateEnded) {
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
         
     }
 }

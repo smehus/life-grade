@@ -165,6 +165,8 @@
 
     }
 }
+
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
     collectionView.scrollEnabled = NO;
