@@ -28,6 +28,8 @@
 
 @property (nonatomic, assign) BOOL canScroll;
 
+@property (nonatomic, assign) BOOL shouldDeselectCell;
+
 
 
 
@@ -52,6 +54,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.shouldDeselectCell = NO;
     
     self.dataArray = [[NSMutableArray alloc] initWithCapacity:12];
     
@@ -137,8 +141,8 @@
     NSArray *subViews = [cell subviews];
     QuestionView *view = [subViews lastObject];
 
-    if (cell.selected) {
-
+    if (cell.selected && self.shouldDeselectCell == YES) {
+        self.shouldDeselectCell = NO;
         cell.selected = NO;
         [collectionView deselectItemAtIndexPath:indexPath animated:YES];
         [UIView transitionWithView:cell
@@ -216,6 +220,7 @@
 - (void)didPickAnswer:(NSIndexPath *)idx {
     
     NSLog(@"DID PICK ANSWER %@", idx);
+    self.shouldDeselectCell = YES;
     NSIndexPath *path = [NSIndexPath indexPathForRow:idx.row+1 inSection:0];
     [self collectionView:self.collectionView shouldSelectItemAtIndexPath:idx];
     if (idx.row <= 11) {

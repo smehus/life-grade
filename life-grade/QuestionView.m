@@ -23,6 +23,11 @@
 
 @property (nonatomic, assign) int draggedIndex;
 
+@property (nonatomic, assign) CGRect selectedCellDefaultFrame;
+@property (nonatomic, assign) CGAffineTransform selectedCellDefaultTransform;
+
+@property (nonatomic, assign) CGRect *screenRect;
+
 @end
 
 @implementation QuestionView
@@ -48,21 +53,30 @@
 
 - (void)setUpView {
     
+
+    
     self.grades = @[@"A+", @"A", @"A-", @"B+", @"B", @"B-", @"C+", @"C", @"C-", @"D+", @"D", @"D-", @"F"];
     self.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
     
+    UILongPressGestureRecognizer *dragGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pressDetected:)];
+    dragGesture.minimumPressDuration = 0.2;
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
     
     UICollectionViewFlowLayout *coverFlow = [[UICollectionViewFlowLayout alloc] init];
     
     self.simpleLayout = [[SimpleCoverFlowLayout alloc] init];
-    
+    /*
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - 200, kOffset, self.frame.size.width, self.frame.size.height - 88) collectionViewLayout:self.simpleLayout];
+     */
+    
+    self.collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.simpleLayout];
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.contentInset = UIEdgeInsetsMake(0, -100, 0, 0);
+    [self.collectionView addGestureRecognizer:dragGesture];
+    self.collectionView.clipsToBounds = NO;
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
     
@@ -80,18 +94,7 @@
     
 }
 
-- (void)pressDetected:(UILongPressGestureRecognizer *)pressRecognizer//7
-{
-    //8
-    if (pressRecognizer.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"<<<<<<<<<< Tab en Cell");
-       
-    }
-    //9
-    if (pressRecognizer.state == UIGestureRecognizerStateEnded) {
 
-    }
-}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
@@ -113,7 +116,18 @@
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
     cell.layer.cornerRadius = 8.0f;
     cell.text.text = self.grades[indexPath.row];
+    cell.clipsToBounds = NO;
     return cell;
+    
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CollectionCell *cell = (CollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.center = CGPointMake(cell.center.y + 50, cell.center.y);
+    
+    
+    
     
 }
 
@@ -133,5 +147,54 @@
     NSLog(@"NEXT PRESSED");
     [self.delegate didPickAnswer:self.theIndexPath];
 }
+
+
+- (void)pressDetected:(UILongPressGestureRecognizer *)pressRecognizer//7
+{
+    
+    
+    CGPoint pt = [pressRecognizer locationInView:self.collectionView];
+    NSIndexPath *idx = [self.collectionView indexPathForItemAtPoint:pt];
+    
+    
+    //8
+    if (pressRecognizer.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"<<<<<<<<<< Tab en Cell");
+        
+    }
+    
+    if (pressRecognizer.state == UIGestureRecognizerStateChanged) {
+        
+        CollectionCell *cell = (CollectionCell *)[self.collectionView cellForItemAtIndexPath:idx];
+        /*
+         cell.center = CGPointMake(pt.x, cell.center.y);
+         */
+        self.selectedCellDefaultFrame = cell.frame;
+        self.selectedCellDefaultTransform = cell.transform;
+        
+        [UIView transitionWithView:cell
+                          duration:0.2
+                           options:UIViewAnimationOptionTransitionNone
+                        animations:^{
+                            
+                            cell.frame = CGRectMake(100, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+
+                            
+                        }
+                        completion:^(BOOL finished) {}];
+        
+    }
+    
+    //9
+    if (pressRecognizer.state == UIGestureRecognizerStateEnded) {
+        
+    }
+}
+
+
+
+
+
+
 
 @end
