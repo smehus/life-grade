@@ -30,6 +30,8 @@
 
 @end
 
+#define CELL_INSET 100
+
 @implementation QuestionView
 
 - (id)initWithFrame:(CGRect)frame
@@ -74,7 +76,7 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.showsVerticalScrollIndicator = NO;
-    self.collectionView.contentInset = UIEdgeInsetsMake(0, -100, 0, 0);
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, - CELL_INSET, 0, 0);
     [self.collectionView addGestureRecognizer:dragGesture];
     self.collectionView.clipsToBounds = NO;
     
@@ -177,7 +179,7 @@
                            options:UIViewAnimationOptionTransitionNone
                         animations:^{
                             
-                            cell.frame = CGRectMake(100, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+                            cell.frame = CGRectMake(CELL_INSET, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
 
                             
                         }
