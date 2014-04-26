@@ -178,7 +178,7 @@
     self.selectedCellDefaultFrame = cell.frame;
     self.selectedCellDefaultTransform = cell.transform;
     
-    QuestionView *view = [[QuestionView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    QuestionView *view = [[QuestionView alloc] initWithFrame:self.view.frame];
     view.delegate = self;
     view.theIndexPath = indexPath;
 

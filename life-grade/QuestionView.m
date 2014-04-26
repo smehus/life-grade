@@ -59,6 +59,7 @@
 
 - (void)setUpView {
     
+    NSLog(@"WINDOW  %f", self.frame.origin.x);
     
     self.gestureBegan = NO;
 
@@ -83,8 +84,9 @@
     self.collectionView.dataSource = self;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.contentInset = UIEdgeInsetsMake(0, - CELL_INSET, 0, 0);
-    [self.collectionView addGestureRecognizer:self.dragGesture];
     self.collectionView.clipsToBounds = NO;
+    
+    [self addGestureRecognizer:self.dragGesture];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
     
@@ -183,10 +185,13 @@
 
     CGPoint pt = [recognizer locationInView:self.collectionView];
     CGFloat xRatio = pt.x/self.window.frame.size.width;
-    CGFloat yRatio = pt.y/ self.window.frame.size.height;
+    CGFloat yRatio = pt.x/ self.window.frame.size.height;
     NSIndexPath *idx = [self.collectionView indexPathForItemAtPoint:pt];
     CGPoint translation = [recognizer translationInView:self];
-    
+        
+    CGFloat transRatioX = translation.x / self.window.frame.size.width;
+        
+    NSLog(@"XRATIO %f YRATIO %f WINDOW %F POINT %f Translation %f", xRatio, yRatio, self.bounds.origin.x, pt.x, transRatioX);
     
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
@@ -201,7 +206,7 @@
         
         
         CollectionCell *cell = (CollectionCell *)[self.collectionView cellForItemAtIndexPath:idx];
-           
+
             /*
              cell.center = CGPointMake(pt.x, cell.center.y);
              */
@@ -215,11 +220,9 @@
                                options:UIViewAnimationOptionTransitionNone
                             animations:^{
                                 
-                                //cell.frame = CGRectMake(CELL_INSET, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+                          
+                                cell.frame = CGRectMake(100, cell.frame.origin.y + cell.frame.size.height, 200 + translation.x, yRatio * -self.frame.size.height);
                                 
-                                 //[cell setCenter:CGPointMake([cell center].x + translation.x, [cell center].y + translation.y)];
-                                cell.frame = CGRectMake(self.window.frame.origin.x, self.window.frame.size.height/2 - cell.frame.size.height/2, mWindow.size.width * xRatio, mWindow.size.height * yRatio);
-                                 //[cell setCenter:CGPointMake(pt.x, cell.center.y)];
 
                                 
                             }
