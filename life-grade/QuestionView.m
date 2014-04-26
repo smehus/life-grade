@@ -13,7 +13,7 @@
 
 #define kOffset 10.0
 
-@interface QuestionView () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface QuestionView () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) SimpleCoverFlowLayout *simpleLayout;
@@ -29,6 +29,8 @@
 @property (nonatomic, assign) CGRect *screenRect;
 @property (nonatomic, assign) CGPoint cellCenter;
 @property (nonatomic, assign) BOOL isGrown;
+@property (nonatomic, assign) BOOL gestureBegan;
+@property (nonatomic, strong) UIPanGestureRecognizer *dragGesture;
 
 @end
 
@@ -57,12 +59,15 @@
 
 - (void)setUpView {
     
+    
+    self.gestureBegan = NO;
 
     self.isGrown = NO;
     self.grades = @[@"A+", @"A", @"A-", @"B+", @"B", @"B-", @"C+", @"C", @"C-", @"D+", @"D", @"D-", @"F"];
     self.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
     
-    UIPanGestureRecognizer *dragGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pressDetected:)];
+    self.dragGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pressDetected:)];
+    self.dragGesture.delegate = self;
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
     
     UICollectionViewFlowLayout *coverFlow = [[UICollectionViewFlowLayout alloc] init];
@@ -78,7 +83,7 @@
     self.collectionView.dataSource = self;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.contentInset = UIEdgeInsetsMake(0, - CELL_INSET, 0, 0);
-    [self.collectionView addGestureRecognizer:dragGesture];
+    [self.collectionView addGestureRecognizer:self.dragGesture];
     self.collectionView.clipsToBounds = NO;
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
@@ -151,18 +156,44 @@
     [self.delegate didPickAnswer:self.theIndexPath];
 }
 
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
+    
+    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && gestureRecognizer == self.dragGesture) {
+        
+        UIPanGestureRecognizer *panGest = (UIPanGestureRecognizer*)gestureRecognizer;
+        CGPoint velocity = [panGest velocityInView:self];
+        return ABS(velocity.x) > ABS(velocity.y);
+        
+    } else {
+        return YES;
+    }
+}
 
-- (void)pressDetected:(UIPanGestureRecognizer *)recognizer//7
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
+    return YES;
+}
+
+
+- (void)pressDetected:(UIPanGestureRecognizer *)recognizer
 {
     
-    
+ 
+    if ([self gestureRecognizerShouldBegin:self.dragGesture]) {
+
     CGPoint pt = [recognizer locationInView:self.collectionView];
+    CGFloat xRatio = pt.x/self.window.frame.size.width;
+    CGFloat yRatio = pt.y/ self.window.frame.size.height;
     NSIndexPath *idx = [self.collectionView indexPathForItemAtPoint:pt];
     CGPoint translation = [recognizer translationInView:self];
     
-    //8
+    
+    
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"<<<<<<<<<< Tab en Cell");
+        self.gestureBegan = YES;
+        
+        
         
     }
     
@@ -176,6 +207,7 @@
              */
             self.selectedCellDefaultFrame = cell.frame;
             self.selectedCellDefaultTransform = cell.transform;
+            CGRect mWindow = self.window.frame;
             self.cellCenter = cell.center;
             
             [UIView transitionWithView:cell
@@ -186,7 +218,8 @@
                                 //cell.frame = CGRectMake(CELL_INSET, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
                                 
                                  //[cell setCenter:CGPointMake([cell center].x + translation.x, [cell center].y + translation.y)];
-                                 [cell setCenter:CGPointMake(cell.center.x + translation.x/2, cell.center.y)];
+                                cell.frame = CGRectMake(self.window.frame.origin.x, self.window.frame.size.height/2 - cell.frame.size.height/2, mWindow.size.width * xRatio, mWindow.size.height * yRatio);
+                                 //[cell setCenter:CGPointMake(pt.x, cell.center.y)];
 
                                 
                             }
@@ -204,7 +237,11 @@
     //9
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         
+        
+        self.gestureBegan = NO;
+        }
     }
+    
 }
 
 
