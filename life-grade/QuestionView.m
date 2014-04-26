@@ -31,6 +31,7 @@
 @property (nonatomic, assign) BOOL isGrown;
 @property (nonatomic, assign) BOOL gestureBegan;
 @property (nonatomic, strong) UIPanGestureRecognizer *dragGesture;
+@property (nonatomic, strong) UIView *gradeView;
 
 @end
 
@@ -183,21 +184,32 @@
  
     if ([self gestureRecognizerShouldBegin:self.dragGesture]) {
 
-    CGPoint pt = [recognizer locationInView:self.collectionView];
-    CGFloat xRatio = pt.x/self.window.frame.size.width;
-    CGFloat yRatio = pt.x/ self.window.frame.size.height;
-    NSIndexPath *idx = [self.collectionView indexPathForItemAtPoint:pt];
-    CGPoint translation = [recognizer translationInView:self];
+        CGPoint pt = [recognizer locationInView:self.collectionView];
+        CGFloat xRatio = pt.x/self.window.frame.size.width;
+        CGFloat yRatio = pt.x/ self.window.frame.size.height;
+        NSIndexPath *idx = [self.collectionView indexPathForItemAtPoint:pt];
+        CGPoint translation = [recognizer translationInView:self];
         
-    CGFloat transRatioX = translation.x / self.window.frame.size.width;
-        
-    NSLog(@"XRATIO %f YRATIO %f WINDOW %F POINT %f Translation %f", xRatio, yRatio, self.bounds.origin.x, pt.x, transRatioX);
+        CGFloat transRatioX = translation.x / self.window.frame.size.width;
+    
+        CollectionCell *cell;
+        CGFloat originalY;
+
     
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"<<<<<<<<<< Tab en Cell");
         self.gestureBegan = YES;
         
+        cell = (CollectionCell *)[self.collectionView cellForItemAtIndexPath:idx];
+        
+        
+        originalY = cell.frame.origin.y;
+        NSLog(@"original y %f", originalY);
+        
+        self.gradeView = [[UIView alloc] initWithFrame:cell.frame];
+        self.gradeView.backgroundColor = [UIColor whiteColor];
+        [self.collectionView addSubview:self.gradeView];
         
         
     }
@@ -205,8 +217,10 @@
     if (recognizer.state == UIGestureRecognizerStateChanged) {
         
         
-        CollectionCell *cell = (CollectionCell *)[self.collectionView cellForItemAtIndexPath:idx];
+       
 
+        
+            NSLog(@"XRATIO %f YRATIO %f WINDOW %F POINT %f Translation %f WINDOW %f", xRatio, yRatio, self.bounds.origin.x, pt.x, transRatioX, cell.frame.size.height + translation.x);
             /*
              cell.center = CGPointMake(pt.x, cell.center.y);
              */
@@ -215,13 +229,13 @@
             CGRect mWindow = self.window.frame;
             self.cellCenter = cell.center;
             
-            [UIView transitionWithView:cell
+            [UIView transitionWithView:self.gradeView
                               duration:0.2
                                options:UIViewAnimationOptionTransitionNone
                             animations:^{
                                 
                           
-                                cell.frame = CGRectMake(100, cell.frame.origin.y + cell.frame.size.height, 200 + translation.x, yRatio * -self.frame.size.height);
+                                self.gradeView.frame = CGRectMake(0, 200 - translation.x, 200 + translation.x, 200 + translation.x*1.5);
                                 
 
                                 
