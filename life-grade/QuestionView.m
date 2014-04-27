@@ -227,7 +227,8 @@
             self.selectedCellDefaultTransform = cell.transform;
             CGRect mWindow = self.window.frame;
             self.cellCenter = cell.center;
-            
+            CGFloat cellContentY  = 200 + self.collectionView.contentOffset.y;
+        
             [UIView transitionWithView:self.collectionView
                               duration:0.2
                                options:UIViewAnimationOptionTransitionNone
@@ -235,7 +236,7 @@
                                 NSLog(@"NIMATIOON");
                           
                               //  self.gradeView.frame = CGRectMake(0, 200 - translation.x, 200 + translation.x, 200 + translation.x*1.5);
-                                cell.frame = CGRectMake(0, 200 - translation.x, 200 + translation.x, 200 + translation.x*1.5);
+                                cell.frame = CGRectMake(100, cellContentY - translation.x, 200 + translation.x, 200 + translation.x*3);
                                
                                 
 
