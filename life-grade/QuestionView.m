@@ -62,6 +62,8 @@
     
     NSLog(@"WINDOW  %f", self.frame.origin.x);
     
+    self.frame = CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height);
+    
     self.gestureBegan = NO;
 
     self.isGrown = NO;
@@ -192,7 +194,7 @@
         
         CGFloat transRatioX = translation.x / self.window.frame.size.width;
     
-        CollectionCell *cell;
+        CollectionCell *cell = cell = (CollectionCell *)[self.collectionView cellForItemAtIndexPath:idx];
         CGFloat originalY;
 
     
@@ -201,26 +203,23 @@
         NSLog(@"<<<<<<<<<< Tab en Cell");
         self.gestureBegan = YES;
         
-        cell = (CollectionCell *)[self.collectionView cellForItemAtIndexPath:idx];
         
+        self.selectedCellDefaultFrame = cell.frame;
         
         originalY = cell.frame.origin.y;
         NSLog(@"original y %f", originalY);
         
         self.gradeView = [[UIView alloc] initWithFrame:cell.frame];
         self.gradeView.backgroundColor = [UIColor whiteColor];
-        [self.collectionView addSubview:self.gradeView];
+        //[self.collectionView addSubview:self.gradeView];
         
         
     }
     
     if (recognizer.state == UIGestureRecognizerStateChanged) {
         
-        
-       
 
-        
-            NSLog(@"XRATIO %f YRATIO %f WINDOW %F POINT %f Translation %f WINDOW %f", xRatio, yRatio, self.bounds.origin.x, pt.x, transRatioX, cell.frame.size.height + translation.x);
+            NSLog(@"XRATIO %f YRATIO %f WINDOW %F POINT %f Translation %f WINDOW %f", xRatio, yRatio, self.bounds.origin.x, pt.x, transRatioX, translation);
             /*
              cell.center = CGPointMake(pt.x, cell.center.y);
              */
@@ -229,20 +228,22 @@
             CGRect mWindow = self.window.frame;
             self.cellCenter = cell.center;
             
-            [UIView transitionWithView:self.gradeView
+            [UIView transitionWithView:self.collectionView
                               duration:0.2
                                options:UIViewAnimationOptionTransitionNone
                             animations:^{
-                                
+                                NSLog(@"NIMATIOON");
                           
-                                self.gradeView.frame = CGRectMake(0, 200 - translation.x, 200 + translation.x, 200 + translation.x*1.5);
+                              //  self.gradeView.frame = CGRectMake(0, 200 - translation.x, 200 + translation.x, 200 + translation.x*1.5);
+                                cell.frame = CGRectMake(0, 200 - translation.x, 200 + translation.x, 200 + translation.x*1.5);
+                               
                                 
 
                                 
                             }
                             completion:^(BOOL finished) {
                             
-                            
+                                
                             
                             }];
         
