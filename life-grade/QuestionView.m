@@ -176,6 +176,10 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     
+    if (gestureRecognizer == self.dragGesture) {
+        return NO;
+    }
+    
     return YES;
 }
 
@@ -204,6 +208,12 @@
         NSLog(@"<<<<<<<<<< Tab en Cell");
         self.gestureBegan = YES;
         
+        if (self.isGrown == NO) {
+            self.selectedCellDefaultFrame = cell.frame;
+            self.selectedCellDefaultTransform = cell.transform;
+        }
+
+        
         
         self.selectedCellDefaultFrame = cell.frame;
         
@@ -224,8 +234,7 @@
             /*
              cell.center = CGPointMake(pt.x, cell.center.y);
              */
-            self.selectedCellDefaultFrame = cell.frame;
-            self.selectedCellDefaultTransform = cell.transform;
+
             CGRect mWindow = self.window.frame;
             self.cellCenter = cell.center;
             CGFloat cellContentY  = 200 + self.collectionView.contentOffset.y;
@@ -235,22 +244,18 @@
                                options:UIViewAnimationOptionTransitionNone
                             animations:^{
                                 NSLog(@"NIMATIOON");
-                          
-                           
-                            
-                                if (cell.frame.size.width >= 250) {
-                                    NSLog(@"Snap to screen");
-                                    
-                                    self.isGrown = YES;
-                                    cell.frame = CGRectMake(100, self.collectionView.contentOffset.y, self.frame.size.width, self.frame.size.height);
-                                   
-                                    
-                                    cell.layer.transform = CATransform3DMakeRotation(M_PI_2, 0.0f, 0.0f, 0.0f);
-                                    
-                                } else {
+                         
                                 
-                                cell.frame = CGRectMake(100, cellContentY - translation.x*2.5, 200 + translation.x*2, 200 + translation.x*4);
+                                cell.layer.transform = CATransform3DMakeRotation(M_PI_2, 0.0f, 0.0f, 0.0f);
+                                if (cell.frame.size.width < 250) {
+                                    cell.frame = CGRectMake(100, cellContentY - translation.x*2.5, 200 + translation.x*2, 200 + translation.x*4);
+                                } else if (cell.frame.size.width > 250) {
+                                    cell.frame = CGRectMake(100, self.collectionView.contentOffset.y, self.frame.size.width, self.frame.size.height);
+                                } else if (cell.frame.size.width == self.frame.size.width ) {
+                                    NSLog(@"Do Nothing");
                                 }
+                                
+                                
                                 
 
                                 
@@ -264,8 +269,8 @@
                           
         
         
-                         
         
+    
     }
     
     //9
