@@ -195,6 +195,7 @@
         CGFloat transRatioX = translation.x / self.window.frame.size.width;
     
         CollectionCell *cell = cell = (CollectionCell *)[self.collectionView cellForItemAtIndexPath:idx];
+        cell.clipsToBounds = NO;
         CGFloat originalY;
 
     
@@ -235,9 +236,21 @@
                             animations:^{
                                 NSLog(@"NIMATIOON");
                           
-                              //  self.gradeView.frame = CGRectMake(0, 200 - translation.x, 200 + translation.x, 200 + translation.x*1.5);
-                                cell.frame = CGRectMake(100, cellContentY - translation.x, 200 + translation.x, 200 + translation.x*3);
-                               
+                           
+                            
+                                if (cell.frame.size.width >= 250) {
+                                    NSLog(@"Snap to screen");
+                                    
+                                    self.isGrown = YES;
+                                    cell.frame = CGRectMake(100, self.collectionView.contentOffset.y, self.frame.size.width, self.frame.size.height);
+                                   
+                                    
+                                    cell.layer.transform = CATransform3DMakeRotation(M_PI_2, 0.0f, 0.0f, 0.0f);
+                                    
+                                } else {
+                                
+                                cell.frame = CGRectMake(100, cellContentY - translation.x*2.5, 200 + translation.x*2, 200 + translation.x*4);
+                                }
                                 
 
                                 
@@ -247,9 +260,11 @@
                                 
                             
                             }];
+                                
+                          
         
         
-
+                         
         
     }
     
