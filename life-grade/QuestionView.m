@@ -10,6 +10,11 @@
 #import "CollectionCell.h"
 #import "SimpleCoverFlowLayout.h"
 #import <QuartzCore/QuartzCore.h>
+#import "HACollectionViewSmallLayout.h"
+#import "HACollectionViewLargeLayout.h"
+#import "HATransitionController.h"
+#import "HATransitionLayout.h"
+#import "HAPaperCollectionViewController.h"
 
 #define kOffset 10.0
 
@@ -32,6 +37,11 @@
 @property (nonatomic, assign) BOOL gestureBegan;
 @property (nonatomic, strong) UIPanGestureRecognizer *dragGesture;
 @property (nonatomic, strong) UIView *gradeView;
+
+@property (nonatomic, strong) HACollectionViewLargeLayout *largeLayout;
+@property (nonatomic, strong) HACollectionViewSmallLayout *smallLayout;
+
+@property (nonatomic, strong) UIView *mainView;
 
 @end
 
@@ -61,6 +71,14 @@
 - (void)setUpView {
     
     NSLog(@"WINDOW  %f", self.frame.origin.x);
+    
+    _smallLayout = [[HACollectionViewSmallLayout alloc] init];
+    _largeLayout = [[HACollectionViewLargeLayout alloc] init];
+    
+    _mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))];
+    _mainView.clipsToBounds = YES;
+    _mainView.layer.cornerRadius = 4;
+    [self insertSubview:_mainView belowSubview:_collectionView];
     
     self.frame = CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height);
     
@@ -137,16 +155,26 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CollectionCell *cell = (CollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.center = CGPointMake(cell.center.y + 50, cell.center.y);
+    //cell.center = CGPointMake(cell.center.y + 50, cell.center.y);
     
-    
-    
-    
+}
+
+- (UICollectionViewTransitionLayout *)collectionView:(UICollectionView *)collectionView
+                        transitionLayoutForOldLayout:(UICollectionViewLayout *)fromLayout newLayout:(UICollectionViewLayout *)toLayout
+{
+    HATransitionLayout *transitionLayout = [[HATransitionLayout alloc] initWithCurrentLayout:fromLayout nextLayout:toLayout];
+    return transitionLayout;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (self.collectionView.collectionViewLayout == _largeLayout) {
+        NSLog(@"***large layout");
+        return CGSizeMake(self.frame.size.width, self.frame.size.height);
+    } else {
+    
     return CGSizeMake(200, 200);
+    }
 }
 
 
@@ -211,6 +239,10 @@
         if (self.isGrown == NO) {
             self.selectedCellDefaultFrame = cell.frame;
             self.selectedCellDefaultTransform = cell.transform;
+            
+            
+            [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
+   
         }
 
         
@@ -246,6 +278,8 @@
                                 NSLog(@"NIMATIOON");
                          
                                 
+                                // ****old way of doing it
+                                /*
                                 cell.layer.transform = CATransform3DMakeRotation(M_PI_2, 0.0f, 0.0f, 0.0f);
                                 if (cell.frame.size.width < 250) {
                                     cell.frame = CGRectMake(100, cellContentY - translation.x*2.5, 200 + translation.x*2, 200 + translation.x*4);
@@ -254,7 +288,7 @@
                                 } else if (cell.frame.size.width == self.frame.size.width ) {
                                     NSLog(@"Do Nothing");
                                 }
-                                
+                                */
                                 
                                 
 

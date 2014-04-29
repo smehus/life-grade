@@ -37,6 +37,11 @@
 		655EC64318DF62550036515F /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655EC64118DF62550036515F /* MenuViewController.xib */; };
 		655EC64718DF626E0036515F /* OpeningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655EC64518DF626E0036515F /* OpeningViewController.m */; };
 		655EC64818DF626E0036515F /* OpeningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655EC64618DF626E0036515F /* OpeningViewController.xib */; };
+		65BFF070190F4CF90087511B /* HACollectionViewSmallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF06D190F4CF90087511B /* HACollectionViewSmallLayout.m */; };
+		65BFF071190F4CF90087511B /* HACollectionViewLargeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF06F190F4CF90087511B /* HACollectionViewLargeLayout.m */; };
+		65BFF076190F511E0087511B /* HATransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF073190F511E0087511B /* HATransitionController.m */; };
+		65BFF077190F511E0087511B /* HATransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF075190F511E0087511B /* HATransitionLayout.m */; };
+		65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */; };
 		A5376A2818ED073C000C6BD8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5376A2718ED073C000C6BD8 /* Parse.framework */; };
 		A5A216A618F99B3900E06BE8 /* GradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A216A518F99B3900E06BE8 /* GradeCell.m */; };
 		E336CAD8806747469A293CAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A960DAF569C04584853BD49B /* libPods.a */; };
@@ -99,6 +104,16 @@
 		655EC64418DF626E0036515F /* OpeningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpeningViewController.h; sourceTree = "<group>"; };
 		655EC64518DF626E0036515F /* OpeningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpeningViewController.m; sourceTree = "<group>"; };
 		655EC64618DF626E0036515F /* OpeningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpeningViewController.xib; sourceTree = "<group>"; };
+		65BFF06C190F4CF90087511B /* HACollectionViewSmallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACollectionViewSmallLayout.h; sourceTree = "<group>"; };
+		65BFF06D190F4CF90087511B /* HACollectionViewSmallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACollectionViewSmallLayout.m; sourceTree = "<group>"; };
+		65BFF06E190F4CF90087511B /* HACollectionViewLargeLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACollectionViewLargeLayout.h; sourceTree = "<group>"; };
+		65BFF06F190F4CF90087511B /* HACollectionViewLargeLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACollectionViewLargeLayout.m; sourceTree = "<group>"; };
+		65BFF072190F511E0087511B /* HATransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HATransitionController.h; sourceTree = "<group>"; };
+		65BFF073190F511E0087511B /* HATransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATransitionController.m; sourceTree = "<group>"; };
+		65BFF074190F511E0087511B /* HATransitionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HATransitionLayout.h; sourceTree = "<group>"; };
+		65BFF075190F511E0087511B /* HATransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATransitionLayout.m; sourceTree = "<group>"; };
+		65BFF078190F52A70087511B /* HAPaperCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAPaperCollectionViewController.h; sourceTree = "<group>"; };
+		65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAPaperCollectionViewController.m; sourceTree = "<group>"; };
 		A5376A2718ED073C000C6BD8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A5A216A418F99B3900E06BE8 /* GradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeCell.h; sourceTree = "<group>"; };
 		A5A216A518F99B3900E06BE8 /* GradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeCell.m; sourceTree = "<group>"; };
@@ -177,6 +192,7 @@
 		655EC60E18DF5FE20036515F /* life-grade */ = {
 			isa = PBXGroup;
 			children = (
+				65BFF06B190F4CE70087511B /* HAPaper */,
 				6520A636190A8B64006FD28C /* Core Data */,
 				65004BA418E7110100749A82 /* SWRevealViewController.h */,
 				65004BA518E7110100749A82 /* SWRevealViewController.m */,
@@ -242,6 +258,23 @@
 				655EC63018DF5FE20036515F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		65BFF06B190F4CE70087511B /* HAPaper */ = {
+			isa = PBXGroup;
+			children = (
+				65BFF06C190F4CF90087511B /* HACollectionViewSmallLayout.h */,
+				65BFF06D190F4CF90087511B /* HACollectionViewSmallLayout.m */,
+				65BFF06E190F4CF90087511B /* HACollectionViewLargeLayout.h */,
+				65BFF06F190F4CF90087511B /* HACollectionViewLargeLayout.m */,
+				65BFF072190F511E0087511B /* HATransitionController.h */,
+				65BFF073190F511E0087511B /* HATransitionController.m */,
+				65BFF074190F511E0087511B /* HATransitionLayout.h */,
+				65BFF075190F511E0087511B /* HATransitionLayout.m */,
+				65BFF078190F52A70087511B /* HAPaperCollectionViewController.h */,
+				65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */,
+			);
+			name = HAPaper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,21 +417,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */,
 				655EC61518DF5FE20036515F /* main.m in Sources */,
 				6533F56D18E1954F0017C7D6 /* Grade.m in Sources */,
 				6533F55E18E190630017C7D6 /* DesiredGradeViewController.m in Sources */,
 				655EC64718DF626E0036515F /* OpeningViewController.m in Sources */,
 				655EC61918DF5FE20036515F /* MainAppDelegate.m in Sources */,
+				65BFF076190F511E0087511B /* HATransitionController.m in Sources */,
 				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
 				6520A639190A8B82006FD28C /* DataModel.xcdatamodeld in Sources */,
 				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
 				6533F57318E4F19E0017C7D6 /* SimpleCoverFlowLayout.m in Sources */,
+				65BFF077190F511E0087511B /* HATransitionLayout.m in Sources */,
 				A5A216A618F99B3900E06BE8 /* GradeCell.m in Sources */,
+				65BFF071190F4CF90087511B /* HACollectionViewLargeLayout.m in Sources */,
 				655EC64218DF62550036515F /* MenuViewController.m in Sources */,
 				6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */,
 				6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */,
 				65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */,
+				65BFF070190F4CF90087511B /* HACollectionViewSmallLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

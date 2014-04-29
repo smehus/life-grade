@@ -30,6 +30,8 @@
 
 @property (nonatomic, assign) BOOL shouldDeselectCell;
 
+@property (nonatomic, assign) BOOL isGrown;
+
 
 
 
@@ -144,6 +146,7 @@
     if (cell.selected && self.shouldDeselectCell == YES) {
         self.shouldDeselectCell = NO;
         cell.selected = NO;
+        
         [collectionView deselectItemAtIndexPath:indexPath animated:YES];
         [UIView transitionWithView:cell
                           duration:0.2
@@ -158,6 +161,7 @@
                             self.selectedCellDefaultFrame = CGRectZero;
                             //[collectionView reloadItemsAtIndexPaths:@[indexPath]];
                         }];
+         
         return NO;
     }
     else {
@@ -195,7 +199,9 @@
                         [cell addSubview:view];
           
                     }
-                    completion:^(BOOL finished) {}];
+                    completion:^(BOOL finished) {
+                        self.isGrown = YES;
+                    }];
 }
 
 -(void)cellTapped:(UITapGestureRecognizer *)recog {
