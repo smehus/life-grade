@@ -45,11 +45,17 @@
 
 @property (nonatomic, assign) BOOL isBig;
 
+
+
 @end
 
 #define CELL_INSET 100
 
-@implementation QuestionView
+@implementation QuestionView {
+    
+    CGFloat grownCellWidth;
+    CGFloat grownCellHeight;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -114,6 +120,8 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
     
     [self addSubview:self.collectionView];
+    
+    self.isBig = NO;
     
 
     
@@ -191,8 +199,8 @@
         self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         self.collectionView.pagingEnabled = YES;
         return CGSizeMake(self.frame.size.width, self.frame.size.height);
+//        return CGSizeMake(grownCellWidth, grownCellHeight);
     
-        
     } else {
     
     return CGSizeMake(200, 200);
@@ -247,7 +255,8 @@
         CGFloat yRatio = pt.x/ self.window.frame.size.height;
         NSIndexPath *idx = [self.collectionView indexPathForItemAtPoint:pt];
         CGPoint translation = [recognizer translationInView:self];
-        
+        CGPoint vel = [recognizer velocityInView:self.collectionView];
+        NSLog(@"VELOCITY %@", NSStringFromCGPoint(vel));
         CGFloat transRatioX = translation.x / self.window.frame.size.width;
     
         CollectionCell *cell = cell = (CollectionCell *)[self.collectionView cellForItemAtIndexPath:idx];
@@ -260,16 +269,16 @@
         NSLog(@"<<<<<<<<<< Tab en Cell");
         self.gestureBegan = YES;
         
-        if (self.isGrown == NO) {
-            self.selectedCellDefaultFrame = cell.frame;
-            self.selectedCellDefaultTransform = cell.transform;
-            
-            [self.collectionView.collectionViewLayout invalidateLayout];
-            self.isBig = YES;
-            [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
-
-   
-        }
+//        if (self.isGrown == NO) {
+//            self.selectedCellDefaultFrame = cell.frame;
+//            self.selectedCellDefaultTransform = cell.transform;
+//            
+//            //[self.collectionView.collectionViewLayout invalidateLayout];
+//            self.isBig = YES;
+//            [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
+//
+//   
+//        }
 
         
         
@@ -304,7 +313,25 @@
 //                                NSLog(@"NIMATIOON");
                          
                                 
-
+                                if (self.isGrown == NO) {
+                                    
+                                    grownCellWidth = translation.x *12 + 200;
+                                    grownCellHeight = translation.x*24 + 200;
+                                    
+                             
+                                    self.selectedCellDefaultFrame = cell.frame;
+                                    self.selectedCellDefaultTransform = cell.transform;
+                                    
+                                    if (pt.x > 200 & vel.x > 0) {
+                                        self.isBig = YES;
+                                        [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
+                                    }
+                                   
+                                } else {
+                                    
+                                    self.isBig = NO;
+                                    [_collectionView setCollectionViewLayout:self.simpleLayout animated:YES];
+                                }
                                 
                                 // ****old way of doing it
                                 /*
