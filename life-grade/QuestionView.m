@@ -188,7 +188,10 @@
     
     if (self.isBig) {
 
+        self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        self.collectionView.pagingEnabled = YES;
         return CGSizeMake(self.frame.size.width, self.frame.size.height);
+    
         
     } else {
     
@@ -198,6 +201,8 @@
 
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+  
     
     return UIEdgeInsetsMake(-10, 10, 0, 10);
 }
