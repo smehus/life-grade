@@ -43,6 +43,8 @@
 
 @property (nonatomic, strong) UIView *mainView;
 
+@property (nonatomic, assign) BOOL isBig;
+
 @end
 
 #define CELL_INSET 100
@@ -184,8 +186,8 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.collectionView.collectionViewLayout == _largeLayout) {
-        NSLog(@"***large layout");
+    if (self.isBig) {
+
         return CGSizeMake(self.frame.size.width, self.frame.size.height);
         
     } else {
@@ -257,7 +259,8 @@
             self.selectedCellDefaultFrame = cell.frame;
             self.selectedCellDefaultTransform = cell.transform;
             
-            
+            [self.collectionView.collectionViewLayout invalidateLayout];
+            self.isBig = YES;
             [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
 
    
