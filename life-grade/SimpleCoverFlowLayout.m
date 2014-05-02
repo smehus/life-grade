@@ -20,6 +20,8 @@ static const CGFloat kMaxZoom = 0.3f;
 - (id)init {
     if ((self = [super init])) {
         self.scrollDirection = UICollectionViewScrollDirectionVertical;
+        
+        // VERTICAL SPACING BETWEEN CELLS
         self.minimumLineSpacing = 10.0f;
     }
     return self;

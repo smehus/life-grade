@@ -203,6 +203,8 @@
     
     } else {
     
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, - CELL_INSET, 0, 0);
+    self.collectionView.pagingEnabled = NO;
     return CGSizeMake(200, 200);
     }
 }
@@ -330,6 +332,7 @@
                                 } else if (self.isBig == YES && vel.x < 0) {
                                     
                                     self.isBig = NO;
+                                    //self.collectionView.contentInset = UIEdgeInsetsMake(0, - CELL_INSET, 0, 0);
                                     [self.collectionView setCollectionViewLayout:self.simpleLayout animated:YES];
                                 }
                                 
