@@ -147,21 +147,21 @@
         self.shouldDeselectCell = NO;
         cell.selected = NO;
         
-        [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-        [UIView transitionWithView:cell
-                          duration:0.2
-                           options:UIViewAnimationOptionTransitionFlipFromLeft
-                        animations:^{
-                            collectionView.scrollEnabled = YES;
-                            [cell setFrame:self.selectedCellDefaultFrame];
-                            cell.transform = self.selectedCellDefaultTransform;
-                            [view removeFromSuperview];
-                        }
-                        completion:^(BOOL finished) {
-                            self.selectedCellDefaultFrame = CGRectZero;
-                            //[collectionView reloadItemsAtIndexPaths:@[indexPath]];
-                        }];
-         
+//        [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+//        [UIView transitionWithView:cell
+//                          duration:0.2
+//                           options:UIViewAnimationOptionTransitionFlipFromLeft
+//                        animations:^{
+//                            collectionView.scrollEnabled = YES;
+//                            [cell setFrame:self.selectedCellDefaultFrame];
+//                            cell.transform = self.selectedCellDefaultTransform;
+//                            [view removeFromSuperview];
+//                        }
+//                        completion:^(BOOL finished) {
+//                            self.selectedCellDefaultFrame = CGRectZero;
+//                            //[collectionView reloadItemsAtIndexPaths:@[indexPath]];
+//                        }];
+        
         return NO;
     }
     else {
@@ -208,17 +208,18 @@
     CGPoint p = [recog locationInView:self.collectionView];
     
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:p];
-    if (indexPath == nil)
-        NSLog(@"tap on collection view but not on cell");
-    else
-        NSLog(@"tap on collection view at row %ld", (long)indexPath.row);
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+    if (indexPath == nil) {
+       
+    } else {
+        
     BOOL select = [self collectionView:self.collectionView shouldSelectItemAtIndexPath:indexPath];
-    if (select == YES) {
+    if (select == YES && cell.selected == NO) {
         
         [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
     }
     
-    
+    }
     
 }
 

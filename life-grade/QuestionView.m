@@ -148,16 +148,32 @@
     cell.layer.cornerRadius = 8.0f;
     cell.text.text = self.grades[indexPath.row];
     cell.clipsToBounds = NO;
+    cell.userInteractionEnabled = YES;
+    
     return cell;
     
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    CollectionCell *cell = (CollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    //cell.center = CGPointMake(cell.center.y + 50, cell.center.y);
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"selected item");
+
+        _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
+        
+        [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            
+            // Change flow layout
+            [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
+            _collectionView.backgroundColor = [UIColor blackColor];
+            
+            // Transform to zoom in effect
+            _mainView.transform = CGAffineTransformScale(_mainView.transform, 0.96, 0.96);
+        } completion:^(BOOL finished) {
+
+        }];
     
 }
+
 
 - (UICollectionViewTransitionLayout *)collectionView:(UICollectionView *)collectionView
                         transitionLayoutForOldLayout:(UICollectionViewLayout *)fromLayout newLayout:(UICollectionViewLayout *)toLayout
@@ -171,6 +187,7 @@
     if (self.collectionView.collectionViewLayout == _largeLayout) {
         NSLog(@"***large layout");
         return CGSizeMake(self.frame.size.width, self.frame.size.height);
+        
     } else {
     
     return CGSizeMake(200, 200);
@@ -242,6 +259,7 @@
             
             
             [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
+
    
         }
 
@@ -250,7 +268,7 @@
         self.selectedCellDefaultFrame = cell.frame;
         
         originalY = cell.frame.origin.y;
-        NSLog(@"original y %f", originalY);
+        //NSLog(@"original y %f", originalY);
         
         self.gradeView = [[UIView alloc] initWithFrame:cell.frame];
         self.gradeView.backgroundColor = [UIColor whiteColor];
@@ -262,7 +280,7 @@
     if (recognizer.state == UIGestureRecognizerStateChanged) {
         
 
-            NSLog(@"XRATIO %f YRATIO %f WINDOW %F POINT %f Translation %f WINDOW %f", xRatio, yRatio, self.bounds.origin.x, pt.x, transRatioX, translation);
+            //NSLog(@"XRATIO %f YRATIO %f WINDOW %F POINT %f Translation %f WINDOW %f", xRatio, yRatio, self.bounds.origin.x, pt.x, transRatioX, translation);
             /*
              cell.center = CGPointMake(pt.x, cell.center.y);
              */
@@ -275,8 +293,10 @@
                               duration:0.2
                                options:UIViewAnimationOptionTransitionNone
                             animations:^{
-                                NSLog(@"NIMATIOON");
+//                                NSLog(@"NIMATIOON");
                          
+                                
+
                                 
                                 // ****old way of doing it
                                 /*
