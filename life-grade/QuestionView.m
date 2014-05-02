@@ -307,13 +307,13 @@
             CGFloat cellContentY  = 200 + self.collectionView.contentOffset.y;
         
             [UIView transitionWithView:self.collectionView
-                              duration:0.2
+                              duration:0.4
                                options:UIViewAnimationOptionTransitionNone
                             animations:^{
 //                                NSLog(@"NIMATIOON");
                          
                                 
-                                if (self.isGrown == NO) {
+                                if (self.isBig == NO) {
                                     
                                     grownCellWidth = translation.x *12 + 200;
                                     grownCellHeight = translation.x*24 + 200;
@@ -327,11 +327,12 @@
                                         [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
                                     }
                                    
-                                } else {
+                                } else if (self.isBig == YES && vel.x < 0) {
                                     
                                     self.isBig = NO;
-                                    [_collectionView setCollectionViewLayout:self.simpleLayout animated:YES];
+                                    [self.collectionView setCollectionViewLayout:self.simpleLayout animated:YES];
                                 }
+                                
                                 
                                 // ****old way of doing it
                                 /*
