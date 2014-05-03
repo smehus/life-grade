@@ -49,7 +49,7 @@
 
 @end
 
-#define CELL_INSET 100
+#define CELL_INSET 140
 
 @implementation QuestionView {
     
@@ -203,7 +203,7 @@
     
     } else {
     
-    self.collectionView.contentInset = UIEdgeInsetsMake(0, - CELL_INSET, 0, 0);
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, - CELL_INSET, 0, 100);
     self.collectionView.pagingEnabled = NO;
     return CGSizeMake(200, 200);
     }

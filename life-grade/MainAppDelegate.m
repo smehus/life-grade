@@ -12,12 +12,20 @@
 #import "MenuViewController.h"
 #import "SWRevealViewController.h"
 #import <CoreData/CoreData.h>
+#import "HAViewController.h"
+#import "HASmallCollectionViewController.h"
+#import "HACollectionViewSmallLayout.h"
+#import "HATransitionController.h"
+#import "HATransitionLayout.h"
 
 
-@interface MainAppDelegate ()
+
+@interface MainAppDelegate ()<UINavigationControllerDelegate, HATransitionControllerDelegate>
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic) UINavigationController *navigationController;
+@property (nonatomic) HATransitionController *transitionController;
 @end
 
 @implementation MainAppDelegate
@@ -37,13 +45,31 @@
     self.window = window;
     
     MenuViewController *rearViewController = [[MenuViewController alloc] init];
-    self.openingViewController = [[OpeningViewController alloc] init];
+    
+
+    self.openingViewController = [[OpeningViewController alloc] initWithNibName:@"OpeningViewController" bundle:nil];
     self.openingViewController.managedObjectContext = self.managedObjectContext;
-    
+    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:self.openingViewController];
+//
+//    HASmallCollectionViewController *opening = [[HASmallCollectionViewController alloc] initWithCollectionViewLayout:[[HACollectionViewSmallLayout alloc] init]];
+//    opening.view.frame = [[UIScreen mainScreen] bounds];
+//    
     SWRevealViewController *mainRevealController = [[SWRevealViewController alloc]
-                                                    initWithRearViewController:rearViewController frontViewController:self.openingViewController];
+                                                    initWithRearViewController:rearViewController frontViewController:navCon];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     
     
+    
+    
+//    self.navigationController = [[UINavigationController alloc] initWithRootViewController:opening];
+//    self.navigationController.delegate = self;
+//    self.navigationController.navigationBarHidden = YES;
+//    
+//    self.transitionController = [[HATransitionController alloc] initWithCollectionView:opening.collectionView];
+//    self.transitionController.delegate = self;
+//    
+//    
     mainRevealController.rearViewRevealWidth = 200;
     mainRevealController.rearViewRevealOverdraw = 320;
     mainRevealController.bounceBackOnOverdraw = NO;
@@ -56,6 +82,53 @@
     
     return YES;
 }
+
+
+- (void)interactionBeganAtPoint:(CGPoint)point
+{
+    // Very basic communication between the transition controller and the top view controller
+    // It would be easy to add more control, support pop, push or no-op
+    HASmallCollectionViewController *presentingVC = (HASmallCollectionViewController *)[self.navigationController topViewController];
+    HASmallCollectionViewController *presentedVC = (HASmallCollectionViewController *)[presentingVC nextViewControllerAtPoint:point];
+    if (presentedVC!=nil)
+    {
+        [self.navigationController pushViewController:presentedVC animated:YES];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
+- (id <UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController
+                          interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>) animationController
+{
+    if (animationController==self.transitionController) {
+        return self.transitionController;
+    }
+    return nil;
+}
+
+
+- (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                  toViewController:(UIViewController *)toVC
+{
+    if (![fromVC isKindOfClass:[UICollectionViewController class]] || ![toVC isKindOfClass:[UICollectionViewController class]])
+    {
+        return nil;
+    }
+    if (!self.transitionController.hasActiveInteraction)
+    {
+        return nil;
+    }
+    
+    self.transitionController.navigationOperation = operation;
+    return self.transitionController;
+}
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

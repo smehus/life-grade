@@ -9,7 +9,7 @@
 #import "SimpleCoverFlowLayout.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define ITEM_SIZE 70
+#define ITEM_SIZE 200
 
 static const CGFloat kMaxDistancePercentage = 0.3f;
 static const CGFloat kMaxRotation = (CGFloat)(50.0 * (M_PI / 360));
@@ -45,7 +45,7 @@ static const CGFloat kMaxZoom = 0.3f;
 }
 
 - (NSArray*)layoutAttributesForElementsInRect:(CGRect)rect {
-    // 1
+    // 1 
     CGRect visibleRect =
 	(CGRect){.origin = self.collectionView.contentOffset,
 		.size = self.collectionView.bounds.size};

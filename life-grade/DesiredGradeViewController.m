@@ -12,6 +12,7 @@
 #import "CollectionCell.h"
 #import "CoverFlowLayout.h"
 #import "QuestionView.h"
+#import "HAViewController.h"
 
 
 @interface DesiredGradeViewController () <UICollectionViewDataSource,
@@ -186,9 +187,10 @@
     view.delegate = self;
     view.theIndexPath = indexPath;
 
-    
-    
-    
+//    HAViewController *view = [[HAViewController alloc] init];
+//    view.view.frame = self.view.frame;
+//    
+//    
     
     [UIView transitionWithView:cell
                       duration:0.2
@@ -197,7 +199,9 @@
                         [cell setFrame:collectionView.bounds];
                         cell.transform = CGAffineTransformMakeRotation(0.0);
                         [cell addSubview:view];
-          
+//                        [self addChildViewController:view];
+//                        [cell addSubview:view.view];
+//                        [view didMoveToParentViewController:self];
                     }
                     completion:^(BOOL finished) {
                         self.isGrown = YES;
