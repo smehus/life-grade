@@ -144,12 +144,12 @@
     
     
     UIImageView *secondArrow = [[UIImageView alloc] initWithImage:arrowImg];
-    firstArrow.frame = CGRectMake(20, 200, arrowImg.size.width, arrowImg.size.height);
+    secondArrow.frame = CGRectMake(20, 200, arrowImg.size.width, arrowImg.size.height);
     
    
-//    UIImageView *threeArrow = [[UIImageView alloc] initWithImage:arrowImg];
-//    firstArrow.frame = CGRectMake(20, 300, arrowImg.size.width, arrowImg.size.height);
-//    
+   UIImageView *threeArrow = [[UIImageView alloc] initWithImage:arrowImg];
+   threeArrow.frame = CGRectMake(20, 300, arrowImg.size.width, arrowImg.size.height);
+   
     
     
     
@@ -157,7 +157,7 @@
     
     [view addSubview:firstArrow];
     [view addSubview:secondArrow];
-//    [view addSubview:threeArrow];
+    [view addSubview:threeArrow];
     [view addSubview:self.stepOne];
     [self.scrollView addSubview:view];
 }

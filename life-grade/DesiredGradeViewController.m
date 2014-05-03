@@ -13,6 +13,7 @@
 #import "CoverFlowLayout.h"
 #import "QuestionView.h"
 #import "HAViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface DesiredGradeViewController () <UICollectionViewDataSource,
@@ -54,11 +55,27 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    
+    
+    
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.shouldDeselectCell = NO;
+
+    UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
+    UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
+    bg.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:bg];
+    [self.view sendSubviewToBack:bg];
+    
+
+    
     
     self.dataArray = [[NSMutableArray alloc] initWithCapacity:12];
     
@@ -77,7 +94,7 @@
     self.layout = [[CoverFlowLayout alloc] init];
     self.collectionView.collectionViewLayout = self.layout;
     self.collectionView.scrollEnabled = YES;
-    self.collectionView.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
+    self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
     items = [[NSMutableArray alloc] init];
     for (int i = 0; i <= 10; i++) {
@@ -113,6 +130,8 @@
     
     
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
+    cell.layer.cornerRadius = 4.0f;
+    
     cell.text.text = items[indexPath.row];
     
     return cell;

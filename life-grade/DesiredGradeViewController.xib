@@ -35,9 +35,14 @@
                 <navigationBar contentMode="scaleToFill" id="XS4-TF-xJD">
                     <rect key="frame" x="0.0" y="23" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.69019607839999997" green="0.8862745098" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="tintColor" red="0.69019607839999997" green="0.8862745098" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="barTintColor" red="0.69019607839999997" green="0.8862745098" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                     <items>
                         <navigationItem title="DESIRED" id="WfI-n8-X2q">
-                            <barButtonItem key="leftBarButtonItem" title="Menu" id="BMo-dJ-3nU"/>
+                            <barButtonItem key="leftBarButtonItem" title="Menu" id="BMo-dJ-3nU">
+                                <color key="tintColor" red="0.24313725490196078" green="0.24313725490196078" blue="0.24313725490196078" alpha="1" colorSpace="deviceRGB"/>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
