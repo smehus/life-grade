@@ -15,7 +15,7 @@
 #import "HATransitionController.h"
 #import "HATransitionLayout.h"
 #import "HAPaperCollectionViewController.h"
-#import "QuestionGradeCell.h"
+
 
 #define kOffset 10.0
 
@@ -45,6 +45,8 @@
 @property (nonatomic, strong) UIView *mainView;
 
 @property (nonatomic, assign) BOOL isBig;
+
+@property (nonatomic, strong) UILabel *directions;
 
 
 
@@ -102,9 +104,11 @@
     self.dragGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pressDetected:)];
     self.dragGesture.delegate = self;
 
-    [self.collectionView registerNib:[UINib nibWithNibName:@"QuestionGradeCell" bundle:nil] forCellWithReuseIdentifier:@"questionCell"];
-    
+   
+//    [self.collectionView registerClass:[CollectionCell class] forCellWithReuseIdentifier:@"CollectionCell"];
 //    UICollectionViewFlowLayout *coverFlow = [[UICollectionViewFlowLayout alloc] init];
+    
+    //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"MY_CELL"];
     
     self.simpleLayout = [[SimpleCoverFlowLayout alloc] init];
 
@@ -124,6 +128,11 @@
     [self addSubview:self.collectionView];
     
     self.isBig = NO;
+    
+    self.directions = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 60, 300, 60, 30)];
+    self.directions.text = @"Swipe!";
+    self.directions.textColor = [UIColor whiteColor];
+    [self addSubview:self.directions];
 
     
 }
@@ -151,6 +160,13 @@
     cell.layer.cornerRadius = 8.0f;
     cell.clipsToBounds = NO;
     cell.userInteractionEnabled = YES;
+    
+    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 300, self.frame.size.width, 50)];
+    self.nextButton.backgroundColor = [UIColor blueColor];
+    [self.nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:self.nextButton];
+    
+    
 
     return cell;
     
@@ -309,15 +325,16 @@
                                 
                                 if (self.isBig == NO) {
                                     
+                                    // set up view
+                                    
+                                    self.directions.hidden = YES;
+                                    
                                     grownCellWidth = translation.x *12 + 200;
                                     grownCellHeight = translation.x*24 + 200;
                                     
-                                    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 375, self.frame.size.width, 50)];
-                                    [self.nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
-                                    [self.nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
-                                    [self.nextButton setTitle:@"Next Question" forState:UIControlStateNormal];
-                                    [cell addSubview:self.nextButton];
+                                    self.nextButton.hidden = YES;
                                     
+                                   
                              
                                     self.selectedCellDefaultFrame = cell.frame;
                                     self.selectedCellDefaultTransform = cell.transform;

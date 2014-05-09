@@ -16,6 +16,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 
+
 @interface DesiredGradeViewController () <UICollectionViewDataSource,
                                             UICollectionViewDelegateFlowLayout,
                                             UICollectionViewDelegate,
@@ -104,6 +105,7 @@
    
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
+    //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"CollectionCell"];
     self.layout = [[CoverFlowLayout alloc] init];
     self.collectionView.collectionViewLayout = self.layout;
     self.collectionView.scrollEnabled = YES;
@@ -147,7 +149,6 @@
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
     cell.layer.cornerRadius = 4.0f;
     
-    cell.text.text = items[indexPath.row];
     
     return cell;
     

@@ -60,8 +60,6 @@
 		65BFF076190F511E0087511B /* HATransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF073190F511E0087511B /* HATransitionController.m */; };
 		65BFF077190F511E0087511B /* HATransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF075190F511E0087511B /* HATransitionLayout.m */; };
 		65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */; };
-		65F4F324191C684100ECC907 /* QuestionGradeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65F4F323191C684100ECC907 /* QuestionGradeCell.xib */; };
-		65F4F327191C685800ECC907 /* QuestionGradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F4F326191C685800ECC907 /* QuestionGradeCell.m */; };
 		A5376A2818ED073C000C6BD8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5376A2718ED073C000C6BD8 /* Parse.framework */; };
 		A5A216A618F99B3900E06BE8 /* GradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A216A518F99B3900E06BE8 /* GradeCell.m */; };
 		E336CAD8806747469A293CAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A960DAF569C04584853BD49B /* libPods.a */; };
@@ -154,9 +152,6 @@
 		65BFF075190F511E0087511B /* HATransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATransitionLayout.m; sourceTree = "<group>"; };
 		65BFF078190F52A70087511B /* HAPaperCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAPaperCollectionViewController.h; sourceTree = "<group>"; };
 		65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAPaperCollectionViewController.m; sourceTree = "<group>"; };
-		65F4F323191C684100ECC907 /* QuestionGradeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionGradeCell.xib; sourceTree = "<group>"; };
-		65F4F325191C685800ECC907 /* QuestionGradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionGradeCell.h; sourceTree = "<group>"; };
-		65F4F326191C685800ECC907 /* QuestionGradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionGradeCell.m; sourceTree = "<group>"; };
 		A5376A2718ED073C000C6BD8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A5A216A418F99B3900E06BE8 /* GradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeCell.h; sourceTree = "<group>"; };
 		A5A216A518F99B3900E06BE8 /* GradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeCell.m; sourceTree = "<group>"; };
@@ -253,14 +248,14 @@
 				655EC64618DF626E0036515F /* OpeningViewController.xib */,
 				6533F55418E190360017C7D6 /* CoverFlowLayout.h */,
 				6533F55518E190360017C7D6 /* CoverFlowLayout.m */,
-				6533F55318E190360017C7D6 /* CollectionCell.xib */,
-				6533F55818E190560017C7D6 /* CollectionCell.h */,
-				6533F55918E190560017C7D6 /* CollectionCell.m */,
 				6533F55B18E190630017C7D6 /* DesiredGradeViewController.h */,
 				6533F55C18E190630017C7D6 /* DesiredGradeViewController.m */,
 				6533F55D18E190630017C7D6 /* DesiredGradeViewController.xib */,
 				6533F56818E194810017C7D6 /* QuestionView.h */,
 				6533F56918E194810017C7D6 /* QuestionView.m */,
+				6533F55318E190360017C7D6 /* CollectionCell.xib */,
+				6533F55818E190560017C7D6 /* CollectionCell.h */,
+				6533F55918E190560017C7D6 /* CollectionCell.m */,
 				6533F56B18E1954F0017C7D6 /* Grade.h */,
 				6533F56C18E1954F0017C7D6 /* Grade.m */,
 				6533F56E18E195700017C7D6 /* Question.h */,
@@ -271,9 +266,6 @@
 				A5A216A518F99B3900E06BE8 /* GradeCell.m */,
 				6520A6311909FDD5006FD28C /* SignupViewController.h */,
 				6520A6321909FDD5006FD28C /* SignupViewController.m */,
-				65F4F323191C684100ECC907 /* QuestionGradeCell.xib */,
-				65F4F325191C685800ECC907 /* QuestionGradeCell.h */,
-				65F4F326191C685800ECC907 /* QuestionGradeCell.m */,
 			);
 			path = "life-grade";
 			sourceTree = "<group>";
@@ -450,7 +442,6 @@
 				65715011191482880034009A /* blue-arrow--@2x.png in Resources */,
 				65715018191482880034009A /* Green-button-@2x.png in Resources */,
 				6571501F191482880034009A /* round-about-blue-2-@2x.png in Resources */,
-				65F4F324191C684100ECC907 /* QuestionGradeCell.xib in Resources */,
 				6571501C191482880034009A /* mind-set-Green-@2x.png in Resources */,
 				65715014191482880034009A /* Dotted-like-2-@2x.png in Resources */,
 				6571501A191482880034009A /* logo---copy@2x.png in Resources */,
@@ -525,7 +516,6 @@
 				655EC61918DF5FE20036515F /* MainAppDelegate.m in Sources */,
 				65BFF076190F511E0087511B /* HATransitionController.m in Sources */,
 				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
-				65F4F327191C685800ECC907 /* QuestionGradeCell.m in Sources */,
 				6520A639190A8B82006FD28C /* DataModel.xcdatamodeld in Sources */,
 				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
