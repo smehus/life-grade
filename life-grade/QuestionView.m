@@ -151,13 +151,7 @@
     cell.layer.cornerRadius = 8.0f;
     cell.clipsToBounds = NO;
     cell.userInteractionEnabled = YES;
-    
-    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 375, self.frame.size.width, 50)];
-    [self.nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
-    [self.nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.nextButton setTitle:@"Next Question" forState:UIControlStateNormal];
-    [cell addSubview:self.nextButton];
-    
+
     return cell;
     
 }
