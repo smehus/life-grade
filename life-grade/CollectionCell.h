@@ -12,5 +12,5 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *text;
 @property (nonatomic, assign) BOOL isCompleted;
-
+@property (nonatomic, strong) UIButton *nextButton;
 @end

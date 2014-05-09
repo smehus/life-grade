@@ -15,6 +15,7 @@
 #import "HATransitionController.h"
 #import "HATransitionLayout.h"
 #import "HAPaperCollectionViewController.h"
+#import "QuestionGradeCell.h"
 
 #define kOffset 10.0
 
@@ -78,6 +79,8 @@
 
 - (void)setUpView {
     
+
+    
     NSLog(@"WINDOW  %f", self.frame.origin.x);
     
     _smallLayout = [[HACollectionViewSmallLayout alloc] init];
@@ -98,14 +101,13 @@
     
     self.dragGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pressDetected:)];
     self.dragGesture.delegate = self;
-    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
+
+    [self.collectionView registerNib:[UINib nibWithNibName:@"QuestionGradeCell" bundle:nil] forCellWithReuseIdentifier:@"questionCell"];
     
-    UICollectionViewFlowLayout *coverFlow = [[UICollectionViewFlowLayout alloc] init];
+//    UICollectionViewFlowLayout *coverFlow = [[UICollectionViewFlowLayout alloc] init];
     
     self.simpleLayout = [[SimpleCoverFlowLayout alloc] init];
-    /*
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - 200, kOffset, self.frame.size.width, self.frame.size.height - 88) collectionViewLayout:self.simpleLayout];
-     */
+
     
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.simpleLayout];
     self.collectionView.backgroundColor = [UIColor clearColor];
@@ -122,16 +124,7 @@
     [self addSubview:self.collectionView];
     
     self.isBig = NO;
-    
 
-    
-    /*
-    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 375, self.frame.size.width, 50)];
-    [self.nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
-    [self.nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.nextButton setTitle:@"Next Question" forState:UIControlStateNormal];
-    [self addSubview:self.nextButton];
-    */
     
 }
 
@@ -156,9 +149,14 @@
     cell.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
     cell.layer.cornerRadius = 8.0f;
-    cell.text.text = self.grades[indexPath.row];
     cell.clipsToBounds = NO;
     cell.userInteractionEnabled = YES;
+    
+    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 375, self.frame.size.width, 50)];
+    [self.nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    [self.nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.nextButton setTitle:@"Next Question" forState:UIControlStateNormal];
+    [cell addSubview:self.nextButton];
     
     return cell;
     
@@ -319,6 +317,12 @@
                                     
                                     grownCellWidth = translation.x *12 + 200;
                                     grownCellHeight = translation.x*24 + 200;
+                                    
+                                    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 375, self.frame.size.width, 50)];
+                                    [self.nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+                                    [self.nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
+                                    [self.nextButton setTitle:@"Next Question" forState:UIControlStateNormal];
+                                    [cell addSubview:self.nextButton];
                                     
                              
                                     self.selectedCellDefaultFrame = cell.frame;

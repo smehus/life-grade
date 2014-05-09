@@ -60,7 +60,11 @@
     UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
     bg.frame = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:bg];
-   
+    
+//    UIView *fuckView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
+//    fuckView.backgroundColor  = GREEN_COLOR;
+//    [self.view addSubview:fuckView];
+//   
       self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width *3, viewSize.height);
     self.scrollView.backgroundColor = [UIColor redColor];
     self.scrollView.delegate = self;
@@ -95,7 +99,8 @@
 - (void)openGradeController {
     
     DesiredGradeViewController *desiredController = [[DesiredGradeViewController alloc] init];
-    [self.myRevealController setFrontViewController:desiredController];
+    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:desiredController];
+    [self.myRevealController setFrontViewController:navCon];
     
     
 }

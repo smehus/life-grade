@@ -14,6 +14,7 @@
 
 
 @property (nonatomic, strong) SWRevealViewController *myRevealController;
+@property (nonatomic, strong) NSMutableArray *titleArray;
 
 @end
 
@@ -30,6 +31,8 @@
 
 - (void)viewDidLoad
 {
+    
+    self.titleArray = @[@"Grading", @"Desired Grade", @"My Grade", @"About"];
     
     NSLog(@"MENU LOADED");
      self.tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
@@ -51,6 +54,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
     
@@ -69,7 +73,8 @@
 {
 
     tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
-    return 5;
+    return self.titleArray.count;
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
      tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
@@ -88,7 +93,7 @@
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
 
-    cell.textLabel.text = @"Item";
+    cell.textLabel.text = [self.titleArray objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -98,7 +103,8 @@
     if (indexPath.row == 0) {
         
         DesiredGradeViewController *desiredView = [[DesiredGradeViewController alloc] init];
-        [self.myRevealController pushFrontViewController:desiredView animated:YES];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:desiredView];
+        [self.myRevealController pushFrontViewController:nav animated:YES];
         
     }
     

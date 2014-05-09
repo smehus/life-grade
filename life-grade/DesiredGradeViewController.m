@@ -67,6 +67,11 @@
 {
     [super viewDidLoad];
     
+    //self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    UIColor *barColour = GREEN_COLOR;
+    self.navigationController.navigationBar.barTintColor = barColour;
+    
 
     UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
     UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
@@ -74,7 +79,7 @@
     [self.view addSubview:bg];
     [self.view sendSubviewToBack:bg];
     
-
+    NSLog(@"navbar %@ : navItem %@", self.navigationController, self.navigationController);
     
     
     self.dataArray = [[NSMutableArray alloc] initWithCapacity:12];
@@ -85,10 +90,18 @@
     
     //SWRevealViewController *revealController = self.revealViewController;
     
+    UIBarButtonItem *barbut = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealToggle:)];
+    [barbut setTintColor:[UIColor blackColor]];
+    self.navigationItem.leftBarButtonItem = barbut;
+    
+
+    self.revealButton = barbut;
+    
+
     [self.revealButton setTarget: self.revealViewController];
     [self.revealButton setAction: @selector( revealToggle: )];
-    
-    
+   
+   
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
     self.layout = [[CoverFlowLayout alloc] init];
@@ -104,6 +117,8 @@
     
     // Do any additional setup after loading the view from its nib.
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
