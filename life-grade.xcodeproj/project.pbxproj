@@ -17,7 +17,6 @@
 		6533F55E18E190630017C7D6 /* DesiredGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F55C18E190630017C7D6 /* DesiredGradeViewController.m */; };
 		6533F55F18E190630017C7D6 /* DesiredGradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6533F55D18E190630017C7D6 /* DesiredGradeViewController.xib */; };
 		6533F56A18E194810017C7D6 /* QuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F56918E194810017C7D6 /* QuestionView.m */; };
-		6533F56D18E1954F0017C7D6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F56C18E1954F0017C7D6 /* Grade.m */; };
 		6533F57018E195700017C7D6 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F56F18E195700017C7D6 /* Question.m */; };
 		6533F57318E4F19E0017C7D6 /* SimpleCoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F57218E4F19E0017C7D6 /* SimpleCoverFlowLayout.m */; };
 		655EC60918DF5FE20036515F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655EC60818DF5FE20036515F /* Foundation.framework */; };
@@ -60,6 +59,8 @@
 		65BFF076190F511E0087511B /* HATransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF073190F511E0087511B /* HATransitionController.m */; };
 		65BFF077190F511E0087511B /* HATransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF075190F511E0087511B /* HATransitionLayout.m */; };
 		65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */; };
+		65FE23EC1920E79C00588C1E /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE23EB1920E79C00588C1E /* Entity.m */; };
+		65FE23EE1920EB4800588C1E /* CoreDataTutorial2.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 65FE23ED1920EB4800588C1E /* CoreDataTutorial2.sqlite */; };
 		A5376A2818ED073C000C6BD8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5376A2718ED073C000C6BD8 /* Parse.framework */; };
 		A5A216A618F99B3900E06BE8 /* GradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A216A518F99B3900E06BE8 /* GradeCell.m */; };
 		E336CAD8806747469A293CAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A960DAF569C04584853BD49B /* libPods.a */; };
@@ -93,8 +94,6 @@
 		6533F55D18E190630017C7D6 /* DesiredGradeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DesiredGradeViewController.xib; sourceTree = "<group>"; };
 		6533F56818E194810017C7D6 /* QuestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionView.h; sourceTree = "<group>"; };
 		6533F56918E194810017C7D6 /* QuestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionView.m; sourceTree = "<group>"; };
-		6533F56B18E1954F0017C7D6 /* Grade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grade.h; sourceTree = "<group>"; };
-		6533F56C18E1954F0017C7D6 /* Grade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grade.m; sourceTree = "<group>"; };
 		6533F56E18E195700017C7D6 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		6533F56F18E195700017C7D6 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
 		6533F57118E4F19E0017C7D6 /* SimpleCoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCoverFlowLayout.h; sourceTree = "<group>"; };
@@ -152,6 +151,9 @@
 		65BFF075190F511E0087511B /* HATransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATransitionLayout.m; sourceTree = "<group>"; };
 		65BFF078190F52A70087511B /* HAPaperCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAPaperCollectionViewController.h; sourceTree = "<group>"; };
 		65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAPaperCollectionViewController.m; sourceTree = "<group>"; };
+		65FE23EA1920E79C00588C1E /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
+		65FE23EB1920E79C00588C1E /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
+		65FE23ED1920EB4800588C1E /* CoreDataTutorial2.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoreDataTutorial2.sqlite; sourceTree = "<group>"; };
 		A5376A2718ED073C000C6BD8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A5A216A418F99B3900E06BE8 /* GradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeCell.h; sourceTree = "<group>"; };
 		A5A216A518F99B3900E06BE8 /* GradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeCell.m; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 		655EC60E18DF5FE20036515F /* life-grade */ = {
 			isa = PBXGroup;
 			children = (
+				65FE23E51920E05500588C1E /* SQLite */,
 				65714FFF191482700034009A /* Resources */,
 				65BFF06B190F4CE70087511B /* HAPaper */,
 				6520A636190A8B64006FD28C /* Core Data */,
@@ -256,8 +259,6 @@
 				6533F55318E190360017C7D6 /* CollectionCell.xib */,
 				6533F55818E190560017C7D6 /* CollectionCell.h */,
 				6533F55918E190560017C7D6 /* CollectionCell.m */,
-				6533F56B18E1954F0017C7D6 /* Grade.h */,
-				6533F56C18E1954F0017C7D6 /* Grade.m */,
 				6533F56E18E195700017C7D6 /* Question.h */,
 				6533F56F18E195700017C7D6 /* Question.m */,
 				6533F57118E4F19E0017C7D6 /* SimpleCoverFlowLayout.h */,
@@ -266,6 +267,8 @@
 				A5A216A518F99B3900E06BE8 /* GradeCell.m */,
 				6520A6311909FDD5006FD28C /* SignupViewController.h */,
 				6520A6321909FDD5006FD28C /* SignupViewController.m */,
+				65FE23EA1920E79C00588C1E /* Entity.h */,
+				65FE23EB1920E79C00588C1E /* Entity.m */,
 			);
 			path = "life-grade";
 			sourceTree = "<group>";
@@ -349,6 +352,14 @@
 				65714FFC191475080034009A /* HASmallCollectionViewController.m */,
 			);
 			name = HAPaper;
+			sourceTree = "<group>";
+		};
+		65FE23E51920E05500588C1E /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				65FE23ED1920EB4800588C1E /* CoreDataTutorial2.sqlite */,
+			);
+			name = SQLite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +461,7 @@
 				655EC61318DF5FE20036515F /* InfoPlist.strings in Resources */,
 				65715015191482880034009A /* Dotted-line-1-@2x.png in Resources */,
 				6533F55618E190360017C7D6 /* CollectionCell.xib in Resources */,
+				65FE23EE1920EB4800588C1E /* CoreDataTutorial2.sqlite in Resources */,
 				65715013191482880034009A /* blue-box-3-@2x.png in Resources */,
 				6533F55F18E190630017C7D6 /* DesiredGradeViewController.xib in Resources */,
 				655EC61C18DF5FE20036515F /* Main.storyboard in Resources */,
@@ -509,7 +521,6 @@
 			files = (
 				65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */,
 				655EC61518DF5FE20036515F /* main.m in Sources */,
-				6533F56D18E1954F0017C7D6 /* Grade.m in Sources */,
 				65714FFD191475080034009A /* HAViewController.m in Sources */,
 				6533F55E18E190630017C7D6 /* DesiredGradeViewController.m in Sources */,
 				655EC64718DF626E0036515F /* OpeningViewController.m in Sources */,
@@ -518,6 +529,7 @@
 				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
 				6520A639190A8B82006FD28C /* DataModel.xcdatamodeld in Sources */,
 				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
+				65FE23EC1920E79C00588C1E /* Entity.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
 				6533F57318E4F19E0017C7D6 /* SimpleCoverFlowLayout.m in Sources */,
 				65BFF077190F511E0087511B /* HATransitionLayout.m in Sources */,
