@@ -27,6 +27,8 @@
     NSLog(@"SETUPVIEW collection cell");
     
 
+    
+
 }
 
 

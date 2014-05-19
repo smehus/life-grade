@@ -15,6 +15,8 @@
 #import "HATransitionController.h"
 #import "HATransitionLayout.h"
 #import "HAPaperCollectionViewController.h"
+#import "GradeCell.h"
+#import "Grade.h"
 
 
 #define kOffset 10.0
@@ -25,7 +27,7 @@
 @property (nonatomic, strong) SimpleCoverFlowLayout *simpleLayout;
 @property (nonatomic, strong) UIButton *nextButton;
 
-@property (nonatomic, strong) NSArray *grades;
+@property (nonatomic, strong) NSMutableArray *grades;
 
 @property (nonatomic, assign) int draggedIndex;
 
@@ -47,6 +49,10 @@
 @property (nonatomic, assign) BOOL isBig;
 
 @property (nonatomic, strong) UILabel *directions;
+@property (nonatomic, strong) UILabel *titleLabel;
+
+@property (nonatomic, strong) Grade *selectedGrade;
+@property (nonatomic, strong) GradeCell *selectedGradeCelll;
 
 
 
@@ -70,6 +76,17 @@
     return self;
 }
 
+- (id)initWithFrame:(CGRect)frame withQuestion:(Grade *)grade {
+    
+    self = [super init];
+    if (self == nil) {
+        
+        self.grade = grade;
+        
+    }
+    return self;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -83,26 +100,49 @@
     
 
     
-    NSLog(@"WINDOW  %f", self.frame.origin.x);
+    NSLog(@"WINDOW  %f question %@", self.frame.origin.x, self.grade);
+    
+   
+    
     
     _smallLayout = [[HACollectionViewSmallLayout alloc] init];
     _largeLayout = [[HACollectionViewLargeLayout alloc] init];
     
     _mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))];
-    _mainView.clipsToBounds = YES;
-    _mainView.layer.cornerRadius = 4;
-    [self insertSubview:_mainView belowSubview:_collectionView];
-    
+//    _mainView.clipsToBounds = YES;
+//    _mainView.layer.cornerRadius = 4;
+//    [self insertSubview:_mainView belowSubview:_collectionView];
+//    
     self.frame = CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height);
     
     self.gestureBegan = NO;
+    
+    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 200, 400, 100, 50)];
+    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    [nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    [nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:nextButton];
+    
+    
 
     self.isGrown = NO;
-    self.grades = @[@"A+", @"A", @"A-", @"B+", @"B", @"B-", @"C+", @"C", @"C-", @"D+", @"D", @"D-", @"F"];
+    NSArray *ary = @[@"A+", @"A", @"A-", @"B+", @"B", @"B-", @"C+", @"C", @"C-", @"D+", @"D", @"D-", @"F"];
+    self.grades = [[NSMutableArray alloc] initWithCapacity:20];
+    [ary enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
+       
+        Grade *grade = [[Grade alloc] init];
+        grade.grade = obj;
+        grade.buttonHidden = YES;
+        grade.gradeSelected = NO;
+        [self.grades addObject:grade];
+        
+    }];
     self.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
+    // DRAG TO BUILD
+//    self.dragGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pressDetected:)];
+//    self.dragGesture.delegate = self;
     
-    self.dragGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pressDetected:)];
-    self.dragGesture.delegate = self;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gradeSelected:)];
 
    
 //    [self.collectionView registerClass:[CollectionCell class] forCellWithReuseIdentifier:@"CollectionCell"];
@@ -120,19 +160,42 @@
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.contentInset = UIEdgeInsetsMake(0, - CELL_INSET, 0, 0);
     self.collectionView.clipsToBounds = NO;
+    self.collectionView.userInteractionEnabled = YES;
+//    [self addGestureRecognizer:self.dragGesture];
+    [self.collectionView addGestureRecognizer:tap];
     
-    [self addGestureRecognizer:self.dragGesture];
-    
-    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"GradeCell" bundle:nil] forCellWithReuseIdentifier:@"GradeCell"];
     
     [self addSubview:self.collectionView];
     
     self.isBig = NO;
     
-    self.directions = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 60, 300, 60, 30)];
-    self.directions.text = @"Swipe!";
+    self.directions = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, 300, 150, 100)];
+    self.directions.text = @"Select your grade!";
     self.directions.textColor = [UIColor whiteColor];
+    self.directions.numberOfLines = 0;
+    self.directions.lineBreakMode = NSLineBreakByWordWrapping;
     [self addSubview:self.directions];
+
+    
+}
+
+- (void)gradeSelected:(UITapGestureRecognizer *)recognizer {
+    
+    if (self.selectedGrade) {
+        self.selectedGrade.gradeSelected = NO;
+        self.selectedGradeCelll.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
+    }
+    
+    CGPoint pt = [recognizer locationInView:self.collectionView];
+    NSIndexPath *idx = [self.collectionView indexPathForItemAtPoint:pt];
+    
+    GradeCell *cell = cell = (GradeCell *)[self.collectionView cellForItemAtIndexPath:idx];
+    self.selectedGradeCelll = cell;
+    Grade *grade = [self.grades objectAtIndex:idx.row];
+    self.selectedGrade = grade;
+    grade.gradeSelected = YES;
+    cell.backgroundColor = [UIColor greenColor];
 
     
 }
@@ -153,7 +216,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     
-   CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
+   GradeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GradeCell" forIndexPath:indexPath];
     
     cell.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
@@ -161,16 +224,24 @@
     cell.clipsToBounds = NO;
     cell.userInteractionEnabled = YES;
     
-    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 300, self.frame.size.width, 50)];
-    self.nextButton.backgroundColor = [UIColor blueColor];
-    [self.nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
-    [cell addSubview:self.nextButton];
+    Grade *grade = [self.grades objectAtIndex:indexPath.row];
     
+    UIButton *clickedButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];    
+    cell.grade.text = grade.grade;
+    cell.grade.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:60];
+    [cell.doneButton addTarget:self action:@selector(gradeSelected) forControlEvents:UIControlEventTouchUpInside];
+    cell.doneButton.frame = CGRectMake(0, 300, 320, 50);
+    [cell.doneButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    
+    if (grade.gradeSelected) {
+        cell.backgroundColor = [UIColor greenColor];
+    }
     
 
     return cell;
     
 }
+
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -189,7 +260,6 @@
         } completion:^(BOOL finished) {
 
         }];
-    
 }
 
 
@@ -215,6 +285,11 @@
     self.collectionView.pagingEnabled = NO;
     return CGSizeMake(200, 200);
     }
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return YES;
 }
 
 
@@ -269,7 +344,8 @@
         NSLog(@"VELOCITY %@", NSStringFromCGPoint(vel));
         CGFloat transRatioX = translation.x / self.window.frame.size.width;
     
-        CollectionCell *cell = cell = (CollectionCell *)[self.collectionView cellForItemAtIndexPath:idx];
+        GradeCell *cell = cell = (GradeCell *)[self.collectionView cellForItemAtIndexPath:idx];
+        Grade *grade = [self.grades objectAtIndex:idx.row];
         cell.clipsToBounds = NO;
         CGFloat originalY;
 
@@ -332,9 +408,7 @@
                                     grownCellWidth = translation.x *12 + 200;
                                     grownCellHeight = translation.x*24 + 200;
                                     
-                                    self.nextButton.hidden = YES;
-                                    
-                                   
+                                    cell.doneButton.hidden = NO;
                              
                                     self.selectedCellDefaultFrame = cell.frame;
                                     self.selectedCellDefaultTransform = cell.transform;
@@ -347,8 +421,11 @@
                                 } else if (self.isBig == YES && vel.x < 0) {
                                     
                                     self.isBig = NO;
+                                    cell.doneButton.hidden = YES;
+                                    [self.collectionView reloadData];
                                     //self.collectionView.contentInset = UIEdgeInsetsMake(0, - CELL_INSET, 0, 0);
                                     [self.collectionView setCollectionViewLayout:self.simpleLayout animated:YES];
+                                    [self.collectionView reloadData];
                                 }
                                 
                                 

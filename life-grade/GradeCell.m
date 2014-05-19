@@ -2,17 +2,11 @@
 //  GradeCell.m
 //  life-grade
 //
-//  Created by scott mehus on 4/12/14.
+//  Created by scott mehus on 5/17/14.
 //  Copyright (c) 2014 scott mehus. All rights reserved.
 //
 
 #import "GradeCell.h"
-
-@interface GradeCell ()
-
-@property (nonatomic, strong) UILongPressGestureRecognizer *pressRecognizer;
-
-@end
 
 @implementation GradeCell
 
@@ -20,43 +14,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setupView];
+        // Initialization code
     }
     return self;
-}
-
-- (void)setupView {
-    
-    
-    
-    self.pressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pressDetected:)];
-    self.pressRecognizer.numberOfTapsRequired = 0;
-    self.pressRecognizer.minimumPressDuration = 0.1;
-    [self addGestureRecognizer:self.pressRecognizer];
-}
-
-- (void)pressDetected:(id)sender {
-    
-    
-    if (self.pressRecognizer.state == UIGestureRecognizerStateBegan) {
-     
-        
-    }
-    
-    
-    if (self.pressRecognizer.state == UIGestureRecognizerStateChanged) {
-        
-        
-        
-    }
-    
-    
-    //9
-    if (self.pressRecognizer.state == UIGestureRecognizerStateEnded) {
-        
-        
-       
-    }
 }
 
 /*

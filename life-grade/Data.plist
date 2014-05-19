@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>questionsArray</key>
+	<array/>
+	<key>questions</key>
+	<array>
+		<string>Productivity Level</string>
+		<string>Positive Thinking</string>
+		<string>Job Happiness</string>
+		<string>Being Engaged at Work and Play</string>
+		<string>Contribution &amp; Giving Back</string>
+		<string>Physical Health</string>
+		<string>Social Support &amp; Social Networks</string>
+		<string>Genuine, INtimate &amp; Deep Relationships</string>
+		<string>Hobbies &amp; Interests</string>
+		<string>Emotional Well Being</string>
+	</array>
+</dict>
+</plist>

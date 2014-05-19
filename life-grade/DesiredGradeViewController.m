@@ -14,6 +14,7 @@
 #import "QuestionView.h"
 #import "HAViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Grade.h"
 
 
 
@@ -34,6 +35,9 @@
 @property (nonatomic, assign) BOOL shouldDeselectCell;
 
 @property (nonatomic, assign) BOOL isGrown;
+
+@property (nonatomic, strong) NSMutableArray *questions;
+
 
 
 
@@ -68,6 +72,22 @@
 {
     [super viewDidLoad];
     
+    self.questions = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSArray *ary = [dict objectForKey:@"questions"];
+    [ary enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
+       
+        Grade *grade = [[Grade alloc] init];
+        grade.question = obj;
+    
+        [self.questions addObject:grade];
+        
+    }];
+
+    
+    
     //self.edgesForExtendedLayout = UIRectEdgeNone;
     
     UIColor *barColour = GREEN_COLOR;
@@ -80,7 +100,6 @@
     [self.view addSubview:bg];
     [self.view sendSubviewToBack:bg];
     
-    NSLog(@"navbar %@ : navItem %@", self.navigationController, self.navigationController);
     
     
     self.dataArray = [[NSMutableArray alloc] initWithCapacity:12];
@@ -131,7 +150,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return [items count];
+    return self.questions.count;
 }
 
 
@@ -146,13 +165,69 @@
     CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
     
     
+    Grade *grade = [self.questions objectAtIndex:indexPath.row];
+    
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
     cell.layer.cornerRadius = 4.0f;
+    cell.text.text = grade.question;
     
     
     return cell;
     
 }
+
+//- (NSString *)getQuestionForIndex:(NSIndexPath *)idx {
+//    
+//    NSString *quest;
+//    
+//    switch (idx.row) {
+//        case 0:
+//            quest = [self.questions objectForKey:@"questionOne"];
+//            break;
+//            
+//        case 1:
+//            quest = [self.questions objectForKey:@"questionTwo"];
+//            break;
+//            
+//        case 2:
+//            quest = [self.questions objectForKey:@"questionThree"];
+//            break;
+//            
+//        case 3:
+//            quest  = [self.questions objectForKey:@"questionFour"];
+//            break;
+//            
+//        case 4:
+//            quest = [self.questions objectForKey:@"questionFive"];
+//            break;
+//            
+//        case 5:
+//            quest = [self.questions objectForKey:@"questionSix"];
+//            break;
+//            
+//        case 6:
+//            quest = [self.questions objectForKey:@"questionSeven"];
+//            break;
+//            
+//        case 7:
+//            quest = [self.questions objectForKey:@"questionEight"];
+//            break;
+//        
+//        case 8:
+//            quest = [self.questions objectForKey:@"questionNine"];
+//            break;
+//            
+//        case 9:
+//            quest = [self.questions objectForKey:@"questionTen"];
+//            break;
+//            
+//        default:
+//            quest = @"Whoops";
+//            break;
+//    }
+//    
+//    return quest;
+//}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -217,10 +292,12 @@
     [cell.superview bringSubviewToFront:cell];
     self.selectedCellDefaultFrame = cell.frame;
     self.selectedCellDefaultTransform = cell.transform;
-    
-    QuestionView *view = [[QuestionView alloc] initWithFrame:self.view.frame];
+    NSLog(@"LSKDJFASLDJF %@", [[self.questions objectAtIndex:indexPath.row] question]);
+    QuestionView *view = [[QuestionView alloc] initWithFrame:self.view.frame withQuestion:[self.questions objectAtIndex:indexPath.row]];
+    view.grade = [self.questions objectAtIndex:indexPath.row];
     view.delegate = self;
     view.theIndexPath = indexPath;
+
 
 //    HAViewController *view = [[HAViewController alloc] init];
 //    view.view.frame = self.view.frame;

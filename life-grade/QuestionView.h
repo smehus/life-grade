@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Grade.h"
 
 @class QuestionView;
 @protocol QuestionViewDelegate <NSObject>
@@ -20,6 +21,7 @@
 
 @property (nonatomic, strong) id<QuestionViewDelegate> delegate;
 @property (nonatomic, strong) NSIndexPath *theIndexPath;
+@property (nonatomic, strong) Grade *grade;
 
-
+- (id)initWithFrame:(CGRect)frame withQuestion:(Grade *)grade;
 @end
