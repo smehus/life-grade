@@ -38,6 +38,12 @@
 
 @property (nonatomic, strong) NSMutableArray *questions;
 
+@property (nonatomic, strong) NSMutableArray *myGrades;
+
+@property (nonatomic, strong) UIBarButtonItem *nextButton;
+
+@property (nonatomic, assign) int *finalGrade;
+
 
 
 
@@ -72,6 +78,8 @@
 {
     [super viewDidLoad];
     
+    self.myGrades = [[NSMutableArray alloc] initWithCapacity:10];
+    
     self.questions = [[NSMutableArray alloc] initWithCapacity:10];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
@@ -96,7 +104,7 @@
 
     UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
     UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
-    bg.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    bg.frame = CGRectMake(0, 0, self.view.frame.size.width + 50, self.view.frame.size.height);
     [self.view addSubview:bg];
     [self.view sendSubviewToBack:bg];
     
@@ -113,6 +121,12 @@
     UIBarButtonItem *barbut = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealToggle:)];
     [barbut setTintColor:[UIColor blackColor]];
     self.navigationItem.leftBarButtonItem = barbut;
+    
+    self.nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(finishedGrading)];
+    [self.nextButton setTintColor:[UIColor blackColor]];
+    self.nextButton.enabled = NO;
+    self.navigationItem.rightBarButtonItem = self.nextButton;
+    
     
 
     self.revealButton = barbut;
@@ -137,6 +151,22 @@
     }
     
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)finishedGrading {
+    
+    NSLog(@"Finished Grading");
+    int *finalNum = 0;
+    
+    for (Grade *g in self.myGrades) {
+        NSLog(@"GRADE %@", g.grade);
+        
+        int value = [g.gradeNum intValue];
+        finalNum = finalNum + value;
+        
+        NSLog(@"%i", finalNum);
+        
+    }
 }
 
 
@@ -284,25 +314,19 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    collectionView.scrollEnabled = NO;
-    
-
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     cell.selected = YES;
     [cell.superview bringSubviewToFront:cell];
     self.selectedCellDefaultFrame = cell.frame;
     self.selectedCellDefaultTransform = cell.transform;
     NSLog(@"LSKDJFASLDJF %@", [[self.questions objectAtIndex:indexPath.row] question]);
-    QuestionView *view = [[QuestionView alloc] initWithFrame:self.view.frame withQuestion:[self.questions objectAtIndex:indexPath.row]];
-    view.grade = [self.questions objectAtIndex:indexPath.row];
+    QuestionView *view = [[QuestionView alloc] initWithQuestion:[self.questions objectAtIndex:indexPath.row]];
+    Grade *theG = [[Grade alloc] init];
+    theG.question = @"Balls";
+    view.grade = theG;
     view.delegate = self;
     view.theIndexPath = indexPath;
-
-
-//    HAViewController *view = [[HAViewController alloc] init];
-//    view.view.frame = self.view.frame;
-//    
-//    
+  
     
     [UIView transitionWithView:cell
                       duration:0.2
@@ -311,9 +335,7 @@
                         [cell setFrame:collectionView.bounds];
                         cell.transform = CGAffineTransformMakeRotation(0.0);
                         [cell addSubview:view];
-//                        [self addChildViewController:view];
-//                        [cell addSubview:view.view];
-//                        [view didMoveToParentViewController:self];
+
                     }
                     completion:^(BOOL finished) {
                         self.isGrown = YES;
@@ -333,26 +355,63 @@
     if (select == YES && cell.selected == NO) {
         
         [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
+        }
     }
-    
-    }
-    
 }
 
 #pragma mark - QuestonView Delegate
 
 
-- (void)didPickAnswer:(NSIndexPath *)idx {
+- (void)didPickAnswer:(NSIndexPath *)idx withGrade:(Grade *)grade {
     
-    NSLog(@"DID PICK ANSWER %@", idx);
+    
+    if (idx.row > 10 ) {
+        return;
+    }
+    
+    if (self.myGrades.count > 10) {
+        self.nextButton.enabled = YES;
+
+    }
+
     self.shouldDeselectCell = YES;
     NSIndexPath *path = [NSIndexPath indexPathForRow:idx.row+1 inSection:0];
     [self collectionView:self.collectionView shouldSelectItemAtIndexPath:idx];
-    if (idx.row <= 11) {
-    [self.collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    
+    CollectionCell *cell = (CollectionCell *)[self.collectionView cellForItemAtIndexPath:idx];
+    for (UIView *v in cell.subviews) {
+        
+        if ([v isKindOfClass:[QuestionView class]]) {
+            [v removeFromSuperview];
+        }
     }
     
+    if (idx.row <= 11) {
+        
+        if (self.myGrades.count > idx.row) {
+            [self.myGrades replaceObjectAtIndex:idx.row withObject:grade];
+            
+        } else {
+            [self.myGrades addObject:grade];
+        }
+        
+        
+    [self.collectionView reloadData];
+        if (idx.row < 11) {
+            
+            [self.collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+            
+        }
+   
+    }
+    for (Grade *g in self.myGrades) {
+        
+        NSLog(@"my grades %@ %@", g.grade, grade.gradeNum);
+        
+        self.finalGrade  + [g.gradeNum integerValue];
     
+        
+    }
 }
 
 

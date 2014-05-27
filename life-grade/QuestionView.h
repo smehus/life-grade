@@ -13,7 +13,7 @@
 @protocol QuestionViewDelegate <NSObject>
 
 
-- (void)didPickAnswer:(NSIndexPath *)idx;
+- (void)didPickAnswer:(NSIndexPath *)idx withGrade:(Grade *)grade;
 
 @end
 
@@ -23,5 +23,5 @@
 @property (nonatomic, strong) NSIndexPath *theIndexPath;
 @property (nonatomic, strong) Grade *grade;
 
-- (id)initWithFrame:(CGRect)frame withQuestion:(Grade *)grade;
+- (id)initWithQuestion:(Grade *)grade;
 @end

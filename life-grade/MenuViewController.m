@@ -9,6 +9,7 @@
 #import "MenuViewController.h"
 #import "SWRevealViewController.h"
 #import "DesiredGradeViewController.h"
+#import "PickDesiredGradeController.h"
 
 @interface MenuViewController ()
 
@@ -106,9 +107,12 @@
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:desiredView];
         [self.myRevealController pushFrontViewController:nav animated:YES];
         
-    }
-    
-    
+    } else if (indexPath.row == 1) {
+        
+        PickDesiredGradeController *desiredController = [[PickDesiredGradeController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:desiredController];
+        [self.myRevealController pushFrontViewController:nav animated:YES];
+    }   
     
 }
 

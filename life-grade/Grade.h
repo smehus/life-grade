@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *grade;
 @property (nonatomic, assign) BOOL buttonHidden;
 @property (nonatomic, assign) BOOL gradeSelected;
+@property (nonatomic, strong) NSNumber *gradeNum;
 
 @property (nonatomic, strong) NSString *question;
 

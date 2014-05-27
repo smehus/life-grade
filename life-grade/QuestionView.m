@@ -71,17 +71,21 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        NSLog(@"JUST INIT");
         [self setUpView];
     }
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame withQuestion:(Grade *)grade {
+- (id)initWithQuestion:(Grade *)grade {
+    
+    self.grade = grade;
     
     self = [super init];
     if (self == nil) {
         
-        self.grade = grade;
+
+        NSLog(@"INIT WITH QUESTION");
         
     }
     return self;
@@ -96,11 +100,14 @@
 }
 */
 
+
+
+
 - (void)setUpView {
     
 
     
-    NSLog(@"WINDOW  %f question %@", self.frame.origin.x, self.grade);
+    NSLog(@"WINDOW  %f question %@ INDEX %@", self.frame.origin.x, self.grade, self.theIndexPath);
     
    
     
@@ -117,23 +124,34 @@
     
     self.gestureBegan = NO;
     
-    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 200, 400, 100, 50)];
-    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
-    [nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
-    [nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:nextButton];
-    
+
     
 
     self.isGrown = NO;
-    NSArray *ary = @[@"A+", @"A", @"A-", @"B+", @"B", @"B-", @"C+", @"C", @"C-", @"D+", @"D", @"D-", @"F"];
+    NSArray *ary = @[@{@"grade" : @"A+", @"GradeNum" : @12},
+                     @{ @"grade" : @"A", @"GradeNum" : @11},
+                     @{@"grade" : @"A-", @"GradeNum" : @10},
+                     @{@"grade" : @"B+", @"GradeNum" : @9},
+                     @{@"grade" : @"B", @"GradeNum" : @8},
+                     @{@"grade" : @"B-", @"GradeNum" : @7},
+                     @{@"grade" : @"C+", @"GradeNum" : @6},
+                     @{@"grade" : @"C", @"GradeNum" : @5},
+                     @{@"grade" : @"C-", @"GradeNum" : @4},
+                     @{@"grade" : @"D+", @"GradeNum" : @3},
+                     @{@"grade" : @"D", @"GradeNum" : @2},
+                     @{@"grade" : @"D-", @"GradeNum" : @1},
+                     @{@"grade" : @"F", @"GradeNum" : @0}];
+
     self.grades = [[NSMutableArray alloc] initWithCapacity:20];
-    [ary enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
-       
+    __block NSUInteger count = 0;
+    [ary enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+        count++;
         Grade *grade = [[Grade alloc] init];
-        grade.grade = obj;
+        NSDictionary *dict = obj;
+        grade.grade = [dict objectForKey:@"grade"];
         grade.buttonHidden = YES;
         grade.gradeSelected = NO;
+        grade.gradeNum = [dict objectForKey:@"GradeNum"];
         [self.grades addObject:grade];
         
     }];
@@ -172,10 +190,26 @@
     
     self.directions = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, 300, 150, 100)];
     self.directions.text = @"Select your grade!";
+    self.directions.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     self.directions.textColor = [UIColor whiteColor];
     self.directions.numberOfLines = 0;
     self.directions.lineBreakMode = NSLineBreakByWordWrapping;
     [self addSubview:self.directions];
+    
+    UILabel *questionTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 150,50, 150, 100)];
+    questionTitle.text = self.grade.question;
+    questionTitle.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    questionTitle.textColor = [UIColor whiteColor];
+    questionTitle.numberOfLines = 0;
+    questionTitle.lineBreakMode = NSLineBreakByWordWrapping;
+    [self addSubview:questionTitle];
+    
+    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, 400, 100, 50)];
+    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    [nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    [nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:nextButton];
+    
 
     
 }
@@ -303,7 +337,7 @@
 - (void)nextPressed {
     
     NSLog(@"NEXT PRESSED");
-    [self.delegate didPickAnswer:self.theIndexPath];
+    [self.delegate didPickAnswer:self.theIndexPath withGrade:self.selectedGrade];
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
