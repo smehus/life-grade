@@ -10,6 +10,8 @@
 #import "SWRevealViewController.h"
 #import "DesiredGradeViewController.h"
 #import "PickDesiredGradeController.h"
+#import "MyDesiredGradeViewController.h"
+#import "FinalGradeViewController.h"
 
 @interface MenuViewController ()
 
@@ -109,10 +111,17 @@
         
     } else if (indexPath.row == 1) {
         
-        PickDesiredGradeController *desiredController = [[PickDesiredGradeController alloc] init];
+        MyDesiredGradeViewController *desiredController = [[MyDesiredGradeViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:desiredController];
         [self.myRevealController pushFrontViewController:nav animated:YES];
-    }   
+    } else if (indexPath.row == 2) {
+        
+        FinalGradeViewController *finalontroller = [[FinalGradeViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalontroller];
+        [self.myRevealController pushFrontViewController:nav animated:YES];
+    
+        
+    }
     
 }
 

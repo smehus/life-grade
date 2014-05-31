@@ -16,6 +16,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Grade.h"
 #import "FinalGradeViewController.h"
+#import "MyDesiredGradeViewController.h"
 
 
 
@@ -402,10 +403,14 @@
     }
     
     
-    FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
-    finalController.finalGradeValue = [NSNumber numberWithInteger:finalNum];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
+//    FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
+//    finalController.finalGradeValue = [NSNumber numberWithInteger:finalNum];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
+//
     
+    MyDesiredGradeViewController *myDesiredController = [[MyDesiredGradeViewController alloc] init];
+    myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
+     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myDesiredController];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
     
     

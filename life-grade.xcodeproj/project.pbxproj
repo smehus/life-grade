@@ -10,7 +10,6 @@
 		65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65004BA518E7110100749A82 /* SWRevealViewController.m */; };
 		6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6520A6321909FDD5006FD28C /* SignupViewController.m */; };
 		6520A635190A8B56006FD28C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6520A634190A8B56006FD28C /* CoreData.framework */; };
-		6520A639190A8B82006FD28C /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6520A637190A8B82006FD28C /* DataModel.xcdatamodeld */; };
 		6533F55618E190360017C7D6 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6533F55318E190360017C7D6 /* CollectionCell.xib */; };
 		6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F55518E190360017C7D6 /* CoverFlowLayout.m */; };
 		6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6533F55918E190560017C7D6 /* CollectionCell.m */; };
@@ -59,11 +58,11 @@
 		65BFF076190F511E0087511B /* HATransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF073190F511E0087511B /* HATransitionController.m */; };
 		65BFF077190F511E0087511B /* HATransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF075190F511E0087511B /* HATransitionLayout.m */; };
 		65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */; };
-		65FE23EC1920E79C00588C1E /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE23EB1920E79C00588C1E /* Entity.m */; };
 		A5376A2818ED073C000C6BD8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5376A2718ED073C000C6BD8 /* Parse.framework */; };
 		A54B6B1819279F6B000AA8D7 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54B6B1719279F6B000AA8D7 /* Data.plist */; };
 		A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */; };
 		A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C761939719F00887F83 /* FinalGradeViewController.m */; };
+		A5C08C7B193977D600887F83 /* MyDesiredGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7A193977D600887F83 /* MyDesiredGradeViewController.m */; };
 		A5E85E291927B19700AAA4B6 /* GradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85E281927B19700AAA4B6 /* GradeCell.m */; };
 		A5E85E2B1927B1B500AAA4B6 /* GradeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */; };
 		A5E85E2E1927B81100AAA4B6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85E2D1927B81100AAA4B6 /* Grade.m */; };
@@ -87,7 +86,6 @@
 		6520A6311909FDD5006FD28C /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		6520A6321909FDD5006FD28C /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		6520A634190A8B56006FD28C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		6520A638190A8B82006FD28C /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		6533F55318E190360017C7D6 /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
 		6533F55418E190360017C7D6 /* CoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverFlowLayout.h; sourceTree = "<group>"; };
 		6533F55518E190360017C7D6 /* CoverFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverFlowLayout.m; sourceTree = "<group>"; };
@@ -155,14 +153,14 @@
 		65BFF075190F511E0087511B /* HATransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATransitionLayout.m; sourceTree = "<group>"; };
 		65BFF078190F52A70087511B /* HAPaperCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAPaperCollectionViewController.h; sourceTree = "<group>"; };
 		65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAPaperCollectionViewController.m; sourceTree = "<group>"; };
-		65FE23EA1920E79C00588C1E /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
-		65FE23EB1920E79C00588C1E /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
 		A5376A2718ED073C000C6BD8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A54B6B1719279F6B000AA8D7 /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
 		A5BBB2B6192A1EB000724639 /* PickDesiredGradeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickDesiredGradeController.h; sourceTree = "<group>"; };
 		A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickDesiredGradeController.m; sourceTree = "<group>"; };
 		A5C08C751939719F00887F83 /* FinalGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalGradeViewController.h; sourceTree = "<group>"; };
 		A5C08C761939719F00887F83 /* FinalGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinalGradeViewController.m; sourceTree = "<group>"; };
+		A5C08C79193977D600887F83 /* MyDesiredGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDesiredGradeViewController.h; sourceTree = "<group>"; };
+		A5C08C7A193977D600887F83 /* MyDesiredGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDesiredGradeViewController.m; sourceTree = "<group>"; };
 		A5E85E271927B19700AAA4B6 /* GradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeCell.h; sourceTree = "<group>"; };
 		A5E85E281927B19700AAA4B6 /* GradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeCell.m; sourceTree = "<group>"; };
 		A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradeCell.xib; sourceTree = "<group>"; };
@@ -198,16 +196,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6520A636190A8B64006FD28C /* Core Data */ = {
-			isa = PBXGroup;
-			children = (
-				6520A637190A8B82006FD28C /* DataModel.xcdatamodeld */,
-				65FE23EA1920E79C00588C1E /* Entity.h */,
-				65FE23EB1920E79C00588C1E /* Entity.m */,
-			);
-			name = "Core Data";
-			sourceTree = "<group>";
-		};
 		655EC5FC18DF5FE20036515F = {
 			isa = PBXGroup;
 			children = (
@@ -245,10 +233,10 @@
 		655EC60E18DF5FE20036515F /* life-grade */ = {
 			isa = PBXGroup;
 			children = (
+				A5C08C781939778A00887F83 /* DesiredGrade */,
 				A54B6B1619279F4E000AA8D7 /* Data */,
 				65714FFF191482700034009A /* Resources */,
 				65BFF06B190F4CE70087511B /* HAPaper */,
-				6520A636190A8B64006FD28C /* Core Data */,
 				65004BA418E7110100749A82 /* SWRevealViewController.h */,
 				65004BA518E7110100749A82 /* SWRevealViewController.m */,
 				655EC61718DF5FE20036515F /* MainAppDelegate.h */,
@@ -378,6 +366,15 @@
 				A54B6B1719279F6B000AA8D7 /* Data.plist */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		A5C08C781939778A00887F83 /* DesiredGrade */ = {
+			isa = PBXGroup;
+			children = (
+				A5C08C79193977D600887F83 /* MyDesiredGradeViewController.h */,
+				A5C08C7A193977D600887F83 /* MyDesiredGradeViewController.m */,
+			);
+			name = DesiredGrade;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -547,9 +544,7 @@
 				655EC61918DF5FE20036515F /* MainAppDelegate.m in Sources */,
 				65BFF076190F511E0087511B /* HATransitionController.m in Sources */,
 				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
-				6520A639190A8B82006FD28C /* DataModel.xcdatamodeld in Sources */,
 				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
-				65FE23EC1920E79C00588C1E /* Entity.m in Sources */,
 				A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
 				A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */,
@@ -559,6 +554,7 @@
 				65BFF071190F4CF90087511B /* HACollectionViewLargeLayout.m in Sources */,
 				655EC64218DF62550036515F /* MenuViewController.m in Sources */,
 				6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */,
+				A5C08C7B193977D600887F83 /* MyDesiredGradeViewController.m in Sources */,
 				6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */,
 				65714FFE191475080034009A /* HASmallCollectionViewController.m in Sources */,
 				65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */,
@@ -804,19 +800,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		6520A637190A8B82006FD28C /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				6520A638190A8B82006FD28C /* DataModel.xcdatamodel */,
-			);
-			currentVersion = 6520A638190A8B82006FD28C /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 655EC5FD18DF5FE20036515F /* Project object */;
 }
