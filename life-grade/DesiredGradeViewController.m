@@ -15,6 +15,7 @@
 #import "HAViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Grade.h"
+#import "FinalGradeViewController.h"
 
 
 
@@ -153,21 +154,6 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)finishedGrading {
-    
-    NSLog(@"Finished Grading");
-    int *finalNum = 0;
-    
-    for (Grade *g in self.myGrades) {
-        NSLog(@"GRADE %@", g.grade);
-        
-        int value = [g.gradeNum intValue];
-        finalNum = finalNum + value;
-        
-        NSLog(@"%i", finalNum);
-        
-    }
-}
 
 
 
@@ -369,11 +355,6 @@
         return;
     }
     
-    if (self.myGrades.count > 10) {
-        self.nextButton.enabled = YES;
-
-    }
-
     self.shouldDeselectCell = YES;
     NSIndexPath *path = [NSIndexPath indexPathForRow:idx.row+1 inSection:0];
     [self collectionView:self.collectionView shouldSelectItemAtIndexPath:idx];
@@ -397,22 +378,41 @@
         
         
     [self.collectionView reloadData];
-        if (idx.row < 11) {
+        if (idx.row < 9) {
             
             [self.collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
             
+        } else {
+            NSLog(@"Ballz");
+            self.nextButton.enabled = YES;
         }
    
     }
+}
+
+- (void)finishedGrading {
+    
+
+    int finalNum = 0;
+    
     for (Grade *g in self.myGrades) {
         
-        NSLog(@"my grades %@ %@", g.grade, grade.gradeNum);
-        
-        self.finalGrade  + [g.gradeNum integerValue];
-    
-        
+        int value = [g.gradeNum intValue];
+        finalNum = finalNum + value;
     }
+    
+    
+    FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
+    finalController.finalGradeValue = [NSNumber numberWithInteger:finalNum];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
+    
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
+    
+    
+    
+    
 }
+
 
 
 
