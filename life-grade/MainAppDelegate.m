@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
 @property (nonatomic) UINavigationController *navigationController;
 @property (nonatomic) HATransitionController *transitionController;
 @end
@@ -209,6 +210,3 @@
     }
     return managedObjectContext;
 }
-
-
-@end

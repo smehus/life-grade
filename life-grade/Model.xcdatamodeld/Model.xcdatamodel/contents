@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Answers" representedClassName="Answers" syncable="YES">
+        <attribute name="questionEight" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="questionFive" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="questionFour" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="questionNine" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="questionOne" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="questionSeven" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="questionSix" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="questionTen" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="questionThree" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="questionTwo" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Answers" positionX="-63" positionY="-18" width="128" height="195"/>
+    </elements>
+</model>

@@ -63,6 +63,8 @@
 		A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */; };
 		A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C761939719F00887F83 /* FinalGradeViewController.m */; };
 		A5C08C7B193977D600887F83 /* MyDesiredGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7A193977D600887F83 /* MyDesiredGradeViewController.m */; };
+		A5C08C7F193B650300887F83 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7D193B650300887F83 /* Model.xcdatamodeld */; };
+		A5C08C85193B6B0900887F83 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C84193B6B0900887F83 /* Answers.m */; };
 		A5E85E291927B19700AAA4B6 /* GradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85E281927B19700AAA4B6 /* GradeCell.m */; };
 		A5E85E2B1927B1B500AAA4B6 /* GradeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */; };
 		A5E85E2E1927B81100AAA4B6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85E2D1927B81100AAA4B6 /* Grade.m */; };
@@ -161,6 +163,9 @@
 		A5C08C761939719F00887F83 /* FinalGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinalGradeViewController.m; sourceTree = "<group>"; };
 		A5C08C79193977D600887F83 /* MyDesiredGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDesiredGradeViewController.h; sourceTree = "<group>"; };
 		A5C08C7A193977D600887F83 /* MyDesiredGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDesiredGradeViewController.m; sourceTree = "<group>"; };
+		A5C08C7E193B650300887F83 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A5C08C83193B6B0900887F83 /* Answers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answers.h; sourceTree = "<group>"; };
+		A5C08C84193B6B0900887F83 /* Answers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answers.m; sourceTree = "<group>"; };
 		A5E85E271927B19700AAA4B6 /* GradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeCell.h; sourceTree = "<group>"; };
 		A5E85E281927B19700AAA4B6 /* GradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeCell.m; sourceTree = "<group>"; };
 		A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradeCell.xib; sourceTree = "<group>"; };
@@ -233,6 +238,7 @@
 		655EC60E18DF5FE20036515F /* life-grade */ = {
 			isa = PBXGroup;
 			children = (
+				A5C08C7C193B64EB00887F83 /* CoreData */,
 				A5C08C781939778A00887F83 /* DesiredGrade */,
 				A54B6B1619279F4E000AA8D7 /* Data */,
 				65714FFF191482700034009A /* Resources */,
@@ -375,6 +381,16 @@
 				A5C08C7A193977D600887F83 /* MyDesiredGradeViewController.m */,
 			);
 			name = DesiredGrade;
+			sourceTree = "<group>";
+		};
+		A5C08C7C193B64EB00887F83 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A5C08C7D193B650300887F83 /* Model.xcdatamodeld */,
+				A5C08C83193B6B0900887F83 /* Answers.h */,
+				A5C08C84193B6B0900887F83 /* Answers.m */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -557,8 +573,10 @@
 				A5C08C7B193977D600887F83 /* MyDesiredGradeViewController.m in Sources */,
 				6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */,
 				65714FFE191475080034009A /* HASmallCollectionViewController.m in Sources */,
+				A5C08C7F193B650300887F83 /* Model.xcdatamodeld in Sources */,
 				65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */,
 				65BFF070190F4CF90087511B /* HACollectionViewSmallLayout.m in Sources */,
+				A5C08C85193B6B0900887F83 /* Answers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -800,6 +818,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A5C08C7D193B650300887F83 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A5C08C7E193B650300887F83 /* Model.xcdatamodel */,
+			);
+			currentVersion = A5C08C7E193B650300887F83 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 655EC5FD18DF5FE20036515F /* Project object */;
 }
