@@ -2,7 +2,7 @@
 //  Answers.m
 //  life-grade
 //
-//  Created by scott mehus on 6/1/14.
+//  Created by scott mehus on 6/3/14.
 //  Copyright (c) 2014 scott mehus. All rights reserved.
 //
 
@@ -11,15 +11,17 @@
 
 @implementation Answers
 
-@dynamic questionOne;
-@dynamic questionTwo;
-@dynamic questionThree;
-@dynamic questionFour;
-@dynamic questionFive;
-@dynamic questionSix;
-@dynamic questionSeven;
 @dynamic questionEight;
+@dynamic questionFive;
+@dynamic questionFour;
 @dynamic questionNine;
+@dynamic questionOne;
+@dynamic questionSeven;
+@dynamic questionSix;
 @dynamic questionTen;
+@dynamic questionThree;
+@dynamic questionTwo;
+@dynamic desiredGrade;
+@dynamic finalGrade;
 
 @end

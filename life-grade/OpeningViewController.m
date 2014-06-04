@@ -100,6 +100,7 @@
 - (void)openGradeController {
     
     DesiredGradeViewController *desiredController = [[DesiredGradeViewController alloc] init];
+    desiredController.managedObjectContext = self.managedObjectContext;
     UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:desiredController];
     [self.myRevealController setFrontViewController:navCon];
     

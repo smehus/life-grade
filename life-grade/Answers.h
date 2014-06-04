@@ -2,7 +2,7 @@
 //  Answers.h
 //  life-grade
 //
-//  Created by scott mehus on 6/1/14.
+//  Created by scott mehus on 6/3/14.
 //  Copyright (c) 2014 scott mehus. All rights reserved.
 //
 
@@ -12,15 +12,17 @@
 
 @interface Answers : NSManagedObject
 
-@property (nonatomic, retain) NSDictionary * questionOne;
-@property (nonatomic, retain) NSDictionary * questionTwo;
-@property (nonatomic, retain) NSDictionary * questionThree;
-@property (nonatomic, retain) NSDictionary * questionFour;
-@property (nonatomic, retain) NSDictionary * questionFive;
-@property (nonatomic, retain) NSDictionary * questionSix;
-@property (nonatomic, retain) NSDictionary * questionSeven;
-@property (nonatomic, retain) NSDictionary * questionEight;
-@property (nonatomic, retain) NSDictionary * questionNine;
-@property (nonatomic, retain) NSDictionary * questionTen;
+@property (nonatomic, retain) NSNumber * questionEight;
+@property (nonatomic, retain) NSNumber * questionFive;
+@property (nonatomic, retain) NSNumber * questionFour;
+@property (nonatomic, retain) NSNumber * questionNine;
+@property (nonatomic, retain) NSNumber * questionOne;
+@property (nonatomic, retain) NSNumber * questionSeven;
+@property (nonatomic, retain) NSNumber * questionSix;
+@property (nonatomic, retain) NSNumber * questionTen;
+@property (nonatomic, retain) NSNumber * questionThree;
+@property (nonatomic, retain) NSNumber * questionTwo;
+@property (nonatomic, retain) NSNumber * desiredGrade;
+@property (nonatomic, retain) NSNumber * finalGrade;
 
 @end

@@ -12,5 +12,6 @@
 @interface DesiredGradeViewController : UIViewController 
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end

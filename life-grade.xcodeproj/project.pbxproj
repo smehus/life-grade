@@ -58,13 +58,13 @@
 		65BFF076190F511E0087511B /* HATransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF073190F511E0087511B /* HATransitionController.m */; };
 		65BFF077190F511E0087511B /* HATransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF075190F511E0087511B /* HATransitionLayout.m */; };
 		65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */; };
+		A510AA6F193EB2BA001C3877 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A510AA6E193EB2BA001C3877 /* Answers.m */; };
 		A5376A2818ED073C000C6BD8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5376A2718ED073C000C6BD8 /* Parse.framework */; };
 		A54B6B1819279F6B000AA8D7 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54B6B1719279F6B000AA8D7 /* Data.plist */; };
 		A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */; };
 		A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C761939719F00887F83 /* FinalGradeViewController.m */; };
 		A5C08C7B193977D600887F83 /* MyDesiredGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7A193977D600887F83 /* MyDesiredGradeViewController.m */; };
 		A5C08C7F193B650300887F83 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7D193B650300887F83 /* Model.xcdatamodeld */; };
-		A5C08C85193B6B0900887F83 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C84193B6B0900887F83 /* Answers.m */; };
 		A5E85E291927B19700AAA4B6 /* GradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85E281927B19700AAA4B6 /* GradeCell.m */; };
 		A5E85E2B1927B1B500AAA4B6 /* GradeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */; };
 		A5E85E2E1927B81100AAA4B6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85E2D1927B81100AAA4B6 /* Grade.m */; };
@@ -155,6 +155,8 @@
 		65BFF075190F511E0087511B /* HATransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATransitionLayout.m; sourceTree = "<group>"; };
 		65BFF078190F52A70087511B /* HAPaperCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAPaperCollectionViewController.h; sourceTree = "<group>"; };
 		65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAPaperCollectionViewController.m; sourceTree = "<group>"; };
+		A510AA6D193EB2BA001C3877 /* Answers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answers.h; sourceTree = "<group>"; };
+		A510AA6E193EB2BA001C3877 /* Answers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answers.m; sourceTree = "<group>"; };
 		A5376A2718ED073C000C6BD8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A54B6B1719279F6B000AA8D7 /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
 		A5BBB2B6192A1EB000724639 /* PickDesiredGradeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickDesiredGradeController.h; sourceTree = "<group>"; };
@@ -164,8 +166,6 @@
 		A5C08C79193977D600887F83 /* MyDesiredGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDesiredGradeViewController.h; sourceTree = "<group>"; };
 		A5C08C7A193977D600887F83 /* MyDesiredGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDesiredGradeViewController.m; sourceTree = "<group>"; };
 		A5C08C7E193B650300887F83 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		A5C08C83193B6B0900887F83 /* Answers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answers.h; sourceTree = "<group>"; };
-		A5C08C84193B6B0900887F83 /* Answers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answers.m; sourceTree = "<group>"; };
 		A5E85E271927B19700AAA4B6 /* GradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeCell.h; sourceTree = "<group>"; };
 		A5E85E281927B19700AAA4B6 /* GradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeCell.m; sourceTree = "<group>"; };
 		A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradeCell.xib; sourceTree = "<group>"; };
@@ -387,8 +387,8 @@
 			isa = PBXGroup;
 			children = (
 				A5C08C7D193B650300887F83 /* Model.xcdatamodeld */,
-				A5C08C83193B6B0900887F83 /* Answers.h */,
-				A5C08C84193B6B0900887F83 /* Answers.m */,
+				A510AA6D193EB2BA001C3877 /* Answers.h */,
+				A510AA6E193EB2BA001C3877 /* Answers.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -576,7 +576,7 @@
 				A5C08C7F193B650300887F83 /* Model.xcdatamodeld in Sources */,
 				65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */,
 				65BFF070190F4CF90087511B /* HACollectionViewSmallLayout.m in Sources */,
-				A5C08C85193B6B0900887F83 /* Answers.m in Sources */,
+				A510AA6F193EB2BA001C3877 /* Answers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

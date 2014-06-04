@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong) NSNumber * finalGradeValue;
 @property (nonatomic, strong) NSArray *finalGrades;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end

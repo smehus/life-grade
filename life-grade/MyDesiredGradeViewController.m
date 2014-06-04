@@ -54,6 +54,8 @@
     self.navigationItem.leftBarButtonItem = barbut;
     
     self.revealButton = barbut;
+    
+    
     [self.revealButton setTarget: self.revealViewController];
     [self.revealButton setAction: @selector( revealToggle: )];
     

@@ -46,10 +46,13 @@
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window = window;
     
+    
     MenuViewController *rearViewController = [[MenuViewController alloc] init];
+    rearViewController.managedObjectContext = self.managedObjectContext;
     
 
     self.openingViewController = [[OpeningViewController alloc] initWithNibName:@"OpeningViewController" bundle:nil];
+    NSLog(@"%@", self.managedObjectContext.persistentStoreCoordinator.managedObjectModel.entities);
     self.openingViewController.managedObjectContext = self.managedObjectContext;
     UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:self.openingViewController];
 //
@@ -164,7 +167,7 @@
 - (NSManagedObjectModel *)managedObjectModel
 {
     if (managedObjectModel == nil) {
-        NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"DataModel" ofType:@"momd"];
+        NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"Model" ofType:@"momd"];
         NSURL *modelURL = [NSURL fileURLWithPath:modelPath];
         managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     }
