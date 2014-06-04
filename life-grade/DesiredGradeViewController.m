@@ -365,6 +365,8 @@
 #pragma mark - QuestonView Delegate
 
 
+//!!!!: the self.didSelect is off making it only save everyother grade
+
 - (void)didPickAnswer:(NSIndexPath *)idx withGrade:(Grade *)grade {
     
     
@@ -392,9 +394,13 @@
             
         } else {
             
+            NSLog(@"grade %@", grade);
+            
             if (self.didSelect) {
                 [self.myGrades addObject:grade];
                 NSLog(@"Add grade %@", grade.gradeNum);
+                
+                
             }
           
         }
