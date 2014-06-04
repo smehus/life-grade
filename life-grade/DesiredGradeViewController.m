@@ -48,6 +48,8 @@
 
 @property (nonatomic, assign) int *finalGrade;
 
+@property (nonatomic, assign) BOOL didSelect;
+
 
 
 
@@ -81,6 +83,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.didSelect = NO;
     
     self.myGrades = [[NSMutableArray alloc] initWithCapacity:10];
     
@@ -189,6 +193,10 @@
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
     cell.layer.cornerRadius = 4.0f;
     cell.text.text = grade.question;
+    
+    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
+    l.text = @"Ballsbitch";
+    [cell addSubview:l];
     
     
     return cell;
@@ -302,6 +310,12 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (self.didSelect == YES) {
+        self.didSelect = NO;
+    } else {
+        self.didSelect = YES;
+    }
 
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     cell.selected = YES;
@@ -374,9 +388,15 @@
         
         if (self.myGrades.count > idx.row) {
             [self.myGrades replaceObjectAtIndex:idx.row withObject:grade];
+            self.nextButton.enabled = YES;
             
         } else {
-            [self.myGrades addObject:grade];
+            
+            if (self.didSelect) {
+                [self.myGrades addObject:grade];
+                NSLog(@"Add grade %@", grade.gradeNum);
+            }
+          
         }
         
         
