@@ -399,7 +399,7 @@
             if (self.didSelect) {
                 [self.myGrades addObject:grade];
                 NSLog(@"Add grade %@", grade.gradeNum);
-                
+                self.didSelect = NO;
                 
             }
           
