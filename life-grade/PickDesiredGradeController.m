@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "CoverFlowLayout.h"
 #import "CollectionCell.h"
+#import "ActionPlanViewController.h"
 
 @interface PickDesiredGradeController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -70,7 +71,7 @@
     
     self.nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(didSelectGrade)];
     [self.nextButton setTintColor:[UIColor blackColor]];
-    self.nextButton.enabled = NO;
+    self.nextButton.enabled = YES;
     self.navigationItem.rightBarButtonItem = self.nextButton;
     
     
@@ -85,6 +86,11 @@
 }
 
 - (void)didSelectGrade {
+    
+    ActionPlanViewController *actionController = [[ActionPlanViewController alloc] init];
+    actionController.managedObjectContext = self.managedObjectContext;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionController];
+    [self.revealViewController setFrontViewController:nav];
     
     
 }

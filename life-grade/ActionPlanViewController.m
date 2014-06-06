@@ -13,6 +13,7 @@
 @interface ActionPlanViewController ()
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
+@property (nonatomic, strong) UIBarButtonItem *nextButton;
 
 @end
 
@@ -48,6 +49,7 @@
     [self.view sendSubviewToBack:bg];
     
     self.title = @"Desired Grade";
+    
     
     UIBarButtonItem *barbut = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealToggle:)];
     [barbut setTintColor:[UIColor blackColor]];
@@ -96,14 +98,14 @@
     
     UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, thirdDesire.frame.size.height + thirdDesire.frame.origin.y + 20, self.view.frame.size.width, 50)];
     [nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
-    [nextButton addTarget:self action:@selector(openMyGradView) forControlEvents:UIControlEventTouchUpInside];
+    [nextButton addTarget:self action:@selector(nextButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [nextButton setTitle:@"Finish" forState:UIControlStateNormal];
     
     [self.view addSubview:nextButton];
     
 }
 
-- (void)openMyGradView {
+- (void)nextButtonPressed {
     
     FinalGradeViewController *finalGradeController = [[FinalGradeViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalGradeController];
