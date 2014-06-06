@@ -140,31 +140,50 @@
 
     
     
-    self.stepOne = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 150, 50)];
-    self.stepOne.text = @"Step One";
+    self.stepOne = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, view.frame.size.width, 50)];
+    self.stepOne.text = @"3 Life Grade Steps";
     self.stepOne.textColor = GREY_COLOR;
+    self.stepOne.textAlignment = NSTextAlignmentCenter;
+    self.stepOne.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:35];
     
     
     UIImage *arrowImg = [UIImage imageNamed:@"blue-arrow--"];
     UIImageView *firstArrow = [[UIImageView alloc] initWithImage:arrowImg];
     firstArrow.frame = CGRectMake(20, 100, arrowImg.size.width, arrowImg.size.height);
     
+    UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, 120, 150, 50)];
+    current.text = @"Current Grade";
+    current.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    
     
     UIImageView *secondArrow = [[UIImageView alloc] initWithImage:arrowImg];
     secondArrow.frame = CGRectMake(20, 200, arrowImg.size.width, arrowImg.size.height);
+
+    UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(100, 220, 150, 50)];
+    desired.text = @"Desired Grade";
+    desired.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     
    
    UIImageView *threeArrow = [[UIImageView alloc] initWithImage:arrowImg];
    threeArrow.frame = CGRectMake(20, 300, arrowImg.size.width, arrowImg.size.height);
-   
+    
+    UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(100, 320, 150, 50)];
+    action.text = @"Action Plan";
+    action.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     
     
     
     
     
     [view addSubview:firstArrow];
+    [view addSubview:current];
+    
     [view addSubview:secondArrow];
+    [view addSubview:desired];
+    
     [view addSubview:threeArrow];
+    [view addSubview:action];
+    
     [view addSubview:self.stepOne];
     [self.scrollView addSubview:view];
 }
@@ -174,7 +193,38 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(viewSize.width * 2, 0, viewSize.width, viewHeight)];
     view.backgroundColor = [UIColor clearColor];
     
-    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 375, self.view.frame.size.width, 50)];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, 50)];
+    title.text = @"Step One: Things to think about";
+    title.textColor = GREY_COLOR;
+    title.textAlignment = NSTextAlignmentCenter;
+    title.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+    
+    UIImage *arrowImg = [UIImage imageNamed:@"blue-arrow--"];
+    UIImageView *firstArrow = [[UIImageView alloc] initWithImage:arrowImg];
+    firstArrow.frame = CGRectMake(20, 50, arrowImg.size.width, arrowImg.size.height);
+    
+    UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, 70, 150, 50)];
+    current.text = @"Current Grade";
+    current.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    
+    
+    UIImageView *secondArrow = [[UIImageView alloc] initWithImage:arrowImg];
+    secondArrow.frame = CGRectMake(20, 100, arrowImg.size.width, arrowImg.size.height);
+    
+    UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(100, 120, 150, 50)];
+    desired.text = @"Desired Grade";
+    desired.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    
+    
+    UIImageView *threeArrow = [[UIImageView alloc] initWithImage:arrowImg];
+    threeArrow.frame = CGRectMake(20, 200, arrowImg.size.width, arrowImg.size.height);
+    
+    UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(100, 220, 150, 50)];
+    action.text = @"Action Plan";
+    action.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    
+    
+    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 50)];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [self.startButton addTarget:self action:@selector(openGradeController) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton setTitle:@"Start Grading" forState:UIControlStateNormal];
@@ -182,7 +232,17 @@
 
     
     
-
+    [view addSubview:title];
+    
+    [view addSubview:firstArrow];
+    [view addSubview:current];
+    
+    [view addSubview:secondArrow];
+    [view addSubview:desired];
+    
+    [view addSubview:threeArrow];
+    [view addSubview:action];
+    
      [view addSubview:self.startButton];
     [self.scrollView addSubview:view];
 }

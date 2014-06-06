@@ -10,7 +10,7 @@
 #import "SWRevealViewController.h"
 #import "DesiredGradeViewController.h"
 #import "PickDesiredGradeController.h"
-#import "MyDesiredGradeViewController.h"
+#import "ActionPlanViewController.h"
 #import "FinalGradeViewController.h"
 
 @interface MenuViewController ()
@@ -35,7 +35,7 @@
 - (void)viewDidLoad
 {
     
-    self.titleArray = @[@"Grading", @"Desired Grade", @"My Grade", @"About"];
+    self.titleArray = @[@"Grading", @"Desired Grade", @"Steps", @"My Grade", @"About"];
     
     NSLog(@"MENU LOADED");
      self.tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
@@ -50,7 +50,7 @@
     [super viewDidAppear:YES];
     NSLog(@"MENU APPEARED");
     
-     self.tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
+//     self.tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,12 +109,12 @@
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:desiredView];
         [self.myRevealController pushFrontViewController:nav animated:YES];
         
-    } else if (indexPath.row == 1) {
+    } else if (indexPath.row == 2) {
         
-        MyDesiredGradeViewController *desiredController = [[MyDesiredGradeViewController alloc] init];
+        ActionPlanViewController *desiredController = [[ActionPlanViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:desiredController];
         [self.myRevealController pushFrontViewController:nav animated:YES];
-    } else if (indexPath.row == 2) {
+    } else if (indexPath.row == 3) {
         
         FinalGradeViewController *finalontroller = [[FinalGradeViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalontroller];

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+
 
 @interface PickDesiredGradeController : UIViewController
+
+@property (nonatomic, strong) NSNumber * finalGradeValue;
+@property (nonatomic, strong) NSArray *finalGrades;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 
 @end

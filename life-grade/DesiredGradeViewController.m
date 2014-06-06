@@ -16,9 +16,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Grade.h"
 #import "FinalGradeViewController.h"
-#import "MyDesiredGradeViewController.h"
+#import "ActionPlanViewController.h"
 #import "Answers.h"
 #import <CoreData/CoreData.h>
+#import "PickDesiredGradeController.h"
 
 
 
@@ -459,7 +460,7 @@
         abort();
     }
     
-    MyDesiredGradeViewController *myDesiredController = [[MyDesiredGradeViewController alloc] init];
+    PickDesiredGradeController *myDesiredController = [[PickDesiredGradeController alloc] init];
     myDesiredController.managedObjectContext = self.managedObjectContext;
     myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
      UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myDesiredController];

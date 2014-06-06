@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyDesiredGradeViewController : UIViewController
+@interface ActionPlanViewController : UIViewController
 
 
 @property (nonatomic, strong) NSNumber * finalGradeValue;

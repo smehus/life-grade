@@ -63,7 +63,7 @@
 		A54B6B1819279F6B000AA8D7 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54B6B1719279F6B000AA8D7 /* Data.plist */; };
 		A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */; };
 		A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C761939719F00887F83 /* FinalGradeViewController.m */; };
-		A5C08C7B193977D600887F83 /* MyDesiredGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7A193977D600887F83 /* MyDesiredGradeViewController.m */; };
+		A5C08C7B193977D600887F83 /* ActionPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7A193977D600887F83 /* ActionPlanViewController.m */; };
 		A5C08C7F193B650300887F83 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7D193B650300887F83 /* Model.xcdatamodeld */; };
 		A5E85E291927B19700AAA4B6 /* GradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85E281927B19700AAA4B6 /* GradeCell.m */; };
 		A5E85E2B1927B1B500AAA4B6 /* GradeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */; };
@@ -163,8 +163,8 @@
 		A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickDesiredGradeController.m; sourceTree = "<group>"; };
 		A5C08C751939719F00887F83 /* FinalGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalGradeViewController.h; sourceTree = "<group>"; };
 		A5C08C761939719F00887F83 /* FinalGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinalGradeViewController.m; sourceTree = "<group>"; };
-		A5C08C79193977D600887F83 /* MyDesiredGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDesiredGradeViewController.h; sourceTree = "<group>"; };
-		A5C08C7A193977D600887F83 /* MyDesiredGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDesiredGradeViewController.m; sourceTree = "<group>"; };
+		A5C08C79193977D600887F83 /* ActionPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionPlanViewController.h; sourceTree = "<group>"; };
+		A5C08C7A193977D600887F83 /* ActionPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionPlanViewController.m; sourceTree = "<group>"; };
 		A5C08C7E193B650300887F83 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A5E85E271927B19700AAA4B6 /* GradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeCell.h; sourceTree = "<group>"; };
 		A5E85E281927B19700AAA4B6 /* GradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeCell.m; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				A5C08C7C193B64EB00887F83 /* CoreData */,
-				A5C08C781939778A00887F83 /* DesiredGrade */,
+				A5C08C781939778A00887F83 /* ActionPlan */,
 				A54B6B1619279F4E000AA8D7 /* Data */,
 				65714FFF191482700034009A /* Resources */,
 				65BFF06B190F4CE70087511B /* HAPaper */,
@@ -374,13 +374,13 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
-		A5C08C781939778A00887F83 /* DesiredGrade */ = {
+		A5C08C781939778A00887F83 /* ActionPlan */ = {
 			isa = PBXGroup;
 			children = (
-				A5C08C79193977D600887F83 /* MyDesiredGradeViewController.h */,
-				A5C08C7A193977D600887F83 /* MyDesiredGradeViewController.m */,
+				A5C08C79193977D600887F83 /* ActionPlanViewController.h */,
+				A5C08C7A193977D600887F83 /* ActionPlanViewController.m */,
 			);
-			name = DesiredGrade;
+			name = ActionPlan;
 			sourceTree = "<group>";
 		};
 		A5C08C7C193B64EB00887F83 /* CoreData */ = {
@@ -570,7 +570,7 @@
 				65BFF071190F4CF90087511B /* HACollectionViewLargeLayout.m in Sources */,
 				655EC64218DF62550036515F /* MenuViewController.m in Sources */,
 				6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */,
-				A5C08C7B193977D600887F83 /* MyDesiredGradeViewController.m in Sources */,
+				A5C08C7B193977D600887F83 /* ActionPlanViewController.m in Sources */,
 				6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */,
 				65714FFE191475080034009A /* HASmallCollectionViewController.m in Sources */,
 				A5C08C7F193B650300887F83 /* Model.xcdatamodeld in Sources */,

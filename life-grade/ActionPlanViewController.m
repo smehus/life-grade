@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 scott mehus. All rights reserved.
 //
 
-#import "MyDesiredGradeViewController.h"
+#import "ActionPlanViewController.h"
 #import "FinalGradeViewController.h"
 #import "SWRevealViewController.h"
 
-@interface MyDesiredGradeViewController ()
+@interface ActionPlanViewController ()
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 
 @end
 
-@implementation MyDesiredGradeViewController
+@implementation ActionPlanViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

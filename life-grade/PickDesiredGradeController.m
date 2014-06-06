@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, strong) CoverFlowLayout *layout;
+@property (nonatomic, strong) UIBarButtonItem *nextButton;
 
 
 @end
@@ -59,7 +60,20 @@
 //    UIImageView *bgView = [[UIImageView alloc] initWithImage:bgImage];
 //    self.collectionView.backgroundView = bgView;
     
-    self.view.backgroundColor = [UIColor blueColor];
+
+    UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
+    UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
+    bg.frame = CGRectMake(0, 0, self.view.frame.size.width + 50, self.view.frame.size.height);
+    [self.view addSubview:bg];
+    [self.view sendSubviewToBack:bg];
+    
+    
+    self.nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(didSelectGrade)];
+    [self.nextButton setTintColor:[UIColor blackColor]];
+    self.nextButton.enabled = NO;
+    self.navigationItem.rightBarButtonItem = self.nextButton;
+    
+    
     
     [self.view addSubview:self.collectionView];
 }
@@ -68,6 +82,11 @@
 {
     [super didReceiveMemoryWarning];
 
+}
+
+- (void)didSelectGrade {
+    
+    
 }
 
 
