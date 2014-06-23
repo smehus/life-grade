@@ -60,6 +60,8 @@
 		65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */; };
 		A510AA6F193EB2BA001C3877 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A510AA6E193EB2BA001C3877 /* Answers.m */; };
 		A5376A2818ED073C000C6BD8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5376A2718ED073C000C6BD8 /* Parse.framework */; };
+		A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC61957B92A00EC5881 /* AttributesViewController.m */; };
+		A5435DCA1957B99400EC5881 /* AttributesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC91957B99400EC5881 /* AttributesCell.m */; };
 		A54B6B1819279F6B000AA8D7 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54B6B1719279F6B000AA8D7 /* Data.plist */; };
 		A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */; };
 		A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C761939719F00887F83 /* FinalGradeViewController.m */; };
@@ -158,6 +160,10 @@
 		A510AA6D193EB2BA001C3877 /* Answers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answers.h; sourceTree = "<group>"; };
 		A510AA6E193EB2BA001C3877 /* Answers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answers.m; sourceTree = "<group>"; };
 		A5376A2718ED073C000C6BD8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		A5435DC51957B92A00EC5881 /* AttributesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesViewController.h; sourceTree = "<group>"; };
+		A5435DC61957B92A00EC5881 /* AttributesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesViewController.m; sourceTree = "<group>"; };
+		A5435DC81957B99400EC5881 /* AttributesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesCell.h; sourceTree = "<group>"; };
+		A5435DC91957B99400EC5881 /* AttributesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesCell.m; sourceTree = "<group>"; };
 		A54B6B1719279F6B000AA8D7 /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
 		A5BBB2B6192A1EB000724639 /* PickDesiredGradeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickDesiredGradeController.h; sourceTree = "<group>"; };
 		A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickDesiredGradeController.m; sourceTree = "<group>"; };
@@ -281,6 +287,10 @@
 				A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */,
 				A5C08C751939719F00887F83 /* FinalGradeViewController.h */,
 				A5C08C761939719F00887F83 /* FinalGradeViewController.m */,
+				A5435DC51957B92A00EC5881 /* AttributesViewController.h */,
+				A5435DC61957B92A00EC5881 /* AttributesViewController.m */,
+				A5435DC81957B99400EC5881 /* AttributesCell.h */,
+				A5435DC91957B99400EC5881 /* AttributesCell.m */,
 			);
 			path = "life-grade";
 			sourceTree = "<group>";
@@ -575,7 +585,9 @@
 				65714FFE191475080034009A /* HASmallCollectionViewController.m in Sources */,
 				A5C08C7F193B650300887F83 /* Model.xcdatamodeld in Sources */,
 				65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */,
+				A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */,
 				65BFF070190F4CF90087511B /* HACollectionViewSmallLayout.m in Sources */,
+				A5435DCA1957B99400EC5881 /* AttributesCell.m in Sources */,
 				A510AA6F193EB2BA001C3877 /* Answers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
