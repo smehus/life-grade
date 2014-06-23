@@ -20,6 +20,7 @@
 #import "Answers.h"
 #import <CoreData/CoreData.h>
 #import "PickDesiredGradeController.h"
+#import "AttributesViewController.h"
 
 
 
@@ -467,10 +468,15 @@
         abort();
     }
     
-    PickDesiredGradeController *myDesiredController = [[PickDesiredGradeController alloc] init];
-    myDesiredController.managedObjectContext = self.managedObjectContext;
-    myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
-     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myDesiredController];
+    
+    AttributesViewController *controller = [[AttributesViewController alloc] init];
+    
+    
+//    
+//    PickDesiredGradeController *myDesiredController = [[PickDesiredGradeController alloc] init];
+//    myDesiredController.managedObjectContext = self.managedObjectContext;
+//    myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
+     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
     [self.revealViewController setFrontViewController:nav animated:YES];
     
     

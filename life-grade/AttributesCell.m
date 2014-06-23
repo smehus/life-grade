@@ -15,6 +15,8 @@
     self = [super initWithFrame:frame];
     if (self) {
 
+        self.headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width,44)];
+        [self addSubview:self.headerLabel];
         
         
     }

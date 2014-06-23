@@ -10,4 +10,6 @@
 
 @interface AttributesCell : UICollectionViewCell
 
+@property (nonatomic, strong) UILabel *headerLabel;
+
 @end

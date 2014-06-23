@@ -29,12 +29,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    CGRect *colRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    self.collectionView = [[UICollectionView alloc] initWithFrame:colRect collectionViewLayout:<#(UICollectionViewLayout *)#>]
+    UICollectionViewFlowLayout *lay = [[UICollectionViewFlowLayout alloc] init];
+    CGRect colRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.collectionView = [[UICollectionView alloc] initWithFrame:colRect collectionViewLayout:lay];
+    self.collectionView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.collectionView.layer.borderWidth = 1.0f;
     [self.collectionView registerClass:[AttributesCell class] forCellWithReuseIdentifier:@"Cell"];
     
 
+    
+    
+    [self.view addSubview:self.collectionView];
 
 }
 
@@ -51,7 +56,11 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    AttributesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
+    
+    cell.headerLabel.text = @"BallsDick";
+    return cell;
 }
 
 
