@@ -41,6 +41,7 @@
     
     UIColor *barColour = GREEN_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     
     
@@ -54,17 +55,19 @@
     [self.revealButton setAction: @selector( revealToggle: )];
     
     self.layout = [[CoverFlowLayout alloc] init];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.layout];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.collectionViewLayout = self.layout;
     
-//    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.layout];
-//    UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
-//    UIImageView *bgView = [[UIImageView alloc] initWithImage:bgImage];
-//    self.collectionView.backgroundView = bgView;
+    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
+    
     
 
     UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
     UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
-    bg.frame = CGRectMake(0, 0, self.view.frame.size.width + 50, self.view.frame.size.height);
+    bg.frame = CGRectMake(-10, 10, self.view.bounds.size.width + 50, self.view.bounds.size.height);
     [self.view addSubview:bg];
     [self.view sendSubviewToBack:bg];
     
@@ -120,6 +123,23 @@
     
     
     return cell;
+    
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGSize retval = CGSizeMake(200, 200);
+    return retval;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"***DID SELECT GRADE");
+    
+    ActionPlanViewController *actionController = [[ActionPlanViewController alloc] init];
+    actionController.managedObjectContext = self.managedObjectContext;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionController];
+    [self.revealViewController setFrontViewController:nav];
+    
     
 }
 

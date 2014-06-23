@@ -183,21 +183,25 @@
     return 1;
 }
 
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
 
-    CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
-    
-    
+    CollectionCell *cell = (CollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
     Grade *grade = [self.questions objectAtIndex:indexPath.row];
     
+    
+    cell.checkmark.hidden = YES;
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
     cell.layer.cornerRadius = 4.0f;
     cell.text.text = grade.question;
     
-    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
-    l.text = @"Ballsbitch";
-    [cell addSubview:l];
+    if (grade.isAnswered) {
+        
+        cell.checkmark.hidden = NO;
+      
+    }
+   
     
     
     return cell;
@@ -370,6 +374,9 @@
 
 - (void)didPickAnswer:(NSIndexPath *)idx withGrade:(Grade *)grade {
     
+    
+    Grade *g = [self.questions objectAtIndex:idx.row];
+    g.isAnswered = YES;
     
     if (idx.row > 10 ) {
         return;

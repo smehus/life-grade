@@ -28,13 +28,6 @@
     NSLog(@"SETUPVIEW collection cell");
     
 
-    self.checkmark = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
-    self.checkmark.backgroundColor = [UIColor redColor];
-    self.checkmark.text = @"Ballsz";
-    [self addSubview:self.checkmark];
-    
-
-    
 
 }
 
