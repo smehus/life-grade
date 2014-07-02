@@ -9,6 +9,7 @@
 #import "SignupViewController.h"
 #import <Parse/Parse.h>
 #import "SignInView.h"
+#import "FinalGradeViewController.h"
 
 @interface SignupViewController () <UITextFieldDelegate>
 
@@ -117,7 +118,26 @@
     NSLog(@"SIGNIN");
     CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     SignInView *view = [[SignInView alloc] initWithFrame:rect withBlock:^(NSString *email, NSString *password) {
-        NSLog(@"SIGNUPDONEBALLS");
+        NSLog(@"SIGNUPDONEBALLS %@ %@", email, password);
+        
+        [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
+            if (user) {
+                
+                FinalGradeViewController *final = [[FinalGradeViewController alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:final];
+
+                NSLog(@"SIGNIN SUCCESS");
+                
+
+                
+            } else {
+
+                NSString *errorString = [[error userInfo] objectForKey:@"error"];
+                UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [errorAlertView show];
+            }
+        }];
+        
         
     }];
 
