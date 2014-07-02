@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "DesiredGradeViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AttributesViewController.h"
 
 
 @interface OpeningViewController () <UIScrollViewDelegate>
@@ -99,12 +100,17 @@
 
 - (void)openGradeController {
     
-    DesiredGradeViewController *desiredController = [[DesiredGradeViewController alloc] init];
-    desiredController.managedObjectContext = self.managedObjectContext;
-    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:desiredController];
+//    DesiredGradeViewController *desiredController = [[DesiredGradeViewController alloc] init];
+//    desiredController.managedObjectContext = self.managedObjectContext;
+//    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:desiredController];
+//    [self.myRevealController setFrontViewController:navCon];
+    
+    
+    
+    AttributesViewController *balls = [[AttributesViewController alloc] init];
+    
+    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:balls];
     [self.myRevealController setFrontViewController:navCon];
-    
-    
 }
 
 - (void)setUpPageOne {
