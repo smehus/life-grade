@@ -471,8 +471,6 @@
     
     AttributesViewController *controller = [[AttributesViewController alloc] init];
     
-    
-//    
 //    PickDesiredGradeController *myDesiredController = [[PickDesiredGradeController alloc] init];
 //    myDesiredController.managedObjectContext = self.managedObjectContext;
 //    myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
