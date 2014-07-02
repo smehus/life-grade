@@ -59,6 +59,7 @@
 		65BFF077190F511E0087511B /* HATransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF075190F511E0087511B /* HATransitionLayout.m */; };
 		65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */; };
 		A510AA6F193EB2BA001C3877 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A510AA6E193EB2BA001C3877 /* Answers.m */; };
+		A534B0241963B19600255EC2 /* SignInView.m in Sources */ = {isa = PBXBuildFile; fileRef = A534B0231963B19600255EC2 /* SignInView.m */; };
 		A5376A2818ED073C000C6BD8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5376A2718ED073C000C6BD8 /* Parse.framework */; };
 		A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC61957B92A00EC5881 /* AttributesViewController.m */; };
 		A5435DCA1957B99400EC5881 /* AttributesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC91957B99400EC5881 /* AttributesCell.m */; };
@@ -159,6 +160,8 @@
 		65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAPaperCollectionViewController.m; sourceTree = "<group>"; };
 		A510AA6D193EB2BA001C3877 /* Answers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answers.h; sourceTree = "<group>"; };
 		A510AA6E193EB2BA001C3877 /* Answers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answers.m; sourceTree = "<group>"; };
+		A534B0221963B19600255EC2 /* SignInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInView.h; sourceTree = "<group>"; };
+		A534B0231963B19600255EC2 /* SignInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInView.m; sourceTree = "<group>"; };
 		A5376A2718ED073C000C6BD8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A5435DC51957B92A00EC5881 /* AttributesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesViewController.h; sourceTree = "<group>"; };
 		A5435DC61957B92A00EC5881 /* AttributesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesViewController.m; sourceTree = "<group>"; };
@@ -244,6 +247,7 @@
 		655EC60E18DF5FE20036515F /* life-grade */ = {
 			isa = PBXGroup;
 			children = (
+				A534B0211963B18100255EC2 /* Views */,
 				A5C08C7C193B64EB00887F83 /* CoreData */,
 				A5C08C781939778A00887F83 /* ActionPlan */,
 				A54B6B1619279F4E000AA8D7 /* Data */,
@@ -374,6 +378,15 @@
 				65714FFC191475080034009A /* HASmallCollectionViewController.m */,
 			);
 			name = HAPaper;
+			sourceTree = "<group>";
+		};
+		A534B0211963B18100255EC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A534B0221963B19600255EC2 /* SignInView.h */,
+				A534B0231963B19600255EC2 /* SignInView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		A54B6B1619279F4E000AA8D7 /* Data */ = {
@@ -584,6 +597,7 @@
 				6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */,
 				65714FFE191475080034009A /* HASmallCollectionViewController.m in Sources */,
 				A5C08C7F193B650300887F83 /* Model.xcdatamodeld in Sources */,
+				A534B0241963B19600255EC2 /* SignInView.m in Sources */,
 				65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */,
 				A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */,
 				65BFF070190F4CF90087511B /* HACollectionViewSmallLayout.m in Sources */,

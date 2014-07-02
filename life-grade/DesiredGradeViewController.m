@@ -474,6 +474,8 @@
 //    PickDesiredGradeController *myDesiredController = [[PickDesiredGradeController alloc] init];
 //    myDesiredController.managedObjectContext = self.managedObjectContext;
 //    myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
+    
+    controller.managedObjectContext = self.managedObjectContext;
      UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
     [self.revealViewController setFrontViewController:nav animated:YES];
     

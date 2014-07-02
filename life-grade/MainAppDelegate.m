@@ -38,13 +38,18 @@
 {
     // Override point for customization after application launch.
     
-    [Parse setApplicationId:@"fuDs7uKFyITlO84J52WVmB123rN5XhxGDTTY4Hsl"
-                  clientKey:@"wlekFFzBkkMAitOQQqrKjmrrFD4iEPKafI7LWxWt"];
+    [Parse setApplicationId:@"3KyZ4sPQCxqmw2MxEWcwu4HjJi8JH2fcxeOPvDQC"
+                  clientKey:@"QCRzp1GVgG2TrlGNhw0j7FCNUAymOyHBB6IDLFNu"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window = window;
+    
+    PFObject *player = [PFObject objectWithClassName:@"Player"];//1
+    [player setObject:@"fagboy" forKey:@"Name"];
+    [player setObject:[NSNumber numberWithInt:1230] forKey:@"Score"];//2
+    [player save];//3
     
     
     MenuViewController *rearViewController = [[MenuViewController alloc] init];

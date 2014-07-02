@@ -11,6 +11,7 @@
 #import <POP/POP.h>
 #import "FinalGradeViewController.h"
 #import "SWRevealViewController.h"
+#import "SignupViewController.h"
 
 @interface AttributesViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -95,8 +96,9 @@
 - (void)doneButton {
     
     NSLog(@"***DONE PRESSED");
-    FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
+//    FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
+    SignupViewController *signUp = [[SignupViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:signUp];
     [self.revealViewController setFrontViewController:nav];
     
 
