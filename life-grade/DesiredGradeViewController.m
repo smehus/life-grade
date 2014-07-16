@@ -535,6 +535,11 @@
     
 //    NSLog(@"%@", self.managedObjectContext.persistentStoreCoordinator.managedObjectModel.entities);
     
+    if (self.fetchedAnswers != nil) {
+        [self.managedObjectContext deleteObject:self.fetchedAnswers];
+    }
+    
+    
     
     Answers *answers = [NSEntityDescription insertNewObjectForEntityForName:@"Answers" inManagedObjectContext:self.managedObjectContext];
     
