@@ -21,7 +21,7 @@
 
 
 @interface MainAppDelegate ()<UINavigationControllerDelegate, HATransitionControllerDelegate>
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
@@ -46,11 +46,11 @@
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window = window;
     
-    PFObject *player = [PFObject objectWithClassName:@"Player"];//1
-    [player setObject:@"fagboy" forKey:@"Name"];
-    [player setObject:[NSNumber numberWithInt:1230] forKey:@"Score"];//2
-    [player save];//3
-    
+//    PFObject *player = [PFObject objectWithClassName:@"Player"];//1
+//    [player setObject:@"fagboy" forKey:@"Name"];
+//    [player setObject:[NSNumber numberWithInt:1230] forKey:@"Score"];//2
+//    [player save];//3
+//    
     
     MenuViewController *rearViewController = [[MenuViewController alloc] init];
     rearViewController.managedObjectContext = self.managedObjectContext;
@@ -218,6 +218,9 @@
     }
     return managedObjectContext;
 }
+
+
+
 
 
 

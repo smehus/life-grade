@@ -247,6 +247,8 @@
 		655EC60E18DF5FE20036515F /* life-grade */ = {
 			isa = PBXGroup;
 			children = (
+				A53330511968E06700647398 /* DesiredGrade */,
+				A53330501968DF6300647398 /* Grading */,
 				A534B0211963B18100255EC2 /* Views */,
 				A5C08C7C193B64EB00887F83 /* CoreData */,
 				A5C08C781939778A00887F83 /* ActionPlan */,
@@ -268,17 +270,11 @@
 				655EC64618DF626E0036515F /* OpeningViewController.xib */,
 				6533F55418E190360017C7D6 /* CoverFlowLayout.h */,
 				6533F55518E190360017C7D6 /* CoverFlowLayout.m */,
-				6533F55B18E190630017C7D6 /* DesiredGradeViewController.h */,
-				6533F55C18E190630017C7D6 /* DesiredGradeViewController.m */,
-				6533F55D18E190630017C7D6 /* DesiredGradeViewController.xib */,
 				6533F56818E194810017C7D6 /* QuestionView.h */,
 				6533F56918E194810017C7D6 /* QuestionView.m */,
 				A5E85E271927B19700AAA4B6 /* GradeCell.h */,
 				A5E85E281927B19700AAA4B6 /* GradeCell.m */,
 				A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */,
-				6533F55318E190360017C7D6 /* CollectionCell.xib */,
-				6533F55818E190560017C7D6 /* CollectionCell.h */,
-				6533F55918E190560017C7D6 /* CollectionCell.m */,
 				6533F56E18E195700017C7D6 /* Question.h */,
 				6533F56F18E195700017C7D6 /* Question.m */,
 				6533F57118E4F19E0017C7D6 /* SimpleCoverFlowLayout.h */,
@@ -287,8 +283,6 @@
 				6520A6321909FDD5006FD28C /* SignupViewController.m */,
 				A5E85E2C1927B81100AAA4B6 /* Grade.h */,
 				A5E85E2D1927B81100AAA4B6 /* Grade.m */,
-				A5BBB2B6192A1EB000724639 /* PickDesiredGradeController.h */,
-				A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */,
 				A5C08C751939719F00887F83 /* FinalGradeViewController.h */,
 				A5C08C761939719F00887F83 /* FinalGradeViewController.m */,
 				A5435DC51957B92A00EC5881 /* AttributesViewController.h */,
@@ -378,6 +372,28 @@
 				65714FFC191475080034009A /* HASmallCollectionViewController.m */,
 			);
 			name = HAPaper;
+			sourceTree = "<group>";
+		};
+		A53330501968DF6300647398 /* Grading */ = {
+			isa = PBXGroup;
+			children = (
+				6533F55B18E190630017C7D6 /* DesiredGradeViewController.h */,
+				6533F55C18E190630017C7D6 /* DesiredGradeViewController.m */,
+				6533F55D18E190630017C7D6 /* DesiredGradeViewController.xib */,
+				6533F55318E190360017C7D6 /* CollectionCell.xib */,
+				6533F55818E190560017C7D6 /* CollectionCell.h */,
+				6533F55918E190560017C7D6 /* CollectionCell.m */,
+			);
+			name = Grading;
+			sourceTree = "<group>";
+		};
+		A53330511968E06700647398 /* DesiredGrade */ = {
+			isa = PBXGroup;
+			children = (
+				A5BBB2B6192A1EB000724639 /* PickDesiredGradeController.h */,
+				A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */,
+			);
+			name = DesiredGrade;
 			sourceTree = "<group>";
 		};
 		A534B0211963B18100255EC2 /* Views */ = {

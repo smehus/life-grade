@@ -35,32 +35,40 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    UIColor *barColour = GREEN_COLOR;
+    self.navigationController.navigationBar.barTintColor = barColour;
     
-    self.userNameField = [[UITextField alloc] initWithFrame:CGRectMake(10, 150, self.view.frame.size.width - 20, 50)];
-    self.userNameField.layer.borderColor = [UIColor blackColor].CGColor;
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    
+    
+    UILabel *greeting = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.view.frame.size.width, 50)];
+    greeting.textColor = GREY_COLOR;
+    greeting.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    greeting.text = @"Sign up to get your Final Grade!";
+    
+    UIColor *greyC = GREY_COLOR;
+    
+    self.userNameField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(greeting.frame) + 20, self.view.frame.size.width - 20, 50)];
+    self.userNameField.layer.borderColor = greyC.CGColor;
     self.userNameField.placeholder = @"Email Address";
     self.userNameField.layer.borderWidth = 1.0f;
     self.userNameField.delegate = self;
     
     self.passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.userNameField.frame) + 20, self.view.frame.size.width - 20, 50)];
-    self.passwordTextField.layer.borderColor = [UIColor blackColor].CGColor;
+    self.passwordTextField.layer.borderColor = greyC.CGColor;
     self.passwordTextField.placeholder = @"Password";
     self.passwordTextField.layer.borderWidth = 1.0f;
     self.passwordTextField.delegate = self;
     
     self.passwordConfirmation = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.passwordTextField.frame) + 20, self.view.frame.size.width - 20, 50)];
-    self.passwordConfirmation.layer.borderColor = [UIColor blackColor].CGColor;
+    self.passwordConfirmation.layer.borderColor = greyC.CGColor;
     self.passwordConfirmation.placeholder = @"Confirm Password";
     self.passwordConfirmation.layer.borderWidth = 1.0f;
     self.passwordConfirmation.delegate = self;
-    
-    
-    UIButton *signIn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [signIn setFrame:CGRectMake(0, CGRectGetMaxY(self.passwordConfirmation.frame) + 20, self.view.frame.size.width, 20)];
-    [signIn setTitle:@"Sign In" forState:UIControlStateNormal];
-    [signIn.titleLabel setTintColor:[UIColor blackColor]];
-    [signIn addTarget:self action:@selector(signIn) forControlEvents:UIControlEventTouchUpInside];
-    
+
     
     self.signUp = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.passwordConfirmation.frame) + 50, self.view.frame.size.width, 50)];
     [self.signUp setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
@@ -68,9 +76,15 @@
     [self.signUp setTitle:@"Sign Up" forState:UIControlStateNormal];
     
 
+    UIButton *signIn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [signIn setFrame:CGRectMake(0, CGRectGetMaxY(self.signUp.frame) + 20, self.view.frame.size.width, 20)];
+    [signIn setTitle:@"Sign In" forState:UIControlStateNormal];
+    [signIn.titleLabel setTintColor:[UIColor blackColor]];
+    [signIn addTarget:self action:@selector(signIn) forControlEvents:UIControlEventTouchUpInside];
     
     
     
+    [self.view addSubview:greeting];
     [self.view addSubview:signIn];
     [self.view addSubview:self.signUp];
     [self.view addSubview:self.userNameField];
@@ -140,8 +154,18 @@
         
         
     }];
-
+    view.alpha = 0.0f;
     [self.view addSubview:view];
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        view.alpha = 1.0f;
+        
+    } completion:^(BOOL finished) {
+        
+        
+    }];
+
+
 
 }
 

@@ -21,6 +21,7 @@
 #import <CoreData/CoreData.h>
 #import "PickDesiredGradeController.h"
 #import "AttributesViewController.h"
+#import "MainAppDelegate.h"
 
 
 
@@ -52,6 +53,8 @@
 
 @property (nonatomic, assign) BOOL didSelect;
 
+@property (nonatomic, strong) Answers *fetchedAnswers;
+
 
 
 
@@ -63,6 +66,7 @@
 @implementation DesiredGradeViewController {
     
     NSMutableArray *items;
+    BOOL didFetchAnswers;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -85,6 +89,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    didFetchAnswers = NO;
+    
     
     self.didSelect = NO;
     
@@ -160,9 +167,42 @@
         [items addObject:[NSString stringWithFormat:@"%d", i]];
     }
     
-    // Do any additional setup after loading the view from its nib.
+    [self performFetch];
+    
+    if (self.fetchedAnswers != nil) {
+        NSLog(@"*** loaded old answer");
+        
+        didFetchAnswers = YES;
+        
+    }
+    
 }
 
+
+- (void)performFetch {
+    
+    MainAppDelegate *del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR***");
+        
+        
+        return;
+    }
+    
+    self.fetchedAnswers = [foundObjects lastObject];
+    NSLog(@"question bitch %@", self.fetchedAnswers.questionEight);
+    
+}
 
 
 
@@ -202,6 +242,14 @@
         cell.checkmark.hidden = NO;
       
     }
+    
+    if (didFetchAnswers) {
+        
+        NSNumber *num = [self getGradeForIndex:indexPath];
+        cell.gradeLabel.text = [NSString stringWithFormat:@"GRADE %@", num];
+    } else {
+        cell.gradeLabel.text = @"ballz";
+    }
    
     
     
@@ -217,7 +265,8 @@
 //        case 0:
 //            quest = [self.questions objectForKey:@"questionOne"];
 //            break;
-//            
+//
+
 //        case 1:
 //            quest = [self.questions objectForKey:@"questionTwo"];
 //            break;
@@ -261,6 +310,45 @@
 //    
 //    return quest;
 //}
+
+- (NSNumber *)getGradeForIndex:(NSIndexPath *)idx {
+    
+    switch (idx.row) {
+        case 0:
+            return self.fetchedAnswers.questionOne;
+            break;
+        case 1:
+            return self.fetchedAnswers.questionTwo;
+            break;
+        case 2:
+            return self.fetchedAnswers.questionThree;
+            break;
+        case 3:
+            return self.fetchedAnswers.questionFour;
+            break;
+        case 4:
+            return self.fetchedAnswers.questionFive;
+            break;
+        case 5:
+            return self.fetchedAnswers.questionSix;
+            break;
+        case 6:
+            return self.fetchedAnswers.questionSeven;
+            break;
+        case 7:
+            return self.fetchedAnswers.questionEight;
+            break;
+        case 8:
+            return self.fetchedAnswers.questionNine;
+            break;
+        case 9:
+            return self.fetchedAnswers.questionTen;
+            break;
+        default:
+            return [NSNumber numberWithInt:10];
+            break;
+    }
+}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -469,18 +557,15 @@
     }
     
     
-    AttributesViewController *controller = [[AttributesViewController alloc] init];
+//    AttributesViewController *controller = [[AttributesViewController alloc] init];
     
-//    PickDesiredGradeController *myDesiredController = [[PickDesiredGradeController alloc] init];
-//    myDesiredController.managedObjectContext = self.managedObjectContext;
-//    myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
+    PickDesiredGradeController *myDesiredController = [[PickDesiredGradeController alloc] init];
+    myDesiredController.managedObjectContext = self.managedObjectContext;
+    myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
     
-    controller.managedObjectContext = self.managedObjectContext;
-     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    myDesiredController.managedObjectContext = self.managedObjectContext;
+     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myDesiredController];
     [self.revealViewController setFrontViewController:nav animated:YES];
-    
-    
-    
     
 }
 

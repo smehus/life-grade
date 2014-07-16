@@ -100,17 +100,17 @@
 
 - (void)openGradeController {
     
-//    DesiredGradeViewController *desiredController = [[DesiredGradeViewController alloc] init];
-//    desiredController.managedObjectContext = self.managedObjectContext;
-//    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:desiredController];
-//    [self.myRevealController setFrontViewController:navCon];
-    
-    
-    
-    AttributesViewController *balls = [[AttributesViewController alloc] init];
-    
-    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:balls];
+    DesiredGradeViewController *desiredController = [[DesiredGradeViewController alloc] init];
+    desiredController.managedObjectContext = self.managedObjectContext;
+    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:desiredController];
     [self.myRevealController setFrontViewController:navCon];
+    
+    
+    
+//    AttributesViewController *balls = [[AttributesViewController alloc] init];
+//    
+//    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:balls];
+//    [self.myRevealController setFrontViewController:navCon];
 }
 
 - (void)setUpPageOne {

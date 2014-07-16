@@ -18,6 +18,6 @@
 
 #define GREY_COLOR [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
 #define GREEN_COLOR  [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
-
+#define LIGHT_FONT @"HelveticaNeue-Thin";
 
 #endif

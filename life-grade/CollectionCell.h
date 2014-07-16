@@ -13,8 +13,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *text;
 @property (nonatomic, assign) BOOL isCompleted;
 @property (nonatomic, strong) UIButton *nextButton;
-
 @property (weak, nonatomic) IBOutlet UILabel *checkmark;
+@property (weak, nonatomic) IBOutlet UILabel *gradeLabel;
 
 
 @end

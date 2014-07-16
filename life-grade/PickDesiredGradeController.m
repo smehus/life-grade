@@ -60,8 +60,9 @@
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.collectionViewLayout = self.layout;
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, self.view.frame.size.width/2 - 100, 0, self.view.frame.size.width/2 - 100);
     
-    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"MyCell"];
     
     
 
@@ -113,13 +114,12 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:indexPath];
     
     
     
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
     cell.layer.cornerRadius = 4.0f;
-    cell.text.text = @"balls";
     
     
     return cell;

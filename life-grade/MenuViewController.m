@@ -35,7 +35,7 @@
 - (void)viewDidLoad
 {
     
-    self.titleArray = @[@"Grading", @"Desired Grade", @"Steps", @"My Grade", @"About"];
+    self.titleArray = @[@"Grading", @"Desired Grade", @"Steps", @"My Grade", @"About", @"Log Out"];
     
     NSLog(@"MENU LOADED");
      self.tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
