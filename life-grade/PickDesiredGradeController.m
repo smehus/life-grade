@@ -11,6 +11,7 @@
 #import "CoverFlowLayout.h"
 #import "CollectionCell.h"
 #import "ActionPlanViewController.h"
+#import "DesiredCell.h"
 
 @interface PickDesiredGradeController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -18,6 +19,8 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, strong) CoverFlowLayout *layout;
 @property (nonatomic, strong) UIBarButtonItem *nextButton;
+
+@property (nonatomic, strong) NSArray *gradeArray;
 
 
 @end
@@ -43,7 +46,7 @@
     self.navigationController.navigationBar.barTintColor = barColour;
     self.view.backgroundColor = [UIColor whiteColor];
     
-    
+    self.gradeArray = @[@"A+", @"A", @"A-", @"B+", @"B", @"B-", @"C+", @"C", @"C-", @"D+", @"D", @"D-"];
     
     
     UIBarButtonItem *barbut = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealToggle:)];
@@ -63,7 +66,7 @@
     self.collectionView.contentInset = UIEdgeInsetsMake(0, self.view.frame.size.width/2 - 100, 0, self.view.frame.size.width/2 - 100);
     
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"MyCell"];
-    
+    [self.collectionView registerClass:[DesiredCell class] forCellWithReuseIdentifier:@"Cell"];
     
 
     UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
@@ -114,8 +117,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:indexPath];
+    DesiredCell *cell = (DesiredCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
+    cell.gradeLabel.text = @"fags";
     
     
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];

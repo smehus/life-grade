@@ -9,11 +9,16 @@
 #import "ActionPlanViewController.h"
 #import "FinalGradeViewController.h"
 #import "SWRevealViewController.h"
+#import "AttributesViewController.h"
 
 @interface ActionPlanViewController ()
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, strong) UIBarButtonItem *nextButton;
+
+@property (nonatomic, strong) UITextField *firstDesire;
+@property (nonatomic, strong) UITextField *secondDesire;
+@property (nonatomic, strong) UITextField *thirdDesire;
 
 @end
 
@@ -75,28 +80,28 @@
 - (void)setupTextFields {
     
     
-    UITextField *firstDesire = [[UITextField alloc] initWithFrame:CGRectMake(10, 50 + 64, self.view.frame.size.width - 20, 75)];
-    firstDesire.placeholder = @"First Desire";
-    firstDesire.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    firstDesire.layer.borderWidth = 1.0f;
-    firstDesire.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:firstDesire];
+    self.firstDesire = [[UITextField alloc] initWithFrame:CGRectMake(10, 50 + 64, self.view.frame.size.width - 20, 75)];
+    self.firstDesire.placeholder = @"First Desire";
+    self.firstDesire.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.firstDesire.layer.borderWidth = 1.0f;
+    self.firstDesire.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.firstDesire];
     
-    UITextField *secondDesire = [[UITextField alloc] initWithFrame:CGRectMake(10, firstDesire.frame.origin.y + firstDesire.frame.size.height + 20, self.view.frame.size.width - 20, 75)];
-    secondDesire.placeholder = @"Second Desire";
-    secondDesire.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    secondDesire.layer.borderWidth = 1.0f;
-    secondDesire.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:secondDesire];
+    self.secondDesire = [[UITextField alloc] initWithFrame:CGRectMake(10, self.firstDesire.frame.origin.y + self.firstDesire.frame.size.height + 20, self.view.frame.size.width - 20, 75)];
+    self.secondDesire.placeholder = @"Second Desire";
+    self.secondDesire.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.secondDesire.layer.borderWidth = 1.0f;
+    self.secondDesire.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.secondDesire];
     
-    UITextField *thirdDesire = [[UITextField alloc] initWithFrame:CGRectMake(10, secondDesire.frame.origin.y + secondDesire.frame.size.height + 20, self.view.frame.size.width - 20, 75)];
-    thirdDesire.placeholder = @"Third Desire";
-    thirdDesire.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    thirdDesire.layer.borderWidth = 1.0f;
-    thirdDesire.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:thirdDesire];
+    self.thirdDesire = [[UITextField alloc] initWithFrame:CGRectMake(10, self.secondDesire.frame.origin.y + self.secondDesire.frame.size.height + 20, self.view.frame.size.width - 20, 75)];
+    self.thirdDesire.placeholder = @"Third Desire";
+    self.thirdDesire.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.thirdDesire.layer.borderWidth = 1.0f;
+    self.thirdDesire.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.thirdDesire];
     
-    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, thirdDesire.frame.size.height + thirdDesire.frame.origin.y + 20, self.view.frame.size.width, 50)];
+    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.thirdDesire.frame.size.height + self.thirdDesire.frame.origin.y + 20, self.view.frame.size.width, 50)];
     [nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [nextButton addTarget:self action:@selector(nextButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [nextButton setTitle:@"Finish" forState:UIControlStateNormal];
@@ -105,11 +110,27 @@
     
 }
 
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
 - (void)nextButtonPressed {
     
-    FinalGradeViewController *finalGradeController = [[FinalGradeViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalGradeController];
+//    FinalGradeViewController *finalGradeController = [[FinalGradeViewController alloc] init];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalGradeController];
+//
+    
+    AttributesViewController *attributes = [[AttributesViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:attributes];
     [self.revealViewController setFrontViewController:nav];
+    
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    [self.view endEditing:YES];
     
 }
 

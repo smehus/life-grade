@@ -67,6 +67,7 @@
     
     NSMutableArray *items;
     BOOL didFetchAnswers;
+    MainAppDelegate *delegate;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -90,6 +91,8 @@
 {
     [super viewDidLoad];
     
+    delegate = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
     didFetchAnswers = NO;
     
     
@@ -99,6 +102,8 @@
     
     self.questions = [[NSMutableArray alloc] initWithCapacity:10];
     
+    
+    // GET QUESTIONS
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
     NSArray *ary = [dict objectForKey:@"questions"];
@@ -174,6 +179,7 @@
         
         didFetchAnswers = YES;
         
+        
     }
     
 }
@@ -191,9 +197,9 @@
     [fetchRequest setEntity:entity];
     
     NSError *error;
-    NSArray *foundObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if (foundObjects == nil) {
-        NSLog(@"***CORE_DATA_ERROR***");
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
         
         
         return;
@@ -535,11 +541,11 @@
     
 //    NSLog(@"%@", self.managedObjectContext.persistentStoreCoordinator.managedObjectModel.entities);
     
-    if (self.fetchedAnswers != nil) {
-        [self.managedObjectContext deleteObject:self.fetchedAnswers];
-    }
-    
-    
+//    if (self.fetchedAnswers != nil) {
+//        [self.managedObjectContext deleteObject:self.fetchedAnswers];
+//    }
+//    
+//    
     
     Answers *answers = [NSEntityDescription insertNewObjectForEntityForName:@"Answers" inManagedObjectContext:self.managedObjectContext];
     
