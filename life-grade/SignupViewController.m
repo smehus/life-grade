@@ -106,13 +106,19 @@
     PFUser *user = [PFUser user];
     //2
     user.username = self.userNameField.text;
+    user.email = self.userNameField.text;
     user.password = self.passwordTextField.text;
+    
     //3
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             //The registration was successful, go to the wall
             NSLog(@"***SIGNUP SUCCESS");
             
+            
+            FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
+            [self presentViewController:nav animated:YES completion:nil];
             
             
             
