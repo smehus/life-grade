@@ -574,9 +574,10 @@
     myDesiredController.managedObjectContext = self.managedObjectContext;
     myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
     
-    myDesiredController.managedObjectContext = self.managedObjectContext;
+//    myDesiredController.managedObjectContext = self.managedObjectContext;
      UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myDesiredController];
     [self.revealViewController setFrontViewController:nav animated:YES];
+//    [self presentViewController:nav animated:YES completion:nil];
     
 }
 

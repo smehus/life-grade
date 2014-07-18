@@ -11,6 +11,8 @@
 #import "DesiredGradeViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "AttributesViewController.h"
+#import "PickDesiredGradeController.h"
+
 
 
 @interface OpeningViewController () <UIScrollViewDelegate>
@@ -106,11 +108,12 @@
     [self.myRevealController setFrontViewController:navCon];
     
     
-    
-//    AttributesViewController *balls = [[AttributesViewController alloc] init];
+//    
+//     PickDesiredGradeController *balls = [[PickDesiredGradeController alloc] init];
 //    
 //    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:balls];
-//    [self.myRevealController setFrontViewController:navCon];
+////    [self.myRevealController setFrontViewController:navCon];
+//    [self presentViewController:navCon animated:YES completion:nil];
 }
 
 - (void)setUpPageOne {

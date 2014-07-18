@@ -12,8 +12,10 @@
 #import "CollectionCell.h"
 #import "ActionPlanViewController.h"
 #import "DesiredCell.h"
+#import "MainAppDelegate.h"
+#import "Answers.h"
 
-@interface PickDesiredGradeController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface PickDesiredGradeController () <UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
@@ -21,11 +23,16 @@
 @property (nonatomic, strong) UIBarButtonItem *nextButton;
 
 @property (nonatomic, strong) NSArray *gradeArray;
+@property (nonatomic, strong) NSNumber *selectedGrade;
+@property (nonatomic, strong) Answers *fetchedAnswers;
 
 
 @end
 
-@implementation PickDesiredGradeController
+@implementation PickDesiredGradeController {
+    
+    MainAppDelegate *del;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,109 +49,99 @@
 {
     [super viewDidLoad];
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    
     UIColor *barColour = GREEN_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
-    self.view.backgroundColor = [UIColor whiteColor];
     
-    self.gradeArray = @[@"A+", @"A", @"A-", @"B+", @"B", @"B-", @"C+", @"C", @"C-", @"D+", @"D", @"D-"];
     
+    UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
+    UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
+    bg.frame = CGRectMake(-20, -10, self.view.frame.size.width + 50, self.view.frame.size.height);
+    [self.view addSubview:bg];
+    [self.view sendSubviewToBack:bg];
     
     UIBarButtonItem *barbut = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealToggle:)];
     [barbut setTintColor:[UIColor blackColor]];
     self.navigationItem.leftBarButtonItem = barbut;
     
-    self.revealButton = barbut;
-    [self.revealButton setTarget: self.revealViewController];
-    [self.revealButton setAction: @selector( revealToggle: )];
-    
-    self.layout = [[CoverFlowLayout alloc] init];
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.layout];
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-    self.collectionView.backgroundColor = [UIColor clearColor];
-    self.collectionView.collectionViewLayout = self.layout;
-    self.collectionView.contentInset = UIEdgeInsetsMake(0, self.view.frame.size.width/2 - 100, 0, self.view.frame.size.width/2 - 100);
-    
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"MyCell"];
-    [self.collectionView registerClass:[DesiredCell class] forCellWithReuseIdentifier:@"Cell"];
-    
-
-    UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
-    UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
-    bg.frame = CGRectMake(-10, 10, self.view.bounds.size.width + 50, self.view.bounds.size.height);
-    [self.view addSubview:bg];
-    [self.view sendSubviewToBack:bg];
-    
-    
-    self.nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(didSelectGrade)];
+    self.nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(finishedGrading)];
     [self.nextButton setTintColor:[UIColor blackColor]];
     self.nextButton.enabled = YES;
     self.navigationItem.rightBarButtonItem = self.nextButton;
     
     
     
+    self.revealButton = barbut;
+    
+    [self.revealButton setTarget: self.revealViewController];
+    [self.revealButton setAction: @selector( revealToggle: )];
+    
+    
+    
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    CoverFlowLayout *coverLayot = [[CoverFlowLayout alloc] init];
+    
+    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.collectionView.contentInset = UIEdgeInsetsMake(20, 0, 100, 0);
+    
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
+    
     [self.view addSubview:self.collectionView];
+    
+}
+
+- (void)finishedGrading {
+    
+    ActionPlanViewController *actionPlan = [[ActionPlanViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionPlan];
+//    [self presentViewController:nav animated:YES completion:nil];
+    [self.revealViewController setFrontViewController:nav];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-
+    // Dispose of any resources that can be recreated.
 }
-
-- (void)didSelectGrade {
-    
-    ActionPlanViewController *actionController = [[ActionPlanViewController alloc] init];
-    actionController.managedObjectContext = self.managedObjectContext;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionController];
-    [self.revealViewController setFrontViewController:nav];
-    
-    
-}
-
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    return 10;
-}
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
     return 1;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 10;
+}
+
+- (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-    DesiredCell *cell = (DesiredCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    
-    cell.gradeLabel.text = @"fags";
-    
-    
-    cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
-    cell.layer.cornerRadius = 4.0f;
-    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor blueColor];
+    cell.layer.cornerRadius = 8.0f;
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSLog(@"DID SELECT");
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGSize retval = CGSizeMake(200, 200);
-    return retval;
+    CGSize s = CGSizeMake(150, 150);
+    return s;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"***DID SELECT GRADE");
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
-    ActionPlanViewController *actionController = [[ActionPlanViewController alloc] init];
-    actionController.managedObjectContext = self.managedObjectContext;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionController];
-    [self.revealViewController setFrontViewController:nav];
-    
-    
+    return UIEdgeInsetsMake(0, 5, 0, 5);
 }
 
 

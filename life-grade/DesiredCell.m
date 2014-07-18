@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
 
-        
+        self.userInteractionEnabled = YES;
         self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.frame.size.width, 50)];
         self.gradeLabel.backgroundColor = [UIColor yellowColor];
         
