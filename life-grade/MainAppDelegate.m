@@ -64,7 +64,15 @@
     
     UINavigationController __block *navCon;
     
-    if (password != nil && email != nil) {
+    self.currentUser = [PFUser currentUser];
+    if (self.currentUser) {
+        
+        NSLog(@"CURRENT USER FOUND");
+        
+        self.finalGradeController = [[FinalGradeViewController alloc] init];
+        navCon = [[UINavigationController alloc] initWithRootViewController:self.finalGradeController];
+        
+    } else if (password != nil && email != nil) {
         
         self.finalGradeController = [[FinalGradeViewController alloc] init];
         navCon = [[UINavigationController alloc] initWithRootViewController:self.finalGradeController];

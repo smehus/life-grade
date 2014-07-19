@@ -11,6 +11,7 @@
 #import <CoreData/CoreData.h>
 #import "SWRevealViewController.h"
 #import "FinalGradeViewController.h"
+#import <Parse/Parse.h>
 
 @interface MainAppDelegate : UIResponder <UIApplicationDelegate, SWRevealViewControllerDelegate>
 
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) OpeningViewController *openingViewController;
 @property (nonatomic, strong) FinalGradeViewController *finalGradeController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) PFUser *currentUser;
 
 
 
