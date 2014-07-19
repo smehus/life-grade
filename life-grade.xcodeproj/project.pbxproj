@@ -58,8 +58,8 @@
 		65BFF076190F511E0087511B /* HATransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF073190F511E0087511B /* HATransitionController.m */; };
 		65BFF077190F511E0087511B /* HATransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF075190F511E0087511B /* HATransitionLayout.m */; };
 		65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */; };
-		A510AA6F193EB2BA001C3877 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A510AA6E193EB2BA001C3877 /* Answers.m */; };
 		A52A2BA91977634A00916901 /* DesiredCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A2BA81977634A00916901 /* DesiredCell.m */; };
+		A52A2C40197ACDB400916901 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A2C3F197ACDB400916901 /* Answers.m */; };
 		A534B0241963B19600255EC2 /* SignInView.m in Sources */ = {isa = PBXBuildFile; fileRef = A534B0231963B19600255EC2 /* SignInView.m */; };
 		A5376A2818ED073C000C6BD8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5376A2718ED073C000C6BD8 /* Parse.framework */; };
 		A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC61957B92A00EC5881 /* AttributesViewController.m */; };
@@ -159,10 +159,10 @@
 		65BFF075190F511E0087511B /* HATransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATransitionLayout.m; sourceTree = "<group>"; };
 		65BFF078190F52A70087511B /* HAPaperCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAPaperCollectionViewController.h; sourceTree = "<group>"; };
 		65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAPaperCollectionViewController.m; sourceTree = "<group>"; };
-		A510AA6D193EB2BA001C3877 /* Answers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answers.h; sourceTree = "<group>"; };
-		A510AA6E193EB2BA001C3877 /* Answers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answers.m; sourceTree = "<group>"; };
 		A52A2BA71977634A00916901 /* DesiredCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesiredCell.h; sourceTree = "<group>"; };
 		A52A2BA81977634A00916901 /* DesiredCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesiredCell.m; sourceTree = "<group>"; };
+		A52A2C3E197ACDB400916901 /* Answers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answers.h; sourceTree = "<group>"; };
+		A52A2C3F197ACDB400916901 /* Answers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answers.m; sourceTree = "<group>"; };
 		A534B0221963B19600255EC2 /* SignInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInView.h; sourceTree = "<group>"; };
 		A534B0231963B19600255EC2 /* SignInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInView.m; sourceTree = "<group>"; };
 		A5376A2718ED073C000C6BD8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -276,8 +276,6 @@
 				655EC64618DF626E0036515F /* OpeningViewController.xib */,
 				6533F55418E190360017C7D6 /* CoverFlowLayout.h */,
 				6533F55518E190360017C7D6 /* CoverFlowLayout.m */,
-				6533F56818E194810017C7D6 /* QuestionView.h */,
-				6533F56918E194810017C7D6 /* QuestionView.m */,
 				A5E85E271927B19700AAA4B6 /* GradeCell.h */,
 				A5E85E281927B19700AAA4B6 /* GradeCell.m */,
 				A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */,
@@ -395,10 +393,19 @@
 		A52A2BAC1978A8F100916901 /* SignUP */ = {
 			isa = PBXGroup;
 			children = (
+				A534B0221963B19600255EC2 /* SignInView.h */,
+				A534B0231963B19600255EC2 /* SignInView.m */,
 				6520A6311909FDD5006FD28C /* SignupViewController.h */,
 				6520A6321909FDD5006FD28C /* SignupViewController.m */,
 			);
 			name = SignUP;
+			sourceTree = "<group>";
+		};
+		A52A2C41197ACE8700916901 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		A53330501968DF6300647398 /* Grading */ = {
@@ -410,6 +417,8 @@
 				6533F55318E190360017C7D6 /* CollectionCell.xib */,
 				6533F55818E190560017C7D6 /* CollectionCell.h */,
 				6533F55918E190560017C7D6 /* CollectionCell.m */,
+				6533F56818E194810017C7D6 /* QuestionView.h */,
+				6533F56918E194810017C7D6 /* QuestionView.m */,
 			);
 			name = Grading;
 			sourceTree = "<group>";
@@ -428,8 +437,7 @@
 		A534B0211963B18100255EC2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A534B0221963B19600255EC2 /* SignInView.h */,
-				A534B0231963B19600255EC2 /* SignInView.m */,
+				A52A2C41197ACE8700916901 /* New Group */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -455,8 +463,8 @@
 			isa = PBXGroup;
 			children = (
 				A5C08C7D193B650300887F83 /* Model.xcdatamodeld */,
-				A510AA6D193EB2BA001C3877 /* Answers.h */,
-				A510AA6E193EB2BA001C3877 /* Answers.m */,
+				A52A2C3E197ACDB400916901 /* Answers.h */,
+				A52A2C3F197ACDB400916901 /* Answers.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -628,6 +636,7 @@
 				655EC61918DF5FE20036515F /* MainAppDelegate.m in Sources */,
 				65BFF076190F511E0087511B /* HATransitionController.m in Sources */,
 				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
+				A52A2C40197ACDB400916901 /* Answers.m in Sources */,
 				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
 				A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
@@ -648,7 +657,6 @@
 				A52A2BA91977634A00916901 /* DesiredCell.m in Sources */,
 				65BFF070190F4CF90087511B /* HACollectionViewSmallLayout.m in Sources */,
 				A5435DCA1957B99400EC5881 /* AttributesCell.m in Sources */,
-				A510AA6F193EB2BA001C3877 /* Answers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

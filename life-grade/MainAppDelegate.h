@@ -10,11 +10,13 @@
 #import "OpeningViewController.h"
 #import <CoreData/CoreData.h>
 #import "SWRevealViewController.h"
+#import "FinalGradeViewController.h"
 
 @interface MainAppDelegate : UIResponder <UIApplicationDelegate, SWRevealViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) OpeningViewController *openingViewController;
+@property (nonatomic, strong) FinalGradeViewController *finalGradeController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 

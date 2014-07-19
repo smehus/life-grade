@@ -10,6 +10,8 @@
 #import "FinalGradeViewController.h"
 #import "SWRevealViewController.h"
 #import "AttributesViewController.h"
+#import "MainAppDelegate.h"
+#import "Answers.h"
 
 @interface ActionPlanViewController ()
 
@@ -19,10 +21,16 @@
 @property (nonatomic, strong) UITextField *firstDesire;
 @property (nonatomic, strong) UITextField *secondDesire;
 @property (nonatomic, strong) UITextField *thirdDesire;
+@property (nonatomic, strong) Answers *fetchedAnswers;
+
 
 @end
 
-@implementation ActionPlanViewController
+@implementation ActionPlanViewController {
+    
+    MainAppDelegate *del;
+    
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,7 +47,7 @@
 {
     [super viewDidLoad];
     
-
+    [self performFetch];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -75,6 +83,31 @@
 {
     [super didReceiveMemoryWarning];
 
+}
+
+- (void)performFetch {
+    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
+        
+        
+        return;
+    }
+    
+    self.fetchedAnswers = [foundObjects lastObject];
+    NSLog(@"question bitch %@", self.fetchedAnswers.questionEight);
+    
 }
 
 - (void)setupTextFields {
@@ -120,7 +153,18 @@
     
 //    FinalGradeViewController *finalGradeController = [[FinalGradeViewController alloc] init];
 //    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalGradeController];
-//
+    
+    
+    self.fetchedAnswers.actionOne = self.firstDesire.text;
+    self.fetchedAnswers.actionTwo = self.secondDesire.text;
+    self.fetchedAnswers.actionThree = self.thirdDesire.text;
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
+    
     
     AttributesViewController *attributes = [[AttributesViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:attributes];

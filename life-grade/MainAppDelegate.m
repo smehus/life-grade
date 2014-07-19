@@ -17,6 +17,7 @@
 #import "HACollectionViewSmallLayout.h"
 #import "HATransitionController.h"
 #import "HATransitionLayout.h"
+#import "FinalGradeViewController.h"
 
 
 
@@ -46,6 +47,12 @@
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window = window;
     
+    NSString *email = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"email"];
+    
+    NSString *password = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"password"];
+    
 //    PFObject *player = [PFObject objectWithClassName:@"Player"];//1
 //    [player setObject:@"fagboy" forKey:@"Name"];
 //    [player setObject:[NSNumber numberWithInt:1230] forKey:@"Score"];//2
@@ -55,11 +62,38 @@
     MenuViewController *rearViewController = [[MenuViewController alloc] init];
     rearViewController.managedObjectContext = self.managedObjectContext;
     
+    UINavigationController __block *navCon;
+    
+    if (password != nil && email != nil) {
+        
+        self.finalGradeController = [[FinalGradeViewController alloc] init];
+        navCon = [[UINavigationController alloc] initWithRootViewController:self.finalGradeController];
 
-    self.openingViewController = [[OpeningViewController alloc] initWithNibName:@"OpeningViewController" bundle:nil];
-    NSLog(@"%@", self.managedObjectContext.persistentStoreCoordinator.managedObjectModel.entities);
-    self.openingViewController.managedObjectContext = self.managedObjectContext;
-    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:self.openingViewController];
+        [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
+            if (user) {
+            
+                NSLog(@"SIGNIN SUCCESS");
+                
+            } else {
+                
+                NSLog(@"SIGNIN FAIL");
+
+                
+            }
+        }];
+        
+        
+    } else {
+        
+        self.openingViewController = [[OpeningViewController alloc] initWithNibName:@"OpeningViewController" bundle:nil];
+        NSLog(@"%@", self.managedObjectContext.persistentStoreCoordinator.managedObjectModel.entities);
+        self.openingViewController.managedObjectContext = self.managedObjectContext;
+        navCon = [[UINavigationController alloc] initWithRootViewController:self.openingViewController];
+        
+    
+    }
+
+
 //
 //    HASmallCollectionViewController *opening = [[HASmallCollectionViewController alloc] initWithCollectionViewLayout:[[HACollectionViewSmallLayout alloc] init]];
 //    opening.view.frame = [[UIScreen mainScreen] bounds];

@@ -16,8 +16,12 @@
     if (self) {
 
         self.userInteractionEnabled = YES;
-        self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.frame.size.width, 50)];
-        self.gradeLabel.backgroundColor = [UIColor yellowColor];
+        self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.frame.size.height/2 - 25, self.frame.size.width, 50)];
+        self.gradeLabel.backgroundColor = [UIColor clearColor];
+        self.gradeLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+        self.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:48];
+        self.gradeLabel.textAlignment = NSTextAlignmentCenter;
+        
         
         [self addSubview:self.gradeLabel];
         

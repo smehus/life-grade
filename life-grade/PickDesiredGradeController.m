@@ -51,10 +51,24 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    [self performFetch];
     
     UIColor *barColour = GREEN_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
     
+    self.gradeArray = @[@{@"grade" : @"A+", @"GradeNum" : @12},
+                     @{ @"grade" : @"A", @"GradeNum" : @11},
+                     @{@"grade" : @"A-", @"GradeNum" : @10},
+                     @{@"grade" : @"B+", @"GradeNum" : @9},
+                     @{@"grade" : @"B", @"GradeNum" : @8},
+                     @{@"grade" : @"B-", @"GradeNum" : @7},
+                     @{@"grade" : @"C+", @"GradeNum" : @6},
+                     @{@"grade" : @"C", @"GradeNum" : @5},
+                     @{@"grade" : @"C-", @"GradeNum" : @4},
+                     @{@"grade" : @"D+", @"GradeNum" : @3},
+                     @{@"grade" : @"D", @"GradeNum" : @2},
+                     @{@"grade" : @"D-", @"GradeNum" : @1},
+                     @{@"grade" : @"F", @"GradeNum" : @0}];
     
     UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
     UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
@@ -90,15 +104,53 @@
     self.collectionView.dataSource = self;
     self.collectionView.contentInset = UIEdgeInsetsMake(20, 0, 100, 0);
     
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
+    [self.collectionView registerClass:[DesiredCell class] forCellWithReuseIdentifier:@"Cell"];
     
     [self.view addSubview:self.collectionView];
     
 }
 
+- (void)performFetch {
+    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
+        
+        
+        return;
+    }
+    
+    self.fetchedAnswers = [foundObjects lastObject];
+    NSLog(@"question bitch %@", self.fetchedAnswers.questionEight);
+    
+}
+
+
+
 - (void)finishedGrading {
     
+    
+    
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
+    
+    
     ActionPlanViewController *actionPlan = [[ActionPlanViewController alloc] init];
+    actionPlan.managedObjectContext = self.managedObjectContext;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionPlan];
 //    [self presentViewController:nav animated:YES completion:nil];
     [self.revealViewController setFrontViewController:nav];
@@ -116,14 +168,18 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.gradeArray.count;
 }
 
 - (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor blueColor];
+    DesiredCell *cell = (DesiredCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor clearColor];
     cell.layer.cornerRadius = 8.0f;
+    cell.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
+    
+    
+    cell.gradeLabel.text = [[self.gradeArray objectAtIndex:indexPath.row] objectForKey:@"grade"];
     
     return cell;
 }
@@ -131,6 +187,13 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"DID SELECT");
+    
+    DesiredCell *cell = (DesiredCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+    cell.gradeLabel.textColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
+    self.fetchedAnswers.desiredGrade = [NSNumber numberWithInt:55];
+    
+    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

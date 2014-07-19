@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Answers" representedClassName="Answers" syncable="YES">
+        <attribute name="actionOne" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="actionThree" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="actionTwo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="desiredGrade" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="finalGrade" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="questionEight" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -15,6 +18,6 @@
         <attribute name="questionTwo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Answers" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="Answers" positionX="-63" positionY="-18" width="128" height="270"/>
     </elements>
 </model>

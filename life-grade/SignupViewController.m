@@ -115,6 +115,13 @@
             //The registration was successful, go to the wall
             NSLog(@"***SIGNUP SUCCESS");
             
+            NSString *email = self.userNameField.text;
+            NSString *pw = self.passwordTextField.text;
+            
+            [[NSUserDefaults standardUserDefaults] setObject:email forKey:@"email"];
+            [[NSUserDefaults standardUserDefaults] setObject:pw forKey:@"password"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
             
             FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
