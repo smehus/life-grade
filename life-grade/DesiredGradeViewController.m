@@ -107,10 +107,10 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
     NSArray *ary = [dict objectForKey:@"questions"];
-    [ary enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
+    [ary enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
        
         Grade *grade = [[Grade alloc] init];
-        grade.question = obj;
+        grade.question = obj[@"question"];
     
         [self.questions addObject:grade];
         

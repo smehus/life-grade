@@ -111,11 +111,12 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
     NSArray *ary = [dict objectForKey:@"questions"];
-    [ary enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
+    [ary enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
         
         Grade *grade = [[Grade alloc] init];
-        grade.question = obj;
-        
+        grade.question = obj[@"question"];
+        grade.goodResponse = obj[@"goodResponse"];
+        grade.badResponse = obj[@"badResponse"];
         [self.questions addObject:grade];
         
     }];
@@ -259,11 +260,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    NSMutableArray *ary = [self requestGradeForGrade:[self getGradeForIndex:indexPath]];
-    NSString *ans = ary[0];
-    cell.textLabel.text = ans;
-    cell.textLabel.textColor = [UIColor blackColor];
+//    NSMutableArray *ary = [self requestGradeForGrade:[self getGradeForIndex:indexPath]];
+//    NSString *ans = ary[0];
+//    cell.textLabel.text = ans;
+//    cell.textLabel.textColor = [UIColor blackColor];
     
+    Grade *g = self.questions[indexPath.row];
+    cell.textLabel.text = g.badResponse;
     
     
     return cell;

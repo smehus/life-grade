@@ -2,20 +2,163 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>responses</key>
+	<dict>
+		<key>emotional</key>
+		<dict>
+			<key>bad</key>
+			<string>Highway of Emotions</string>
+			<key>good</key>
+			<string>You&apos;re the Boss</string>
+		</dict>
+		<key>hobbies</key>
+		<dict>
+			<key>bad</key>
+			<string></string>
+			<key>good</key>
+			<string></string>
+		</dict>
+		<key>genuine</key>
+		<dict>
+			<key>bad</key>
+			<string></string>
+			<key>good</key>
+			<string></string>
+		</dict>
+		<key>social_support</key>
+		<dict>
+			<key>bad</key>
+			<string></string>
+			<key>good</key>
+			<string></string>
+		</dict>
+		<key>physical_health</key>
+		<dict>
+			<key>bad</key>
+			<string></string>
+			<key>good</key>
+			<string></string>
+		</dict>
+		<key>contribution</key>
+		<dict>
+			<key>bad</key>
+			<string></string>
+			<key>good</key>
+			<string></string>
+		</dict>
+		<key>being_engaged</key>
+		<dict>
+			<key>bad</key>
+			<string></string>
+			<key>good</key>
+			<string></string>
+		</dict>
+		<key>job_happiness</key>
+		<dict>
+			<key>bad</key>
+			<string></string>
+			<key>good</key>
+			<string></string>
+		</dict>
+		<key>positive_thinking</key>
+		<dict>
+			<key>bad</key>
+			<string></string>
+			<key>good</key>
+			<string></string>
+		</dict>
+		<key>productivity_level</key>
+		<dict>
+			<key>bad</key>
+			<string></string>
+			<key>good</key>
+			<string></string>
+		</dict>
+	</dict>
 	<key>questionsArray</key>
 	<array/>
 	<key>questions</key>
 	<array>
-		<string>Productivity Level</string>
-		<string>Positive Thinking</string>
-		<string>Job Happiness</string>
-		<string>Being Engaged at Work and Play</string>
-		<string>Contribution &amp; Giving Back</string>
-		<string>Physical Health</string>
-		<string>Social Support &amp; Social Networks</string>
-		<string>Genuine, INtimate &amp; Deep Relationships</string>
-		<string>Hobbies &amp; Interests</string>
-		<string>Emotional Well Being</string>
+		<dict>
+			<key>badResponse</key>
+			<string>ShitBalls</string>
+			<key>goodResponse</key>
+			<string></string>
+			<key>question</key>
+			<string>Emotional Well Being</string>
+		</dict>
+		<dict>
+			<key>badResponse</key>
+			<string>ShitBalls</string>
+			<key>goodResponse</key>
+			<string></string>
+			<key>question</key>
+			<string>Hobbies &amp; Interests</string>
+		</dict>
+		<dict>
+			<key>badResponse</key>
+			<string>ShitBalls</string>
+			<key>goodResponse</key>
+			<string></string>
+			<key>question</key>
+			<string>Genuine, Intimate, and Deep Relationships</string>
+		</dict>
+		<dict>
+			<key>badResponse</key>
+			<string>ShitBalls</string>
+			<key>goodResponse</key>
+			<string></string>
+			<key>question</key>
+			<string>Social Support &amp; Social Networks</string>
+		</dict>
+		<dict>
+			<key>goodResponse</key>
+			<string></string>
+			<key>badResponse</key>
+			<string>ShitBalls</string>
+			<key>question</key>
+			<string>Physical Health</string>
+		</dict>
+		<dict>
+			<key>badResponse</key>
+			<string>ShitBalls</string>
+			<key>goodResponse</key>
+			<string></string>
+			<key>question</key>
+			<string>Contribution &amp; Giving Back</string>
+		</dict>
+		<dict>
+			<key>badResponse</key>
+			<string>ShitBalls</string>
+			<key>goodResponse</key>
+			<string></string>
+			<key>question</key>
+			<string>Being Engaged at Work &amp; at Play</string>
+		</dict>
+		<dict>
+			<key>badResponse</key>
+			<string>ShitBalls</string>
+			<key>goodResponse</key>
+			<string></string>
+			<key>question</key>
+			<string>Job Happiness</string>
+		</dict>
+		<dict>
+			<key>badResponse</key>
+			<string>ShitBalls</string>
+			<key>goodResponse</key>
+			<string></string>
+			<key>question</key>
+			<string>Positive Thinking</string>
+		</dict>
+		<dict>
+			<key>badResponse</key>
+			<string>ShitBalls</string>
+			<key>goodResponse</key>
+			<string></string>
+			<key>question</key>
+			<string>Productivity Level</string>
+		</dict>
 	</array>
 </dict>
 </plist>

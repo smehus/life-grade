@@ -15,6 +15,8 @@
 @property (nonatomic, assign) BOOL gradeSelected;
 @property (nonatomic, strong) NSNumber *gradeNum;
 @property (nonatomic, assign) BOOL isAnswered;
+@property (nonatomic, strong) NSString *goodResponse;
+@property (nonatomic, strong) NSString *badResponse;
 
 @property (nonatomic, strong) NSString *question;
 
