@@ -58,6 +58,7 @@
 		65BFF076190F511E0087511B /* HATransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF073190F511E0087511B /* HATransitionController.m */; };
 		65BFF077190F511E0087511B /* HATransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF075190F511E0087511B /* HATransitionLayout.m */; };
 		65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */; };
+		A51B180C19809D7B00C0EDA9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B180B19809D7B00C0EDA9 /* AboutViewController.m */; };
 		A52A2BA91977634A00916901 /* DesiredCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A2BA81977634A00916901 /* DesiredCell.m */; };
 		A52A2C40197ACDB400916901 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A2C3F197ACDB400916901 /* Answers.m */; };
 		A534B0241963B19600255EC2 /* SignInView.m in Sources */ = {isa = PBXBuildFile; fileRef = A534B0231963B19600255EC2 /* SignInView.m */; };
@@ -159,6 +160,8 @@
 		65BFF075190F511E0087511B /* HATransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATransitionLayout.m; sourceTree = "<group>"; };
 		65BFF078190F52A70087511B /* HAPaperCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAPaperCollectionViewController.h; sourceTree = "<group>"; };
 		65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAPaperCollectionViewController.m; sourceTree = "<group>"; };
+		A51B180A19809D7B00C0EDA9 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		A51B180B19809D7B00C0EDA9 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		A52A2BA71977634A00916901 /* DesiredCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesiredCell.h; sourceTree = "<group>"; };
 		A52A2BA81977634A00916901 /* DesiredCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesiredCell.m; sourceTree = "<group>"; };
 		A52A2C3E197ACDB400916901 /* Answers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answers.h; sourceTree = "<group>"; };
@@ -250,6 +253,7 @@
 		655EC60E18DF5FE20036515F /* life-grade */ = {
 			isa = PBXGroup;
 			children = (
+				A51B180919809D6900C0EDA9 /* AboutController */,
 				A53330511968E06700647398 /* DesiredGrade */,
 				A53330501968DF6300647398 /* Grading */,
 				A534B0211963B18100255EC2 /* Views */,
@@ -368,6 +372,15 @@
 				65714FFC191475080034009A /* HASmallCollectionViewController.m */,
 			);
 			name = HAPaper;
+			sourceTree = "<group>";
+		};
+		A51B180919809D6900C0EDA9 /* AboutController */ = {
+			isa = PBXGroup;
+			children = (
+				A51B180A19809D7B00C0EDA9 /* AboutViewController.h */,
+				A51B180B19809D7B00C0EDA9 /* AboutViewController.m */,
+			);
+			name = AboutController;
 			sourceTree = "<group>";
 		};
 		A52A2BAA1978A5F300916901 /* Attributes */ = {
@@ -653,6 +666,7 @@
 				A5C08C7F193B650300887F83 /* Model.xcdatamodeld in Sources */,
 				A534B0241963B19600255EC2 /* SignInView.m in Sources */,
 				65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */,
+				A51B180C19809D7B00C0EDA9 /* AboutViewController.m in Sources */,
 				A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */,
 				A52A2BA91977634A00916901 /* DesiredCell.m in Sources */,
 				65BFF070190F4CF90087511B /* HACollectionViewSmallLayout.m in Sources */,

@@ -82,7 +82,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
     
-    
+    self.managedObjectContext = delegate.managedObjectContext;
     
     
 }
@@ -92,7 +92,7 @@
     [super viewDidLoad];
     
     delegate = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
-    
+
     didFetchAnswers = NO;
     
     
@@ -177,12 +177,36 @@
     if (self.fetchedAnswers != nil) {
         NSLog(@"*** loaded old answer");
         
+        
+        [self setTheFetchedGrades];
         didFetchAnswers = YES;
+        self.nextButton.enabled = YES;
+        
         
         
     }
     
 }
+
+- (void)setTheFetchedGrades {
+    
+
+    for (int i = 0; i < 10; i++) {
+        
+        NSNumber *var = [self getGradeForIndex:[NSIndexPath indexPathForRow:i inSection:0]];
+        var = (var) ? var : [NSNumber numberWithInt:5];
+        NSLog(@"***VAR %i %@", i, var);
+        Grade *g = [[Grade alloc] init];
+        g.gradeNum = var;
+        [self.myGrades addObject:g];
+        
+    }
+
+    
+
+}
+
+
 
 
 - (void)performFetch {

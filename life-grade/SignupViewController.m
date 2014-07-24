@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "SignInView.h"
 #import "FinalGradeViewController.h"
+#import "SWRevealViewController.h"
 
 @interface SignupViewController () <UITextFieldDelegate>
 
@@ -17,6 +18,7 @@
 @property (nonatomic, strong) UITextField *passwordTextField;
 @property (nonatomic, strong) UITextField *passwordConfirmation;
 @property (nonatomic, strong) UIButton *signUp;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 
 @end
 
@@ -42,6 +44,16 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
+    
+    UIBarButtonItem *barbut = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealToggle:)];
+    [barbut setTintColor:[UIColor blackColor]];
+    self.navigationItem.leftBarButtonItem = barbut;
+    
+    
+    self.revealButton = barbut;
+    [self.revealButton setTarget: self.revealViewController];
+    [self.revealButton setAction: @selector( revealToggle: )];
+    
     
     
     UILabel *greeting = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.view.frame.size.width, 50)];
@@ -125,7 +137,7 @@
             
             FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
-            [self presentViewController:nav animated:YES completion:nil];
+            [self.revealViewController setFrontViewController:nav];
             
             
             

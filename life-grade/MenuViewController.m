@@ -12,6 +12,10 @@
 #import "PickDesiredGradeController.h"
 #import "ActionPlanViewController.h"
 #import "FinalGradeViewController.h"
+#import "AboutViewController.h"
+#import "AttributesViewController.h"
+#import <Parse/Parse.h>
+#import "OpeningViewController.h"
 
 @interface MenuViewController ()
 
@@ -35,7 +39,7 @@
 - (void)viewDidLoad
 {
     
-    self.titleArray = @[@"Grading", @"Desired Grade", @"Steps", @"My Grade", @"About", @"Log Out"];
+    self.titleArray = @[@"Grading", @"Desired Grade", @"Steps", @"Attributes", @"My Grade", @"About", @"Log Out"];
     
     NSLog(@"MENU LOADED");
      self.tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
@@ -109,6 +113,13 @@
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:desiredView];
         [self.myRevealController pushFrontViewController:nav animated:YES];
         
+    } else if (indexPath.row == 1) {
+        
+        PickDesiredGradeController *pickDesire = [[PickDesiredGradeController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:pickDesire];
+        [self.myRevealController pushFrontViewController:nav animated:YES];
+        
+        
     } else if (indexPath.row == 2) {
         
         ActionPlanViewController *desiredController = [[ActionPlanViewController alloc] init];
@@ -116,13 +127,34 @@
         [self.myRevealController pushFrontViewController:nav animated:YES];
     } else if (indexPath.row == 3) {
         
+        AttributesViewController *attsController = [[AttributesViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:attsController];
+        [self.myRevealController pushFrontViewController:nav animated:YES];
+        
+    
+    } else if (indexPath.row == 4) {
+        
         FinalGradeViewController *finalontroller = [[FinalGradeViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalontroller];
         [self.myRevealController pushFrontViewController:nav animated:YES];
     
         
+    } else if (indexPath.row == 5) {
+        
+        AboutViewController *aboutController = [[AboutViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:aboutController];
+        [self.myRevealController pushFrontViewController:nav animated:YES];
+        
+    } else if (indexPath.row == 6) {
+        
+        NSLog(@"***LOG OUT");
+        
+        [PFUser logOut];
+        OpeningViewController *opening = [[OpeningViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:opening];
+        [self.myRevealController pushFrontViewController:nav animated:YES];
+        
     }
-    
 }
 
 
