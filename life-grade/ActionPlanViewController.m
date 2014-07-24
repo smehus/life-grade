@@ -113,25 +113,40 @@
 - (void)setupTextFields {
     
     
-    self.firstDesire = [[UITextField alloc] initWithFrame:CGRectMake(10, 50 + 64, self.view.frame.size.width - 20, 75)];
+    self.firstDesire = [[UITextField alloc] initWithFrame:CGRectMake(10, 50 + 64, self.view.frame.size.width - 20, 50)];
     self.firstDesire.placeholder = @"First Desire";
     self.firstDesire.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.firstDesire.layer.borderWidth = 1.0f;
     self.firstDesire.backgroundColor = [UIColor whiteColor];
+    self.firstDesire.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
+    self.firstDesire.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
+    if (self.fetchedAnswers.actionOne) {
+        self.firstDesire.text = self.fetchedAnswers.actionOne;
+    }
     [self.view addSubview:self.firstDesire];
     
-    self.secondDesire = [[UITextField alloc] initWithFrame:CGRectMake(10, self.firstDesire.frame.origin.y + self.firstDesire.frame.size.height + 20, self.view.frame.size.width - 20, 75)];
+    self.secondDesire = [[UITextField alloc] initWithFrame:CGRectMake(10, self.firstDesire.frame.origin.y + self.firstDesire.frame.size.height + 20, self.view.frame.size.width - 20, 50)];
     self.secondDesire.placeholder = @"Second Desire";
     self.secondDesire.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.secondDesire.layer.borderWidth = 1.0f;
     self.secondDesire.backgroundColor = [UIColor whiteColor];
+    self.secondDesire.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
+    self.secondDesire.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
+    if (self.fetchedAnswers.actionTwo) {
+        self.secondDesire.text = self.fetchedAnswers.actionTwo;
+    }
     [self.view addSubview:self.secondDesire];
     
-    self.thirdDesire = [[UITextField alloc] initWithFrame:CGRectMake(10, self.secondDesire.frame.origin.y + self.secondDesire.frame.size.height + 20, self.view.frame.size.width - 20, 75)];
+    self.thirdDesire = [[UITextField alloc] initWithFrame:CGRectMake(10, self.secondDesire.frame.origin.y + self.secondDesire.frame.size.height + 20, self.view.frame.size.width - 20, 50)];
     self.thirdDesire.placeholder = @"Third Desire";
     self.thirdDesire.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.thirdDesire.layer.borderWidth = 1.0f;
     self.thirdDesire.backgroundColor = [UIColor whiteColor];
+    self.thirdDesire.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
+    self.thirdDesire.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
+    if (self.fetchedAnswers.actionThree) {
+        self.thirdDesire.text = self.fetchedAnswers.actionThree;
+    }
     [self.view addSubview:self.thirdDesire];
     
     UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.thirdDesire.frame.size.height + self.thirdDesire.frame.origin.y + 20, self.view.frame.size.width, 50)];

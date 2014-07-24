@@ -154,9 +154,6 @@
         [self.revealViewController setFrontViewController:nav];
    
     }
-    
-
-    
 
 }
 

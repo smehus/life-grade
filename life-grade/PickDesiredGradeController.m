@@ -197,7 +197,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"DID SELECT");
+    NSLog(@"DID SELECT %@", indexPath);
 
     DesiredCell *oldCell = (DesiredCell*)[collectionView cellForItemAtIndexPath:self.selectedCell];
     oldCell.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];

@@ -132,7 +132,7 @@
     
     UIColor *sectionsColor = [UIColor colorWithRed:62.0f/255.0f green:119.0f/255.0f blue:190.0f/255.0f alpha:1.0f];
     UIColor *sectionTitleColor = [UIColor whiteColor];
-    UIFont *sectionTitleFont = [UIFont fontWithName:@"Futura" size:24.0f];
+    UIFont *sectionTitleFont = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
     
     EMAccordionSection *section01 = [[EMAccordionSection alloc] init];
     [section01 setBackgroundColor:sectionsColor];
