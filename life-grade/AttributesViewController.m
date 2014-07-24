@@ -12,16 +12,24 @@
 #import "FinalGradeViewController.h"
 #import "SWRevealViewController.h"
 #import "SignupViewController.h"
+#import <Parse/Parse.h>
+#import "MainAppDelegate.h"
+#import "Answers.h"
 
 @interface AttributesViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *selectedAttributes;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
+@property (nonatomic, strong) Answers *fetchedAnswers;
 
 @end
 
-@implementation AttributesViewController
+@implementation AttributesViewController {
+    
+    MainAppDelegate *del;
+    
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,8 +43,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    del = (MainAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    if (!self.managedObjectContext) {
+        self.managedObjectContext = del.managedObjectContext;
+    }
+    
+    [self performFetch];
     
     UIColor *barColour = GREEN_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
@@ -93,13 +110,52 @@
 
 }
 
+- (void)performFetch {
+    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
+        
+        
+        return;
+    }
+    
+    self.fetchedAnswers = [foundObjects lastObject];
+    NSLog(@"question bitch %@", self.fetchedAnswers.questionEight);
+    
+}
+
 - (void)doneButton {
     
     NSLog(@"***DONE PRESSED");
 //    FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
-    SignupViewController *signUp = [[SignupViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:signUp];
-    [self.revealViewController setFrontViewController:nav];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+
+        FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
+        [self.revealViewController setFrontViewController:nav];
+        
+    } else {
+        
+        SignupViewController *signUp = [[SignupViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:signUp];
+        [self.revealViewController setFrontViewController:nav];
+   
+    }
+    
+
     
 
 }
@@ -112,6 +168,11 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     AttributesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    if (self.fetchedAnswers) {
+        // still have to add attributes to model
+        
+    }
     
     cell.backgroundColor = [UIColor clearColor];
     cell.headerLabel.text = @"BallsDick";

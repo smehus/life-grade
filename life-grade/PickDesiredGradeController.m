@@ -26,6 +26,8 @@
 @property (nonatomic, strong) NSNumber *selectedGrade;
 @property (nonatomic, strong) Answers *fetchedAnswers;
 
+@property (nonatomic, strong) NSIndexPath *selectedCell;
+
 
 @end
 
@@ -50,6 +52,11 @@
     [super viewDidLoad];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    if (!self.managedObjectContext) {
+        self.managedObjectContext = del.managedObjectContext;
+    }
     
     [self performFetch];
     
@@ -112,9 +119,6 @@
 
 - (void)performFetch {
     
-    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
     
@@ -138,9 +142,6 @@
 
 
 - (void)finishedGrading {
-    
-    
-    
     
     NSError *error;
     if (![self.managedObjectContext save:&error]) {
@@ -177,9 +178,19 @@
     cell.backgroundColor = [UIColor clearColor];
     cell.layer.cornerRadius = 8.0f;
     cell.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
+
+    if (self.fetchedAnswers.desiredGrade) {
+        self.selectedCell = [NSIndexPath indexPathForRow:[self.fetchedAnswers.desiredGrade intValue] inSection:0];
+        if (indexPath.row == self.selectedCell.row) {
+            
+            cell.backgroundColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+            cell.gradeLabel.textColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
+            
+        }
+    }
     
+    cell.gradeLabel.text = [[self.gradeArray objectAtIndex:indexPath.row] objectForKey:@"grade"];    
     
-    cell.gradeLabel.text = [[self.gradeArray objectAtIndex:indexPath.row] objectForKey:@"grade"];
     
     return cell;
 }
@@ -187,13 +198,17 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"DID SELECT");
+
+    DesiredCell *oldCell = (DesiredCell*)[collectionView cellForItemAtIndexPath:self.selectedCell];
+    oldCell.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
+    oldCell.gradeLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
     
     DesiredCell *cell = (DesiredCell*)[collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
     cell.gradeLabel.textColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
-    self.fetchedAnswers.desiredGrade = [NSNumber numberWithInt:55];
+    self.selectedCell = indexPath;
     
-    
+    self.fetchedAnswers.desiredGrade = [NSNumber numberWithInteger:indexPath.row];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
