@@ -69,10 +69,19 @@
         
         NSLog(@"CURRENT USER FOUND");
         
+        // does all error handling for login matter if just using cache?
+        
         self.finalGradeController = [[FinalGradeViewController alloc] init];
         navCon = [[UINavigationController alloc] initWithRootViewController:self.finalGradeController];
         
     } else if (password != nil && email != nil) {
+        
+        
+        // CREATE LIMMBO CONTROLLER so that we can navigate based on sign in success.
+        // if can't sign in because of no internet - if core data available && password/username or current user
+        // continue as if signed in
+        //blurred view until signin success or failure
+        // error if fauilture - error handling bullshit
         
         self.finalGradeController = [[FinalGradeViewController alloc] init];
         navCon = [[UINavigationController alloc] initWithRootViewController:self.finalGradeController];
@@ -85,8 +94,7 @@
             } else {
                 
                 NSLog(@"SIGNIN FAIL");
-
-                
+   
             }
         }];
         

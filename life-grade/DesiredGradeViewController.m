@@ -583,6 +583,7 @@
         self.fetchedAnswers.questionTen = [[self.myGrades objectAtIndex:9] gradeNum];
         
         
+        
     } else {
     Answers *answers = [NSEntityDescription insertNewObjectForEntityForName:@"Answers" inManagedObjectContext:self.managedObjectContext];
     
@@ -597,6 +598,22 @@
     answers.questionNine = [[self.myGrades objectAtIndex:8] gradeNum];
     answers.questionTen = [[self.myGrades objectAtIndex:9] gradeNum];
     }
+    
+    
+    PFObject *post = [PFObject objectWithClassName:@"Post"];
+    post[@"questionOne"] = [[self.myGrades objectAtIndex:0] gradeNum];
+    post[@"questionTwo"] = [[self.myGrades objectAtIndex:1] gradeNum];
+    post[@"questionThree"] = [[self.myGrades objectAtIndex:2] gradeNum];
+    post[@"questionFour"] = [[self.myGrades objectAtIndex:3] gradeNum];
+    post[@"questionFive"] = [[self.myGrades objectAtIndex:4] gradeNum];
+    post[@"questionSix"] = [[self.myGrades objectAtIndex:5] gradeNum];
+    post[@"questionSeven"] = [[self.myGrades objectAtIndex:6] gradeNum];
+    post[@"questionEight"] = [[self.myGrades objectAtIndex:7] gradeNum];
+    post[@"questionNine"] = [[self.myGrades objectAtIndex:8] gradeNum];
+    post[@"questionTen"] = [[self.myGrades objectAtIndex:9] gradeNum];
+    post[@"user"] = delegate.currentUser;
+    [post save];
+    
     
     NSError *error;
     if (![self.managedObjectContext save:&error]) {

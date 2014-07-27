@@ -192,6 +192,7 @@
         
         NSLog(@"***LOG OUT");
         
+        
         [PFUser logOut];
         
         [self.managedObjectContext deleteObject:self.fetchedAnswers];

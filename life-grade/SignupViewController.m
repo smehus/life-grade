@@ -11,6 +11,7 @@
 #import "SignInView.h"
 #import "FinalGradeViewController.h"
 #import "SWRevealViewController.h"
+#import "MONActivityIndicatorView.h"
 
 @interface SignupViewController () <UITextFieldDelegate>
 
@@ -22,7 +23,9 @@
 
 @end
 
-@implementation SignupViewController
+@implementation SignupViewController {
+    MONActivityIndicatorView *indicatorView;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -94,6 +97,8 @@
     [signIn.titleLabel setTintColor:[UIColor blackColor]];
     [signIn addTarget:self action:@selector(signIn) forControlEvents:UIControlEventTouchUpInside];
     
+    indicatorView = [[MONActivityIndicatorView alloc] init];
+    [self.view addSubview:indicatorView];
     
     
     [self.view addSubview:greeting];
@@ -112,7 +117,10 @@
 
 - (void)signMeUp {
     
+
     NSLog(@"***SIGNUP");
+    
+    [indicatorView startAnimating];
     
     //1
     PFUser *user = [PFUser user];
@@ -123,6 +131,7 @@
     
     //3
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [indicatorView stopAnimating];
         if (!error) {
             //The registration was successful, go to the wall
             NSLog(@"***SIGNUP SUCCESS");
@@ -155,11 +164,13 @@
 - (void)signIn {
     
     NSLog(@"SIGNIN");
+    [indicatorView startAnimating];
     CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     SignInView *view = [[SignInView alloc] initWithFrame:rect withBlock:^(NSString *email, NSString *password) {
         NSLog(@"SIGNUPDONEBALLS %@ %@", email, password);
         
         [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
+            [indicatorView stopAnimating];
             if (user) {
                 
                 FinalGradeViewController *final = [[FinalGradeViewController alloc] init];
