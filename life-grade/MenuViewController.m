@@ -16,16 +16,26 @@
 #import "AttributesViewController.h"
 #import <Parse/Parse.h>
 #import "OpeningViewController.h"
+#import "MainAppDelegate.h"
+#import "Answers.h"
+#import <CoreData/CoreData.h>
 
 @interface MenuViewController ()
 
 
 @property (nonatomic, strong) SWRevealViewController *myRevealController;
 @property (nonatomic, strong) NSMutableArray *titleArray;
-
+@property (nonatomic, strong) Answers *fetchedAnswers;
+@property (nonatomic, strong) NSMutableArray *allAnswers;
 @end
 
-@implementation MenuViewController
+@implementation MenuViewController {
+
+    MainAppDelegate *del;
+    
+}
+
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -61,6 +71,32 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+}
+
+- (void)performFetch {
+    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
+        
+        
+        return;
+    }
+    
+    self.fetchedAnswers = [foundObjects lastObject];
+    self.allAnswers = [NSMutableArray arrayWithArray:foundObjects];
+    NSLog(@"question bitch %@", self.fetchedAnswers);
     
 }
 
@@ -150,6 +186,8 @@
         NSLog(@"***LOG OUT");
         
         [PFUser logOut];
+        
+        
         OpeningViewController *opening = [[OpeningViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:opening];
         [self.myRevealController pushFrontViewController:nav animated:YES];

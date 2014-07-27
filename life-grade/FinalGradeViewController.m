@@ -60,7 +60,7 @@
     [self.view addSubview:bg];
     [self.view sendSubviewToBack:bg];
     
-    self.title = @"My Grade";
+    self.title = @"Final Grade";
     
     
     float avg = [self.finalGradeValue floatValue];

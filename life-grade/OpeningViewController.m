@@ -12,6 +12,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AttributesViewController.h"
 #import "PickDesiredGradeController.h"
+#import "SignInView.h"
+#import <Parse/Parse.h>
+#import "FinalGradeViewController.h"
 
 
 
@@ -137,9 +140,62 @@
     self.GradeLabel.frame = CGRectMake(self.LifeLabel.frame.origin.x + 25,
                                        self.LifeLabel.frame.size.height + 60, 320, gradeSize);
     
+    UIButton *signInButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [signInButton setFrame:CGRectMake(0, CGRectGetMaxY(self.GradeLabel.frame) + 110, self.view.frame.size.width, 30)];
+    [signInButton setTitle:@"Already a member?" forState:UIControlStateNormal];
+    [signInButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:25]];
+    [signInButton addTarget:self action:@selector(signIn) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    [self.scrollView addSubview:signInButton];
     [self.scrollView addSubview:self.LifeLabel];
     [self.scrollView addSubview:self.GradeLabel];
+}
+
+- (void)signIn {
+    
+    NSLog(@"SIGNIN");
+    CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    SignInView *view = [[SignInView alloc] initWithFrame:rect withBlock:^(NSString *email, NSString *password) {
+        NSLog(@"SIGNUPDONEBALLS %@ %@", email, password);
+        
+        [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
+            if (user) {
+                
+                FinalGradeViewController *final = [[FinalGradeViewController alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:final];
+                [self.revealViewController setFrontViewController:nav];
+                
+                NSLog(@"SIGNIN SUCCESS");
+                
+                // Need to set fetched grades from parse
+                
+                
+            } else {
+                
+                NSString *errorString = [[error userInfo] objectForKey:@"error"];
+                UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [errorAlertView show];
+            }
+        }];
+        
+        
+    }];
+    view.alpha = 0.0f;
+    [self.view addSubview:view];
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        view.alpha = 1.0f;
+        
+    } completion:^(BOOL finished) {
+        
+        
+    }];
+    
+
+    
+    
+    
 }
 
 - (void)setUpPageTwo {

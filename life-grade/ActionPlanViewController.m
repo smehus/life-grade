@@ -61,7 +61,7 @@
     [self.view addSubview:bg];
     [self.view sendSubviewToBack:bg];
     
-    self.title = @"Desired Grade";
+    self.title = @"Action Plan";
     
     
     UIBarButtonItem *barbut = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealToggle:)];

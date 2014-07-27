@@ -92,6 +92,9 @@
     [super viewDidLoad];
     
     delegate = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    if (!self.managedObjectContext) {
+        self.managedObjectContext = delegate.managedObjectContext;
+    }
 
     didFetchAnswers = NO;
     
@@ -149,7 +152,7 @@
     self.nextButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = self.nextButton;
     
-    
+    self.title = @"My Grade";
 
     self.revealButton = barbut;
     
@@ -182,10 +185,7 @@
         didFetchAnswers = YES;
         self.nextButton.enabled = YES;
         
-        
-        
     }
-    
 }
 
 - (void)setTheFetchedGrades {
@@ -226,8 +226,10 @@
         return;
     }
     
+    
+    
     self.fetchedAnswers = [foundObjects lastObject];
-    NSLog(@"question bitch %@", self.fetchedAnswers.questionEight);
+    NSLog(@"question bitch %@", self.fetchedAnswers);
     
 }
 
@@ -567,7 +569,21 @@
 //    }
 //    
 //    
-    
+    if (didFetchAnswers) {
+        
+        self.fetchedAnswers.questionOne = [[self.myGrades objectAtIndex:0] gradeNum];
+        self.fetchedAnswers.questionTwo = [[self.myGrades objectAtIndex:1] gradeNum];
+        self.fetchedAnswers.questionThree = [[self.myGrades objectAtIndex:2] gradeNum];
+        self.fetchedAnswers.questionFour = [[self.myGrades objectAtIndex:3] gradeNum];
+        self.fetchedAnswers.questionFive = [[self.myGrades objectAtIndex:4] gradeNum];
+        self.fetchedAnswers.questionSix = [[self.myGrades objectAtIndex:5] gradeNum];
+        self.fetchedAnswers.questionSeven = [[self.myGrades objectAtIndex:6] gradeNum];
+        self.fetchedAnswers.questionEight = [[self.myGrades objectAtIndex:7] gradeNum];
+        self.fetchedAnswers.questionNine = [[self.myGrades objectAtIndex:8] gradeNum];
+        self.fetchedAnswers.questionTen = [[self.myGrades objectAtIndex:9] gradeNum];
+        
+        
+    } else {
     Answers *answers = [NSEntityDescription insertNewObjectForEntityForName:@"Answers" inManagedObjectContext:self.managedObjectContext];
     
     answers.questionOne = [[self.myGrades objectAtIndex:0] gradeNum];
@@ -580,7 +596,7 @@
     answers.questionEight = [[self.myGrades objectAtIndex:7] gradeNum];
     answers.questionNine = [[self.myGrades objectAtIndex:8] gradeNum];
     answers.questionTen = [[self.myGrades objectAtIndex:9] gradeNum];
-    
+    }
     
     NSError *error;
     if (![self.managedObjectContext save:&error]) {
