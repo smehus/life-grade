@@ -611,7 +611,11 @@
     post[@"questionEight"] = [[self.myGrades objectAtIndex:7] gradeNum];
     post[@"questionNine"] = [[self.myGrades objectAtIndex:8] gradeNum];
     post[@"questionTen"] = [[self.myGrades objectAtIndex:9] gradeNum];
-//    post[@"user"] = delegate.currentUser;
+    
+    NSString *us = delegate.currentUser;
+    
+    
+    post[@"user"] = delegate.currentUser;
     [post save];
     
     
