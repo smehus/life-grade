@@ -69,6 +69,7 @@
     self.emailTextField.placeholder = @"E-mail address";
     UIColor *greyC = GREY_COLOR;
     self.emailTextField.layer.borderColor = greyC.CGColor;
+    self.emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
     
     UILabel *pwLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.emailTextField.frame) + 5, self.frame.size.width, 30)];
     pwLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:16];
@@ -80,6 +81,7 @@
     self.passwordTextField.placeholder = @"LifeGrade Password";
     self.passwordTextField.secureTextEntry = YES;
     self.passwordTextField.layer.borderColor = greyC.CGColor;
+    self.passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
     
     self.signIn = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.passwordTextField.frame) + 15, self.frame.size.width, 50)];
     [self.signIn setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];

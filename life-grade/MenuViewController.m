@@ -48,7 +48,8 @@
 
 - (void)viewDidLoad
 {
-    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    [self performFetch];
     self.titleArray = @[@"Grading", @"Desired Grade", @"Steps", @"Attributes", @"My Grade", @"About", @"Log Out"];
     
     NSLog(@"MENU LOADED");
@@ -62,7 +63,13 @@
 - (void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:YES];
+    [self performFetch];
     NSLog(@"MENU APPEARED");
+    
+    
+    if (!self.managedObjectContext) {
+        self.managedObjectContext = del.managedObjectContext;
+    }
     
 //     self.tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
 }
@@ -76,7 +83,7 @@
 
 - (void)performFetch {
     
-    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+
     
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -186,6 +193,14 @@
         NSLog(@"***LOG OUT");
         
         [PFUser logOut];
+        
+        [self.managedObjectContext deleteObject:self.fetchedAnswers];
+        
+        NSError *error = nil;
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
+            return;
+        }
         
         
         OpeningViewController *opening = [[OpeningViewController alloc] init];

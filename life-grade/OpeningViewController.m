@@ -262,7 +262,7 @@
     title.text = @"Step One: Things to think about";
     title.textColor = GREY_COLOR;
     title.textAlignment = NSTextAlignmentCenter;
-    title.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+    title.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:35];
     
     UIImage *arrowImg = [UIImage imageNamed:@"blue-arrow--"];
     UIImageView *firstArrow = [[UIImageView alloc] initWithImage:arrowImg];
