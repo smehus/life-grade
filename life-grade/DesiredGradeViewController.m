@@ -600,7 +600,7 @@
     }
     
     
-    PFObject *post = [PFObject objectWithClassName:@"Post"];
+    PFObject *post = [PFObject objectWithClassName:@"Grade"];
     post[@"questionOne"] = [[self.myGrades objectAtIndex:0] gradeNum];
     post[@"questionTwo"] = [[self.myGrades objectAtIndex:1] gradeNum];
     post[@"questionThree"] = [[self.myGrades objectAtIndex:2] gradeNum];
@@ -611,7 +611,7 @@
     post[@"questionEight"] = [[self.myGrades objectAtIndex:7] gradeNum];
     post[@"questionNine"] = [[self.myGrades objectAtIndex:8] gradeNum];
     post[@"questionTen"] = [[self.myGrades objectAtIndex:9] gradeNum];
-    post[@"user"] = delegate.currentUser;
+//    post[@"user"] = delegate.currentUser;
     [post save];
     
     
