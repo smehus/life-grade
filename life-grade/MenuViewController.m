@@ -202,6 +202,12 @@
             return;
         }
         
+        NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+        for (NSString *key in [defaultsDictionary allKeys]) {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+        }
+        
+        
         
         OpeningViewController *opening = [[OpeningViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:opening];
