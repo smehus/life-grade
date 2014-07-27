@@ -599,6 +599,12 @@
     answers.questionTen = [[self.myGrades objectAtIndex:9] gradeNum];
     }
     
+    NSString *email = [[NSUserDefaults standardUserDefaults]
+                       stringForKey:@"email"];
+    
+    NSString *password = [[NSUserDefaults standardUserDefaults]
+                          stringForKey:@"password"];
+    
     
     PFObject *post = [PFObject objectWithClassName:@"Grade"];
     post[@"questionOne"] = [[self.myGrades objectAtIndex:0] gradeNum];
@@ -612,10 +618,15 @@
     post[@"questionNine"] = [[self.myGrades objectAtIndex:8] gradeNum];
     post[@"questionTen"] = [[self.myGrades objectAtIndex:9] gradeNum];
     
-    NSString *us = delegate.currentUser;
+    if (delegate.currentUser) {
+        post[@"user"] = delegate.currentUser;
+    } else if (email) {
+        post[@"backupEmail"] = email;
+    } else {
+        
+        NSLog(@" ");
+    }
     
-    
-    post[@"user"] = delegate.currentUser;
     [post save];
     
     
