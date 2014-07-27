@@ -624,7 +624,7 @@
         post[@"backupEmail"] = email;
     } else {
         
-        NSLog(@" ");
+        NSLog(@"no current user and no user defaults");
     }
     
     [post save];
