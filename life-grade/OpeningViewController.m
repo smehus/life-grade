@@ -121,6 +121,9 @@
 
 - (void)setUpPageOne {
     
+    self.title = @"Welcome";
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor], NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Thin" size:24.0f]};
+    
     
     // unused
     self.scrollView.backgroundColor = [UIColor clearColor];
