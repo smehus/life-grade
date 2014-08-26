@@ -152,7 +152,7 @@
     self.nextButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = self.nextButton;
     
-    self.title = @"My Grade";
+    self.title = @"Step One: Current Grade";
 
     self.revealButton = barbut;
     
