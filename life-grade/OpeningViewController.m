@@ -272,33 +272,16 @@
     title.text = @"Step One: Things to think about";
     title.textColor = GREY_COLOR;
     title.textAlignment = NSTextAlignmentCenter;
-    title.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:35];
+    title.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     
     UIImage *arrowImg = [UIImage imageNamed:@"blue-arrow--"];
     UIImageView *firstArrow = [[UIImageView alloc] initWithImage:arrowImg];
-    firstArrow.frame = CGRectMake(20, 50, arrowImg.size.width+20, arrowImg.size.height+20);
+    firstArrow.frame = CGRectMake(20, 25, arrowImg.size.width+20, arrowImg.size.height+20);
     
-    UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, 70, 150, 50)];
+    UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, 50, 150, 50)];
     current.text = @"Current Grade";
     current.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
-    
-    
-    UIImageView *secondArrow = [[UIImageView alloc] initWithImage:arrowImg];
-    secondArrow.frame = CGRectMake(20, 100, arrowImg.size.width+20, arrowImg.size.height+20);
-    
-    UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(100, 120, 150, 50)];
-    desired.text = @"Desired Grade";
-    desired.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
-    
-    
-    UIImageView *threeArrow = [[UIImageView alloc] initWithImage:arrowImg];
-    threeArrow.frame = CGRectMake(20, 150, arrowImg.size.width+20, arrowImg.size.height+20);
-    
-    UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(100, 170, 150, 50)];
-    action.text = @"Action Plan";
-    action.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
-    
-    
+  
     self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 50)];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [self.startButton addTarget:self action:@selector(openGradeController) forControlEvents:UIControlEventTouchUpInside];
@@ -311,12 +294,6 @@
     
     [view addSubview:firstArrow];
     [view addSubview:current];
-    
-    [view addSubview:secondArrow];
-    [view addSubview:desired];
-    
-    [view addSubview:threeArrow];
-    [view addSubview:action];
     
      [view addSubview:self.startButton];
     [self.scrollView addSubview:view];
