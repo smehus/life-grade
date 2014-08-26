@@ -122,7 +122,7 @@
 - (void)setUpPageOne {
     
     
-    
+    // unused
     self.scrollView.backgroundColor = [UIColor clearColor];
     self.LifeLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 50, 150, 50)];
     self.LifeLabel.textColor = GREY_COLOR;
@@ -130,6 +130,11 @@
     CGFloat fontSize = self.LifeLabel.font.pointSize;
     self.LifeLabel.frame = CGRectMake(25, 50, 150, fontSize);
     self.LifeLabel.text = @"Life";
+    
+    UIImage *logo = [UIImage imageNamed:@"life_grade_logo.png"];
+    UIImageView *logoView = [[UIImageView alloc] initWithImage:logo];
+    logoView.frame = CGRectMake(0, 75, self.view.frame.size.width, 100);
+    logoView.contentMode = UIViewContentModeScaleAspectFit;
     
     self.GradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.LifeLabel.frame.size.width + 50,
                                                                 self.LifeLabel.frame.size.height + 60, 150, 50)];
@@ -148,8 +153,9 @@
     
     
     [self.scrollView addSubview:signInButton];
-    [self.scrollView addSubview:self.LifeLabel];
-    [self.scrollView addSubview:self.GradeLabel];
+//    [self.scrollView addSubview:self.LifeLabel];
+//    [self.scrollView addSubview:self.GradeLabel];
+    [self.scrollView addSubview:logoView];
 }
 
 - (void)signIn {

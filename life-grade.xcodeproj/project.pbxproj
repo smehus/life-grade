@@ -58,6 +58,7 @@
 		65BFF076190F511E0087511B /* HATransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF073190F511E0087511B /* HATransitionController.m */; };
 		65BFF077190F511E0087511B /* HATransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF075190F511E0087511B /* HATransitionLayout.m */; };
 		65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */; };
+		A50D5DA719AC2A4900A85175 /* life_grade_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A50D5DA619AC2A4900A85175 /* life_grade_logo.png */; };
 		A51B180C19809D7B00C0EDA9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B180B19809D7B00C0EDA9 /* AboutViewController.m */; };
 		A52A2BA91977634A00916901 /* DesiredCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A2BA81977634A00916901 /* DesiredCell.m */; };
 		A52A2C40197ACDB400916901 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A2C3F197ACDB400916901 /* Answers.m */; };
@@ -160,6 +161,7 @@
 		65BFF075190F511E0087511B /* HATransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATransitionLayout.m; sourceTree = "<group>"; };
 		65BFF078190F52A70087511B /* HAPaperCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAPaperCollectionViewController.h; sourceTree = "<group>"; };
 		65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAPaperCollectionViewController.m; sourceTree = "<group>"; };
+		A50D5DA619AC2A4900A85175 /* life_grade_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = life_grade_logo.png; sourceTree = "<group>"; };
 		A51B180A19809D7B00C0EDA9 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		A51B180B19809D7B00C0EDA9 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		A52A2BA71977634A00916901 /* DesiredCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesiredCell.h; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 		65714FFF191482700034009A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A50D5DA619AC2A4900A85175 /* life_grade_logo.png */,
 				65715000191482880034009A /* Iphone assets-2 */,
 			);
 			name = Resources;
@@ -568,6 +571,7 @@
 				65715012191482880034009A /* Blue-box-2-@2x.png in Resources */,
 				655EC62118DF5FE20036515F /* Images.xcassets in Resources */,
 				6571501B191482880034009A /* mind-set-blue-@2x.png in Resources */,
+				A50D5DA719AC2A4900A85175 /* life_grade_logo.png in Resources */,
 				6571501E191482880034009A /* Red-arrow-2-@2x.png in Resources */,
 				65715016191482880034009A /* empty-Black-box-@2x.png in Resources */,
 				A54B6B1819279F6B000AA8D7 /* Data.plist in Resources */,
@@ -812,7 +816,7 @@
 				GCC_PREFIX_HEADER = "life-grade/life-grade-Prefix.pch";
 				INFOPLIST_FILE = "life-grade/life-grade-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "E88A23E7-FF3F-4F75-86EB-CF37532E390F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -823,7 +827,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Scott Mehus (4HWQ95CTCF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -834,7 +838,7 @@
 				GCC_PREFIX_HEADER = "life-grade/life-grade-Prefix.pch";
 				INFOPLIST_FILE = "life-grade/life-grade-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4731E117-400B-4D2C-8FE5-305ED4402E3B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
