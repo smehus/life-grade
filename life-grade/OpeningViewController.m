@@ -212,9 +212,10 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(viewSize.width, 0, viewSize.width, viewHeight)];
     view.backgroundColor = [UIColor clearColor];
 
+    self.title = @"Life+Grade";
     
     
-    self.stepOne = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, view.frame.size.width, 50)];
+    self.stepOne = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, view.frame.size.width, 50)];
     self.stepOne.text = @"3 Life Grade Steps";
     self.stepOne.textColor = GREY_COLOR;
     self.stepOne.textAlignment = NSTextAlignmentCenter;
@@ -223,7 +224,7 @@
     
     UIImage *arrowImg = [UIImage imageNamed:@"blue-arrow--"];
     UIImageView *firstArrow = [[UIImageView alloc] initWithImage:arrowImg];
-    firstArrow.frame = CGRectMake(20, 100, arrowImg.size.width, arrowImg.size.height);
+    firstArrow.frame = CGRectMake(20, 95, arrowImg.size.width + 20, arrowImg.size.height + 20);
     
     UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, 120, 150, 50)];
     current.text = @"Current Grade";
@@ -231,7 +232,7 @@
     
     
     UIImageView *secondArrow = [[UIImageView alloc] initWithImage:arrowImg];
-    secondArrow.frame = CGRectMake(20, 200, arrowImg.size.width, arrowImg.size.height);
+    secondArrow.frame = CGRectMake(20, 195, arrowImg.size.width + 20, arrowImg.size.height + 20);
 
     UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(100, 220, 150, 50)];
     desired.text = @"Desired Grade";
@@ -239,7 +240,7 @@
     
    
    UIImageView *threeArrow = [[UIImageView alloc] initWithImage:arrowImg];
-   threeArrow.frame = CGRectMake(20, 300, arrowImg.size.width, arrowImg.size.height);
+   threeArrow.frame = CGRectMake(20, 295, arrowImg.size.width + 20, arrowImg.size.height + 20);
     
     UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(100, 320, 150, 50)];
     action.text = @"Action Plan";
@@ -275,7 +276,7 @@
     
     UIImage *arrowImg = [UIImage imageNamed:@"blue-arrow--"];
     UIImageView *firstArrow = [[UIImageView alloc] initWithImage:arrowImg];
-    firstArrow.frame = CGRectMake(20, 50, arrowImg.size.width, arrowImg.size.height);
+    firstArrow.frame = CGRectMake(20, 50, arrowImg.size.width+20, arrowImg.size.height+20);
     
     UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, 70, 150, 50)];
     current.text = @"Current Grade";
@@ -283,7 +284,7 @@
     
     
     UIImageView *secondArrow = [[UIImageView alloc] initWithImage:arrowImg];
-    secondArrow.frame = CGRectMake(20, 100, arrowImg.size.width, arrowImg.size.height);
+    secondArrow.frame = CGRectMake(20, 100, arrowImg.size.width+20, arrowImg.size.height+20);
     
     UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(100, 120, 150, 50)];
     desired.text = @"Desired Grade";
@@ -291,9 +292,9 @@
     
     
     UIImageView *threeArrow = [[UIImageView alloc] initWithImage:arrowImg];
-    threeArrow.frame = CGRectMake(20, 200, arrowImg.size.width, arrowImg.size.height);
+    threeArrow.frame = CGRectMake(20, 150, arrowImg.size.width+20, arrowImg.size.height+20);
     
-    UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(100, 220, 150, 50)];
+    UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(100, 170, 150, 50)];
     action.text = @"Action Plan";
     action.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     
