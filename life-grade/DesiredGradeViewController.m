@@ -277,7 +277,8 @@
         NSNumber *num = [self getGradeForIndex:indexPath];
         cell.gradeLabel.text = [NSString stringWithFormat:@"GRADE %@", num];
     } else {
-        cell.gradeLabel.text = @"ballz";
+        cell.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:16];
+        cell.gradeLabel.text = @"Click to grade";
     }
    
     

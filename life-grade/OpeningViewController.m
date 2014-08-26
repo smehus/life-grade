@@ -15,6 +15,7 @@
 #import "SignInView.h"
 #import <Parse/Parse.h>
 #import "FinalGradeViewController.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 
 
@@ -281,6 +282,16 @@
     UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, 50, 150, 50)];
     current.text = @"Current Grade";
     current.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    
+    
+    UIButton *instructs = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [instructs setTitle:@"Instructions" forState:UIControlStateNormal];
+    [instructs setFrame:CGRectMake(10, CGRectGetMaxY(current.frame), self.view.frame.size.width - 20, 50)];
+    [[instructs rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        NSLog(@"click instructions");
+        
+        
+    }];
   
     self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 50)];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
@@ -291,9 +302,9 @@
     
     
     [view addSubview:title];
-    
     [view addSubview:firstArrow];
     [view addSubview:current];
+    [view addSubview:instructs];
     
      [view addSubview:self.startButton];
     [self.scrollView addSubview:view];
