@@ -93,9 +93,20 @@
     
    
    
-
+    [self loadshit];
     [self.view addSubview:self.pageControl];
     [self.view addSubview:self.scrollView];
+}
+
+- (void)loadshit {
+    
+    NSString *string = @"Accountable Adaptable Adventurous Alert Ambitious Assertive Attentive Authentic Aware Brave Certain Clear Collaborative Committed Communicator Compassion Connection Conscious Consistent Cooperative Creative Curious Dedicated Determined Disciplined Efficient Empathetic Energetic Ethical Excited Expressive Flexible Generosity Gratitude HardWorking Honest Humorous Imaginative Independent Initiates Innovative Intentional Intimate Knowledgeable Listener ManagesTimeWell Networker Open-Minded Organized Patient Planner Practical Proactive Problem-Solver Productive Reliable Resourceful Self-confident Self-generating Self-reliant SenseofHumor Sincere Skillful Spiritual Stable Supportive Tactful Trusting Trustworthy Willing";
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSString *ary = [dict objectForKey:@"attributes"];
+    NSArray *attributes = [ary componentsSeparatedByString:@" "];
+
 }
 
 - (void)didReceiveMemoryWarning

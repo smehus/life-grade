@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSMutableArray *selectedAttributes;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, strong) Answers *fetchedAnswers;
+@property (nonatomic, strong) NSArray *attributes;
 
 @end
 
@@ -53,6 +54,7 @@
         self.managedObjectContext = del.managedObjectContext;
     }
     
+    self.attributes = [self loadAttributes];
     [self performFetch];
     
     UIColor *barColour = GREEN_COLOR;
@@ -102,6 +104,15 @@
     
     [self.view addSubview:self.collectionView];
 
+}
+
+- (NSArray *)loadAttributes {
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSString *ary = [dict objectForKey:@"attributes"];
+    NSArray *attributes = [ary componentsSeparatedByString:@" "];
+    return attributes;
 }
 
 - (void)didReceiveMemoryWarning
