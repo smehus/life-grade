@@ -112,7 +112,15 @@
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
     NSString *ary = [dict objectForKey:@"attributes"];
     NSArray *attributes = [ary componentsSeparatedByString:@" "];
-    return attributes;
+    NSMutableArray *a = [[NSMutableArray alloc] initWithCapacity:10];
+    [attributes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSNumber *n = [NSNumber numberWithInteger:idx];
+        NSDictionary *dict = @{@"isSelected" : @NO, @"attribute" : obj};
+        [a addObject:dict];
+    }];
+    
+    
+    return a;
 }
 
 - (void)didReceiveMemoryWarning
@@ -170,7 +178,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 10;
+    return self.attributes.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -182,9 +190,14 @@
         
     }
     
+    NSDictionary *dict = self.attributes[indexPath.row];
+    
+    cell.headerLabel.text = dict[@"attribute"];
+    cell.headerLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+    
     cell.backgroundColor = [UIColor clearColor];
-    cell.headerLabel.text = @"BallsDick";
     cell.layer.cornerRadius = 8.0f;
+    cell.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
     cell.layer.borderWidth = 3.0f;
     cell.layer.borderColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0].CGColor;
     return cell;

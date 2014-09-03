@@ -180,7 +180,6 @@
     cell.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
 
     if (self.fetchedAnswers.desiredGrade) {
-        NSLog(@"desired : %@", self.fetchedAnswers.desiredGrade);
         self.selectedCell = [NSIndexPath indexPathForRow:[self.fetchedAnswers.desiredGrade intValue] inSection:0];
         if (indexPath.row == self.selectedCell.row) {
             
