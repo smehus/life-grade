@@ -588,16 +588,17 @@
     } else {
     Answers *answers = [NSEntityDescription insertNewObjectForEntityForName:@"Answers" inManagedObjectContext:self.managedObjectContext];
     
-    answers.questionOne = [[self.myGrades objectAtIndex:0] gradeNum];
-    answers.questionTwo = [[self.myGrades objectAtIndex:1] gradeNum];
-    answers.questionThree = [[self.myGrades objectAtIndex:2] gradeNum];
-    answers.questionFour = [[self.myGrades objectAtIndex:3] gradeNum];
-    answers.questionFive = [[self.myGrades objectAtIndex:4] gradeNum];
-    answers.questionSix = [[self.myGrades objectAtIndex:5] gradeNum];
-    answers.questionSeven = [[self.myGrades objectAtIndex:6] gradeNum];
-    answers.questionEight = [[self.myGrades objectAtIndex:7] gradeNum];
-    answers.questionNine = [[self.myGrades objectAtIndex:8] gradeNum];
-    answers.questionTen = [[self.myGrades objectAtIndex:9] gradeNum];
+        answers.questionOne = [[self.myGrades objectAtIndex:0] gradeNum];
+        answers.questionTwo = [[self.myGrades objectAtIndex:1] gradeNum];
+        answers.questionThree = [[self.myGrades objectAtIndex:2] gradeNum];
+        answers.questionFour = [[self.myGrades objectAtIndex:3] gradeNum];
+        answers.questionFive = [[self.myGrades objectAtIndex:4] gradeNum];
+        answers.questionSix = [[self.myGrades objectAtIndex:5] gradeNum];
+        answers.questionSeven = [[self.myGrades objectAtIndex:6] gradeNum];
+        answers.questionEight = [[self.myGrades objectAtIndex:7] gradeNum];
+        answers.questionNine = [[self.myGrades objectAtIndex:8] gradeNum];
+        answers.questionTen = [[self.myGrades objectAtIndex:9] gradeNum];
+        answers.finalGrade = [NSNumber numberWithInt:finalNum];
     }
     
     NSString *email = [[NSUserDefaults standardUserDefaults]

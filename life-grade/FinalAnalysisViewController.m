@@ -17,6 +17,8 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, strong) Answers *fetchedAnswers;
 @property (nonatomic, strong) NSArray *fetchedAttributes;
+@property (nonatomic, strong) NSString *gradeLetter;
+
 
 
 @end
@@ -24,6 +26,7 @@
 @implementation FinalAnalysisViewController {
     
     MainAppDelegate *del;
+    float finalGradeNum;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -84,7 +87,10 @@
     }
     
     self.fetchedAnswers = [foundObjects lastObject];
-    NSLog(@"question bitch %@", self.fetchedAnswers.questionEight);
+    NSNumber *num = self.fetchedAnswers.finalGrade;
+    float balls = [num floatValue];
+    finalGradeNum = balls/120;
+    [self calculateGrade];
     
 }
 
@@ -109,11 +115,39 @@
     
     self.fetchedAttributes = foundObjects;
     [self.fetchedAttributes enumerateObjectsUsingBlock:^(Attributes *obj, NSUInteger idx, BOOL *stop) {
-       
         NSLog(@"*ballsfag %@", obj.attribute);
-        
     }];
+}
+
+- (void)calculateGrade {
     
+    if (finalGradeNum <= 1.0 && finalGradeNum >= 0.97) {
+        self.gradeLetter = @"A+";
+    } else if (finalGradeNum < 0.97 && finalGradeNum > 0.93) {
+        self.gradeLetter = @"A";
+    } else if (finalGradeNum < 0.94 && finalGradeNum > 0.89) {
+        self.gradeLetter = @"A-";
+    } else if (finalGradeNum < 0.90 && finalGradeNum > 0.86) {
+        self.gradeLetter = @"B+";
+    } else if (finalGradeNum < 0.87 && finalGradeNum > 0.83) {
+        self.gradeLetter = @"B";
+    } else if (finalGradeNum < 0.84 && finalGradeNum > 0.79) {
+        self.gradeLetter = @"B-";
+    } else if (finalGradeNum < 0.80 && finalGradeNum > 0.76) {
+        self.gradeLetter = @"C+";
+    } else if (finalGradeNum < 0.77 && finalGradeNum > 0.73) {
+        self.gradeLetter = @"C";
+    } else if (finalGradeNum < 0.74 && finalGradeNum > 0.69) {
+        self.gradeLetter = @"C-";
+    } else if (finalGradeNum < 0.70 && finalGradeNum >= 0.66) {
+        self.gradeLetter = @"D+";
+    } else if (finalGradeNum < 0.67 && finalGradeNum > 0.63) {
+        self.gradeLetter = @"D";
+    } else if (finalGradeNum < 0.64 && finalGradeNum > 0.59) {
+        self.gradeLetter = @"D-";
+    } else {
+        self.gradeLetter = @"F";
+    }
 }
 
 
@@ -122,6 +156,11 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width/2, 200)];
     view.layer.borderColor = [UIColor darkGrayColor].CGColor;
     view.layer.borderWidth = 1.0f;
+    
+    UILabel *gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, view.frame.size.width, view.frame.size.height)];
+    gradeLabel.textAlignment = NSTextAlignmentCenter;
+    gradeLabel.text = self.gradeLetter;
+    [view addSubview:gradeLabel];
     
     
     [self.view addSubview:view];
