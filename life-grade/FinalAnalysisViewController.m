@@ -157,9 +157,10 @@
     view.layer.borderColor = [UIColor darkGrayColor].CGColor;
     view.layer.borderWidth = 1.0f;
     
-    UILabel *gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, view.frame.size.width, view.frame.size.height)];
+    UILabel *gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
     gradeLabel.textAlignment = NSTextAlignmentCenter;
     gradeLabel.text = self.gradeLetter;
+    gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
     [view addSubview:gradeLabel];
     
     
