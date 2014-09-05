@@ -12,12 +12,12 @@
 #import "SWRevealViewController.h"
 #import "FinalGradeViewController.h"
 #import <Parse/Parse.h>
-
+#import "FinalAnalysisViewController.h"
 @interface MainAppDelegate : UIResponder <UIApplicationDelegate, SWRevealViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) OpeningViewController *openingViewController;
-@property (nonatomic, strong) FinalGradeViewController *finalGradeController;
+@property (nonatomic, strong)  FinalAnalysisViewController *finalGradeController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) PFUser *currentUser;
 

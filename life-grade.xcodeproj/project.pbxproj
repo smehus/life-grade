@@ -61,9 +61,11 @@
 		A50D5DA719AC2A4900A85175 /* life_grade_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A50D5DA619AC2A4900A85175 /* life_grade_logo.png */; };
 		A51B180C19809D7B00C0EDA9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B180B19809D7B00C0EDA9 /* AboutViewController.m */; };
 		A52A2BA91977634A00916901 /* DesiredCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A2BA81977634A00916901 /* DesiredCell.m */; };
-		A52A2C40197ACDB400916901 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A2C3F197ACDB400916901 /* Answers.m */; };
 		A534B0241963B19600255EC2 /* SignInView.m in Sources */ = {isa = PBXBuildFile; fileRef = A534B0231963B19600255EC2 /* SignInView.m */; };
 		A5376A2818ED073C000C6BD8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5376A2718ED073C000C6BD8 /* Parse.framework */; };
+		A53DA42019B94B1F00EAC693 /* Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = A53DA41F19B94B1F00EAC693 /* Attributes.m */; };
+		A53DA42319B94B2000EAC693 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A53DA42219B94B2000EAC693 /* Answers.m */; };
+		A53DA42619B9512300EAC693 /* FinalAnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53DA42519B9512300EAC693 /* FinalAnalysisViewController.m */; };
 		A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC61957B92A00EC5881 /* AttributesViewController.m */; };
 		A5435DCA1957B99400EC5881 /* AttributesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC91957B99400EC5881 /* AttributesCell.m */; };
 		A54B6B1819279F6B000AA8D7 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54B6B1719279F6B000AA8D7 /* Data.plist */; };
@@ -166,11 +168,15 @@
 		A51B180B19809D7B00C0EDA9 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		A52A2BA71977634A00916901 /* DesiredCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesiredCell.h; sourceTree = "<group>"; };
 		A52A2BA81977634A00916901 /* DesiredCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesiredCell.m; sourceTree = "<group>"; };
-		A52A2C3E197ACDB400916901 /* Answers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answers.h; sourceTree = "<group>"; };
-		A52A2C3F197ACDB400916901 /* Answers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answers.m; sourceTree = "<group>"; };
 		A534B0221963B19600255EC2 /* SignInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInView.h; sourceTree = "<group>"; };
 		A534B0231963B19600255EC2 /* SignInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInView.m; sourceTree = "<group>"; };
 		A5376A2718ED073C000C6BD8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		A53DA41E19B94B1F00EAC693 /* Attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attributes.h; sourceTree = "<group>"; };
+		A53DA41F19B94B1F00EAC693 /* Attributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attributes.m; sourceTree = "<group>"; };
+		A53DA42119B94B2000EAC693 /* Answers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answers.h; sourceTree = "<group>"; };
+		A53DA42219B94B2000EAC693 /* Answers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answers.m; sourceTree = "<group>"; };
+		A53DA42419B9512300EAC693 /* FinalAnalysisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalAnalysisViewController.h; sourceTree = "<group>"; };
+		A53DA42519B9512300EAC693 /* FinalAnalysisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinalAnalysisViewController.m; sourceTree = "<group>"; };
 		A5435DC51957B92A00EC5881 /* AttributesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesViewController.h; sourceTree = "<group>"; };
 		A5435DC61957B92A00EC5881 /* AttributesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesViewController.m; sourceTree = "<group>"; };
 		A5435DC81957B99400EC5881 /* AttributesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesCell.h; sourceTree = "<group>"; };
@@ -402,6 +408,8 @@
 			children = (
 				A5C08C751939719F00887F83 /* FinalGradeViewController.h */,
 				A5C08C761939719F00887F83 /* FinalGradeViewController.m */,
+				A53DA42419B9512300EAC693 /* FinalAnalysisViewController.h */,
+				A53DA42519B9512300EAC693 /* FinalAnalysisViewController.m */,
 			);
 			name = FinalGrade;
 			sourceTree = "<group>";
@@ -479,8 +487,10 @@
 			isa = PBXGroup;
 			children = (
 				A5C08C7D193B650300887F83 /* Model.xcdatamodeld */,
-				A52A2C3E197ACDB400916901 /* Answers.h */,
-				A52A2C3F197ACDB400916901 /* Answers.m */,
+				A53DA42119B94B2000EAC693 /* Answers.h */,
+				A53DA42219B94B2000EAC693 /* Answers.m */,
+				A53DA41E19B94B1F00EAC693 /* Attributes.h */,
+				A53DA41F19B94B1F00EAC693 /* Attributes.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -651,9 +661,9 @@
 				6533F55E18E190630017C7D6 /* DesiredGradeViewController.m in Sources */,
 				655EC64718DF626E0036515F /* OpeningViewController.m in Sources */,
 				655EC61918DF5FE20036515F /* MainAppDelegate.m in Sources */,
+				A53DA42319B94B2000EAC693 /* Answers.m in Sources */,
 				65BFF076190F511E0087511B /* HATransitionController.m in Sources */,
 				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
-				A52A2C40197ACDB400916901 /* Answers.m in Sources */,
 				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
 				A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
@@ -674,7 +684,9 @@
 				A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */,
 				A52A2BA91977634A00916901 /* DesiredCell.m in Sources */,
 				65BFF070190F4CF90087511B /* HACollectionViewSmallLayout.m in Sources */,
+				A53DA42619B9512300EAC693 /* FinalAnalysisViewController.m in Sources */,
 				A5435DCA1957B99400EC5881 /* AttributesCell.m in Sources */,
+				A53DA42019B94B1F00EAC693 /* Attributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

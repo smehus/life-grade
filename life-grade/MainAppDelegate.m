@@ -71,7 +71,7 @@
         
         // does all error handling for login matter if just using cache?
         
-        self.finalGradeController = [[FinalGradeViewController alloc] init];
+        self.finalGradeController = [[FinalAnalysisViewController alloc] init];
         navCon = [[UINavigationController alloc] initWithRootViewController:self.finalGradeController];
         
     } else if (password != nil && email != nil) {
@@ -83,7 +83,7 @@
         //blurred view until signin success or failure
         // error if fauilture - error handling bullshit
         
-        self.finalGradeController = [[FinalGradeViewController alloc] init];
+        self.finalGradeController = [[FinalAnalysisViewController alloc] init];
         navCon = [[UINavigationController alloc] initWithRootViewController:self.finalGradeController];
 
         [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {

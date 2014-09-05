@@ -2,15 +2,19 @@
 //  Answers.m
 //  life-grade
 //
-//  Created by scott mehus on 7/19/14.
+//  Created by scott mehus on 9/4/14.
 //  Copyright (c) 2014 scott mehus. All rights reserved.
 //
 
 #import "Answers.h"
+#import "Attributes.h"
 
 
 @implementation Answers
 
+@dynamic actionOne;
+@dynamic actionThree;
+@dynamic actionTwo;
 @dynamic desiredGrade;
 @dynamic finalGrade;
 @dynamic questionEight;
@@ -23,8 +27,6 @@
 @dynamic questionTen;
 @dynamic questionThree;
 @dynamic questionTwo;
-@dynamic actionOne;
-@dynamic actionTwo;
-@dynamic actionThree;
+@dynamic attributes;
 
 @end

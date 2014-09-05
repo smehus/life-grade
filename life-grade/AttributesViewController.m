@@ -15,6 +15,8 @@
 #import <Parse/Parse.h>
 #import "MainAppDelegate.h"
 #import "Answers.h"
+#import "Attributes.h"
+#import "FinalAnalysisViewController.h"
 
 @interface AttributesViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -154,15 +156,25 @@
     
 }
 
+//!!!!: This fucking works!
+
 - (void)doneButton {
-    
-    NSLog(@"***DONE PRESSED");
 //    FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
+    
+    [self.selectedAttributes enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
+       
+        Attributes *at = [NSEntityDescription insertNewObjectForEntityForName:@"Attributes"
+                                                       inManagedObjectContext:self.managedObjectContext];
+        at.attribute = obj;
+        
+    }];
+    
+    [self finishedGrading];
     
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
 
-        FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
+        FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
         [self.revealViewController setFrontViewController:nav];
         
@@ -222,6 +234,11 @@
     AttributesCell *cell = (AttributesCell*)[collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor greenColor];
     
+    NSDictionary *dict = self.attributes[indexPath.row];
+    NSString *att = dict[@"attribute"];
+    
+    [self.selectedAttributes addObject:att];
+    
     CGFloat rect = self.collectionView.frame.size.width/2 - 4;
     
     POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
@@ -230,6 +247,23 @@
     anim.springBounciness = 20.0f;
     anim.springSpeed = 2.0f;
     [cell.layer pop_addAnimation:anim forKey:@"size"];
+    
+}
+
+- (void)finishedGrading {
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
+    
+    
+//    ActionPlanViewController *actionPlan = [[ActionPlanViewController alloc] init];
+//    actionPlan.managedObjectContext = self.managedObjectContext;
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionPlan];
+//    //    [self presentViewController:nav animated:YES completion:nil];
+//    [self.revealViewController setFrontViewController:nav];
     
 }
 

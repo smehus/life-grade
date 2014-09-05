@@ -12,6 +12,7 @@
 #import "FinalGradeViewController.h"
 #import "SWRevealViewController.h"
 #import "MONActivityIndicatorView.h"
+#import "FinalAnalysisViewController.h"
 
 @interface SignupViewController () <UITextFieldDelegate>
 
@@ -144,7 +145,7 @@
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             
-            FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
+            FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] init];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
             [self.revealViewController setFrontViewController:nav];
             

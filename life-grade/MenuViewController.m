@@ -19,6 +19,7 @@
 #import "MainAppDelegate.h"
 #import "Answers.h"
 #import <CoreData/CoreData.h>
+#import "FinalAnalysisViewController.h"
 
 @interface MenuViewController ()
 
@@ -177,7 +178,7 @@
     
     } else if (indexPath.row == 4) {
         
-        FinalGradeViewController *finalontroller = [[FinalGradeViewController alloc] init];
+        FinalAnalysisViewController *finalontroller = [[FinalAnalysisViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalontroller];
         [self.myRevealController pushFrontViewController:nav animated:YES];
     
