@@ -66,6 +66,7 @@
 		A53DA42019B94B1F00EAC693 /* Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = A53DA41F19B94B1F00EAC693 /* Attributes.m */; };
 		A53DA42319B94B2000EAC693 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A53DA42219B94B2000EAC693 /* Answers.m */; };
 		A53DA42619B9512300EAC693 /* FinalAnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53DA42519B9512300EAC693 /* FinalAnalysisViewController.m */; };
+		A53DA42819BCA88300EAC693 /* jonsafag in Resources */ = {isa = PBXBuildFile; fileRef = A53DA42719BCA88300EAC693 /* jonsafag */; };
 		A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC61957B92A00EC5881 /* AttributesViewController.m */; };
 		A5435DCA1957B99400EC5881 /* AttributesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC91957B99400EC5881 /* AttributesCell.m */; };
 		A54B6B1819279F6B000AA8D7 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54B6B1719279F6B000AA8D7 /* Data.plist */; };
@@ -177,6 +178,7 @@
 		A53DA42219B94B2000EAC693 /* Answers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answers.m; sourceTree = "<group>"; };
 		A53DA42419B9512300EAC693 /* FinalAnalysisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalAnalysisViewController.h; sourceTree = "<group>"; };
 		A53DA42519B9512300EAC693 /* FinalAnalysisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinalAnalysisViewController.m; sourceTree = "<group>"; };
+		A53DA42719BCA88300EAC693 /* jonsafag */ = {isa = PBXFileReference; lastKnownFileType = file; path = jonsafag; sourceTree = "<group>"; };
 		A5435DC51957B92A00EC5881 /* AttributesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesViewController.h; sourceTree = "<group>"; };
 		A5435DC61957B92A00EC5881 /* AttributesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesViewController.m; sourceTree = "<group>"; };
 		A5435DC81957B99400EC5881 /* AttributesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesCell.h; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 		65714FFF191482700034009A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A53DA42719BCA88300EAC693 /* jonsafag */,
 				A50D5DA619AC2A4900A85175 /* life_grade_logo.png */,
 				65715000191482880034009A /* Iphone assets-2 */,
 			);
@@ -603,6 +606,7 @@
 				A5E85E2B1927B1B500AAA4B6 /* GradeCell.xib in Resources */,
 				6571501D191482880034009A /* red-arrow-1-@2x.png in Resources */,
 				655EC64318DF62550036515F /* MenuViewController.xib in Resources */,
+				A53DA42819BCA88300EAC693 /* jonsafag in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
