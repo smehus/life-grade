@@ -524,6 +524,7 @@
             NSLog(@"grade %@", grade);
             
             if (self.didSelect) {
+                
                 [self.myGrades addObject:grade];
                 NSLog(@"Add grade %@", grade.gradeNum);
                 self.didSelect = NO;
@@ -549,14 +550,15 @@
 - (void)finishedGrading {
     
 
-    int finalNum = 0;
+    float finalNum = 0;
     
     for (Grade *g in self.myGrades) {
         
-        int value = [g.gradeNum intValue];
+        float value = [g.gradeNum floatValue];
         finalNum = finalNum + value;
     }
     
+    NSLog(@"FINAL GRADE NUM %f", finalNum);
     
 //    FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
 //    finalController.finalGradeValue = [NSNumber numberWithInteger:finalNum];

@@ -128,19 +128,19 @@
     
 
     self.isGrown = NO;
-    NSArray *ary = @[@{@"grade" : @"A+", @"GradeNum" : @12},
-                     @{ @"grade" : @"A", @"GradeNum" : @11},
-                     @{@"grade" : @"A-", @"GradeNum" : @10},
-                     @{@"grade" : @"B+", @"GradeNum" : @9},
+    NSArray *ary = @[@{@"grade" : @"A+", @"GradeNum" : @10},
+                     @{ @"grade" : @"A", @"GradeNum" : @9.5},
+                     @{@"grade" : @"A-", @"GradeNum" : @9},
+                     @{@"grade" : @"B+", @"GradeNum" : @8.7},
                      @{@"grade" : @"B", @"GradeNum" : @8},
-                     @{@"grade" : @"B-", @"GradeNum" : @7},
-                     @{@"grade" : @"C+", @"GradeNum" : @6},
-                     @{@"grade" : @"C", @"GradeNum" : @5},
-                     @{@"grade" : @"C-", @"GradeNum" : @4},
-                     @{@"grade" : @"D+", @"GradeNum" : @3},
-                     @{@"grade" : @"D", @"GradeNum" : @2},
-                     @{@"grade" : @"D-", @"GradeNum" : @1},
-                     @{@"grade" : @"F", @"GradeNum" : @0}];
+                     @{@"grade" : @"B-", @"GradeNum" : @8.3},
+                     @{@"grade" : @"C+", @"GradeNum" : @7.7},
+                     @{@"grade" : @"C", @"GradeNum" : @7.5},
+                     @{@"grade" : @"C-", @"GradeNum" : @7.3},
+                     @{@"grade" : @"D+", @"GradeNum" : @6.7},
+                     @{@"grade" : @"D", @"GradeNum" : @6.5},
+                     @{@"grade" : @"D-", @"GradeNum" : @6.3},
+                     @{@"grade" : @"F", @"GradeNum" : @5.7}];
 
     self.grades = [[NSMutableArray alloc] initWithCapacity:20];
     __block NSUInteger count = 0;
@@ -152,6 +152,7 @@
         grade.buttonHidden = YES;
         grade.gradeSelected = NO;
         grade.gradeNum = [dict objectForKey:@"GradeNum"];
+        NSLog(@"gradenum %@", grade.gradeNum);
         [self.grades addObject:grade];
         
     }];

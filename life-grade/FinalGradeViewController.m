@@ -66,15 +66,16 @@
     float avg = [self.finalGradeValue floatValue];
     avg = avg/10;
     
-    UIBarButtonItem *barbut = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealToggle:)];
-    [barbut setTintColor:[UIColor blackColor]];
-    self.navigationItem.leftBarButtonItem = barbut;
+//    UIBarButtonItem *barbut = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealToggle:)];
+//    [barbut setTintColor:[UIColor blackColor]];
+//    self.navigationItem.leftBarButtonItem = barbut;
+//    
+//    self.revealButton = barbut;
+//    [self.revealButton setTarget: self.revealViewController];
+//    [self.revealButton setAction: @selector( revealToggle: )];
+
     
-    self.revealButton = barbut;
-    [self.revealButton setTarget: self.revealViewController];
-    [self.revealButton setAction: @selector( revealToggle: )];
-    
-    
+
     
     [self setupTableView];
     NSLog(@"final grade %f total %@", avg, self.finalGradeValue);

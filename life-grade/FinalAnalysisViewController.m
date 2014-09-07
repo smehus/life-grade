@@ -12,6 +12,9 @@
 #import "Grade.h"
 #import "MainAppDelegate.h"
 #import "Attributes.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "FinalGradeViewController.h"
+
 
 @interface FinalAnalysisViewController ()
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
@@ -62,6 +65,7 @@
     
     [self fetchAnswers];
     [self fetchAttributes];
+    [self addAnswersButton];
     
 
     [self drawGradeView];
@@ -89,7 +93,9 @@
     self.fetchedAnswers = [foundObjects lastObject];
     NSNumber *num = self.fetchedAnswers.finalGrade;
     float balls = [num floatValue];
-    finalGradeNum = balls/120;
+    NSLog(@"FINAL GRADE %f", balls);
+    finalGradeNum = balls/100;
+    
     [self calculateGrade];
     
 }
@@ -115,7 +121,7 @@
     
     self.fetchedAttributes = foundObjects;
     [self.fetchedAttributes enumerateObjectsUsingBlock:^(Attributes *obj, NSUInteger idx, BOOL *stop) {
-        NSLog(@"*ballsfag %@", obj.attribute);
+        
     }];
 }
 
@@ -171,6 +177,30 @@
 {
     [super didReceiveMemoryWarning];
 
+}
+
+- (void)addAnswersButton {
+    
+    UIColor *color = GREEN_COLOR;
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setFrame:CGRectMake(0, 300, self.view.frame.size.width, 50)];
+    [button setTitle:@"Detailed Analysis" forState:UIControlStateNormal];
+    [button setBackgroundColor:color];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        NSLog(@"DETAILED ANAL");
+        
+        FinalGradeViewController *gradeController = [[FinalGradeViewController alloc] init];
+        [self.navigationController pushViewController:gradeController animated:YES];
+    }];
+    
+    
+    
+    
+    
+    
+    [self.view addSubview:button];
 }
 
 

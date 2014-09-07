@@ -4,18 +4,18 @@
         <attribute name="actionOne" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="actionThree" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="actionTwo" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="desiredGrade" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="finalGrade" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="questionEight" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="questionFive" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="questionFour" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="questionNine" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="questionOne" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="questionSeven" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="questionSix" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="questionTen" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="questionThree" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="questionTwo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="desiredGrade" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="finalGrade" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionEight" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionFive" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionFour" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionNine" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionOne" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionSeven" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionSix" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionTen" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionThree" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionTwo" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attributes" inverseName="answers" inverseEntity="Attributes" syncable="YES"/>
     </entity>
     <entity name="Attributes" representedClassName="Attributes" syncable="YES">
