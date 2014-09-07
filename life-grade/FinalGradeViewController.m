@@ -117,6 +117,7 @@
         Grade *grade = [[Grade alloc] init];
         grade.question = obj[@"question"];
         grade.goodResponse = obj[@"goodResponse"];
+        
         grade.badResponse = obj[@"badResponse"];
         [self.questions addObject:grade];
         
