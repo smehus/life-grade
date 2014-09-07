@@ -14,11 +14,11 @@
 #import "Grade.h"
 
 
+
 @interface FinalGradeViewController () <EMAccordionTableDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, strong) EMAccordionTableViewController *emTableView;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) Answers *fetchedAnswers;
 @property (nonatomic, strong) NSMutableArray *questions;
 
 @end
@@ -61,6 +61,7 @@
     [self.view sendSubviewToBack:bg];
     
     self.title = @"Final Grade";
+    NSLog(@"***fetched %@", self.fetchedAnswers);
     
     
     float avg = [self.finalGradeValue floatValue];
@@ -103,7 +104,9 @@
     }
     
     self.fetchedAnswers = [foundObjects lastObject];
-    NSLog(@"question bitch %@", self.fetchedAnswers.questionEight);
+    
+    NSLog(@"dicks %@", self.fetchedAnswers.questionFive );
+    
     
 }
 
@@ -120,6 +123,8 @@
         
         grade.badResponse = obj[@"badResponse"];
         [self.questions addObject:grade];
+        
+        
         
     }];
 }
@@ -232,6 +237,18 @@
     return [NSMutableArray arrayWithArray:@[@"Balls"]];
 }
 
+- (BOOL)retrieveAnalysis {
+    
+    
+    
+    
+    
+    
+    
+    
+    return YES;
+}
+
 
 
 - (void)didReceiveMemoryWarning
@@ -267,8 +284,15 @@
 //    cell.textLabel.text = ans;
 //    cell.textLabel.textColor = [UIColor blackColor];
     
-    Grade *g = self.questions[indexPath.row];
-    cell.textLabel.text = g.badResponse;
+    Grade *g = self.questions[indexPath.section];
+    NSNumber *fuck = [self getGradeForIndex:indexPath];
+    
+    if (fuck.floatValue < 7.6) {
+        cell.textLabel.text = g.badResponse;
+    } else {
+        cell.textLabel.text = g.goodResponse;
+    }
+
     
     
     return cell;

@@ -193,6 +193,8 @@
         
         FinalGradeViewController *gradeController = [[FinalGradeViewController alloc] init];
         [self.navigationController pushViewController:gradeController animated:YES];
+        
+        
     }];
     
     

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Answers.h"
 
 @interface FinalGradeViewController : UIViewController
 
 @property (nonatomic, strong) NSNumber * finalGradeValue;
 @property (nonatomic, strong) NSArray *finalGrades;
+@property (nonatomic, strong) Answers *fetchedAnswers;
 
 @end

@@ -206,7 +206,7 @@
     
     cell.headerLabel.text = dict[@"attribute"];
     cell.headerLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
-    
+    cell.headerLabel.textAlignment = NSTextAlignmentCenter;
     cell.backgroundColor = [UIColor clearColor];
     cell.layer.cornerRadius = 8.0f;
     cell.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];

@@ -85,7 +85,7 @@
 			<key>badResponse</key>
 			<string>ShitBalls</string>
 			<key>goodResponse</key>
-			<string></string>
+			<string>good response</string>
 			<key>question</key>
 			<string>Emotional Well Being</string>
 		</dict>
@@ -93,7 +93,7 @@
 			<key>badResponse</key>
 			<string>ShitBalls</string>
 			<key>goodResponse</key>
-			<string></string>
+			<string>good response</string>
 			<key>question</key>
 			<string>Hobbies &amp; Interests</string>
 		</dict>
@@ -101,7 +101,7 @@
 			<key>badResponse</key>
 			<string>ShitBalls</string>
 			<key>goodResponse</key>
-			<string></string>
+			<string>good response</string>
 			<key>question</key>
 			<string>Genuine, Intimate, and Deep Relationships</string>
 		</dict>
@@ -109,13 +109,13 @@
 			<key>badResponse</key>
 			<string>ShitBalls</string>
 			<key>goodResponse</key>
-			<string></string>
+			<string>good response</string>
 			<key>question</key>
 			<string>Social Support &amp; Social Networks</string>
 		</dict>
 		<dict>
 			<key>goodResponse</key>
-			<string></string>
+			<string>good response</string>
 			<key>badResponse</key>
 			<string>ShitBalls</string>
 			<key>question</key>
@@ -125,7 +125,7 @@
 			<key>badResponse</key>
 			<string>ShitBalls</string>
 			<key>goodResponse</key>
-			<string></string>
+			<string>good response</string>
 			<key>question</key>
 			<string>Contribution &amp; Giving Back</string>
 		</dict>
@@ -133,7 +133,7 @@
 			<key>badResponse</key>
 			<string>ShitBalls</string>
 			<key>goodResponse</key>
-			<string></string>
+			<string>good response</string>
 			<key>question</key>
 			<string>Being Engaged at Work &amp; at Play</string>
 		</dict>
@@ -141,7 +141,7 @@
 			<key>badResponse</key>
 			<string>ShitBalls</string>
 			<key>goodResponse</key>
-			<string></string>
+			<string>good response</string>
 			<key>question</key>
 			<string>Job Happiness</string>
 		</dict>
@@ -149,7 +149,7 @@
 			<key>badResponse</key>
 			<string>ShitBalls</string>
 			<key>goodResponse</key>
-			<string></string>
+			<string>good response</string>
 			<key>question</key>
 			<string>Positive Thinking</string>
 		</dict>
@@ -157,7 +157,7 @@
 			<key>badResponse</key>
 			<string>ShitBalls</string>
 			<key>goodResponse</key>
-			<string></string>
+			<string>good response</string>
 			<key>question</key>
 			<string>Productivity Level</string>
 		</dict>

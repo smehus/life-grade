@@ -132,7 +132,7 @@
                      @{ @"grade" : @"A", @"GradeNum" : @9.5},
                      @{@"grade" : @"A-", @"GradeNum" : @9},
                      @{@"grade" : @"B+", @"GradeNum" : @8.7},
-                     @{@"grade" : @"B", @"GradeNum" : @8},
+                     @{@"grade" : @"B", @"GradeNum" : @8.5},
                      @{@"grade" : @"B-", @"GradeNum" : @8.3},
                      @{@"grade" : @"C+", @"GradeNum" : @7.7},
                      @{@"grade" : @"C", @"GradeNum" : @7.5},
