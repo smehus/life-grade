@@ -231,21 +231,12 @@
 }
 
 - (NSMutableArray *)requestGradeForGrade:(NSNumber *)num {
-    
-    
-    
+
     return [NSMutableArray arrayWithArray:@[@"Balls"]];
 }
 
 - (BOOL)retrieveAnalysis {
-    
-    
-    
-    
-    
-    
-    
-    
+   
     return YES;
 }
 
@@ -259,7 +250,21 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 44;
+    Grade *g = self.questions[indexPath.section];
+    NSString *answer = g.goodResponse;
+    CGSize maximumSize = CGSizeMake(300, 9999);
+    UIFont *fontText = [UIFont fontWithName:@"HelveticaNeue-Thin" size:14];
+    
+    CGSize maximumLabelSize = CGSizeMake(310, 9999);
+    
+    CGRect textRect = [answer boundingRectWithSize:maximumLabelSize
+                                             options:NSStringDrawingUsesLineFragmentOrigin
+                                          attributes:@{NSFontAttributeName:fontText}
+                                             context:nil];
+    
+    
+    
+    return textRect.size.height;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -292,11 +297,16 @@
     } else {
         cell.textLabel.text = g.goodResponse;
     }
-
+    
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:12];
     
     
     return cell;
 }
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     

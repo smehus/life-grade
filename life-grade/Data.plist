@@ -83,81 +83,84 @@
 	<array>
 		<dict>
 			<key>badResponse</key>
-			<string>ShitBalls</string>
+			<string>The highway of emotions is sometimes a tough one to drive down and quite challenging for many people. Emotional health and well-being involves a lot and is always a work in progress. Having strong emotional wellness can lead to less stress, more happiness, and even add years onto your life! This is definitely something to focus and spend time on. Emotional wellness is not simply one factor or a single emotion, it involves how you manage your emotions and behaviors (both negative and positive),  cope with stress, adapt to change, amongst many other things. Identify what your strengths are and explore your need areas. </string>
 			<key>goodResponse</key>
-			<string>good response</string>
+			<string>You’re the boss, if emotional well-being is what you want, it is what you shall receive. Possessing a strong emotional well-being is shown to have positive affects on job happiness, developing meaningful relationships, and even your physical health. You are doing a solid job maintaining good emotional health. Given this, still explore new goals, different ways to express your emotions, and building new connections in life.</string>
 			<key>question</key>
 			<string>Emotional Well Being</string>
 		</dict>
 		<dict>
 			<key>badResponse</key>
-			<string>ShitBalls</string>
+			<string>“The art of being happy lies in the power of extracting happiness from common things.” ~ Henry Ward Beecher
+Sometimes in order to remain interested, an individual is required to extract something interesting out of what you typically find common. Take a look at your life, your hobbies, your job, your friends and extract something unique about each of them. Maybe you already have something in your life you can build an interest around or start something new. Speaking to friends and family can help stir up useful ideas for new hobbies or perspectives to build on. </string>
 			<key>goodResponse</key>
-			<string>good response</string>
+			<string>“The art of being happy lies in the power of extracting happiness from common things.” ~ Henry Ward Beecher
+Having interests and hobbies adds significant value to life as you may know by now. Continue to pursue things that interest you and don’t be afraid to try something new. An individual’s interest can increase even after starting a new hobby. </string>
 			<key>question</key>
 			<string>Hobbies &amp; Interests</string>
 		</dict>
 		<dict>
 			<key>badResponse</key>
-			<string>ShitBalls</string>
+			<string>Real life for most people does not look like The Notebook or Sex In The City.  There are many reasons why we come up short in these areas, and maybe you already know why. Previous painful baggage, fear of rejection, lack of experience, anxieties, could all add to the challenge of developing these relationships. Start by looking at the strongest relationships you actually do have and examine how you connect with those people. Is it through vulnerability and honesty, similarities, being physically close, or shared experiences?</string>
 			<key>goodResponse</key>
-			<string>good response</string>
+			<string>You got this down! Having connection and love in our lives is a very important human need. Many people shy away from intimate and deep relationships because of our fear of “rejection” and “not being good enough”. You have allowed yourself to at least get a taste of what kind of value these relationships can bring to your life. Keep it up and continue building new relationships.</string>
 			<key>question</key>
 			<string>Genuine, Intimate, and Deep Relationships</string>
 		</dict>
 		<dict>
 			<key>badResponse</key>
-			<string>ShitBalls</string>
+			<string>By any chance do you live in your parent’s basement? In all seriousness many people feel the need to turn inward during a time of need. Research shows that social support and networks (not Facebook or Twitter!) not only increase your happiness, but improve your odds of being successful with goals. Not to mention it reduces anxiety! It is not too late to start. Ask yourself what type of support you need and find individuals that are capable of providing it. The detective work starts now!</string>
 			<key>goodResponse</key>
-			<string>good response</string>
+			<string>Nice going president popular, you got it going on! While many feel the need to turn inward during times of need you have a reliable social support network to help you. Research shows that social support and networks (not Facebook or Twitter!) not only increase your happiness, but the odds of fulfilling your goals. Keep using and building your support circles to greater success.</string>
 			<key>question</key>
 			<string>Social Support &amp; Social Networks</string>
 		</dict>
 		<dict>
 			<key>goodResponse</key>
-			<string>good response</string>
+			<string>Look good, feel good. Either you have new changes you are putting into practice or you have this health thing down. As you probably know by now, your physical health impacts a lot of other aspect of your life such as your mood, weight, sleep, appetite, and energy. Keep eating well and participating in a variety of exercises to reap the benefits of good physical health.
+</string>
 			<key>badResponse</key>
-			<string>ShitBalls</string>
+			<string>I am not here to tell you that you need to exercise more. Sure, that might be part of it but there is more to it. Start by asking yourself, is my physical health a problem? If you answered “no”, improving your physical health isn’t on your radar quite yet. If you do see there to be an issue educate yourself, find support, make a commitment, and set some goals. Your physical health has massive impacts on your energy, sleep, motivation, weight, and mood. </string>
 			<key>question</key>
 			<string>Physical Health</string>
 		</dict>
 		<dict>
 			<key>badResponse</key>
-			<string>ShitBalls</string>
+			<string>Okay, maybe finding ways to give back and contribute is a little more tough then originally planned. Studies show contributing outside of yourself  and giving back is a major contributor to an individual’s fulfillment. Things like time, motivation, availability, or even ideas on how to contribute could be the culprits that are holding you back. Start small, simple, and manageable. Do your detective work and find out what factors are holding you back, find new creative ways to contribute, and experience the rush of fulfillment in no time. </string>
 			<key>goodResponse</key>
-			<string>good response</string>
+			<string>Congratulations! You have found a way to contribute meaningfully. Maybe you volunteer, donate, spend time with individuals that value your company, or even go the (sometimes unrecognized) extra mile at work “just because you want to”. Studies show that giving back outside of yourself is a significant contributor to an individual’s personal fulfillment, so continue finding ways to volunteer, help out other individuals, and give back to your community.</string>
 			<key>question</key>
 			<string>Contribution &amp; Giving Back</string>
 		</dict>
 		<dict>
 			<key>badResponse</key>
-			<string>ShitBalls</string>
+			<string>Ooo look at that airplane, oh sorry what did you say? Keeping busy and focused may not come naturally but it doesn’t mean you can’t make simple changes to improve this area of your life. Being engaged at work and play doesn’t mean you have to absolutely love what you are doing ALL of the time. It simply means you must start finding meaning and value in what you are doing during that time.</string>
 			<key>goodResponse</key>
-			<string>good response</string>
+			<string>Mission not impossible! It looks like you have no problem staying engaged and focused with your time! You and I both know that downtime can be relaxing or down right boring! Continue keeping busy at work and play with a variety of things that sometimes challenge you and occasionally relax you. Remember to take breaks and keep that momentum going. </string>
 			<key>question</key>
 			<string>Being Engaged at Work &amp; at Play</string>
 		</dict>
 		<dict>
 			<key>badResponse</key>
-			<string>ShitBalls</string>
+			<string>So your job’s a chore, you may not get payed enough, and you love the sound of your next vacation day. Sound about right? Well if only it was that easy to jump ship and get your dream job. While you at your current job, trying “re-writing the job description” and changing your perspective regarding the impact you are having and the value you bring. While your perspective is shifting, get involved in understanding what you “enjoy” doing and not simply what you are “good” at.</string>
 			<key>goodResponse</key>
-			<string>good response</string>
+			<string>You’re job and you are like peas and carrots, they just fit so well together. Sure you may have your days where you would rather be at the beach, but your job, colleagues, and work environment offer you enough to genuine connection, security, and opportunities for growth that you are happy with where you are at. Remember, there is no ceiling on your happiness, so continue to challenge yourself, build new connections, and contribute in your own way. </string>
 			<key>question</key>
 			<string>Job Happiness</string>
 		</dict>
 		<dict>
 			<key>badResponse</key>
-			<string>ShitBalls</string>
+			<string>So your inner dialogue isn’t on your side? Positive thinking is not about ignoring the troubling things that happen but reacting to them in a more productive way, seeing the possibilities. Gaining control of your thinking can help alleviate depression, distress, anxiety, and improve your overall quality of life. Try making friends with your inner dialogue and negotiating a new way of seeing the negative.</string>
 			<key>goodResponse</key>
-			<string>good response</string>
+			<string>So how is that half full glass of water in front of you? Your way of thinking has potentially helped you through some challenging times, assisted in helping friends out, and occasionally turned your frown upside down, congratulations. Positive thinking is not about ignoring the troubling things that happen, it is about approaching them in a more productive way, seeing the possibilities versus limitations. Keep up the good work!</string>
 			<key>question</key>
 			<string>Positive Thinking</string>
 		</dict>
 		<dict>
 			<key>badResponse</key>
-			<string>ShitBalls</string>
+			<string>Whistle while you work. Well I guess sometimes that doesn’t help everybody. There are many factors that go into productivity including motivation, support, the environment, your ability, and even task difficulty. Examine the factors and see which ones are limiting you. There are many ways to boost productivity, but understand what underlies your challenges is the first step. Most individuals claim “they don’t have the resources”, although it is truly about who is most “resourceful”.</string>
 			<key>goodResponse</key>
-			<string>good response</string>
+			<string>Whistle while you work. Sounds like you really know how to get things done. Being able to produce and contribute is always a good feeling. As you know there are many factors that go into productivity including motivation, environment, ability, and task difficulty. Since you already have a productive background, take it a step further and explore what environments are most productive for you. Learn what factors keep you producing and contributing like you do. </string>
 			<key>question</key>
 			<string>Productivity Level</string>
 		</dict>
