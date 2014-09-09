@@ -36,6 +36,8 @@
 @property (nonatomic, strong) HACollectionViewLargeLayout *largeLayout;
 @property (nonatomic, strong) HACollectionViewSmallLayout *smallLayout;
 
+@property (nonatomic, assign) BOOL isLarge;
+
 
 @end
 
@@ -109,6 +111,8 @@
     
     _smallLayout = [[HACollectionViewSmallLayout alloc] init];
     _largeLayout = [[HACollectionViewLargeLayout alloc] init];
+    
+    self.largeLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     CoverFlowLayout *coverLayot = [[CoverFlowLayout alloc] init];
@@ -211,9 +215,14 @@
     
     [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         
-        // Change flow layout
-        [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
-//        _collectionView.backgroundColor = [UIColor blackColor];
+        if (!self.isLarge) {
+            [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
+            self.isLarge = YES;
+        } else {
+            [collectionView setCollectionViewLayout:self.smallLayout animated:YES];
+            self.isLarge = NO;
+        }
+
         
         // Transform to zoom in effect
 //        _mainView.transform = CGAffineTransformScale(_mainView.transform, 0.96, 0.96);
@@ -221,6 +230,13 @@
         
     }];
 }
+
+
+
+
+
+
+
 //
 //- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 //    
