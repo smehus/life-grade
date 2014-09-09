@@ -262,8 +262,6 @@
                                           attributes:@{NSFontAttributeName:fontText}
                                              context:nil];
     
-    
-    
     return textRect.size.height;
 }
 

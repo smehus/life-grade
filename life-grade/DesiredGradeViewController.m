@@ -25,6 +25,7 @@
 
 
 
+
 @interface DesiredGradeViewController () <UICollectionViewDataSource,
                                             UICollectionViewDelegateFlowLayout,
                                             UICollectionViewDelegate,
@@ -225,9 +226,7 @@
         
         return;
     }
-    
-    
-    
+
     self.fetchedAnswers = [foundObjects lastObject];
     NSLog(@"question bitch %@", self.fetchedAnswers);
     
@@ -646,6 +645,9 @@
     PickDesiredGradeController *myDesiredController = [[PickDesiredGradeController alloc] init];
     myDesiredController.managedObjectContext = self.managedObjectContext;
     myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
+    
+
+
     
 //    myDesiredController.managedObjectContext = self.managedObjectContext;
      UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myDesiredController];

@@ -14,6 +14,11 @@
 #import "DesiredCell.h"
 #import "MainAppDelegate.h"
 #import "Answers.h"
+#import "HACollectionViewSmallLayout.h"
+#import "HACollectionViewLargeLayout.h"
+#import "HATransitionController.h"
+#import "HATransitionLayout.h"
+#import "HAPaperCollectionViewController.h"
 
 @interface PickDesiredGradeController () <UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -27,6 +32,9 @@
 @property (nonatomic, strong) Answers *fetchedAnswers;
 
 @property (nonatomic, strong) NSIndexPath *selectedCell;
+
+@property (nonatomic, strong) HACollectionViewLargeLayout *largeLayout;
+@property (nonatomic, strong) HACollectionViewSmallLayout *smallLayout;
 
 
 @end
@@ -99,13 +107,13 @@
     [self.revealButton setTarget: self.revealViewController];
     [self.revealButton setAction: @selector( revealToggle: )];
     
-    
-    
+    _smallLayout = [[HACollectionViewSmallLayout alloc] init];
+    _largeLayout = [[HACollectionViewLargeLayout alloc] init];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     CoverFlowLayout *coverLayot = [[CoverFlowLayout alloc] init];
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.smallLayout];
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -211,16 +219,16 @@
     self.fetchedAnswers.desiredGrade = [NSNumber numberWithInteger:indexPath.row];
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    CGSize s = CGSizeMake(150, 150);
-    return s;
-}
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    
-    return UIEdgeInsetsMake(0, 5, 0, 5);
-}
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    CGSize s = CGSizeMake(150, 150);
+//    return s;
+//}
+//
+//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+//    
+//    return UIEdgeInsetsMake(0, 5, 0, 5);
+//}
 
 
 
