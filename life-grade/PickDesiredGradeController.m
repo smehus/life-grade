@@ -203,22 +203,44 @@
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"selected item");
     
-    NSLog(@"DID SELECT %@", indexPath);
-
-    DesiredCell *oldCell = (DesiredCell*)[collectionView cellForItemAtIndexPath:self.selectedCell];
-    oldCell.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
-    oldCell.gradeLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+    _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
     
-    DesiredCell *cell = (DesiredCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
-    cell.gradeLabel.textColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
-    self.selectedCell = indexPath;
-    
-    self.fetchedAnswers.desiredGrade = [NSNumber numberWithInteger:indexPath.row];
+    [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
+        // Change flow layout
+        [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
+//        _collectionView.backgroundColor = [UIColor blackColor];
+        
+        // Transform to zoom in effect
+//        _mainView.transform = CGAffineTransformScale(_mainView.transform, 0.96, 0.96);
+    } completion:^(BOOL finished) {
+        
+    }];
 }
+//
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    NSLog(@"DID SELECT %@", indexPath);
+//
+//    DesiredCell *oldCell = (DesiredCell*)[collectionView cellForItemAtIndexPath:self.selectedCell];
+//    oldCell.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
+//    oldCell.gradeLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+//    
+//    DesiredCell *cell = (DesiredCell*)[collectionView cellForItemAtIndexPath:indexPath];
+//    cell.backgroundColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+//    cell.gradeLabel.textColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
+//    self.selectedCell = indexPath;
+//    
+//    self.fetchedAnswers.desiredGrade = [NSNumber numberWithInteger:indexPath.row];
+//}
 
+
+
+// USED WITH OLD GRADE SELECTION
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
 //    
 //    CGSize s = CGSizeMake(150, 150);
