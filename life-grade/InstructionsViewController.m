@@ -44,10 +44,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"Life+Grade";
+    UILabel *titelLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 44)];
+    titelLabel.text = [[localClass class] description];
     
     if (localClass == [PickDesiredGradeController class]) {
-        
+       
         
     } else if (localClass == [AttributesViewController class]) {
         
@@ -57,9 +61,10 @@
         
     }
     
+    [self.view addSubview:titelLabel];
     
     self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.nextButton setFrame:CGRectMake(0, self.view.frame.size.height - 100, self.view.frame.size.width, 44)];
+    [self.nextButton setFrame:CGRectMake(0, self.view.frame.size.height - 200, self.view.frame.size.width, 44)];
     [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     UIColor *color = GREEN_COLOR;
     [self.nextButton setBackgroundColor:color];
