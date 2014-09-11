@@ -641,32 +641,24 @@
     }
     
     
-//    AttributesViewController *controller = [[AttributesViewController alloc] init];
-    
-    
 
-    
-    
-    
-    PickDesiredGradeController *myDesiredController = [[PickDesiredGradeController alloc] init];
-    myDesiredController.managedObjectContext = self.managedObjectContext;
-    myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
-    
-
-    
     ChecklistViewController *checklist = [[ChecklistViewController alloc] initWithChecklist:1 andCompletionBlock:^{
         
+        PickDesiredGradeController *myDesiredController = [[PickDesiredGradeController alloc] init];
+        myDesiredController.managedObjectContext = self.managedObjectContext;
+        myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
+        
+
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myDesiredController];
+        [self.revealViewController setFrontViewController:nav animated:YES];
+    
         
     }];
     
-//    [self presentViewController:checklist animated:YES completion:nil];
     [self.navigationController pushViewController:checklist animated:YES];
 
     
-//    myDesiredController.managedObjectContext = self.managedObjectContext;
-//     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myDesiredController];
-//    [self.revealViewController setFrontViewController:nav animated:YES];
-//    [self presentViewController:nav animated:YES completion:nil];
+
     
 }
 

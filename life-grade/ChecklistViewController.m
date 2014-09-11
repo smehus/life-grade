@@ -99,7 +99,7 @@
 
 - (void)openNextView {
     
-    
+    self.completionBlock();
 }
 
 - (void)didReceiveMemoryWarning
