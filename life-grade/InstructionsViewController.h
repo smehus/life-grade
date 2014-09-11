@@ -14,6 +14,6 @@ typedef void (^CompletionBlock)(void);
 
 @property (nonatomic, strong) CompletionBlock completionBlock;
 
-- (id)initWithViewController:(UIViewController *)controller andCompletionBlock:(CompletionBlock)doneBlock;
+- (id)initWithViewController:(Class)theClass andCompletionBlock:(CompletionBlock)doneBlock;
 
 @end

@@ -643,8 +643,8 @@
     
     
 
-    ChecklistViewController *checklist = [[ChecklistViewController alloc] initWithChecklist:1 andCompletionBlock:^{
-        InstructionsViewController *controller = [[InstructionsViewController alloc] initWithViewController:nil andCompletionBlock:^{
+    ChecklistViewController *checklist = [[ChecklistViewController alloc] initWithChecklist:0 andCompletionBlock:^{
+        InstructionsViewController *controller = [[InstructionsViewController alloc] initWithViewController:[PickDesiredGradeController class] andCompletionBlock:^{
             PickDesiredGradeController *myDesiredController = [[PickDesiredGradeController alloc] init];
             myDesiredController.managedObjectContext = self.managedObjectContext;
             myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
@@ -654,17 +654,10 @@
             [self.revealViewController setFrontViewController:nav animated:YES];
             
         }];
-        
-        
         [self.navigationController pushViewController:controller animated:YES];
         
     }];
-    
     [self.navigationController pushViewController:checklist animated:YES];
-
-    
-
-    
 }
 
 

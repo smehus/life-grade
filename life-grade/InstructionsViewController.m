@@ -8,6 +8,9 @@
 
 #import "InstructionsViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "PickDesiredGradeController.h"
+#import "AttributesViewController.h"
+#import "ActionPlanViewController.h"
 
 @interface InstructionsViewController ()
 
@@ -15,7 +18,9 @@
 
 @end
 
-@implementation InstructionsViewController
+@implementation InstructionsViewController {
+    Class localClass;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,12 +31,12 @@
     return self;
 }
 
-- (id)initWithViewController:(UIViewController *)controller andCompletionBlock:(CompletionBlock)doneBlock {
+- (id)initWithViewController:(Class)theClass andCompletionBlock:(CompletionBlock)doneBlock {
     
     self = [super init];
     if (self) {
         self.completionBlock = doneBlock;
-        
+        localClass = theClass;
     }
     return self;
 }
@@ -41,11 +46,21 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    
+    if (localClass == [PickDesiredGradeController class]) {
+        
+        
+    } else if (localClass == [AttributesViewController class]) {
+        
+        
+    } else if (localClass == [ActionPlanViewController class]) {
+        
+        
+    }
     
     
     self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.nextButton setFrame:CGRectMake(0, self.view.frame.size.height - 66, self.view.frame.size.width, 44)];
+    [self.nextButton setFrame:CGRectMake(0, self.view.frame.size.height - 100, self.view.frame.size.width, 44)];
+    [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     UIColor *color = GREEN_COLOR;
     [self.nextButton setBackgroundColor:color];
     [self.nextButton setTitle:@"Get Started" forState:UIControlStateNormal];
