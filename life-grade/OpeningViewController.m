@@ -16,6 +16,7 @@
 #import <Parse/Parse.h>
 #import "FinalGradeViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "ChecklistViewController.h"
 
 
 
@@ -73,7 +74,7 @@
 //    fuckView.backgroundColor  = GREEN_COLOR;
 //    [self.view addSubview:fuckView];
 //   
-      self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width *3, viewSize.height);
+      self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width *2, viewSize.height);
     self.scrollView.backgroundColor = [UIColor redColor];
     self.scrollView.delegate = self;
     self.myRevealController = [self revealViewController];
@@ -81,7 +82,7 @@
     
     [self setUpPageOne];
     [self setUpPageTwo];
-    [self setUpPageThree];
+//    [self setUpPageThree];
     
  
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(20, viewHeight - 50, self.view.frame.size.width - 40, 20)];
@@ -232,48 +233,49 @@
     self.stepOne.textColor = GREY_COLOR;
     self.stepOne.textAlignment = NSTextAlignmentCenter;
     self.stepOne.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:35];
+    [view addSubview:self.stepOne];
     
+    UIView *firstCheck = [[UIView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.stepOne.frame) + 40, 50, 50)];
+    firstCheck.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    firstCheck.layer.borderWidth = 3.0f;
+    [view addSubview:firstCheck];
     
-    UIImage *arrowImg = [UIImage imageNamed:@"blue-arrow--"];
-    UIImageView *firstArrow = [[UIImageView alloc] initWithImage:arrowImg];
-    firstArrow.frame = CGRectMake(20, 95, arrowImg.size.width + 20, arrowImg.size.height + 20);
-    
-    UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, 120, 150, 50)];
+    UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, firstCheck.frame.origin.y, 150, 50)];
     current.text = @"Current Grade";
     current.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
-    
-    
-    UIImageView *secondArrow = [[UIImageView alloc] initWithImage:arrowImg];
-    secondArrow.frame = CGRectMake(20, 195, arrowImg.size.width + 20, arrowImg.size.height + 20);
-
-    UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(100, 220, 150, 50)];
-    desired.text = @"Desired Grade";
-    desired.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
-    
-   
-   UIImageView *threeArrow = [[UIImageView alloc] initWithImage:arrowImg];
-   threeArrow.frame = CGRectMake(20, 295, arrowImg.size.width + 20, arrowImg.size.height + 20);
-    
-    UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(100, 320, 150, 50)];
-    action.text = @"Action Plan";
-    action.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
-    
-    
-    
-    
-    
-    [view addSubview:firstArrow];
     [view addSubview:current];
     
-    [view addSubview:secondArrow];
+    UIView *secondCheck = [[UIView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(current.frame) + 40, 50, 50)];
+    secondCheck.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    secondCheck.layer.borderWidth = 3.0f;
+    [view addSubview:secondCheck];
+    
+    UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(100, CGRectGetMaxY(current.frame) + 40, 150, 50)];
+    desired.text = @"Desired Grade";
+    desired.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     [view addSubview:desired];
     
-    [view addSubview:threeArrow];
+    UIView *thirdCheck = [[UIView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(desired.frame) + 40, 50, 50)];
+    thirdCheck.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    thirdCheck.layer.borderWidth = 3.0f;
+    [view addSubview:thirdCheck];
+
+    UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(100, CGRectGetMaxY(desired.frame) + 40, 150, 50)];
+    action.text = @"Action Plan";
+    action.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     [view addSubview:action];
     
-    [view addSubview:self.stepOne];
+    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(action.frame) + 40, self.view.frame.size.width, 50)];
+    [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    [self.startButton addTarget:self action:@selector(openGradeController) forControlEvents:UIControlEventTouchUpInside];
+    [self.startButton setTitle:@"Start Grading" forState:UIControlStateNormal];
+    [view addSubview:self.startButton];
+
+    
     [self.scrollView addSubview:view];
 }
+
+
 
 - (void)setUpPageThree {
     
@@ -309,9 +311,6 @@
     [self.startButton addTarget:self action:@selector(openGradeController) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton setTitle:@"Start Grading" forState:UIControlStateNormal];
     
-
-    
-    
     [view addSubview:title];
     [view addSubview:firstArrow];
     [view addSubview:current];
@@ -320,6 +319,7 @@
      [view addSubview:self.startButton];
     [self.scrollView addSubview:view];
 }
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     

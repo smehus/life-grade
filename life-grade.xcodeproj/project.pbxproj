@@ -67,6 +67,7 @@
 		A53DA42319B94B2000EAC693 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = A53DA42219B94B2000EAC693 /* Answers.m */; };
 		A53DA42619B9512300EAC693 /* FinalAnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53DA42519B9512300EAC693 /* FinalAnalysisViewController.m */; };
 		A53DA42819BCA88300EAC693 /* jonsafag in Resources */ = {isa = PBXBuildFile; fileRef = A53DA42719BCA88300EAC693 /* jonsafag */; };
+		A53DA43119C1391700EAC693 /* ChecklistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53DA43019C1391700EAC693 /* ChecklistViewController.m */; };
 		A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC61957B92A00EC5881 /* AttributesViewController.m */; };
 		A5435DCA1957B99400EC5881 /* AttributesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC91957B99400EC5881 /* AttributesCell.m */; };
 		A54B6B1819279F6B000AA8D7 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54B6B1719279F6B000AA8D7 /* Data.plist */; };
@@ -179,6 +180,8 @@
 		A53DA42419B9512300EAC693 /* FinalAnalysisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalAnalysisViewController.h; sourceTree = "<group>"; };
 		A53DA42519B9512300EAC693 /* FinalAnalysisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinalAnalysisViewController.m; sourceTree = "<group>"; };
 		A53DA42719BCA88300EAC693 /* jonsafag */ = {isa = PBXFileReference; lastKnownFileType = file; path = jonsafag; sourceTree = "<group>"; };
+		A53DA42F19C1391700EAC693 /* ChecklistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChecklistViewController.h; sourceTree = "<group>"; };
+		A53DA43019C1391700EAC693 /* ChecklistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChecklistViewController.m; sourceTree = "<group>"; };
 		A5435DC51957B92A00EC5881 /* AttributesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesViewController.h; sourceTree = "<group>"; };
 		A5435DC61957B92A00EC5881 /* AttributesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesViewController.m; sourceTree = "<group>"; };
 		A5435DC81957B99400EC5881 /* AttributesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesCell.h; sourceTree = "<group>"; };
@@ -299,6 +302,8 @@
 				6533F57218E4F19E0017C7D6 /* SimpleCoverFlowLayout.m */,
 				A5E85E2C1927B81100AAA4B6 /* Grade.h */,
 				A5E85E2D1927B81100AAA4B6 /* Grade.m */,
+				A53DA42F19C1391700EAC693 /* ChecklistViewController.h */,
+				A53DA43019C1391700EAC693 /* ChecklistViewController.m */,
 			);
 			path = "life-grade";
 			sourceTree = "<group>";
@@ -669,6 +674,7 @@
 				65BFF076190F511E0087511B /* HATransitionController.m in Sources */,
 				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
 				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
+				A53DA43119C1391700EAC693 /* ChecklistViewController.m in Sources */,
 				A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
 				A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */,
