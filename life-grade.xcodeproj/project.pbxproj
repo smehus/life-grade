@@ -447,8 +447,8 @@
 				6533F55C18E190630017C7D6 /* DesiredGradeViewController.m */,
 				6533F55D18E190630017C7D6 /* DesiredGradeViewController.xib */,
 				6533F55318E190360017C7D6 /* CollectionCell.xib */,
-				6533F55818E190560017C7D6 /* CollectionCell.h */,
 				6533F55918E190560017C7D6 /* CollectionCell.m */,
+				6533F55818E190560017C7D6 /* CollectionCell.h */,
 				6533F56818E194810017C7D6 /* QuestionView.h */,
 				6533F56918E194810017C7D6 /* QuestionView.m */,
 			);

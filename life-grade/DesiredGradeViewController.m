@@ -22,6 +22,7 @@
 #import "PickDesiredGradeController.h"
 #import "AttributesViewController.h"
 #import "MainAppDelegate.h"
+#import "ChecklistViewController.h"
 
 
 
@@ -643,6 +644,7 @@
 //    AttributesViewController *controller = [[AttributesViewController alloc] init];
     
     
+
     
     
     
@@ -651,11 +653,19 @@
     myDesiredController.finalGradeValue = [NSNumber numberWithInt:finalNum];
     
 
+    
+    ChecklistViewController *checklist = [[ChecklistViewController alloc] initWithChecklist:1 andCompletionBlock:^{
+        
+        
+    }];
+    
+//    [self presentViewController:checklist animated:YES completion:nil];
+    [self.navigationController pushViewController:checklist animated:YES];
 
     
 //    myDesiredController.managedObjectContext = self.managedObjectContext;
-     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myDesiredController];
-    [self.revealViewController setFrontViewController:nav animated:YES];
+//     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myDesiredController];
+//    [self.revealViewController setFrontViewController:nav animated:YES];
 //    [self presentViewController:nav animated:YES completion:nil];
     
 }

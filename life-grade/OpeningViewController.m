@@ -70,11 +70,8 @@
     bg.frame = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:bg];
     
-//    UIView *fuckView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
-//    fuckView.backgroundColor  = GREEN_COLOR;
-//    [self.view addSubview:fuckView];
-//   
-      self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width *2, viewSize.height);
+
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width *2, viewSize.height);
     self.scrollView.backgroundColor = [UIColor redColor];
     self.scrollView.delegate = self;
     self.myRevealController = [self revealViewController];
@@ -82,18 +79,13 @@
     
     [self setUpPageOne];
     [self setUpPageTwo];
-//    [self setUpPageThree];
-    
- 
+
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(20, viewHeight - 50, self.view.frame.size.width - 40, 20)];
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = 3;
     self.pageControl.currentPageIndicatorTintColor = GREEN_COLOR;
     self.pageControl.pageIndicatorTintColor = GREY_COLOR;
 
-    
-   
-   
     [self loadshit];
     [self.view addSubview:self.pageControl];
     [self.view addSubview:self.scrollView];
@@ -123,13 +115,6 @@
     UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:desiredController];
     [self.myRevealController setFrontViewController:navCon];
     
-    
-//    
-//     PickDesiredGradeController *balls = [[PickDesiredGradeController alloc] init];
-//    
-//    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:balls];
-////    [self.myRevealController setFrontViewController:navCon];
-//    [self presentViewController:navCon animated:YES completion:nil];
 }
 
 - (void)setUpPageOne {
@@ -169,8 +154,6 @@
     
     
     [self.scrollView addSubview:signInButton];
-//    [self.scrollView addSubview:self.LifeLabel];
-//    [self.scrollView addSubview:self.GradeLabel];
     [self.scrollView addSubview:logoView];
 }
 
