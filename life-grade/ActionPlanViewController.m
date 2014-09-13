@@ -188,7 +188,7 @@
 //    [self.revealViewController setFrontViewController:nav];
     
     ChecklistViewController *checklist = [[ChecklistViewController alloc] initWithChecklist:2 andCompletionBlock:^{
-        InstructionsViewController *controller = [[InstructionsViewController alloc] initWithViewController:[ActionPlanViewController class] andCompletionBlock:^{
+        InstructionsViewController *controller = [[InstructionsViewController alloc] initWithViewController:[AttributesViewController class] andCompletionBlock:^{
             
             AttributesViewController *actionPlan = [[AttributesViewController alloc] init];
             actionPlan.managedObjectContext = self.managedObjectContext;
