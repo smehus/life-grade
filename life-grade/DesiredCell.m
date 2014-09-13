@@ -7,6 +7,7 @@
 //
 
 #import "DesiredCell.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation DesiredCell
 
@@ -21,10 +22,16 @@
         self.gradeLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
         self.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:48];
         self.gradeLabel.textAlignment = NSTextAlignmentCenter;
-        
-        
         [self addSubview:self.gradeLabel];
         
+        self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [self.nextButton setBackgroundColor:[UIColor greenColor]];
+        [[self.nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            [self.cellDelegate didPickGrade:self.gradeLabel.text andIndex:self.theIndex];
+            
+        }];
+        [self.nextButton setFrame:CGRectMake(0, CGRectGetMaxY(self.gradeLabel.frame) + 300, 200, 50)];
+        [self addSubview:self.nextButton];
         
     }
     return self;

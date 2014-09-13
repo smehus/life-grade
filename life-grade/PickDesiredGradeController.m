@@ -20,7 +20,10 @@
 #import "HATransitionLayout.h"
 #import "HAPaperCollectionViewController.h"
 
-@interface PickDesiredGradeController () <UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface PickDesiredGradeController () <UICollectionViewDelegateFlowLayout,
+                                            UICollectionViewDelegate,
+                                            UICollectionViewDataSource,
+                                            DesiredCellDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
@@ -200,7 +203,9 @@
             
         }
     }
-    
+    cell.cellDelegate = self;
+    cell.nextButton.hidden = YES;
+    cell.theIndex = indexPath;
     cell.gradeLabel.text = [[self.gradeArray objectAtIndex:indexPath.row] objectForKey:@"grade"];    
     
     
@@ -217,6 +222,9 @@
         
         if (!self.isLarge) {
             [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
+            DesiredCell *cell = (DesiredCell *)[collectionView cellForItemAtIndexPath:indexPath];
+            cell.nextButton.hidden = NO;
+            
             self.isLarge = YES;
         } else {
             [collectionView setCollectionViewLayout:self.smallLayout animated:YES];
@@ -231,7 +239,24 @@
     }];
 }
 
-
+- (void)didPickGrade:(NSString *)grade andIndex:(NSIndexPath *)idx {
+    NSLog(@"DIDPICKGRADE %@", grade);
+    self.fetchedAnswers.desiredGrade = [NSNumber numberWithInteger:idx.row];
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
+    
+    
+    ActionPlanViewController *actionPlan = [[ActionPlanViewController alloc] init];
+    actionPlan.managedObjectContext = self.managedObjectContext;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionPlan];
+    //    [self presentViewController:nav animated:YES completion:nil];
+    [self.revealViewController setFrontViewController:nav];
+    
+}
 
 
 

@@ -106,7 +106,7 @@
     self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(action.frame) + 40, self.view.frame.size.width, 50)];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [self.startButton addTarget:self action:@selector(openNextView) forControlEvents:UIControlEventTouchUpInside];
-    [self.startButton setTitle:@"Start Grading" forState:UIControlStateNormal];
+    [self.startButton setTitle:@"Continue" forState:UIControlStateNormal];
     [self.view addSubview:self.startButton];
 
 }

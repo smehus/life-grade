@@ -48,16 +48,20 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"Life+Grade";
     UILabel *titelLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 44)];
-    titelLabel.text = [[localClass class] description];
+    titelLabel.textAlignment = NSTextAlignmentCenter;
+    NSString *blah = LIGHT_FONT;
+    titelLabel.font = [UIFont fontWithName:blah size:30];
+
     
     if (localClass == [PickDesiredGradeController class]) {
        
+        titelLabel.text = @"Desired Grade";
         
     } else if (localClass == [AttributesViewController class]) {
-        
+        titelLabel.text = @"Attributes";
         
     } else if (localClass == [ActionPlanViewController class]) {
-        
+        titelLabel.text = @"Action Plan";
         
     }
     
