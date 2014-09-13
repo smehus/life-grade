@@ -259,7 +259,7 @@
 //    [self.revealViewController setFrontViewController:nav];
 //    
     
-    ChecklistViewController *checklist = [[ChecklistViewController alloc] initWithChecklist:0 andCompletionBlock:^{
+    ChecklistViewController *checklist = [[ChecklistViewController alloc] initWithChecklist:1 andCompletionBlock:^{
         InstructionsViewController *controller = [[InstructionsViewController alloc] initWithViewController:[ActionPlanViewController class] andCompletionBlock:^{
             
             ActionPlanViewController *actionPlan = [[ActionPlanViewController alloc] init];

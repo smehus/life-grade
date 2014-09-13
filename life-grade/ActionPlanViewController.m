@@ -187,7 +187,7 @@
 //    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:attributes];
 //    [self.revealViewController setFrontViewController:nav];
     
-    ChecklistViewController *checklist = [[ChecklistViewController alloc] initWithChecklist:0 andCompletionBlock:^{
+    ChecklistViewController *checklist = [[ChecklistViewController alloc] initWithChecklist:2 andCompletionBlock:^{
         InstructionsViewController *controller = [[InstructionsViewController alloc] initWithViewController:[ActionPlanViewController class] andCompletionBlock:^{
             
             AttributesViewController *actionPlan = [[AttributesViewController alloc] init];
