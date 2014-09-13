@@ -16,6 +16,8 @@
     self = [super initWithFrame:frame];
     if (self) {
 
+        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+        
         self.userInteractionEnabled = YES;
         self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.frame.size.height/2 - 25, self.frame.size.width, 50)];
         self.gradeLabel.backgroundColor = [UIColor clearColor];
@@ -26,11 +28,13 @@
         
         self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.nextButton setBackgroundColor:[UIColor greenColor]];
+        [self.nextButton setTitle:@"Select Grade" forState:UIControlStateNormal];
+        [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [[self.nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
             [self.cellDelegate didPickGrade:self.gradeLabel.text andIndex:self.theIndex];
             
         }];
-        [self.nextButton setFrame:CGRectMake(0, CGRectGetMaxY(self.gradeLabel.frame) + 300, 200, 50)];
+        [self.nextButton setFrame:CGRectMake(10, CGRectGetMaxY(self.gradeLabel.frame) + 300, screenWidth - 20, 50)];
         [self addSubview:self.nextButton];
         
     }

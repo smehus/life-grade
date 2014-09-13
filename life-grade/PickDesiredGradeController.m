@@ -19,6 +19,8 @@
 #import "HATransitionController.h"
 #import "HATransitionLayout.h"
 #import "HAPaperCollectionViewController.h"
+#import "ChecklistViewController.h"
+#import "InstructionsViewController.h"
 
 @interface PickDesiredGradeController () <UICollectionViewDelegateFlowLayout,
                                             UICollectionViewDelegate,
@@ -250,11 +252,27 @@
     }
     
     
-    ActionPlanViewController *actionPlan = [[ActionPlanViewController alloc] init];
-    actionPlan.managedObjectContext = self.managedObjectContext;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionPlan];
-    //    [self presentViewController:nav animated:YES completion:nil];
-    [self.revealViewController setFrontViewController:nav];
+//    ActionPlanViewController *actionPlan = [[ActionPlanViewController alloc] init];
+//    actionPlan.managedObjectContext = self.managedObjectContext;
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionPlan];
+//    //    [self presentViewController:nav animated:YES completion:nil];
+//    [self.revealViewController setFrontViewController:nav];
+//    
+    
+    ChecklistViewController *checklist = [[ChecklistViewController alloc] initWithChecklist:0 andCompletionBlock:^{
+        InstructionsViewController *controller = [[InstructionsViewController alloc] initWithViewController:[ActionPlanViewController class] andCompletionBlock:^{
+            
+            ActionPlanViewController *actionPlan = [[ActionPlanViewController alloc] init];
+            actionPlan.managedObjectContext = self.managedObjectContext;
+            
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionPlan];
+            [self.revealViewController setFrontViewController:nav animated:YES];
+            
+        }];
+        [self.navigationController pushViewController:controller animated:YES];
+        
+    }];
+    [self.navigationController pushViewController:checklist animated:YES];
     
 }
 

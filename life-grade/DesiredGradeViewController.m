@@ -557,6 +557,7 @@
         
         float value = [g.gradeNum floatValue];
         finalNum = finalNum + value;
+        
     }
     
     NSLog(@"FINAL GRADE NUM %f", finalNum);
@@ -585,7 +586,7 @@
         self.fetchedAnswers.questionEight = [[self.myGrades objectAtIndex:7] gradeNum];
         self.fetchedAnswers.questionNine = [[self.myGrades objectAtIndex:8] gradeNum];
         self.fetchedAnswers.questionTen = [[self.myGrades objectAtIndex:9] gradeNum];
-        
+        self.fetchedAnswers.finalGrade = [NSNumber numberWithInt:finalNum];
         
         
     } else {
