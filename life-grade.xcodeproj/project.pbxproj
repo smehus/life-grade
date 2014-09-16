@@ -833,8 +833,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Scott Mehus (4HWQ95CTCF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Scott Mehus (4HWQ95CTCF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/smehus/Documents/life-grade",
@@ -844,7 +844,7 @@
 				GCC_PREFIX_HEADER = "life-grade/life-grade-Prefix.pch";
 				INFOPLIST_FILE = "life-grade/life-grade-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E88A23E7-FF3F-4F75-86EB-CF37532E390F";
+				PROVISIONING_PROFILE = "e5885669-e165-4d37-9a53-e3931446776a";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -856,7 +856,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Scott Mehus (4HWQ95CTCF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Scott Mehus (4HWQ95CTCF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/smehus/Documents/life-grade",
@@ -866,7 +866,7 @@
 				GCC_PREFIX_HEADER = "life-grade/life-grade-Prefix.pch";
 				INFOPLIST_FILE = "life-grade/life-grade-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4731E117-400B-4D2C-8FE5-305ED4402E3B";
+				PROVISIONING_PROFILE = "e5885669-e165-4d37-9a53-e3931446776a";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

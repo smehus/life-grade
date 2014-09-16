@@ -104,7 +104,6 @@
     }
     
     self.fetchedAnswers = [foundObjects lastObject];
-    
     NSLog(@"dicks %@", self.fetchedAnswers.questionFive );
     
     
@@ -352,6 +351,41 @@
     }
 }
 
+
+- (void)saveToParse {
+    
+    NSString *email = [[NSUserDefaults standardUserDefaults]
+                       stringForKey:@"email"];
+    
+    NSString *password = [[NSUserDefaults standardUserDefaults]
+                          stringForKey:@"password"];
+    
+    
+    PFObject *post = [PFObject objectWithClassName:@"Grade"];
+    post[@"questionOne"] = self.fetchedAnswers.questionOne;
+    post[@"questionTwo"] = self.fetchedAnswers.questionTwo;
+    post[@"questionThree"] = self.fetchedAnswers.questionThree;
+    post[@"questionFour"] = self.fetchedAnswers.questionFour;
+    post[@"questionFive"] = self.fetchedAnswers.questionFive;
+    post[@"questionSix"] = self.fetchedAnswers.questionSix;
+    post[@"questionSeven"] = self.fetchedAnswers.questionSeven;
+    post[@"questionEight"] = self.fetchedAnswers.questionEight;
+    post[@"questionNine"] = self.fetchedAnswers.questionNine;
+    post[@"questionTen"] = self.fetchedAnswers.questionTen;
+    
+    PFUser *user = [PFUser currentUser];
+    if (user) {
+        post[@"user"] = user;
+    } else if (email) {
+        post[@"backupEmail"] = email;
+    } else {
+        
+        NSLog(@"no current user and no user defaults");
+    }
+    
+    [post save];
+    
+}
 
 
 
