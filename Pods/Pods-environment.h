@@ -66,6 +66,12 @@
 #define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 14
 #define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 1
 
+// IQKeyboardManager
+#define COCOAPODS_POD_AVAILABLE_IQKeyboardManager
+#define COCOAPODS_VERSION_MAJOR_IQKeyboardManager 3
+#define COCOAPODS_VERSION_MINOR_IQKeyboardManager 1
+#define COCOAPODS_VERSION_PATCH_IQKeyboardManager 1
+
 // MONActivityIndicatorView
 #define COCOAPODS_POD_AVAILABLE_MONActivityIndicatorView
 #define COCOAPODS_VERSION_MAJOR_MONActivityIndicatorView 0

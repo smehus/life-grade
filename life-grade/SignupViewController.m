@@ -13,6 +13,8 @@
 #import "SWRevealViewController.h"
 #import "MONActivityIndicatorView.h"
 #import "FinalAnalysisViewController.h"
+#import "IQKeyboardManager.h"
+#import "IQKeyboardReturnKeyHandler.h"
 
 @interface SignupViewController () <UITextFieldDelegate>
 

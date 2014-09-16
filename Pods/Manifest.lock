@@ -22,6 +22,7 @@ PODS:
   - EMAccordionTableViewController (0.4)
   - Facebook-iOS-SDK (3.14.1):
     - Bolts
+  - IQKeyboardManager (3.1.1)
   - MONActivityIndicatorView (0.0.1)
   - pop (1.0.6)
   - ReactiveCocoa (2.3.1):
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.2)
   - EMAccordionTableViewController (~> 0.4)
   - Facebook-iOS-SDK (~> 3.13)
+  - IQKeyboardManager
   - MONActivityIndicatorView (~> 0.0.1)
   - pop (~> 1.0)
   - ReactiveCocoa (~> 2.3)
@@ -45,6 +47,7 @@ SPEC CHECKSUMS:
   Bolts: 2635e8698a630774689441047f3465d78c48d485
   EMAccordionTableViewController: 1d5c69385e18e7becaa06340d10d81129312f9aa
   Facebook-iOS-SDK: e9b3d5ac54ee3e5e693f4eef470b97911b3d076d
+  IQKeyboardManager: 79ab3bc740f6bd30eadf9b0d217020941c0926e4
   MONActivityIndicatorView: 728965121e59cef32c1bc4676f6868e35f3c8c61
   pop: e518794da38942c05255eb64b36d894e70cb4f00
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462

@@ -14,6 +14,8 @@
 #import "Answers.h"
 #import "ChecklistViewController.h"
 #import "InstructionsViewController.h"
+#import "IQKeyboardManager.h"
+#import "IQKeyboardReturnKeyHandler.h"
 
 @interface ActionPlanViewController ()
 
