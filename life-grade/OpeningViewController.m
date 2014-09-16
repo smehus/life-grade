@@ -82,7 +82,7 @@
 
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(20, viewHeight - 50, self.view.frame.size.width - 40, 20)];
     self.pageControl.currentPage = 0;
-    self.pageControl.numberOfPages = 3;
+    self.pageControl.numberOfPages = 2;
     self.pageControl.currentPageIndicatorTintColor = GREEN_COLOR;
     self.pageControl.pageIndicatorTintColor = GREY_COLOR;
 

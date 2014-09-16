@@ -15,6 +15,7 @@
 #import "FinalAnalysisViewController.h"
 #import "IQKeyboardManager.h"
 #import "IQKeyboardReturnKeyHandler.h"
+#import "MainAppDelegate.h"
 
 @interface SignupViewController () <UITextFieldDelegate>
 
@@ -28,6 +29,7 @@
 
 @implementation SignupViewController {
     MONActivityIndicatorView *indicatorView;
+    MainAppDelegate *appDelegate;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,6 +48,7 @@
     UIColor *barColour = GREEN_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
     
+    appDelegate = (MainAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -138,6 +141,8 @@
         if (!error) {
             //The registration was successful, go to the wall
             NSLog(@"***SIGNUP SUCCESS");
+            
+            appDelegate.currentUser = user;
             
             NSString *email = self.userNameField.text;
             NSString *pw = self.passwordTextField.text;

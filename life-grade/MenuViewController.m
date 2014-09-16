@@ -54,10 +54,8 @@
     self.titleArray = @[@"Grading", @"Desired Grade", @"Steps", @"Attributes", @"My Grade", @"About", @"Log Out"];
     
     NSLog(@"MENU LOADED");
-     self.tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
     [super viewDidLoad];
     self.myRevealController = [self revealViewController];
-    self.tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
     self.tableView.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
     
 }
@@ -71,8 +69,6 @@
     if (!self.managedObjectContext) {
         self.managedObjectContext = del.managedObjectContext;
     }
-    
-//     self.tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,9 +79,6 @@
 }
 
 - (void)performFetch {
-    
-
-    
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
@@ -114,22 +107,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
-    tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
-     tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
-    return self.titleArray.count;
-    
+    if (section == 0) {
+        return 1;
+    } else {
+        return self.titleArray.count;
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-     tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
-    return 66;
+    if (indexPath.section == 0) {
+        return 44;
+    } else {
+        return 66;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,81 +134,101 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-     tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
 
-    cell.textLabel.text = [self.titleArray objectAtIndex:indexPath.row];
     
+    if (indexPath.section == 0) {
+        PFUser *user = [PFUser currentUser];
+        if (user) {
+            cell.textLabel.text = user.email;
+        } else {
+            cell.textLabel.text = @"Not Signed In";
+        }
+
+        NSString *sf = LIGHT_FONT;
+        cell.textLabel.font = [UIFont fontWithName:sf size:16];
+        cell.textLabel.textColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0f];
+    } else {
+        cell.textLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+        cell.textLabel.text = [self.titleArray objectAtIndex:indexPath.row];
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 0) {
-        
-        DesiredGradeViewController *desiredView = [[DesiredGradeViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:desiredView];
-        [self.myRevealController pushFrontViewController:nav animated:YES];
-        
-    } else if (indexPath.row == 1) {
-        
-        PickDesiredGradeController *pickDesire = [[PickDesiredGradeController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:pickDesire];
-        [self.myRevealController pushFrontViewController:nav animated:YES];
-        
-        
-    } else if (indexPath.row == 2) {
-        
-        ActionPlanViewController *desiredController = [[ActionPlanViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:desiredController];
-        [self.myRevealController pushFrontViewController:nav animated:YES];
-    } else if (indexPath.row == 3) {
-        
-        AttributesViewController *attsController = [[AttributesViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:attsController];
-        [self.myRevealController pushFrontViewController:nav animated:YES];
-        
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0) {
+        NSLog(@"clicked email");
+    } else {
     
-    } else if (indexPath.row == 4) {
+        if (indexPath.row == 0) {
+            
+            DesiredGradeViewController *desiredView = [[DesiredGradeViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:desiredView];
+            [self.myRevealController pushFrontViewController:nav animated:YES];
+            
+        } else if (indexPath.row == 1) {
+            
+            PickDesiredGradeController *pickDesire = [[PickDesiredGradeController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:pickDesire];
+            [self.myRevealController pushFrontViewController:nav animated:YES];
+            
+            
+        } else if (indexPath.row == 2) {
+            
+            ActionPlanViewController *desiredController = [[ActionPlanViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:desiredController];
+            [self.myRevealController pushFrontViewController:nav animated:YES];
+        } else if (indexPath.row == 3) {
+            
+            AttributesViewController *attsController = [[AttributesViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:attsController];
+            [self.myRevealController pushFrontViewController:nav animated:YES];
+            
         
-        FinalAnalysisViewController *finalontroller = [[FinalAnalysisViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalontroller];
-        [self.myRevealController pushFrontViewController:nav animated:YES];
-    
+        } else if (indexPath.row == 4) {
+            
+            FinalAnalysisViewController *finalontroller = [[FinalAnalysisViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalontroller];
+            [self.myRevealController pushFrontViewController:nav animated:YES];
         
-    } else if (indexPath.row == 5) {
-        
-        AboutViewController *aboutController = [[AboutViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:aboutController];
-        [self.myRevealController pushFrontViewController:nav animated:YES];
-        
-    } else if (indexPath.row == 6) {
-        
-        NSLog(@"***LOG OUT");
-        
-        
-        [PFUser logOut];
-        
-        [self.managedObjectContext deleteObject:self.fetchedAnswers];
-        
-        NSError *error = nil;
-        if (![self.managedObjectContext save:&error]) {
-            NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
-            return;
+            
+        } else if (indexPath.row == 5) {
+            
+            AboutViewController *aboutController = [[AboutViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:aboutController];
+            [self.myRevealController pushFrontViewController:nav animated:YES];
+            
+        } else if (indexPath.row == 6) {
+            
+            NSLog(@"***LOG OUT");
+            
+            PFUser *user = [PFUser currentUser];
+            if (user) {
+                
+                [PFUser logOut];
+                
+                [self.managedObjectContext deleteObject:self.fetchedAnswers];
+                
+                NSError *error = nil;
+                if (![self.managedObjectContext save:&error]) {
+                    NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
+                    return;
+                }
+                
+                NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+                for (NSString *key in [defaultsDictionary allKeys]) {
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+                }
+                
+                
+                
+                OpeningViewController *opening = [[OpeningViewController alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:opening];
+                [self.myRevealController pushFrontViewController:nav animated:YES];
+            }
         }
-        
-        NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
-        for (NSString *key in [defaultsDictionary allKeys]) {
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
-        }
-        
-        
-        
-        OpeningViewController *opening = [[OpeningViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:opening];
-        [self.myRevealController pushFrontViewController:nav animated:YES];
-        
     }
 }
 
