@@ -83,12 +83,14 @@
     self.passwordTextField.placeholder = @"Password";
     self.passwordTextField.layer.borderWidth = 1.0f;
     self.passwordTextField.delegate = self;
+    self.passwordTextField.secureTextEntry = YES;
     
     self.passwordConfirmation = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.passwordTextField.frame) + 20, self.view.frame.size.width - 20, 50)];
     self.passwordConfirmation.layer.borderColor = greyC.CGColor;
     self.passwordConfirmation.placeholder = @"Confirm Password";
     self.passwordConfirmation.layer.borderWidth = 1.0f;
     self.passwordConfirmation.delegate = self;
+    self.passwordConfirmation.secureTextEntry = YES;
 
     
     self.signUp = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.passwordConfirmation.frame) + 50, self.view.frame.size.width, 50)];

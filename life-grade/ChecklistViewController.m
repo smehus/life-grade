@@ -55,6 +55,8 @@
     
     self.title = @"Life+Grade";
     
+    UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
+    UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
     
     self.stepOne = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, self.view.frame.size.width, 50)];
     self.stepOne.text = @"3 Life Grade Steps";
@@ -63,45 +65,69 @@
     self.stepOne.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:35];
     [self.view addSubview:self.stepOne];
     
-    UIView *firstCheck = [[UIView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.stepOne.frame) + 40, 50, 50)];
-    firstCheck.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    firstCheck.layer.borderWidth = 3.0f;
-    if (checkedIndex == 0) {
-        firstCheck.backgroundColor = [UIColor greenColor];
-    }
+    // ***** FIRST CHECK *****\\
+    
+    UIImageView *firstCheck = [[UIImageView alloc] initWithImage:checkBox];
+    firstCheck.frame = CGRectMake(20, CGRectGetMaxY(self.stepOne.frame) + 40, 75, 75);
     [self.view addSubview:firstCheck];
     
-    UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, firstCheck.frame.origin.y, 150, 50)];
+    UIImageView *firstMark = [[UIImageView alloc] initWithImage:checkMark];
+    firstMark.frame = CGRectMake(20, firstCheck.center.y - 60, 75, 75);
+    if (checkedIndex == 0) {
+        [self.view addSubview:firstMark];
+    }
+    
+    
+    UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, firstCheck.frame.origin.y + 10, 150, 50)];
     current.text = @"Current Grade";
     current.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     [self.view addSubview:current];
+
     
-    UIView *secondCheck = [[UIView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(current.frame) + 40, 50, 50)];
-    secondCheck.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    secondCheck.layer.borderWidth = 3.0f;
-    if (checkedIndex == 1) {
-        firstCheck.backgroundColor = [UIColor greenColor];
-        secondCheck.backgroundColor = [UIColor greenColor];
-    }
+    // ***** SECOND CHECK ******\\
+    
+    UIImageView *secondCheck = [[UIImageView alloc] initWithImage:checkBox];
+    secondCheck.frame = CGRectMake(20, CGRectGetMaxY(current.frame) + 40, 75, 75);
     [self.view addSubview:secondCheck];
     
-    UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(100, CGRectGetMaxY(current.frame) + 40, 150, 50)];
+    UIImageView *secondMark = [[UIImageView alloc] initWithImage:checkMark];
+    secondMark.frame = CGRectMake(20, secondCheck.center.y - 60, 75, 75);
+    if (checkedIndex == 1) {
+        [self.view addSubview:firstMark];
+        [self.view addSubview:secondMark];
+    }
+
+    
+    UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(100, CGRectGetMaxY(current.frame) + 50, 150, 50)];
     desired.text = @"Desired Grade";
     desired.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     [self.view addSubview:desired];
     
-    UIView *thirdCheck = [[UIView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(desired.frame) + 40, 50, 50)];
-    thirdCheck.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    thirdCheck.layer.borderWidth = 3.0f;
-    if (checkedIndex >= 2) {
-        thirdCheck.backgroundColor = [UIColor greenColor];
-    }
+    
+    
+    // ***** THIRD CHECK *****\
+    
+    UIImageView *thirdCheck = [[UIImageView alloc] initWithImage:checkBox];
+    thirdCheck.frame = CGRectMake(20, CGRectGetMaxY(desired.frame) + 40, 75, 75);
     [self.view addSubview:thirdCheck];
     
-    UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(100, CGRectGetMaxY(desired.frame) + 40, 150, 50)];
+    UIImageView *thirdMark = [[UIImageView alloc] initWithImage:checkMark];
+    thirdMark.frame = CGRectMake(20, thirdCheck.center.y - 60, 75, 75);
+    if (checkedIndex == 1) {
+        [self.view addSubview:firstMark];
+        [self.view addSubview:secondMark];
+        [self.view addSubview:thirdMark];
+    }
+
+    UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(100, CGRectGetMaxY(desired.frame) + 50, 150, 50)];
     action.text = @"Action Plan";
     action.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     [self.view addSubview:action];
+    
+    
+    
+    
+    // ****** NEXT BUTTON ***** \\
     
     self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(action.frame) + 40, self.view.frame.size.width, 50)];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];

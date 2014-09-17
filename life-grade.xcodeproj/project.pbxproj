@@ -72,6 +72,8 @@
 		A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC61957B92A00EC5881 /* AttributesViewController.m */; };
 		A5435DCA1957B99400EC5881 /* AttributesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC91957B99400EC5881 /* AttributesCell.m */; };
 		A54B6B1819279F6B000AA8D7 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54B6B1719279F6B000AA8D7 /* Data.plist */; };
+		A581F2D619C917C600AB9382 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = A581F2D419C917C600AB9382 /* CheckBox.png */; };
+		A581F2D819C917E400AB9382 /* check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = A581F2D719C917E400AB9382 /* check_mark.png */; };
 		A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */; };
 		A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C761939719F00887F83 /* FinalGradeViewController.m */; };
 		A5C08C7B193977D600887F83 /* ActionPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7A193977D600887F83 /* ActionPlanViewController.m */; };
@@ -190,6 +192,8 @@
 		A5435DC81957B99400EC5881 /* AttributesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesCell.h; sourceTree = "<group>"; };
 		A5435DC91957B99400EC5881 /* AttributesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesCell.m; sourceTree = "<group>"; };
 		A54B6B1719279F6B000AA8D7 /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
+		A581F2D419C917C600AB9382 /* CheckBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckBox.png; sourceTree = "<group>"; };
+		A581F2D719C917E400AB9382 /* check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_mark.png; sourceTree = "<group>"; };
 		A5BBB2B6192A1EB000724639 /* PickDesiredGradeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickDesiredGradeController.h; sourceTree = "<group>"; };
 		A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickDesiredGradeController.m; sourceTree = "<group>"; };
 		A5C08C751939719F00887F83 /* FinalGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalGradeViewController.h; sourceTree = "<group>"; };
@@ -345,6 +349,8 @@
 		65714FFF191482700034009A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A581F2D719C917E400AB9382 /* check_mark.png */,
+				A581F2D419C917C600AB9382 /* CheckBox.png */,
 				A53DA42719BCA88300EAC693 /* jonsafag */,
 				A50D5DA619AC2A4900A85175 /* life_grade_logo.png */,
 				65715000191482880034009A /* Iphone assets-2 */,
@@ -590,10 +596,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A581F2D819C917E400AB9382 /* check_mark.png in Resources */,
 				655EC64818DF626E0036515F /* OpeningViewController.xib in Resources */,
 				65715012191482880034009A /* Blue-box-2-@2x.png in Resources */,
 				655EC62118DF5FE20036515F /* Images.xcassets in Resources */,
 				6571501B191482880034009A /* mind-set-blue-@2x.png in Resources */,
+				A581F2D619C917C600AB9382 /* CheckBox.png in Resources */,
 				A50D5DA719AC2A4900A85175 /* life_grade_logo.png in Resources */,
 				6571501E191482880034009A /* Red-arrow-2-@2x.png in Resources */,
 				65715016191482880034009A /* empty-Black-box-@2x.png in Resources */,

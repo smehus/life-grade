@@ -222,8 +222,11 @@
     post[@"questionEight"] = self.fetchedAnswers.questionEight;
     post[@"questionNine"] = self.fetchedAnswers.questionNine;
     post[@"questionTen"] = self.fetchedAnswers.questionTen;
-    
+    post[@"desiredGrade"] = self.fetchedAnswers.desiredGrade;
+    NSLog(@"FINALDESIRE %@", self.fetchedAnswers.desiredGrade);
     PFUser *user = [PFUser currentUser];
+    
+    user[@"desiredGrade"] = self.fetchedAnswers.desiredGrade;
     
     if (user) {
         post[@"user"] = user;
@@ -235,7 +238,7 @@
     }
     
     [post save];
-    
+    [user save];
 }
 
 
