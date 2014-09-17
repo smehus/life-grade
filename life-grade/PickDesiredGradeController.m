@@ -242,7 +242,7 @@
 }
 
 - (void)didPickGrade:(NSString *)grade andIndex:(NSIndexPath *)idx {
-    NSLog(@"DIDPICKGRADE %@", grade);
+    NSLog(@"DIDPICKGRADE %@ : %li", grade, (long)idx.row);
     self.fetchedAnswers.desiredGrade = [NSNumber numberWithInteger:idx.row];
     
     NSError *error;

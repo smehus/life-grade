@@ -30,6 +30,9 @@
     
     MainAppDelegate *del;
     float finalGradeNum;
+    NSString *fontName;
+    UIView *firstView;
+    UIView *secondView;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -50,6 +53,11 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
+    
+    fontName = LIGHT_FONT;
+    
+    self.title = @"Analysis";
+    
     self.view.backgroundColor = [UIColor whiteColor];
     del = (MainAppDelegate *)[[UIApplication sharedApplication] delegate];
     UIColor *barColour = GREEN_COLOR;
@@ -65,10 +73,12 @@
     
     [self fetchAnswers];
     [self fetchAttributes];
-    [self addAnswersButton];
+
     
 
     [self drawGradeView];
+    [self drawSecondView];
+    [self addAnswersButton];
 }
 
 - (void)fetchAnswers {
@@ -160,18 +170,95 @@
 
 - (void)drawGradeView {
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width/2, 200)];
-    view.layer.borderColor = [UIColor darkGrayColor].CGColor;
-    view.layer.borderWidth = 1.0f;
+    firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150)];
+    firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    firstView.layer.borderWidth = 1.0f;
     
-    UILabel *gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
+    UILabel *gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 75, 75)];
     gradeLabel.textAlignment = NSTextAlignmentCenter;
+    gradeLabel.textColor = [UIColor redColor];
     gradeLabel.text = self.gradeLetter;
     gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
-    [view addSubview:gradeLabel];
+    [firstView addSubview:gradeLabel];
+    
+    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(gradeLabel.frame) + 20, 10, 200, 50)];
+    currentGrade.text = @"Final Life+Grade";
+    currentGrade.font = [UIFont fontWithName:fontName size:24];
+    [firstView addSubview:currentGrade];
     
     
-    [self.view addSubview:view];
+    [self.view addSubview:firstView];
+}
+
+- (void)drawSecondView {
+    
+    secondView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstView.frame) + 5, self.view.frame.size.width, 150)];
+    secondView.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    secondView.layer.borderWidth = 1.0f;
+    
+    UILabel *gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 75, 75)];
+    gradeLabel.textAlignment = NSTextAlignmentCenter;
+    gradeLabel.textColor = [UIColor redColor];
+    
+    int dg = [self.fetchedAnswers.desiredGrade intValue];
+    gradeLabel.text = [self getDesiredGradeString:dg];
+    gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:75];
+    [secondView addSubview:gradeLabel];
+    
+    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(gradeLabel.frame) + 20, 10, 200, 50)];
+    currentGrade.text = @"Desired Life+Grade";
+    currentGrade.font = [UIFont fontWithName:fontName size:24];
+    [secondView addSubview:currentGrade];
+    
+    
+    [self.view addSubview:secondView];
+}
+
+- (NSString *)getDesiredGradeString:(int)i {
+    switch (i) {
+        case 0:
+            return @"A+";
+            break;
+        case 1:
+            return @"A";
+            break;
+        case 2:
+            return @"A-";
+            break;
+        case 3:
+            return @"B+";
+            break;
+        case 4:
+            return @"B";
+            break;
+        case 5:
+            return @"B-";
+            break;
+        case 6:
+            return @"C+";
+            break;
+        case 7:
+            return @"C";
+            break;
+        case 8:
+            return @"C-";
+            break;
+        case 9:
+            return @"D+";
+            break;
+        case 10:
+            return @"D";
+            break;
+        case 11:
+            return @"D-";
+            break;
+        case 12:
+            return @"F";
+            break;
+        default:
+            return @"N/A";
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -185,7 +272,7 @@
     UIColor *color = GREEN_COLOR;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setFrame:CGRectMake(0, 300, self.view.frame.size.width, 50)];
+    [button setFrame:CGRectMake(0, CGRectGetMaxY(secondView.frame) + 25, self.view.frame.size.width, 50)];
     [button setTitle:@"Detailed Analysis" forState:UIControlStateNormal];
     [button setBackgroundColor:color];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
