@@ -72,6 +72,12 @@
 #define COCOAPODS_VERSION_MINOR_IQKeyboardManager 1
 #define COCOAPODS_VERSION_PATCH_IQKeyboardManager 1
 
+// KNSemiModalViewController
+#define COCOAPODS_POD_AVAILABLE_KNSemiModalViewController
+#define COCOAPODS_VERSION_MAJOR_KNSemiModalViewController 0
+#define COCOAPODS_VERSION_MINOR_KNSemiModalViewController 3
+#define COCOAPODS_VERSION_PATCH_KNSemiModalViewController 0
+
 // MONActivityIndicatorView
 #define COCOAPODS_POD_AVAILABLE_MONActivityIndicatorView
 #define COCOAPODS_VERSION_MAJOR_MONActivityIndicatorView 0
@@ -101,6 +107,12 @@
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa_no_arc 2
 #define COCOAPODS_VERSION_MINOR_ReactiveCocoa_no_arc 3
 #define COCOAPODS_VERSION_PATCH_ReactiveCocoa_no_arc 1
+
+// THCalendarDatePicker
+#define COCOAPODS_POD_AVAILABLE_THCalendarDatePicker
+#define COCOAPODS_VERSION_MAJOR_THCalendarDatePicker 0
+#define COCOAPODS_VERSION_MINOR_THCalendarDatePicker 1
+#define COCOAPODS_VERSION_PATCH_THCalendarDatePicker 1
 
 // pop
 #define COCOAPODS_POD_AVAILABLE_pop

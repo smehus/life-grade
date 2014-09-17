@@ -29,12 +29,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-KNSemiModalViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MONActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-ReactiveCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-THCalendarDatePicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,47 +62,57 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>19125E17AE0C46E39947183D</key>
+		<key>05CEFB09763C4C79BA4438DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F700510D3494911B0122AC9</key>
+		<key>0769B9DB96DE4203A22DFC4E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>77A47BCDC6554C6FBCE548D0</key>
+		<key>21B676CFF99244BEBEF2468B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>80B2795BAC1140D19DF10CE0</key>
+		<key>685664B672B341B1AAF5A125</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>91B2428FEF4C42B5BA969CDC</key>
+		<key>688F6228FDB04D5B926C394C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C3833B688B3D4906899A2D4A</key>
+		<key>7D56A8D971FA4D24A8D751D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DD3155A9C9BF45DD909E82FD</key>
+		<key>802D431FC5E44BA49CCA3625</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E3351BB2D75E42D4AACFB12D</key>
+		<key>9543D73DB07F440A9F909FDE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE83E3F8C2284A47AAFA6513</key>
+		<key>9975510A69524F0E88CFAE31</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CDB05E1F955A4D8EBE145107</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D12A8FEBAD0F4C94B67FC1E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
