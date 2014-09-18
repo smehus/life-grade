@@ -104,7 +104,7 @@
 - (void)openNextView {
     
     self.choseView = [[ChoseView alloc] initWithFrame:CGRectMake(30, -300, self.view.frame.size.width-60, self.view.frame.size.height-60)];
-    
+    self.choseView.clipsToBounds = YES;
     KLCPopup *popup = [KLCPopup popupWithContentView:self.choseView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
     [popup show];
     
