@@ -121,7 +121,8 @@
 - (void)startPlan {
     [popup dismissPresentingPopup];
     BeginGoalViewController *controller = [[BeginGoalViewController alloc] init];
-    [self.navigationController presentViewController:controller animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 
 
