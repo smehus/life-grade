@@ -21,13 +21,37 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Bolts (1.1.2)
+  - CWPopup (1.2.5)
   - EMAccordionTableViewController (0.4)
   - Facebook-iOS-SDK (3.18.0):
     - Bolts
   - IQKeyboardManager (3.1.1)
   - KNSemiModalViewController (0.3)
   - MONActivityIndicatorView (0.0.1)
+  - NYSegmentedControl (1.0.3)
   - pop (1.0.6)
+  - POP+MCAnimate (1.1):
+    - pop (~> 1.0)
+    - POP+MCAnimate/Animations
+    - POP+MCAnimate/Group
+    - POP+MCAnimate/Internal
+    - POP+MCAnimate/Shorthand
+    - POP+MCAnimate/Velocity
+  - POP+MCAnimate/Animations (1.1):
+    - pop (~> 1.0)
+    - POP+MCAnimate/Group
+    - POP+MCAnimate/Internal
+    - POP+MCAnimate/Shorthand
+    - POP+MCAnimate/Velocity
+  - POP+MCAnimate/Group (1.1):
+    - pop (~> 1.0)
+  - POP+MCAnimate/Internal (1.1):
+    - pop (~> 1.0)
+  - POP+MCAnimate/Shorthand (1.1):
+    - pop (~> 1.0)
+  - POP+MCAnimate/Velocity (1.1):
+    - pop (~> 1.0)
+    - POP+MCAnimate/Internal
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI
   - ReactiveCocoa/Core (2.3.1):
@@ -40,23 +64,29 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2)
+  - CWPopup (~> 1.2.4)
   - EMAccordionTableViewController (~> 0.4)
   - Facebook-iOS-SDK (~> 3.13)
   - IQKeyboardManager
   - MONActivityIndicatorView (~> 0.0.1)
+  - NYSegmentedControl
   - pop (~> 1.0)
+  - POP+MCAnimate (~> 1.0)
   - ReactiveCocoa (~> 2.3)
   - THCalendarDatePicker (~> 0.1.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   Bolts: 2635e8698a630774689441047f3465d78c48d485
+  CWPopup: 78985e84f8a62de13cf67aa287496d14ce6107aa
   EMAccordionTableViewController: 1d5c69385e18e7becaa06340d10d81129312f9aa
   Facebook-iOS-SDK: fa12c51cc57bfb6f92e47793c9d4d2c65bc92741
   IQKeyboardManager: 79ab3bc740f6bd30eadf9b0d217020941c0926e4
   KNSemiModalViewController: 6fb1e2f6a4d84238b524cb705e91118b0fa6bbc9
   MONActivityIndicatorView: 728965121e59cef32c1bc4676f6868e35f3c8c61
+  NYSegmentedControl: 74094b886a80bfc4e9f6d415601e9b11797b22b7
   pop: e518794da38942c05255eb64b36d894e70cb4f00
+  POP+MCAnimate: 3ad540606cbf21547f79585c8d5b63f9da69d52b
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   THCalendarDatePicker: 400998078c168f4c380e652916a03d1a358eb6bd
 

@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_Bolts 1
 #define COCOAPODS_VERSION_PATCH_Bolts 2
 
+// CWPopup
+#define COCOAPODS_POD_AVAILABLE_CWPopup
+#define COCOAPODS_VERSION_MAJOR_CWPopup 1
+#define COCOAPODS_VERSION_MINOR_CWPopup 2
+#define COCOAPODS_VERSION_PATCH_CWPopup 5
+
 // EMAccordionTableViewController
 #define COCOAPODS_POD_AVAILABLE_EMAccordionTableViewController
 #define COCOAPODS_VERSION_MAJOR_EMAccordionTableViewController 0
@@ -83,6 +89,48 @@
 #define COCOAPODS_VERSION_MAJOR_MONActivityIndicatorView 0
 #define COCOAPODS_VERSION_MINOR_MONActivityIndicatorView 0
 #define COCOAPODS_VERSION_PATCH_MONActivityIndicatorView 1
+
+// NYSegmentedControl
+#define COCOAPODS_POD_AVAILABLE_NYSegmentedControl
+#define COCOAPODS_VERSION_MAJOR_NYSegmentedControl 1
+#define COCOAPODS_VERSION_MINOR_NYSegmentedControl 0
+#define COCOAPODS_VERSION_PATCH_NYSegmentedControl 3
+
+// POP+MCAnimate
+#define COCOAPODS_POD_AVAILABLE_POP_MCAnimate
+#define COCOAPODS_VERSION_MAJOR_POP_MCAnimate 1
+#define COCOAPODS_VERSION_MINOR_POP_MCAnimate 1
+#define COCOAPODS_VERSION_PATCH_POP_MCAnimate 0
+
+// POP+MCAnimate/Animations
+#define COCOAPODS_POD_AVAILABLE_POP_MCAnimate_Animations
+#define COCOAPODS_VERSION_MAJOR_POP_MCAnimate_Animations 1
+#define COCOAPODS_VERSION_MINOR_POP_MCAnimate_Animations 1
+#define COCOAPODS_VERSION_PATCH_POP_MCAnimate_Animations 0
+
+// POP+MCAnimate/Group
+#define COCOAPODS_POD_AVAILABLE_POP_MCAnimate_Group
+#define COCOAPODS_VERSION_MAJOR_POP_MCAnimate_Group 1
+#define COCOAPODS_VERSION_MINOR_POP_MCAnimate_Group 1
+#define COCOAPODS_VERSION_PATCH_POP_MCAnimate_Group 0
+
+// POP+MCAnimate/Internal
+#define COCOAPODS_POD_AVAILABLE_POP_MCAnimate_Internal
+#define COCOAPODS_VERSION_MAJOR_POP_MCAnimate_Internal 1
+#define COCOAPODS_VERSION_MINOR_POP_MCAnimate_Internal 1
+#define COCOAPODS_VERSION_PATCH_POP_MCAnimate_Internal 0
+
+// POP+MCAnimate/Shorthand
+#define COCOAPODS_POD_AVAILABLE_POP_MCAnimate_Shorthand
+#define COCOAPODS_VERSION_MAJOR_POP_MCAnimate_Shorthand 1
+#define COCOAPODS_VERSION_MINOR_POP_MCAnimate_Shorthand 1
+#define COCOAPODS_VERSION_PATCH_POP_MCAnimate_Shorthand 0
+
+// POP+MCAnimate/Velocity
+#define COCOAPODS_POD_AVAILABLE_POP_MCAnimate_Velocity
+#define COCOAPODS_VERSION_MAJOR_POP_MCAnimate_Velocity 1
+#define COCOAPODS_VERSION_MINOR_POP_MCAnimate_Velocity 1
+#define COCOAPODS_VERSION_PATCH_POP_MCAnimate_Velocity 0
 
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa

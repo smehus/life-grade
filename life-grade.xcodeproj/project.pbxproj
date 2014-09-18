@@ -10,6 +10,8 @@
 		490011D719CB331F00910098 /* MyActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490011D619CB331F00910098 /* MyActionViewController.m */; };
 		494692AC19CB45DD00869599 /* ActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 494692AB19CB45DD00869599 /* ActionCell.m */; };
 		494692AF19CB514300869599 /* QuestionAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494692AE19CB514300869599 /* QuestionAnswerViewController.m */; };
+		494692B819CB736000869599 /* ChoseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 494692B719CB736000869599 /* ChoseView.m */; };
+		494692BD19CB75B300869599 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 494692BC19CB75B300869599 /* KLCPopup.m */; };
 		65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65004BA518E7110100749A82 /* SWRevealViewController.m */; };
 		6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6520A6321909FDD5006FD28C /* SignupViewController.m */; };
 		6520A635190A8B56006FD28C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6520A634190A8B56006FD28C /* CoreData.framework */; };
@@ -105,6 +107,10 @@
 		494692AB19CB45DD00869599 /* ActionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionCell.m; sourceTree = "<group>"; };
 		494692AD19CB514300869599 /* QuestionAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnswerViewController.h; sourceTree = "<group>"; };
 		494692AE19CB514300869599 /* QuestionAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionAnswerViewController.m; sourceTree = "<group>"; };
+		494692B619CB736000869599 /* ChoseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseView.h; sourceTree = "<group>"; };
+		494692B719CB736000869599 /* ChoseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseView.m; sourceTree = "<group>"; };
+		494692BB19CB75B300869599 /* KLCPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCPopup.h; sourceTree = "<group>"; };
+		494692BC19CB75B300869599 /* KLCPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCPopup.m; sourceTree = "<group>"; };
 		65004BA418E7110100749A82 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		65004BA518E7110100749A82 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		6520A6311909FDD5006FD28C /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
@@ -245,6 +251,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		494692B919CB75A600869599 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				494692BA19CB75B300869599 /* KLCPopup */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		494692BA19CB75B300869599 /* KLCPopup */ = {
+			isa = PBXGroup;
+			children = (
+				494692BB19CB75B300869599 /* KLCPopup.h */,
+				494692BC19CB75B300869599 /* KLCPopup.m */,
+			);
+			path = KLCPopup;
+			sourceTree = "<group>";
+		};
 		655EC5FC18DF5FE20036515F = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +305,7 @@
 		655EC60E18DF5FE20036515F /* life-grade */ = {
 			isa = PBXGroup;
 			children = (
+				494692B919CB75A600869599 /* Libraries */,
 				A51B180919809D6900C0EDA9 /* AboutController */,
 				A53330511968E06700647398 /* DesiredGrade */,
 				A53330501968DF6300647398 /* Grading */,
@@ -513,6 +537,8 @@
 				494692AB19CB45DD00869599 /* ActionCell.m */,
 				494692AD19CB514300869599 /* QuestionAnswerViewController.h */,
 				494692AE19CB514300869599 /* QuestionAnswerViewController.m */,
+				494692B619CB736000869599 /* ChoseView.h */,
+				494692B719CB736000869599 /* ChoseView.m */,
 			);
 			name = ActionPlan;
 			sourceTree = "<group>";
@@ -702,7 +728,9 @@
 				A53DA42319B94B2000EAC693 /* Answers.m in Sources */,
 				65BFF076190F511E0087511B /* HATransitionController.m in Sources */,
 				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
+				494692BD19CB75B300869599 /* KLCPopup.m in Sources */,
 				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
+				494692B819CB736000869599 /* ChoseView.m in Sources */,
 				A53DA43119C1391700EAC693 /* ChecklistViewController.m in Sources */,
 				A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
