@@ -232,7 +232,10 @@
     NSLog(@"SELECTED CELL %@", indexPath);
     
     AttributesCell *cell = (AttributesCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor greenColor];
+    UIColor *color = GREEN_COLOR;
+    cell.backgroundColor = color;
+    cell.headerLabel.textColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
+    
     
     NSDictionary *dict = self.attributes[indexPath.row];
     NSString *att = dict[@"attribute"];
