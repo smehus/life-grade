@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		490011D719CB331F00910098 /* MyActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490011D619CB331F00910098 /* MyActionViewController.m */; };
 		494692AC19CB45DD00869599 /* ActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 494692AB19CB45DD00869599 /* ActionCell.m */; };
+		494692AF19CB514300869599 /* QuestionAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494692AE19CB514300869599 /* QuestionAnswerViewController.m */; };
 		65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65004BA518E7110100749A82 /* SWRevealViewController.m */; };
 		6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6520A6321909FDD5006FD28C /* SignupViewController.m */; };
 		6520A635190A8B56006FD28C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6520A634190A8B56006FD28C /* CoreData.framework */; };
@@ -102,6 +103,8 @@
 		490011D619CB331F00910098 /* MyActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActionViewController.m; sourceTree = "<group>"; };
 		494692AA19CB45DD00869599 /* ActionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionCell.h; sourceTree = "<group>"; };
 		494692AB19CB45DD00869599 /* ActionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionCell.m; sourceTree = "<group>"; };
+		494692AD19CB514300869599 /* QuestionAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnswerViewController.h; sourceTree = "<group>"; };
+		494692AE19CB514300869599 /* QuestionAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionAnswerViewController.m; sourceTree = "<group>"; };
 		65004BA418E7110100749A82 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		65004BA518E7110100749A82 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		6520A6311909FDD5006FD28C /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
@@ -508,6 +511,8 @@
 				490011D619CB331F00910098 /* MyActionViewController.m */,
 				494692AA19CB45DD00869599 /* ActionCell.h */,
 				494692AB19CB45DD00869599 /* ActionCell.m */,
+				494692AD19CB514300869599 /* QuestionAnswerViewController.h */,
+				494692AE19CB514300869599 /* QuestionAnswerViewController.m */,
 			);
 			name = ActionPlan;
 			sourceTree = "<group>";
@@ -702,6 +707,7 @@
 				A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
 				A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */,
+				494692AF19CB514300869599 /* QuestionAnswerViewController.m in Sources */,
 				6533F57318E4F19E0017C7D6 /* SimpleCoverFlowLayout.m in Sources */,
 				65BFF077190F511E0087511B /* HATransitionLayout.m in Sources */,
 				A5E85E2E1927B81100AAA4B6 /* Grade.m in Sources */,

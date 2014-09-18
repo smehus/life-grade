@@ -21,6 +21,7 @@
 #import "InstructionsViewController.h"
 #import "ActionCell.h"
 #import "Grade.h"
+#import "QuestionAnswerViewController.h"
 
 @interface MyActionViewController ()  <UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource, ActionCellDelegate>
 
@@ -290,7 +291,16 @@
 
 - (void)didPickFactor:(Grade *)grade andIndex:(NSIndexPath *)idx {
     
+    self.fetchedAnswers.focusFactor = grade.question;
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
     
+    
+    QuestionAnswerViewController *controller = [[QuestionAnswerViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 

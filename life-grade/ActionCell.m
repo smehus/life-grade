@@ -19,11 +19,13 @@
         CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
         
         self.userInteractionEnabled = YES;
-        self.factorLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.frame.size.height/2 - 25, self.frame.size.width, 50)];
+        self.factorLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, self.frame.size.height/2 - 25, self.frame.size.width - 10, 75)];
         self.factorLabel.backgroundColor = [UIColor clearColor];
         self.factorLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
-        self.factorLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:48];
+        self.factorLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
         self.factorLabel.textAlignment = NSTextAlignmentCenter;
+        self.factorLabel.numberOfLines = 0;
+        self.factorLabel.lineBreakMode = NSLineBreakByWordWrapping;
         [self addSubview:self.factorLabel];
         
         self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

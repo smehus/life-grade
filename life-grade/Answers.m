@@ -28,5 +28,6 @@
 @dynamic questionThree;
 @dynamic questionTwo;
 @dynamic attributes;
+@dynamic focusFactor;
 
 @end

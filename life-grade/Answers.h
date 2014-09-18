@@ -29,6 +29,7 @@
 @property (nonatomic, retain) NSNumber * questionThree;
 @property (nonatomic, retain) NSNumber * questionTwo;
 @property (nonatomic, retain) NSSet *attributes;
+@property (nonatomic, retain) NSString * focusFactor;
 @end
 
 @interface Answers (CoreDataGeneratedAccessors)
