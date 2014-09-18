@@ -19,18 +19,20 @@
 #import "Answers.h"
 #import "ChecklistViewController.h"
 #import "InstructionsViewController.h"
-#import "DesiredCell.h"
+#import "ActionCell.h"
+#import "Grade.h"
 
-@interface MyActionViewController ()  <UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource, DesiredCellDelegate>
+@interface MyActionViewController ()  <UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource, ActionCellDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, strong) CoverFlowLayout *layout;
 @property (nonatomic, strong) UIBarButtonItem *nextButton;
-
-@property (nonatomic, strong) NSArray *gradeArray;
+@property (nonatomic, strong) NSMutableArray *questions;
+@property (nonatomic, strong) NSMutableArray *lowestFactors;
 @property (nonatomic, strong) NSNumber *selectedGrade;
 @property (nonatomic, strong) Answers *fetchedAnswers;
+@property (nonatomic, strong) NSMutableArray *grades;
 
 @property (nonatomic, strong) NSIndexPath *selectedCell;
 
@@ -56,25 +58,31 @@
     if (!self.managedObjectContext) {
         self.managedObjectContext = del.managedObjectContext;
     }
+    self.questions = [[NSMutableArray alloc] initWithCapacity:10];
+    self.lowestFactors = [[NSMutableArray alloc] initWithCapacity:3];
+    
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSArray *ary = [dict objectForKey:@"questions"];
+    [ary enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+        
+        Grade *grade = [[Grade alloc] init];
+        grade.question = obj[@"question"];
+        
+        [self.questions addObject:grade];
+        
+    }];
     
     [self performFetch];
+    [self setAnswersArray];
+    [self getLowestGrade];
+    
     
     UIColor *barColour = GREEN_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
     
-    self.gradeArray = @[@{@"grade" : @"A+", @"GradeNum" : @12},
-                        @{ @"grade" : @"A", @"GradeNum" : @11},
-                        @{@"grade" : @"A-", @"GradeNum" : @10},
-                        @{@"grade" : @"B+", @"GradeNum" : @9},
-                        @{@"grade" : @"B", @"GradeNum" : @8},
-                        @{@"grade" : @"B-", @"GradeNum" : @7},
-                        @{@"grade" : @"C+", @"GradeNum" : @6},
-                        @{@"grade" : @"C", @"GradeNum" : @5},
-                        @{@"grade" : @"C-", @"GradeNum" : @4},
-                        @{@"grade" : @"D+", @"GradeNum" : @3},
-                        @{@"grade" : @"D", @"GradeNum" : @2},
-                        @{@"grade" : @"D-", @"GradeNum" : @1},
-                        @{@"grade" : @"F", @"GradeNum" : @0}];
+
     
     UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
     UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
@@ -112,7 +120,7 @@
     self.collectionView.dataSource = self;
     self.collectionView.contentInset = UIEdgeInsetsMake(20, 0, 100, 0);
     
-    [self.collectionView registerClass:[DesiredCell class] forCellWithReuseIdentifier:@"Cell"];
+    [self.collectionView registerClass:[ActionCell class] forCellWithReuseIdentifier:@"Cell"];
     [self.view addSubview:self.collectionView];
     
     
@@ -152,34 +160,99 @@
     
 }
 
+- (void)setAnswersArray {
+    
+    self.grades = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    [self.questions enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+       
+        int index = (int)idx;
+        Grade *g = [[Grade alloc] init];
+        g.gradeNum = [self getGradeForIndex:index];
+        g.question = [[self.questions objectAtIndex:idx] question];
+        [self.grades addObject:g];
+        
+    }];
+}
+
+- (void)getLowestGrade {
+    
+    NSArray *sortedArray;
+    sortedArray = [self.grades sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSNumber *first = [(Grade*)a gradeNum];
+        NSNumber *second = [(Grade*)b gradeNum];
+        return [first compare:second];
+    }];
+    
+    
+    for (int i = 0; i <= 2; i ++) {
+        Grade *g = [sortedArray objectAtIndex:i];
+        [self.lowestFactors addObject:g];
+    }
+    [self.collectionView reloadData];
+}
+
+- (NSNumber *)getGradeForIndex:(int)idx {
+    
+    switch (idx) {
+        case 0:
+            return self.fetchedAnswers.questionOne;
+            break;
+        case 1:
+            return self.fetchedAnswers.questionTwo;
+            break;
+        case 2:
+            return self.fetchedAnswers.questionThree;
+            break;
+        case 3:
+            return self.fetchedAnswers.questionFour;
+            break;
+        case 4:
+            return self.fetchedAnswers.questionFive;
+            break;
+        case 5:
+            return self.fetchedAnswers.questionSix;
+            break;
+        case 6:
+            return self.fetchedAnswers.questionSeven;
+            break;
+        case 7:
+            return self.fetchedAnswers.questionEight;
+            break;
+        case 8:
+            return self.fetchedAnswers.questionNine;
+            break;
+        case 9:
+            return self.fetchedAnswers.questionTen;
+            break;
+        default:
+            return [NSNumber numberWithInt:10];
+            break;
+    }
+}
+
+
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.gradeArray.count;
+    return self.lowestFactors.count;
+    
 }
 
 - (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    DesiredCell *cell = (DesiredCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor clearColor];
+    ActionCell *cell = (ActionCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     cell.layer.cornerRadius = 8.0f;
     cell.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
-    
-    if (self.fetchedAnswers.desiredGrade) {
-        self.selectedCell = [NSIndexPath indexPathForRow:[self.fetchedAnswers.desiredGrade intValue] inSection:0];
-        if (indexPath.row == self.selectedCell.row) {
-            
-            cell.backgroundColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
-            cell.gradeLabel.textColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
-            
-        }
-    }
     cell.cellDelegate = self;
     cell.nextButton.hidden = YES;
     cell.theIndex = indexPath;
-    cell.gradeLabel.text = [[self.gradeArray objectAtIndex:indexPath.row] objectForKey:@"grade"];
+    Grade *g = [self.lowestFactors objectAtIndex:indexPath.row];
+    cell.grade = g;
+    cell.factorLabel.text = g.question;
     
     
     return cell;
@@ -196,7 +269,7 @@
         if (!self.isLarge) {
             self.directionsLabel.hidden = YES;
             [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
-            DesiredCell *cell = (DesiredCell *)[collectionView cellForItemAtIndexPath:indexPath];
+            ActionCell *cell = (ActionCell *)[collectionView cellForItemAtIndexPath:indexPath];
             cell.nextButton.hidden = NO;
             
             self.isLarge = YES;
@@ -215,8 +288,7 @@
     }];
 }
 
-- (void)didPickGrade:(NSString *)grade andIndex:(NSIndexPath *)idx {
-
+- (void)didPickFactor:(Grade *)grade andIndex:(NSIndexPath *)idx {
     
     
 }
