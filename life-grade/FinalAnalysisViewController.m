@@ -196,7 +196,7 @@
     secondView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     secondView.layer.borderWidth = 1.0f;
     
-    UILabel *gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 75, 75)];
+    UILabel *gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 75)];
     gradeLabel.textAlignment = NSTextAlignmentCenter;
     gradeLabel.textColor = [UIColor redColor];
     

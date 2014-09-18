@@ -113,7 +113,7 @@
     
     UIImageView *thirdMark = [[UIImageView alloc] initWithImage:checkMark];
     thirdMark.frame = CGRectMake(20, thirdCheck.center.y - 60, 75, 75);
-    if (checkedIndex == 1) {
+    if (checkedIndex == 2) {
         [self.view addSubview:firstMark];
         [self.view addSubview:secondMark];
         [self.view addSubview:thirdMark];
