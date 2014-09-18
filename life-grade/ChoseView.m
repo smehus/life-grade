@@ -19,6 +19,15 @@
     return self;
 }
 
+- (id)initWithFrame:(CGRect)frame completion:(StartPlan)startPlan {
+    if (self = [super initWithFrame:frame]) {
+        
+        self.planBlock = startPlan;
+        [self setupScreen];
+    }
+    return self;
+}
+
 - (void)setupScreen {
     self.backgroundColor = [UIColor whiteColor];
     NSString *font = LIGHT_FONT;
@@ -58,8 +67,8 @@
 }
 
 - (void)nextButtonPressed {
-    
-    
+//    self.planBlock();
+    [self.delegate startPlan];
 }
 
 @end

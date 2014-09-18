@@ -12,6 +12,7 @@
 		494692AF19CB514300869599 /* QuestionAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494692AE19CB514300869599 /* QuestionAnswerViewController.m */; };
 		494692B819CB736000869599 /* ChoseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 494692B719CB736000869599 /* ChoseView.m */; };
 		494692BD19CB75B300869599 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 494692BC19CB75B300869599 /* KLCPopup.m */; };
+		494692C119CB7B5900869599 /* BeginGoalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494692C019CB7B5900869599 /* BeginGoalViewController.m */; };
 		65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65004BA518E7110100749A82 /* SWRevealViewController.m */; };
 		6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6520A6321909FDD5006FD28C /* SignupViewController.m */; };
 		6520A635190A8B56006FD28C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6520A634190A8B56006FD28C /* CoreData.framework */; };
@@ -111,6 +112,8 @@
 		494692B719CB736000869599 /* ChoseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseView.m; sourceTree = "<group>"; };
 		494692BB19CB75B300869599 /* KLCPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCPopup.h; sourceTree = "<group>"; };
 		494692BC19CB75B300869599 /* KLCPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCPopup.m; sourceTree = "<group>"; };
+		494692BF19CB7B5900869599 /* BeginGoalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeginGoalViewController.h; sourceTree = "<group>"; };
+		494692C019CB7B5900869599 /* BeginGoalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeginGoalViewController.m; sourceTree = "<group>"; };
 		65004BA418E7110100749A82 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		65004BA518E7110100749A82 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		6520A6311909FDD5006FD28C /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
@@ -268,6 +271,15 @@
 			path = KLCPopup;
 			sourceTree = "<group>";
 		};
+		494692BE19CB79FE00869599 /* MyPlan */ = {
+			isa = PBXGroup;
+			children = (
+				494692BF19CB7B5900869599 /* BeginGoalViewController.h */,
+				494692C019CB7B5900869599 /* BeginGoalViewController.m */,
+			);
+			name = MyPlan;
+			sourceTree = "<group>";
+		};
 		655EC5FC18DF5FE20036515F = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +324,7 @@
 				A534B0211963B18100255EC2 /* Views */,
 				A5C08C7C193B64EB00887F83 /* CoreData */,
 				A5C08C781939778A00887F83 /* ActionPlan */,
+				494692BE19CB79FE00869599 /* MyPlan */,
 				A52A2BAA1978A5F300916901 /* Attributes */,
 				A54B6B1619279F4E000AA8D7 /* Data */,
 				65714FFF191482700034009A /* Resources */,
@@ -732,6 +745,7 @@
 				6533F55A18E190560017C7D6 /* CollectionCell.m in Sources */,
 				494692B819CB736000869599 /* ChoseView.m in Sources */,
 				A53DA43119C1391700EAC693 /* ChecklistViewController.m in Sources */,
+				494692C119CB7B5900869599 /* BeginGoalViewController.m in Sources */,
 				A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
 				A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */,

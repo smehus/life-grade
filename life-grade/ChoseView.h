@@ -8,8 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@class ChoseView;
+@protocol ChoseViewDelegate <NSObject>
+
+- (void)startPlan;
+
+@end
+
+typedef void (^StartPlan)(void);
+
 @interface ChoseView : UIView
 
 @property (nonatomic, strong) UIView *containerView;
+@property (nonatomic, weak) id<ChoseViewDelegate>delegate;
+@property (nonatomic, strong) StartPlan planBlock;
+
+- (id)initWithFrame:(CGRect)frame completion:(StartPlan)startPlan;
 
 @end

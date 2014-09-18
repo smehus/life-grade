@@ -13,8 +13,9 @@
 #import "UIViewController+CWPopup.h"
 #import "ChoseView.h"
 #import "KLCPopup.h"
+#import "BeginGoalViewController.h"
 
-@interface QuestionAnswerViewController ()
+@interface QuestionAnswerViewController () <ChoseViewDelegate>
 
 @property (nonatomic, strong) UIButton *startButton;
 @property (nonatomic, strong) ChoseView *choseView;;
@@ -22,7 +23,10 @@
 
 @end
 
-@implementation QuestionAnswerViewController
+@implementation QuestionAnswerViewController {
+    
+    KLCPopup *popup;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -103,16 +107,22 @@
 
 - (void)openNextView {
     
-    self.choseView = [[ChoseView alloc] initWithFrame:CGRectMake(30, -300, self.view.frame.size.width-60, self.view.frame.size.height-60)];
-    self.choseView.clipsToBounds = YES;
-    KLCPopup *popup = [KLCPopup popupWithContentView:self.choseView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
-    [popup show];
-    
+    self.choseView = [[ChoseView alloc] initWithFrame:CGRectMake(30, -300, self.view.frame.size.width-60, self.view.frame.size.height-60) completion:^{
 
+    }];
     
-    
+    self.choseView.clipsToBounds = YES;
+    self.choseView.delegate = self;
+    popup = [KLCPopup popupWithContentView:self.choseView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
+    [popup show];
+  
 }
 
+- (void)startPlan {
+    [popup dismissPresentingPopup];
+    BeginGoalViewController *controller = [[BeginGoalViewController alloc] init];
+    [self.navigationController presentViewController:controller animated:YES completion:nil];
+}
 
 
 @end
