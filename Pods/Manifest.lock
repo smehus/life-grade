@@ -1,26 +1,28 @@
 PODS:
-  - AFNetworking (2.2.4):
+  - AFNetworking (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.2.4):
+  - AFNetworking/NSURLConnection (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.4):
-    - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.4)
-  - AFNetworking/Security (2.2.4)
-  - AFNetworking/Serialization (2.2.4)
-  - AFNetworking/UIKit (2.2.4):
+  - AFNetworking/NSURLSession (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Bolts (1.1.2)
   - EMAccordionTableViewController (0.4)
-  - Facebook-iOS-SDK (3.14.1):
+  - Facebook-iOS-SDK (3.18.0):
     - Bolts
   - IQKeyboardManager (3.1.1)
   - KNSemiModalViewController (0.3)
@@ -47,10 +49,10 @@ DEPENDENCIES:
   - THCalendarDatePicker (~> 0.1.1)
 
 SPEC CHECKSUMS:
-  AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   Bolts: 2635e8698a630774689441047f3465d78c48d485
   EMAccordionTableViewController: 1d5c69385e18e7becaa06340d10d81129312f9aa
-  Facebook-iOS-SDK: e9b3d5ac54ee3e5e693f4eef470b97911b3d076d
+  Facebook-iOS-SDK: fa12c51cc57bfb6f92e47793c9d4d2c65bc92741
   IQKeyboardManager: 79ab3bc740f6bd30eadf9b0d217020941c0926e4
   KNSemiModalViewController: 6fb1e2f6a4d84238b524cb705e91118b0fa6bbc9
   MONActivityIndicatorView: 728965121e59cef32c1bc4676f6868e35f3c8c61
@@ -58,4 +60,4 @@ SPEC CHECKSUMS:
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   THCalendarDatePicker: 400998078c168f4c380e652916a03d1a358eb6bd
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1
