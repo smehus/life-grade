@@ -54,7 +54,7 @@
 - (void)setupGoalView {
     NSString *font = LIGHT_FONT;
     
-    self.goalView = [[UIView alloc] initWithFrame:CGRectMake(20, 30, self.view.frame.size.width-40, 300)];
+    self.goalView = [[UIView alloc] initWithFrame:CGRectMake(20, 30, self.view.frame.size.width-40, 400)];
     self.goalView.clipsToBounds = YES;
     self.goalView.backgroundColor = [UIColor whiteColor];
     self.goalView.layer.shadowOffset = CGSizeMake(-15, 15);
@@ -95,7 +95,7 @@
     UIColor *greenCol = GREEN_COLOR;
     
     NSString *font = LIGHT_FONT;
-    self.specificView = [[UIView alloc] initWithFrame:CGRectMake(20, -300, self.view.frame.size.width-40, 500)];
+    self.specificView = [[UIView alloc] initWithFrame:CGRectMake(20, -300, self.view.frame.size.width-40, 400)];
     self.specificView.clipsToBounds = YES;
     self.specificView.backgroundColor = [UIColor whiteColor];
     self.specificView.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -116,7 +116,7 @@
     [self.view addSubview:self.specificView];
     self.specificView.springSpeed = 5.0f;
     self.specificView.springBounciness = 20.0f;
-    self.specificView.spring.frame = CGRectMake(20, 20, self.view.frame.size.width-40, 300);
+    self.specificView.spring.frame = CGRectMake(20, 20, self.view.frame.size.width-40, 400);
 
     
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
