@@ -139,28 +139,22 @@ CGMutablePathRef _createDownPointingBubbleWithRect(CGRect rect, CGFloat arrowMid
 
 - (void)presentFromView:(UIView *)anchorView
 {
-    UIView *superview = anchorView.window.rootViewController.view;
-    if (!superview) {
-        return;
-    }
-
     // By default - attach to the top, pointing down
-    CGPoint position = CGPointMake(CGRectGetMidX(anchorView.bounds), CGRectGetMinY(anchorView.bounds));
-    CGPoint positionInSuperview = [superview convertPoint:position fromView:anchorView];
+    CGPoint position = CGPointMake(CGRectGetMidX(anchorView.frame), CGRectGetMinY(anchorView.frame));
     FBTooltipViewArrowDirection direction = FBTooltipViewArrowDirectionDown;
 
     // If not enough space to point up from top of anchor view - point up to it's bottom
     CGFloat bubbleHeight = CGRectGetHeight(_textLabel.bounds) + _verticalTextOffset + _textPadding * 2;
-    if (positionInSuperview.y - bubbleHeight - kNUXBubbleMargin < CGRectGetMinY(superview.bounds)) {
-        direction = FBTooltipViewArrowDirectionUp;
-        position = CGPointMake(CGRectGetMidX(anchorView.bounds), CGRectGetMaxY(anchorView.bounds));
-        positionInSuperview = [superview convertPoint:position fromView:anchorView];
+    if (anchorView.superview) {
+        if (position.y - bubbleHeight - kNUXBubbleMargin < anchorView.superview.bounds.origin.y ) {
+            direction = FBTooltipViewArrowDirectionUp;
+            position = CGPointMake(CGRectGetMidX(anchorView.frame), CGRectGetMaxY(anchorView.frame));
+        }
     }
-
-    [self presentInView:superview withArrowPosition:positionInSuperview direction:direction];
+    [self presentInView:anchorView.superview withArrowPosition:position direction:direction];
 }
 
-- (void)presentInView:(UIView *)view withArrowPosition:(CGPoint)arrowPosition direction:(FBTooltipViewArrowDirection)arrowDirection
+- (void)presentInView:(UIView *) view withArrowPosition:(CGPoint)arrowPosition direction:(FBTooltipViewArrowDirection)arrowDirection
 {
     _pointingUp = arrowDirection == FBTooltipViewArrowDirectionUp;
     _positionInView = arrowPosition;
@@ -270,14 +264,14 @@ CGMutablePathRef _createDownPointingBubbleWithRect(CGRect rect, CGFloat arrowMid
 
     // 2nd Step.
     void (^bounceZoom)() = ^() {
-        CGFloat centerPos2 = self.bounds.size.width / 2.0;
-        CGFloat zoomOffsetX2 = (centerPos2 - _arrowMidpoint) * (kZoomBounceScale - 1.0f);
-        CGFloat zoomOffsetY2 = -0.5f * self.bounds.size.height * (kZoomBounceScale - 1.0f);
+        CGFloat centerPos = self.bounds.size.width / 2.0;
+        CGFloat zoomOffsetX = (centerPos - _arrowMidpoint) * (kZoomBounceScale - 1.0f);
+        CGFloat zoomOffsetY = -0.5f * self.bounds.size.height * (kZoomBounceScale - 1.0f);
         if (_pointingUp) {
-            zoomOffsetY2 = -zoomOffsetY2;
+            zoomOffsetY = -zoomOffsetY;
         }
         self.layer.transform = fbdfl_CATransform3DConcat(fbdfl_CATransform3DMakeScale(kZoomBounceScale, kZoomBounceScale, kZoomBounceScale),
-                                                         fbdfl_CATransform3DMakeTranslation(zoomOffsetX2, zoomOffsetY2, 0));
+                                                         fbdfl_CATransform3DMakeTranslation(zoomOffsetX, zoomOffsetY, 0));
     };
 
     // 3rd Step.
@@ -293,7 +287,7 @@ CGMutablePathRef _createDownPointingBubbleWithRect(CGRect rect, CGFloat arrowMid
                      completion:^(BOOL finished) {
                          [UIView animateWithDuration:kTransitionDuration/2.2
                                           animations:bounceZoom
-                                          completion:^(BOOL innerFinished) {
+                                          completion:^(BOOL finished) {
                                               [UIView animateWithDuration:kTransitionDuration/5
                                                                animations:normalizeZoom];
                                           }];
@@ -366,7 +360,7 @@ CGMutablePathRef _createDownPointingBubbleWithRect(CGRect rect, CGFloat arrowMid
     return path;
 }
 
-static CGMutablePathRef _createCloseCrossGlyphWithRect(CGRect rect)
+CGMutablePathRef _createCloseCrossGlyphWithRect(CGRect rect)
 {
     CGFloat lineThickness = 0.20f * CGRectGetHeight(rect);
 

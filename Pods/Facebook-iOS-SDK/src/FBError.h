@@ -54,7 +54,7 @@ FBSDK_EXTERN NSString *const FBErrorHTTPStatusCodeKey;
  @discussion
  These are valid only in the scope of FacebookSDKDomain.
  */
-typedef NS_ENUM(NSInteger, FBErrorCode) {
+typedef NS_ENUM(NSUInteger, FBErrorCode) {
     /*!
      Like nil for FBErrorCode values, represents an error code that
      has not been initialized yet.
@@ -97,6 +97,9 @@ typedef NS_ENUM(NSInteger, FBErrorCode) {
     /*! An error occurred related to an iOS API call */
     FBErrorSystemAPI,
 
+    /*! An error occurred while trying to fetch publish install response data */
+    FBErrorPublishInstallResponse,
+
     /*!
      The application had its applicationDidBecomeActive: method called while waiting
      on a response from the native Facebook app for a pending FBAppCall.
@@ -122,7 +125,7 @@ typedef NS_ENUM(NSInteger, FBErrorCode) {
     /*!
      Reserved for future use.
     */
-    FBErrorOperationDisallowedForRestrictedTreatment,
+    FBErrorOperationDisallowedForRestrictedTreament,
 };
 
 /*!

@@ -16,7 +16,7 @@
 
 #import "FBImageResourceLoader.h"
 
-#import "FBInternalSettings.h"
+#import "FBSettings.h"
 #import "FBUtility.h"
 
 @implementation FBImageResourceLoader

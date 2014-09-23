@@ -33,7 +33,6 @@ FBSDK_EXTERN NSString *const kFBAppEventIsImplicit;
 
 - (void)addEvent:(NSDictionary *)eventDictionary
       isImplicit:(BOOL)isImplicit;
-- (BOOL)areAllEventsImplicit;
 - (NSString *)jsonEncodeInFlightEvents:(BOOL)includeImplicitEvents;
 - (NSUInteger)getAccumulatedEventCount;
 - (void)clearInFlightAndStats;

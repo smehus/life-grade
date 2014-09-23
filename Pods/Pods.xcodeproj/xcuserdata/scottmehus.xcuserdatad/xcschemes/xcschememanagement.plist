@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-CWPopup.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-EMAccordionTableViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -35,6 +40,16 @@
 			<false/>
 		</dict>
 		<key>Pods-MONActivityIndicatorView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-NYSegmentedControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-POP+MCAnimate.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,57 +77,72 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>05CEFB09763C4C79BA4438DE</key>
+		<key>05006E85FA2F40CC95BC50E6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0769B9DB96DE4203A22DFC4E</key>
+		<key>315B46A50C9B4D34A6D5FBE6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>21B676CFF99244BEBEF2468B</key>
+		<key>33A378E5C5D149D0BF357284</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>685664B672B341B1AAF5A125</key>
+		<key>471D285A56F1443EB086674C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>688F6228FDB04D5B926C394C</key>
+		<key>5626364EF5C94AAFA759ED5A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D56A8D971FA4D24A8D751D3</key>
+		<key>6021B0083A494B0CA00A020E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>802D431FC5E44BA49CCA3625</key>
+		<key>6C17A6DE0DA24974A17C9D8D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9543D73DB07F440A9F909FDE</key>
+		<key>8E8875C2944544EBB38F8EC6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9975510A69524F0E88CFAE31</key>
+		<key>9C358ACEEC33464198A9AE50</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CDB05E1F955A4D8EBE145107</key>
+		<key>9E1AD89C450C4762B4D4605B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D12A8FEBAD0F4C94B67FC1E5</key>
+		<key>B159E0A2A75E40CEAA0A084E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B47F2FA5B2E4471EBC7B4312</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F307655B705C4319B234BB38</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF46BE36FE794E7FB64F91ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>

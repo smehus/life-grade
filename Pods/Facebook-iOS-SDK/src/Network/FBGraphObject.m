@@ -46,11 +46,11 @@
 // suggested in the previously referenced documentation
 
 // used internally by the category impl
-typedef NS_ENUM(NSUInteger, SelectorInferredImplType) {
+typedef enum _SelectorInferredImplType {
     SelectorInferredImplTypeNone  = 0,
     SelectorInferredImplTypeGet = 1,
     SelectorInferredImplTypeSet = 2
-};
+} SelectorInferredImplType;
 
 
 // internal-only wrapper

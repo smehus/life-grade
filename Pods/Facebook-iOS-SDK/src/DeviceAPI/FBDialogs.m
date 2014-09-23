@@ -44,19 +44,13 @@
 
 @end
 
-#define FB_DIALOGS_CHECK_RESTRICTED_TREATMENT() \
-if ([FBSettings restrictedTreatment] != FBRestrictedTreatmentNO) { \
-return NO; \
-}
-
 @implementation FBDialogs
 
 + (BOOL)presentOSIntegratedShareDialogModallyFrom:(UIViewController *)viewController
                                       initialText:(NSString *)initialText
                                             image:(UIImage *)image
                                               url:(NSURL *)url
-                                          handler:(FBOSIntegratedShareDialogHandler)handler
-{
+                                          handler:(FBOSIntegratedShareDialogHandler)handler {
     NSArray *images = image ? [NSArray arrayWithObject:image] : nil;
     NSArray *urls = url ? [NSArray arrayWithObject:url] : nil;
 
@@ -72,8 +66,7 @@ return NO; \
                                       initialText:(NSString *)initialText
                                            images:(NSArray *)images
                                              urls:(NSArray *)urls
-                                          handler:(FBOSIntegratedShareDialogHandler)handler
-{
+                                          handler:(FBOSIntegratedShareDialogHandler)handler {
     return [self presentOSIntegratedShareDialogModallyFrom:viewController
                                                    session:nil
                                                initialText:initialText
@@ -87,13 +80,12 @@ return NO; \
                                       initialText:(NSString *)initialText
                                            images:(NSArray *)images
                                              urls:(NSArray *)urls
-                                          handler:(FBOSIntegratedShareDialogHandler)handler
-{
+                                          handler:(FBOSIntegratedShareDialogHandler)handler {
     if ([FBSettings restrictedTreatment] == FBRestrictedTreatmentYES) {
         if (handler) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 handler(FBOSIntegratedShareDialogResultCancelled, [NSError errorWithDomain:FacebookSDKDomain
-                                                                                      code:FBErrorOperationDisallowedForRestrictedTreatment
+                                                                                      code:FBErrorOperationDisallowedForRestrictedTreament
                                                                                   userInfo:nil]);
             });
         }
@@ -144,40 +136,19 @@ return NO; \
     return YES;
 }
 
-+ (BOOL)canPresentOSIntegratedShareDialog
-{
-    FB_DIALOGS_CHECK_RESTRICTED_TREATMENT();
-
-    // Can we even call the iOS API?
-    Class composeViewControllerClass = [[FBDynamicFrameworkLoader loadClass:@"SLComposeViewController" withFramework:@"Social"] class];
-    if (composeViewControllerClass == nil) {
-        return NO;
-    }
-
-    // Is the Facebook account available
-    NSString *facebookServiceType = [FBDynamicFrameworkLoader loadStringConstant:@"SLServiceTypeFacebook" withFramework:@"Social"];
-    if (![composeViewControllerClass isAvailableForServiceType:facebookServiceType]) {
-        return NO;
-    }
-
-    return YES;
-}
-
-+ (BOOL)canPresentOSIntegratedShareDialogWithSession:(FBSession *)session
-{
-    return (([FBSettings restrictedTreatment] == FBRestrictedTreatmentNO) &&
-            ([FBDialogs composeViewControllerWithSession:session handler:nil] != nil));
++ (BOOL)canPresentOSIntegratedShareDialogWithSession:(FBSession *)session {
+    return [FBSettings restrictedTreatment] == FBRestrictedTreatmentNO && [FBDialogs composeViewControllerWithSession:session
+                                                                                                              handler:nil] != nil;
 }
 
 // A helper method to wrap common logic for any FBAppCalls. If `FBSettings restrictedTreatment` is
 // set, this method will return YES and dispatch a call to the handler with an NSError.
-+ (BOOL)cancelAppCallBecauseOfRestrictedTreatment:(FBDialogAppCallCompletionHandler)handler
-{
++ (BOOL)cancelAppCallBecauseOfRestrictedTreatment:(FBDialogAppCallCompletionHandler)handler {
     if ([FBSettings restrictedTreatment] == FBRestrictedTreatmentYES) {
         if (handler) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 handler(nil, nil, [NSError errorWithDomain:FacebookSDKDomain
-                                                      code:FBErrorOperationDisallowedForRestrictedTreatment
+                                                      code:FBErrorOperationDisallowedForRestrictedTreament
                                                   userInfo:nil]);
             });
         }
@@ -186,25 +157,16 @@ return NO; \
     return NO;
 }
 
-+ (BOOL)canPresentShareDialog
-{
-    FB_DIALOGS_CHECK_RESTRICTED_TREATMENT();
-    FBLinkShareParams *params = [[[FBLinkShareParams alloc] initWithLink:[NSURL URLWithString:@"http:///"]
-                                                                    name:nil
-                                                                 caption:nil
-                                                             description:nil
-                                                                 picture:nil] autorelease];
-    return ([FBAppBridgeScheme bridgeSchemeForFBAppForShareDialogParams:params] != nil);
-}
-
 + (BOOL)canPresentShareDialogWithParams:(FBLinkShareParams *)params {
-    FB_DIALOGS_CHECK_RESTRICTED_TREATMENT();
-    return ([FBAppBridgeScheme bridgeSchemeForFBAppForShareDialogParams:params] != nil);
+    FBAppBridgeScheme *bridgeScheme = [FBAppBridgeScheme bridgeSchemeForFBAppForShareDialogParams:params];
+    return ([FBSettings restrictedTreatment] == FBRestrictedTreatmentNO
+            && bridgeScheme != nil);
 }
 
 + (BOOL)canPresentShareDialogWithPhotos {
-    FB_DIALOGS_CHECK_RESTRICTED_TREATMENT();
-    return ([FBAppBridgeScheme bridgeSchemeForFBAppForShareDialogPhotos] != nil);
+    FBAppBridgeScheme *bridgeScheme = [FBAppBridgeScheme bridgeSchemeForFBAppForShareDialogPhotos];
+    return ([FBSettings restrictedTreatment] == FBRestrictedTreatmentNO
+            && bridgeScheme != nil);
 }
 
 + (FBAppCall *)presentShareDialogWithParams:(FBLinkShareParams *)params
@@ -298,8 +260,9 @@ return NO; \
 }
 
 + (BOOL)canPresentShareDialogWithOpenGraphActionParams:(FBOpenGraphActionParams *)params {
-    FB_DIALOGS_CHECK_RESTRICTED_TREATMENT();
-    return ([FBAppBridgeScheme bridgeSchemeForFBAppForOpenGraphActionShareDialogParams:params] != nil);
+    FBAppBridgeScheme *bridgeScheme = [FBAppBridgeScheme bridgeSchemeForFBAppForOpenGraphActionShareDialogParams:params];
+    return ([FBSettings restrictedTreatment] == FBRestrictedTreatmentNO
+            && bridgeScheme != nil);
 }
 
 + (FBAppCall *)presentShareDialogWithOpenGraphActionParams:(FBOpenGraphActionParams *)params
@@ -366,9 +329,9 @@ return NO; \
             [[FBAppBridge sharedInstance] dispatchDialogAppCall:call
                                                    bridgeScheme:bridgeScheme
                                                         session:nil
-                                              completionHandler:^(FBAppCall *innerCall) {
+                                              completionHandler:^(FBAppCall *call) {
                                                   if (handler) {
-                                                      handler(innerCall, innerCall.dialogData.results, innerCall.error);
+                                                      handler(call, call.dialogData.results, call.error);
                                                   }
                                               }];
         }
@@ -431,9 +394,9 @@ return NO; \
             [[FBAppBridge sharedInstance] dispatchDialogAppCall:call
                                                    bridgeScheme:bridgeScheme
                                                         session:nil
-                                              completionHandler:^(FBAppCall *innerCall) {
+                                              completionHandler:^(FBAppCall *call) {
                                                   if (handler) {
-                                                      handler(innerCall, innerCall.dialogData.results, innerCall.error);
+                                                      handler(call, call.dialogData.results, call.error);
                                                   }
                                               }];
         }
@@ -450,30 +413,16 @@ return NO; \
     return call;
 }
 
-+ (BOOL)canPresentMessageDialog
-{
-    FB_DIALOGS_CHECK_RESTRICTED_TREATMENT();
-    FBLinkShareParams *params = [[[FBLinkShareParams alloc] initWithLink:[NSURL URLWithString:@"http:///"]
-                                                                    name:nil
-                                                                 caption:nil
-                                                             description:nil
-                                                                 picture:nil] autorelease];
-    return ([FBAppBridgeScheme bridgeSchemeForFBMessengerForShareDialogParams:params] != nil);
-}
-
 + (BOOL)canPresentMessageDialogWithOpenGraphActionParams:(FBOpenGraphActionParams *)params {
-    FB_DIALOGS_CHECK_RESTRICTED_TREATMENT();
-    return ([FBAppBridgeScheme bridgeSchemeForFBMessengerForOpenGraphActionShareDialogParams:params] != nil);
+    return [FBAppBridgeScheme bridgeSchemeForFBMessengerForOpenGraphActionShareDialogParams:params] != nil;
 }
 
 + (BOOL)canPresentMessageDialogWithParams:(FBLinkShareParams *)params {
-    FB_DIALOGS_CHECK_RESTRICTED_TREATMENT();
-    return ([FBAppBridgeScheme bridgeSchemeForFBMessengerForShareDialogParams:params] != nil);
+    return [FBAppBridgeScheme bridgeSchemeForFBMessengerForShareDialogParams:params] != nil;
 }
 
 + (BOOL)canPresentMessageDialogWithPhotos {
-    FB_DIALOGS_CHECK_RESTRICTED_TREATMENT();
-    return ([FBAppBridgeScheme bridgeSchemeForFBMessengerForShareDialogPhotos] != nil);
+    return [FBAppBridgeScheme bridgeSchemeForFBMessengerForShareDialogPhotos] != nil;
 }
 
 + (FBAppCall *)presentMessageDialogWithOpenGraphActionParams:(FBOpenGraphActionParams *)params
@@ -580,8 +529,8 @@ return NO; \
 
 + (BOOL)canPresentLikeDialog
 {
-    FB_DIALOGS_CHECK_RESTRICTED_TREATMENT();
-    return ([FBAppBridgeScheme bridgeSchemeForFBAppForLike] != nil);
+    return (([FBSettings restrictedTreatment] == FBRestrictedTreatmentNO) &&
+            ([FBAppBridgeScheme bridgeSchemeForFBAppForLike] != nil));
 }
 
 + (FBAppCall *)presentLikeDialogWithParams:(FBLikeDialogParams *)params
@@ -623,11 +572,17 @@ return NO; \
 
 + (SLComposeViewController *)composeViewControllerWithSession:(FBSession *)session
                                                       handler:(FBOSIntegratedShareDialogHandler)handler {
-    if (![self canPresentOSIntegratedShareDialog]) {
+    // Can we even call the iOS API?
+    Class composeViewControllerClass = [[FBDynamicFrameworkLoader loadClass:@"SLComposeViewController" withFramework:@"Social"] class];
+    if (composeViewControllerClass == nil ||
+        [composeViewControllerClass isAvailableForServiceType:[FBDynamicFrameworkLoader loadStringConstant:@"SLServiceTypeFacebook" withFramework:@"Social"]] == NO) {
+        if (handler) {
+            handler(FBOSIntegratedShareDialogResultError, [self createError:FBErrorDialogNotSupported
+                                                                    session:session]);
+        }
         return nil;
     }
 
-    Class composeViewControllerClass = [[FBDynamicFrameworkLoader loadClass:@"SLComposeViewController" withFramework:@"Social"] class];
     SLComposeViewController *composeViewController = [composeViewControllerClass composeViewControllerForServiceType:[FBDynamicFrameworkLoader loadStringConstant:@"SLServiceTypeFacebook" withFramework:@"Social"]];
     if (composeViewController == nil) {
         if (handler) {

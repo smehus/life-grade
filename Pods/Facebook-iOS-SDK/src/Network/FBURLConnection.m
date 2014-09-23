@@ -18,15 +18,15 @@
 
 #import "FBDataDiskCache.h"
 #import "FBError.h"
-#import "FBInternalSettings.h"
 #import "FBLogger.h"
 #import "FBSession.h"
 #import "FBSettings+Internal.h"
+#import "FBSettings.h"
 #import "FBUtility.h"
 
 static NSArray *_cdnHosts;
 
-@interface FBURLConnection () <NSURLConnectionDataDelegate>
+@interface FBURLConnection ()
 
 @property (nonatomic, retain) NSURLConnection *connection;
 @property (nonatomic, retain) NSMutableData *data;
@@ -261,20 +261,6 @@ didReceiveResponse:(NSURLResponse *)response {
     }
 
     return request;
-}
-
-- (void)       connection:(NSURLConnection *)connection
-          didSendBodyData:(NSInteger)bytesWritten
-        totalBytesWritten:(NSInteger)totalBytesWritten
-totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
-    id<FBURLConnectionDelegate> delegate = self.delegate;
-
-    if ([delegate respondsToSelector:@selector(facebookURLConnection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:)]) {
-        [delegate facebookURLConnection:self
-                        didSendBodyData:bytesWritten
-                      totalBytesWritten:totalBytesWritten
-              totalBytesExpectedToWrite:totalBytesExpectedToWrite];
-    }
 }
 
 - (BOOL)shouldShortCircuitRedirectResponse:(NSURLResponse *)redirectResponse {

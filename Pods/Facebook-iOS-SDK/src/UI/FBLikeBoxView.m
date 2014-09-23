@@ -60,15 +60,18 @@
     }
 }
 
-- (NSString *)text
+- (void)setLikeCount:(NSUInteger)likeCount
 {
-    return _likeCountLabel.text;
+    [self setLikeCount:likeCount animated:NO];
 }
 
-- (void)setText:(NSString *)text
+#pragma mark - Public API
+
+- (void)setLikeCount:(NSUInteger)likeCount animated:(BOOL)animated
 {
-    if (![_likeCountLabel.text isEqualToString:text]) {
-        _likeCountLabel.text = text;
+    if (_likeCount != likeCount) {
+        _likeCount = likeCount;
+        _likeCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)_likeCount];
         [self setNeedsLayout];
         [self invalidateIntrinsicContentSize];
     }

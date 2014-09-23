@@ -56,7 +56,13 @@
     
     self.goalView = [[UIView alloc] initWithFrame:CGRectMake(20, 30, self.view.frame.size.width-40, 300)];
     self.goalView.clipsToBounds = YES;
-    self.goalView.backgroundColor = [UIColor yellowColor];
+    self.goalView.backgroundColor = [UIColor whiteColor];
+    self.goalView.layer.shadowOffset = CGSizeMake(-15, 15);
+    self.goalView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.goalView.layer.shadowRadius = 5.0f;
+    self.goalView.layer.shadowOpacity = 1.0f;
+    self.goalView.layer.borderWidth = 1.0f;
+    self.goalView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.goalView.bounds.origin.x, 0, self.goalView.bounds.size.width, 50)];
     label.font = [UIFont fontWithName:font size:24];
@@ -71,7 +77,7 @@
     [goalButton setFrame:CGRectMake(0, CGRectGetMaxY(label.frame) + 30, self.goalView.bounds.size.width, 50)];
     [[goalButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
-        self.goalView.spring.frame = CGRectMake(20, 500, self.view.frame.size.width-40, 300);
+        self.goalView.spring.frame = CGRectMake(20, 600, self.view.frame.size.width-40, 300);
         self.goalView.springSpeed = 20.0f;
         self.goalView.springBounciness = 20.0f;
 
@@ -86,14 +92,22 @@
 
 - (void)setupSpecificView {
     
+    UIColor *greenCol = GREEN_COLOR;
+    
     NSString *font = LIGHT_FONT;
-    self.specificView = [[UIView alloc] initWithFrame:CGRectMake(20, -300, self.view.frame.size.width-40, 300)];
+    self.specificView = [[UIView alloc] initWithFrame:CGRectMake(20, -300, self.view.frame.size.width-40, 500)];
     self.specificView.clipsToBounds = YES;
-    self.specificView.backgroundColor = [UIColor blueColor];
+    self.specificView.backgroundColor = [UIColor whiteColor];
+    self.specificView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.specificView.layer.borderWidth = 1.0f;
+    self.specificView.layer.shadowOffset = CGSizeMake(-15, 15);
+    self.specificView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.specificView.layer.shadowRadius = 5.0f;
+    self.specificView.layer.shadowOpacity = 1.0f;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x, 0, self.specificView.bounds.size.width, 50)];
     label.font = [UIFont fontWithName:font size:24];
-    label.text = @"First Lets Work On That Goal!";
+    label.text = @"Specific";
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
     [self.specificView addSubview:label];
@@ -104,6 +118,15 @@
     self.specificView.springBounciness = 20.0f;
     self.specificView.spring.frame = CGRectMake(20, 20, self.view.frame.size.width-40, 300);
 
+    
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [nextButton setFrame:CGRectMake(10, CGRectGetMaxY(label.frame) + 50, self.specificView.frame.size.width - 20, 25)];
+    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    [nextButton setBackgroundColor:greenCol];
+    [[nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        // present new controller
+    }];
+    [self.specificView addSubview:nextButton];
     
 }
 

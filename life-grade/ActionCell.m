@@ -16,6 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+        UIColor *g = GREEN_COLOR;
         CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
         
         self.userInteractionEnabled = YES;
@@ -29,7 +30,7 @@
         [self addSubview:self.factorLabel];
         
         self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [self.nextButton setBackgroundColor:[UIColor greenColor]];
+        [self.nextButton setBackgroundColor:g];
         [self.nextButton setTitle:@"Select Grade" forState:UIControlStateNormal];
         [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [[self.nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {

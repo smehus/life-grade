@@ -18,9 +18,7 @@
 #import "FBRequestMetadata.h"
 #import "FBSession.h"
 
-@class FBRequestConnectionRetryManager;
-
-typedef NS_ENUM(NSUInteger, FBRequestConnectionRetryManagerState) {
+typedef enum {
     // The normal retry state where we will perform retries.
     FBRequestConnectionRetryManagerStateNormal,
 
@@ -31,20 +29,7 @@ typedef NS_ENUM(NSUInteger, FBRequestConnectionRetryManagerState) {
     // and supplied handlers are NOT invoked since they will be evaluated after the
     // repair operation is executed.
     FBRequestConnectionRetryManagerStateRepairSession
-};
-
-@protocol FBRequestConnectionRetryManagerDelegate <NSObject>
-
-@optional
-
-- (void)retryManagerDidFinishWithNoRetries:(FBRequestConnectionRetryManager *)retryManager;
-
-- (void)retryManagerDidFinishAbortingRetries:(FBRequestConnectionRetryManager *)retryManager;
-
-- (void)          retryManager:(FBRequestConnectionRetryManager *)retryManager
-willRetryWithRequestConnection:(FBRequestConnection *)retryRequestConnection;
-
-@end
+} FBRequestConnectionRetryManagerState;
 
 // Internal class for tracking retries for a given FBRequestConnection
 //   Essentially this helps FBRequestConnection support a two phase approach
@@ -62,7 +47,7 @@ willRetryWithRequestConnection:(FBRequestConnection *)retryRequestConnection;
 // This is like a delegate pattern in that this is a weak reference to the
 // "parent" FBRequestConnection since we expect the parent to have a strong
 // reference to this RetryManager instance.
-@property (nonatomic, unsafe_unretained) FBRequestConnection<FBRequestConnectionRetryManagerDelegate> *requestConnection;
+@property (nonatomic, unsafe_unretained) FBRequestConnection *requestConnection;
 
 // See above enum.
 @property (nonatomic, assign) FBRequestConnectionRetryManagerState state;
@@ -77,7 +62,7 @@ willRetryWithRequestConnection:(FBRequestConnection *)retryRequestConnection;
 // A message that can be shown to the user before executing the retry batch.
 @property (nonatomic, copy) NSString *alertMessage;
 
-- (instancetype)initWithFBRequestConnection:(FBRequestConnection<FBRequestConnectionRetryManagerDelegate> *)requestConnection;
+- (instancetype)initWithFBRequestConnection:(FBRequestConnection *)requestConnection;
 
 // The main method to invoke the retry batch; it also checks alertMessage
 // to possibly present an alertview.

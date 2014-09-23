@@ -188,12 +188,10 @@
 
         FBRequestConnection *connection = [[FBRequestConnection alloc] init];
         [connection addRequest:request completionHandler:
-         ^(FBRequestConnection *innerConnection, id result, NSError *error) {
-             _isResultFromCache = _isResultFromCache || innerConnection.isResultFromCache;
-             [innerConnection retain];
+         ^(FBRequestConnection *connection, id result, NSError *error) {
+             _isResultFromCache = _isResultFromCache || connection.isResultFromCache;
              self.connection = nil;
-             [self requestCompleted:innerConnection result:result error:error];
-             [innerConnection release];
+             [self requestCompleted:connection result:result error:error];
          }];
 
         // Override the URL using the one passed back in 'next'.
@@ -225,9 +223,9 @@
 
     FBRequestConnection *connection = [[FBRequestConnection alloc] init];
     [connection addRequest:request
-         completionHandler:^(FBRequestConnection *innerConnection, id result, NSError *error) {
-             _isResultFromCache = _isResultFromCache || innerConnection.isResultFromCache;
-             [self requestCompleted:innerConnection result:result error:error];
+         completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+             _isResultFromCache = _isResultFromCache || connection.isResultFromCache;
+             [self requestCompleted:connection result:result error:error];
          }];
 
     self.connection = connection;

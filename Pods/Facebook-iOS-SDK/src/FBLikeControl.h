@@ -16,8 +16,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FBSDKMacros.h"
-
 /*!
  @typedef NS_ENUM (NSUInteger, FBLikeControlAuxiliaryPosition)
 
@@ -32,11 +30,6 @@ typedef NS_ENUM(NSUInteger, FBLikeControlAuxiliaryPosition)
     /*! The auxiliary view is below the like button. */
     FBLikeControlAuxiliaryPositionBottom,
 };
-
-/*!
- @abstract Converts an FBLikeControlAuxiliaryPosition to an NSString.
- */
-FBSDK_EXTERN NSString *NSStringFromFBLikeControlAuxiliaryPosition(FBLikeControlAuxiliaryPosition auxiliaryPosition);
 
 /*!
  @typedef NS_ENUM(NSUInteger, FBLikeControlHorizontalAlignment)
@@ -55,11 +48,6 @@ typedef NS_ENUM(NSUInteger, FBLikeControlHorizontalAlignment)
 };
 
 /*!
- @abstract Converts an FBLikeControlHorizontalAlignment to an NSString.
- */
-FBSDK_EXTERN NSString *NSStringFromFBLikeControlHorizontalAlignment(FBLikeControlHorizontalAlignment horizontalAlignment);
-
-/*!
  @typedef NS_ENUM (NSUInteger, FBLikeControlStyle)
 
  @abstract Specifies the style of a like control.
@@ -75,11 +63,6 @@ typedef NS_ENUM(NSUInteger, FBLikeControlStyle)
 };
 
 /*!
- @abstract Converts an FBLikeControlStyle to an NSString.
- */
-FBSDK_EXTERN NSString *NSStringFromFBLikeControlStyle(FBLikeControlStyle style);
-
-/*!
  @class FBLikeControl
 
  @abstract UI control to like an object in the Facebook graph.
@@ -89,14 +72,6 @@ FBSDK_EXTERN NSString *NSStringFromFBLikeControlStyle(FBLikeControlStyle style);
  with the new state and send actions for the UIControlEventValueChanged event.
  */
 @interface FBLikeControl : UIControl
-
-/*!
- @abstract If YES, FBLikeControl is available for use with through the Like Dialog.
-
- @discussion If NO, the control requires publish_action permissions on the active session for in-place liking.  It is
- the responsibility of the consumer to ensure that the control is not presented without this permission.
- */
-+ (BOOL)dialogIsAvailable;
 
 /*!
  @abstract The foreground color to use for the content of the receiver.

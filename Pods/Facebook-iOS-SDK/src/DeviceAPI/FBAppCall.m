@@ -24,12 +24,12 @@
 #import "FBDialogsData+Internal.h"
 #import "FBError.h"
 #import "FBGraphObject.h"
-#import "FBInternalSettings.h"
 #import "FBLogger.h"
 #import "FBRequest.h"
 #import "FBSession+Internal.h"
 #import "FBSessionUtility.h"
 #import "FBSettings+Internal.h"
+#import "FBSettings.h"
 #import "FBUtility.h"
 
 @interface FBAppCall ()
@@ -48,7 +48,6 @@
 
 NSString *const FBLastDeferredAppLink = @"com.facebook.sdk:lastDeferredAppLink%@";
 NSString *const FBDeferredAppLinkEvent = @"DEFERRED_APP_LINK";
-NSString *const FBAppLinkInboundEvent = @"fb_al_inbound";
 
 @implementation FBAppCall
 
@@ -101,7 +100,7 @@ NSString *const FBAppLinkInboundEvent = @"fb_al_inbound";
                                                originalParams:originalQueryParameters
                                                     arguments:methodArgs]
                            autorelease];
-    [appCall logInboundAppLinkEvent];
+
     return appCall;
 }
 
@@ -123,7 +122,8 @@ NSString *const FBAppLinkInboundEvent = @"fb_al_inbound";
                                                originalParams:originalQueryParameters]
                            autorelease];
 
-    [appCall logInboundAppLinkEvent];
+
+
     return appCall;
 }
 
@@ -157,40 +157,6 @@ NSString *const FBAppLinkInboundEvent = @"fb_al_inbound";
     }
     // if we get here, we were unable to parse the URL.
     return nil;
-}
-
-- (void)logInboundAppLinkEvent {
-    FBAppLinkData *applinkData = self.appLinkData;
-    NSMutableDictionary *logData = [[NSMutableDictionary alloc] init];
-    if (applinkData.targetURL) {
-        logData[@"targetURL"] = [applinkData.targetURL absoluteString];
-    }
-    if ([applinkData.targetURL host]) {
-        logData[@"targetURLHost"] = [applinkData.targetURL host];
-    }
-    if (applinkData.refererData) {
-        if (applinkData.refererData[@"target_url"]) {
-            logData[@"referralTargetURL"] = applinkData.refererData[@"target_url"];
-        }
-        if (applinkData.refererData[@"url"]) {
-            logData[@"referralURL"] = applinkData.refererData[@"url"];
-        }
-        if (applinkData.refererData[@"app_name"]) {
-            logData[@"referralAppName"] = applinkData.refererData[@"app_name"];
-        }
-    }
-    if ([applinkData.originalURL absoluteString]) {
-        logData[@"inputURL"] = [applinkData.originalURL absoluteString];
-    }
-    if ([applinkData.originalURL scheme]) {
-        logData[@"inputURLScheme"] = [applinkData.originalURL scheme];
-    }
-
-    [FBAppEvents logImplicitEvent:FBAppLinkInboundEvent
-                       valueToSum:nil
-                       parameters:logData
-                          session:nil];
-    [logData release];
 }
 
 - (void)dealloc
@@ -290,7 +256,6 @@ NSString *const FBAppLinkInboundEvent = @"fb_al_inbound";
           withSession:(FBSession *)session
       fallbackHandler:(FBAppCallHandler)handler {
     FBSession *workingSession = session ?: FBSession.activeSessionIfExists;
-    [FBAppEvents setSourceApplication:sourceApplication openURL:url];
 
     // Wrap the fallback handler to intercept login flow for FBSession
     FBAppCallHandler sessionHandler = ^(FBAppCall *call) {
@@ -304,17 +269,11 @@ NSString *const FBAppLinkInboundEvent = @"fb_al_inbound";
             // login data.
             NSDictionary *results = call.dialogData.results;
             NSDate *expirationDate = [FBUtility expirationDateFromExpirationUnixTimeString:results[@"expires"]];
-            NSString *userID = [FBSessionUtility userIDFromSignedRequest:results[@"signed_request"]];
-
             FBAccessTokenData *accessToken = [FBAccessTokenData createTokenFromString:results[@"access_token"]
                                                                           permissions:results[@"permissions"]
-                                                                  declinedPermissions:nil
                                                                        expirationDate:expirationDate
                                                                             loginType:FBSessionLoginTypeFacebookApplication
-                                                                          refreshDate:nil
-                                                               permissionsRefreshDate:nil
-                                                                                appID:nil
-                                                                               userID:userID];
+                                                                          refreshDate:nil];
 
             // In some cases, it might be fine to go ahead and open the session anyways.
             if ([FBAppCall tryOpenSession:workingSession withAccessToken:accessToken]) {
@@ -451,9 +410,6 @@ NSString *const FBAppLinkInboundEvent = @"fb_al_inbound";
         FBAppCall *loginCall = [[[FBAppCall alloc] init] autorelease];
         loginCall.accessTokenData = accessToken;
         loginCall.appLinkData = appLinkData;
-        if (appLinkData) {
-            [loginCall logInboundAppLinkEvent];
-        }
 
         handler(loginCall);
     }
@@ -500,7 +456,7 @@ NSString *const FBAppLinkInboundEvent = @"fb_al_inbound";
         [deferredAppLinkParameters setObject:advertiserID forKey:@"advertiser_id"];
     }
 
-    [FBUtility updateParametersWithEventUsageLimitsAndBundleInfo:deferredAppLinkParameters accessAdvertisingTrackingStatus:YES];
+    [FBUtility updateParametersWithEventUsageLimitsAndBundleInfo:deferredAppLinkParameters];
 
     FBRequest *deferredAppLinkRequest = [[[FBRequest alloc] initForPostWithSession:nil
                                                                          graphPath:[NSString stringWithFormat:@"%@/activities", appID, nil]

@@ -338,13 +338,11 @@ forFailedAppCall:(FBAppCall *)appCall
     }
 
     if (!success && fallbackHandler) {
-        NSString *failureReasonAndDescription = @"The URL could not be processed for an FBAppCall";
         NSError *preProcessError = [NSError errorWithDomain:FacebookSDKDomain
                                                        code:preProcessErrorCode ?: FBErrorMalformedURL
                                                    userInfo:@{
                                   FBErrorUnprocessedURLKey : url,
-                                  NSLocalizedFailureReasonErrorKey : failureReasonAndDescription,
-                                  NSLocalizedDescriptionKey : failureReasonAndDescription
+                                 NSLocalizedDescriptionKey : @"The URL could not be processed for an FBAppCall"
                                     }];
 
         // NOTE : At this point, we don't have a way to know whether this URL was for a pending AppCall.
@@ -375,11 +373,11 @@ forFailedAppCall:(FBAppCall *)appCall
         @try {
             if (handler) {
                 if (!error) {
-                    NSString *failureReasonAndDescription = @"The user navigated away from the Facebook app prior to completing this AppCall. This AppCall is now cancelled and needs to be retried to get a successful completion";
                     error = [NSError errorWithDomain:FacebookSDKDomain
                                                      code:FBErrorAppActivatedWhilePendingAppCall
-                                                 userInfo:@{NSLocalizedFailureReasonErrorKey : failureReasonAndDescription,
-                                                            NSLocalizedDescriptionKey : failureReasonAndDescription}];
+                                                 userInfo:@{NSLocalizedDescriptionKey : @"The user navigated away from "
+                                  @"the Facebook app prior to completing this AppCall. This AppCall is now cancelled "
+                                  @"and needs to be retried to get a successful completion"}];
                 }
                 call.error = error;
 
@@ -520,7 +518,7 @@ withCompletionHandler:(FBAppCallHandler)handler {
     self.pendingAppCalls[call.ID] = call;
     if (!handler) {
         // a noop handler if nil is passed in
-        handler = ^(FBAppCall *innerCall) {};
+        handler = ^(FBAppCall *call) {};
     }
     // Can immediately autorelease since adding it to self.callbacks causes a retain.
     self.callbacks[call.ID] = [Block_copy(handler) autorelease];

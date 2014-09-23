@@ -27,7 +27,8 @@
         [self addSubview:self.gradeLabel];
         
         self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [self.nextButton setBackgroundColor:[UIColor greenColor]];
+        UIColor *c = GREEN_COLOR;
+        [self.nextButton setBackgroundColor:c];
         [self.nextButton setTitle:@"Select Grade" forState:UIControlStateNormal];
         [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [[self.nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {

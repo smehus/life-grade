@@ -16,8 +16,9 @@
 
 #import "FBLoginTooltipView.h"
 
-#import "FBInternalSettings.h"
+#import "FBSettings.h"
 #import "FBUtility.h"
+
 
 @interface FBLoginTooltipView ()
 @end

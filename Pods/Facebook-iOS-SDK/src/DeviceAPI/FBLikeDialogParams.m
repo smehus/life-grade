@@ -51,14 +51,4 @@
 + (NSString *)methodName {
     return @"like";
 }
-
-#pragma mark - NSCopying
-
-- (instancetype)copyWithZone:(NSZone *)zone
-{
-    FBLikeDialogParams *copy = [super copyWithZone:zone];
-    copy->_objectID = [_objectID copyWithZone:zone];
-    return copy;
-}
-
 @end
