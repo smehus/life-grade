@@ -102,11 +102,7 @@
 }
 
 - (void)didDragView:(UIPanGestureRecognizer *)recognizer {
-    NSLog(@"PAN DID  PAN");
-//    UIView *view = pan.view;
-//    CGPoint pt = [pan translationInView:self.view];
-//    view.center = pt;
-    
+
     CGPoint translation = [recognizer translationInView:self.view];
     recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x,
                                          recognizer.view.center.y + translation.y);
@@ -119,7 +115,7 @@
         CGFloat slideMult = magnitude / 200;
         NSLog(@"magnitude: %f, slideMult: %f", magnitude, slideMult);
         
-        float slideFactor = 0.1 * slideMult; // Increase for more of a slide
+        float slideFactor = 0.05 * slideMult; // Increase for more of a slide
         CGPoint finalPoint = CGPointMake(recognizer.view.center.x + (velocity.x * slideFactor),
                                          recognizer.view.center.y + (velocity.y * slideFactor));
         finalPoint.x = MIN(MAX(finalPoint.x, 0), self.view.bounds.size.width);
@@ -127,11 +123,31 @@
         
         [UIView animateWithDuration:slideFactor*2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             recognizer.view.center = finalPoint;
-        } completion:nil];
-        
+        } completion:^(BOOL finished) {
+           
+            CGPoint translation = CGPointMake(recognizer.view.center.x - self.yesFrame.center.x, recognizer.view.center.y - self.yesFrame.center.y);
+            CGFloat distanceToYes = hypotf(translation.x, translation.y);
+            
+            CGPoint translationNo = CGPointMake(recognizer.view.center.x - self.noFrame.center.x, recognizer.view.center.y - self.noFrame.center.y);
+            CGFloat distanceToNo = hypotf(translationNo.x, translationNo.y);
+            
+            // Need to sublcass UIView to add index & Custom objects
+            if (distanceToYes < 100) {
+                
+                recognizer.view.springBounciness = 15.0f;
+                recognizer.view.spring.frame = self.yesFrame.frame;
+
+                
+            } else if (distanceToNo < 100) {
+                
+                recognizer.view.springBounciness = 15.0f;
+                recognizer.view.spring.frame = self.noFrame.frame;
+            }
+            
+        }];
     }
-    
 }
+
 
 
 
