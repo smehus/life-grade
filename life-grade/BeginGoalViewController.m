@@ -12,6 +12,7 @@
 #import <POP+MCAnimate.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "QuartzCore/QuartzCore.h"
+#import "TrackingProgressViewController.h"
 
 @interface BeginGoalViewController ()
 
@@ -38,13 +39,12 @@
     UIColor *barColour = GREEN_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
 
-//    UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
-//    UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
-//    bg.frame = CGRectMake(-20, -10, self.view.frame.size.width + 50, self.view.frame.size.height);
-//    [self.view addSubview:bg];
-//    [self.view sendSubviewToBack:bg];
+    UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
+    UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
+    bg.frame = CGRectMake(-20, -10, self.view.frame.size.width + 50, self.view.frame.size.height);
+    [self.view addSubview:bg];
+    [self.view sendSubviewToBack:bg];
 
-    
     [self setupGoalView];
 }
 
@@ -146,7 +146,9 @@
     [nextButton setTitle:@"Next" forState:UIControlStateNormal];
     [nextButton setBackgroundColor:greenCol];
     [[nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        // present new controller
+
+        TrackingProgressViewController *trackController = [[TrackingProgressViewController alloc] init];
+        [self.navigationController pushViewController:trackController animated:YES];
     }];
     [self.specificView addSubview:nextButton];
     

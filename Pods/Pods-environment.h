@@ -84,6 +84,24 @@
 #define COCOAPODS_VERSION_MINOR_KNSemiModalViewController 3
 #define COCOAPODS_VERSION_PATCH_KNSemiModalViewController 0
 
+// MGBoxKit
+#define COCOAPODS_POD_AVAILABLE_MGBoxKit
+#define COCOAPODS_VERSION_MAJOR_MGBoxKit 7
+#define COCOAPODS_VERSION_MINOR_MGBoxKit 0
+#define COCOAPODS_VERSION_PATCH_MGBoxKit 1
+
+// MGEvents
+#define COCOAPODS_POD_AVAILABLE_MGEvents
+#define COCOAPODS_VERSION_MAJOR_MGEvents 1
+#define COCOAPODS_VERSION_MINOR_MGEvents 0
+#define COCOAPODS_VERSION_PATCH_MGEvents 3
+
+// MGMushParser
+#define COCOAPODS_POD_AVAILABLE_MGMushParser
+#define COCOAPODS_VERSION_MAJOR_MGMushParser 1
+#define COCOAPODS_VERSION_MINOR_MGMushParser 0
+#define COCOAPODS_VERSION_PATCH_MGMushParser 0
+
 // MONActivityIndicatorView
 #define COCOAPODS_POD_AVAILABLE_MONActivityIndicatorView
 #define COCOAPODS_VERSION_MAJOR_MONActivityIndicatorView 0
@@ -161,6 +179,12 @@
 #define COCOAPODS_VERSION_MAJOR_THCalendarDatePicker 0
 #define COCOAPODS_VERSION_MINOR_THCalendarDatePicker 1
 #define COCOAPODS_VERSION_PATCH_THCalendarDatePicker 1
+
+// UIView+draggable
+#define COCOAPODS_POD_AVAILABLE_UIView_draggable
+#define COCOAPODS_VERSION_MAJOR_UIView_draggable 0
+#define COCOAPODS_VERSION_MINOR_UIView_draggable 2
+#define COCOAPODS_VERSION_PATCH_UIView_draggable 0
 
 // pop
 #define COCOAPODS_POD_AVAILABLE_pop

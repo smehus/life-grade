@@ -68,7 +68,7 @@
     [self.view addSubview:titelLabel];
     
     self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.nextButton setFrame:CGRectMake(0, self.view.frame.size.height - 200, self.view.frame.size.width, 44)];
+    [self.nextButton setFrame:CGRectMake(0, self.view.frame.size.height - 175, self.view.frame.size.width, 44)];
     [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     UIColor *color = GREEN_COLOR;
     [self.nextButton setBackgroundColor:color];

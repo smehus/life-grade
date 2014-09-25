@@ -25,6 +25,11 @@ PODS:
     - Bolts
   - IQKeyboardManager (3.1.1)
   - KNSemiModalViewController (0.3)
+  - MGBoxKit (7.0.1):
+    - MGEvents
+    - MGMushParser
+  - MGEvents (1.0.3)
+  - MGMushParser (1.0.0)
   - MONActivityIndicatorView (0.0.1)
   - NYSegmentedControl (1.0.3)
   - pop (1.0.6)
@@ -59,6 +64,7 @@ PODS:
     - ReactiveCocoa/Core
   - THCalendarDatePicker (0.1.1):
     - KNSemiModalViewController (~> 0.3)
+  - UIView+draggable (0.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2)
@@ -66,12 +72,14 @@ DEPENDENCIES:
   - EMAccordionTableViewController (~> 0.4)
   - Facebook-iOS-SDK (~> 3.13)
   - IQKeyboardManager
+  - MGBoxKit
   - MONActivityIndicatorView (~> 0.0.1)
   - NYSegmentedControl
   - pop (~> 1.0)
   - POP+MCAnimate (~> 1.0)
   - ReactiveCocoa (~> 2.3)
   - THCalendarDatePicker (~> 0.1.1)
+  - UIView+draggable
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
@@ -81,11 +89,15 @@ SPEC CHECKSUMS:
   Facebook-iOS-SDK: e9b3d5ac54ee3e5e693f4eef470b97911b3d076d
   IQKeyboardManager: 79ab3bc740f6bd30eadf9b0d217020941c0926e4
   KNSemiModalViewController: 6fb1e2f6a4d84238b524cb705e91118b0fa6bbc9
+  MGBoxKit: 86493ff76fb2164a32426418a1a900c84edd0ffa
+  MGEvents: e6254d7873bcb90b266801d171f9948194010927
+  MGMushParser: 2c28a4e5c5938da9dcc1fbb090347e5ff575fc5b
   MONActivityIndicatorView: 728965121e59cef32c1bc4676f6868e35f3c8c61
   NYSegmentedControl: 74094b886a80bfc4e9f6d415601e9b11797b22b7
   pop: e518794da38942c05255eb64b36d894e70cb4f00
   POP+MCAnimate: 3ad540606cbf21547f79585c8d5b63f9da69d52b
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   THCalendarDatePicker: 400998078c168f4c380e652916a03d1a358eb6bd
+  UIView+draggable: ad1c3a0f862aca1923c45c3e05d68c7852014436
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1
