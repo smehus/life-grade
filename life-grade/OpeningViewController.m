@@ -91,6 +91,24 @@
     [self.view addSubview:self.scrollView];
 }
 
+- (void)loadFonts {
+    
+    NSArray *familyNames = [[NSArray alloc] initWithArray:[UIFont familyNames]];
+    NSArray *fontNames;
+    NSInteger indFamily, indFont;
+    for (indFamily=0; indFamily<[familyNames count]; ++indFamily)
+    {
+        NSLog(@"Family name: %@", [familyNames objectAtIndex:indFamily]);
+        fontNames = [[NSArray alloc] initWithArray:
+                     [UIFont fontNamesForFamilyName:
+                      [familyNames objectAtIndex:indFamily]]];
+        for (indFont=0; indFont<[fontNames count]; ++indFont)
+        {
+            NSLog(@"    Font name: %@", [fontNames objectAtIndex:indFont]);
+        }
+    }
+}
+
 - (void)loadshit {
     
     NSString *string = @"Accountable Adaptable Adventurous Alert Ambitious Assertive Attentive Authentic Aware Brave Certain Clear Collaborative Committed Communicator Compassion Connection Conscious Consistent Cooperative Creative Curious Dedicated Determined Disciplined Efficient Empathetic Energetic Ethical Excited Expressive Flexible Generosity Gratitude HardWorking Honest Humorous Imaginative Independent Initiates Innovative Intentional Intimate Knowledgeable Listener ManagesTimeWell Networker Open-Minded Organized Patient Planner Practical Proactive Problem-Solver Productive Reliable Resourceful Self-confident Self-generating Self-reliant SenseofHumor Sincere Skillful Spiritual Stable Supportive Tactful Trusting Trustworthy Willing";

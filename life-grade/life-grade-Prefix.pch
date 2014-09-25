@@ -19,5 +19,7 @@
 #define GREY_COLOR [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
 #define GREEN_COLOR  [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
 #define LIGHT_FONT @"HelveticaNeue-Thin";
+#define AVENIR_BLACK @"Avenir-Black";
+#define BLUE_COLOR [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
 
 #endif
