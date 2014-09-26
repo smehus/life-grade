@@ -14,6 +14,7 @@
 #import "QuartzCore/QuartzCore.h"
 #import <MGBoxKit/MGBoxKit.h>
 #import "UIView+draggable.h"
+#import "RealisticViewController.h"
 
 @interface AttainableViewController () <UIGestureRecognizerDelegate>
 
@@ -23,15 +24,17 @@
 @end
 
 @implementation AttainableViewController {
-        MainAppDelegate *del;
-        NSString *avFont;
-        CGRect originalFrame;
+    MainAppDelegate *del;
+    NSString *avFont;
+    CGRect originalFrame;
+    UIColor *blueColor;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     avFont = AVENIR_BLACK;
+    blueColor = BLUE_COLOR;
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -55,7 +58,7 @@
     [barBtnItem setTintColor:grey];
     self.navigationItem.backBarButtonItem = barBtnItem;
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, 100)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -20, self.view.frame.size.width, 100)];
     titleLabel.text = @"Tracking Progress";
     titleLabel.font = [UIFont fontWithName:avFont size:24];
     titleLabel.numberOfLines = 0;
@@ -65,18 +68,18 @@
     
     [self addAnswerFrames];
     [self addViews];
+    [self addButton];
 
 }
 
 - (void)addViews {
     for (int i = 0; i < 10; i++) {
        
-        originalFrame = CGRectMake(25, 200, 100, 150);
+        originalFrame = CGRectMake(25, 150, 100, 160);
         UIPanGestureRecognizer *panGest = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragView:)];
         
         UIView *thing = [[UIView alloc] initWithFrame:originalFrame];
-        thing.backgroundColor = [UIColor redColor];
-//        [thing enableDragging];
+        thing.backgroundColor = blueColor;
         [thing addGestureRecognizer:panGest];
         [self.view addSubview:thing];
     }
@@ -84,19 +87,36 @@
 
 - (void)addAnswerFrames {
     
-    self.yesFrame = [[UIView alloc] initWithFrame:CGRectMake(200, 100, 100, 150)];
+    self.yesFrame = [[UIView alloc] initWithFrame:CGRectMake(175, 75, 110, 150)];
     self.yesFrame.backgroundColor = [UIColor clearColor];
     self.yesFrame.layer.borderColor = [UIColor greenColor].CGColor;
     self.yesFrame.layer.borderWidth = 1.0f;
     [self.view addSubview:self.yesFrame];
     
     
-    self.noFrame = [[UIView alloc] initWithFrame:CGRectMake(200, CGRectGetMaxY(self.yesFrame.frame) + 50, 100, 150)];
+    self.noFrame = [[UIView alloc] initWithFrame:CGRectMake(175, CGRectGetMaxY(self.yesFrame.frame) + 35, 110, 150)];
     self.noFrame.backgroundColor = [UIColor clearColor];
     self.noFrame.layer.borderColor = [UIColor greenColor].CGColor;
     self.noFrame.layer.borderWidth = 1.0f;
     self.noFrame.panGesture.delegate = self;
     [self.view addSubview:self.noFrame];
+}
+
+- (void)addButton {
+    
+    UIColor *gC = GREEN_COLOR;
+    
+    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.noFrame.frame) + 10, self.view.frame.size.width - 20, 50)];
+    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    [nextButton setBackgroundColor:gC];
+    [[nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+       
+        RealisticViewController *controller = [[RealisticViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+        
+    }];
+    [self.view addSubview:nextButton];
+    
 }
 
 - (void)didReceiveMemoryWarning {

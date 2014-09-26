@@ -89,6 +89,7 @@
 		A5E85E2E1927B81100AAA4B6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85E2D1927B81100AAA4B6 /* Grade.m */; };
 		A5F66B6419D3A48C00B16E8F /* TrackingProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F66B6319D3A48C00B16E8F /* TrackingProgressViewController.m */; };
 		A5F66B6719D3B7D100B16E8F /* AttainableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F66B6619D3B7D100B16E8F /* AttainableViewController.m */; };
+		A5F66B6A19D506BE00B16E8F /* RealisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F66B6919D506BE00B16E8F /* RealisticViewController.m */; };
 		E336CAD8806747469A293CAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A960DAF569C04584853BD49B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -230,6 +231,8 @@
 		A5F66B6319D3A48C00B16E8F /* TrackingProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingProgressViewController.m; sourceTree = "<group>"; };
 		A5F66B6519D3B7D100B16E8F /* AttainableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttainableViewController.h; sourceTree = "<group>"; };
 		A5F66B6619D3B7D100B16E8F /* AttainableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttainableViewController.m; sourceTree = "<group>"; };
+		A5F66B6819D506BE00B16E8F /* RealisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealisticViewController.h; sourceTree = "<group>"; };
+		A5F66B6919D506BE00B16E8F /* RealisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealisticViewController.m; sourceTree = "<group>"; };
 		A960DAF569C04584853BD49B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -286,6 +289,8 @@
 				A5F66B6319D3A48C00B16E8F /* TrackingProgressViewController.m */,
 				A5F66B6519D3B7D100B16E8F /* AttainableViewController.h */,
 				A5F66B6619D3B7D100B16E8F /* AttainableViewController.m */,
+				A5F66B6819D506BE00B16E8F /* RealisticViewController.h */,
+				A5F66B6919D506BE00B16E8F /* RealisticViewController.m */,
 			);
 			name = MyPlan;
 			sourceTree = "<group>";
@@ -767,6 +772,7 @@
 				655EC64218DF62550036515F /* MenuViewController.m in Sources */,
 				6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */,
 				A5C08C7B193977D600887F83 /* ActionPlanViewController.m in Sources */,
+				A5F66B6A19D506BE00B16E8F /* RealisticViewController.m in Sources */,
 				6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */,
 				A53DA43419C1474400EAC693 /* InstructionsViewController.m in Sources */,
 				65714FFE191475080034009A /* HASmallCollectionViewController.m in Sources */,
