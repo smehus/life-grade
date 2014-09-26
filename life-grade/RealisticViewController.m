@@ -32,6 +32,10 @@
     NSString *liteFont;
     UILabel *firstLabel;
     UILabel *secondLabel;
+    
+    UITextField *firstField;
+    UITextField *secondField;
+    UITextField *thirdField;
 }
 
 - (void)viewDidLoad {
@@ -117,28 +121,52 @@
 }
 
 - (void)setupSecondScreen {
+    titleLabel.text = @"Timely";
+    firstField.text = @" Set a date";
     
+
+    
+}
+
+- (void)setupThirdView {
     
     titleLabel.text = @"Support";
     firstLabel.text = @"Name 3 people in your circle";
     
-    UITextField *firstField = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, screenWidth - 20, 30)];
+    // need text inset - take from priv things
+    
+    firstField = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, screenWidth - 20, 66)];
     firstField.layer.borderColor = blueColor.CGColor;
     firstField.layer.borderWidth = 1.0f;
     firstField.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:firstField];
     
-    UITextField *secondField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstField.frame) + 10, screenWidth - 20, 30)];
+    secondField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstField.frame) + 10, screenWidth - 20, 66)];
     secondField.layer.borderColor = blueColor.CGColor;
     secondField.layer.borderWidth = 1.0f;
     secondField.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:secondField];
     
-    UITextField *thirdField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondField.frame) + 10, screenWidth - 20, 30)];
+    thirdField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondField.frame) + 10, screenWidth - 20, 66)];
     thirdField.layer.borderColor = blueColor.CGColor;
     thirdField.layer.borderWidth = 1.0f;
     thirdField.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:thirdField];
+    
+}
+
+- (void)addNextButton {
+    
+    UIColor *green = GREEN_COLOR;
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(thirdField.frame) + 20, self.view.frame.size.width-20, 40)];
+    [button setBackgroundColor:green];
+    [button setTitle:@"Next" forState:UIControlStateNormal];
+    [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+
+        
+        
+    }];
+    [self.view addSubview:button];
     
 }
 
