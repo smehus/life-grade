@@ -8,17 +8,30 @@
 
 #import "RealisticViewController.h"
 #import "MainAppDelegate.h"
+#define MCANIMATE_SHORTHAND
+#import <POP+MCAnimate.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface RealisticViewController ()
+
+@property (nonatomic, strong) UITextField *firstSupport;
+@property (nonatomic, strong) UITextField *secondSupport;
+@property (nonatomic, strong) UITextField *thirdSupport;
 
 @end
 
 @implementation RealisticViewController {
     
     MainAppDelegate *del;
+    UIImageView *bg;
     NSString *avFont;
     CGRect originalFrame;
     UIColor *blueColor;
+    UILabel *titleLabel;
+    CGFloat screenWidth;
+    NSString *liteFont;
+    UILabel *firstLabel;
+    UILabel *secondLabel;
 }
 
 - (void)viewDidLoad {
@@ -26,7 +39,7 @@
 
     avFont = AVENIR_BLACK;
     blueColor = BLUE_COLOR;
-    
+    screenWidth = self.view.frame.size.width;
     self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -39,7 +52,7 @@
     self.navigationController.navigationBar.barTintColor = barColour;
     
     UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
-    UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
+    bg = [[UIImageView alloc] initWithImage:bgImage];
     bg.frame = CGRectMake(-20, -10, self.view.frame.size.width + 50, self.view.frame.size.height);
     [self.view addSubview:bg];
     [self.view sendSubviewToBack:bg];
@@ -49,8 +62,8 @@
     [barBtnItem setTintColor:grey];
     self.navigationItem.backBarButtonItem = barBtnItem;
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -20, self.view.frame.size.width, 100)];
-    titleLabel.text = @"Tracking Progress";
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -20, self.view.frame.size.width, 100)];
+    titleLabel.text = @"Realistic";
     titleLabel.font = [UIFont fontWithName:avFont size:24];
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -58,12 +71,85 @@
     [self.view addSubview:titleLabel];
 
     
+    [self setupScreen];
+}
+
+- (void)setupScreen {
+    firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + 20, screenWidth, 100)];
+    firstLabel.text = @"How Confident Are You?";
+    firstLabel.font = [UIFont fontWithName:avFont size:24];
+    firstLabel.numberOfLines = 0;
+    firstLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    firstLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:firstLabel];
+    
+    secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstLabel.frame) + 100, screenWidth, 100)];
+    secondLabel.text = @"How Confident Are You?";
+    secondLabel.font = [UIFont fontWithName:avFont size:24];
+    secondLabel.numberOfLines = 0;
+    secondLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    secondLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:secondLabel];
+    
+    UIColor *gC = GREEN_COLOR;
+    
+    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondLabel.frame) + 10, self.view.frame.size.width - 20, 50)];
+    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    [nextButton setBackgroundColor:gC];
+    [[nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        
+        [self RemoveAllViews];
+        [self setupSecondScreen];
+        
+    }];
+    [self.view addSubview:nextButton];
+}
+
+- (void)RemoveAllViews {
+    
+    for (UIView *v in self.view.subviews) {
+        if (v == bg || v == titleLabel || v == firstLabel) {
+            
+        } else {
+            [v removeFromSuperview];
+        }
+    }
+}
+
+- (void)setupSecondScreen {
+    
+    
+    titleLabel.text = @"Support";
+    firstLabel.text = @"Name 3 people in your circle";
+    
+    UITextField *firstField = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, screenWidth - 20, 30)];
+    firstField.layer.borderColor = blueColor.CGColor;
+    firstField.layer.borderWidth = 1.0f;
+    firstField.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:firstField];
+    
+    UITextField *secondField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstField.frame) + 10, screenWidth - 20, 30)];
+    secondField.layer.borderColor = blueColor.CGColor;
+    secondField.layer.borderWidth = 1.0f;
+    secondField.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:secondField];
+    
+    UITextField *thirdField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondField.frame) + 10, screenWidth - 20, 30)];
+    thirdField.layer.borderColor = blueColor.CGColor;
+    thirdField.layer.borderWidth = 1.0f;
+    thirdField.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:thirdField];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+- (void)dealloc {
+    
+    NSLog(@"realistic controller dealloc");
+}
 
 
 @end

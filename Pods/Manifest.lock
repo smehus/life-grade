@@ -18,6 +18,7 @@ PODS:
   - AFNetworking/UIKit (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - ASValueTrackingSlider (0.9.4)
   - Bolts (1.1.2)
   - CWPopup (1.2.5)
   - EMAccordionTableViewController (0.4)
@@ -68,6 +69,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2)
+  - ASValueTrackingSlider
   - CWPopup (~> 1.2.4)
   - EMAccordionTableViewController (~> 0.4)
   - Facebook-iOS-SDK (~> 3.13)
@@ -83,6 +85,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  ASValueTrackingSlider: 74a4bbf70c8cf43d29b701ff4c7659fc5d0afd99
   Bolts: 2635e8698a630774689441047f3465d78c48d485
   CWPopup: 78985e84f8a62de13cf67aa287496d14ce6107aa
   EMAccordionTableViewController: 1d5c69385e18e7becaa06340d10d81129312f9aa
