@@ -25,6 +25,7 @@
 @implementation AttainableViewController {
         MainAppDelegate *del;
         NSString *avFont;
+        CGRect originalFrame;
 }
 
 - (void)viewDidLoad {
@@ -70,9 +71,10 @@
 - (void)addViews {
     for (int i = 0; i < 10; i++) {
        
+        originalFrame = CGRectMake(25, 200, 100, 150);
         UIPanGestureRecognizer *panGest = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragView:)];
         
-        UIView *thing = [[UIView alloc] initWithFrame:CGRectMake(25, 200, 100, 200)];
+        UIView *thing = [[UIView alloc] initWithFrame:originalFrame];
         thing.backgroundColor = [UIColor redColor];
 //        [thing enableDragging];
         [thing addGestureRecognizer:panGest];
@@ -82,14 +84,14 @@
 
 - (void)addAnswerFrames {
     
-    self.yesFrame = [[UIView alloc] initWithFrame:CGRectMake(200, 100, 100, 200)];
+    self.yesFrame = [[UIView alloc] initWithFrame:CGRectMake(200, 100, 100, 150)];
     self.yesFrame.backgroundColor = [UIColor clearColor];
     self.yesFrame.layer.borderColor = [UIColor greenColor].CGColor;
     self.yesFrame.layer.borderWidth = 1.0f;
     [self.view addSubview:self.yesFrame];
     
     
-    self.noFrame = [[UIView alloc] initWithFrame:CGRectMake(200, CGRectGetMaxY(self.yesFrame.frame) + 50, 100, 200)];
+    self.noFrame = [[UIView alloc] initWithFrame:CGRectMake(200, CGRectGetMaxY(self.yesFrame.frame) + 50, 100, 150)];
     self.noFrame.backgroundColor = [UIColor clearColor];
     self.noFrame.layer.borderColor = [UIColor greenColor].CGColor;
     self.noFrame.layer.borderWidth = 1.0f;
@@ -142,6 +144,10 @@
                 
                 recognizer.view.springBounciness = 15.0f;
                 recognizer.view.spring.frame = self.noFrame.frame;
+            } else {
+                // back to orig frame
+                recognizer.view.springBounciness = 15.0f;
+                recognizer.view.spring.frame = originalFrame;
             }
             
         }];
