@@ -17,6 +17,7 @@
 #import "FinalGradeViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "ChecklistViewController.h"
+#import "MainAppDelegate.h"
 
 
 
@@ -41,6 +42,7 @@
     CGFloat navBarHeight;
     CGFloat viewHeight;
     CGSize viewSize;
+    MainAppDelegate *appDelegate;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -60,6 +62,9 @@
     UIColor *barColour = GREEN_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
     
+    
+    appDelegate = (MainAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     navBarHeight = self.navigationController.navigationBar.frame.size.height + 20;
     viewHeight = self.view.frame.size.height - navBarHeight;
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -75,6 +80,7 @@
     self.scrollView.backgroundColor = [UIColor redColor];
     self.scrollView.delegate = self;
     self.myRevealController = [self revealViewController];
+    appDelegate.myRevealController = self.myRevealController;
     [self.view addGestureRecognizer:self.myRevealController.panGestureRecognizer];
     
     [self setUpPageOne];
@@ -128,10 +134,11 @@
 
 - (void)openGradeController {
     
+    
     DesiredGradeViewController *desiredController = [[DesiredGradeViewController alloc] init];
     desiredController.managedObjectContext = self.managedObjectContext;
     UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:desiredController];
-    [self.myRevealController setFrontViewController:navCon];
+    [self.myRevealController pushFrontViewController:navCon animated:YES];
     
 }
 
@@ -326,6 +333,10 @@
     CGFloat width = self.scrollView.bounds.size.width;
     currentPage = (self.scrollView.contentOffset.x + width/2.0f) / width;
     self.pageControl.currentPage = currentPage;
+}
+
+- (void)dealloc {
+    NSLog(@"Opening dealloc");
 }
 
 @end

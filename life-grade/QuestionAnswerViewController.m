@@ -14,6 +14,7 @@
 #import "ChoseView.h"
 #import "KLCPopup.h"
 #import "BeginGoalViewController.h"
+#import "SWRevealViewController.h"
 
 @interface QuestionAnswerViewController () <ChoseViewDelegate>
 
@@ -32,6 +33,9 @@
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
+    UIColor *barColour = GREEN_COLOR;
+    self.navigationController.navigationBar.barTintColor = barColour;
+    
     UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
     UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
     bg.frame = CGRectMake(-20, -10, self.view.frame.size.width + 50, self.view.frame.size.height);
@@ -120,9 +124,11 @@
 
 - (void)startPlan {
     [popup dismissPresentingPopup];
+    [self.revealViewController setFrontViewPosition:FrontViewPositionLeft animated:YES];
     BeginGoalViewController *controller = [[BeginGoalViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
-    [self.navigationController presentViewController:nav animated:YES completion:nil];
+    [self.revealViewController pushFrontViewController:nav animated:YES];
+
 }
 
 

@@ -148,7 +148,9 @@
     [[nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
 
         TrackingProgressViewController *trackController = [[TrackingProgressViewController alloc] init];
-        [self.navigationController pushViewController:trackController animated:YES];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:trackController];
+        [self.revealViewController pushFrontViewController:nav animated:YES];
+//        [self.navigationController pushViewController:trackController animated:YES];
     }];
     [self.specificView addSubview:nextButton];
     

@@ -49,7 +49,6 @@
     self.navigationController.navigationBar.barTintColor = barColour;
     
     appDelegate = (MainAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
@@ -58,7 +57,8 @@
     [barbut setTintColor:[UIColor blackColor]];
     self.navigationItem.leftBarButtonItem = barbut;
     
-    
+
+
     self.revealButton = barbut;
     [self.revealButton setTarget: self.revealViewController];
     [self.revealButton setAction: @selector( revealToggle: )];

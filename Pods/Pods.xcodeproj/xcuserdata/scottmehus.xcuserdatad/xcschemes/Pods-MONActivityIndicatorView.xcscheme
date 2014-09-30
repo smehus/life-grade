@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "33C751752F6C4E92AC8356CD"
+               BlueprintIdentifier = "B8E60087678848049C419A52"
                BuildableName = "libPods-MONActivityIndicatorView.a"
                BlueprintName = "Pods-MONActivityIndicatorView"
                ReferencedContainer = "container:Pods.xcodeproj">

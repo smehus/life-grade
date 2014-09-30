@@ -20,6 +20,7 @@
 @property (nonatomic, strong)  FinalAnalysisViewController *finalGradeController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) PFUser *currentUser;
+@property (nonatomic, strong) SWRevealViewController *myRevealController;
 
 
 

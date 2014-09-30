@@ -300,7 +300,10 @@
     
     
     QuestionAnswerViewController *controller = [[QuestionAnswerViewController alloc] init];
-    [self.navigationController pushViewController:controller animated:YES];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+//    [self.navigationController pushViewController:controller animated:YES];
+//    [self.revealViewController setFrontViewController:controller];
+    [self.revealViewController pushFrontViewController:nav animated:YES];
 }
 
 
