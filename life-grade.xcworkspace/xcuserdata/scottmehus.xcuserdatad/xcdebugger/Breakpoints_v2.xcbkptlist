@@ -212,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "432616408.47625"
+            timestampString = "433739397.296231"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "-drawSecondView"
             landmarkType = "5">
          </BreakpointContent>
@@ -244,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/RealisticViewController.m"
-            timestampString = "433735639.247369"
+            timestampString = "433737754.95603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "-setupThirdView"
             landmarkType = "5">
          </BreakpointContent>
@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/RealisticViewController.m"
-            timestampString = "433735640.263537"
+            timestampString = "433737754.95603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "-setupThirdView"
             landmarkType = "5">
          </BreakpointContent>

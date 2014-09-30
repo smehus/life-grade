@@ -14,6 +14,7 @@
 #import "Attributes.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "FinalGradeViewController.h"
+#import <MGBoxKit/MGBoxKit.h>
 
 
 @interface FinalAnalysisViewController ()
@@ -21,8 +22,7 @@
 @property (nonatomic, strong) Answers *fetchedAnswers;
 @property (nonatomic, strong) NSArray *fetchedAttributes;
 @property (nonatomic, strong) NSString *gradeLetter;
-
-
+@property (nonatomic, strong) UILabel *gradeLabel;
 
 @end
 
@@ -33,6 +33,8 @@
     NSString *fontName;
     UIView *firstView;
     UIView *secondView;
+    UIColor *barColour;
+    MGBox *container;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -60,7 +62,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     del = (MainAppDelegate *)[[UIApplication sharedApplication] delegate];
-    UIColor *barColour = GREEN_COLOR;
+    barColour = GREEN_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
     
     UIBarButtonItem *barbut = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealToggle:)];
@@ -77,7 +79,8 @@
     
 
     [self drawGradeView];
-    [self drawSecondView];
+//    [self drawSecondView];
+    [self drawGrid];
     [self addAnswersButton];
 }
 
@@ -169,21 +172,23 @@
 
 
 - (void)drawGradeView {
+    NSString *avFont = AVENIR_BLACK;
+
     
     firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150)];
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
-    firstView.layer.borderWidth = 1.0f;
+    firstView.layer.borderWidth = 0.0f;
     
-    UILabel *gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 75, 75)];
-    gradeLabel.textAlignment = NSTextAlignmentCenter;
-    gradeLabel.textColor = [UIColor redColor];
-    gradeLabel.text = self.gradeLetter;
-    gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
-    [firstView addSubview:gradeLabel];
+    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 75, 75)];
+    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
+    self.gradeLabel.textColor = [UIColor redColor];
+    self.gradeLabel.text = self.gradeLetter;
+    self.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
+    [firstView addSubview:self.gradeLabel];
     
-    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(gradeLabel.frame) + 20, 10, 200, 50)];
+    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, 200, 50)];
     currentGrade.text = @"Final Life+Grade";
-    currentGrade.font = [UIFont fontWithName:fontName size:24];
+    currentGrade.font = [UIFont fontWithName:avFont size:24];
     [firstView addSubview:currentGrade];
     
     
@@ -212,6 +217,44 @@
     
     
     [self.view addSubview:secondView];
+}
+
+- (void)drawGrid {
+    UIColor *blueC = BLUE_COLOR;
+    NSString *liteFont = LIGHT_FONT;
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 10, self.view.frame.size.width - 40, 44)];
+    titleLabel.font = [UIFont fontWithName:liteFont size:24];
+    titleLabel.text = @"STRENGTHS";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.backgroundColor = barColour;
+    [self.view addSubview:titleLabel];
+    
+    container = [MGBox boxWithSize:CGSizeMake(self.view.size.width, 200)];
+    container.frame = CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + 10, self.view.frame.size.width, 150);
+    container.contentLayoutMode = MGLayoutGridStyle;
+    
+    [self.view addSubview:container];
+    
+    for (int i = 0; i < 3; i++) {
+        MGBox *box = [MGBox boxWithSize:CGSizeMake(96, 150)];
+        box.leftMargin = 5.0f;
+        box.rightMargin = 5.0f;
+        box.topMargin = 5.0f;
+        box.bottomMargin = 5.0f;
+        box.backgroundColor = blueC;
+        box.layer.borderWidth = 0.0f;
+        box.layer.borderColor = barColour.CGColor;
+        box.layer.masksToBounds = NO;
+        box.layer.shadowOffset = CGSizeMake(-5, 5);
+        box.layer.shadowRadius = 5;
+        box.layer.shadowOpacity = 0.5;
+        box.onTap = ^{
+            
+        };
+        [container.boxes addObject:box];
+    }
+    
+    [container layoutWithDuration:0.3 completion:nil];
 }
 
 - (NSString *)getDesiredGradeString:(int)i {
@@ -272,7 +315,7 @@
     UIColor *color = GREEN_COLOR;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setFrame:CGRectMake(0, CGRectGetMaxY(secondView.frame) + 25, self.view.frame.size.width, 50)];
+    [button setFrame:CGRectMake(0, CGRectGetMaxY(container.frame) + 25, self.view.frame.size.width, 50)];
     [button setTitle:@"Detailed Analysis" forState:UIControlStateNormal];
     [button setBackgroundColor:color];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

@@ -13,6 +13,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "THDatePickerViewController.h"
 #import "SignupViewController.h"
+#import "ASValueTrackingSlider.h"
 
 @interface RealisticViewController () <THDatePickerDelegate>
 
@@ -72,7 +73,7 @@
     [barBtnItem setTintColor:grey];
     self.navigationItem.backBarButtonItem = barBtnItem;
     
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, -20, self.view.frame.size.width, 60)];
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
     titleLabel.text = @"Realistic";
     titleLabel.font = [UIFont fontWithName:avFont size:24];
     titleLabel.numberOfLines = 0;
@@ -85,6 +86,14 @@
 }
 
 - (void)setupScreen {
+    
+    UIColor *coldBlue = [UIColor colorWithHue:0.6 saturation:0.7 brightness:1.0 alpha:1.0];
+    UIColor *blue = [UIColor colorWithHue:0.55 saturation:0.75 brightness:1.0 alpha:1.0];
+    UIColor *green = [UIColor colorWithHue:0.3 saturation:0.65 brightness:0.8 alpha:1.0];
+    UIColor *yellow = [UIColor colorWithHue:0.15 saturation:0.9 brightness:0.9 alpha:1.0];
+    UIColor *red = [UIColor colorWithHue:0.0 saturation:0.8 brightness:1.0 alpha:1.0];
+    
+    
     firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + 10, screenWidth, 100)];
     firstLabel.text = @"How Confident Are You?";
     firstLabel.font = [UIFont fontWithName:avFont size:24];
@@ -93,7 +102,13 @@
     firstLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:firstLabel];
     
-    secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstLabel.frame) + 100, screenWidth, 100)];
+    ASValueTrackingSlider *sliderOne = [[ASValueTrackingSlider alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstLabel.frame)+ 10, screenWidth-20, 25)];
+//    sliderOne.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
+    sliderOne.font = [UIFont fontWithName:@"GillSans-Bold" size:22];
+    sliderOne.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
+    [self.view addSubview:sliderOne];
+    
+    secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstLabel.frame) + 50, screenWidth, 100)];
     secondLabel.text = @"How Confident Are You?";
     secondLabel.font = [UIFont fontWithName:avFont size:24];
     secondLabel.numberOfLines = 0;
@@ -101,9 +116,21 @@
     secondLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:secondLabel];
     
+    
+
+    [sliderOne setPopUpViewAnimatedColors:@[coldBlue, blue, green, yellow, red]
+                               withPositions:@[@-20, @0, @5, @25, @60]];
+    
+    
+    ASValueTrackingSlider *sliderTwo = [[ASValueTrackingSlider alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondLabel.frame)+ 10, screenWidth-20, 25)];
+    sliderTwo.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
+    sliderTwo.font = [UIFont fontWithName:@"GillSans-Bold" size:22];
+    sliderTwo.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
+    [self.view addSubview:sliderTwo];
+    
     UIColor *gC = GREEN_COLOR;
     
-    UIButton *nButton = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondLabel.frame) + 10, self.view.frame.size.width - 20, 50)];
+    UIButton *nButton = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(sliderTwo.frame) + 10, self.view.frame.size.width - 20, 50)];
     [nButton setTitle:@"Next" forState:UIControlStateNormal];
     [nButton setBackgroundColor:gC];
     [[nButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
