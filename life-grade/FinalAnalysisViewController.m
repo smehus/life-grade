@@ -76,12 +76,18 @@
     [self fetchAnswers];
     [self fetchAttributes];
 
+    UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
+    UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
+    bg.frame = CGRectMake(-20, -10, self.view.frame.size.width + 50, self.view.frame.size.height);
+    [self.view addSubview:bg];
+    [self.view sendSubviewToBack:bg];
+    
     
 
     [self drawGradeView];
 //    [self drawSecondView];
     [self drawGrid];
-    [self addAnswersButton];
+//    [self addAnswersButton];
 }
 
 - (void)fetchAnswers {
