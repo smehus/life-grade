@@ -90,6 +90,7 @@
 		A5F66B6419D3A48C00B16E8F /* TrackingProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F66B6319D3A48C00B16E8F /* TrackingProgressViewController.m */; };
 		A5F66B6719D3B7D100B16E8F /* AttainableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F66B6619D3B7D100B16E8F /* AttainableViewController.m */; };
 		A5F66B6A19D506BE00B16E8F /* RealisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F66B6919D506BE00B16E8F /* RealisticViewController.m */; };
+		A5F66B6D19DB874300B16E8F /* AnalysisView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F66B6C19DB874300B16E8F /* AnalysisView.m */; };
 		E336CAD8806747469A293CAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A960DAF569C04584853BD49B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -233,6 +234,8 @@
 		A5F66B6619D3B7D100B16E8F /* AttainableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttainableViewController.m; sourceTree = "<group>"; };
 		A5F66B6819D506BE00B16E8F /* RealisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealisticViewController.h; sourceTree = "<group>"; };
 		A5F66B6919D506BE00B16E8F /* RealisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealisticViewController.m; sourceTree = "<group>"; };
+		A5F66B6B19DB874300B16E8F /* AnalysisView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisView.h; sourceTree = "<group>"; };
+		A5F66B6C19DB874300B16E8F /* AnalysisView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalysisView.m; sourceTree = "<group>"; };
 		A960DAF569C04584853BD49B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -490,6 +493,8 @@
 				A5C08C761939719F00887F83 /* FinalGradeViewController.m */,
 				A53DA42419B9512300EAC693 /* FinalAnalysisViewController.h */,
 				A53DA42519B9512300EAC693 /* FinalAnalysisViewController.m */,
+				A5F66B6B19DB874300B16E8F /* AnalysisView.h */,
+				A5F66B6C19DB874300B16E8F /* AnalysisView.m */,
 			);
 			name = FinalGrade;
 			sourceTree = "<group>";
@@ -784,6 +789,7 @@
 				A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */,
 				490011D719CB331F00910098 /* MyActionViewController.m in Sources */,
 				A52A2BA91977634A00916901 /* DesiredCell.m in Sources */,
+				A5F66B6D19DB874300B16E8F /* AnalysisView.m in Sources */,
 				65BFF070190F4CF90087511B /* HACollectionViewSmallLayout.m in Sources */,
 				A53DA42619B9512300EAC693 /* FinalAnalysisViewController.m in Sources */,
 				A5435DCA1957B99400EC5881 /* AttributesCell.m in Sources */,

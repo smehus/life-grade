@@ -15,14 +15,19 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "FinalGradeViewController.h"
 #import <MGBoxKit/MGBoxKit.h>
+#import "AnalysisView.h"
+#import "MDCScrollBarViewController.h"
+#import "MDCScrollBarLabel.h"
 
-
-@interface FinalAnalysisViewController ()
+@interface FinalAnalysisViewController () <UIScrollViewDelegate>
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, strong) Answers *fetchedAnswers;
 @property (nonatomic, strong) NSArray *fetchedAttributes;
 @property (nonatomic, strong) NSString *gradeLetter;
 @property (nonatomic, strong) UILabel *gradeLabel;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) NSMutableArray *questions;
+@property (nonatomic, strong) NSMutableArray *lowestFactors;
 
 @end
 
@@ -35,6 +40,8 @@
     UIView *secondView;
     UIColor *barColour;
     MGBox *container;
+    CGFloat screenWidth;
+    CGFloat screenHeight;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,10 +62,14 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
-    
+    screenHeight = self.view.frame.size.height;
+    screenWidth = self.view.frame.size.width;
     fontName = LIGHT_FONT;
     
     self.title = @"Analysis";
+    
+    self.questions = [[NSMutableArray alloc] initWithCapacity:10];
+    self.lowestFactors = [[NSMutableArray alloc] initWithCapacity:3];
     
     self.view.backgroundColor = [UIColor whiteColor];
     del = (MainAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -73,6 +84,7 @@
     [self.revealButton setTarget: self.revealViewController];
     [self.revealButton setAction: @selector( revealToggle: )];
     
+    [self fetchGrades];
     [self fetchAnswers];
     [self fetchAttributes];
 
@@ -83,12 +95,39 @@
     [self.view sendSubviewToBack:bg];
     
     
-
-    [self drawGradeView];
-//    [self drawSecondView];
-    [self drawGrid];
-//    [self addAnswersButton];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+    self.scrollView.contentSize = CGSizeMake(screenWidth, screenHeight *8);
+    self.scrollView.scrollEnabled = YES;
+    self.scrollView.layer.masksToBounds = NO;
+    self.scrollView.layer.shouldRasterize = NO;
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.delegate = self;
+    [self.view addSubview:self.scrollView];
+    
+    
+    [self drawFirstView];
+    
+    
 }
+
+#pragma mark - Questions & Good & Bad Answeres
+
+- (void)fetchGrades {
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSArray *ary = [dict objectForKey:@"questions"];
+    [ary enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+        
+        Grade *grade = [[Grade alloc] init];
+        grade.question = obj[@"question"];
+        // questions and good & bad answers
+        [self.questions addObject:grade];
+        
+    }];
+}
+
+#pragma mark - Get the Saved ' Answer '
 
 - (void)fetchAnswers {
     
@@ -108,7 +147,7 @@
 
         return;
     }
-    
+    // One instance of Answer
     self.fetchedAnswers = [foundObjects lastObject];
     [self saveToParse];
     NSNumber *num = self.fetchedAnswers.finalGrade;
@@ -119,6 +158,8 @@
     [self calculateGrade];
     
 }
+
+#pragma mark - fetch all saved Attributes
 
 - (void)fetchAttributes {
     
@@ -177,91 +218,7 @@
 }
 
 
-- (void)drawGradeView {
-    NSString *avFont = AVENIR_BLACK;
 
-    
-    firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150)];
-    firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
-    firstView.layer.borderWidth = 0.0f;
-    
-    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 75, 75)];
-    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
-    self.gradeLabel.textColor = [UIColor redColor];
-    self.gradeLabel.text = self.gradeLetter;
-    self.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
-    [firstView addSubview:self.gradeLabel];
-    
-    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, 200, 50)];
-    currentGrade.text = @"Final Life+Grade";
-    currentGrade.font = [UIFont fontWithName:avFont size:24];
-    [firstView addSubview:currentGrade];
-    
-    
-    [self.view addSubview:firstView];
-}
-
-- (void)drawSecondView {
-    
-    secondView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstView.frame) + 5, self.view.frame.size.width, 150)];
-    secondView.layer.borderColor = [UIColor darkGrayColor].CGColor;
-    secondView.layer.borderWidth = 1.0f;
-    
-    UILabel *gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 75)];
-    gradeLabel.textAlignment = NSTextAlignmentCenter;
-    gradeLabel.textColor = [UIColor redColor];
-    
-    int dg = [self.fetchedAnswers.desiredGrade intValue];
-    gradeLabel.text = [self getDesiredGradeString:dg];
-    gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:75];
-    [secondView addSubview:gradeLabel];
-    
-    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(gradeLabel.frame) + 20, 10, 200, 50)];
-    currentGrade.text = @"Desired Life+Grade";
-    currentGrade.font = [UIFont fontWithName:fontName size:24];
-    [secondView addSubview:currentGrade];
-    
-    
-    [self.view addSubview:secondView];
-}
-
-- (void)drawGrid {
-    UIColor *blueC = BLUE_COLOR;
-    NSString *liteFont = LIGHT_FONT;
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 10, self.view.frame.size.width - 40, 44)];
-    titleLabel.font = [UIFont fontWithName:liteFont size:24];
-    titleLabel.text = @"STRENGTHS";
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.backgroundColor = barColour;
-    [self.view addSubview:titleLabel];
-    
-    container = [MGBox boxWithSize:CGSizeMake(self.view.size.width, 200)];
-    container.frame = CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + 10, self.view.frame.size.width, 150);
-    container.contentLayoutMode = MGLayoutGridStyle;
-    
-    [self.view addSubview:container];
-    
-    for (int i = 0; i < 3; i++) {
-        MGBox *box = [MGBox boxWithSize:CGSizeMake(96, 150)];
-        box.leftMargin = 5.0f;
-        box.rightMargin = 5.0f;
-        box.topMargin = 5.0f;
-        box.bottomMargin = 5.0f;
-        box.backgroundColor = blueC;
-        box.layer.borderWidth = 0.0f;
-        box.layer.borderColor = barColour.CGColor;
-        box.layer.masksToBounds = NO;
-        box.layer.shadowOffset = CGSizeMake(-5, 5);
-        box.layer.shadowRadius = 5;
-        box.layer.shadowOpacity = 0.5;
-        box.onTap = ^{
-            
-        };
-        [container.boxes addObject:box];
-    }
-    
-    [container layoutWithDuration:0.3 completion:nil];
-}
 
 - (NSString *)getDesiredGradeString:(int)i {
     switch (i) {
@@ -314,6 +271,28 @@
 {
     [super didReceiveMemoryWarning];
 
+}
+
+#pragma mark - Add Views
+
+- (void)drawFirstView {
+    
+    for (int i = 0; i <= 8; i++) {
+        
+        AnalysisView *theView = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight) andIndex:i];
+        [self.scrollView addSubview:theView];
+    }
+
+    
+}
+
+
+#pragma mark - ScrollView Delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    
+    
 }
 
 - (void)addAnswersButton {

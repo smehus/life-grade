@@ -27,6 +27,7 @@ PODS:
   - IQKeyboardManager (3.1.1)
   - KNSemiModalViewController (0.3)
   - KVOController (1.0.1)
+  - MDCScrollBarLabel (0.1.3)
   - MGBoxKit (7.0.1):
     - MGEvents
     - MGMushParser
@@ -76,6 +77,7 @@ DEPENDENCIES:
   - Facebook-iOS-SDK (~> 3.13)
   - IQKeyboardManager
   - KVOController
+  - MDCScrollBarLabel (~> 0.1.3)
   - MGBoxKit
   - MONActivityIndicatorView (~> 0.0.1)
   - NYSegmentedControl
@@ -95,6 +97,7 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 79ab3bc740f6bd30eadf9b0d217020941c0926e4
   KNSemiModalViewController: 6fb1e2f6a4d84238b524cb705e91118b0fa6bbc9
   KVOController: e6ad4a058ab0ceed546802361adb89d322a22cf2
+  MDCScrollBarLabel: af15188e64cf76b852e60dc58c0823140e01e519
   MGBoxKit: 86493ff76fb2164a32426418a1a900c84edd0ffa
   MGEvents: e6254d7873bcb90b266801d171f9948194010927
   MGMushParser: 2c28a4e5c5938da9dcc1fbb090347e5ff575fc5b
