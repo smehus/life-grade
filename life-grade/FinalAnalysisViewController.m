@@ -135,7 +135,7 @@
     [self.view addSubview:self.scrollView];
     
     
-    [self drawFirstView];
+    [self constructAllViews];
 }
 
 
@@ -376,7 +376,7 @@
 
 #pragma mark - Add Views
 
-- (void)drawFirstView {
+- (void)constructAllViews {
     
     for (int i = 0; i <= 8; i++) {
         
