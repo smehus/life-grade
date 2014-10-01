@@ -14,6 +14,6 @@
 @property (nonatomic, strong) UILabel *gradeLabel;
 
 
-- (id)initWithFrame:(CGRect)frame andIndex:(int)i;
+- (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data;
 
 @end

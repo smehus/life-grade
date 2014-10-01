@@ -28,6 +28,7 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray *questions;
 @property (nonatomic, strong) NSMutableArray *lowestFactors;
+@property (nonatomic, strong) NSMutableArray *highestFactors;
 @property (nonatomic, strong) NSMutableArray *grades;
 
 @end
@@ -107,7 +108,6 @@
     self.questions = [[NSMutableArray alloc] initWithCapacity:10];
     self.lowestFactors = [[NSMutableArray alloc] initWithCapacity:3];
     
-    
     // Questions - Good & Bad Answeres
     [self fetchGrades];
     // Answer Object
@@ -150,12 +150,10 @@
     }];
     
     
-    for (int i = 0; i <= 2; i ++) {
-        Grade *g = [sortedArray objectAtIndex:i];
-        [self.lowestFactors addObject:g];
-    }
+    self.lowestFactors = [NSMutableArray arrayWithArray:sortedArray];
+    
+    
 }
-
 
 
 - (void)setAnswersArray {
@@ -382,13 +380,75 @@
     
     for (int i = 0; i <= 8; i++) {
         
-        // analysis is only drawing for index 0
-        AnalysisView *theView = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight) andIndex:i];
-        [self.scrollView addSubview:theView];
+        switch (i) {
+            case 0:
+                [self strengthsView:i];
+                break;
+            case 1:
+                [self challengesView:i];
+                break;
+            case 2:
+                [self trackingView:i];
+                break;
+            case 3:
+                [self attainableView:i];
+                break;
+            case 4:
+                [self realisticView:i];
+                break;
+            case 5:
+                [self completionDateView:i];
+                break;
+            case 6:
+                [self supportTeamView:i];
+                break;
+            case 7:
+                [self finalTipsView:i];
+                break;
+            default:
+                break;
+        }
     }
-
-    
 }
+
+- (void)strengthsView:(int)i {
+    
+    NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
+    
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
+                       andIndex:i andData:a];
+    [self.scrollView addSubview:v];
+}
+- (void)challengesView:(int)i {
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    [self.scrollView addSubview:v];
+}
+- (void)trackingView:(int)i  {
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    [self.scrollView addSubview:v];
+}
+- (void)attainableView:(int)i {
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    [self.scrollView addSubview:v];
+}
+- (void)realisticView:(int)i {
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    [self.scrollView addSubview:v];
+}
+- (void)completionDateView:(int)i {
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    [self.scrollView addSubview:v];
+}
+- (void)supportTeamView:(int)i  {
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    [self.scrollView addSubview:v];
+}
+- (void)finalTipsView:(int)i {
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    [self.scrollView addSubview:v];
+}
+
+
 
 
 #pragma mark - ScrollView Delegate

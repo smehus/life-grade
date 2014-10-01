@@ -23,40 +23,12 @@
     MGBox *container;
 }
 
-- (id)initWithFrame:(CGRect)frame andIndex:(int)i {
+- (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data {
     if (self = [super initWithFrame:frame]) {
         
         barColour = GREEN_COLOR;
-        
-        switch (i) {
-            case 0:
-                [self drawFirstTemplate];
-                break;
-            case 1:
-                //do things
-                break;
-            case 2:
-                //do things
-                break;
-            case 3:
-                //do things
-                break;
-            case 4:
-                //do things
-                break;
-            case 5:
-                //do things
-                break;
-            case 6:
-                //do things
-                break;
-            case 7:
-                //do things
-                break;
-                
-            default:
-                break;
-        }
+        [self drawFirstTemplate];
+
     }
     return self;
 }
