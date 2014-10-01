@@ -28,6 +28,7 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray *questions;
 @property (nonatomic, strong) NSMutableArray *lowestFactors;
+@property (nonatomic, strong) NSMutableArray *grades;
 
 @end
 
@@ -110,7 +111,23 @@
     
 }
 
+- (void)setAnswersArray {
+    
+    self.grades = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    [self.questions enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        
+        int index = (int)idx;
+        Grade *g = [[Grade alloc] init];
+        g.gradeNum = [self getGradeForIndex:index];
+        g.question = [[self.questions objectAtIndex:idx] question];
+        [self.grades addObject:g];
+        
+    }];
+}
+
 #pragma mark - Questions & Good & Bad Answeres
+
 
 - (void)fetchGrades {
     
@@ -184,6 +201,45 @@
     [self.fetchedAttributes enumerateObjectsUsingBlock:^(Attributes *obj, NSUInteger idx, BOOL *stop) {
         
     }];
+}
+
+- (NSNumber *)getGradeForIndex:(int)idx {
+    
+    switch (idx) {
+        case 0:
+            return self.fetchedAnswers.questionOne;
+            break;
+        case 1:
+            return self.fetchedAnswers.questionTwo;
+            break;
+        case 2:
+            return self.fetchedAnswers.questionThree;
+            break;
+        case 3:
+            return self.fetchedAnswers.questionFour;
+            break;
+        case 4:
+            return self.fetchedAnswers.questionFive;
+            break;
+        case 5:
+            return self.fetchedAnswers.questionSix;
+            break;
+        case 6:
+            return self.fetchedAnswers.questionSeven;
+            break;
+        case 7:
+            return self.fetchedAnswers.questionEight;
+            break;
+        case 8:
+            return self.fetchedAnswers.questionNine;
+            break;
+        case 9:
+            return self.fetchedAnswers.questionTen;
+            break;
+        default:
+            return [NSNumber numberWithInt:10];
+            break;
+    }
 }
 
 - (void)calculateGrade {
