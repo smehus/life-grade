@@ -83,6 +83,7 @@
         box.layer.shadowRadius = 5;
         box.layer.shadowOpacity = 0.5;
         box.onTap = ^{
+            NSLog(@"Box Tapped");
             
         };
         [container.boxes addObject:box];

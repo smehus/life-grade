@@ -420,31 +420,52 @@
     [self.scrollView addSubview:v];
 }
 - (void)challengesView:(int)i {
-    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
+    
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
+                                                 andIndex:i andData:a];
     [self.scrollView addSubview:v];
 }
 - (void)trackingView:(int)i  {
-    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
+    
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
+                                                 andIndex:i andData:a];
     [self.scrollView addSubview:v];
 }
 - (void)attainableView:(int)i {
-    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
+    
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
+                                                 andIndex:i andData:a];
     [self.scrollView addSubview:v];
 }
 - (void)realisticView:(int)i {
-    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
+    
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
+                                                 andIndex:i andData:a];
     [self.scrollView addSubview:v];
 }
 - (void)completionDateView:(int)i {
-    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
+    
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
+                                                 andIndex:i andData:a];
     [self.scrollView addSubview:v];
 }
 - (void)supportTeamView:(int)i  {
-    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
+    
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
+                                                 andIndex:i andData:a];
     [self.scrollView addSubview:v];
 }
 - (void)finalTipsView:(int)i {
-    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
+    
+    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
+                                                 andIndex:i andData:a];
     [self.scrollView addSubview:v];
 }
 
