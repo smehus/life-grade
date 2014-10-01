@@ -60,6 +60,12 @@
 {
     [super viewDidLoad];
     
+    
+    
+    
+    
+    //**** SCREEN GLOBALS ****\\
+    
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
@@ -85,16 +91,39 @@
     [self.revealButton setTarget: self.revealViewController];
     [self.revealButton setAction: @selector( revealToggle: )];
     
-    [self fetchGrades];
-    [self fetchAnswers];
-    [self fetchAttributes];
-
+    
     UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
     UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
     bg.frame = CGRectMake(-20, -10, self.view.frame.size.width + 50, self.view.frame.size.height);
     [self.view addSubview:bg];
     [self.view sendSubviewToBack:bg];
     
+    
+    
+    
+    
+    //**** GET & SET INFORMATION ****\\
+    
+    self.questions = [[NSMutableArray alloc] initWithCapacity:10];
+    self.lowestFactors = [[NSMutableArray alloc] initWithCapacity:3];
+    
+    
+    // Questions - Good & Bad Answeres
+    [self fetchGrades];
+    // Answer Object
+    [self fetchAnswers];
+    // Get saved attributes
+    [self fetchAttributes];
+    // Get array of grade to each question
+    [self setAnswersArray];
+    // get three lowest grades
+    [self getLowestGrade];
+    
+    
+    
+    
+    
+    //**** SETUP SCROLLVIEW ****\\
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     self.scrollView.contentSize = CGSizeMake(screenWidth, screenHeight *8);
@@ -107,9 +136,27 @@
     
     
     [self drawFirstView];
-    
-    
 }
+
+
+
+- (void)getLowestGrade {
+    
+    NSArray *sortedArray;
+    sortedArray = [self.grades sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSNumber *first = [(Grade*)a gradeNum];
+        NSNumber *second = [(Grade*)b gradeNum];
+        return [first compare:second];
+    }];
+    
+    
+    for (int i = 0; i <= 2; i ++) {
+        Grade *g = [sortedArray objectAtIndex:i];
+        [self.lowestFactors addObject:g];
+    }
+}
+
+
 
 - (void)setAnswersArray {
     
@@ -335,6 +382,7 @@
     
     for (int i = 0; i <= 8; i++) {
         
+        // analysis is only drawing for index 0
         AnalysisView *theView = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight) andIndex:i];
         [self.scrollView addSubview:theView];
     }
