@@ -11,6 +11,8 @@
 #import <MGBoxKit/MGBoxKit.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "Answers.h"
+#import "AnalysisBlock.h"
+#import "Grade.h"
 
 @implementation AnalysisView {
     
@@ -21,14 +23,16 @@
     UIView *secondView;
     UIColor *barColour;
     MGBox *container;
+    NSArray *dataArray;
 }
 
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data {
     if (self = [super initWithFrame:frame]) {
-        
+        dataArray = data;
         barColour = GREEN_COLOR;
         [self drawFirstTemplate];
 
+        
     }
     return self;
 }
@@ -44,7 +48,6 @@
     self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 75, 75)];
     self.gradeLabel.textAlignment = NSTextAlignmentCenter;
     self.gradeLabel.textColor = [UIColor redColor];
-    self.gradeLabel.text = @"A";
     self.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
     [firstView addSubview:self.gradeLabel];
     
@@ -56,21 +59,25 @@
     
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 10, self.frame.size.width - 40, 44)];
-    titleLabel.font = [UIFont fontWithName:liteFont size:24];
-    titleLabel.text = @"STRENGTHS";
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.backgroundColor = barColour;
-    [self addSubview:titleLabel];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 10, self.frame.size.width - 40, 44)];
+    self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
+    self.titleLabel.text = @"STRENGTHS";
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.backgroundColor = barColour;
+    [self addSubview:self.titleLabel];
     
     container = [MGBox boxWithSize:CGSizeMake(self.size.width, 200)];
-    container.frame = CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + 10, self.frame.size.width, 150);
+    container.frame = CGRectMake(0, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width, 150);
     container.contentLayoutMode = MGLayoutGridStyle;
     
     [self addSubview:container];
     
     for (int i = 0; i < 3; i++) {
-        MGBox *box = [MGBox boxWithSize:CGSizeMake(96, 150)];
+        
+        Grade *g = dataArray[i];
+        NSString *question = g.question;
+        
+        AnalysisBlock *box = [AnalysisBlock boxWithSize:CGSizeMake(96, 150)];
         box.leftMargin = 5.0f;
         box.rightMargin = 5.0f;
         box.topMargin = 5.0f;
@@ -82,6 +89,7 @@
         box.layer.shadowOffset = CGSizeMake(-5, 5);
         box.layer.shadowRadius = 5;
         box.layer.shadowOpacity = 0.5;
+        box.titleLabel.text = question;
         box.onTap = ^{
             NSLog(@"Box Tapped");
             

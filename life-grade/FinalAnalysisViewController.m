@@ -417,13 +417,16 @@
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                        andIndex:i andData:a];
+    v.titleLabel.text = @"Strengths";
+    v.gradeLabel.text = self.gradeLetter;
     [self.scrollView addSubview:v];
 }
 - (void)challengesView:(int)i {
-    NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
+    NSArray *a = self.lowestFactors;
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a];
+    v.titleLabel.text = @"Challenges";
     [self.scrollView addSubview:v];
 }
 - (void)trackingView:(int)i  {
