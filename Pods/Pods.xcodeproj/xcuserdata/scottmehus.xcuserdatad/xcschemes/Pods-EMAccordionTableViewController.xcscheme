@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7441616AB4A5490AA1F7D3FB"
+               BlueprintIdentifier = "9DE2CD1ED56B408A8FBBC835"
                BuildableName = "libPods-EMAccordionTableViewController.a"
                BlueprintName = "Pods-EMAccordionTableViewController"
                ReferencedContainer = "container:Pods.xcodeproj">
