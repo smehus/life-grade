@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSString *gradeLetter;
 @property (nonatomic, strong) UILabel *gradeLabel;
-
+@property (nonatomic, strong) UILabel *titleLabel;
 
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data;
 
