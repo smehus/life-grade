@@ -24,6 +24,7 @@
     UIColor *barColour;
     MGBox *container;
     NSArray *dataArray;
+    NSString *goalString;
 }
 
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data {
@@ -42,6 +43,7 @@
         
         dataArray = data;
         barColour = GREEN_COLOR;
+        goalString = goal;
         [self drawSecondTemplate];
         
     }
@@ -132,14 +134,42 @@
     
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 10, self.frame.size.width - 40, 44)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 10, self.frame.size.width/3, 66)];
     self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
     self.titleLabel.text = @"STRENGTHS";
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.backgroundColor = barColour;
     [self addSubview:self.titleLabel];
     
+    UILabel *goalLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.titleLabel.frame) + 5,
+                                                                   self.titleLabel.frame.origin.y,
+                                                                   self.frame.size.width - CGRectGetMaxX(self.titleLabel.frame), 66)];
+    goalLabel.text = goalString;
+    NSString *thefont = AVENIR_BLACK;
+    goalLabel.textAlignment = NSTextAlignmentCenter;
+    goalLabel.numberOfLines = 0;
+    goalLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    goalLabel.font = [UIFont fontWithName:thefont size:24];
+    [self addSubview:goalLabel];
     
+    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 150)];
+    self.quoteLabel.font = [UIFont fontWithName:liteFont size:16];
+    self.quoteLabel.text = @"STRENGTHS";
+    self.quoteLabel.textAlignment = NSTextAlignmentCenter;
+    self.quoteLabel.backgroundColor = barColour;
+    self.quoteLabel.numberOfLines = 0;
+    self.quoteLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.quoteLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.quoteLabel];
+    
+    UILabel *explanationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.quoteLabel.frame) + 5, self.frame.size.width - 20, 100)];
+    explanationLabel.text = @"Having specific goals will help you establish direction & identify exactly what you are trying to accomplish";
+    explanationLabel.textAlignment = NSTextAlignmentCenter;
+    explanationLabel.backgroundColor = [UIColor clearColor];
+    explanationLabel.numberOfLines = 0;
+    explanationLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    explanationLabel.font = [UIFont fontWithName:liteFont size:16];
+    [self addSubview:explanationLabel];
     
 }
 

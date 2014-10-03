@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UILabel *gradeLabel;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *currentGrade;
+@property (nonatomic, strong) UILabel *quoteLabel;
 
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data;
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data andGoal:(id)goal;
