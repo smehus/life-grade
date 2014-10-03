@@ -78,11 +78,10 @@
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data isRealstic:(BOOL)isRealistic {
     if (self = [super initWithFrame:frame]) {
         
-        
         dataArray = data;
         barColour = GREEN_COLOR;
         imRealistic = isRealistic;
-        [self drawThirdTemplate];
+        [self drawFifthTemplate];
         
     }
     return self;
@@ -321,6 +320,27 @@
     
     
     [self addSubview:self.bottomButton];
+}
+
+- (void)drawFifthTemplate {
+    
+    NSString *avFont = AVENIR_BLACK;
+    
+    firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 150)];
+    firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    firstView.layer.borderWidth = 0.0f;
+    
+    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 75, 75)];
+    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
+    self.gradeLabel.textColor = [UIColor redColor];
+    self.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
+    [firstView addSubview:self.gradeLabel];
+    
+    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, 200, 50)];
+    self.currentGrade.font = [UIFont fontWithName:avFont size:24];
+    [firstView addSubview:self.currentGrade];
+    [self addSubview:firstView];
+    
     
     
 }
