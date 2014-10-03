@@ -18,7 +18,7 @@
 
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data;
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data andGoal:(id)goal;
-
+- (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data andQuote:(id)quote;
 
 
 @end
