@@ -468,7 +468,10 @@
     NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
-                                                 andIndex:i andData:a];
+                                                 andIndex:i andData:a attainableQuote:@"Dicks"];
+    v.titleLabel.text = @"Attainable";
+    v.quoteLabel.text =  @"Hey you kids are probably saying to yourselves: I'm gonna go out there and grab the world by the tail! and wrap it around and pull it down and put it in my pocket. Well I'm here to tell you that you're probably going to find out, as you go out there, that you're not going to amount to jack squat!";
+    [v.bottomButton setTitle:@"Click For Your Positive Attributes" forState:UIControlStateNormal];
     [self.scrollView addSubview:v];
 }
 - (void)realisticView:(int)i {
