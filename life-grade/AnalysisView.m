@@ -25,6 +25,7 @@
     MGBox *container;
     NSArray *dataArray;
     NSString *goalString;
+    BOOL imRealistic;
 }
 
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data {
@@ -68,6 +69,19 @@
         dataArray = data;
         barColour = GREEN_COLOR;
         goalString = quote;
+        [self drawThirdTemplate];
+        
+    }
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data isRealstic:(BOOL)isRealistic {
+    if (self = [super initWithFrame:frame]) {
+        
+        
+        dataArray = data;
+        barColour = GREEN_COLOR;
+        imRealistic = isRealistic;
         [self drawThirdTemplate];
         
     }
