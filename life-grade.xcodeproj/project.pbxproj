@@ -498,14 +498,14 @@
 		A52A2BAB1978A62B00916901 /* FinalGrade */ = {
 			isa = PBXGroup;
 			children = (
-				A57829BB19DE27D700A4510C /* AnalysisBlock.h */,
-				A57829BC19DE27D700A4510C /* AnalysisBlock.m */,
 				A5C08C751939719F00887F83 /* FinalGradeViewController.h */,
 				A5C08C761939719F00887F83 /* FinalGradeViewController.m */,
 				A53DA42419B9512300EAC693 /* FinalAnalysisViewController.h */,
 				A53DA42519B9512300EAC693 /* FinalAnalysisViewController.m */,
 				A5F66B6B19DB874300B16E8F /* AnalysisView.h */,
 				A5F66B6C19DB874300B16E8F /* AnalysisView.m */,
+				A57829BB19DE27D700A4510C /* AnalysisBlock.h */,
+				A57829BC19DE27D700A4510C /* AnalysisBlock.m */,
 			);
 			name = FinalGrade;
 			sourceTree = "<group>";

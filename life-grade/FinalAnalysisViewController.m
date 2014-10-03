@@ -417,6 +417,7 @@
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                        andIndex:i andData:a];
+    v.currentGrade.text = @"Current Grade";
     v.titleLabel.text = @"Strengths";
     v.gradeLabel.text = self.gradeLetter;
     [self.scrollView addSubview:v];
@@ -427,13 +428,18 @@
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a];
     v.titleLabel.text = @"Challenges";
+    v.currentGrade.text = @"Current Grade";
+    v.gradeLabel.text = self.gradeLetter;
     [self.scrollView addSubview:v];
 }
 - (void)trackingView:(int)i  {
     NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
-                                                 andIndex:i andData:a];
+                                                 andIndex:i andData:a andGoal:@"Ballzhus Rules"];
+    v.titleLabel.text = @"Goal";
+    v.currentGrade.text = @"Desired Grade";
+    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     [self.scrollView addSubview:v];
 }
 - (void)attainableView:(int)i {
