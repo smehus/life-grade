@@ -81,6 +81,7 @@
         dataArray = data;
         barColour = GREEN_COLOR;
         imRealistic = isRealistic;
+        
         [self drawFifthTemplate];
         
     }
@@ -211,7 +212,7 @@
 
 - (void)drawThirdTemplate {
     
-    
+    // GOALS
     NSString *avFont = AVENIR_BLACK;
 
     firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 150)];
@@ -280,7 +281,7 @@
 }
 
 - (void)drawFourthTemplate {
-    
+    // TRACKING
     
     NSString *avFont = AVENIR_BLACK;
     
@@ -324,6 +325,8 @@
 }
 
 - (void)drawAttainable {
+    
+    //ATTAINABLEL PAGE
     
     NSString *avFont = AVENIR_BLACK;
     
@@ -375,7 +378,10 @@
 
 - (void)drawFifthTemplate {
     
+    // REALISTIC PAGE
+    
     NSString *avFont = AVENIR_BLACK;
+    UIColor *blues = BLUE_COLOR;
     
     firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 150)];
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
@@ -392,6 +398,22 @@
     [firstView addSubview:self.currentGrade];
     [self addSubview:firstView];
     
+    UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
+    UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
+    
+    UIImageView *boxImage = [[UIImageView alloc] initWithImage:checkBox highlightedImage:nil];
+    boxImage.frame = CGRectMake(50, CGRectGetMaxY(self.currentGrade.frame) + 20, 50, 50);
+    [self addSubview:boxImage];
+    
+    UIImageView *secondMark = [[UIImageView alloc] initWithImage:checkMark];
+    secondMark.frame = CGRectMake(50, boxImage.center.y - 60, 75, 75);
+    [self addSubview:secondMark];
+    
+    UIButton *realisticButton = [[UIButton alloc] initWithFrame:CGRectMake(self.size.width/3, CGRectGetMaxY(boxImage.frame) + 30, 100, 100)];
+    [realisticButton setTitle:@"Read if your goals are realistic" forState:UIControlStateNormal];
+    [realisticButton setBackgroundColor:blues];
+    
+    [self addSubview:realisticButton];
     
     
 }

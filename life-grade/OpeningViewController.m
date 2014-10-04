@@ -26,8 +26,8 @@
 @property (strong, nonatomic) UILabel *LifeLabel;
 @property (strong, nonatomic) UILabel *GradeLabel;
 @property (nonatomic, strong) UILabel *stepOne;
-@property (nonatomic, strong) UIButton *startButton;
-
+@property (nonatomic, strong) BFPaperButton *startButton;
+@property (nonatomic, strong) UIImageView *logoView;
 @property (nonatomic, strong) UIPageControl *pageControl;
 
 
@@ -98,6 +98,9 @@
     [self loadshit];
     [self.view addSubview:self.pageControl];
     [self.view addSubview:self.scrollView];
+    [self.view sendSubviewToBack:self.scrollView];
+    [self.view sendSubviewToBack:bg];
+
 }
 
 - (void)loadFonts {
@@ -161,9 +164,9 @@
     self.LifeLabel.text = @"Life";
     
     UIImage *logo = [UIImage imageNamed:@"openingImage"];
-    UIImageView *logoView = [[UIImageView alloc] initWithImage:logo];
-    logoView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    logoView.contentMode = UIViewContentModeScaleAspectFill;
+    self.logoView = [[UIImageView alloc] initWithImage:logo];
+    self.logoView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.logoView.contentMode = UIViewContentModeScaleAspectFill;
     
     self.GradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.LifeLabel.frame.size.width + 50,
                                                                 self.LifeLabel.frame.size.height + 60, 150, 50)];
@@ -174,15 +177,17 @@
     self.GradeLabel.frame = CGRectMake(self.LifeLabel.frame.origin.x + 25,
                                        self.LifeLabel.frame.size.height + 60, 320, gradeSize);
     
+    NSString *avFont = AVENIR_BLACK;
     UIButton *signInButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [signInButton setFrame:CGRectMake(0, CGRectGetMaxY(self.GradeLabel.frame) + 110, self.view.frame.size.width, 30)];
+    [signInButton setFrame:CGRectMake(0, CGRectGetMaxY(self.view.frame) - 110, self.view.frame.size.width, 30)];
     [signInButton setTitle:@"Already a member?" forState:UIControlStateNormal];
-    [signInButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:25]];
+    [signInButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [signInButton.titleLabel setFont:[UIFont fontWithName:avFont size:18]];
     [signInButton addTarget:self action:@selector(signIn) forControlEvents:UIControlEventTouchUpInside];
     
-    
+    [self.scrollView addSubview:self.logoView];
     [self.scrollView addSubview:signInButton];
-    [self.scrollView addSubview:logoView];
+
 }
 
 - (void)signIn {
@@ -233,6 +238,7 @@
 
 - (void)setUpPageTwo {
     
+    NSString *avFont = AVENIR_BLACK;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(viewSize.width, 0, viewSize.width, viewHeight)];
     view.backgroundColor = [UIColor clearColor];
 
@@ -245,38 +251,43 @@
     self.stepOne.text = @"3 Life Grade Steps";
     self.stepOne.textColor = GREY_COLOR;
     self.stepOne.textAlignment = NSTextAlignmentCenter;
-    self.stepOne.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:35];
+    self.stepOne.font = [UIFont fontWithName:avFont size:35];
     [view addSubview:self.stepOne];
     
     UIImageView *firstCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.stepOne.frame) + 20, 75, 75)];
     firstCheck.image = checkBox;
+    firstCheck.contentMode = UIViewContentModeScaleAspectFit;
     [view addSubview:firstCheck];
     
     UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, firstCheck.frame.origin.y + 10, 150, 50)];
     current.text = @"Current Grade";
-    current.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    current.font = FONT_AMATIC_BOLD(36);
     [view addSubview:current];
     
     UIImageView *secondCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(current.frame) + 40, 75, 75)];
     secondCheck.image = checkBox;
+    secondCheck.contentMode = UIViewContentModeScaleAspectFit;
     [view addSubview:secondCheck];
     
     UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(100, CGRectGetMaxY(current.frame) + 50, 150, 50)];
     desired.text = @"Desired Grade";
-    desired.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    desired.font = FONT_AMATIC_BOLD(36);
     [view addSubview:desired];
     
     UIImageView *thirdCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(desired.frame) + 40, 75, 75)];
     thirdCheck.image = checkBox;
+    thirdCheck.contentMode = UIViewContentModeScaleAspectFit;
     [view addSubview:thirdCheck];
 
     UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(100, CGRectGetMaxY(desired.frame) + 50, 150, 50)];
     action.text = @"Action Plan";
-    action.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    action.font = FONT_AMATIC_BOLD(36);
     [view addSubview:action];
     
-    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(action.frame) + 40, self.view.frame.size.width, 50)];
+    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(action.frame) + 40, self.view.frame.size.width, 50) raised:NO];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    self.startButton.rippleFromTapLocation = YES;
+    self.startButton.rippleBeyondBounds = YES;
     [self.startButton addTarget:self action:@selector(openGradeController) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton setTitle:@"Start Grading" forState:UIControlStateNormal];
     [view addSubview:self.startButton];
@@ -316,7 +327,7 @@
         
     }];
   
-    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 50)];
+    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 50)];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [self.startButton addTarget:self action:@selector(openGradeController) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton setTitle:@"Start Grading" forState:UIControlStateNormal];

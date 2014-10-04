@@ -13,6 +13,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "BFPaperButton.h"
 
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 
@@ -21,5 +22,7 @@
 #define LIGHT_FONT @"HelveticaNeue-Thin";
 #define AVENIR_BLACK @"Avenir-Black";
 #define BLUE_COLOR [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
+#define FONT_AMATIC_REG(s) [UIFont fontWithName:@"AmaticSC-Regular" size:s]
+#define FONT_AMATIC_BOLD(s) [UIFont fontWithName:@"Amatic-Bold" size:s]
 
 #endif

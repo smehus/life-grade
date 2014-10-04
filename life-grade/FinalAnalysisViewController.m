@@ -481,7 +481,7 @@
     NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
-                                                 andIndex:i andData:a];
+                                                 andIndex:i andData:a isRealstic:YES];
     [self.scrollView addSubview:v];
 }
 - (void)completionDateView:(int)i {

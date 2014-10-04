@@ -42,7 +42,7 @@
     self.bgView.alpha = 0.8f;
     [self addSubview:self.bgView];
     
-    self.theView = [[UIView alloc] initWithFrame:CGRectMake(0, -475, self.frame.size.width, self.frame.size.height*.6)];
+    self.theView = [[UIView alloc] initWithFrame:CGRectMake(0, -475, self.frame.size.width, self.frame.size.height*.5)];
     self.theView.backgroundColor = [UIColor whiteColor];
     [self addSubview:self.theView];
     
@@ -55,18 +55,15 @@
 
 - (void)setupTextFields {
     
-    UILabel *greeting = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.frame.size.width, 30)];
+    NSString *avFont = AVENIR_BLACK;
+    UILabel *greeting = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, self.frame.size.width, 30)];
     greeting.text = @"Sign In";
     greeting.textAlignment = NSTextAlignmentCenter;
-    greeting.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    greeting.font = [UIFont fontWithName:avFont size:24];
 
     
-    UILabel *userLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(greeting.frame), self.frame.size.width, 30)];
-    userLabel.text = @"Email";
-    userLabel.textAlignment = NSTextAlignmentCenter;
-    userLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:16];
-    
-    self.emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(5, CGRectGetMaxY(userLabel.frame) + 5, self.frame.size.width - 10, 40)];
+
+    self.emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(5, CGRectGetMaxY(greeting.frame) + 15, self.frame.size.width - 10, 40)];
     self.emailTextField.layer.borderWidth = 1.0f;
     self.emailTextField.placeholder = @"E-mail address";
     UIColor *greyC = GREY_COLOR;
@@ -93,7 +90,7 @@
     UIButton *exit = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     exit.clipsToBounds = NO;
     [exit setFrame:CGRectMake(0, CGRectGetMaxY(self.signIn.frame) + 15, self.theView.frame.size.width, 20)];
-    [exit setTitle:@"exit" forState:UIControlStateNormal];
+    [exit setTitle:@"Exit" forState:UIControlStateNormal];
     [exit.titleLabel setTextAlignment:NSTextAlignmentCenter];
     exit.titleLabel.textColor = GREY_COLOR;
     [exit.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20]];

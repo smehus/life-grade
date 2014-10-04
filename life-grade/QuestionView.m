@@ -211,6 +211,7 @@
     [self addSubview:questionTitle];
     
     self.nextButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, 400, 100, 50) raised:NO];
+    self.nextButton.tapCircleColor = [UIColor colorWithRed:1 green:0 blue:1 alpha:0.6];
     [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
     [self.nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [self.nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
