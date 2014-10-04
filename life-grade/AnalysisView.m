@@ -69,7 +69,7 @@
         dataArray = data;
         barColour = GREEN_COLOR;
         goalString = quote;
-        [self drawThirdTemplate];
+        [self drawAttainable];
         
     }
     return self;
@@ -210,9 +210,10 @@
 }
 
 - (void)drawThirdTemplate {
+    
+    
     NSString *avFont = AVENIR_BLACK;
-    
-    
+
     firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 150)];
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
@@ -320,6 +321,56 @@
     
     
     [self addSubview:self.bottomButton];
+}
+
+- (void)drawAttainable {
+    
+    NSString *avFont = AVENIR_BLACK;
+    
+    firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 150)];
+    firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    firstView.layer.borderWidth = 0.0f;
+    
+    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 75, 75)];
+    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
+    self.gradeLabel.textColor = [UIColor redColor];
+    self.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
+    [firstView addSubview:self.gradeLabel];
+    
+    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, 200, 50)];
+    self.currentGrade.font = [UIFont fontWithName:avFont size:24];
+    [firstView addSubview:self.currentGrade];
+    [self addSubview:firstView];
+    
+    UIColor *blueC = BLUE_COLOR;
+    NSString *liteFont = LIGHT_FONT;
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 10, self.frame.size.width - 40, 44)];
+    self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.backgroundColor = barColour;
+    [self addSubview:self.titleLabel];
+    
+    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 100)];
+    self.quoteLabel.font = [UIFont fontWithName:liteFont size:16];
+    self.quoteLabel.textAlignment = NSTextAlignmentCenter;
+    self.quoteLabel.numberOfLines = 0;
+    self.quoteLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.quoteLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.quoteLabel];
+    
+    UIColor *blues = BLUE_COLOR;
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.quoteLabel.frame) + 44, self.frame.size.width - 40, 66)];
+    [button setBackgroundColor:blues];
+    [button setTitle:@"Click for your positive attributes" forState:UIControlStateNormal];
+    [button.titleLabel setFont:[UIFont fontWithName:avFont size:16]];
+    [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        
+        
+    }];
+    
+    
+    [self addSubview:button];
 }
 
 - (void)drawFifthTemplate {

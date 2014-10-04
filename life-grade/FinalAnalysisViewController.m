@@ -471,6 +471,9 @@
                                                  andIndex:i andData:a attainableQuote:@"Dicks"];
     v.titleLabel.text = @"Attainable";
     v.quoteLabel.text =  @"Hey you kids are probably saying to yourselves: I'm gonna go out there and grab the world by the tail! and wrap it around and pull it down and put it in my pocket. Well I'm here to tell you that you're probably going to find out, as you go out there, that you're not going to amount to jack squat!";
+    
+    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
+    v.currentGrade.text = @"Desired Grade";
     [v.bottomButton setTitle:@"Click For Your Positive Attributes" forState:UIControlStateNormal];
     [self.scrollView addSubview:v];
 }
