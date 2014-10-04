@@ -21,6 +21,7 @@
 
 
 
+
 @interface OpeningViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) SWRevealViewController *myRevealController;
 @property (strong, nonatomic) UILabel *LifeLabel;
@@ -79,7 +80,7 @@
     [self.view addSubview:bg];
 
 
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width *2, viewSize.height);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width *3, viewSize.height);
     self.scrollView.backgroundColor = [UIColor redColor];
     self.scrollView.delegate = self;
     self.myRevealController = [self revealViewController];
@@ -88,7 +89,8 @@
     
     [self setUpPageOne];
     [self setUpPageTwo];
-
+    [self setUpPageThree];
+    
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(20, viewHeight - 50, self.view.frame.size.width - 40, 20)];
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = 2;
@@ -247,49 +249,79 @@
     UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
     UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
     
-    self.stepOne = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, view.frame.size.width, 50)];
+    self.stepOne = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, view.frame.size.width, 50)];
     self.stepOne.text = @"3 Life Grade Steps";
     self.stepOne.textColor = GREY_COLOR;
+    self.stepOne.backgroundColor = GREEN_COLOR;
     self.stepOne.textAlignment = NSTextAlignmentCenter;
     self.stepOne.font = [UIFont fontWithName:avFont size:35];
     [view addSubview:self.stepOne];
     
+    // FIRST LINE
+    
+
     UIImageView *firstCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.stepOne.frame) + 20, 75, 75)];
     firstCheck.image = checkBox;
     firstCheck.contentMode = UIViewContentModeScaleAspectFit;
     [view addSubview:firstCheck];
     
-    UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, firstCheck.frame.origin.y + 10, 150, 50)];
+    UILabel *romanUno = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(firstCheck.frame) + 5, CGRectGetMaxY(self.stepOne.frame) + 12, 40, 75)];
+    romanUno.text = @"I:";
+    romanUno.font = FONT_AMATIC_BOLD(40);
+    [view addSubview:romanUno];
+    
+    
+    UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(CGRectGetMaxX(romanUno.frame), romanUno.frame.origin.y, 150, 75)];
     current.text = @"Current Grade";
-    current.font = FONT_AMATIC_BOLD(36);
+    current.font = FONT_AMATIC_BOLD(40);
     [view addSubview:current];
+    
+    
+    
+    // SECOND LINE
     
     UIImageView *secondCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(current.frame) + 40, 75, 75)];
     secondCheck.image = checkBox;
     secondCheck.contentMode = UIViewContentModeScaleAspectFit;
     [view addSubview:secondCheck];
     
-    UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(100, CGRectGetMaxY(current.frame) + 50, 150, 50)];
+    UILabel *romanDos = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(secondCheck.frame) + 5, secondCheck.frame.origin.y -8, 40, 75)];
+    romanDos.text = @"II:";
+    romanDos.font = FONT_AMATIC_BOLD(40);
+    [view addSubview:romanDos];
+    
+    UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(CGRectGetMaxX(romanDos.frame) + 5, romanDos.frame.origin.y, 150, 75)];
     desired.text = @"Desired Grade";
-    desired.font = FONT_AMATIC_BOLD(36);
+    desired.font = FONT_AMATIC_BOLD(40);
     [view addSubview:desired];
+    
+    
+    // THIRD LINE
+
     
     UIImageView *thirdCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(desired.frame) + 40, 75, 75)];
     thirdCheck.image = checkBox;
     thirdCheck.contentMode = UIViewContentModeScaleAspectFit;
     [view addSubview:thirdCheck];
+    
+    
+    UILabel *romanTres = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(thirdCheck.frame) + 5, thirdCheck.frame.origin.y - 8, 40, 75)];
+    romanTres.text = @"III:";
+    romanTres.font = FONT_AMATIC_BOLD(40);
+    [view addSubview:romanTres];
 
-    UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(100, CGRectGetMaxY(desired.frame) + 50, 150, 50)];
+    UILabel *action = [[UILabel alloc]  initWithFrame:CGRectMake(CGRectGetMaxX(romanTres.frame) + 5, romanTres.frame.origin.y, 150, 75)];
     action.text = @"Action Plan";
-    action.font = FONT_AMATIC_BOLD(36);
+    action.font = FONT_AMATIC_BOLD(40);
     [view addSubview:action];
     
-    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(action.frame) + 40, self.view.frame.size.width, 50) raised:NO];
+    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(action.frame) + 40, self.view.frame.size.width - 40, 50) raised:NO];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     self.startButton.rippleFromTapLocation = YES;
     self.startButton.rippleBeyondBounds = YES;
-    [self.startButton addTarget:self action:@selector(openGradeController) forControlEvents:UIControlEventTouchUpInside];
-    [self.startButton setTitle:@"Start Grading" forState:UIControlStateNormal];
+    [self.startButton addTarget:self action:@selector(scrollToNextPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.startButton setTitle:@"Next" forState:UIControlStateNormal];
+    [self.startButton.titleLabel setFont:[UIFont fontWithName:avFont size:16]];
     [view addSubview:self.startButton];
 
     
@@ -300,32 +332,28 @@
 
 - (void)setUpPageThree {
     
+    UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
+    UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(viewSize.width * 2, 0, viewSize.width, viewHeight)];
     view.backgroundColor = [UIColor clearColor];
     
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, 50)];
+    
+    
+    
+    
+    UIImageView *firstCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, 50, 75, 75)];
+    firstCheck.image = checkBox;
+    firstCheck.contentMode = UIViewContentModeScaleAspectFit;
+    [view addSubview:firstCheck];
+    
+    
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, view.frame.size.width, 50)];
     title.text = @"Step One: Things to think about";
     title.textColor = GREY_COLOR;
     title.textAlignment = NSTextAlignmentCenter;
     title.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
-    
-    UIImage *arrowImg = [UIImage imageNamed:@"blue-arrow--"];
-    UIImageView *firstArrow = [[UIImageView alloc] initWithImage:arrowImg];
-    firstArrow.frame = CGRectMake(20, 25, arrowImg.size.width+20, arrowImg.size.height+20);
-    
-    UILabel *current = [[UILabel alloc]  initWithFrame:CGRectMake(100, 50, 150, 50)];
-    current.text = @"Current Grade";
-    current.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
-    
-    
-    UIButton *instructs = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [instructs setTitle:@"Instructions" forState:UIControlStateNormal];
-    [instructs setFrame:CGRectMake(10, CGRectGetMaxY(current.frame), self.view.frame.size.width - 20, 50)];
-    [[instructs rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        NSLog(@"click instructions");
-        
-        
-    }];
+
   
     self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 50)];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
@@ -333,16 +361,24 @@
     [self.startButton setTitle:@"Start Grading" forState:UIControlStateNormal];
     
     [view addSubview:title];
-    [view addSubview:firstArrow];
-    [view addSubview:current];
-    [view addSubview:instructs];
-    
+
+
      [view addSubview:self.startButton];
     [self.scrollView addSubview:view];
 }
 
+- (void)scrollToNextPage {
+    
+    [self.scrollView setContentOffset:CGPointMake(self.view.frame.size.width*2, self.view.frame.origin.y) animated:YES];
+    
+}
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (scrollView.contentOffset.x > 321) {
+        self.scrollView.scrollEnabled = NO;
+    }
     
     CGFloat width = self.scrollView.bounds.size.width;
     currentPage = (self.scrollView.contentOffset.x + width/2.0f) / width;

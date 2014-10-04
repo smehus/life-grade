@@ -405,12 +405,21 @@
     boxImage.frame = CGRectMake(50, CGRectGetMaxY(self.currentGrade.frame) + 20, 50, 50);
     [self addSubview:boxImage];
     
-    UIImageView *secondMark = [[UIImageView alloc] initWithImage:checkMark];
-    secondMark.frame = CGRectMake(50, boxImage.center.y - 60, 75, 75);
-    [self addSubview:secondMark];
+    UIImageView *check = [[UIImageView alloc] initWithImage:checkMark];
+    check.frame = CGRectMake(50, boxImage.center.y - 60, 75, 75);
+    [self addSubview:check];
     
-    UIButton *realisticButton = [[UIButton alloc] initWithFrame:CGRectMake(self.size.width/3, CGRectGetMaxY(boxImage.frame) + 30, 100, 100)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(check.frame) + 10, check.frame.origin.y, 200, 30)];
+    label.text = @"Your Goal Is Realistic";
+    label.font = FONT_AMATIC_BOLD(24);
+    [self addSubview:label];
+    
+    int f = 200;
+    
+    UIButton *realisticButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - f/2, CGRectGetMaxY(boxImage.frame) + 30, f, f)];
     [realisticButton setTitle:@"Read if your goals are realistic" forState:UIControlStateNormal];
+    [realisticButton.titleLabel setNumberOfLines:0];
+    [realisticButton.titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [realisticButton setBackgroundColor:blues];
     
     [self addSubview:realisticButton];

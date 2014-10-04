@@ -57,12 +57,17 @@
 //    [player setObject:@"fagboy" forKey:@"Name"];
 //    [player setObject:[NSNumber numberWithInt:1230] forKey:@"Score"];//2
 //    [player save];//3
-//    
+//
+    __block SWRevealViewController *mainRevealController;
     
     MenuViewController *rearViewController = [[MenuViewController alloc] init];
     rearViewController.managedObjectContext = self.managedObjectContext;
     
     UINavigationController __block *navCon;
+    
+    self.openingViewController = [[OpeningViewController alloc] initWithNibName:@"OpeningViewController" bundle:nil];
+    NSLog(@"%@", self.managedObjectContext.persistentStoreCoordinator.managedObjectModel.entities);
+    self.openingViewController.managedObjectContext = self.managedObjectContext;
     
     self.currentUser = [PFUser currentUser];
     if (self.currentUser) {
@@ -73,6 +78,10 @@
         
         self.finalGradeController = [[FinalAnalysisViewController alloc] init];
         navCon = [[UINavigationController alloc] initWithRootViewController:self.finalGradeController];
+        
+        mainRevealController = [[SWRevealViewController alloc]
+                                                        initWithRearViewController:rearViewController frontViewController:navCon];
+        
         
     } else if (password != nil && email != nil) {
         
@@ -91,22 +100,26 @@
             
                 NSLog(@"SIGNIN SUCCESS");
                 
-                
+                mainRevealController = [[SWRevealViewController alloc]
+                                                                initWithRearViewController:rearViewController frontViewController:navCon];
                 
             } else {
                 
                 NSLog(@"SIGNIN FAIL");
+                
+                mainRevealController = [[SWRevealViewController alloc]
+                                                                initWithRearViewController:rearViewController frontViewController:self.openingViewController];
    
             }
         }];
         
     } else {
         
-        self.openingViewController = [[OpeningViewController alloc] initWithNibName:@"OpeningViewController" bundle:nil];
-        NSLog(@"%@", self.managedObjectContext.persistentStoreCoordinator.managedObjectModel.entities);
-        self.openingViewController.managedObjectContext = self.managedObjectContext;
+
         navCon = [[UINavigationController alloc] initWithRootViewController:self.openingViewController];
-        
+    
+            mainRevealController = [[SWRevealViewController alloc]
+                                                        initWithRearViewController:rearViewController frontViewController:self.openingViewController];
     
     }
 
@@ -115,8 +128,7 @@
 //    HASmallCollectionViewController *opening = [[HASmallCollectionViewController alloc] initWithCollectionViewLayout:[[HACollectionViewSmallLayout alloc] init]];
 //    opening.view.frame = [[UIScreen mainScreen] bounds];
 //    
-    SWRevealViewController *mainRevealController = [[SWRevealViewController alloc]
-                                                    initWithRearViewController:rearViewController frontViewController:self.openingViewController];
+
     
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
 

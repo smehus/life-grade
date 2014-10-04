@@ -482,6 +482,8 @@
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a isRealstic:YES];
+    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.description intValue]];
+    v.currentGrade.text = @"Desired Grade";
     [self.scrollView addSubview:v];
 }
 - (void)completionDateView:(int)i {

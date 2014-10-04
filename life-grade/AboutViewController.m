@@ -84,7 +84,7 @@
     
     UITextView *bioView = [[UITextView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.aboutImage.frame) + 5, self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(self.aboutImage.frame) - NAVBAR_HEIGHT)];
     bioView.text = aboutString;
-    
+    bioView.editable = NO;
     
     [self.view addSubview:bioView];
     [self.view addSubview:self.scrollView];
