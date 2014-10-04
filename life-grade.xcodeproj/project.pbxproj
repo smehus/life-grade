@@ -89,6 +89,7 @@
 		A5CA589819E0657E00940841 /* openingImage.png in Resources */ = {isa = PBXBuildFile; fileRef = A5CA589719E0657E00940841 /* openingImage.png */; };
 		A5CA589B19E069F800940841 /* Amatic-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5CA589919E069F800940841 /* Amatic-Bold.ttf */; };
 		A5CA589C19E069F800940841 /* AmaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5CA589A19E069F800940841 /* AmaticSC-Regular.ttf */; };
+		A5CA589E19E08E1400940841 /* header_image.png in Resources */ = {isa = PBXBuildFile; fileRef = A5CA589D19E08E1400940841 /* header_image.png */; };
 		A5E85E291927B19700AAA4B6 /* GradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85E281927B19700AAA4B6 /* GradeCell.m */; };
 		A5E85E2B1927B1B500AAA4B6 /* GradeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */; };
 		A5E85E2E1927B81100AAA4B6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85E2D1927B81100AAA4B6 /* Grade.m */; };
@@ -235,6 +236,7 @@
 		A5CA589719E0657E00940841 /* openingImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = openingImage.png; sourceTree = "<group>"; };
 		A5CA589919E069F800940841 /* Amatic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Amatic-Bold.ttf"; sourceTree = "<group>"; };
 		A5CA589A19E069F800940841 /* AmaticSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AmaticSC-Regular.ttf"; sourceTree = "<group>"; };
+		A5CA589D19E08E1400940841 /* header_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_image.png; sourceTree = "<group>"; };
 		A5E85E271927B19700AAA4B6 /* GradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeCell.h; sourceTree = "<group>"; };
 		A5E85E281927B19700AAA4B6 /* GradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeCell.m; sourceTree = "<group>"; };
 		A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradeCell.xib; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 		65714FFF191482700034009A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5CA589D19E08E1400940841 /* header_image.png */,
 				A5CA589919E069F800940841 /* Amatic-Bold.ttf */,
 				A5CA589A19E069F800940841 /* AmaticSC-Regular.ttf */,
 				A5CA589719E0657E00940841 /* openingImage.png */,
@@ -719,6 +722,7 @@
 				65715019191482880034009A /* Lined-Paper-@2x.png in Resources */,
 				A5E85E2B1927B1B500AAA4B6 /* GradeCell.xib in Resources */,
 				6571501D191482880034009A /* red-arrow-1-@2x.png in Resources */,
+				A5CA589E19E08E1400940841 /* header_image.png in Resources */,
 				655EC64318DF62550036515F /* MenuViewController.xib in Resources */,
 				A5CA589819E0657E00940841 /* openingImage.png in Resources */,
 				A53DA42819BCA88300EAC693 /* jonsafag in Resources */,

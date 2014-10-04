@@ -91,7 +91,7 @@
     [self setUpPageTwo];
     [self setUpPageThree];
     
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(20, viewHeight - 50, self.view.frame.size.width - 40, 20)];
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(20, viewHeight - 25, self.view.frame.size.width - 40, 20)];
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = 2;
     self.pageControl.currentPageIndicatorTintColor = GREEN_COLOR;
@@ -332,35 +332,87 @@
 
 - (void)setUpPageThree {
     
+    UIImage *header = [UIImage imageNamed:@"header_image"];
+    CGFloat ratio = 1/4;
+    
+    NSString *avFont = AVENIR_BLACK;
     UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
     UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(viewSize.width * 2, 0, viewSize.width, viewHeight)];
     view.backgroundColor = [UIColor clearColor];
     
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 66)];
+    titleView.backgroundColor = BLUE_COLOR;
+    // add objects here for nav bar
+    
+    CGFloat titleHeight = titleView.frame.size.height - 30;
+    CGFloat imageWidth = titleHeight *4;
+    UIImageView *headerView = [[UIImageView alloc] initWithImage:header];
+    headerView.frame = CGRectMake(self.view.frame.size.width/2 - imageWidth/2, 23, imageWidth, titleHeight);
+
+    [titleView addSubview:headerView];
+    
+    [view addSubview:titleView];
     
     
-    
-    
-    UIImageView *firstCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, 50, 75, 75)];
+    UIImageView *firstCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(titleView.frame) + 10, 100, 100)];
     firstCheck.image = checkBox;
     firstCheck.contentMode = UIViewContentModeScaleAspectFit;
     [view addSubview:firstCheck];
     
     
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, view.frame.size.width, 50)];
-    title.text = @"Step One: Things to think about";
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(firstCheck.frame) + 5, CGRectGetMaxY(titleView.frame) + 20, 250, 40)];
+    title.text = @"Step One:";
     title.textColor = GREY_COLOR;
-    title.textAlignment = NSTextAlignmentCenter;
-    title.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    title.textAlignment = NSTextAlignmentLeft;
+    title.font = FONT_AMATIC_BOLD(40);
+    [view addSubview:title];
+    
+    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(firstCheck.frame) + 5, CGRectGetMaxY(title.frame), 200, 30)];
+    currentGrade.text = @"Current Grade";
+    currentGrade.textColor = GREY_COLOR;
+    currentGrade.textAlignment = NSTextAlignmentLeft;
+    currentGrade.font = [UIFont fontWithName:avFont size:24];
+    [view addSubview:currentGrade];
+    
+    CGFloat boxWidth = self.view.frame.size.width;
+
+    
+    UIView *instructBox = [[UIView alloc] initWithFrame:CGRectMake(50, CGRectGetMaxY(currentGrade.frame) + 25, boxWidth - 100, boxWidth - 100)];
+    instructBox.backgroundColor = BLUE_COLOR;
+    instructBox.layer.masksToBounds = NO;
+    instructBox.layer.cornerRadius = 8;
+    instructBox.layer.shadowOffset = CGSizeMake(-10, 15);
+    instructBox.layer.shadowRadius = 4;
+    instructBox.layer.shadowOpacity = 0.5;
+    
+    UILabel *instructTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, instructBox.frame.size.width, 50)];
+    instructTitle.font = FONT_AMATIC_BOLD(40);
+    instructTitle.text = @"Instructions:";
+    instructTitle.textColor = [UIColor whiteColor];
+    instructTitle.textAlignment = NSTextAlignmentCenter;
+    [instructBox addSubview:instructTitle];
+    
+    
+    
+    UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(instructTitle.frame),
+                                                                       instructBox.frame.size.width, instructBox.frame.size.height - CGRectGetMaxY(instructTitle.frame))];
+    instructLabel.font = [UIFont fontWithName:avFont size:16];
+    instructLabel.textColor = [UIColor whiteColor];
+    instructLabel.textAlignment = NSTextAlignmentCenter;
+    instructLabel.numberOfLines = 0;
+    instructLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    [view addSubview:instructBox];
+
 
   
-    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 50)];
+    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(instructBox.frame) + 40, self.view.frame.size.width, 50) raised:NO];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [self.startButton addTarget:self action:@selector(openGradeController) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton setTitle:@"Start Grading" forState:UIControlStateNormal];
     
-    [view addSubview:title];
+
 
 
      [view addSubview:self.startButton];
