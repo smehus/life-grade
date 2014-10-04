@@ -379,7 +379,7 @@
     CGFloat boxWidth = self.view.frame.size.width;
 
     
-    UIView *instructBox = [[UIView alloc] initWithFrame:CGRectMake(50, CGRectGetMaxY(currentGrade.frame) + 25, boxWidth - 100, boxWidth - 100)];
+    UIView *instructBox = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(currentGrade.frame) + 15, boxWidth - 30, boxWidth - 80)];
     instructBox.backgroundColor = BLUE_COLOR;
     instructBox.layer.masksToBounds = NO;
     instructBox.layer.cornerRadius = 8;
@@ -396,13 +396,15 @@
     
     
     
-    UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(instructTitle.frame),
-                                                                       instructBox.frame.size.width, instructBox.frame.size.height - CGRectGetMaxY(instructTitle.frame))];
+    UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(7, CGRectGetMaxY(instructTitle.frame),
+                                                                       instructBox.frame.size.width - 14, instructBox.frame.size.height - CGRectGetMaxY(instructTitle.frame))];
     instructLabel.font = [UIFont fontWithName:avFont size:16];
     instructLabel.textColor = [UIColor whiteColor];
     instructLabel.textAlignment = NSTextAlignmentCenter;
     instructLabel.numberOfLines = 0;
     instructLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    instructLabel.text = @"Now you are in the driver’s seat! Grade yourself on each of the 10 Life factors. Grade each factor before moving on to the next. Being honest with yourself will produce a more realistic Life+Grade to later work with.";
+    [instructBox addSubview:instructLabel];
     [view addSubview:instructBox];
 
 
