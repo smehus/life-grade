@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_ASValueTrackingSlider 9
 #define COCOAPODS_VERSION_PATCH_ASValueTrackingSlider 4
 
+// BFPaperButton
+#define COCOAPODS_POD_AVAILABLE_BFPaperButton
+#define COCOAPODS_VERSION_MAJOR_BFPaperButton 1
+#define COCOAPODS_VERSION_MINOR_BFPaperButton 5
+#define COCOAPODS_VERSION_PATCH_BFPaperButton 4
+
 // Bolts
 #define COCOAPODS_POD_AVAILABLE_Bolts
 #define COCOAPODS_VERSION_MAJOR_Bolts 1
@@ -198,11 +204,23 @@
 #define COCOAPODS_VERSION_MINOR_THCalendarDatePicker 1
 #define COCOAPODS_VERSION_PATCH_THCalendarDatePicker 1
 
+// UIColor+BFPaperColors
+#define COCOAPODS_POD_AVAILABLE_UIColor_BFPaperColors
+#define COCOAPODS_VERSION_MAJOR_UIColor_BFPaperColors 1
+#define COCOAPODS_VERSION_MINOR_UIColor_BFPaperColors 2
+#define COCOAPODS_VERSION_PATCH_UIColor_BFPaperColors 1
+
 // UIView+draggable
 #define COCOAPODS_POD_AVAILABLE_UIView_draggable
 #define COCOAPODS_VERSION_MAJOR_UIView_draggable 0
 #define COCOAPODS_VERSION_MINOR_UIView_draggable 2
 #define COCOAPODS_VERSION_PATCH_UIView_draggable 0
+
+// WYPopoverController
+#define COCOAPODS_POD_AVAILABLE_WYPopoverController
+#define COCOAPODS_VERSION_MAJOR_WYPopoverController 0
+#define COCOAPODS_VERSION_MINOR_WYPopoverController 2
+#define COCOAPODS_VERSION_PATCH_WYPopoverController 2
 
 // pop
 #define COCOAPODS_POD_AVAILABLE_pop

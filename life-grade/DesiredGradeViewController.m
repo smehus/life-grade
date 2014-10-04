@@ -172,6 +172,7 @@
     self.collectionView.scrollEnabled = YES;
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
+    self.collectionView.scrollEnabled = NO;
     items = [[NSMutableArray alloc] init];
     for (int i = 0; i <= 10; i++) {
         

@@ -17,15 +17,20 @@
 #import "HAPaperCollectionViewController.h"
 #import "GradeCell.h"
 #import "Grade.h"
+#import "BFPaperButton.h"
+
 
 
 #define kOffset 10.0
 
-@interface QuestionView () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
+@interface QuestionView () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate> {
+    
+
+}
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) SimpleCoverFlowLayout *simpleLayout;
-@property (nonatomic, strong) UIButton *nextButton;
+@property (nonatomic, strong) BFPaperButton *nextButton;
 
 @property (nonatomic, strong) NSMutableArray *grades;
 
@@ -205,11 +210,11 @@
     questionTitle.lineBreakMode = NSLineBreakByWordWrapping;
     [self addSubview:questionTitle];
     
-    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, 400, 100, 50)];
-    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
-    [nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
-    [nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:nextButton];
+    self.nextButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, 400, 100, 50) raised:NO];
+    [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    [self.nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    [self.nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.nextButton];
     
 
     
@@ -338,7 +343,20 @@
 - (void)nextPressed {
     
     NSLog(@"NEXT PRESSED");
-    [self.delegate didPickAnswer:self.theIndexPath withGrade:self.selectedGrade];
+    
+    
+    if (self.selectedGrade != nil) {
+         [self.delegate didPickAnswer:self.theIndexPath withGrade:self.selectedGrade];
+    } else {
+     UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Oops"
+                                                 message:@"You need to pick a grade first!" delegate:nil
+                                       cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+        [a show];
+
+        
+    }
+    
+   
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {

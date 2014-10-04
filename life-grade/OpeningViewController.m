@@ -62,19 +62,22 @@
     UIColor *barColour = GREEN_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
     
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
     appDelegate = (MainAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     navBarHeight = self.navigationController.navigationBar.frame.size.height + 20;
     viewHeight = self.view.frame.size.height - navBarHeight;
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    viewSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - navBarHeight);
+    viewSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
     
     UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
     UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
-    bg.frame = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height);
+    bg.frame = CGRectMake(self.view.frame.origin.x, 35, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:bg];
-    
+
 
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width *2, viewSize.height);
     self.scrollView.backgroundColor = [UIColor redColor];
@@ -157,10 +160,10 @@
     self.LifeLabel.frame = CGRectMake(25, 50, 150, fontSize);
     self.LifeLabel.text = @"Life";
     
-    UIImage *logo = [UIImage imageNamed:@"life_grade_logo.png"];
+    UIImage *logo = [UIImage imageNamed:@"openingImage"];
     UIImageView *logoView = [[UIImageView alloc] initWithImage:logo];
-    logoView.frame = CGRectMake(0, 75, self.view.frame.size.width, 100);
-    logoView.contentMode = UIViewContentModeScaleAspectFit;
+    logoView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    logoView.contentMode = UIViewContentModeScaleAspectFill;
     
     self.GradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.LifeLabel.frame.size.width + 50,
                                                                 self.LifeLabel.frame.size.height + 60, 150, 50)];
@@ -238,7 +241,7 @@
     UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
     UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
     
-    self.stepOne = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, view.frame.size.width, 50)];
+    self.stepOne = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, view.frame.size.width, 50)];
     self.stepOne.text = @"3 Life Grade Steps";
     self.stepOne.textColor = GREY_COLOR;
     self.stepOne.textAlignment = NSTextAlignmentCenter;
