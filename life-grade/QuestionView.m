@@ -134,18 +134,18 @@
 
     self.isGrown = NO;
     NSArray *ary = @[@{@"grade" : @"A+", @"GradeNum" : @10},
-                     @{ @"grade" : @"A", @"GradeNum" : @9.5},
+                     @{ @"grade" : @"A  ", @"GradeNum" : @9.5},
                      @{@"grade" : @"A-", @"GradeNum" : @9},
                      @{@"grade" : @"B+", @"GradeNum" : @8.7},
-                     @{@"grade" : @"B", @"GradeNum" : @8.5},
+                     @{@"grade" : @"B  ", @"GradeNum" : @8.5},
                      @{@"grade" : @"B-", @"GradeNum" : @8.3},
                      @{@"grade" : @"C+", @"GradeNum" : @7.7},
-                     @{@"grade" : @"C", @"GradeNum" : @7.5},
+                     @{@"grade" : @"C  ", @"GradeNum" : @7.5},
                      @{@"grade" : @"C-", @"GradeNum" : @7.3},
                      @{@"grade" : @"D+", @"GradeNum" : @6.7},
-                     @{@"grade" : @"D", @"GradeNum" : @6.5},
+                     @{@"grade" : @"D  ", @"GradeNum" : @6.5},
                      @{@"grade" : @"D-", @"GradeNum" : @6.3},
-                     @{@"grade" : @"F", @"GradeNum" : @5.7}];
+                     @{@"grade" : @"F  ", @"GradeNum" : @5.7}];
 
     self.grades = [[NSMutableArray alloc] initWithCapacity:20];
     __block NSUInteger count = 0;
@@ -196,23 +196,26 @@
     
     self.directions = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, 300, 150, 100)];
     self.directions.text = @"Select your grade!";
-    self.directions.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    self.directions.font = FONT_AMATIC_REG(30);
     self.directions.textColor = [UIColor whiteColor];
     self.directions.numberOfLines = 0;
     self.directions.lineBreakMode = NSLineBreakByWordWrapping;
     [self addSubview:self.directions];
     
-    UILabel *questionTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 150,50, 150, 100)];
+    UILabel *questionTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 150,50, 150, 200)];
     questionTitle.text = self.grade.question;
-    questionTitle.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    questionTitle.font = FONT_AMATIC_REG(40);
     questionTitle.textColor = [UIColor whiteColor];
     questionTitle.numberOfLines = 0;
     questionTitle.lineBreakMode = NSLineBreakByWordWrapping;
     [self addSubview:questionTitle];
     
-    self.nextButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, 400, 100, 50) raised:NO];
+    NSString *avFont = AVENIR_BLACK;
+    
+    self.nextButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, 400, 130, 50) raised:NO];
     self.nextButton.tapCircleColor = [UIColor colorWithRed:1 green:0 blue:1 alpha:0.6];
-    [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
+    [self.nextButton.titleLabel setFont:[UIFont fontWithName:avFont size:24]];
     [self.nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [self.nextButton addTarget:self action:@selector(nextPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.nextButton];
@@ -225,7 +228,8 @@
     
     if (self.selectedGrade) {
         self.selectedGrade.gradeSelected = NO;
-        self.selectedGradeCelll.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
+        self.selectedGradeCelll.backgroundColor = GREEN_COLOR;
+        self.selectedGradeCelll.layer.borderWidth = 0.0f;
     }
     
     CGPoint pt = [recognizer locationInView:self.collectionView];
@@ -236,7 +240,8 @@
     Grade *grade = [self.grades objectAtIndex:idx.row];
     self.selectedGrade = grade;
     grade.gradeSelected = YES;
-    cell.backgroundColor = [UIColor greenColor];
+    cell.layer.borderColor = [UIColor whiteColor].CGColor;
+    cell.layer.borderWidth = 5.0f;
 
     
 }
@@ -260,22 +265,26 @@
    GradeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GradeCell" forIndexPath:indexPath];
     
     cell.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
-    cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
+//    cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
+    cell.backgroundColor = GREEN_COLOR;
     cell.layer.cornerRadius = 8.0f;
     cell.clipsToBounds = NO;
     cell.userInteractionEnabled = YES;
     
     Grade *grade = [self.grades objectAtIndex:indexPath.row];
-    
+    NSString *avFont = AVENIR_BLACK;
     UIButton *clickedButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];    
     cell.grade.text = grade.grade;
-    cell.grade.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:60];
+    cell.grade.font = [UIFont fontWithName:avFont size:60];
     [cell.doneButton addTarget:self action:@selector(gradeSelected) forControlEvents:UIControlEventTouchUpInside];
     cell.doneButton.frame = CGRectMake(0, 300, 320, 50);
-    [cell.doneButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    UIColor *green = GREEN_COLOR;
+    [cell.doneButton setBackgroundColor:green];
     
     if (grade.gradeSelected) {
-        cell.backgroundColor = [UIColor greenColor];
+//        cell.backgroundColor = [UIColor blueColor];
+        cell.layer.borderWidth = 5.0f;
+        cell.layer.borderColor = [UIColor whiteColor].CGColor;
     }
     
 

@@ -198,18 +198,18 @@
     
     
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, 5, self.view.frame.size.width, 50)];
-    label.text = @"Step One:";
-    label.backgroundColor = [UIColor clearColor];
-    label.font = FONT_AMATIC_BOLD(50);
-    [self.view addSubview:label];
+    self.stepLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 5, self.view.frame.size.width, 50)];
+    self.stepLabel.text = @"Step One:";
+    self.stepLabel.backgroundColor = [UIColor clearColor];
+    self.stepLabel.font = FONT_AMATIC_BOLD(50);
+    [self.view addSubview:self.stepLabel];
 
     
-    UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, CGRectGetMaxY(label.frame), self.view.frame.size.width, 50)];
-    secondLabel.text = @"CURRENT GRADE";
-    secondLabel.backgroundColor = [UIColor clearColor];
-    secondLabel.font = FONT_AVENIR_BLACK(30);
-    [self.view addSubview:secondLabel];
+    self.stepTitleLabel= [[UILabel alloc] initWithFrame:CGRectMake(30, CGRectGetMaxY(self.stepLabel.frame), self.view.frame.size.width, 50)];
+    self.stepTitleLabel.text = @"CURRENT GRADE";
+    self.stepTitleLabel.backgroundColor = [UIColor clearColor];
+    self.stepTitleLabel.font = FONT_AVENIR_BLACK(30);
+    [self.view addSubview:self.stepTitleLabel];
     
     
     
@@ -535,6 +535,8 @@
                     }
                     completion:^(BOOL finished) {
                         self.isGrown = YES;
+                        self.stepTitleLabel.hidden = YES;
+                        self.stepLabel.hidden = YES;
                     }];
 }
 

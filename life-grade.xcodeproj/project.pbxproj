@@ -381,9 +381,6 @@
 				655EC64618DF626E0036515F /* OpeningViewController.xib */,
 				6533F55418E190360017C7D6 /* CoverFlowLayout.h */,
 				6533F55518E190360017C7D6 /* CoverFlowLayout.m */,
-				A5E85E271927B19700AAA4B6 /* GradeCell.h */,
-				A5E85E281927B19700AAA4B6 /* GradeCell.m */,
-				A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */,
 				6533F56E18E195700017C7D6 /* Question.h */,
 				6533F56F18E195700017C7D6 /* Question.m */,
 				6533F57118E4F19E0017C7D6 /* SimpleCoverFlowLayout.h */,
@@ -551,6 +548,9 @@
 				6533F55918E190560017C7D6 /* CollectionCell.m */,
 				6533F56818E194810017C7D6 /* QuestionView.h */,
 				6533F56918E194810017C7D6 /* QuestionView.m */,
+				A5E85E271927B19700AAA4B6 /* GradeCell.h */,
+				A5E85E281927B19700AAA4B6 /* GradeCell.m */,
+				A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */,
 			);
 			name = Grading;
 			sourceTree = "<group>";
