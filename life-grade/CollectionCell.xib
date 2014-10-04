@@ -46,7 +46,7 @@
 								<string key="NSFrame">{{0, 58}, {200, 84}}</string>
 								<reference key="NSSuperview" ref="680316363"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="17299796"/>
+								<reference key="NSNextKeyView" ref="109870930"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -104,10 +104,10 @@
 							<object class="IBUIImageView" id="17299796">
 								<reference key="NSNextResponder" ref="680316363"/>
 								<int key="NSvFlags">1316</int>
-								<string key="NSFrame">{{74, 140}, {52, 52}}</string>
+								<string key="NSFrame">{{64, 133}, {72, 72}}</string>
 								<reference key="NSSuperview" ref="680316363"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="109870930"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSHuggingPriority">{251, 251}</string>
 								<int key="IBUIContentMode">1</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -116,9 +116,10 @@
 							<object class="IBUIImageView" id="109870930">
 								<reference key="NSNextResponder" ref="680316363"/>
 								<int key="NSvFlags">1316</int>
-								<string key="NSFrame">{{74, 120}, {52, 52}}</string>
+								<string key="NSFrame">{{64, 108}, {72, 76}}</string>
 								<reference key="NSSuperview" ref="680316363"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="17299796"/>
 								<string key="NSHuggingPriority">{251, 251}</string>
 								<int key="IBUIContentMode">1</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
