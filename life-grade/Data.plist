@@ -87,7 +87,7 @@
 			<key>goodResponse</key>
 			<string>You’re the boss, if emotional well-being is what you want, it is what you shall receive. Possessing a strong emotional well-being is shown to have positive affects on job happiness, developing meaningful relationships, and even your physical health. You are doing a solid job maintaining good emotional health. Given this, still explore new goals, different ways to express your emotions, and building new connections in life.</string>
 			<key>question</key>
-			<string>Emotional Well Being</string>
+			<string>Emotional Well-Being</string>
 		</dict>
 		<dict>
 			<key>badResponse</key>

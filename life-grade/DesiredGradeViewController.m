@@ -58,7 +58,8 @@
 
 @property (nonatomic, strong) Answers *fetchedAnswers;
 
-
+@property (nonatomic, strong) UILabel *stepLabel;
+@property (nonatomic, strong) UILabel *stepTitleLabel;
 
 
 
@@ -94,6 +95,7 @@
 {
     [super viewDidLoad];
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     delegate = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
     if (!self.managedObjectContext) {
         self.managedObjectContext = delegate.managedObjectContext;
@@ -105,7 +107,6 @@
     self.didSelect = NO;
     
     self.myGrades = [[NSMutableArray alloc] initWithCapacity:10];
-    
     self.questions = [[NSMutableArray alloc] initWithCapacity:10];
     
     
@@ -126,7 +127,7 @@
     NSLog(@"desired context %@", self.managedObjectContext);
     //self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    UIColor *barColour = GREEN_COLOR;
+    UIColor *barColour = BLUE_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
     
 
@@ -155,11 +156,10 @@
     self.nextButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = self.nextButton;
     
-    self.title = @"Step One: Current Grade";
+    
+    [self setTitleView];
 
     self.revealButton = barbut;
-    
-
     [self.revealButton setTarget: self.revealViewController];
     [self.revealButton setAction: @selector( revealToggle: )];
    
@@ -172,7 +172,7 @@
     self.collectionView.scrollEnabled = YES;
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
-    self.collectionView.scrollEnabled = NO;
+    self.collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
     items = [[NSMutableArray alloc] init];
     for (int i = 0; i <= 10; i++) {
         
@@ -190,6 +190,47 @@
         self.nextButton.enabled = YES;
         
     }
+    
+    [self addStepTitle];
+}
+
+- (void)addStepTitle {
+    
+    
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, 5, self.view.frame.size.width, 50)];
+    label.text = @"Step One:";
+    label.backgroundColor = [UIColor clearColor];
+    label.font = FONT_AMATIC_BOLD(50);
+    [self.view addSubview:label];
+
+    
+    UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, CGRectGetMaxY(label.frame), self.view.frame.size.width, 50)];
+    secondLabel.text = @"CURRENT GRADE";
+    secondLabel.backgroundColor = [UIColor clearColor];
+    secondLabel.font = FONT_AVENIR_BLACK(30);
+    [self.view addSubview:secondLabel];
+    
+    
+    
+}
+
+- (void)setTitleView {
+    
+    // TITLE VIEW SET
+    UIView *iv = [[UIView alloc] initWithFrame:CGRectMake(0,0,44*4,44)];
+    [iv setBackgroundColor:[UIColor clearColor]];
+    self.navigationItem.titleView = iv;
+    UIImage *titleImage = [UIImage imageNamed:@"header_image.png"];
+    
+    CGFloat imageHeight = 35.0f;
+    CGFloat imageWidth = imageHeight * 4;
+    UIImageView *titleImageView = [[UIImageView alloc] initWithImage:titleImage];
+    titleImageView.frame = CGRectMake(iv.frame.size.width/2 - imageWidth/2, 3, imageHeight * 4, imageHeight);
+    [iv addSubview:titleImageView];
+    self.navigationItem.titleView = iv;
+    
+    
 }
 
 - (void)setTheFetchedGrades {
@@ -262,11 +303,37 @@
     CollectionCell *cell = (CollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
     Grade *grade = [self.questions objectAtIndex:indexPath.row];
     
+    UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
+    UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
     
     cell.checkmark.hidden = YES;
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
     cell.layer.cornerRadius = 4.0f;
-    cell.text.text = grade.question;
+    
+    __block NSString *textString;
+    if (indexPath.row == 0) {
+        NSArray *t = [grade.question componentsSeparatedByString:@" "];
+        [t enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
+            if (idx == 0) {
+                textString = obj;
+            } else {
+            textString = [NSString stringWithFormat:@"%@ \n %@", textString, obj];
+            }
+        }];
+    } else {
+        
+        textString = grade.question;
+    }
+    
+    cell.text.text = textString;
+    
+    cell.factorLabel.text = [NSString stringWithFormat:@"Factor #%li", indexPath.row + 1];
+    cell.factorLabel.font = FONT_AMATIC_BOLD(50);
+    cell.text.font = FONT_AMATIC_BOLD(30);
+    cell.gradeLabel.font = FONT_AMATIC_BOLD(24);
+    cell.checkbox.image = checkBox;
+    cell.checkmark.image = checkMark;
+
     
     if (grade.isAnswered) {
         

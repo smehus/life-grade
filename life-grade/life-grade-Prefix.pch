@@ -24,5 +24,6 @@
 #define BLUE_COLOR [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
 #define FONT_AMATIC_REG(s) [UIFont fontWithName:@"AmaticSC-Regular" size:s]
 #define FONT_AMATIC_BOLD(s) [UIFont fontWithName:@"Amatic-Bold" size:s]
+#define FONT_AVENIR_BLACK(s) [UIFont fontWithName:@"Avenir-Black" size:s]
 
 #endif

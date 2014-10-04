@@ -13,8 +13,10 @@
 @property (nonatomic, weak) IBOutlet UILabel *text;
 @property (nonatomic, assign) BOOL isCompleted;
 @property (nonatomic, strong) UIButton *nextButton;
-@property (weak, nonatomic) IBOutlet UILabel *checkmark;
 @property (weak, nonatomic) IBOutlet UILabel *gradeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *factorLabel;
 
+@property (strong, nonatomic) IBOutlet UIImageView *checkbox;
+@property (strong, nonatomic) IBOutlet UIImageView *checkmark;
 
 @end

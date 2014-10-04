@@ -23,11 +23,10 @@
     return self;
 }
 
+
+
 - (void)setupView {
     
-    NSLog(@"SETUPVIEW collection cell");
-    
-
 
 }
 

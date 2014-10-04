@@ -226,7 +226,7 @@
                 
                 OpeningViewController *opening = [[OpeningViewController alloc] init];
                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:opening];
-                [self.myRevealController pushFrontViewController:nav animated:YES];
+                [self.myRevealController pushFrontViewController:opening animated:YES];
             }
         }
     }
