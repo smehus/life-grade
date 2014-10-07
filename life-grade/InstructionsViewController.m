@@ -20,6 +20,7 @@
 
 @implementation InstructionsViewController {
     Class localClass;
+    NSString *instructionString;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,12 +56,15 @@
     
     if (localClass == [PickDesiredGradeController class]) {
         titelLabel.text = @"Desired Grade";
+        instructionString = @"Now you are in the driver’s seat! Grade yourself on each of the 10 Life factors. Grade each factor before moving on to the next. Being honest with yourself will produce a more realistic Life+Grade to later work with.";
         
     } else if (localClass == [AttributesViewController class]) {
         titelLabel.text = @"Attributes";
+        instructionString = @"Ok so maybe your current grade isn’t exactly what you were looking for or just maybe life is good right now. Either way, now is your chance to select the grade you want in life! Go ahead, reach for the stars and grab the grade you want.";
         
     } else if (localClass == [ActionPlanViewController class]) {
         titelLabel.text = @"Action Plan";
+        instructionString = @"This is where your journey begins, so sit tight and enjoy the ride. Each part of the Action Plan will get you one more step closer to your desired grade. The Action Plan will give you the direction you are looking for and a clear path to your higher grade in life.";
         
     }
     
@@ -138,15 +142,15 @@
     
     
     
-    UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(7, CGRectGetMaxY(instructTitle.frame),
+    self.instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(7, CGRectGetMaxY(instructTitle.frame),
                                                                        instructBox.frame.size.width - 14, instructBox.frame.size.height - CGRectGetMaxY(instructTitle.frame))];
-    instructLabel.font = [UIFont fontWithName:avFont size:16];
-    instructLabel.textColor = [UIColor whiteColor];
-    instructLabel.textAlignment = NSTextAlignmentCenter;
-    instructLabel.numberOfLines = 0;
-    instructLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    instructLabel.text = @"Now you are in the driver’s seat! Grade yourself on each of the 10 Life factors. Grade each factor before moving on to the next. Being honest with yourself will produce a more realistic Life+Grade to later work with.";
-    [instructBox addSubview:instructLabel];
+    self.instructLabel.font = [UIFont fontWithName:avFont size:16];
+    self.instructLabel.textColor = [UIColor whiteColor];
+    self.instructLabel.textAlignment = NSTextAlignmentCenter;
+    self.instructLabel.numberOfLines = 0;
+    self.instructLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.instructLabel.text = instructionString;
+    [instructBox addSubview:self.instructLabel];
     [self.view addSubview:instructBox];
 
 

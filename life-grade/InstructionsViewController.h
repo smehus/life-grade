@@ -13,6 +13,7 @@ typedef void (^CompletionBlock)(void);
 @interface InstructionsViewController : UIViewController
 
 @property (nonatomic, strong) CompletionBlock completionBlock;
+@property (nonatomic, strong) UILabel *instructLabel;
 
 - (id)initWithViewController:(Class)theClass andCompletionBlock:(CompletionBlock)doneBlock;
 

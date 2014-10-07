@@ -697,7 +697,7 @@
 //    post[@"questionTen"] = [[self.myGrades objectAtIndex:9] gradeNum];
 //    
 //    if (delegate.currentUser) {
-//        post[@"user"] = delegate.currentUser;
+//        post[@"user"] = delegate.currentUser;f
 //    } else if (email) {
 //        post[@"backupEmail"] = email;
 //    } else {
