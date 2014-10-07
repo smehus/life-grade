@@ -54,7 +54,6 @@
 
     
     if (localClass == [PickDesiredGradeController class]) {
-       
         titelLabel.text = @"Desired Grade";
         
     } else if (localClass == [AttributesViewController class]) {
@@ -79,11 +78,77 @@
     }];
     
     [self.view addSubview:self.nextButton];
+    
+    [self setupView];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+
+}
+
+- (void)setupView {
+    
+
+
+    NSString *avFont = AVENIR_BLACK;
+    UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
+    UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
+    
+    
+    
+    UIImageView *firstCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 100, 100)];
+    firstCheck.image = checkBox;
+    firstCheck.contentMode = UIViewContentModeScaleAspectFit;
+    /*
+    [self.view addSubview:firstCheck];
+    */
+    
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(firstCheck.frame) + 5, 20, 250, 40)];
+    title.text = @"Step One:";
+    title.textColor = GREY_COLOR;
+    title.textAlignment = NSTextAlignmentLeft;
+    title.font = FONT_AMATIC_BOLD(40);
+
+    
+    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(firstCheck.frame) + 5, CGRectGetMaxY(title.frame), 200, 30)];
+    currentGrade.text = @"Current Grade";
+    currentGrade.textColor = GREY_COLOR;
+    currentGrade.textAlignment = NSTextAlignmentLeft;
+    currentGrade.font = [UIFont fontWithName:avFont size:24];
+    
+    CGFloat boxWidth = self.view.frame.size.width;
+    
+    
+    UIView *instructBox = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(currentGrade.frame) + 15, boxWidth - 30, boxWidth - 80)];
+    instructBox.backgroundColor = BLUE_COLOR;
+    instructBox.layer.masksToBounds = NO;
+    instructBox.layer.cornerRadius = 8;
+    instructBox.layer.shadowOffset = CGSizeMake(-10, 15);
+    instructBox.layer.shadowRadius = 4;
+    instructBox.layer.shadowOpacity = 0.5;
+    
+    UILabel *instructTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, instructBox.frame.size.width, 50)];
+    instructTitle.font = FONT_AMATIC_BOLD(40);
+    instructTitle.text = @"Instructions:";
+    instructTitle.textColor = [UIColor whiteColor];
+    instructTitle.textAlignment = NSTextAlignmentCenter;
+    [instructBox addSubview:instructTitle];
+    
+    
+    
+    UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(7, CGRectGetMaxY(instructTitle.frame),
+                                                                       instructBox.frame.size.width - 14, instructBox.frame.size.height - CGRectGetMaxY(instructTitle.frame))];
+    instructLabel.font = [UIFont fontWithName:avFont size:16];
+    instructLabel.textColor = [UIColor whiteColor];
+    instructLabel.textAlignment = NSTextAlignmentCenter;
+    instructLabel.numberOfLines = 0;
+    instructLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    instructLabel.text = @"Now you are in the driver’s seat! Grade yourself on each of the 10 Life factors. Grade each factor before moving on to the next. Being honest with yourself will produce a more realistic Life+Grade to later work with.";
+    [instructBox addSubview:instructLabel];
+    [self.view addSubview:instructBox];
+
 
 }
 

@@ -564,6 +564,8 @@
 
 - (void)didPickAnswer:(NSIndexPath *)idx withGrade:(Grade *)grade {
     
+    self.stepLabel.hidden = NO;
+    self.stepTitleLabel.hidden = NO;
     
     Grade *g = [self.questions objectAtIndex:idx.row];
     g.isAnswered = YES;
@@ -712,7 +714,8 @@
         abort();
     }
     
-    
+    self.stepTitleLabel.hidden = YES;
+    self.stepLabel.hidden = YES;
 
     ChecklistViewController *checklist = [[ChecklistViewController alloc] initWithChecklist:0 andCompletionBlock:^{
         InstructionsViewController *controller = [[InstructionsViewController alloc] initWithViewController:[PickDesiredGradeController class] andCompletionBlock:^{
