@@ -11,6 +11,7 @@
 #import "PickDesiredGradeController.h"
 #import "AttributesViewController.h"
 #import "ActionPlanViewController.h"
+#import "MyActionViewController.h"
 
 @interface InstructionsViewController ()
 
@@ -58,7 +59,7 @@
         titelLabel.text = @"Desired Grade";
         instructionString = @"Now you are in the driver’s seat! Grade yourself on each of the 10 Life factors. Grade each factor before moving on to the next. Being honest with yourself will produce a more realistic Life+Grade to later work with.";
         
-    } else if (localClass == [AttributesViewController class]) {
+    } else if (localClass == [MyActionViewController class]) {
         titelLabel.text = @"Attributes";
         instructionString = @"Ok so maybe your current grade isn’t exactly what you were looking for or just maybe life is good right now. Either way, now is your chance to select the grade you want in life! Go ahead, reach for the stars and grab the grade you want.";
         
@@ -94,38 +95,55 @@
 
 - (void)setupView {
     
-
-
+    CGSize viewSize = self.view.frame.size;
+    CGFloat viewHeight = self.view.frame.size.height;
+    
+    UIImage *header = [UIImage imageNamed:@"header_image"];
+    CGFloat ratio = 1/4;
+    
     NSString *avFont = AVENIR_BLACK;
     UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
     UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
     
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(viewSize.width * 2, 0, viewSize.width, viewHeight)];
+    view.backgroundColor = [UIColor clearColor];
+    
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 66)];
+    titleView.backgroundColor = BLUE_COLOR;
+    // add objects here for nav bar
+    
+    CGFloat titleHeight = titleView.frame.size.height - 30;
+    CGFloat imageWidth = titleHeight *4;
+    UIImageView *headerView = [[UIImageView alloc] initWithImage:header];
+    headerView.frame = CGRectMake(self.view.frame.size.width/2 - imageWidth/2, 23, imageWidth, titleHeight);
+    
+    [titleView addSubview:headerView];
+    
+    [view addSubview:titleView];
     
     
-    UIImageView *firstCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 100, 100)];
+    UIImageView *firstCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(titleView.frame) + 10, 100, 100)];
     firstCheck.image = checkBox;
     firstCheck.contentMode = UIViewContentModeScaleAspectFit;
-    /*
-    [self.view addSubview:firstCheck];
-    */
+    [view addSubview:firstCheck];
     
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(firstCheck.frame) + 5, 20, 250, 40)];
-    title.text = @"Step One:";
+    
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(firstCheck.frame) + 5, CGRectGetMaxY(titleView.frame) + 20, 250, 40)];
+    title.text = @"Step bals:";
     title.textColor = GREY_COLOR;
     title.textAlignment = NSTextAlignmentLeft;
     title.font = FONT_AMATIC_BOLD(40);
-
+    [view addSubview:title];
     
     UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(firstCheck.frame) + 5, CGRectGetMaxY(title.frame), 200, 30)];
     currentGrade.text = @"Current Grade";
     currentGrade.textColor = GREY_COLOR;
     currentGrade.textAlignment = NSTextAlignmentLeft;
     currentGrade.font = [UIFont fontWithName:avFont size:24];
+    [view addSubview:currentGrade];
     
-    CGFloat boxWidth = self.view.frame.size.width;
     
-    
-    UIView *instructBox = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(currentGrade.frame) + 15, boxWidth - 30, boxWidth - 80)];
+    UIView *instructBox = [[UIView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(currentGrade.frame) + 15, 200, 200)];
     instructBox.backgroundColor = BLUE_COLOR;
     instructBox.layer.masksToBounds = NO;
     instructBox.layer.cornerRadius = 8;

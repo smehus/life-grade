@@ -969,7 +969,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f8f718f8-f68b-4709-ac47-17f1aeb2dd56";
+				PROVISIONING_PROFILE = "3ca01832-0491-496c-a3ec-321227f87622";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -996,7 +996,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f8f718f8-f68b-4709-ac47-17f1aeb2dd56";
+				PROVISIONING_PROFILE = "3ca01832-0491-496c-a3ec-321227f87622";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
