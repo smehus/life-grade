@@ -18,6 +18,7 @@
 #import "GradeCell.h"
 #import "Grade.h"
 #import "BFPaperButton.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 
 
@@ -202,13 +203,24 @@
     self.directions.lineBreakMode = NSLineBreakByWordWrapping;
     [self addSubview:self.directions];
     
+    
     UILabel *questionTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 150,50, 150, 200)];
     questionTitle.text = self.grade.question;
     questionTitle.font = FONT_AMATIC_REG(40);
     questionTitle.textColor = [UIColor whiteColor];
     questionTitle.numberOfLines = 0;
     questionTitle.lineBreakMode = NSLineBreakByWordWrapping;
+    [questionTitle sizeToFit];
     [self addSubview:questionTitle];
+    
+    UIButton *definition = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    [definition setFrame:CGRectMake(CGRectGetMaxX(questionTitle.frame) - 30, CGRectGetMaxY(questionTitle.frame) + 20, 30, 30)];
+    [definition setBackgroundColor:[UIColor clearColor]];
+    [[definition rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        NSLog(@"Open Definition Pop Over");
+        
+    }];
+    [self addSubview:definition];
     
     NSString *avFont = AVENIR_BLACK;
     
