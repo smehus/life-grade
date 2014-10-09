@@ -60,9 +60,31 @@
     
 }
 
+- (void)setTitleView {
+    
+    // TITLE VIEW SET
+    
+    UIColor *barColour = BLUE_COLOR;
+    self.navigationController.navigationBar.barTintColor = barColour;
+    
+    UIView *iv = [[UIView alloc] initWithFrame:CGRectMake(0,0,44*4,44)];
+    [iv setBackgroundColor:[UIColor clearColor]];
+    self.navigationItem.titleView = iv;
+    UIImage *titleImage = [UIImage imageNamed:@"header_image.png"];
+    
+    CGFloat imageHeight = 35.0f;
+    CGFloat imageWidth = imageHeight * 4;
+    UIImageView *titleImageView = [[UIImageView alloc] initWithImage:titleImage];
+    titleImageView.frame = CGRectMake(iv.frame.size.width/2 - imageWidth/2, 3, imageHeight * 4, imageHeight);
+    [iv addSubview:titleImageView];
+    self.navigationItem.titleView = iv;
+    
+    
+}
+
 - (void)setUpView {
     
-    self.title = @"Life+Grade";
+    [self setTitleView];
     
     UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
     UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];

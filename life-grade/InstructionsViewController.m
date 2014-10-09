@@ -22,6 +22,8 @@
 @implementation InstructionsViewController {
     Class localClass;
     NSString *instructionString;
+    NSString *titleString;
+    NSString *subTitleString;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,23 +50,37 @@
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"Life+Grade";
+
+    [self setTitleView];
+    
     UILabel *titelLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 44)];
     titelLabel.textAlignment = NSTextAlignmentCenter;
     NSString *blah = LIGHT_FONT;
     titelLabel.font = [UIFont fontWithName:blah size:30];
+    
+    UIImage *bgImage = [UIImage imageNamed:@"Lined-Paper-"];
+    UIImageView *bg = [[UIImageView alloc] initWithImage:bgImage];
+    bg.frame = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:bg];
+    
+
 
     
     if (localClass == [PickDesiredGradeController class]) {
-        titelLabel.text = @"Desired Grade";
-        instructionString = @"Now you are in the driver’s seat! Grade yourself on each of the 10 Life factors. Grade each factor before moving on to the next. Being honest with yourself will produce a more realistic Life+Grade to later work with.";
-        
-    } else if (localClass == [MyActionViewController class]) {
-        titelLabel.text = @"Attributes";
+//        titelLabel.text = @"Desired Grade";
+        titleString = @"Step Two";
+        subTitleString = @"Desired Grade";
         instructionString = @"Ok so maybe your current grade isn’t exactly what you were looking for or just maybe life is good right now. Either way, now is your chance to select the grade you want in life! Go ahead, reach for the stars and grab the grade you want.";
         
+    } else if (localClass == [MyActionViewController class]) {
+//        titelLabel.text = @"Attributes";
+        titleString = @"Step Three";
+        subTitleString = @"Action Plan";
+        instructionString = @"This is where your journey begins, so sit tight and enjoy the ride. Each part of the Action Plan will get you one more step closer to your desired grade. The Action Plan will give you the direction you are looking for and a clear path to your higher grade in life.";
+        
     } else if (localClass == [ActionPlanViewController class]) {
-        titelLabel.text = @"Action Plan";
+//        titelLabel.text = @"Action Plan";
+        titleString = @"Step Three";
         instructionString = @"This is where your journey begins, so sit tight and enjoy the ride. Each part of the Action Plan will get you one more step closer to your desired grade. The Action Plan will give you the direction you are looking for and a clear path to your higher grade in life.";
         
     }
@@ -87,11 +103,35 @@
     [self setupView];
 }
 
+- (void)setTitleView {
+    
+    // TITLE VIEW SET
+    
+    UIColor *barColour = BLUE_COLOR;
+    self.navigationController.navigationBar.barTintColor = barColour;
+    
+    UIView *iv = [[UIView alloc] initWithFrame:CGRectMake(0,0,44*4,44)];
+    [iv setBackgroundColor:[UIColor clearColor]];
+    self.navigationItem.titleView = iv;
+    UIImage *titleImage = [UIImage imageNamed:@"header_image.png"];
+    
+    CGFloat imageHeight = 35.0f;
+    CGFloat imageWidth = imageHeight * 4;
+    UIImageView *titleImageView = [[UIImageView alloc] initWithImage:titleImage];
+    titleImageView.frame = CGRectMake(iv.frame.size.width/2 - imageWidth/2, 3, imageHeight * 4, imageHeight);
+    [iv addSubview:titleImageView];
+    self.navigationItem.titleView = iv;
+    
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 
 }
+
+
 
 - (void)setupView {
     
@@ -122,28 +162,29 @@
     [view addSubview:titleView];
     
     
-    UIImageView *firstCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(titleView.frame) + 10, 100, 100)];
+    UIImageView *firstCheck = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 100, 100)];
     firstCheck.image = checkBox;
     firstCheck.contentMode = UIViewContentModeScaleAspectFit;
-    [view addSubview:firstCheck];
+    [self.view addSubview:firstCheck];
     
     
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(firstCheck.frame) + 5, CGRectGetMaxY(titleView.frame) + 20, 250, 40)];
-    title.text = @"Step bals:";
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(firstCheck.frame) + 5, firstCheck.frame.origin.y, 250, 40)];
+    title.text = titleString;
     title.textColor = GREY_COLOR;
     title.textAlignment = NSTextAlignmentLeft;
     title.font = FONT_AMATIC_BOLD(40);
-    [view addSubview:title];
+    [self.view addSubview:title];
     
     UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(firstCheck.frame) + 5, CGRectGetMaxY(title.frame), 200, 30)];
-    currentGrade.text = @"Current Grade";
+    currentGrade.text = subTitleString;
     currentGrade.textColor = GREY_COLOR;
     currentGrade.textAlignment = NSTextAlignmentLeft;
     currentGrade.font = [UIFont fontWithName:avFont size:24];
-    [view addSubview:currentGrade];
+    [self.view addSubview:currentGrade];
     
+    CGFloat boxWidth = self.view.frame.size.width;
     
-    UIView *instructBox = [[UIView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(currentGrade.frame) + 15, 200, 200)];
+    UIView *instructBox = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(currentGrade.frame) + 15, boxWidth - 30, boxWidth - 80)];
     instructBox.backgroundColor = BLUE_COLOR;
     instructBox.layer.masksToBounds = NO;
     instructBox.layer.cornerRadius = 8;
@@ -157,6 +198,7 @@
     instructTitle.textColor = [UIColor whiteColor];
     instructTitle.textAlignment = NSTextAlignmentCenter;
     [instructBox addSubview:instructTitle];
+
     
     
     

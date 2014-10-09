@@ -76,9 +76,11 @@
     
     [self performFetch];
     
-    UIColor *barColour = GREEN_COLOR;
+    UIColor *barColour = BLUE_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
     
+    
+    [self setTitleView];
     self.gradeArray = @[@{@"grade" : @"A+", @"GradeNum" : @12},
                      @{ @"grade" : @"A", @"GradeNum" : @11},
                      @{@"grade" : @"A-", @"GradeNum" : @10},
@@ -132,6 +134,24 @@
     [self.collectionView registerClass:[DesiredCell class] forCellWithReuseIdentifier:@"Cell"];
     
     [self.view addSubview:self.collectionView];
+    
+}
+
+- (void)setTitleView {
+    
+    // TITLE VIEW SET
+    UIView *iv = [[UIView alloc] initWithFrame:CGRectMake(0,0,44*4,44)];
+    [iv setBackgroundColor:[UIColor clearColor]];
+    self.navigationItem.titleView = iv;
+    UIImage *titleImage = [UIImage imageNamed:@"header_image.png"];
+    
+    CGFloat imageHeight = 35.0f;
+    CGFloat imageWidth = imageHeight * 4;
+    UIImageView *titleImageView = [[UIImageView alloc] initWithImage:titleImage];
+    titleImageView.frame = CGRectMake(iv.frame.size.width/2 - imageWidth/2, 3, imageHeight * 4, imageHeight);
+    [iv addSubview:titleImageView];
+    self.navigationItem.titleView = iv;
+    
     
 }
 
