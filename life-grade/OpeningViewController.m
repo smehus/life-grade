@@ -202,11 +202,15 @@
         [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
             if (user) {
                 
+                PFQuery *query = [PFQuery queryWithClassName:@"Grade"];
+                [query whereKey:@"user" equalTo:user];
+                NSArray *userGrades = [query findObjects];
+                
                 FinalGradeViewController *final = [[FinalGradeViewController alloc] init];
                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:final];
                 [self.revealViewController setFrontViewController:nav];
                 
-                NSLog(@"SIGNIN SUCCESS");
+                NSLog(@"SIGNIN SUCCESS %@", [userGrades firstObject]);
                 
                 // Need to set fetched grades from parse
                 

@@ -207,6 +207,10 @@
             [indicatorView stopAnimating];
             if (user) {
                 
+                PFQuery *query = [PFQuery queryWithClassName:@"Grade"];
+                [query whereKey:@"user" equalTo:user];
+                NSArray *userGrades = [query findObjects];
+                
                 FinalGradeViewController *final = [[FinalGradeViewController alloc] init];
                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:final];
 
