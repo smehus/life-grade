@@ -156,12 +156,10 @@
     someText.lineBreakMode = NSLineBreakByWordWrapping;
     [self.specificView addSubview:someText];
     
-    UILabel *typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x + 10, CGRectGetMaxY(someText.frame) + 10, self.specificView.bounds.size.width - 20, 50)];
+    UITextField *typeLabel = [[UITextField alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x + 10, CGRectGetMaxY(someText.frame) + 10, self.specificView.bounds.size.width - 20, 50)];
     typeLabel.font = [UIFont fontWithName:font size:36];
     typeLabel.textAlignment = NSTextAlignmentCenter;
-    typeLabel.text = @"Type?";
-    typeLabel.numberOfLines = 0;
-    typeLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    typeLabel.placeholder = @"Type";
     typeLabel.layer.borderWidth = 1.0f;
     typeLabel.layer.borderColor = greenCol.CGColor;
     [self.specificView addSubview:typeLabel];

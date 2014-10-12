@@ -501,8 +501,10 @@
     }
 }
 
-
+//!!!!: Ballsfacecokdbacfial
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    self.collectionView.scrollEnabled = NO;
     
     if (self.didSelect == YES) {
         self.didSelect = NO;
@@ -564,6 +566,7 @@
 
 - (void)didPickAnswer:(NSIndexPath *)idx withGrade:(Grade *)grade {
     
+    self.collectionView.scrollEnabled = YES;
     self.stepLabel.hidden = NO;
     self.stepTitleLabel.hidden = NO;
     

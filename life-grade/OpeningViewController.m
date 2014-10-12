@@ -20,8 +20,6 @@
 #import "MainAppDelegate.h"
 
 
-
-
 @interface OpeningViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) SWRevealViewController *myRevealController;
 @property (strong, nonatomic) UILabel *LifeLabel;
@@ -93,7 +91,7 @@
     
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(20, viewHeight - 25, self.view.frame.size.width - 40, 20)];
     self.pageControl.currentPage = 0;
-    self.pageControl.numberOfPages = 2;
+    self.pageControl.numberOfPages = 3;
     self.pageControl.currentPageIndicatorTintColor = GREEN_COLOR;
     self.pageControl.pageIndicatorTintColor = GREY_COLOR;
 

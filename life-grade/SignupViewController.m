@@ -17,6 +17,7 @@
 #import "IQKeyboardReturnKeyHandler.h"
 #import "MainAppDelegate.h"
 
+
 @interface SignupViewController () <UITextFieldDelegate>
 
 @property (nonatomic, strong) UITextField *userNameField;
@@ -164,6 +165,8 @@
     //3
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [indicatorView stopAnimating];
+        
+        
         if (!error) {
             //The registration was successful, go to the wall
             NSLog(@"***SIGNUP SUCCESS");
@@ -186,9 +189,26 @@
             
         } else {
             //Something bad has occurred
+            
+            /*
             NSString *errorString = [[error userInfo] objectForKey:@"error"];
             UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             [errorAlertView show];
+            */
+            
+            NSString *email = self.userNameField.text;
+            NSString *pw = self.passwordTextField.text;
+            
+            [[NSUserDefaults standardUserDefaults] setObject:email forKey:@"email"];
+            [[NSUserDefaults standardUserDefaults] setObject:pw forKey:@"password"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            
+            FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
+            [self.revealViewController setFrontViewController:nav];
+            
+            
         }
     }];
     
