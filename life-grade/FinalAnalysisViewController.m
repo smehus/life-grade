@@ -1,3 +1,4 @@
+
 //
 //  FinalAnalysisViewController.m
 //  life-grade
@@ -209,10 +210,14 @@
         [self.questions addObject:grade];
         
     }];
+    
 }
 
 #pragma mark - Get the Saved ' Answer '
 
+
+//!!!!: when logging out - i delete core data - so when log in it fetches data from parse, but doesnt' save to coredata
+// so it looks for data in core data that isn't there and then tries to save it to parse - crash
 - (void)fetchAnswers {
     
     del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -233,6 +238,8 @@
     }
     // One instance of Answer
     self.fetchedAnswers = [foundObjects lastObject];
+    
+    
     [self saveToParse];
     NSNumber *num = self.fetchedAnswers.finalGrade;
     float balls = [num floatValue];
@@ -584,7 +591,9 @@
     post[@"questionNine"] = self.fetchedAnswers.questionNine;
     post[@"questionTen"] = self.fetchedAnswers.questionTen;
     post[@"desiredGrade"] = self.fetchedAnswers.desiredGrade;
-    NSLog(@"FINALDESIRE %@", self.fetchedAnswers.desiredGrade);
+    post[@"finalGrade"] = self.fetchedAnswers.finalGrade;
+    
+    NSLog(@"FINALDESIRE %@", self.fetchedAnswers.finalGrade);
     PFUser *user = [PFUser currentUser];
     
     user[@"desiredGrade"] = self.fetchedAnswers.desiredGrade;

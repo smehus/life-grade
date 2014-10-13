@@ -58,7 +58,7 @@
 //    [player setObject:[NSNumber numberWithInt:1230] forKey:@"Score"];//2
 //    [player save];//3
 //
-    __block SWRevealViewController *mainRevealController;
+    __block  SWRevealViewController *mainRevealController;
     
     MenuViewController *rearViewController = [[MenuViewController alloc] init];
     rearViewController.managedObjectContext = self.managedObjectContext;

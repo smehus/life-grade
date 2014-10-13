@@ -203,8 +203,47 @@
                 PFQuery *query = [PFQuery queryWithClassName:@"Grade"];
                 [query whereKey:@"user" equalTo:user];
                 NSArray *userGrades = [query findObjects];
+                PFObject *grades = [userGrades firstObject];
+                NSNumber* qOne = [grades objectForKey:@"questionOne"];
+                NSNumber* qTwo = [grades objectForKey:@"questionTwo"];
+                NSNumber* qThree = [grades objectForKey:@"questionThree"];
+                NSNumber* qFour = [grades objectForKey:@"questionFour"];
+                NSNumber* qFive = [grades objectForKey:@"questionFive"];
+                NSNumber* qSix = [grades objectForKey:@"questionSix"];
+                NSNumber* qSeven = [grades objectForKey:@"questionSeven"];
+                NSNumber* qEight = [grades objectForKey:@"questionEight"];
+                NSNumber* qNine = [grades objectForKey:@"questionNine"];
+                NSNumber* qTen = [grades objectForKey:@"questionTen"];
+                NSNumber *finalNum = [grades objectForKey:@"finalGrade"];
+
                 
-                FinalGradeViewController *final = [[FinalGradeViewController alloc] init];
+                // NEED TO SAVE TO CORE DATA
+                
+                MainAppDelegate *dela = (MainAppDelegate *)[[UIApplication sharedApplication] delegate];
+                
+                Answers *answers = [NSEntityDescription insertNewObjectForEntityForName:@"Answers" inManagedObjectContext:dela.managedObjectContext];
+                
+                answers.questionOne = qOne;
+                answers.questionTwo = qTwo;
+                answers.questionThree = qThree;
+                answers.questionFour = qFour;
+                answers.questionFive = qFive;
+                answers.questionSix = qSix;
+                answers.questionSeven = qSeven;
+                answers.questionEight = qEight;
+                answers.questionNine = qNine;
+                answers.questionTen = qTen;
+                answers.finalGrade = finalNum;
+
+
+                
+                NSError *error;
+                if (![dela.managedObjectContext save:&error]) {
+                    NSLog(@"Error: %@", error);
+                    abort();
+                }
+                
+                FinalAnalysisViewController *final = [[FinalAnalysisViewController alloc] init];
                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:final];
                 [self.revealViewController setFrontViewController:nav];
                 
