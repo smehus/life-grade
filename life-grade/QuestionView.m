@@ -219,6 +219,10 @@
     [[definition rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         NSLog(@"Open Definition Pop Over");
         
+        
+        
+        
+        
     }];
     [self addSubview:definition];
     
@@ -297,6 +301,9 @@
 //        cell.backgroundColor = [UIColor blueColor];
         cell.layer.borderWidth = 5.0f;
         cell.layer.borderColor = [UIColor whiteColor].CGColor;
+    } else {
+        cell.layer.borderWidth = 0.0f;
+        cell.layer.borderColor = [UIColor clearColor].CGColor;
     }
     
 

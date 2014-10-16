@@ -352,7 +352,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/MainAppDelegate.m"
@@ -365,13 +365,13 @@
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[MainAppDelegate application:didFinishLaunchingWithOptions:]"
                   moduleName = "life-grade"
                   urlString = "file:///Users/scottmehus/Documents/LifeGrade/life-grade/life-grade/MainAppDelegate.m"
-                  timestampString = "434923926.4537"
+                  timestampString = "435025792.466315"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "98"
@@ -379,13 +379,13 @@
                   offsetFromSymbolStart = "2759">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__61-[MainAppDelegate application:didFinishLaunchingWithOptions:]_block_invoke"
                   moduleName = "life-grade"
                   urlString = "file:///Users/scottmehus/Documents/LifeGrade/life-grade/life-grade/MainAppDelegate.m"
-                  timestampString = "434923926.454014"
+                  timestampString = "435025792.466662"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "98"
@@ -754,6 +754,22 @@
             startingLineNumber = "238"
             endingLineNumber = "238"
             landmarkName = "-signIn"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "life-grade/BeginGoalViewController.m"
+            timestampString = "435025740.664896"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "-setupSpecificView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
