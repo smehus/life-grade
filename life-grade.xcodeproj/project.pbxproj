@@ -90,6 +90,7 @@
 		A5CA589B19E069F800940841 /* Amatic-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5CA589919E069F800940841 /* Amatic-Bold.ttf */; };
 		A5CA589C19E069F800940841 /* AmaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5CA589A19E069F800940841 /* AmaticSC-Regular.ttf */; };
 		A5CA589E19E08E1400940841 /* header_image.png in Resources */ = {isa = PBXBuildFile; fileRef = A5CA589D19E08E1400940841 /* header_image.png */; };
+		A5CC36FC19EF6274005F899D /* FactorDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CC36FB19EF6274005F899D /* FactorDescriptionViewController.m */; };
 		A5E85E291927B19700AAA4B6 /* GradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85E281927B19700AAA4B6 /* GradeCell.m */; };
 		A5E85E2B1927B1B500AAA4B6 /* GradeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */; };
 		A5E85E2E1927B81100AAA4B6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85E2D1927B81100AAA4B6 /* Grade.m */; };
@@ -237,6 +238,8 @@
 		A5CA589919E069F800940841 /* Amatic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Amatic-Bold.ttf"; sourceTree = "<group>"; };
 		A5CA589A19E069F800940841 /* AmaticSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AmaticSC-Regular.ttf"; sourceTree = "<group>"; };
 		A5CA589D19E08E1400940841 /* header_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_image.png; sourceTree = "<group>"; };
+		A5CC36FA19EF6274005F899D /* FactorDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactorDescriptionViewController.h; sourceTree = "<group>"; };
+		A5CC36FB19EF6274005F899D /* FactorDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactorDescriptionViewController.m; sourceTree = "<group>"; };
 		A5E85E271927B19700AAA4B6 /* GradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeCell.h; sourceTree = "<group>"; };
 		A5E85E281927B19700AAA4B6 /* GradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeCell.m; sourceTree = "<group>"; };
 		A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradeCell.xib; sourceTree = "<group>"; };
@@ -551,6 +554,8 @@
 				A5E85E271927B19700AAA4B6 /* GradeCell.h */,
 				A5E85E281927B19700AAA4B6 /* GradeCell.m */,
 				A5E85E2A1927B1B500AAA4B6 /* GradeCell.xib */,
+				A5CC36FA19EF6274005F899D /* FactorDescriptionViewController.h */,
+				A5CC36FB19EF6274005F899D /* FactorDescriptionViewController.m */,
 			);
 			name = Grading;
 			sourceTree = "<group>";
@@ -794,6 +799,7 @@
 				494692B819CB736000869599 /* ChoseView.m in Sources */,
 				A53DA43119C1391700EAC693 /* ChecklistViewController.m in Sources */,
 				494692C119CB7B5900869599 /* BeginGoalViewController.m in Sources */,
+				A5CC36FC19EF6274005F899D /* FactorDescriptionViewController.m in Sources */,
 				A57829BD19DE27D700A4510C /* AnalysisBlock.m in Sources */,
 				A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,

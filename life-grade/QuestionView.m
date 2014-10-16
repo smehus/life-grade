@@ -19,12 +19,16 @@
 #import "Grade.h"
 #import "BFPaperButton.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
-
+#import <WYPopoverController/WYPopoverController.h>
+#import "FactorDescriptionViewController.h"
 
 
 #define kOffset 10.0
 
-@interface QuestionView () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate> {
+@interface QuestionView () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, WYPopoverControllerDelegate> {
+    
+    BOOL popOverOpen;
+    WYPopoverController *popoverController;
     
 
 }
@@ -218,11 +222,7 @@
     [definition setBackgroundColor:[UIColor clearColor]];
     [[definition rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         NSLog(@"Open Definition Pop Over");
-        
-        
-        
-        
-        
+        [self openDescription:definition];
     }];
     [self addSubview:definition];
     
@@ -262,6 +262,80 @@
     
 }
 
+- (void)openDescription:(id)sender {
+    
+    popOverOpen = YES;
+    UIView *btn = (UIView *)sender;
+    UIColor *white = [UIColor whiteColor];
+    UIColor *clear = [UIColor clearColor];
+    
+    [WYPopoverController setDefaultTheme:[WYPopoverTheme theme]];
+    
+    WYPopoverBackgroundView *popoverAppearance = [WYPopoverBackgroundView appearance];
+    
+    [popoverAppearance setOuterCornerRadius:4];
+    [popoverAppearance setOuterShadowBlurRadius:5];
+    [popoverAppearance setOuterShadowColor:[UIColor blackColor]];
+    [popoverAppearance setOuterShadowOffset:CGSizeMake(0, 0)];
+    
+    [popoverAppearance setGlossShadowColor:[UIColor darkGrayColor]];
+    [popoverAppearance setGlossShadowOffset:CGSizeMake(0, 0)];
+    
+    [popoverAppearance setBorderWidth:0];
+    [popoverAppearance setArrowHeight:10];
+    [popoverAppearance setArrowBase:20];
+    
+    [popoverAppearance setInnerCornerRadius:4];
+    [popoverAppearance setInnerShadowBlurRadius:0];
+    [popoverAppearance setInnerShadowColor:[UIColor blackColor]];
+    [popoverAppearance setInnerShadowOffset:CGSizeMake(0, 0)];
+    
+    [popoverAppearance setFillTopColor:white];
+    [popoverAppearance setFillBottomColor:white];
+    [popoverAppearance setOuterStrokeColor:clear];
+    [popoverAppearance setInnerStrokeColor:clear];
+    
+    //    UINavigationBar* navBarInPopoverAppearance = [UINavigationBar appearanceWhenContainedIn:[UINavigationController class], [WYPopoverController class], nil];
+    //    [navBarInPopoverAppearance setTitleTextAttributes: @{
+    //                                                         UITextAttributeTextColor : [UIColor whiteColor],
+    //                                                         UITextAttributeTextShadowColor : [UIColor clearColor],
+    //                                                         UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetMake(0, -1)]}];
+    
+    FactorDescriptionViewController *controller;
+    controller = [[FactorDescriptionViewController alloc] init];
+    controller.preferredContentSize = CGSizeMake(320, 200);
+    controller.title = @"Select Time";
+    
+    UIBarButtonItem *b = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(close:)];
+    
+    [b setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:[UIColor redColor], NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
+    [controller.navigationItem setRightBarButtonItem:b];
+
+    
+    UINavigationController *contentViewController = [[UINavigationController alloc] initWithRootViewController:controller];
+    
+    popoverController = [[WYPopoverController alloc] initWithContentViewController:controller];
+    popoverController.delegate = self;
+    popoverController.passthroughViews = @[btn];
+    popoverController.popoverLayoutMargins = UIEdgeInsetsMake(10, 10, 10, 10);
+    popoverController.wantsDefaultContentAppearance = NO;
+    
+    CGRect r = CGRectMake(self.frame.size.width - 60, 0, 0, 0);
+    [popoverController presentPopoverFromRect:btn.frame inView:self permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES options:WYPopoverAnimationOptionFadeWithScale completion:^{
+        
+    }];
+    
+}
+
+- (void)close:(id)sender
+{
+    [popoverController dismissPopoverAnimated:YES completion:^{
+        popOverOpen = NO;
+        [self popoverControllerDidDismissPopover:popoverController];
+        
+    }];
+}
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

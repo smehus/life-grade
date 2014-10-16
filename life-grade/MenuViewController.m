@@ -137,12 +137,14 @@
     cell.backgroundColor = [UIColor clearColor];
 
     
+    
     if (indexPath.section == 0) {
         PFUser *user = [PFUser currentUser];
         if (user) {
             cell.textLabel.text = user.email;
         } else {
             cell.textLabel.text = @"Not Signed In";
+            cell.userInteractionEnabled = NO;
         }
 
         NSString *sf = LIGHT_FONT;
