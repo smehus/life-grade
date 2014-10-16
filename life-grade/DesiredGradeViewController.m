@@ -118,7 +118,8 @@
        
         Grade *grade = [[Grade alloc] init];
         grade.question = obj[@"question"];
-    
+        grade.factorDescription = obj[@"description"];
+        
         [self.questions addObject:grade];
         
     }];
