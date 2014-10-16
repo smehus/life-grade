@@ -64,6 +64,8 @@
 @property (nonatomic, strong) Grade *selectedGrade;
 @property (nonatomic, strong) GradeCell *selectedGradeCelll;
 
+@property (nonatomic, strong) Grade *currentGrade;
+
 
 
 @end
@@ -74,14 +76,29 @@
     
     CGFloat grownCellWidth;
     CGFloat grownCellHeight;
+    UIButton *definitionButton;
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        
         // Initialization code
         NSLog(@"JUST INIT");
+        [self setUpView];
+    }
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame andQuestion:(Grade *)grade {
+    
+    if (self = [super initWithFrame:frame]) {
+        
+        self.grade = grade;
+        self.currentGrade = grade;
+        
         [self setUpView];
     }
     return self;
@@ -93,8 +110,7 @@
     
     self = [super init];
     if (self == nil) {
-        
-
+    
         NSLog(@"INIT WITH QUESTION");
         
     }
@@ -210,6 +226,8 @@
     
     UILabel *questionTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 150,50, 150, 200)];
     questionTitle.text = self.grade.question;
+    
+    
     questionTitle.font = FONT_AMATIC_REG(40);
     questionTitle.textColor = [UIColor whiteColor];
     questionTitle.numberOfLines = 0;
@@ -217,14 +235,23 @@
     [questionTitle sizeToFit];
     [self addSubview:questionTitle];
     
-    UIButton *definition = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    [definition setFrame:CGRectMake(CGRectGetMaxX(questionTitle.frame) - 30, CGRectGetMaxY(questionTitle.frame) + 20, 30, 30)];
-    [definition setBackgroundColor:[UIColor clearColor]];
-    [[definition rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+    definitionButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    [definitionButton setFrame:CGRectMake(CGRectGetMaxX(questionTitle.frame) - 30, CGRectGetMaxY(questionTitle.frame) + 20, 30, 30)];
+    [definitionButton setBackgroundColor:[UIColor clearColor]];
+    [[definitionButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         NSLog(@"Open Definition Pop Over");
-        [self openDescription:definition];
+        
+        if (!popOverOpen) {
+            definitionButton.userInteractionEnabled = NO;
+            [self openDescription:definitionButton];
+        } else {
+            
+            [self close:definitionButton];
+
+        }
+        
     }];
-    [self addSubview:definition];
+    [self addSubview:definitionButton];
     
     NSString *avFont = AVENIR_BLACK;
     
@@ -304,7 +331,10 @@
     
     
     FactorDescriptionViewController *controller;
-    controller = [[FactorDescriptionViewController alloc] initWithDescription:self.grade.factorDescription      ];
+    
+    NSString *desc = self.currentGrade.factorDescription;
+    
+    controller = [[FactorDescriptionViewController alloc] initWithDescription:desc];
     controller.preferredContentSize = CGSizeMake(320, 200);
     controller.title = @"Select Time";
     
@@ -334,12 +364,26 @@
 {
     [popoverController dismissPopoverAnimated:YES completion:^{
         popOverOpen = NO;
+        definitionButton.userInteractionEnabled = YES;
         [self popoverControllerDidDismissPopover:popoverController];
         
     }];
 }
 
+#pragma mark - WYPopOver Delegate
 
+- (BOOL)popoverControllerShouldDismissPopover:(WYPopoverController *)controller
+{
+    return YES;
+}
+
+- (void)popoverControllerDidDismissPopover:(WYPopoverController *)controller
+{
+    popOverOpen = NO;
+    popoverController.delegate = nil;
+    popoverController = nil;
+    definitionButton.userInteractionEnabled = YES;
+}
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     return self.grades.count;

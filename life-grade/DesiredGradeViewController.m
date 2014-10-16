@@ -522,8 +522,8 @@
     
     Grade *g = [self.questions objectAtIndex:indexPath.row];
     
-    QuestionView *view = [[QuestionView alloc] initWithQuestion:[self.questions objectAtIndex:indexPath.row]];
-    
+//    QuestionView *view = [[QuestionView alloc] initWithQuestion:[self.questions objectAtIndex:indexPath.row]];
+    QuestionView *view = [[QuestionView alloc] initWithFrame:CGRectZero andQuestion:g];
     
     Grade *theG = [[Grade alloc] init];
     theG.question = @"Balls";

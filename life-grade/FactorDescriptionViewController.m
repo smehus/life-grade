@@ -18,9 +18,11 @@
 
 - (id)initWithDescription:(NSString *)description {
     if (self = [super init]) {
+        
         self.factorDescription = description;
         
-        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.view.frame.size.width, self.view.frame.size.height - 10)];
+        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 225, 180)];
+        self.descriptionLabel.font = FONT_AMATIC_BOLD(24);
         self.descriptionLabel.numberOfLines = 0;
         self.descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.descriptionLabel.textAlignment = NSTextAlignmentCenter;
