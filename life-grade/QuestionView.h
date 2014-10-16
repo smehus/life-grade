@@ -24,4 +24,5 @@
 @property (nonatomic, strong) Grade *grade;
 
 - (id)initWithQuestion:(Grade *)grade;
+- (id)initWithFrame:(CGRect)frame andQuestion:(Grade *)grade;
 @end

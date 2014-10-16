@@ -519,7 +519,12 @@
     self.selectedCellDefaultFrame = cell.frame;
     self.selectedCellDefaultTransform = cell.transform;
     NSLog(@"LSKDJFASLDJF %@", [[self.questions objectAtIndex:indexPath.row] question]);
+    
+    Grade *g = [self.questions objectAtIndex:indexPath.row];
+    
     QuestionView *view = [[QuestionView alloc] initWithQuestion:[self.questions objectAtIndex:indexPath.row]];
+    
+    
     Grade *theG = [[Grade alloc] init];
     theG.question = @"Balls";
     view.grade = theG;

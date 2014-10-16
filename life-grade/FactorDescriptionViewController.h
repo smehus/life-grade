@@ -10,4 +10,6 @@
 
 @interface FactorDescriptionViewController : UIViewController
 
+- (id)initWithDescription:(NSString *)description;
+
 @end

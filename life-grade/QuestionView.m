@@ -301,8 +301,10 @@
     //                                                         UITextAttributeTextShadowColor : [UIColor clearColor],
     //                                                         UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetMake(0, -1)]}];
     
+    
+    
     FactorDescriptionViewController *controller;
-    controller = [[FactorDescriptionViewController alloc] init];
+    controller = [[FactorDescriptionViewController alloc] initWithDescription:self.grade.factorDescription      ];
     controller.preferredContentSize = CGSizeMake(320, 200);
     controller.title = @"Select Time";
     
