@@ -259,19 +259,19 @@
     
     // need text inset - take from priv things
     
-    firstField = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, screenWidth - 20, 66)];
+    firstField = [[UITextField alloc] initWithFrame:CGRectMake(10, 150, screenWidth - 20, 44)];
     firstField.layer.borderColor = blueColor.CGColor;
     firstField.layer.borderWidth = 1.0f;
     firstField.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:firstField];
     
-    secondField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstField.frame) + 10, screenWidth - 20, 66)];
+    secondField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstField.frame) + 10, screenWidth - 20, 44)];
     secondField.layer.borderColor = blueColor.CGColor;
     secondField.layer.borderWidth = 1.0f;
     secondField.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:secondField];
     
-    thirdField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondField.frame) + 10, screenWidth - 20, 66)];
+    thirdField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondField.frame) + 10, screenWidth - 20, 44)];
     thirdField.layer.borderColor = blueColor.CGColor;
     thirdField.layer.borderWidth = 1.0f;
     thirdField.backgroundColor = [UIColor whiteColor];
