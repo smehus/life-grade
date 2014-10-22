@@ -221,15 +221,17 @@
         self.selectedCell = [NSIndexPath indexPathForRow:[self.fetchedAnswers.desiredGrade intValue] inSection:0];
         if (indexPath.row == self.selectedCell.row) {
             
-            cell.backgroundColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
-            cell.gradeLabel.textColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
+//            cell.backgroundColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+//            cell.gradeLabel.textColor = [UIColor colorWithRed:62.0/255.0 green:62.0/255.0 blue:62.0/255.0 alpha:1.0f];
             
         }
     }
     cell.cellDelegate = self;
     cell.nextButton.hidden = YES;
     cell.theIndex = indexPath;
-    cell.gradeLabel.text = [[self.gradeArray objectAtIndex:indexPath.row] objectForKey:@"grade"];    
+    NSString *gradeText = [[self.gradeArray objectAtIndex:indexPath.row] objectForKey:@"grade"];
+    NSLog(@"GRADE TEXT %@", gradeText);
+    cell.gradeLabel.text = gradeText;
     
     
     return cell;
