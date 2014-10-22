@@ -471,6 +471,7 @@
 
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     NSArray *subViews = [cell subviews];
     QuestionView *view = [subViews lastObject];
@@ -479,20 +480,20 @@
         self.shouldDeselectCell = NO;
         cell.selected = NO;
         
-//        [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-//        [UIView transitionWithView:cell
-//                          duration:0.2
-//                           options:UIViewAnimationOptionTransitionFlipFromLeft
-//                        animations:^{
-//                            collectionView.scrollEnabled = YES;
-//                            [cell setFrame:self.selectedCellDefaultFrame];
-//                            cell.transform = self.selectedCellDefaultTransform;
-//                            [view removeFromSuperview];
-//                        }
-//                        completion:^(BOOL finished) {
-//                            self.selectedCellDefaultFrame = CGRectZero;
-//                            //[collectionView reloadItemsAtIndexPaths:@[indexPath]];
-//                        }];
+        [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+        [UIView transitionWithView:cell
+                          duration:0.2
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                        animations:^{
+                            collectionView.scrollEnabled = YES;
+                            [cell setFrame:self.selectedCellDefaultFrame];
+                            cell.transform = self.selectedCellDefaultTransform;
+                            [view removeFromSuperview];
+                        }
+                        completion:^(BOOL finished) {
+                            self.selectedCellDefaultFrame = CGRectZero;
+                            //[collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                        }];
         
         return NO;
     }
@@ -500,6 +501,7 @@
         return YES;
 
     }
+    
 }
 
 //!!!!: Ballsfacecokdbacfial
@@ -565,10 +567,35 @@
     }
 }
 
+
+- (void)flipCellBackAtIndex:(NSIndexPath *)idx {
+    
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:idx];
+    NSArray *subViews = [cell subviews];
+    QuestionView *view = [subViews lastObject];
+    
+    cell.selected = NO;
+        
+    [self.collectionView deselectItemAtIndexPath:idx animated:YES];
+    [UIView transitionWithView:cell
+                      duration:0.2
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{
+                        self.collectionView.scrollEnabled = YES;
+                        [cell setFrame:CGRectMake(100, 100, 100, 100)];
+//                        [cell setFrame:self.selectedCellDefaultFrame];
+                        cell.transform = self.selectedCellDefaultTransform;
+                        [view removeFromSuperview];
+                    }
+                    completion:^(BOOL finished) {
+                        self.selectedCellDefaultFrame = CGRectZero;
+                        //[collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                    }];
+    
+    
+}
+
 #pragma mark - QuestonView Delegate
-
-
-//!!!!: the self.didSelect is off making it only save everyother grade
 
 - (void)didPickAnswer:(NSIndexPath *)idx withGrade:(Grade *)grade {
     
@@ -615,7 +642,7 @@
           
         }
         
-        
+    // scroll to item isn't being called at end - so keeps blue screen
     [self.collectionView reloadData];
         if (idx.row < 9) {
             
@@ -623,6 +650,7 @@
             
         } else {
             NSLog(@"Ballz");
+            
             self.nextButton.enabled = YES;
         }
    
