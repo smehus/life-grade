@@ -24,6 +24,9 @@
 #import "MainAppDelegate.h"
 #import "ChecklistViewController.h"
 #import "InstructionsViewController.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "BFPaperButton.h"
+
 
 
 
@@ -650,8 +653,18 @@
             
         } else {
             NSLog(@"Ballz");
-            
             self.nextButton.enabled = YES;
+            
+            BFPaperButton *button = [[BFPaperButton alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height - 70, self.view.frame.size.width - 20, 50) raised:NO];
+            UIColor *bc = GREEN_COLOR;
+            [button setTitle:@"Continue" forState:UIControlStateNormal];
+            [button setBackgroundColor:bc];
+            [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+                NSLog(@"button pressed");
+                [self finishedGrading];
+            }];
+            [self.view addSubview:button];
+            
         }
    
     }
