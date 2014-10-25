@@ -64,6 +64,8 @@
 @property (nonatomic, strong) UILabel *stepLabel;
 @property (nonatomic, strong) UILabel *stepTitleLabel;
 
+@property (nonatomic, strong) BFPaperButton *continueButton;
+
 
 
 @end
@@ -109,7 +111,7 @@
     
     self.didSelect = NO;
     
-    self.myGrades = [[NSMutableArray alloc] initWithCapacity:10];
+    self.myGrades = [[NSMutableArray alloc] initWithCapacity:1];
     self.questions = [[NSMutableArray alloc] initWithCapacity:10];
     
     
@@ -509,7 +511,7 @@
 
 //!!!!: Ballsfacecokdbacfial
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    self.continueButton.hidden = YES;
     self.collectionView.scrollEnabled = NO;
     
     if (self.didSelect == YES) {
@@ -602,6 +604,7 @@
 
 - (void)didPickAnswer:(NSIndexPath *)idx withGrade:(Grade *)grade {
     
+    self.continueButton.hidden = NO;
     self.collectionView.scrollEnabled = YES;
     self.stepLabel.hidden = NO;
     self.stepTitleLabel.hidden = NO;
@@ -653,20 +656,25 @@
             
         } else {
             NSLog(@"Ballz");
-            self.nextButton.enabled = YES;
-            
-            BFPaperButton *button = [[BFPaperButton alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height - 70, self.view.frame.size.width - 20, 50) raised:NO];
+
+        }
+    }
+    
+    if (self.myGrades.count == 10) {
+        
+        self.nextButton.enabled = YES;
+        if (!self.continueButton) {
+        self.continueButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height - 70, self.view.frame.size.width - 20, 50) raised:NO];
             UIColor *bc = GREEN_COLOR;
-            [button setTitle:@"Continue" forState:UIControlStateNormal];
-            [button setBackgroundColor:bc];
-            [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            [self.continueButton setTitle:@"Continue" forState:UIControlStateNormal];
+            [self.continueButton setBackgroundColor:bc];
+            [[self.continueButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
                 NSLog(@"button pressed");
                 [self finishedGrading];
             }];
-            [self.view addSubview:button];
-            
+            [self.view addSubview:self.continueButton];
         }
-   
+
     }
 }
 
