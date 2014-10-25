@@ -278,6 +278,7 @@
     }
 
     self.fetchedAnswers = [foundObjects lastObject];
+    
     NSLog(@"question bitch %@", self.fetchedAnswers);
     
 }
@@ -311,7 +312,7 @@
     
     UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
     UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
-    
+    cell.checkmark.image = checkMark;
     cell.checkmark.hidden = YES;
     cell.backgroundColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
     cell.layer.cornerRadius = 4.0f;
@@ -338,7 +339,7 @@
     cell.text.font = FONT_AMATIC_BOLD(30);
     cell.gradeLabel.font = FONT_AMATIC_BOLD(24);
     cell.checkbox.image = checkBox;
-    cell.checkmark.image = checkMark;
+
 
     
     if (grade.isAnswered) {
@@ -348,7 +349,7 @@
     }
     
     if (didFetchAnswers) {
-        
+        cell.checkmark.hidden = NO;
         NSNumber *num = [self getGradeForIndex:indexPath];
         cell.gradeLabel.text = [NSString stringWithFormat:@"GRADE %@", num];
     } else {

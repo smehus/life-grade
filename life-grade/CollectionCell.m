@@ -27,6 +27,8 @@
 
 - (void)setupView {
     
+    UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
+    self.checkmark.image = checkMark;
 
 }
 
