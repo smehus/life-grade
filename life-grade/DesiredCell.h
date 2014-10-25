@@ -22,4 +22,7 @@
 @property (nonatomic, weak) id<DesiredCellDelegate> cellDelegate;
 @property (nonatomic, strong) NSIndexPath *theIndex;
 
+- (void)setLargeFrame;
+- (void)setSmallFrame;
+
 @end

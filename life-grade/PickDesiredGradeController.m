@@ -242,18 +242,19 @@
     NSLog(@"selected item");
     
     _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
-    
+    DesiredCell *cell = (DesiredCell *)[collectionView cellForItemAtIndexPath:indexPath];
     [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         
         if (!self.isLarge) {
             [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
-            DesiredCell *cell = (DesiredCell *)[collectionView cellForItemAtIndexPath:indexPath];
+
             cell.nextButton.hidden = NO;
-            
             self.isLarge = YES;
+            [cell setLargeFrame];
         } else {
             [collectionView setCollectionViewLayout:self.smallLayout animated:YES];
             self.isLarge = NO;
+            [cell setSmallFrame];
         }
 
         

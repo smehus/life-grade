@@ -42,6 +42,19 @@
     return self;
 }
 
+- (void)setLargeFrame {
+    
+    self.gradeLabel.frame = CGRectMake(self.frame.size.width/2 - 100, 150, 200, 200);
+    self.gradeLabel.font = FONT_AMATIC_BOLD(150);
+    
+    
+}
+
+- (void)setSmallFrame {
+    
+    self.gradeLabel.frame = CGRectMake(0, self.frame.size.height/2 - 25, self.frame.size.width, 50);
+    self.gradeLabel.font = FONT_AMATIC_BOLD(48);
+}
 
 
 @end
