@@ -241,6 +241,8 @@
                 
                 Answers *answers = [NSEntityDescription insertNewObjectForEntityForName:@"Answers" inManagedObjectContext:dela.managedObjectContext];
              /*
+              *** does this work? ***
+              
                 answers.questionOne = [[self.myGrades objectAtIndex:0] gradeNum];
                 answers.questionTwo = [[self.myGrades objectAtIndex:1] gradeNum];
                 answers.questionThree = [[self.myGrades objectAtIndex:2] gradeNum];

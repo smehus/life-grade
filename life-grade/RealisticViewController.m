@@ -14,6 +14,7 @@
 #import "THDatePickerViewController.h"
 #import "SignupViewController.h"
 #import "ASValueTrackingSlider.h"
+#import "Answers.h"
 
 @interface RealisticViewController () <THDatePickerDelegate>
 
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) UITextField *thirdSupport;
 @property (nonatomic, strong) THDatePickerViewController *datePicker;
 @property (nonatomic, strong) NSDate *calDate;
+@property (nonatomic, strong) Answers *fetchedAnswers;
 
 @end
 
@@ -85,6 +87,28 @@
 
     
     [self setupScreen];
+}
+
+- (void)performFetch {
+
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
+        
+        
+        return;
+    }
+    
+    self.fetchedAnswers = [foundObjects lastObject];
+    NSLog(@"question bitch %@", self.fetchedAnswers.questionEight);
+    
 }
 
 - (void)setTitleView {
@@ -280,6 +304,8 @@
     UIButton *b = [self addNextButton];
     [[b rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
+        
+        [self save];
        
         SignupViewController *signUp = [[SignupViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:signUp];
@@ -326,6 +352,21 @@
 -(void)datePickerCancelPressed:(THDatePickerViewController *)datePicker {
     NSLog(@"huh?");
     [self.datePicker dismissSemiModalView];
+}
+
+- (void)save {
+    
+    self.fetchedAnswers.firstSupport = firstField.text;
+    self.fetchedAnswers.secondSupport = secondField.text;
+    self.fetchedAnswers.thirdSupport = thirdField.text;
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
+    
+    
 }
 
 

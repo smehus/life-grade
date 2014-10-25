@@ -96,6 +96,8 @@
         navCon = [[UINavigationController alloc] initWithRootViewController:self.finalGradeController];
 
         [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
+            
+            
             if (user) {
             
                 NSLog(@"SIGNIN SUCCESS");
@@ -108,8 +110,19 @@
                 NSLog(@"SIGNIN FAIL");
                 
                 mainRevealController = [[SWRevealViewController alloc]
-                                                                initWithRearViewController:rearViewController frontViewController:self.openingViewController];
+                                                                initWithRearViewController:rearViewController frontViewController:navCon];
    
+                
+                mainRevealController.rearViewRevealWidth = 200;
+                mainRevealController.rearViewRevealOverdraw = 320;
+                mainRevealController.bounceBackOnOverdraw = NO;
+                mainRevealController.stableDragOnOverdraw = YES;
+                mainRevealController.delegate = self;
+                
+                self.window.rootViewController = mainRevealController;
+                [self.window makeKeyAndVisible];
+                
+                
             }
         }];
         
@@ -122,6 +135,8 @@
                                                         initWithRearViewController:rearViewController frontViewController:self.openingViewController];
     
     }
+    
+    
 
 
 //

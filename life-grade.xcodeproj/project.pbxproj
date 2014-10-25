@@ -66,6 +66,8 @@
 		65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF079190F52A70087511B /* HAPaperCollectionViewController.m */; };
 		A50D5DA719AC2A4900A85175 /* life_grade_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A50D5DA619AC2A4900A85175 /* life_grade_logo.png */; };
 		A51B180C19809D7B00C0EDA9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B180B19809D7B00C0EDA9 /* AboutViewController.m */; };
+		A5254E1619FAFD0300A4BDAB /* CompletionDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5254E1519FAFD0300A4BDAB /* CompletionDateView.m */; };
+		A5254E1919FB0C5A00A4BDAB /* SupportTeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5254E1819FB0C5A00A4BDAB /* SupportTeamView.m */; };
 		A52A2BA91977634A00916901 /* DesiredCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A2BA81977634A00916901 /* DesiredCell.m */; };
 		A534B0241963B19600255EC2 /* SignInView.m in Sources */ = {isa = PBXBuildFile; fileRef = A534B0231963B19600255EC2 /* SignInView.m */; };
 		A5376A2818ED073C000C6BD8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5376A2718ED073C000C6BD8 /* Parse.framework */; };
@@ -199,6 +201,10 @@
 		A50D5DA619AC2A4900A85175 /* life_grade_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = life_grade_logo.png; sourceTree = "<group>"; };
 		A51B180A19809D7B00C0EDA9 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		A51B180B19809D7B00C0EDA9 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		A5254E1419FAFD0300A4BDAB /* CompletionDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletionDateView.h; sourceTree = "<group>"; };
+		A5254E1519FAFD0300A4BDAB /* CompletionDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletionDateView.m; sourceTree = "<group>"; };
+		A5254E1719FB0C5A00A4BDAB /* SupportTeamView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportTeamView.h; sourceTree = "<group>"; };
+		A5254E1819FB0C5A00A4BDAB /* SupportTeamView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportTeamView.m; sourceTree = "<group>"; };
 		A52A2BA71977634A00916901 /* DesiredCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesiredCell.h; sourceTree = "<group>"; };
 		A52A2BA81977634A00916901 /* DesiredCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesiredCell.m; sourceTree = "<group>"; };
 		A534B0221963B19600255EC2 /* SignInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInView.h; sourceTree = "<group>"; };
@@ -518,6 +524,10 @@
 				A5F66B6C19DB874300B16E8F /* AnalysisView.m */,
 				A57829BB19DE27D700A4510C /* AnalysisBlock.h */,
 				A57829BC19DE27D700A4510C /* AnalysisBlock.m */,
+				A5254E1419FAFD0300A4BDAB /* CompletionDateView.h */,
+				A5254E1519FAFD0300A4BDAB /* CompletionDateView.m */,
+				A5254E1719FB0C5A00A4BDAB /* SupportTeamView.h */,
+				A5254E1819FB0C5A00A4BDAB /* SupportTeamView.m */,
 			);
 			name = FinalGrade;
 			sourceTree = "<group>";
@@ -786,6 +796,7 @@
 				65BFF07A190F52A70087511B /* HAPaperCollectionViewController.m in Sources */,
 				A5E85E291927B19700AAA4B6 /* GradeCell.m in Sources */,
 				655EC61518DF5FE20036515F /* main.m in Sources */,
+				A5254E1919FB0C5A00A4BDAB /* SupportTeamView.m in Sources */,
 				65714FFD191475080034009A /* HAViewController.m in Sources */,
 				6533F55E18E190630017C7D6 /* DesiredGradeViewController.m in Sources */,
 				655EC64718DF626E0036515F /* OpeningViewController.m in Sources */,
@@ -816,6 +827,7 @@
 				6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */,
 				A53DA43419C1474400EAC693 /* InstructionsViewController.m in Sources */,
 				65714FFE191475080034009A /* HASmallCollectionViewController.m in Sources */,
+				A5254E1619FAFD0300A4BDAB /* CompletionDateView.m in Sources */,
 				A5C08C7F193B650300887F83 /* Model.xcdatamodeld in Sources */,
 				A534B0241963B19600255EC2 /* SignInView.m in Sources */,
 				65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */,

@@ -16,6 +16,9 @@
 @property (nonatomic, retain) NSString * actionOne;
 @property (nonatomic, retain) NSString * actionThree;
 @property (nonatomic, retain) NSString * actionTwo;
+@property (nonatomic, retain) NSString * firstSupport;
+@property (nonatomic, retain) NSString * secondSupport;
+@property (nonatomic, retain) NSString * thirdSupport;
 @property (nonatomic, retain) NSNumber * desiredGrade;
 @property (nonatomic, retain) NSNumber * finalGrade;
 @property (nonatomic, retain) NSNumber * questionEight;

@@ -19,6 +19,8 @@
 #import "AnalysisView.h"
 #import "MDCScrollBarViewController.h"
 #import "MDCScrollBarLabel.h"
+#import "CompletionDateView.h"
+#import "SupportTeamView.h"
 
 @interface FinalAnalysisViewController () <UIScrollViewDelegate>
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
@@ -129,7 +131,7 @@
     //**** SETUP SCROLLVIEW ****\\
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    self.scrollView.contentSize = CGSizeMake(screenWidth, screenHeight *8);
+    self.scrollView.contentSize = CGSizeMake(screenWidth, screenHeight *9);
     self.scrollView.scrollEnabled = YES;
     self.scrollView.layer.masksToBounds = NO;
     self.scrollView.layer.shouldRasterize = NO;
@@ -238,7 +240,7 @@
     }
     // One instance of Answer
     self.fetchedAnswers = [foundObjects lastObject];
-    
+
     
     [self saveToParse];
     NSNumber *num = self.fetchedAnswers.finalGrade;
@@ -518,22 +520,34 @@
 - (void)completionDateView:(int)i {
     NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
     
-    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
-                                                 andIndex:i andData:a];
+    CompletionDateView *v = [[CompletionDateView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    
+    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.description intValue]];
+    v.currentGrade.text = @"Desired Grade";
+    
     [self.scrollView addSubview:v];
 }
 - (void)supportTeamView:(int)i  {
     NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
     
-    AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
-                                                 andIndex:i andData:a];
+    SupportTeamView *v = [[SupportTeamView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    
+    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.description intValue]];
+    v.currentGrade.text = @"Desired Grade";
+    v.firstSupport.text = self.fetchedAnswers.firstSupport;
+    v.secondSupport.text = self.fetchedAnswers.secondSupport;
+    v.thirdSupport.text = self.fetchedAnswers.thirdSupport;
+    
     [self.scrollView addSubview:v];
 }
 - (void)finalTipsView:(int)i {
     NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
-                                                 andIndex:i andData:a];
+                                             andFinalTips:nil];
+    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.description intValue]];
+    v.currentGrade.text = @"Desired Grade";
+    
     [self.scrollView addSubview:v];
 }
 

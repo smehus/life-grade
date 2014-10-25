@@ -1,14 +1,22 @@
 //
-//  AnalysisView.h
+//  CompletionDateView.h
 //  life-grade
 //
-//  Created by scott mehus on 9/30/14.
+//  Created by scott mehus on 10/24/14.
 //  Copyright (c) 2014 scott mehus. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface AnalysisView : UIView
+@class CompletionDateView;
+@protocol CompletionDateViewDelegate <NSObject>
+
+- (void)havingTroubleSelected;
+- (void)completionNext;
+
+@end
+
+@interface CompletionDateView : UIView
 
 @property (nonatomic, strong) NSString *gradeLetter;
 @property (nonatomic, strong) UILabel *gradeLabel;
@@ -16,12 +24,15 @@
 @property (nonatomic, strong) UILabel *currentGrade;
 @property (nonatomic, strong) UILabel *quoteLabel;
 @property (nonatomic, strong) UIButton *bottomButton;
+@property (nonatomic, strong) UIButton *havingTroubleButton;
+@property (nonatomic, strong) UIButton *nextButton;
+@property (nonatomic, strong) id<CompletionDateViewDelegate>delegate;
 
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data;
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data andGoal:(id)goal;
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data andQuote:(id)quote;
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data attainableQuote:(id)quote;
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data isRealstic:(BOOL)isRealistic;
-- (id)initWithFrame:(CGRect)frame andFinalTips:(NSArray *)tips;
+
 
 @end
