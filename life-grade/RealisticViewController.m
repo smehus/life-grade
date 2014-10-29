@@ -40,6 +40,7 @@
     UILabel *firstLabel;
     UILabel *secondLabel;
     UIButton *calBut;
+    UIButton *calBut1;
     
     UITextField *firstField;
     UITextField *secondField;
@@ -221,6 +222,16 @@
     }];
     [self.view addSubview:calBut];
     
+    calBut1 = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(calBut.frame) + 20, self.view.frame.size.width-20, 100)];
+    [calBut1 setBackgroundColor:green];
+    [calBut1 setTitle:@"Pick Date" forState:UIControlStateNormal];
+    [[calBut1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        
+        [self openCalendar:calBut1];
+        
+    }];
+    [self.view addSubview:calBut];
+    
 
     
     UIButton *b = [self addNextButton];
@@ -345,7 +356,9 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MM-yyyy"];
     NSString *stringDate = [dateFormatter stringFromDate:self.calDate];
+    
     [calBut setTitle:stringDate forState:UIControlStateNormal];
+    
     [self.datePicker dismissSemiModalView];
     
 }

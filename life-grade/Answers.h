@@ -33,6 +33,8 @@
 @property (nonatomic, retain) NSNumber * questionTwo;
 @property (nonatomic, retain) NSSet *attributes;
 @property (nonatomic, retain) NSString * focusFactor;
+@property (nonatomic, retain) NSDate * startDate;
+@property (nonatomic, retain) NSDate * completionDate;
 @end
 
 @interface Answers (CoreDataGeneratedAccessors)

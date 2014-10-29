@@ -334,8 +334,17 @@
     
     NSString *desc = self.currentGrade.factorDescription;
     
-    controller = [[FactorDescriptionViewController alloc] initWithDescription:desc];
-    controller.preferredContentSize = CGSizeMake(320, 200);
+    
+    CGRect textRect;
+    NSDictionary *attributes = @{NSFontAttributeName: FONT_AMATIC_REG(24)};
+    
+    // How big is this string when drawn in this font?
+//    textRect.size = [desc sizeWithAttributes:attributes];
+    
+    CGSize s = [self getSizeOfString:desc withWidth:250];
+    
+    controller = [[FactorDescriptionViewController alloc] initWithDescription:desc andSize:s];
+    controller.preferredContentSize = CGSizeMake(320, s.height);
     controller.title = @"Select Time";
     
     UIBarButtonItem *b = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(close:)];
@@ -358,6 +367,24 @@
         
     }];
     
+}
+
+- (CGSize)getSizeOfString:(NSString *)txt withWidth:(CGFloat)w {
+    NSString *text = txt;
+    CGFloat width = w;
+    UIFont *font = FONT_AMATIC_REG(24);
+    NSAttributedString *attributedText =
+    [[NSAttributedString alloc]
+     initWithString:text
+     attributes:@
+     {
+     NSFontAttributeName: font
+     }];
+    CGRect rect = [attributedText boundingRectWithSize:(CGSize){width, CGFLOAT_MAX}
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                               context:nil];
+    CGSize size = rect.size;
+    return size;
 }
 
 - (void)close:(id)sender

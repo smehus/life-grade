@@ -32,5 +32,7 @@
 @dynamic firstSupport;
 @dynamic secondSupport;
 @dynamic thirdSupport;
+@dynamic startDate;
+@dynamic completionDate;
 
 @end
