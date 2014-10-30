@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong) UIView *yesFrame;
 @property (nonatomic, strong) UIView *noFrame;
+@property (nonatomic, strong) NSArray *attributes;
 
 @end
 
@@ -43,6 +44,9 @@
     if (!self.managedObjectContext) {
         self.managedObjectContext = del.managedObjectContext;
     }
+    
+    self.attributes = [self loadAttributes];
+    
     
     UIColor *barColour = BLUE_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
@@ -74,6 +78,23 @@
 
 }
 
+- (NSArray *)loadAttributes {
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSString *ary = [dict objectForKey:@"attributes"];
+    NSArray *attributes = [ary componentsSeparatedByString:@" "];
+    NSMutableArray *a = [[NSMutableArray alloc] initWithCapacity:10];
+    [attributes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSNumber *n = [NSNumber numberWithInteger:idx];
+        NSDictionary *dict = @{@"isSelected" : @NO, @"attribute" : obj};
+        [a addObject:dict];
+    }];
+    
+    
+    return a;
+}
+
 - (void)setTitleView {
     
     // TITLE VIEW SET
@@ -103,6 +124,12 @@
         UIPanGestureRecognizer *panGest = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragView:)];
         
         UIView *thing = [[UIView alloc] initWithFrame:originalFrame];
+        
+        UILabel *at = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, originalFrame.size.width - 20, 30)];
+        NSDictionary *d = self.attributes[i];
+        at.text =  d[@"attribute"];
+        [thing addSubview:at];
+        
         thing.backgroundColor = blueColor;
         [thing addGestureRecognizer:panGest];
         [self.view addSubview:thing];
@@ -152,6 +179,7 @@
     CGPoint translation = [recognizer translationInView:self.view];
     recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x,
                                          recognizer.view.center.y + translation.y);
+    [self.view bringSubviewToFront:recognizer.view];
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
     
     if (recognizer.state == UIGestureRecognizerStateEnded) {
