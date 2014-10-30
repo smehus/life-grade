@@ -83,11 +83,7 @@
 	<array>
 		<dict>
 			<key>description</key>
-			<string>A state of well-being in which the individual realizes his or her own abilities, is able to 
-
-appropriately express all emotions, can cope with the normal stresses of life, can work 
-
-productively and fruitfully, and is able to make a contribution to his or her community.</string>
+			<string>A state of well-being in which the individual realizes his or her own abilities, is able to appropriately express all emotions, can cope with the normal stresses of life, can work productively and fruitfully, and is able to make a contribution to his or her community.</string>
 			<key>badResponse</key>
 			<string>The highway of emotions is sometimes a tough one to drive down and quite challenging for many people. Emotional health and well-being involves a lot and is always a work in progress. Having strong emotional wellness can lead to less stress, more happiness, and even add years onto your life! This is definitely something to focus and spend time on. Emotional wellness is not simply one factor or a single emotion, it involves how you manage your emotions and behaviors (both negative and positive),  cope with stress, adapt to change, amongst many other things. Identify what your strengths are and explore your need areas. </string>
 			<key>goodResponse</key>
@@ -97,11 +93,7 @@ productively and fruitfully, and is able to make a contribution to his or her co
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>When grading this factor focus on the number of hobbies you have and the amount of pleasure 
-
-you get from engaging in them. Remember, this doesn’t mean there is a “magical number” of 
-
-hobbies to have.</string>
+			<string>When grading this factor focus on the number of hobbies you have and the amount of pleasure you get from engaging in them. Remember, this doesn’t mean there is a “magical number” of hobbies to have.</string>
 			<key>badResponse</key>
 			<string>“The art of being happy lies in the power of extracting happiness from common things.” ~ Henry Ward Beecher
 Sometimes in order to remain interested, an individual is required to extract something interesting out of what you typically find common. Take a look at your life, your hobbies, your job, your friends and extract something unique about each of them. Maybe you already have something in your life you can build an interest around or start something new. Speaking to friends and family can help stir up useful ideas for new hobbies or perspectives to build on. </string>
@@ -113,11 +105,7 @@ Having interests and hobbies adds significant value to life as you may know by n
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>For this factor focus on the number of genuine and intimate relationships you have in your life. 
-
-These relationships may include really close friends, significant others, or family members. 
-
-Remember this is not how many “friends” you have, it is how many deep and/or intimate 
+			<string>For this factor focus on the number of genuine and intimate relationships you have in your life. These relationships may include really close friends, significant others, or family members. Remember this is not how many “friends” you have, it is how many deep and/or intimate 
 
 relationships you have.</string>
 			<key>badResponse</key>
@@ -129,11 +117,7 @@ relationships you have.</string>
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>Social support and networks are typically made up of family, friends, and peers. They bring a
-
-sense of belonging, safety, security, and increased self-worth. Grade the depth and quality of 
-
-your social support and networks.</string>
+			<string>Social support and networks are typically made up of family, friends, and peers. They bring a sense of belonging, safety, security, and increased self-worth. Grade the depth and quality of your social support and networks.</string>
 			<key>badResponse</key>
 			<string>By any chance do you live in your parent’s basement? In all seriousness many people feel the need to turn inward during a time of need. Research shows that social support and networks (not Facebook or Twitter!) not only increase your happiness, but improve your odds of being successful with goals. Not to mention it reduces anxiety! It is not too late to start. Ask yourself what type of support you need and find individuals that are capable of providing it. The detective work starts now!</string>
 			<key>goodResponse</key>
@@ -143,10 +127,7 @@ your social support and networks.</string>
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>Physical Health for our use will include five areas of focus. Those areas include participating in
-
-regular physical activity, maintaining good nutrition, receiving adequate rest/sleep, being up-to-
-date with medical self care, and low use of alcohol and drugs.</string>
+			<string>Physical Health for our use will include five areas of focus. Those areas include participating in regular physical activity, maintaining good nutrition, receiving adequate rest/sleep, being up-to-date with medical self care, and low use of alcohol and drugs.</string>
 			<key>goodResponse</key>
 			<string>Look good, feel good. Either you have new changes you are putting into practice or you have this health thing down. As you probably know by now, your physical health impacts a lot of other aspect of your life such as your mood, weight, sleep, appetite, and energy. Keep eating well and participating in a variety of exercises to reap the benefits of good physical health.
 </string>
@@ -157,11 +138,7 @@ date with medical self care, and low use of alcohol and drugs.</string>
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>This is one of the most important factors to fulfillment. Contributing doesn’t necessarily mean 
-
-donating money, it also means donating time, skills, efforts, and much more. This factor involves 
-
-grading the extent to which you give back outside of yourself.</string>
+			<string>This is one of the most important factors to fulfillment. Contributing doesn’t necessarily mean donating money, it also means donating time, skills, efforts, and much more. This factor involves grading the extent to which you give back outside of yourself.</string>
 			<key>badResponse</key>
 			<string>Okay, maybe finding ways to give back and contribute is a little more tough then originally planned. Studies show contributing outside of yourself  and giving back is a major contributor to an individual’s fulfillment. Things like time, motivation, availability, or even ideas on how to contribute could be the culprits that are holding you back. Start small, simple, and manageable. Do your detective work and find out what factors are holding you back, find new creative ways to contribute, and experience the rush of fulfillment in no time. </string>
 			<key>goodResponse</key>
@@ -171,11 +148,7 @@ grading the extent to which you give back outside of yourself.</string>
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>It is quite hard to maintain motivation and fulfillment when you don’t enjoy what you are doing! 
-
-This factor is graded based on how interested, involved, motivated, and challenged you are at 
-
-work and play.</string>
+			<string>It is quite hard to maintain motivation and fulfillment when you don’t enjoy what you are doing! This factor is graded based on how interested, involved, motivated, and challenged you are at work and play.</string>
 			<key>badResponse</key>
 			<string>Ooo look at that airplane, oh sorry what did you say? Keeping busy and focused may not come naturally but it doesn’t mean you can’t make simple changes to improve this area of your life. Being engaged at work and play doesn’t mean you have to absolutely love what you are doing ALL of the time. It simply means you must start finding meaning and value in what you are doing during that time.</string>
 			<key>goodResponse</key>
@@ -185,13 +158,7 @@ work and play.</string>
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>Job Happiness and Satisfaction relies on a couple factors. First, you should focus on the
-
-extent of which your goals, expectations, and desires are being met by your job. Second, think 
-
-about what level of fulfillment, growth, and motivation does your work environment, peers, and 
-
-responsibilities provide to you.</string>
+			<string>Job Happiness and Satisfaction relies on a couple factors. First, you should focus on the extent of which your goals, expectations, and desires are being met by your job. Second, think about what level of fulfillment, growth, and motivation does your work environment, peers, and responsibilities provide to you.</string>
 			<key>badResponse</key>
 			<string>So your job’s a chore, you may not get payed enough, and you love the sound of your next vacation day. Sound about right? Well if only it was that easy to jump ship and get your dream job. While you at your current job, trying “re-writing the job description” and changing your perspective regarding the impact you are having and the value you bring. While your perspective is shifting, get involved in understanding what you “enjoy” doing and not simply what you are “good” at.</string>
 			<key>goodResponse</key>
@@ -201,13 +168,7 @@ responsibilities provide to you.</string>
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>Positive thinking typically starts with self-talk or the “inner dialogue” we all have. It is our ability
-
-to manage the unpleasant times in life in a productive and more positive way. Grade yourself 
-
-on the frequency and ability to use positive thinking to counter negative thoughts, feelings, and 
-
-sometimes flat out misconceptions.</string>
+			<string>Positive thinking typically starts with self-talk or the “inner dialogue” we all have. It is our ability to manage the unpleasant times in life in a productive and more positive way. Grade yourself on the frequency and ability to use positive thinking to counter negative thoughts, feelings, and sometimes flat out misconceptions.</string>
 			<key>badResponse</key>
 			<string>So your inner dialogue isn’t on your side? Positive thinking is not about ignoring the troubling things that happen but reacting to them in a more productive way, seeing the possibilities. Gaining control of your thinking can help alleviate depression, distress, anxiety, and improve your overall quality of life. Try making friends with your inner dialogue and negotiating a new way of seeing the negative.</string>
 			<key>goodResponse</key>
@@ -217,11 +178,7 @@ sometimes flat out misconceptions.</string>
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>Do you get your stuff done each done? When grading this factor thing about your personal and 
-
-professional goals and efforts on a daily, weekly, and monthly basis. Do you get what you need 
-
-and want done?</string>
+			<string>Do you get your stuff done each done? When grading this factor thing about your personal and professional goals and efforts on a daily, weekly, and monthly basis. Do you get what you need and want done?</string>
 			<key>badResponse</key>
 			<string>Whistle while you work. Well I guess sometimes that doesn’t help everybody. There are many factors that go into productivity including motivation, support, the environment, your ability, and even task difficulty. Examine the factors and see which ones are limiting you. There are many ways to boost productivity, but understand what underlies your challenges is the first step. Most individuals claim “they don’t have the resources”, although it is truly about who is most “resourceful”.</string>
 			<key>goodResponse</key>
