@@ -23,6 +23,10 @@
 @property (nonatomic, strong) UIButton *startButton;
 @property (nonatomic, strong) ChoseView *choseView;
 @property (nonatomic, strong) Answers *fetchedAnswers;
+@property (nonatomic, strong) NYSegmentedControl *fourthControl;
+@property (nonatomic, strong) NYSegmentedControl *thirdControl;
+@property (nonatomic, strong) NYSegmentedControl *secondControl;
+@property (nonatomic, strong) NYSegmentedControl *firstControl;
 
 
 @end
@@ -117,39 +121,39 @@
     firstLabel.font = [UIFont fontWithName:liteFont size:24];
     [self.view addSubview:firstLabel];
     
-    NYSegmentedControl *firstControl = [self getSegment];
-    firstControl.frame = CGRectMake(50, CGRectGetMaxY(firstLabel.frame) + 20, 200, 30);
-    [self.view addSubview:firstControl];
+    self.firstControl = [self getSegment];
+    self.firstControl.frame = CGRectMake(50, CGRectGetMaxY(firstLabel.frame) + 20, 200, 30);
+    [self.view addSubview:self.firstControl];
 
-    UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstControl.frame) + 20, self.view.frame.size.width, 20)];
+    UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.firstControl.frame) + 20, self.view.frame.size.width, 20)];
     secondLabel.text = [NSString stringWithFormat:@"II: %@", @"I have taken action on my problem within the past 6 months"];
     secondLabel.font = [UIFont fontWithName:liteFont size:24];
     [self.view addSubview:secondLabel];
     
-    NYSegmentedControl *secondControl = [self getSegment];
-    secondControl.frame = CGRectMake(50, CGRectGetMaxY(secondLabel.frame) + 20, 200, 30);
-    [self.view addSubview:secondControl];
+    self.secondControl = [self getSegment];
+    self.secondControl.frame = CGRectMake(50, CGRectGetMaxY(secondLabel.frame) + 20, 200, 30);
+    [self.view addSubview:self.secondControl];
     
     
-    UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(secondControl.frame) + 20, self.view.frame.size.width, 20)];
+    UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.secondControl.frame) + 20, self.view.frame.size.width, 20)];
     thirdLabel.text = [NSString stringWithFormat:@"III: %@", @"I am intending to take action in the next month"];
     thirdLabel.font = [UIFont fontWithName:liteFont size:24];
     [self.view addSubview:thirdLabel];
     
-    NYSegmentedControl *thirdControl = [self getSegment];
-    thirdControl.frame = CGRectMake(50, CGRectGetMaxY(thirdLabel.frame) + 20, 200, 30);
-    [self.view addSubview:thirdControl];
+    self.thirdControl = [self getSegment];
+    self.thirdControl.frame = CGRectMake(50, CGRectGetMaxY(thirdLabel.frame) + 20, 200, 30);
+    [self.view addSubview:self.thirdControl];
     
-    UILabel *fourthLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(thirdControl.frame) + 20, self.view.frame.size.width, 20)];
+    UILabel *fourthLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.thirdControl.frame) + 20, self.view.frame.size.width, 20)];
     fourthLabel.text = [NSString stringWithFormat:@"III: %@", @"I am intending to take action in the next month"];
     fourthLabel.font = [UIFont fontWithName:liteFont size:24];
     [self.view addSubview:fourthLabel];
     
-    NYSegmentedControl *fourthControl = [self getSegment];
-    fourthControl.frame = CGRectMake(50, CGRectGetMaxY(fourthLabel.frame) + 20, 200, 30);
-    [self.view addSubview:fourthControl];
+    self.fourthControl = [self getSegment];
+    self.fourthControl.frame = CGRectMake(50, CGRectGetMaxY(fourthLabel.frame) + 20, 200, 30);
+    [self.view addSubview:self.fourthControl];
     
-    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(fourthControl.frame) + 20, self.view.frame.size.width, 50)];
+    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.fourthControl.frame) + 20, self.view.frame.size.width, 50)];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [self.startButton addTarget:self action:@selector(openNextView) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton setTitle:@"Continue" forState:UIControlStateNormal];
@@ -198,7 +202,7 @@
 
 - (void)saveAnswers {
     
-//    Example
+//    Example - need to edit model
 //    self.fetchedAnswers.desiredGrade = [NSNumber numberWithInteger:idx.row];
     
     NSError *error;

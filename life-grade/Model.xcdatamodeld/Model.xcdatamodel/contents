@@ -20,6 +20,10 @@
         <attribute name="questionThree" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="questionTwo" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="secondSupport" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stageQuestionFour" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="stageQuestionOne" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="stageQuestionThree" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="stageQuestionTwo" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="thirdSupport" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attributes" inverseName="answers" inverseEntity="Attributes" syncable="YES"/>
@@ -29,7 +33,7 @@
         <relationship name="answers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Answers" inverseName="attributes" inverseEntity="Answers" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Answers" positionX="-63" positionY="-18" width="128" height="375"/>
+        <element name="Answers" positionX="-63" positionY="-18" width="128" height="435"/>
         <element name="Attributes" positionX="-63" positionY="99" width="128" height="73"/>
     </elements>
 </model>

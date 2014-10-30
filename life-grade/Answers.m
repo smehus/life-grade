@@ -34,5 +34,9 @@
 @dynamic thirdSupport;
 @dynamic startDate;
 @dynamic completionDate;
+@dynamic stageQuestionOne;
+@dynamic stageQuestionTwo;
+@dynamic stageQuestionThree;
+@dynamic stageQuestionFour;
 
 @end
