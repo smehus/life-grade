@@ -15,11 +15,14 @@
 #import "KLCPopup.h"
 #import "BeginGoalViewController.h"
 #import "SWRevealViewController.h"
+#import "MainAppDelegate.h"
+#import "Answers.h"
 
 @interface QuestionAnswerViewController () <ChoseViewDelegate>
 
 @property (nonatomic, strong) UIButton *startButton;
-@property (nonatomic, strong) ChoseView *choseView;;
+@property (nonatomic, strong) ChoseView *choseView;
+@property (nonatomic, strong) Answers *fetchedAnswers;
 
 
 @end
@@ -27,10 +30,13 @@
 @implementation QuestionAnswerViewController {
     
     KLCPopup *popup;
+    MainAppDelegate *del;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self performFetch];
+    self.managedObjectContext = del.managedObjectContext;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
     UIColor *barColour = BLUE_COLOR;
@@ -46,6 +52,32 @@
     
     
     [self setupScreen];
+}
+
+- (void)performFetch {
+    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
+        
+        
+        return;
+    }
+    
+    self.fetchedAnswers = [foundObjects lastObject];
+    
+    NSLog(@"question bitch %@", self.fetchedAnswers);
+    
 }
 - (void)setTitleView {
     
@@ -80,35 +112,44 @@
     
     NSString *liteFont = LIGHT_FONT;
     
-    UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, 30)];
-    firstLabel.text = [NSString stringWithFormat:@"I: %@", @"This is the first"];
-    firstLabel.font = [UIFont fontWithName:liteFont size:30];
+    UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, 20)];
+    firstLabel.text = [NSString stringWithFormat:@"I: %@", @"I solved my problem 6 months ago"];
+    firstLabel.font = [UIFont fontWithName:liteFont size:24];
     [self.view addSubview:firstLabel];
     
     NYSegmentedControl *firstControl = [self getSegment];
-    firstControl.frame = CGRectMake(50, CGRectGetMaxY(firstLabel.frame) + 40, 200, 50);
+    firstControl.frame = CGRectMake(50, CGRectGetMaxY(firstLabel.frame) + 20, 200, 30);
     [self.view addSubview:firstControl];
 
-    UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstLabel.frame) + 100, self.view.frame.size.width, 30)];
-    secondLabel.text = [NSString stringWithFormat:@"II: %@", @"This is the second"];
-    secondLabel.font = [UIFont fontWithName:liteFont size:30];
+    UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstControl.frame) + 20, self.view.frame.size.width, 20)];
+    secondLabel.text = [NSString stringWithFormat:@"II: %@", @"I have taken action on my problem within the past 6 months"];
+    secondLabel.font = [UIFont fontWithName:liteFont size:24];
     [self.view addSubview:secondLabel];
     
     NYSegmentedControl *secondControl = [self getSegment];
-    secondControl.frame = CGRectMake(50, CGRectGetMaxY(secondLabel.frame) + 40, 200, 50);
+    secondControl.frame = CGRectMake(50, CGRectGetMaxY(secondLabel.frame) + 20, 200, 30);
     [self.view addSubview:secondControl];
     
     
-    UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(secondLabel.frame) + 100, self.view.frame.size.width, 30)];
-    thirdLabel.text = [NSString stringWithFormat:@"III: %@", @"This is the third"];
-    thirdLabel.font = [UIFont fontWithName:liteFont size:30];
+    UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(secondControl.frame) + 20, self.view.frame.size.width, 20)];
+    thirdLabel.text = [NSString stringWithFormat:@"III: %@", @"I am intending to take action in the next month"];
+    thirdLabel.font = [UIFont fontWithName:liteFont size:24];
     [self.view addSubview:thirdLabel];
     
     NYSegmentedControl *thirdControl = [self getSegment];
-    thirdControl.frame = CGRectMake(50, CGRectGetMaxY(thirdLabel.frame) + 40, 200, 50);
+    thirdControl.frame = CGRectMake(50, CGRectGetMaxY(thirdLabel.frame) + 20, 200, 30);
     [self.view addSubview:thirdControl];
     
-    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(thirdControl.frame) + 20, self.view.frame.size.width, 50)];
+    UILabel *fourthLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(thirdControl.frame) + 20, self.view.frame.size.width, 20)];
+    fourthLabel.text = [NSString stringWithFormat:@"III: %@", @"I am intending to take action in the next month"];
+    fourthLabel.font = [UIFont fontWithName:liteFont size:24];
+    [self.view addSubview:fourthLabel];
+    
+    NYSegmentedControl *fourthControl = [self getSegment];
+    fourthControl.frame = CGRectMake(50, CGRectGetMaxY(fourthLabel.frame) + 20, 200, 30);
+    [self.view addSubview:fourthControl];
+    
+    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(fourthControl.frame) + 20, self.view.frame.size.width, 50)];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [self.startButton addTarget:self action:@selector(openNextView) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton setTitle:@"Continue" forState:UIControlStateNormal];
@@ -153,6 +194,18 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
     [self.revealViewController pushFrontViewController:nav animated:YES];
 
+}
+
+- (void)saveAnswers {
+    
+//    Example
+//    self.fetchedAnswers.desiredGrade = [NSNumber numberWithInteger:idx.row];
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
 }
 
 

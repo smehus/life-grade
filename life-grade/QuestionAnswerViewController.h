@@ -10,4 +10,6 @@
 
 @interface QuestionAnswerViewController : UIViewController
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 @end
