@@ -35,10 +35,10 @@
 @property (nonatomic, retain) NSString * focusFactor;
 @property (nonatomic, retain) NSDate * startDate;
 @property (nonatomic, retain) NSDate * completionDate;
-@property (nonatomic) BOOL * stageQuestionOne;
-@property (nonatomic) BOOL * stageQuestionTwo;
-@property (nonatomic) BOOL * stageQuestionThree;
-@property (nonatomic) BOOL * stageQuestionFour;
+@property (nonatomic) BOOL stageQuestionOne;
+@property (nonatomic) BOOL stageQuestionTwo;
+@property (nonatomic) BOOL stageQuestionThree;
+@property (nonatomic) BOOL stageQuestionFour;
 
 @end
 

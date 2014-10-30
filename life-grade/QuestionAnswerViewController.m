@@ -180,6 +180,8 @@
 
 - (void)openNextView {
     
+    [self saveAnswers];
+    
     self.choseView = [[ChoseView alloc] initWithFrame:CGRectMake(30, -300, self.view.frame.size.width-60, self.view.frame.size.height-60) completion:^{
 
     }];
@@ -205,12 +207,21 @@
 //    Example - need to edit model
 //    self.fetchedAnswers.desiredGrade = [NSNumber numberWithInteger:idx.row];
     
+    
+    
+    self.fetchedAnswers.stageQuestionOne = self.firstControl.selectedSegmentIndex;
+    self.fetchedAnswers.stageQuestionTwo = self.secondControl.selectedSegmentIndex;
+    self.fetchedAnswers.stageQuestionThree = self.thirdControl.selectedSegmentIndex;
+    self.fetchedAnswers.stageQuestionFour = self.fourthControl.selectedSegmentIndex;
+    
     NSError *error;
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"Error: %@", error);
         abort();
     }
 }
+
+
 
 
 @end
