@@ -17,6 +17,7 @@
 #import "SWRevealViewController.h"
 #import "MainAppDelegate.h"
 #import "Answers.h"
+#import "MBAlertView.h"
 
 @interface QuestionAnswerViewController () <ChoseViewDelegate>
 
@@ -86,6 +87,7 @@
 - (void)setTitleView {
     
     // TITLE VIEW SET
+    
     
     UIColor *barColour = BLUE_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
@@ -182,7 +184,19 @@
     
     [self saveAnswers];
     
-    self.choseView = [[ChoseView alloc] initWithFrame:CGRectMake(30, -300, self.view.frame.size.width-60, self.view.frame.size.height-60) completion:^{
+    if (self.firstControl.selectedSegmentIndex == 0) {
+        
+        
+    } else if (self.firstControl.selectedSegmentIndex == 1
+               && self.secondControl.selectedSegmentIndex == 1
+               && self.thirdControl.selectedSegmentIndex == 1
+               && self.fourthControl.selectedSegmentIndex == 1) {
+        
+        // do something
+        
+    }
+    
+    self.choseView = [[ChoseView alloc] initWithFrame:CGRectMake(30, -300, self.view.frame.size.width-60, self.view.frame.size.height-60) withAnswers:self.fetchedAnswers completion:^{
 
     }];
     

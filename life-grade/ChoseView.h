@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Answers.h"
 
 @class ChoseView;
 @protocol ChoseViewDelegate <NSObject>
@@ -23,6 +24,6 @@ typedef void (^StartPlan)(void);
 @property (nonatomic, weak) id<ChoseViewDelegate>delegate;
 @property (nonatomic, strong) StartPlan planBlock;
 
-- (id)initWithFrame:(CGRect)frame completion:(StartPlan)startPlan;
+- (id)initWithFrame:(CGRect)frame withAnswers:(Answers *)answer completion:(StartPlan)startPlan;
 
 @end

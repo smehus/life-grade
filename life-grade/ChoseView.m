@@ -8,7 +8,9 @@
 
 #import "ChoseView.h"
 
-@implementation ChoseView
+@implementation ChoseView {
+    Answers *fetchedAnswer;
+}
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -19,9 +21,9 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame completion:(StartPlan)startPlan {
+- (id)initWithFrame:(CGRect)frame withAnswers:(Answers *)answer  completion:(StartPlan)startPlan {
     if (self = [super initWithFrame:frame]) {
-        
+        fetchedAnswer = answer;
         self.planBlock = startPlan;
         [self setupScreen];
     }
@@ -42,8 +44,10 @@
     
     UILabel *focusLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 10, self.frame.size.width - 20, 50)];
     [focusLabel setFont:[UIFont fontWithName:font size:36]];
+    focusLabel.numberOfLines = 0;
+    focusLabel.lineBreakMode = NSLineBreakByWordWrapping;
     focusLabel.textAlignment = NSTextAlignmentCenter;
-    focusLabel.text = @"Hobbies";
+    focusLabel.text = fetchedAnswer.focusFactor;
     
     NSMutableAttributedString *mat = [focusLabel.attributedText mutableCopy];
     [mat addAttributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)} range:NSMakeRange (0, mat.length)];

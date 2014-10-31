@@ -102,6 +102,12 @@
 #define COCOAPODS_VERSION_MINOR_KVOController 0
 #define COCOAPODS_VERSION_PATCH_KVOController 1
 
+// MBAlertView
+#define COCOAPODS_POD_AVAILABLE_MBAlertView
+#define COCOAPODS_VERSION_MAJOR_MBAlertView 1
+#define COCOAPODS_VERSION_MINOR_MBAlertView 1
+#define COCOAPODS_VERSION_PATCH_MBAlertView 0
+
 // MDCScrollBarLabel
 #define COCOAPODS_POD_AVAILABLE_MDCScrollBarLabel
 #define COCOAPODS_VERSION_MAJOR_MDCScrollBarLabel 0
@@ -207,7 +213,7 @@
 // UIColor+BFPaperColors
 #define COCOAPODS_POD_AVAILABLE_UIColor_BFPaperColors
 #define COCOAPODS_VERSION_MAJOR_UIColor_BFPaperColors 1
-#define COCOAPODS_VERSION_MINOR_UIColor_BFPaperColors 2
+#define COCOAPODS_VERSION_MINOR_UIColor_BFPaperColors 3
 #define COCOAPODS_VERSION_PATCH_UIColor_BFPaperColors 1
 
 // UIView+draggable

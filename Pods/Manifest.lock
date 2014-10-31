@@ -29,6 +29,7 @@ PODS:
   - IQKeyboardManager (3.1.1)
   - KNSemiModalViewController (0.3)
   - KVOController (1.0.1)
+  - MBAlertView (1.1.0)
   - MDCScrollBarLabel (0.1.3)
   - MGBoxKit (7.0.1):
     - MGEvents
@@ -69,7 +70,7 @@ PODS:
     - ReactiveCocoa/Core
   - THCalendarDatePicker (0.1.1):
     - KNSemiModalViewController (~> 0.3)
-  - UIColor+BFPaperColors (1.2.1)
+  - UIColor+BFPaperColors (1.3.1)
   - UIView+draggable (0.2)
   - WYPopoverController (0.2.2)
 
@@ -82,6 +83,7 @@ DEPENDENCIES:
   - Facebook-iOS-SDK (~> 3.13)
   - IQKeyboardManager
   - KVOController
+  - MBAlertView (~> 1.1.0)
   - MDCScrollBarLabel (~> 0.1.3)
   - MGBoxKit
   - MONActivityIndicatorView (~> 0.0.1)
@@ -104,6 +106,7 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 79ab3bc740f6bd30eadf9b0d217020941c0926e4
   KNSemiModalViewController: 6fb1e2f6a4d84238b524cb705e91118b0fa6bbc9
   KVOController: e6ad4a058ab0ceed546802361adb89d322a22cf2
+  MBAlertView: 0044095d026308882a807e55dd2b4f89f8be5702
   MDCScrollBarLabel: af15188e64cf76b852e60dc58c0823140e01e519
   MGBoxKit: 86493ff76fb2164a32426418a1a900c84edd0ffa
   MGEvents: e6254d7873bcb90b266801d171f9948194010927
@@ -114,7 +117,7 @@ SPEC CHECKSUMS:
   POP+MCAnimate: 3ad540606cbf21547f79585c8d5b63f9da69d52b
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   THCalendarDatePicker: 400998078c168f4c380e652916a03d1a358eb6bd
-  UIColor+BFPaperColors: 7b45ea51681ab93307a215e4d6b937dd2ea9968d
+  UIColor+BFPaperColors: c7e4c6e4d82e889d507b3c2d09e6caf816529f18
   UIView+draggable: ad1c3a0f862aca1923c45c3e05d68c7852014436
   WYPopoverController: c233d69fdfd5c7e316b481df1060624d7a9e629d
 

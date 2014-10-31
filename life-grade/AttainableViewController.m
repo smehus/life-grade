@@ -124,8 +124,15 @@
         UIPanGestureRecognizer *panGest = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragView:)];
         
         UIView *thing = [[UIView alloc] initWithFrame:originalFrame];
+        thing.layer.cornerRadius = 8.0f;
         
-        UILabel *at = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, originalFrame.size.width - 20, 30)];
+        UILabel *at = [[UILabel alloc] initWithFrame:CGRectMake(0, thing.frame.size.height/2-25, originalFrame.size.width - 20, 50)];
+        at.textAlignment = NSTextAlignmentCenter;
+        at.font = FONT_AMATIC_REG(24);
+        at.lineBreakMode = NSLineBreakByWordWrapping;
+        at.numberOfLines = 0;
+        
+        
         NSDictionary *d = self.attributes[i];
         at.text =  d[@"attribute"];
         [thing addSubview:at];
