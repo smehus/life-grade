@@ -38,5 +38,6 @@
 @dynamic stageQuestionTwo;
 @dynamic stageQuestionThree;
 @dynamic stageQuestionFour;
+@dynamic specificFocus;
 
 @end

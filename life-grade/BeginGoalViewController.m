@@ -13,11 +13,14 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "QuartzCore/QuartzCore.h"
 #import "TrackingProgressViewController.h"
+#import "Answers.h"
 
 @interface BeginGoalViewController ()
 
 @property (nonatomic, strong) UIView *goalView;
 @property (nonatomic, strong) UIView *specificView;
+@property (nonatomic, strong) Answers *fetchedAnswers;
+
 
 @end
 
@@ -49,6 +52,32 @@
 
 //    [self setupGoalView];
     [self setupSpecificView];
+}
+
+- (void)performFetch {
+    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
+        
+        
+        return;
+    }
+    
+    self.fetchedAnswers = [foundObjects lastObject];
+    
+    NSLog(@"question bitch %@", self.fetchedAnswers);
+    
 }
 
 - (void)setTitleView {
@@ -159,7 +188,7 @@
     UITextField *typeLabel = [[UITextField alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x + 10, CGRectGetMaxY(someText.frame) + 10, self.specificView.bounds.size.width - 20, 50)];
     typeLabel.font = [UIFont fontWithName:font size:36];
     typeLabel.textAlignment = NSTextAlignmentCenter;
-    typeLabel.placeholder = @"Type";
+    typeLabel.placeholder = @"Lose 10 Pounds";
     typeLabel.layer.borderWidth = 1.0f;
     typeLabel.layer.borderColor = greenCol.CGColor;
     [self.specificView addSubview:typeLabel];
@@ -170,6 +199,7 @@
     [nextButton setBackgroundColor:greenCol];
     [[nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
 
+        [self save];
         TrackingProgressViewController *trackController = [[TrackingProgressViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:trackController];
         [self.revealViewController pushFrontViewController:nav animated:YES];
@@ -182,6 +212,18 @@
     self.specificView.springBounciness = 20.0f;
     self.specificView.spring.frame = CGRectMake(20, 20, self.view.frame.size.width-40, 400);
 
+}
+
+- (void)save {
+    
+    
+    
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
 }
 
 

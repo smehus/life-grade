@@ -39,6 +39,7 @@
 @property (nonatomic) BOOL stageQuestionTwo;
 @property (nonatomic) BOOL stageQuestionThree;
 @property (nonatomic) BOOL stageQuestionFour;
+@property (nonatomic, retain) NSString * specificFocus;
 
 @end
 
