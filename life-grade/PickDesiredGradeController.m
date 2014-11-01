@@ -75,7 +75,7 @@
     }
     
     [self performFetch];
-    
+    [self constructTitleView];
     UIColor *barColour = BLUE_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
     
@@ -135,6 +135,17 @@
     
     [self.view addSubview:self.collectionView];
     
+}
+
+- (void)constructTitleView {
+    
+    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width-20, 50)];
+    l.numberOfLines = 0;
+    l.lineBreakMode = NSLineBreakByWordWrapping;
+    l.textAlignment = NSTextAlignmentCenter;
+    l.font = FONT_AMATIC_BOLD(40);
+    l.text = @"Choose your desired grade";
+    [self.view addSubview:l];
 }
 
 - (void)setTitleView {

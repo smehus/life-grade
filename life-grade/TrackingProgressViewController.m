@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSMutableArray *progressMethods;
 @property (nonatomic, strong) Answers *fetchedAnswers;
 @property (nonatomic, strong) ProgressMethods *focusFactor;
+@property (nonatomic, strong) NSMutableArray *generalFactors;
 
 @end
 
@@ -36,7 +37,7 @@
     [super viewDidLoad];
     
     self.progressMethods = [[NSMutableArray alloc] initWithCapacity:16];
-    
+    self.generalFactors = [[NSMutableArray alloc] initWithCapacity:10];
     
     [self addMethods];
     [self getGenerals];
@@ -125,7 +126,15 @@
 
 - (void)getGenerals {
     
-    
+    [self.progressMethods enumerateObjectsUsingBlock:^(ProgressMethods *obj, NSUInteger idx, BOOL *stop) {
+        
+        if ([obj.group isEqualToString:@"general"]) {
+            
+            [self.generalFactors addObject:obj];
+            
+            
+        }
+    }];
 }
 
 - (void)addMethods {
@@ -229,7 +238,17 @@
         box.backgroundColor = [UIColor whiteColor];
         box.layer.borderWidth = 1.0f;
         box.layer.borderColor = greenColor.CGColor;
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, box.frame.size.height/2-50, box.frame.size.width-10, 100)];
+        ProgressMethods *m = self.generalFactors[i];
+        label.text = m.method;
+        label.numberOfLines = 0;
+        label.lineBreakMode = NSLineBreakByWordWrapping;
+        label.font = FONT_AMATIC_BOLD(24);
+        label.textAlignment = NSTextAlignmentCenter;
+        [box addSubview:label];
+        
         box.onTap = ^{
+            NSLog(@"SHITFAG");
             
         };
         [container.boxes addObject:box];
