@@ -14,9 +14,12 @@
 #import "QuartzCore/QuartzCore.h"
 #import <MGBoxKit/MGBoxKit.h>
 #import "AttainableViewController.h"
+#import "ProgressMethods.h"
 
 
 @interface TrackingProgressViewController ()
+
+@property (nonatomic, strong) NSMutableArray *progressMethods;
 
 @end
 
@@ -30,6 +33,7 @@
     [super viewDidLoad];
     
     avFont = AVENIR_BLACK;
+    self.progressMethods = [[NSMutableArray alloc] initWithCapacity:16];
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -65,6 +69,61 @@
 
     [self setupGrid];
     [self addNextButton];
+    
+}
+
+- (void)addMethods {
+    
+
+    ProgressMethods *m1 = [[ProgressMethods alloc] initWithMethod:@"Track My Patterns" andKey:@"general"];
+    [self.progressMethods addObject:m1];
+    
+    ProgressMethods *m2 = [[ProgressMethods alloc] initWithMethod:@"Make 'Task' and 'To Do' Lists" andKey:@"general"];
+    [self.progressMethods addObject:m2];
+    
+    ProgressMethods *m3 = [[ProgressMethods alloc] initWithMethod:@"Post reminders in Workplace" andKey:@"general"];
+    [self.progressMethods addObject:m3];
+    
+    ProgressMethods *m4 = [[ProgressMethods alloc] initWithMethod:@"Journal or blog about it" andKey:@"general"];
+    [self.progressMethods addObject:m4];
+    
+    ProgressMethods *m5 = [[ProgressMethods alloc] initWithMethod:@"Utilize a Calendar" andKey:@"general"];
+    [self.progressMethods addObject:m5];
+    
+    ProgressMethods *m6 = [[ProgressMethods alloc] initWithMethod:@"Make Mini Goals" andKey:@"general"];
+    [self.progressMethods addObject:m6];
+    
+    ProgressMethods *m7 = [[ProgressMethods alloc] initWithMethod:@"Use An App On Your Phone" andKey:@"general"];
+    [self.progressMethods addObject:m7];
+    
+    ProgressMethods *m8 = [[ProgressMethods alloc] initWithMethod:@"Find a Professional" andKey:@"general"];
+    [self.progressMethods addObject:m8];
+    
+    ProgressMethods *m9 = [[ProgressMethods alloc] initWithMethod:@"One Week Summary Worksheet" andKey:@"general"];
+    [self.progressMethods addObject:m9];
+    
+    ProgressMethods *m10 = [[ProgressMethods alloc] initWithMethod:@"Track My Behaviors" andKey:@"Emotional Well-Being"];
+    [self.progressMethods addObject:m10];
+    
+    ProgressMethods *m11 = [[ProgressMethods alloc] initWithMethod:@"“Try One New Thing Hobby Journal" andKey:@"Hobbies and Interests"];
+    [self.progressMethods addObject:m11];
+    
+    ProgressMethods *m12 = [[ProgressMethods alloc] initWithMethod:@"Food and/or Exercise Diary" andKey:@"Physical Health"];
+    [self.progressMethods addObject:m12];
+    
+    ProgressMethods *m13 = [[ProgressMethods alloc] initWithMethod:@"“My Needs” Worksheet" andKey:@"Genuine, Deep, and Intimate Relationships"];
+    [self.progressMethods addObject:m13];
+    
+    ProgressMethods *m14 = [[ProgressMethods alloc] initWithMethod:@"Who’s Got My Back Worksheet" andKey:@"Social Support and Social Networks"];
+    [self.progressMethods addObject:m14];
+    
+    ProgressMethods *m15 = [[ProgressMethods alloc] initWithMethod:@"Contribution Bucket List Activity" andKey:@"Contribution and Giving Back"];
+    [self.progressMethods addObject:m15];
+    
+    ProgressMethods *m16 = [[ProgressMethods alloc] initWithMethod:@"Thought Countering Worksheet" andKey:@"Positive Thinking"];
+    [self.progressMethods addObject:m16];
+
+    
     
 }
 

@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UIView *goalView;
 @property (nonatomic, strong) UIView *specificView;
 @property (nonatomic, strong) Answers *fetchedAnswers;
+@property (nonatomic, strong) UITextField *typeLabel;
 
 
 @end
@@ -185,16 +186,16 @@
     someText.lineBreakMode = NSLineBreakByWordWrapping;
     [self.specificView addSubview:someText];
     
-    UITextField *typeLabel = [[UITextField alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x + 10, CGRectGetMaxY(someText.frame) + 10, self.specificView.bounds.size.width - 20, 50)];
-    typeLabel.font = [UIFont fontWithName:font size:36];
-    typeLabel.textAlignment = NSTextAlignmentCenter;
-    typeLabel.placeholder = @"Lose 10 Pounds";
-    typeLabel.layer.borderWidth = 1.0f;
-    typeLabel.layer.borderColor = greenCol.CGColor;
-    [self.specificView addSubview:typeLabel];
+    self.typeLabel = [[UITextField alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x + 10, CGRectGetMaxY(someText.frame) + 10, self.specificView.bounds.size.width - 20, 50)];
+    self.typeLabel.font = [UIFont fontWithName:font size:36];
+    self.typeLabel.textAlignment = NSTextAlignmentCenter;
+    self.typeLabel.placeholder = @"Lose 10 Pounds";
+    self.typeLabel.layer.borderWidth = 1.0f;
+    self.typeLabel.layer.borderColor = greenCol.CGColor;
+    [self.specificView addSubview:self.typeLabel];
     
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [nextButton setFrame:CGRectMake(10, CGRectGetMaxY(typeLabel.frame) + 25, self.specificView.bounds.size.width - 20, 50)];
+    [nextButton setFrame:CGRectMake(10, CGRectGetMaxY(self.typeLabel.frame) + 25, self.specificView.bounds.size.width - 20, 50)];
     [nextButton setTitle:@"Next" forState:UIControlStateNormal];
     [nextButton setBackgroundColor:greenCol];
     [[nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -216,6 +217,7 @@
 
 - (void)save {
     
+    self.fetchedAnswers.specificFocus = self.typeLabel.text;
     
     
     

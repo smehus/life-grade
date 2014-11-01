@@ -68,6 +68,7 @@
 		A51B180C19809D7B00C0EDA9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B180B19809D7B00C0EDA9 /* AboutViewController.m */; };
 		A5254E1619FAFD0300A4BDAB /* CompletionDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5254E1519FAFD0300A4BDAB /* CompletionDateView.m */; };
 		A5254E1919FB0C5A00A4BDAB /* SupportTeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5254E1819FB0C5A00A4BDAB /* SupportTeamView.m */; };
+		A5254E1C1A04EA4900A4BDAB /* ProgressMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = A5254E1B1A04EA4900A4BDAB /* ProgressMethods.m */; };
 		A52A2BA91977634A00916901 /* DesiredCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A2BA81977634A00916901 /* DesiredCell.m */; };
 		A534B0241963B19600255EC2 /* SignInView.m in Sources */ = {isa = PBXBuildFile; fileRef = A534B0231963B19600255EC2 /* SignInView.m */; };
 		A5376A2818ED073C000C6BD8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5376A2718ED073C000C6BD8 /* Parse.framework */; };
@@ -205,6 +206,8 @@
 		A5254E1519FAFD0300A4BDAB /* CompletionDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletionDateView.m; sourceTree = "<group>"; };
 		A5254E1719FB0C5A00A4BDAB /* SupportTeamView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportTeamView.h; sourceTree = "<group>"; };
 		A5254E1819FB0C5A00A4BDAB /* SupportTeamView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportTeamView.m; sourceTree = "<group>"; };
+		A5254E1A1A04EA4900A4BDAB /* ProgressMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressMethods.h; sourceTree = "<group>"; };
+		A5254E1B1A04EA4900A4BDAB /* ProgressMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressMethods.m; sourceTree = "<group>"; };
 		A52A2BA71977634A00916901 /* DesiredCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesiredCell.h; sourceTree = "<group>"; };
 		A52A2BA81977634A00916901 /* DesiredCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesiredCell.m; sourceTree = "<group>"; };
 		A534B0221963B19600255EC2 /* SignInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInView.h; sourceTree = "<group>"; };
@@ -317,6 +320,8 @@
 				A5F66B6619D3B7D100B16E8F /* AttainableViewController.m */,
 				A5F66B6819D506BE00B16E8F /* RealisticViewController.h */,
 				A5F66B6919D506BE00B16E8F /* RealisticViewController.m */,
+				A5254E1A1A04EA4900A4BDAB /* ProgressMethods.h */,
+				A5254E1B1A04EA4900A4BDAB /* ProgressMethods.m */,
 			);
 			name = MyPlan;
 			sourceTree = "<group>";
@@ -821,6 +826,7 @@
 				A5E85E2E1927B81100AAA4B6 /* Grade.m in Sources */,
 				65BFF071190F4CF90087511B /* HACollectionViewLargeLayout.m in Sources */,
 				655EC64218DF62550036515F /* MenuViewController.m in Sources */,
+				A5254E1C1A04EA4900A4BDAB /* ProgressMethods.m in Sources */,
 				6533F55718E190360017C7D6 /* CoverFlowLayout.m in Sources */,
 				A5C08C7B193977D600887F83 /* ActionPlanViewController.m in Sources */,
 				A5F66B6A19D506BE00B16E8F /* RealisticViewController.m in Sources */,
