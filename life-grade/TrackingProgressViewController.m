@@ -39,6 +39,7 @@
     
     
     [self addMethods];
+    [self getGenerals];
     [self performFetch];
 
     avFont = AVENIR_BLACK;
@@ -69,7 +70,7 @@
     self.navigationItem.backBarButtonItem = barBtnItem;
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, 100)];
-    titleLabel.text = self.focusFactor;
+    titleLabel.text = self.focusFactor.group;
     titleLabel.font = [UIFont fontWithName:avFont size:24];
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -115,13 +116,16 @@
         
         if ([focus isEqualToString:obj.group]) {
             
-            self.focusFactor = obj.group;
+            self.focusFactor = obj;
             
             
         }
     }];
-    
+}
 
+- (void)getGenerals {
+    
+    
 }
 
 - (void)addMethods {
