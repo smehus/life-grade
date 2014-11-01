@@ -93,18 +93,6 @@
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>When grading this factor focus on the number of hobbies you have and the amount of pleasure you get from engaging in them. Remember, this doesn’t mean there is a “magical number” of hobbies to have.</string>
-			<key>badResponse</key>
-			<string>“The art of being happy lies in the power of extracting happiness from common things.” ~ Henry Ward Beecher
-Sometimes in order to remain interested, an individual is required to extract something interesting out of what you typically find common. Take a look at your life, your hobbies, your job, your friends and extract something unique about each of them. Maybe you already have something in your life you can build an interest around or start something new. Speaking to friends and family can help stir up useful ideas for new hobbies or perspectives to build on. </string>
-			<key>goodResponse</key>
-			<string>“The art of being happy lies in the power of extracting happiness from common things.” ~ Henry Ward Beecher
-Having interests and hobbies adds significant value to life as you may know by now. Continue to pursue things that interest you and don’t be afraid to try something new. An individual’s interest can increase even after starting a new hobby. </string>
-			<key>question</key>
-			<string>Hobbies &amp; Interests</string>
-		</dict>
-		<dict>
-			<key>description</key>
 			<string>For this factor focus on the number of genuine and intimate relationships you have in your life. These relationships may include really close friends, significant others, or family members. Remember this is not how many “friends” you have, it is how many deep and/or intimate 
 
 relationships you have.</string>

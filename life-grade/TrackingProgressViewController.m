@@ -15,11 +15,14 @@
 #import <MGBoxKit/MGBoxKit.h>
 #import "AttainableViewController.h"
 #import "ProgressMethods.h"
+#import "Answers.h"
 
 
 @interface TrackingProgressViewController ()
 
 @property (nonatomic, strong) NSMutableArray *progressMethods;
+@property (nonatomic, strong) Answers *fetchedAnswers;
+@property (nonatomic, strong) ProgressMethods *focusFactor;
 
 @end
 
@@ -32,8 +35,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    avFont = AVENIR_BLACK;
     self.progressMethods = [[NSMutableArray alloc] initWithCapacity:16];
+    
+    
+    [self addMethods];
+    [self performFetch];
+
+    avFont = AVENIR_BLACK;
+
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -60,7 +69,7 @@
     self.navigationItem.backBarButtonItem = barBtnItem;
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, 100)];
-    titleLabel.text = @"Tracking Progress";
+    titleLabel.text = self.focusFactor;
     titleLabel.font = [UIFont fontWithName:avFont size:24];
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -70,6 +79,49 @@
     [self setupGrid];
     [self addNextButton];
     
+}
+
+- (void)performFetch {
+    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
+        
+        
+        return;
+    }
+    
+    self.fetchedAnswers = [foundObjects lastObject];
+    [self getFocus:self.fetchedAnswers.focusFactor];
+    
+    NSLog(@"question bitch %@", self.fetchedAnswers);
+    
+}
+
+- (void)getFocus:(NSString *)focus {
+    
+    
+    [self.progressMethods enumerateObjectsUsingBlock:^(ProgressMethods *obj, NSUInteger idx, BOOL *stop) {
+        
+        if ([focus isEqualToString:obj.group]) {
+            
+            self.focusFactor = obj.group;
+            
+            
+        }
+    }];
+    
+
 }
 
 - (void)addMethods {
@@ -105,19 +157,19 @@
     ProgressMethods *m10 = [[ProgressMethods alloc] initWithMethod:@"Track My Behaviors" andKey:@"Emotional Well-Being"];
     [self.progressMethods addObject:m10];
     
-    ProgressMethods *m11 = [[ProgressMethods alloc] initWithMethod:@"“Try One New Thing Hobby Journal" andKey:@"Hobbies and Interests"];
+    ProgressMethods *m11 = [[ProgressMethods alloc] initWithMethod:@"“Try One New Thing Hobby Journal" andKey:@"Hobbies & Interests"];
     [self.progressMethods addObject:m11];
     
     ProgressMethods *m12 = [[ProgressMethods alloc] initWithMethod:@"Food and/or Exercise Diary" andKey:@"Physical Health"];
     [self.progressMethods addObject:m12];
     
-    ProgressMethods *m13 = [[ProgressMethods alloc] initWithMethod:@"“My Needs” Worksheet" andKey:@"Genuine, Deep, and Intimate Relationships"];
+    ProgressMethods *m13 = [[ProgressMethods alloc] initWithMethod:@"“My Needs” Worksheet" andKey:@"Genuine, Intimate, and Deep Relationships"];
     [self.progressMethods addObject:m13];
     
-    ProgressMethods *m14 = [[ProgressMethods alloc] initWithMethod:@"Who’s Got My Back Worksheet" andKey:@"Social Support and Social Networks"];
+    ProgressMethods *m14 = [[ProgressMethods alloc] initWithMethod:@"Who’s Got My Back Worksheet" andKey:@"Social Support & Social Networks"];
     [self.progressMethods addObject:m14];
     
-    ProgressMethods *m15 = [[ProgressMethods alloc] initWithMethod:@"Contribution Bucket List Activity" andKey:@"Contribution and Giving Back"];
+    ProgressMethods *m15 = [[ProgressMethods alloc] initWithMethod:@"Contribution Bucket List Activity" andKey:@"Contribution & Giving Back"];
     [self.progressMethods addObject:m15];
     
     ProgressMethods *m16 = [[ProgressMethods alloc] initWithMethod:@"Thought Countering Worksheet" andKey:@"Positive Thinking"];
