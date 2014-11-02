@@ -239,10 +239,13 @@
     
 }
 
+
+//!!!!: FUCKING FAGGOTS
+
 - (void)setTheFetchedGrades {
     
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 11; i++) {
         
         NSNumber *var = [self getGradeForIndex:[NSIndexPath indexPathForRow:i inSection:0]];
         var = (var) ? var : [NSNumber numberWithInt:5];
@@ -652,7 +655,7 @@
     // scroll to item isn't being called at end - so keeps blue screen
     [self.collectionView reloadData];
         if (idx.row < 9) {
-            
+            NSLog(@"faaaaggggs %@", path);
             [self.collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
             
         } else {

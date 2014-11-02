@@ -18,7 +18,6 @@
 @property (nonatomic, strong) NSString *goodResponse;
 @property (nonatomic, strong) NSString *badResponse;
 @property (nonatomic, strong) NSString *factorDescription;
-
 @property (nonatomic, strong) NSString *question;
 
 @end

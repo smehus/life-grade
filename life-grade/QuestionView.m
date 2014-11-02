@@ -269,6 +269,8 @@
 
 - (void)gradeSelected:(UITapGestureRecognizer *)recognizer {
     
+    NSLog(@"FUCKING FAGS %@", self.theIndexPath);
+    
     if (self.selectedGrade) {
         self.selectedGrade.gradeSelected = NO;
         self.selectedGradeCelll.backgroundColor = GREEN_COLOR;

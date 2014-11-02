@@ -35,15 +35,15 @@
     NSString *font = LIGHT_FONT;
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, self.frame.size.width -20, 100)];
-    [titleLabel setFont:[UIFont fontWithName:font size:36]];
+    [titleLabel setFont:FONT_AVENIR_BLACK(14);
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     titleLabel.numberOfLines = 0;
     titleLabel.text = @"You chose to focus on: ";
     [self addSubview:titleLabel];
     
     
-    UILabel *focusLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 10, self.frame.size.width - 20, 50)];
-    [focusLabel setFont:[UIFont fontWithName:font size:36]];
+    UILabel *focusLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 10, self.frame.size.width - 20, 75)];
+     [focusLabel setFont:FONT_AMATIC_REG(36);
     focusLabel.numberOfLines = 0;
     focusLabel.lineBreakMode = NSLineBreakByWordWrapping;
     focusLabel.textAlignment = NSTextAlignmentCenter;

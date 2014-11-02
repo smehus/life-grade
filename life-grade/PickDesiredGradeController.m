@@ -146,6 +146,14 @@
     l.font = FONT_AMATIC_BOLD(40);
     l.text = @"Choose your desired grade";
     [self.view addSubview:l];
+    
+    UILabel *exp = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(l.frame) + 5, self.view.frame.size.width-20, 50)];
+    exp.numberOfLines = 0;
+    exp.lineBreakMode = NSLineBreakByWordWrapping;
+    exp.textAlignment = NSTextAlignmentCenter;
+    exp.font = FONT_AMATIC_BOLD(40);
+    exp.text = @"Choose your desired grade";
+    [self.view addSubview:exp];
 }
 
 - (void)setTitleView {
