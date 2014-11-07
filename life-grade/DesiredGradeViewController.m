@@ -243,7 +243,7 @@
 - (void)setTheFetchedGrades {
     
 
-    for (int i = 0; i < 11; i++) {
+    for (int i = 0; i < 10; i++) {
         
         NSNumber *var = [self getGradeForIndex:[NSIndexPath indexPathForRow:i inSection:0]];
         var = (var) ? var : [NSNumber numberWithInt:5];
@@ -633,7 +633,7 @@
     
     if (idx.row <= 11) {
         
-        if (self.myGrades.count > idx.row) {
+        if (self.myGrades.count > idx.row && self.myGrades.count > 9) {
             
             [self.myGrades replaceObjectAtIndex:idx.row withObject:grade];
             self.nextButton.enabled = YES;

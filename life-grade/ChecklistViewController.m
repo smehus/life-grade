@@ -7,12 +7,14 @@
 //
 
 #import "ChecklistViewController.h"
+#import "MainAppDelegate.h"
+#import "Answers.h"
 
 @interface ChecklistViewController ()
 
 @property (nonatomic, strong) BFPaperButton *startButton;
 @property (nonatomic, strong) UILabel *stepOne;
-
+@property (nonatomic, strong) Answers *fetchedAnswers;
 
 @end
 
@@ -45,6 +47,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self performFetch];
+    
     self.title = @"Checklist";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
@@ -57,6 +61,32 @@
     
 //    [self setUpView];
     [self setUpView];
+    
+}
+
+- (void)performFetch {
+    
+    MainAppDelegate *del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
+        
+        
+        return;
+    }
+    
+    self.fetchedAnswers = [foundObjects lastObject];
+    
+    NSLog(@"question bitch %@", self.fetchedAnswers);
     
 }
 
@@ -104,6 +134,9 @@
     firstCheck.frame = CGRectMake(20, CGRectGetMaxY(self.stepOne.frame) + 40, 75, 75);
     firstCheck.contentMode = UIViewContentModeScaleAspectFit;;
     [self.view addSubview:firstCheck];
+    
+    NSNumber *num = self.fetchedAnswers.finalGrade;
+    
     
     UIImageView *firstMark = [[UIImageView alloc] initWithImage:checkMark];
     firstMark.frame = CGRectMake(20, firstCheck.center.y - 60, 75, 75);
