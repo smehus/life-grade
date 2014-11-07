@@ -240,8 +240,6 @@
 }
 
 
-//!!!!: FUCKING FAGGOTS
-
 - (void)setTheFetchedGrades {
     
 
@@ -253,6 +251,7 @@
         Grade *g = [[Grade alloc] init];
         g.gradeNum = var;
         [self.myGrades addObject:g];
+        
         
     }
 }
@@ -635,6 +634,7 @@
     if (idx.row <= 11) {
         
         if (self.myGrades.count > idx.row) {
+            
             [self.myGrades replaceObjectAtIndex:idx.row withObject:grade];
             self.nextButton.enabled = YES;
             
@@ -653,7 +653,7 @@
         }
         
     // scroll to item isn't being called at end - so keeps blue screen
-//    [self.collectionView reloadItemsAtIndexPaths:@[idx]];
+    [self.collectionView reloadData];
         if (idx.row < 9) {
             NSLog(@"faaaaggggs %@", path);
             [self.collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
@@ -661,11 +661,14 @@
         } else {
             NSLog(@"Ballz");
             [self.collectionView reloadItemsAtIndexPaths:@[idx]];
-
+//            [self.collectionView reloadData];
+//            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:8 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         }
     }
     
-    if (self.myGrades.count == 10) {
+    NSLog(@"MY GRADE COUNT %lu", (unsigned long)self.myGrades.count);
+    
+    if (self.myGrades.count >= 10) {
         
         self.nextButton.enabled = YES;
         if (!self.continueButton) {

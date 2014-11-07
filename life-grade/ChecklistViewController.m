@@ -126,7 +126,7 @@
     // ***** SECOND CHECK ******\\
     
     UIImageView *secondCheck = [[UIImageView alloc] initWithImage:checkBox];
-    secondCheck.frame = CGRectMake(20, CGRectGetMaxY(current.frame) + 37, 75, 75);
+    secondCheck.frame = CGRectMake(20, CGRectGetMaxY(current.frame) + 40, 75, 75);
     secondCheck.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:secondCheck];
     
@@ -143,7 +143,7 @@
     [self.view addSubview:romanDos];
     
     
-    UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(CGRectGetMaxX(romanDos.frame) + 10, CGRectGetMaxY(current.frame) + 50, 150, 50)];
+    UILabel *desired = [[UILabel alloc]  initWithFrame:CGRectMake(CGRectGetMaxX(romanDos.frame) + 10, CGRectGetMaxY(current.frame) + 45, 150, 50)];
     desired.text = @"Desired Grade";
     desired.font = FONT_AMATIC_BOLD(40);
     [self.view addSubview:desired];
@@ -153,7 +153,7 @@
     // ***** THIRD CHECK *****\
     
     UIImageView *thirdCheck = [[UIImageView alloc] initWithImage:checkBox];
-    thirdCheck.frame = CGRectMake(20, CGRectGetMaxY(desired.frame) + 35, 75, 75);
+    thirdCheck.frame = CGRectMake(20, CGRectGetMaxY(desired.frame) + 45, 75, 75);
     thirdCheck.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:thirdCheck];
     
