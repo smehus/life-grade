@@ -130,6 +130,7 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.contentInset = UIEdgeInsetsMake(20, 0, 100, 0);
+
     
     [self.collectionView registerClass:[DesiredCell class] forCellWithReuseIdentifier:@"Cell"];
     
@@ -139,20 +140,20 @@
 
 - (void)constructTitleView {
     
-    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width-20, 50)];
+    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, self.view.frame.size.width-20, 50)];
     l.numberOfLines = 0;
     l.lineBreakMode = NSLineBreakByWordWrapping;
     l.textAlignment = NSTextAlignmentCenter;
-    l.font = FONT_AMATIC_BOLD(40);
-    l.text = @"Choose your desired grade";
+    l.font = FONT_AMATIC_BOLD(50);
+    l.text = @"Choose Your";
     [self.view addSubview:l];
     
     UILabel *exp = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(l.frame) + 5, self.view.frame.size.width-20, 50)];
     exp.numberOfLines = 0;
     exp.lineBreakMode = NSLineBreakByWordWrapping;
     exp.textAlignment = NSTextAlignmentCenter;
-    exp.font = FONT_AMATIC_BOLD(40);
-    exp.text = @"Choose your desired grade";
+    exp.font = FONT_AMATIC_BOLD(50);
+    exp.text = @"Desired Grade";
     [self.view addSubview:exp];
 }
 
@@ -270,10 +271,13 @@
             cell.nextButton.hidden = NO;
             self.isLarge = YES;
             [cell setLargeFrame];
+            self.collectionView.scrollEnabled = NO;
         } else {
             [collectionView setCollectionViewLayout:self.smallLayout animated:YES];
+
             self.isLarge = NO;
             [cell setSmallFrame];
+            self.collectionView.scrollEnabled = YES;
         }
 
         

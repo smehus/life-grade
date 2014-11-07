@@ -102,6 +102,7 @@
     
     UIImageView *firstCheck = [[UIImageView alloc] initWithImage:checkBox];
     firstCheck.frame = CGRectMake(20, CGRectGetMaxY(self.stepOne.frame) + 40, 75, 75);
+    firstCheck.contentMode = UIViewContentModeScaleAspectFit;;
     [self.view addSubview:firstCheck];
     
     UIImageView *firstMark = [[UIImageView alloc] initWithImage:checkMark];
@@ -125,7 +126,8 @@
     // ***** SECOND CHECK ******\\
     
     UIImageView *secondCheck = [[UIImageView alloc] initWithImage:checkBox];
-    secondCheck.frame = CGRectMake(20, CGRectGetMaxY(current.frame) + 40, 75, 75);
+    secondCheck.frame = CGRectMake(20, CGRectGetMaxY(current.frame) + 37, 75, 75);
+    secondCheck.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:secondCheck];
     
     UIImageView *secondMark = [[UIImageView alloc] initWithImage:checkMark];
@@ -151,7 +153,8 @@
     // ***** THIRD CHECK *****\
     
     UIImageView *thirdCheck = [[UIImageView alloc] initWithImage:checkBox];
-    thirdCheck.frame = CGRectMake(20, CGRectGetMaxY(desired.frame) + 40, 75, 75);
+    thirdCheck.frame = CGRectMake(20, CGRectGetMaxY(desired.frame) + 35, 75, 75);
+    thirdCheck.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:thirdCheck];
     
     UIImageView *thirdMark = [[UIImageView alloc] initWithImage:checkMark];

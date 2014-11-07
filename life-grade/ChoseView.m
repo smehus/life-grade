@@ -56,7 +56,7 @@
     
     
     UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(focusLabel.frame) + 10, self.frame.size.width - 20, 100)];
-    [planLabel setFont:[UIFont fontWithName:font size:24]];
+    [planLabel setFont:FONT_AVENIR_BLACK(24)];
     planLabel.numberOfLines = 0;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
     planLabel.text = @"Lets work on making a plan!";

@@ -653,13 +653,14 @@
         }
         
     // scroll to item isn't being called at end - so keeps blue screen
-    [self.collectionView reloadData];
+//    [self.collectionView reloadItemsAtIndexPaths:@[idx]];
         if (idx.row < 9) {
             NSLog(@"faaaaggggs %@", path);
             [self.collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
             
         } else {
             NSLog(@"Ballz");
+            [self.collectionView reloadItemsAtIndexPaths:@[idx]];
 
         }
     }

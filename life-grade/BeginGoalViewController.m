@@ -173,7 +173,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x, 0, self.specificView.bounds.size.width, 50)];
     label.font = [UIFont fontWithName:font size:24];
     label.textAlignment = NSTextAlignmentCenter;
-    label.text = @"Specific";
+    label.text = @"Lets Be Specific";
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
     [self.specificView addSubview:label];
@@ -181,7 +181,7 @@
     UILabel *someText = [[UILabel alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x, CGRectGetMaxY(label.frame) + 25, self.specificView.bounds.size.width, 150)];
     someText.font = [UIFont fontWithName:font size:24];
     someText.textAlignment = NSTextAlignmentCenter;
-    someText.text = @"Here is some text that I don't know what is supposed to be! Here is some text that I don't know what is supposed to be!";
+    someText.text = @"IN order to know exactly what you want to accomplish with this goal, we need you to be more specific";
     someText.numberOfLines = 0;
     someText.lineBreakMode = NSLineBreakByWordWrapping;
     [self.specificView addSubview:someText];

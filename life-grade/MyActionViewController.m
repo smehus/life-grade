@@ -121,13 +121,22 @@
     [self.view addSubview:self.collectionView];
     
     
-    self.directionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, 200)];
-    self.directionsLabel.text = @"Choose 1 factor to focus on";
-    NSString *font = LIGHT_FONT;
-    self.directionsLabel.font = [UIFont fontWithName:font size:45];
+    self.directionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width-20, 200)];
+    self.directionsLabel.text = @"Choose one factor to focus on";
+
+    self.directionsLabel.font = FONT_AVENIR_BLACK(40);
     self.directionsLabel.numberOfLines = 0;
     self.directionsLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.view addSubview:self.directionsLabel];
+    
+    UIView *info = [[UIView alloc ] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.directionsLabel.frame) + 20, self.view.frame.size.width, 50)];
+    // make label with amatic 'bottom three factors'
+    info.backgroundColor = GREEN_COLOR;
+    
+    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, info.frame.size.width, 30)];
+    l.text = @"Bottom Three Factors";
+    [info addSubview:l];
+    [self.view addSubview:info];
 
 }
 
