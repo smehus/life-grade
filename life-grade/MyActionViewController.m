@@ -43,6 +43,9 @@
 @property (nonatomic, assign) BOOL isLarge;
 
 
+@property (nonatomic, strong) UIView *info;
+
+
 
 @end
 
@@ -129,14 +132,16 @@
     self.directionsLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.view addSubview:self.directionsLabel];
     
-    UIView *info = [[UIView alloc ] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.directionsLabel.frame) + 20, self.view.frame.size.width, 50)];
+    self.info = [[UIView alloc ] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.directionsLabel.frame) + 20, self.view.frame.size.width, 50)];
     // make label with amatic 'bottom three factors'
-    info.backgroundColor = GREEN_COLOR;
+    self.info.backgroundColor = GREEN_COLOR;
     
-    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, info.frame.size.width, 30)];
+    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.info.frame.size.width, 30)];
     l.text = @"Bottom Three Factors";
-    [info addSubview:l];
-    [self.view addSubview:info];
+    l.textAlignment = NSTextAlignmentCenter;
+    l.font = FONT_AVENIR_BLACK(18);
+    [self.info addSubview:l];
+    [self.view addSubview:self.info];
 
 }
 
@@ -296,6 +301,7 @@
         
         if (!self.isLarge) {
             self.directionsLabel.hidden = YES;
+            self.info.hidden = YES;
             [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
             ActionCell *cell = (ActionCell *)[collectionView cellForItemAtIndexPath:indexPath];
             cell.nextButton.hidden = NO;
@@ -306,6 +312,7 @@
             [collectionView setCollectionViewLayout:self.smallLayout animated:YES];
             self.isLarge = NO;
             self.directionsLabel.hidden = NO;
+            self.info.hidden = NO;
         }
         
         
