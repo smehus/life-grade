@@ -24,4 +24,7 @@
 @property (nonatomic, strong) NSIndexPath *theIndex;
 @property (nonatomic, strong) Grade *grade;
 
+- (void)drawSmallLayout;
+- (void)drawLargeLayout;
+
 @end

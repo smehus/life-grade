@@ -23,7 +23,7 @@
         self.factorLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, self.frame.size.height/2 - 25, self.frame.size.width - 10, 100)];
         self.factorLabel.backgroundColor = [UIColor clearColor];
         self.factorLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
-        self.factorLabel.font = FONT_AMATIC_REG(24);
+        self.factorLabel.font = FONT_AMATIC_REG(30);
         self.factorLabel.textAlignment = NSTextAlignmentCenter;
         self.factorLabel.numberOfLines = 0;
         self.factorLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -37,11 +37,33 @@
             [self.cellDelegate didPickFactor:self.grade andIndex:self.theIndex];
             
         }];
-        [self.nextButton setFrame:CGRectMake(10, CGRectGetMaxY(self.factorLabel.frame) + 300, screenWidth - 20, 50)];
+        [self.nextButton setFrame:CGRectMake(10, CGRectGetMaxY(self.factorLabel.frame) + 250, screenWidth - 20, 50)];
         [self addSubview:self.nextButton];
         
     }
     return self;
 }
+
+- (void)drawSmallLayout {
+    
+    self.factorLabel.frame = CGRectMake(5, self.frame.size.height/2 - 25, self.frame.size.width - 10, 100);
+    self.factorLabel.font = FONT_AMATIC_REG(30);
+    
+}
+
+- (void)drawLargeLayout {
+    
+    
+    self.factorLabel.frame = CGRectMake(5, self.frame.size.height/3, self.frame.size.width - 10, 100);
+    self.factorLabel.font = FONT_AMATIC_BOLD(45);
+}
+
+
+
+
+
+
+
+
 
 @end

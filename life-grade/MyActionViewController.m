@@ -127,7 +127,7 @@
     self.directionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width-20, 200)];
     self.directionsLabel.text = @"Choose one factor to focus on";
 
-    self.directionsLabel.font = FONT_AVENIR_BLACK(40);
+    self.directionsLabel.font = FONT_AVENIR_BLACK(35);
     self.directionsLabel.numberOfLines = 0;
     self.directionsLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.view addSubview:self.directionsLabel];
@@ -295,6 +295,8 @@
 {
     NSLog(@"selected item");
     
+    ActionCell *cell = (ActionCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    
     _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
     
     [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -303,8 +305,9 @@
             self.directionsLabel.hidden = YES;
             self.info.hidden = YES;
             [_collectionView setCollectionViewLayout:_largeLayout animated:YES];
-            ActionCell *cell = (ActionCell *)[collectionView cellForItemAtIndexPath:indexPath];
             cell.nextButton.hidden = NO;
+            [cell drawLargeLayout];
+            self.collectionView.scrollEnabled = NO;
             
             self.isLarge = YES;
         } else {
@@ -313,6 +316,8 @@
             self.isLarge = NO;
             self.directionsLabel.hidden = NO;
             self.info.hidden = NO;
+            [cell drawSmallLayout];
+            self.collectionView.scrollEnabled = YES;
         }
         
         

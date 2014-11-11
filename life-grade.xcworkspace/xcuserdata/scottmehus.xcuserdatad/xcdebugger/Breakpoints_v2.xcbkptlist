@@ -824,22 +824,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "life-grade/MainAppDelegate.m"
-            timestampString = "435878395.328108"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -1067,7 +1051,7 @@
                   symbolName = "-[TrackingProgressViewController getFocus:]"
                   moduleName = "life-grade"
                   urlString = "file:///Users/scottmehus/Documents/LifeGrade/life-grade/life-grade/TrackingProgressViewController.m"
-                  timestampString = "437029984.990896"
+                  timestampString = "437367293.677959"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
@@ -1081,7 +1065,7 @@
                   symbolName = "__43-[TrackingProgressViewController getFocus:]_block_invoke"
                   moduleName = "life-grade"
                   urlString = "file:///Users/scottmehus/Documents/LifeGrade/life-grade/life-grade/TrackingProgressViewController.m"
-                  timestampString = "437029984.991576"
+                  timestampString = "437367293.678317"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"

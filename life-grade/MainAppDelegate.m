@@ -81,7 +81,7 @@
         
         mainRevealController = [[SWRevealViewController alloc]
                                                         initWithRearViewController:rearViewController frontViewController:navCon];
-        
+            
         
     } else if (password != nil && email != nil) {
         
