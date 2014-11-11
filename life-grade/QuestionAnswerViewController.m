@@ -18,6 +18,7 @@
 #import "MainAppDelegate.h"
 #import "Answers.h"
 #import "MBAlertView.h"
+#import "MyActionViewController.h"
 
 @interface QuestionAnswerViewController () <ChoseViewDelegate>
 
@@ -198,6 +199,12 @@
     
     if (self.firstControl.selectedSegmentIndex == 0) {
         
+        MyActionViewController *actionPlan = [[MyActionViewController alloc] init];
+        actionPlan.managedObjectContext = self.managedObjectContext;
+        
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionPlan];
+        [self.revealViewController setFrontViewController:nav animated:YES];
+        
         
     } else if (self.firstControl.selectedSegmentIndex == 1
                && self.secondControl.selectedSegmentIndex == 1
@@ -206,17 +213,17 @@
         
         // do something
         
-    }
+    } else {
     
-    self.choseView = [[ChoseView alloc] initWithFrame:CGRectMake(30, -300, self.view.frame.size.width-60, self.view.frame.size.height-60) withAnswers:self.fetchedAnswers completion:^{
+        self.choseView = [[ChoseView alloc] initWithFrame:CGRectMake(30, -300, self.view.frame.size.width-60, self.view.frame.size.height-60) withAnswers:self.fetchedAnswers completion:^{
 
-    }];
+        }];
     
-    self.choseView.clipsToBounds = YES;
-    self.choseView.delegate = self;
-    popup = [KLCPopup popupWithContentView:self.choseView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
-    [popup show];
-  
+        self.choseView.clipsToBounds = YES;
+        self.choseView.delegate = self;
+        popup = [KLCPopup popupWithContentView:self.choseView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
+        [popup show];
+    }
 }
 
 - (void)startPlan {
