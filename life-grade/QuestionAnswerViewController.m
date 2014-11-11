@@ -118,49 +118,53 @@
     
     NSString *liteFont = LIGHT_FONT;
     
-    UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, self.view.frame.size.width, 30)];
-    firstLabel.text = [NSString stringWithFormat:@"I:    %@", @"I solved my problem 6 months ago"];
+    UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, self.view.frame.size.width - 40, 30)];
+    firstLabel.text = [NSString stringWithFormat:@"I: %@", @"I solved my problem 6 months ago"];
     firstLabel.font = FONT_AMATIC_BOLD(24);
     firstLabel.numberOfLines = 0;
     firstLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    firstLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:firstLabel];
     
     self.firstControl = [self getSegment];
-    self.firstControl.frame = CGRectMake(50, CGRectGetMaxY(firstLabel.frame) + 10, 200, 30);
+    self.firstControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(firstLabel.frame) + 10, 200, 30);
     [self.view addSubview:self.firstControl];
 
     UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.firstControl.frame) + 10, self.view.frame.size.width - 40, 55)];
-    secondLabel.text = [NSString stringWithFormat:@"II:    %@", @"I have taken action on my problem within the past 6 months"];
+    secondLabel.text = [NSString stringWithFormat:@"II: %@", @"I have taken action on my problem within the past 6 months"];
     secondLabel.font = FONT_AMATIC_BOLD(24);
     secondLabel.numberOfLines = 0;
     secondLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    secondLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:secondLabel];
     
     self.secondControl = [self getSegment];
-    self.secondControl.frame = CGRectMake(50, CGRectGetMaxY(secondLabel.frame) + 10, 200, 30);
+    self.secondControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(secondLabel.frame) + 10, 200, 30);
     [self.view addSubview:self.secondControl];
     
     
-    UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.secondControl.frame) + 10, self.view.frame.size.width, 55)];
-    thirdLabel.text = [NSString stringWithFormat:@"III:    %@", @"I am intending to take action in the next month"];
+    UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.secondControl.frame) + 10, self.view.frame.size.width-40, 55)];
+    thirdLabel.text = [NSString stringWithFormat:@"III: %@", @"I am intending to take action in the next month"];
     thirdLabel.font = FONT_AMATIC_BOLD(24);
     thirdLabel.numberOfLines = 0;
     thirdLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    thirdLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:thirdLabel];
     
     self.thirdControl = [self getSegment];
-    self.thirdControl.frame = CGRectMake(50, CGRectGetMaxY(thirdLabel.frame) + 10, 200, 30);
+    self.thirdControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(thirdLabel.frame) + 10, 200, 30);
     [self.view addSubview:self.thirdControl];
     
-    UILabel *fourthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.thirdControl.frame) + 10, self.view.frame.size.width, 55)];
-    fourthLabel.text = [NSString stringWithFormat:@"III:    %@", @"I am intending to take action in the next 6 months"];
+    UILabel *fourthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.thirdControl.frame) + 10, self.view.frame.size.width-40, 55)];
+    fourthLabel.text = [NSString stringWithFormat:@"IV: %@", @"I am intending to take action in the next 6 months"];
     fourthLabel.font = FONT_AMATIC_BOLD(24);
     fourthLabel.numberOfLines = 0;
     fourthLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    fourthLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:fourthLabel];
     
     self.fourthControl = [self getSegment];
-    self.fourthControl.frame = CGRectMake(50, CGRectGetMaxY(fourthLabel.frame) + 10, 200, 30);
+    self.fourthControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(fourthLabel.frame) + 10, 200, 30);
     [self.view addSubview:self.fourthControl];
     
     self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.fourthControl.frame) + 20, self.view.frame.size.width, 50)];
