@@ -239,7 +239,12 @@
         box.layer.borderWidth = 1.0f;
         box.layer.borderColor = greenColor.CGColor;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, box.frame.size.height/2-50, box.frame.size.width-10, 100)];
-        ProgressMethods *m = self.generalFactors[i];
+        ProgressMethods *m;
+        if (i == 0) {
+            m = self.focusFactor;
+        } else {
+            m = self.generalFactors[i];
+        }
         label.text = m.method;
         label.numberOfLines = 0;
         label.lineBreakMode = NSLineBreakByWordWrapping;
