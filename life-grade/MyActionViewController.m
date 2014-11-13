@@ -126,7 +126,7 @@
     
     self.directionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width-20, 200)];
     self.directionsLabel.text = @"Choose one factor to focus on";
-
+    self.directionsLabel.textAlignment = NSTextAlignmentCenter;
     self.directionsLabel.font = FONT_AVENIR_BLACK(35);
     self.directionsLabel.numberOfLines = 0;
     self.directionsLabel.lineBreakMode = NSLineBreakByWordWrapping;
