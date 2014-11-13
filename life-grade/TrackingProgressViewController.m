@@ -242,6 +242,8 @@
         ProgressMethods *m;
         if (i == 0) {
             m = self.focusFactor;
+            
+            box.backgroundColor = GREEN_COLOR;
         } else {
             m = self.generalFactors[i];
         }

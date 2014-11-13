@@ -123,8 +123,11 @@
         originalFrame = CGRectMake(25, 150, 100, 160);
         UIPanGestureRecognizer *panGest = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragView:)];
         
+        // Make custom view
         UIView *thing = [[UIView alloc] initWithFrame:originalFrame];
         thing.layer.cornerRadius = 8.0f;
+        thing.layer.borderColor = [UIColor blackColor].CGColor;
+        thing.layer.borderWidth = 1.0f;
         
         UILabel *at = [[UILabel alloc] initWithFrame:CGRectMake(0, thing.frame.size.height/2-25, originalFrame.size.width - 20, 50)];
         at.textAlignment = NSTextAlignmentCenter;
@@ -145,12 +148,22 @@
 
 - (void)addAnswerFrames {
     
+    UILabel *yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(175, 50, 110, 25)];
+    yesLabel.text = @"Yes";
+    yesLabel.font = FONT_AVENIR_BLACK(26);
+    [self.view addSubview:yesLabel];
+    
     self.yesFrame = [[UIView alloc] initWithFrame:CGRectMake(175, 75, 110, 150)];
     self.yesFrame.backgroundColor = [UIColor clearColor];
     self.yesFrame.layer.borderColor = [UIColor greenColor].CGColor;
     self.yesFrame.layer.borderWidth = 1.0f;
     [self.view addSubview:self.yesFrame];
     
+    
+    UILabel *noLabel = [[UILabel alloc] initWithFrame:CGRectMake(175, CGRectGetMaxY(self.yesFrame.frame) + 10, 110, 25)];
+    noLabel.text = @"Yes";
+    noLabel.font = FONT_AVENIR_BLACK(26);
+    [self.view addSubview:noLabel];
     
     self.noFrame = [[UIView alloc] initWithFrame:CGRectMake(175, CGRectGetMaxY(self.yesFrame.frame) + 35, 110, 150)];
     self.noFrame.backgroundColor = [UIColor clearColor];
