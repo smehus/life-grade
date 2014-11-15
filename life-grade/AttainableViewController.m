@@ -16,6 +16,7 @@
 #import "UIView+draggable.h"
 #import "RealisticViewController.h"
 #import "Answers.h"
+#import "AttributeSwipeView.h"
 
 @interface AttainableViewController () <UIGestureRecognizerDelegate>
 
@@ -157,7 +158,7 @@
         UIPanGestureRecognizer *panGest = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragView:)];
         
         // Make custom view
-        UIView *thing = [[UIView alloc] initWithFrame:originalFrame];
+        AttributeSwipeView *thing = [[AttributeSwipeView alloc] initWithFrame:originalFrame];
         thing.layer.cornerRadius = 8.0f;
         thing.layer.borderColor = [UIColor blackColor].CGColor;
         thing.layer.borderWidth = 1.0f;
@@ -170,6 +171,7 @@
         
         
         NSDictionary *d = self.attributes[i];
+        thing.attribute = d;
         at.text =  d[@"attribute"];
         [thing addSubview:at];
         
@@ -234,6 +236,8 @@
     CGPoint translation = [recognizer translationInView:self.view];
     recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x,
                                          recognizer.view.center.y + translation.y);
+    
+    AttributeSwipeView *swipeView = (AttributeSwipeView *)recognizer.view;
     [self.view bringSubviewToFront:recognizer.view];
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
     
@@ -265,12 +269,19 @@
                 
                 recognizer.view.springBounciness = 15.0f;
                 recognizer.view.spring.frame = self.yesFrame.frame;
+                [self.yesFactors addObject:swipeView];
 
                 
             } else if (distanceToNo < 100) {
                 
                 recognizer.view.springBounciness = 15.0f;
                 recognizer.view.spring.frame = self.noFrame.frame;
+                if ([self.yesFactors containsObject:swipeView]) {
+                    
+                    [self.yesFactors removeObject:swipeView];
+                }
+                
+                
             } else {
                 // back to orig frame
                 recognizer.view.springBounciness = 15.0f;
@@ -281,7 +292,20 @@
     }
 }
 
-
+- (void)save {
+    
+    
+    
+    
+    
+    
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
+}
 
 
 

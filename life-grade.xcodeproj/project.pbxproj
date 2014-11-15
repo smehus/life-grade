@@ -81,6 +81,7 @@
 		A5435DC71957B92A00EC5881 /* AttributesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC61957B92A00EC5881 /* AttributesViewController.m */; };
 		A5435DCA1957B99400EC5881 /* AttributesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5435DC91957B99400EC5881 /* AttributesCell.m */; };
 		A54B6B1819279F6B000AA8D7 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54B6B1719279F6B000AA8D7 /* Data.plist */; };
+		A54ECFA81A17EA4D0083BEBF /* AttributeSwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54ECFA71A17EA4D0083BEBF /* AttributeSwipeView.m */; };
 		A57829B419DE269D00A4510C /* AnalysisView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F66B6C19DB874300B16E8F /* AnalysisView.m */; };
 		A57829BD19DE27D700A4510C /* AnalysisBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A57829BC19DE27D700A4510C /* AnalysisBlock.m */; };
 		A581F2D619C917C600AB9382 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = A581F2D419C917C600AB9382 /* CheckBox.png */; };
@@ -114,7 +115,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01B288485E7041259E32B3EF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		0F52ACA49FF6E37DF48E3A88 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		490011D519CB331F00910098 /* MyActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActionViewController.h; sourceTree = "<group>"; };
 		490011D619CB331F00910098 /* MyActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActionViewController.m; sourceTree = "<group>"; };
 		494692AA19CB45DD00869599 /* ActionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionCell.h; sourceTree = "<group>"; };
@@ -229,6 +230,8 @@
 		A5435DC81957B99400EC5881 /* AttributesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesCell.h; sourceTree = "<group>"; };
 		A5435DC91957B99400EC5881 /* AttributesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesCell.m; sourceTree = "<group>"; };
 		A54B6B1719279F6B000AA8D7 /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
+		A54ECFA61A17EA4D0083BEBF /* AttributeSwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeSwipeView.h; sourceTree = "<group>"; };
+		A54ECFA71A17EA4D0083BEBF /* AttributeSwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeSwipeView.m; sourceTree = "<group>"; };
 		A57829B519DE26FF00A4510C /* libPods-MGBoxKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MGBoxKit.a"; path = "Pods/build/Debug-iphoneos/libPods-MGBoxKit.a"; sourceTree = "<group>"; };
 		A57829B619DE26FF00A4510C /* libPods-MGEvents.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MGEvents.a"; path = "Pods/build/Debug-iphoneos/libPods-MGEvents.a"; sourceTree = "<group>"; };
 		A57829B719DE26FF00A4510C /* libPods-MGMushParser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MGMushParser.a"; path = "Pods/build/Debug-iphoneos/libPods-MGMushParser.a"; sourceTree = "<group>"; };
@@ -263,6 +266,7 @@
 		A5F66B6B19DB874300B16E8F /* AnalysisView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisView.h; sourceTree = "<group>"; };
 		A5F66B6C19DB874300B16E8F /* AnalysisView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalysisView.m; sourceTree = "<group>"; };
 		A960DAF569C04584853BD49B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEB94201BB7F1A0F5B9F127B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +296,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21EB4EDBBE1900DCDC524FCD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BEB94201BB7F1A0F5B9F127B /* Pods.debug.xcconfig */,
+				0F52ACA49FF6E37DF48E3A88 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		494692B919CB75A600869599 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +335,8 @@
 				A5F66B6919D506BE00B16E8F /* RealisticViewController.m */,
 				A5254E1A1A04EA4900A4BDAB /* ProgressMethods.h */,
 				A5254E1B1A04EA4900A4BDAB /* ProgressMethods.m */,
+				A54ECFA61A17EA4D0083BEBF /* AttributeSwipeView.h */,
+				A54ECFA71A17EA4D0083BEBF /* AttributeSwipeView.m */,
 			);
 			name = MyPlan;
 			sourceTree = "<group>";
@@ -334,7 +349,7 @@
 				655EC62D18DF5FE20036515F /* life-gradeTests */,
 				655EC60718DF5FE20036515F /* Frameworks */,
 				655EC60618DF5FE20036515F /* Products */,
-				01B288485E7041259E32B3EF /* Pods.xcconfig */,
+				21EB4EDBBE1900DCDC524FCD /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -787,7 +802,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -831,6 +846,7 @@
 				A5C08C7B193977D600887F83 /* ActionPlanViewController.m in Sources */,
 				A5F66B6A19D506BE00B16E8F /* RealisticViewController.m in Sources */,
 				6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */,
+				A54ECFA81A17EA4D0083BEBF /* AttributeSwipeView.m in Sources */,
 				A53DA43419C1474400EAC693 /* InstructionsViewController.m in Sources */,
 				65714FFE191475080034009A /* HASmallCollectionViewController.m in Sources */,
 				A5254E1619FAFD0300A4BDAB /* CompletionDateView.m in Sources */,
@@ -973,7 +989,7 @@
 		};
 		655EC63818DF5FE20036515F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01B288485E7041259E32B3EF /* Pods.xcconfig */;
+			baseConfigurationReference = BEB94201BB7F1A0F5B9F127B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1001,7 +1017,7 @@
 		};
 		655EC63918DF5FE20036515F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01B288485E7041259E32B3EF /* Pods.xcconfig */;
+			baseConfigurationReference = 0F52ACA49FF6E37DF48E3A88 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
