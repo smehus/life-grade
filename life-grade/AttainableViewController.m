@@ -219,6 +219,7 @@
     [nextButton setBackgroundColor:gC];
     [[nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
        
+        [self save];
         RealisticViewController *controller = [[RealisticViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
         
@@ -295,7 +296,16 @@
 - (void)save {
     
     
-    
+    for (int i = 0; i < 4; i++) {
+        
+        if (i == 0) {
+            self.fetchedAnswers.trackingProgressOne = self.yesFactors[0];
+        } else if (i == 1) {
+            self.fetchedAnswers.trackingProgressTwo = self.yesFactors[1];
+        } else if (i == 2) {
+            self.fetchedAnswers.trackingProgressThree = self.yesFactors[2];
+        }
+    }
     
     
     
