@@ -150,7 +150,8 @@
     
     UILabel *yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(175, 50, 110, 25)];
     yesLabel.text = @"Yes";
-    yesLabel.font = FONT_AVENIR_BLACK(26);
+    yesLabel.font = FONT_AVENIR_BLACK(22);
+    yesLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:yesLabel];
     
     self.yesFrame = [[UIView alloc] initWithFrame:CGRectMake(175, 75, 110, 150)];
@@ -161,8 +162,9 @@
     
     
     UILabel *noLabel = [[UILabel alloc] initWithFrame:CGRectMake(175, CGRectGetMaxY(self.yesFrame.frame) + 10, 110, 25)];
-    noLabel.text = @"Yes";
-    noLabel.font = FONT_AVENIR_BLACK(26);
+    noLabel.text = @"NO";
+    noLabel.font = FONT_AVENIR_BLACK(22);
+    noLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:noLabel];
     
     self.noFrame = [[UIView alloc] initWithFrame:CGRectMake(175, CGRectGetMaxY(self.yesFrame.frame) + 35, 110, 150)];

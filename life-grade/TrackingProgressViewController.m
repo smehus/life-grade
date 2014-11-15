@@ -348,6 +348,8 @@
     NSError *error;
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"Error: %@", error);
+        
+        
         abort();
         }
     }
