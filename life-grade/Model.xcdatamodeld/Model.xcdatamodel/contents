@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Answers" representedClassName="Answers" syncable="YES">
         <attribute name="actionOne" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="actionThree" optional="YES" attributeType="String" syncable="YES"/>
@@ -27,6 +27,9 @@
         <attribute name="stageQuestionTwo" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="thirdSupport" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trackingProgressOne" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trackingProgressThree" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trackingProgressTwo" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attributes" inverseName="answers" inverseEntity="Attributes" syncable="YES"/>
     </entity>
     <entity name="Attributes" representedClassName="Attributes" syncable="YES">
@@ -34,7 +37,7 @@
         <relationship name="answers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Answers" inverseName="attributes" inverseEntity="Answers" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Answers" positionX="-63" positionY="-18" width="128" height="450"/>
+        <element name="Answers" positionX="-63" positionY="-18" width="128" height="495"/>
         <element name="Attributes" positionX="-63" positionY="99" width="128" height="73"/>
     </elements>
 </model>

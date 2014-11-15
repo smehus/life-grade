@@ -40,6 +40,10 @@
 @property (nonatomic) BOOL stageQuestionThree;
 @property (nonatomic) BOOL stageQuestionFour;
 @property (nonatomic, retain) NSString * specificFocus;
+@property (nonatomic, retain) NSString *trackingProgressOne;
+@property (nonatomic, retain) NSString *trackingProgressTwo;
+@property (nonatomic, retain) NSString *trackingProgressThree;
+
 
 @end
 

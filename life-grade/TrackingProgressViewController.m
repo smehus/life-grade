@@ -307,19 +307,52 @@
         AttainableViewController *controller = [[AttainableViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
         
-        [self save];
+        [self saveAnswers];
     }];
     [self.view addSubview:button];
     
 }
 
-- (void)save {
-    
+- (void)saveAnswers {
+
     NSLog(@"%@", self.selectedMethods);
     
+    for (int i = 0; i < 3; i++) {
+        
+        ProgressMethods *m = self.selectedMethods[i];
+        
+        switch (i) {
+            case 0:
+                self.fetchedAnswers.trackingProgressOne = m.method;
+                break;
+        switch (i) {
+            case 0:
+                self.fetchedAnswers.trackingProgressTwo = m.method;
+                break;
+        switch (i) {
+            case 0:
+                self.fetchedAnswers.trackingProgressThree = m.method;
+                break;
+                
+                
+            default:
+                break;
+                }
+        
+            }
+        }
+        
+                
     
     
-    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+        }
+    }
 }
+
+
 
 @end
