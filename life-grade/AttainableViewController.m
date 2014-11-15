@@ -15,12 +15,16 @@
 #import <MGBoxKit/MGBoxKit.h>
 #import "UIView+draggable.h"
 #import "RealisticViewController.h"
+#import "Answers.h"
 
 @interface AttainableViewController () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIView *yesFrame;
 @property (nonatomic, strong) UIView *noFrame;
 @property (nonatomic, strong) NSArray *attributes;
+
+@property (nonatomic, strong) NSMutableArray *yesFactors;
+@property (nonatomic, strong) Answers *fetchedAnswers;
 
 @end
 
@@ -36,6 +40,8 @@
     
     avFont = AVENIR_BLACK;
     blueColor = BLUE_COLOR;
+    
+    self.yesFactors = [[NSMutableArray alloc] initWithCapacity:10];
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -76,6 +82,33 @@
     [self addViews];
     [self addButton];
 
+}
+
+
+- (void)performFetch {
+    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
+        
+        
+        return;
+    }
+    
+    self.fetchedAnswers = [foundObjects lastObject];
+    
+    NSLog(@"question bitch %@", self.fetchedAnswers);
+    
 }
 
 - (NSArray *)loadAttributes {
