@@ -25,6 +25,8 @@
 @property (nonatomic, strong) ProgressMethods *focusFactor;
 @property (nonatomic, strong) NSMutableArray *generalFactors;
 
+@property (nonatomic, strong) NSMutableArray *selectedMethods;
+
 @end
 
 @implementation TrackingProgressViewController {
@@ -36,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.selectedMethods = [[NSMutableArray alloc] initWithCapacity:3];
     self.progressMethods = [[NSMutableArray alloc] initWithCapacity:16];
     self.generalFactors = [[NSMutableArray alloc] initWithCapacity:10];
     
@@ -77,6 +80,24 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.view addSubview:titleLabel];
+    
+    
+    UILabel *trackLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame), self.view.frame.size.width, 30)];
+    trackLabel.text = @"Track Your Progress";
+    trackLabel.font = [UIFont fontWithName:avFont size:24];
+    trackLabel.numberOfLines = 0;
+    trackLabel.textAlignment = NSTextAlignmentCenter;
+    trackLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    [self.view addSubview:trackLabel];
+    
+    UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(trackLabel.frame)+ 10, self.view.frame.size.width, 30)];
+    instructLabel.text = @"Select three ways to track your progression";
+    instructLabel.font = [UIFont fontWithName:avFont size:18];
+    instructLabel.numberOfLines = 0;
+    instructLabel.textAlignment = NSTextAlignmentCenter;
+    instructLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    [self.view addSubview:instructLabel];
+    
 
     [self setupGrid];
     [self addNextButton];
@@ -118,8 +139,6 @@
         if ([focus isEqualToString:obj.group]) {
             
             self.focusFactor = obj;
-            
-            
         }
     }];
 }
@@ -129,6 +148,8 @@
     [self.progressMethods enumerateObjectsUsingBlock:^(ProgressMethods *obj, NSUInteger idx, BOOL *stop) {
         
         if ([obj.group isEqualToString:@"general"]) {
+            
+
             
             [self.generalFactors addObject:obj];
             
@@ -224,7 +245,7 @@
     UIColor *greenColor = GREEN_COLOR;
     
     container = [MGBox boxWithSize:CGSizeMake(self.view.size.width, 200)];
-    container.frame = CGRectMake(0, 150, self.view.frame.size.width, 200);
+    container.frame = CGRectMake(0, 200, self.view.frame.size.width, 200);
     container.contentLayoutMode = MGLayoutGridStyle;
     
     [self.view addSubview:container];
@@ -242,10 +263,14 @@
         ProgressMethods *m;
         if (i == 0) {
             m = self.focusFactor;
-            
-            box.backgroundColor = GREEN_COLOR;
+            if (m.isSelected) {
+                box.backgroundColor = GREEN_COLOR;
+            }
         } else {
             m = self.generalFactors[i];
+            if (m.isSelected) {
+                box.backgroundColor = GREEN_COLOR;
+            }
         }
         label.text = m.method;
         label.numberOfLines = 0;
@@ -253,9 +278,18 @@
         label.font = FONT_AMATIC_BOLD(24);
         label.textAlignment = NSTextAlignmentCenter;
         [box addSubview:label];
-        
+        __block MGBox *b = box;
         box.onTap = ^{
-            NSLog(@"SHITFAG");
+
+            if (m.isSelected == YES) {
+                b.backgroundColor = [UIColor whiteColor];
+                m.isSelected = NO;
+                [self.selectedMethods removeObject:m];
+            } else {
+                b.backgroundColor = GREEN_COLOR;
+                m.isSelected = YES;
+                [self.selectedMethods addObject:m];
+            }
             
         };
         [container.boxes addObject:box];
@@ -272,8 +306,19 @@
     [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         AttainableViewController *controller = [[AttainableViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
+        
+        [self save];
     }];
     [self.view addSubview:button];
+    
+}
+
+- (void)save {
+    
+    NSLog(@"%@", self.selectedMethods);
+    
+    
+    
     
 }
 

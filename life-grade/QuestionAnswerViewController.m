@@ -215,7 +215,7 @@
         
     } else {
     
-        self.choseView = [[ChoseView alloc] initWithFrame:CGRectMake(30, -300, self.view.frame.size.width-60, self.view.frame.size.height-60) withAnswers:self.fetchedAnswers completion:^{
+        self.choseView = [[ChoseView alloc] initWithFrame:CGRectMake(30, -300, self.view.frame.size.width-60, self.view.frame.size.height*.6) withAnswers:self.fetchedAnswers completion:^{
 
         }];
     

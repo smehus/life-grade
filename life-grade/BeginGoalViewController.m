@@ -171,25 +171,25 @@
     self.specificView.layer.cornerRadius = 5.0f;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x, 0, self.specificView.bounds.size.width, 50)];
-    label.font = [UIFont fontWithName:font size:24];
+    label.font = FONT_AVENIR_BLACK(18);
     label.textAlignment = NSTextAlignmentCenter;
-    label.text = @"Lets Be Specific";
+    label.text = @"Lets Be Specific...";
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
     [self.specificView addSubview:label];
     
-    UILabel *someText = [[UILabel alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x, CGRectGetMaxY(label.frame) + 25, self.specificView.bounds.size.width, 150)];
-    someText.font = [UIFont fontWithName:font size:24];
+    UILabel *someText = [[UILabel alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x + 10, CGRectGetMaxY(label.frame) + 25, self.specificView.bounds.size.width - 20, 150)];
+    someText.font = FONT_AMATIC_BOLD(32);
     someText.textAlignment = NSTextAlignmentCenter;
-    someText.text = @"IN order to know exactly what you want to accomplish with this goal, we need you to be more specific";
+    someText.text = @"In order to know exactly what you want to accomplish with this goal, we need you to be more specific";
     someText.numberOfLines = 0;
     someText.lineBreakMode = NSLineBreakByWordWrapping;
     [self.specificView addSubview:someText];
     
     self.typeLabel = [[UITextField alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x + 10, CGRectGetMaxY(someText.frame) + 10, self.specificView.bounds.size.width - 20, 50)];
-    self.typeLabel.font = [UIFont fontWithName:font size:36];
+    self.typeLabel.font = FONT_AMATIC_BOLD(24);
     self.typeLabel.textAlignment = NSTextAlignmentCenter;
-    self.typeLabel.placeholder = @"Lose 10 Pounds";
+    self.typeLabel.placeholder = @" Example: Lose 10 Pounds";
     self.typeLabel.layer.borderWidth = 1.0f;
     self.typeLabel.layer.borderColor = greenCol.CGColor;
     [self.specificView addSubview:self.typeLabel];
@@ -197,6 +197,7 @@
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [nextButton setFrame:CGRectMake(10, CGRectGetMaxY(self.typeLabel.frame) + 25, self.specificView.bounds.size.width - 20, 50)];
     [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [nextButton setBackgroundColor:greenCol];
     [[nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
 

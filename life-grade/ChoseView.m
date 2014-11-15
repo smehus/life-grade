@@ -34,7 +34,7 @@
     self.backgroundColor = [UIColor whiteColor];
     NSString *font = LIGHT_FONT;
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, self.frame.size.width -20, 100)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, self.frame.size.width -20, 30)];
     [titleLabel setFont:FONT_AVENIR_BLACK(14)];
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     titleLabel.numberOfLines = 0;
@@ -42,12 +42,16 @@
     [self addSubview:titleLabel];
     
     
-    UILabel *focusLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 10, self.frame.size.width - 20, 75)];
+    UILabel *focusLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 10, self.frame.size.width - 20, 100)];
      [focusLabel setFont:FONT_AMATIC_REG(36)];
     focusLabel.numberOfLines = 0;
     focusLabel.lineBreakMode = NSLineBreakByWordWrapping;
     focusLabel.textAlignment = NSTextAlignmentCenter;
+    focusLabel.adjustsFontSizeToFitWidth = YES;
+    focusLabel.minimumScaleFactor = 0.0f;
     focusLabel.text = fetchedAnswer.focusFactor;
+
+    
     
     NSMutableAttributedString *mat = [focusLabel.attributedText mutableCopy];
     [mat addAttributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)} range:NSMakeRange (0, mat.length)];
@@ -55,14 +59,15 @@
     [self addSubview:focusLabel];
     
     
-    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(focusLabel.frame) + 10, self.frame.size.width - 20, 100)];
-    [planLabel setFont:FONT_AVENIR_BLACK(24)];
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(focusLabel.frame) + 10, self.frame.size.width - 20, 50)];
+    [planLabel setFont:FONT_AVENIR_BLACK(18)];
     planLabel.numberOfLines = 0;
+    planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
     planLabel.text = @"Lets work on making a plan!";
     [self addSubview:planLabel];
     
-    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(planLabel.frame) + 30 ,self.frame.size.width - 20, 50)];
+    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(planLabel.frame) + 10 ,self.frame.size.width - 20, 50)];
     [nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [nextButton addTarget:self action:@selector(nextButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [nextButton setTitle:@"Start Plan" forState:UIControlStateNormal];
