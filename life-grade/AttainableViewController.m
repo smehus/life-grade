@@ -218,11 +218,21 @@
     [nextButton setTitle:@"Next" forState:UIControlStateNormal];
     [nextButton setBackgroundColor:gC];
     [[nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        
+        if (self.yesFactors.count < 3) {
+            
+            UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                        message:@"Please select three yes factors" delegate:nil
+                                              cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+            [a show];
+            
+        } else {
+        
        
         [self save];
         RealisticViewController *controller = [[RealisticViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
-        
+        }
     }];
     [self.view addSubview:nextButton];
     
@@ -295,6 +305,7 @@
 
 - (void)save {
     
+
     
     for (int i = 0; i < 4; i++) {
         

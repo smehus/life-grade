@@ -16,7 +16,7 @@
 #import "ASValueTrackingSlider.h"
 #import "Answers.h"
 
-@interface RealisticViewController () <THDatePickerDelegate>
+@interface RealisticViewController () <THDatePickerDelegate, ASValueTrackingSliderDataSource, ASValueTrackingSliderDelegate>
 
 @property (nonatomic, strong) UITextField *firstSupport;
 @property (nonatomic, strong) UITextField *secondSupport;
@@ -79,12 +79,20 @@
     self.navigationItem.backBarButtonItem = barBtnItem;
     
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
-    titleLabel.text = @"Realistic";
+    titleLabel.text = @"Attitude Adjustment";
     titleLabel.font = [UIFont fontWithName:avFont size:24];
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.view addSubview:titleLabel];
+    
+    UILabel * descLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame), self.view.frame.size.width, 60)];
+    descLabel.text = @"Attitude Adjustment";
+    descLabel.font = [UIFont fontWithName:avFont size:24];
+    descLabel.numberOfLines = 0;
+    descLabel.textAlignment = NSTextAlignmentCenter;
+    descLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    [self.view addSubview:descLabel];
 
     
     [self setupScreen];
@@ -155,6 +163,7 @@
 //    sliderOne.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
     sliderOne.font = [UIFont fontWithName:@"GillSans-Bold" size:22];
     sliderOne.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
+    sliderOne.dataSource = self;
     [self.view addSubview:sliderOne];
     
     secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstLabel.frame) + 50, screenWidth, 100)];
@@ -175,6 +184,7 @@
     sliderTwo.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
     sliderTwo.font = [UIFont fontWithName:@"GillSans-Bold" size:22];
     sliderTwo.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
+    sliderTwo.dataSource = self;
     [self.view addSubview:sliderTwo];
     
     UIColor *gC = GREEN_COLOR;
@@ -208,11 +218,16 @@
     
     // Use reactive cocoa here to watch teh self.caldate object and update label
     
+    UILabel *firstCal = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 10, self.view.frame.size.width-20, 30)];
+    firstCal.textAlignment = NSTextAlignmentCenter;
+    firstCal.text = @"Start Date";
+    [self.view addSubview:firstCal];
+    
     NSString *da = [NSString stringWithFormat:@"%@", self.calDate];
     UILabel *l = [self createLabelWithFrame:CGRectMake(0, CGRectGetMaxY(firstField.frame) + 100, screenWidth, 50) andTitle:@"This is where text goes"];
     [self.view addSubview:l];
     UIColor *green = GREEN_COLOR;
-    calBut = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 20, self.view.frame.size.width-20, 100)];
+    calBut = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstCal.frame) + 20, self.view.frame.size.width-20, 50)];
     [calBut setBackgroundColor:green];
     [calBut setTitle:@"Pick Date" forState:UIControlStateNormal];
     [[calBut rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -222,7 +237,13 @@
     }];
     [self.view addSubview:calBut];
     
-    calBut1 = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(calBut.frame) + 20, self.view.frame.size.width-20, 100)];
+    
+    UILabel *secondCal = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(calBut.frame) + 10, self.view.frame.size.width-20, 30)];
+    secondCal.textAlignment = NSTextAlignmentCenter;
+    secondCal.text = @"Start Date";
+    [self.view addSubview:secondCal];
+    
+    calBut1 = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondCal.frame) + 20, self.view.frame.size.width-20, 50)];
     [calBut1 setBackgroundColor:green];
     [calBut1 setTitle:@"Pick Date" forState:UIControlStateNormal];
     [[calBut1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -230,7 +251,7 @@
         [self openCalendar:calBut1];
         
     }];
-    [self.view addSubview:calBut];
+    [self.view addSubview:calBut1];
     
 
     
@@ -378,8 +399,11 @@
         NSLog(@"Error: %@", error);
         abort();
     }
+}
+
+- (NSString *)slider:(ASValueTrackingSlider *)slider stringForValue:(float)value {
     
-    
+    return @"ballsack";
 }
 
 
