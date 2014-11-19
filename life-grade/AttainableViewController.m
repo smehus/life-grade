@@ -109,7 +109,7 @@
     }
     
     self.fetchedAnswers = [foundObjects lastObject];
-    if (self.fetchedAnswers.attributes) {
+    if (self.fetchedAnswers.attributes.count > 0) {
 //        [self fetchAttributes];
         [self deleteAllObjects:@"Attributes"];
     }

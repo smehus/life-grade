@@ -64,6 +64,8 @@
         self.managedObjectContext = del.managedObjectContext;
     }
     
+    [self performFetch];
+    
     UIColor *barColour = BLUE_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
     
@@ -311,6 +313,8 @@
     [[b rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
        // go somewhere
         
+        [self saveDates];
+        
         [self RemoveAllViews];
         titleLabel.text = @"Support";
         firstLabel.text = @"Support";
@@ -460,6 +464,19 @@
     
     
     [self.datePicker dismissSemiModalView];
+}
+
+- (void)saveDates {
+    
+    self.fetchedAnswers.startDate = self.calDate;
+    self.fetchedAnswers.endDate = self.endCalDate;
+
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
 }
 
 - (void)save {
