@@ -84,7 +84,7 @@
     [self addAnswerFrames];
     [self addViews];
     [self addButton];
-
+    [self performFetch];
 }
 
 
@@ -109,6 +109,10 @@
     }
     
     self.fetchedAnswers = [foundObjects lastObject];
+    if (self.fetchedAnswers.attributes) {
+//        [self fetchAttributes];
+        [self deleteAllObjects:@"Attributes"];
+    }
     
     NSLog(@"question bitch %@", self.fetchedAnswers);
     
@@ -124,7 +128,7 @@
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Attributes" inManagedObjectContext:del.managedObjectContext];
     [fetchRequest setEntity:entity];
-    
+
     NSError *error;
     NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if (foundObjects == nil) {
@@ -134,13 +138,32 @@
     }
     
     self.fetchedAttributes = foundObjects;
+    
     [self.fetchedAttributes enumerateObjectsUsingBlock:^(Attributes *obj, NSUInteger idx, BOOL *stop) {
      
-        
+        NSString *a = obj.attribute;
         
     }];
 }
 
+- (void) deleteAllObjects: (NSString *) entityDescription  {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityDescription inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *items = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+
+    
+    
+    for (NSManagedObject *managedObject in items) {
+        [self.managedObjectContext deleteObject:managedObject];
+        NSLog(@"%@ object deleted",entityDescription);
+    }
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error deleting %@ - error:%@",entityDescription,error);
+    }
+}
 
 - (NSArray *)loadAttributes {
     
