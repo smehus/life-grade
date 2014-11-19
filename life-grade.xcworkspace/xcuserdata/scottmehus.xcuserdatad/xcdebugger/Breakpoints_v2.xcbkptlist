@@ -180,11 +180,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/RealisticViewController.m"
-            timestampString = "437819611.189438"
+            timestampString = "437868819.599379"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "-setupThirdView"
             landmarkType = "5">
          </BreakpointContent>
@@ -196,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/RealisticViewController.m"
-            timestampString = "437819611.189438"
+            timestampString = "437868819.599379"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
             landmarkName = "-setupThirdView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1096,31 +1096,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "life-grade/TrackingProgressViewController.m"
-            timestampString = "437771148.182053"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
-            landmarkName = "-saveAnswers"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/TrackingProgressViewController.m"
-            timestampString = "437772278.291859"
+            timestampString = "438058944.273064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "-saveAnswers"
             landmarkType = "5">
          </BreakpointContent>

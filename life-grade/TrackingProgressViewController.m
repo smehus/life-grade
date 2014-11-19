@@ -191,7 +191,7 @@
     ProgressMethods *m10 = [[ProgressMethods alloc] initWithMethod:@"Track My Behaviors" andKey:@"Emotional Well-Being"];
     [self.progressMethods addObject:m10];
     
-    ProgressMethods *m11 = [[ProgressMethods alloc] initWithMethod:@"“Try One New Thing Hobby Journal" andKey:@"Hobbies & Interests"];
+    ProgressMethods *m11 = [[ProgressMethods alloc] initWithMethod:@"Try One New Thing Hobby Journal" andKey:@"Hobbies & Interests"];
     [self.progressMethods addObject:m11];
     
     ProgressMethods *m12 = [[ProgressMethods alloc] initWithMethod:@"Food and/or Exercise Diary" andKey:@"Physical Health"];
@@ -325,22 +325,18 @@
             case 0:
                 self.fetchedAnswers.trackingProgressOne = m.method;
                 break;
-        switch (i) {
-            case 0:
+            case 1:
                 self.fetchedAnswers.trackingProgressTwo = m.method;
                 break;
-        switch (i) {
-            case 0:
+            case 2:
                 self.fetchedAnswers.trackingProgressThree = m.method;
                 break;
-                
-                
             default:
                 break;
-                }
-        
             }
-        }
+        
+    }
+    
         
                 
     
@@ -351,8 +347,8 @@
         
         
         abort();
-        }
     }
+
 }
 
 

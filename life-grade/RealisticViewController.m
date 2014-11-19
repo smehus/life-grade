@@ -22,7 +22,9 @@
 @property (nonatomic, strong) UITextField *secondSupport;
 @property (nonatomic, strong) UITextField *thirdSupport;
 @property (nonatomic, strong) THDatePickerViewController *datePicker;
+@property (nonatomic, strong) THDatePickerViewController *datePicker1;
 @property (nonatomic, strong) NSDate *calDate;
+@property (nonatomic, strong) NSDate *endCalDate;
 @property (nonatomic, strong) Answers *fetchedAnswers;
 
 @end
@@ -204,10 +206,13 @@
 - (void)RemoveAllViews {
     
     for (UIView *v in self.view.subviews) {
-        if (v == bg || v == titleLabel || v == firstLabel) {
+        if (v == bg || v == titleLabel) {
             
         } else {
             [v removeFromSuperview];
+            
+            [secondLabel removeFromSuperview];
+            
         }
     }
 }
@@ -221,18 +226,42 @@
     UILabel *firstCal = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 10, self.view.frame.size.width-20, 30)];
     firstCal.textAlignment = NSTextAlignmentCenter;
     firstCal.text = @"Start Date";
+    firstCal.font = FONT_AVENIR_BLACK(24);
     [self.view addSubview:firstCal];
     
     NSString *da = [NSString stringWithFormat:@"%@", self.calDate];
-    UILabel *l = [self createLabelWithFrame:CGRectMake(0, CGRectGetMaxY(firstField.frame) + 100, screenWidth, 50) andTitle:@"This is where text goes"];
-    [self.view addSubview:l];
+//    UILabel *l = [self createLabelWithFrame:CGRectMake(0, CGRectGetMaxY(firstField.frame) + 100, screenWidth, 50) andTitle:@"This is where text goes"];
+//    [self.view addSubview:l];
     UIColor *green = GREEN_COLOR;
-    calBut = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstCal.frame) + 20, self.view.frame.size.width-20, 50)];
+    calBut = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstCal.frame) + 20, self.view.frame.size.width-20, 75)];
     [calBut setBackgroundColor:green];
     [calBut setTitle:@"Pick Date" forState:UIControlStateNormal];
     [[calBut rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
-        [self openCalendar:calBut];
+//        [self openCalendar:calBut];
+        
+        if(!self.datePicker)
+            self.datePicker = [THDatePickerViewController datePicker];
+        self.datePicker.date = [NSDate date];
+        self.datePicker.delegate = self;
+        [self.datePicker setAllowClearDate:NO];
+        [self.datePicker setAutoCloseOnSelectDate:YES];
+        [self.datePicker setDisableFutureSelection:NO];
+        [self.datePicker setSelectedBackgroundColor:[UIColor colorWithRed:125/255.0 green:208/255.0 blue:0/255.0 alpha:1.0]];
+        [self.datePicker setCurrentDateColor:[UIColor colorWithRed:242/255.0 green:121/255.0 blue:53/255.0 alpha:1.0]];
+        
+        [self.datePicker setDateHasItemsCallback:^BOOL(NSDate *date) {
+            int tmp = (arc4random() % 30)+1;
+            if(tmp % 5 == 0)
+                return YES;
+            return NO;
+        }];
+        //[self.datePicker slideUpInView:self.view withModalColor:[UIColor lightGrayColor]];
+        [self presentSemiViewController:self.datePicker withOptions:@{
+                                                                      KNSemiModalOptionKeys.pushParentBack    : @(NO),
+                                                                      KNSemiModalOptionKeys.animationDuration : @(1.0),
+                                                                      KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+                                                                      }];
         
     }];
     [self.view addSubview:calBut];
@@ -240,15 +269,38 @@
     
     UILabel *secondCal = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(calBut.frame) + 10, self.view.frame.size.width-20, 30)];
     secondCal.textAlignment = NSTextAlignmentCenter;
-    secondCal.text = @"Start Date";
+    secondCal.text = @"End Date";
+    secondCal.font = FONT_AVENIR_BLACK(24);
     [self.view addSubview:secondCal];
     
-    calBut1 = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondCal.frame) + 20, self.view.frame.size.width-20, 50)];
+    calBut1 = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondCal.frame) + 20, self.view.frame.size.width-20, 75)];
     [calBut1 setBackgroundColor:green];
     [calBut1 setTitle:@"Pick Date" forState:UIControlStateNormal];
     [[calBut1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
-        [self openCalendar:calBut1];
+//        [self openCalendar:calBut1];
+        if(!self.datePicker1)
+            self.datePicker1 = [THDatePickerViewController datePicker];
+        self.datePicker1.date = [NSDate date];
+        self.datePicker1.delegate = self;
+        [self.datePicker1 setAllowClearDate:NO];
+        [self.datePicker1 setAutoCloseOnSelectDate:YES];
+        [self.datePicker1 setDisableFutureSelection:NO];
+        [self.datePicker1 setSelectedBackgroundColor:[UIColor colorWithRed:125/255.0 green:208/255.0 blue:0/255.0 alpha:1.0]];
+        [self.datePicker1 setCurrentDateColor:[UIColor colorWithRed:242/255.0 green:121/255.0 blue:53/255.0 alpha:1.0]];
+        
+        [self.datePicker1 setDateHasItemsCallback:^BOOL(NSDate *date) {
+            int tmp = (arc4random() % 30)+1;
+            if(tmp % 5 == 0)
+                return YES;
+            return NO;
+        }];
+        //[self.datePicker slideUpInView:self.view withModalColor:[UIColor lightGrayColor]];
+        [self presentSemiViewController:self.datePicker1 withOptions:@{
+                                                                      KNSemiModalOptionKeys.pushParentBack    : @(NO),
+                                                                      KNSemiModalOptionKeys.animationDuration : @(1.0),
+                                                                      KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+                                                                      }];
         
     }];
     [self.view addSubview:calBut1];
@@ -373,18 +425,40 @@
 -(void)datePickerDonePressed:(THDatePickerViewController *)datePicker {
     NSLog(@"huh? %@", datePicker);
     
-    self.calDate = datePicker.date;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
-    NSString *stringDate = [dateFormatter stringFromDate:self.calDate];
-    
-    [calBut setTitle:stringDate forState:UIControlStateNormal];
+    if (datePicker == self.datePicker) {
+        
+        
+        self.calDate = datePicker.date;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+        NSString *stringDate = [dateFormatter stringFromDate:self.calDate];
+        
+        
+        
+        [calBut setTitle:stringDate forState:UIControlStateNormal];
+        
+    } else if (datePicker == self.datePicker1) {
+        
+        
+        self.endCalDate = datePicker.date;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+        NSString *stringDate = [dateFormatter stringFromDate:self.endCalDate];
+        
+        
+        
+        [calBut1 setTitle:stringDate forState:UIControlStateNormal];
+        
+    }
+
     
     [self.datePicker dismissSemiModalView];
     
 }
 -(void)datePickerCancelPressed:(THDatePickerViewController *)datePicker {
     NSLog(@"huh?");
+    
+    
     [self.datePicker dismissSemiModalView];
 }
 

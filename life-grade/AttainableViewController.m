@@ -17,6 +17,7 @@
 #import "RealisticViewController.h"
 #import "Answers.h"
 #import "AttributeSwipeView.h"
+#import "Attributes.h"
 
 @interface AttainableViewController () <UIGestureRecognizerDelegate>
 
@@ -26,6 +27,7 @@
 
 @property (nonatomic, strong) NSMutableArray *yesFactors;
 @property (nonatomic, strong) Answers *fetchedAnswers;
+@property (nonatomic, strong) NSArray *fetchedAttributes;
 
 @end
 
@@ -111,6 +113,34 @@
     NSLog(@"question bitch %@", self.fetchedAnswers);
     
 }
+
+- (void)fetchAttributes {
+    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Attributes" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
+        
+        return;
+    }
+    
+    self.fetchedAttributes = foundObjects;
+    [self.fetchedAttributes enumerateObjectsUsingBlock:^(Attributes *obj, NSUInteger idx, BOOL *stop) {
+     
+        
+        
+    }];
+}
+
 
 - (NSArray *)loadAttributes {
     
@@ -229,7 +259,7 @@
         } else {
         
        
-        [self save];
+        [self doneButton];
         RealisticViewController *controller = [[RealisticViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
         }
@@ -303,10 +333,30 @@
     }
 }
 
-- (void)save {
+- (void)doneButton {
+    //    FinalGradeViewController *finalController = [[FinalGradeViewController alloc] init];
+    
+    [self.yesFactors enumerateObjectsUsingBlock:^(AttributeSwipeView *obj, NSUInteger idx, BOOL *stop) {
+        
+        Attributes *at = [NSEntityDescription insertNewObjectForEntityForName:@"Attributes"
+                                                       inManagedObjectContext:self.managedObjectContext];
+        
+        AttributeSwipeView *d = obj;
+        
+        at.attribute = d.attribute[@"attribute"];
+        
+    }];
+    
+    [self save];
     
 
     
+}
+
+- (void)save {
+    
+
+    /*
     for (int i = 0; i < 4; i++) {
         
         if (i == 0) {
@@ -318,7 +368,7 @@
         }
     }
     
-    
+    */
     
     
     NSError *error;

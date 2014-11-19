@@ -43,6 +43,7 @@
 @property (nonatomic, retain) NSString *trackingProgressOne;
 @property (nonatomic, retain) NSString *trackingProgressTwo;
 @property (nonatomic, retain) NSString *trackingProgressThree;
+@property (nonatomic, retain) NSDate * endDate;
 
 
 @end
