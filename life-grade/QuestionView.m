@@ -236,7 +236,7 @@
     [self addSubview:questionTitle];
     
     definitionButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    [definitionButton setFrame:CGRectMake(CGRectGetMaxX(questionTitle.frame) - 30, CGRectGetMaxY(questionTitle.frame) + 20, 30, 30)];
+    [definitionButton setFrame:CGRectMake(CGRectGetMaxX(self.frame) - 60, CGRectGetMaxY(questionTitle.frame) + 20, 30, 30)];
     [definitionButton setBackgroundColor:[UIColor clearColor]];
     [[definitionButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         NSLog(@"Open Definition Pop Over");
@@ -343,10 +343,10 @@
     // How big is this string when drawn in this font?
 //    textRect.size = [desc sizeWithAttributes:attributes];
     
-    CGSize s = [self getSizeOfString:desc withWidth:250];
+    CGSize s = [self getSizeOfString:desc withWidth:210];
     
     controller = [[FactorDescriptionViewController alloc] initWithDescription:desc andSize:s];
-    controller.preferredContentSize = CGSizeMake(320, s.height);
+    controller.preferredContentSize = CGSizeMake(230, s.height);
     controller.title = @"Select Time";
     
     UIBarButtonItem *b = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(close:)];
@@ -365,7 +365,7 @@
     popoverController.wantsDefaultContentAppearance = NO;
     
     CGRect r = CGRectMake(self.frame.size.width - 60, 0, 0, 0);
-    [popoverController presentPopoverFromRect:btn.frame inView:self permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES options:WYPopoverAnimationOptionFadeWithScale completion:^{
+    [popoverController presentPopoverFromRect:btn.frame inView:self permittedArrowDirections:WYPopoverArrowDirectionRight animated:YES options:WYPopoverAnimationOptionFadeWithScale completion:^{
         
     }];
     

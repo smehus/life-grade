@@ -21,7 +21,7 @@
         
         self.factorDescription = description;
         
-        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 225, s.height)];
+        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 210, s.height)];
         self.descriptionLabel.font = FONT_AMATIC_BOLD(24);
         self.descriptionLabel.numberOfLines = 0;
         self.descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
