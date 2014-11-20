@@ -75,7 +75,7 @@
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, 100)];
     titleLabel.text = self.focusFactor.group;
-    titleLabel.font = [UIFont fontWithName:avFont size:24];
+    titleLabel.font = FONT_AMATIC_BOLD(24);
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -92,7 +92,7 @@
     
     UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(trackLabel.frame)+ 10, self.view.frame.size.width, 30)];
     instructLabel.text = @"Select three ways to track your progression";
-    instructLabel.font = [UIFont fontWithName:avFont size:18];
+    instructLabel.font = [UIFont fontWithName:avFont size:14];
     instructLabel.numberOfLines = 0;
     instructLabel.textAlignment = NSTextAlignmentCenter;
     instructLabel.lineBreakMode = NSLineBreakByWordWrapping;

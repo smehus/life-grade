@@ -240,7 +240,7 @@
     }
     // One instance of Answer
     self.fetchedAnswers = [foundObjects lastObject];
-
+    NSLog(@"FETCHED ANS %@", self.fetchedAnswers.endDate);
     
     [self saveToParse];
     NSNumber *num = self.fetchedAnswers.finalGrade;
@@ -274,7 +274,11 @@
     }
     
     self.fetchedAttributes = foundObjects;
+    
+    
     [self.fetchedAttributes enumerateObjectsUsingBlock:^(Attributes *obj, NSUInteger idx, BOOL *stop) {
+        
+        NSLog(@"ATT %@", obj.attribute);
         
     }];
 }
@@ -489,7 +493,7 @@
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a andQuote:@"Balls"];
     v.currentGrade.text = @"Desired Balls";
-    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.description intValue]];
+    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.titleLabel.text = @"Tracking Progress";
     v.quoteLabel.text = @"I'm saying I did an ocular assessment of the situation garnered that he was not a security risk and I cleared him for passage.";
     [self.scrollView addSubview:v];
@@ -513,7 +517,7 @@
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a isRealstic:YES];
-    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.description intValue]];
+    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.currentGrade.text = @"Desired Grade";
     [self.scrollView addSubview:v];
 }
@@ -522,7 +526,7 @@
     
     CompletionDateView *v = [[CompletionDateView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
     
-    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.description intValue]];
+    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.currentGrade.text = @"Desired Grade";
     
     [self.scrollView addSubview:v];
@@ -532,7 +536,7 @@
     
     SupportTeamView *v = [[SupportTeamView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
     
-    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.description intValue]];
+    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.currentGrade.text = @"Desired Grade";
     v.firstSupport.text = self.fetchedAnswers.firstSupport;
     v.secondSupport.text = self.fetchedAnswers.secondSupport;
@@ -545,7 +549,7 @@
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                              andFinalTips:nil];
-    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.description intValue]];
+    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.currentGrade.text = @"Desired Grade";
     
     [self.scrollView addSubview:v];

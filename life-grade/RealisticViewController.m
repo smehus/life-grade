@@ -220,7 +220,8 @@
 }
 
 - (void)setupSecondScreen {
-    titleLabel.text = @"Timely";
+    
+    titleLabel.text = @"Set a time frame";
     firstField.text = @" Set a date";
     
     // Use reactive cocoa here to watch teh self.caldate object and update label
@@ -228,7 +229,7 @@
     UILabel *firstCal = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 10, self.view.frame.size.width-20, 30)];
     firstCal.textAlignment = NSTextAlignmentCenter;
     firstCal.text = @"Start Date";
-    firstCal.font = FONT_AVENIR_BLACK(24);
+    firstCal.font = FONT_AMATIC_BOLD(24);
     [self.view addSubview:firstCal];
     
     NSString *da = [NSString stringWithFormat:@"%@", self.calDate];
@@ -272,12 +273,13 @@
     UILabel *secondCal = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(calBut.frame) + 10, self.view.frame.size.width-20, 30)];
     secondCal.textAlignment = NSTextAlignmentCenter;
     secondCal.text = @"End Date";
-    secondCal.font = FONT_AVENIR_BLACK(24);
+    secondCal.font = FONT_AMATIC_BOLD(24);
     [self.view addSubview:secondCal];
     
     calBut1 = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondCal.frame) + 20, self.view.frame.size.width-20, 75)];
     [calBut1 setBackgroundColor:green];
     [calBut1 setTitle:@"Pick Date" forState:UIControlStateNormal];
+    [calBut1 setHidden:YES];
     [[calBut1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
 //        [self openCalendar:calBut1];
@@ -314,8 +316,9 @@
        // go somewhere
         
         [self saveDates];
-        
         [self RemoveAllViews];
+        
+        
         titleLabel.text = @"Support";
         firstLabel.text = @"Support";
         [self setupThirdView];
@@ -368,6 +371,7 @@
     
     titleLabel.text = @"Support";
     firstLabel.text = @"Name 3 people in your circle";
+    [self.view addSubview:firstLabel];
     
     // need text inset - take from priv things
     
@@ -437,9 +441,8 @@
         [dateFormatter setDateFormat:@"dd-MM-yyyy"];
         NSString *stringDate = [dateFormatter stringFromDate:self.calDate];
         
-        
-        
         [calBut setTitle:stringDate forState:UIControlStateNormal];
+        [calBut1 setHidden:NO];
         
     } else if (datePicker == self.datePicker1) {
         

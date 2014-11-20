@@ -101,7 +101,7 @@
             if (user) {
             
                 NSLog(@"SIGNIN SUCCESS");
-                
+                // *** THIS STILL GOES TO PLAIN BLACK SCREEN - DIRECTIONS ABOVE
                 mainRevealController = [[SWRevealViewController alloc]
                                                                 initWithRearViewController:rearViewController frontViewController:navCon];
                 
