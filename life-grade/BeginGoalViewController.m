@@ -39,7 +39,7 @@
     if (!self.managedObjectContext) {
         self.managedObjectContext = del.managedObjectContext;
     }
-    
+    [self performFetch];
     UIColor *barColour = BLUE_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
 
@@ -218,7 +218,9 @@
 
 - (void)save {
     
-    self.fetchedAnswers.specificFocus = self.typeLabel.text;
+    NSString *theString = self.typeLabel.text;
+    
+    self.fetchedAnswers.specificFocus = theString;
     
     
     

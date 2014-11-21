@@ -217,7 +217,7 @@
 
 #pragma mark - Get the Saved ' Answer '
 
-
+// also need to save - but not every time we load answers!
 //!!!!: when logging out - i delete core data - so when log in it fetches data from parse, but doesnt' save to coredata
 // so it looks for data in core data that isn't there and then tries to save it to parse - crash
 - (void)fetchAnswers {
@@ -242,7 +242,7 @@
     self.fetchedAnswers = [foundObjects lastObject];
     NSLog(@"FETCHED ANS %@", self.fetchedAnswers.endDate);
     
-    [self saveToParse];
+//    [self saveToParse];
     NSNumber *num = self.fetchedAnswers.finalGrade;
     float balls = [num floatValue];
     NSLog(@"FINAL GRADE %f", balls);
@@ -478,21 +478,24 @@
     
     NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
-                                                 andIndex:i andData:a andGoal:@"Ballzhus Rules"];
+                                                 andIndex:i andData:a andGoal:self.fetchedAnswers.specificFocus];
     v.titleLabel.text = @"Goal";
     v.currentGrade.text = @"Desired Grade";
-    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
+    NSString *dG = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
+    
+    v.gradeLabel.text = dG;
+    
     v.quoteLabel.text = @"Hey you kids are probably saying to yourselves: I'm gonna go out there and grab the world by the tail! and wrap it around and pull it down and put it in my pocket. Well I'm here to tell you that you're probably going to find out, as you go out there, that you're not going to amount to jack squat!";
     [self.scrollView addSubview:v];
 }
 
 - (void)trackingProgress:(int)i {
     
-    NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
+    NSArray *a = self.fetchedAttributes;
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a andQuote:@"Balls"];
-    v.currentGrade.text = @"Desired Balls";
+    v.currentGrade.text = @"Desired Grade";
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.titleLabel.text = @"Tracking Progress";
     v.quoteLabel.text = @"I'm saying I did an ocular assessment of the situation garnered that he was not a security risk and I cleared him for passage.";

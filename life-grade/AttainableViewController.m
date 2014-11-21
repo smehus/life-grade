@@ -109,11 +109,16 @@
     }
     
     self.fetchedAnswers = [foundObjects lastObject];
+    NSLog(@"atttts %@", self.fetchedAnswers.attributes);
+    
+    /*
     if (self.fetchedAnswers.attributes.count > 0) {
 //        [self fetchAttributes];
         [self deleteAllObjects:@"Attributes"];
     }
+    */
     
+    [self deleteAllObjects:@"Attributes"];
     NSLog(@"question bitch %@", self.fetchedAnswers);
     
 }
@@ -147,6 +152,8 @@
 }
 
 - (void) deleteAllObjects: (NSString *) entityDescription  {
+    
+    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityDescription inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
