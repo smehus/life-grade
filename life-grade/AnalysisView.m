@@ -400,6 +400,8 @@
     [button setTitle:@"Click for your positive attributes" forState:UIControlStateNormal];
     [button.titleLabel setFont:[UIFont fontWithName:avFont size:16]];
     [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        NSLog(@"OPEN POSITIVE ATTS");
+        
         
         
     }];
@@ -419,41 +421,48 @@
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
-    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 75, 75)];
-    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
-    self.gradeLabel.textColor = [UIColor redColor];
-    self.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
-    [firstView addSubview:self.gradeLabel];
-    
-    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, 200, 50)];
+    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, self.frame.size.width-40, 50)];
     self.currentGrade.font = [UIFont fontWithName:avFont size:24];
+    self.currentGrade.textAlignment = NSTextAlignmentCenter;
     [firstView addSubview:self.currentGrade];
     [self addSubview:firstView];
+    
+    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2-50, CGRectGetMaxY(self.currentGrade.frame), 100, 100)];
+    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
+    self.gradeLabel.layer.borderWidth = 2.0f;
+    self.gradeLabel.layer.borderColor = [UIColor redColor].CGColor;
+    self.gradeLabel.layer.cornerRadius = 50.0f;
+    self.gradeLabel.textColor = [UIColor redColor];
+    self.gradeLabel.font = FONT_AMATIC_BOLD(75);
+    [firstView addSubview:self.gradeLabel];
     
     UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
     UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
     
     UIImageView *boxImage = [[UIImageView alloc] initWithImage:checkBox highlightedImage:nil];
-    boxImage.frame = CGRectMake(50, CGRectGetMaxY(self.currentGrade.frame) + 20, 50, 50);
+    boxImage.frame = CGRectMake(15, CGRectGetMaxY(self.gradeLabel.frame) + 20, 75, 75);
+    boxImage.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:boxImage];
     
     UIImageView *check = [[UIImageView alloc] initWithImage:checkMark];
-    check.frame = CGRectMake(50, boxImage.center.y - 60, 75, 75);
+    check.frame = CGRectMake(boxImage.frame.origin.x + 7.5, boxImage.center.y - 62, 75, 75);
+    check.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:check];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(check.frame) + 10, check.frame.origin.y, 200, 30)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(boxImage.frame) + 10, CGRectGetMaxY(self.gradeLabel.frame) + 29, 200, 40)];
     label.text = @"Your Goal Is Realistic";
-    label.font = FONT_AMATIC_BOLD(24);
+    label.font = FONT_AMATIC_BOLD(36);
     [self addSubview:label];
     
     int f = 200;
     
-    UIButton *realisticButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - f/2, CGRectGetMaxY(boxImage.frame) + 30, f, f)];
+    UIButton *realisticButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - f/2, CGRectGetMaxY(boxImage.frame) + 15, f, f)];
     [realisticButton setTitle:@"Read if your goals are realistic" forState:UIControlStateNormal];
     [realisticButton.titleLabel setNumberOfLines:0];
     [realisticButton.titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [realisticButton setBackgroundColor:blues];
-    
+    [realisticButton.titleLabel setFont:FONT_AMATIC_BOLD(36)];
+    [realisticButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
     [self addSubview:realisticButton];
     
 }
