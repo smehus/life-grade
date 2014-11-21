@@ -279,8 +279,8 @@
     
     for (int i = 0; i < 3; i++) {
         
-        Grade *g = dataArray[i];
-        NSString *question = g.question;
+        NSString *g = dataArray[i];
+        
         
         AnalysisBlock *box = [AnalysisBlock boxWithSize:CGSizeMake(96, 150)];
         box.leftMargin = 5.0f;
@@ -294,7 +294,10 @@
         box.layer.shadowOffset = CGSizeMake(-5, 5);
         box.layer.shadowRadius = 5;
         box.layer.shadowOpacity = 0.5;
-        box.titleLabel.text = question;
+        box.titleLabel.text = g;
+        box.titleLabel.font = FONT_AMATIC_BOLD(24);
+        box.titleLabel.numberOfLines = 0;
+        box.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         box.onTap = ^{
             NSLog(@"Box Tapped");
             
@@ -315,16 +318,16 @@
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
-    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 75, 75)];
-    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
-    self.gradeLabel.textColor = [UIColor redColor];
-    self.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
-    [firstView addSubview:self.gradeLabel];
-    
-    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, 200, 50)];
+    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, self.frame.size.width - 40, 50)];
     self.currentGrade.font = [UIFont fontWithName:avFont size:24];
     [firstView addSubview:self.currentGrade];
     [self addSubview:firstView];
+    
+    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - 50, CGRectGetMaxY(self.currentGrade.frame), 100, 100)];
+    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
+    self.gradeLabel.textColor = [UIColor redColor];
+    self.gradeLabel.font = FONT_AMATIC_BOLD(75);
+    [firstView addSubview:self.gradeLabel];
     
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;
@@ -359,20 +362,24 @@
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
-    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 75, 75)];
-    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
-    self.gradeLabel.textColor = [UIColor redColor];
-    self.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
-    [firstView addSubview:self.gradeLabel];
-    
-    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, 200, 50)];
+    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, self.frame.size.width-40, 50)];
     self.currentGrade.font = [UIFont fontWithName:avFont size:24];
+    self.currentGrade.textAlignment = NSTextAlignmentCenter;
     [firstView addSubview:self.currentGrade];
     [self addSubview:firstView];
     
+    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2 -50, CGRectGetMaxY(self.currentGrade.frame), 100, 100)];
+    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
+    self.gradeLabel.layer.borderColor = [UIColor redColor].CGColor;
+    self.gradeLabel.layer.borderWidth = 2.0;
+    self.gradeLabel.layer.cornerRadius = 50.0f;
+    self.gradeLabel.textColor = [UIColor redColor];
+    self.gradeLabel.font = FONT_AMATIC_BOLD(75);
+    [firstView addSubview:self.gradeLabel];
+    
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 10, self.frame.size.width - 40, 44)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.gradeLabel.frame) + 10, self.frame.size.width - 40, 44)];
     self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.backgroundColor = barColour;

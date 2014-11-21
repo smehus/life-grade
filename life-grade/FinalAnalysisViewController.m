@@ -491,7 +491,7 @@
 
 - (void)trackingProgress:(int)i {
     
-    NSArray *a = self.fetchedAttributes;
+    NSArray *a = @[self.fetchedAnswers.trackingProgressOne, self.fetchedAnswers.trackingProgressTwo, self.fetchedAnswers.trackingProgressThree];
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a andQuote:@"Balls"];
@@ -503,7 +503,7 @@
     
 }
 - (void)attainableView:(int)i {
-    NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
+    NSArray *a = self.fetchedAttributes;
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a attainableQuote:@"Dicks"];
