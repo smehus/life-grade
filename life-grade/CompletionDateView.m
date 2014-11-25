@@ -39,22 +39,29 @@
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
-    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 75, 75)];
-    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
-    self.gradeLabel.textColor = [UIColor redColor];
-    self.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
-    [firstView addSubview:self.gradeLabel];
     
-    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, 200, 50)];
+    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.width-20, 50)];
     currentGrade.text = @"Final Life+Grade";
+    currentGrade.textAlignment = NSTextAlignmentCenter;
     currentGrade.font = [UIFont fontWithName:avFont size:24];
     [firstView addSubview:currentGrade];
     [self addSubview:firstView];
     
+    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2-50, CGRectGetMaxY(currentGrade.frame), 100, 100)];
+    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
+    self.gradeLabel.textColor = [UIColor redColor];
+    self.gradeLabel.layer.borderWidth = 2.0f;
+    self.gradeLabel.layer.borderColor = [UIColor redColor].CGColor;
+    self.gradeLabel.layer.cornerRadius = 50.0f;
+    self.gradeLabel.font = FONT_AMATIC_BOLD(75);
+
+
+    [firstView addSubview:self.gradeLabel];
+    
     UIColor *greens = GREEN_COLOR;
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 10, self.frame.size.width - 40, 44)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.gradeLabel.frame) + 10, self.frame.size.width - 40, 44)];
     self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
     self.titleLabel.text = @"Completion Date";
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -64,35 +71,39 @@
     
     UILabel *startLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.titleLabel.frame) + 30,
                                                                     120, 50)];
-    startLabel.font = [UIFont fontWithName:avFont size:20];
+    startLabel.font = FONT_AVENIR_BLACK(18);
     startLabel.text = @"Start Date";
     [self addSubview:startLabel];
     
-    UILabel *startDate = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(startLabel.frame) + 20, startLabel.frame.origin.y,
+    self.startDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(startLabel.frame) + 20, startLabel.frame.origin.y,
                                                                     120, 50)];
-    startDate.font = [UIFont fontWithName:avFont size:20];
-    startDate.text = @"Jan 10 15'";
-    startDate.layer.borderColor = [UIColor blackColor].CGColor;
-    startDate.layer.borderWidth = 1.0f;
-    [self addSubview:startDate];
+    self.startDateLabel.font = [UIFont fontWithName:avFont size:20];
+    self.startDateLabel.text = @"";
+    self.startDateLabel.layer.borderColor = [UIColor blackColor].CGColor;
+    self.startDateLabel.layer.borderWidth = 1.0f;
+    self.startDateLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.startDateLabel];
 
 
     
     UILabel *completionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(startLabel.frame),
                                                                     120, 50)];
-    completionLabel.font = [UIFont fontWithName:avFont size:20];
+    completionLabel.font = FONT_AVENIR_BLACK(18);
     completionLabel.text = @"Completion Date";
+    completionLabel.numberOfLines = 0;
+    completionLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self addSubview:completionLabel];
     
-    UILabel *completionDate = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(completionLabel.frame) + 20, completionLabel.frame.origin.y,
+    self.completionDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(completionLabel.frame) + 20, completionLabel.frame.origin.y,
                                                                    120, 50)];
-    completionDate.font = [UIFont fontWithName:avFont size:20];
-    completionDate.text = @"May 10 15'";
-    completionDate.layer.borderColor = [UIColor blackColor].CGColor;
-    completionDate.layer.borderWidth = 1.0f;
-    [self addSubview:completionDate];
+    self.completionDateLabel.font = [UIFont fontWithName:avFont size:20];
+    self.completionDateLabel.text = @"";
+    self.completionDateLabel.layer.borderColor = [UIColor blackColor].CGColor;
+    self.completionDateLabel.layer.borderWidth = 1.0f;
+    self.completionDateLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.completionDateLabel];
     
-    CGRect buttonRect = CGRectMake(20, CGRectGetMaxY(completionDate.frame) + 20, self.frame.size.width - 40, 50);
+    CGRect buttonRect = CGRectMake(20, CGRectGetMaxY(self.completionDateLabel.frame) + 20, self.frame.size.width - 40, 50);
     self.havingTroubleButton = [[BFPaperButton alloc] initWithFrame:buttonRect raised:NO];
     [self.havingTroubleButton setBackgroundColor:blueC];
     [self.havingTroubleButton setTitle:@"Having Trouble Starting?" forState:UIControlStateNormal];
@@ -102,7 +113,7 @@
 
     [self addSubview:self.havingTroubleButton];
     
-    CGRect nextRect = CGRectMake(60, CGRectGetMaxY(self.havingTroubleButton.frame) + 20, self.frame.size.width - 120, 50);
+    CGRect nextRect = CGRectMake(20, CGRectGetMaxY(self.havingTroubleButton.frame) + 20, self.frame.size.width - 40, 50);
     self.nextButton = [[BFPaperButton alloc] initWithFrame:nextRect raised:NO];
     [self.nextButton setBackgroundColor:greens];
     [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];

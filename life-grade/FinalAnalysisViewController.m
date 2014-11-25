@@ -528,11 +528,23 @@
     NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
     
     CompletionDateView *v = [[CompletionDateView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
+    NSString *g = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     
-    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
+    v.gradeLabel.text = g;
     v.currentGrade.text = @"Desired Grade";
+    v.startDateLabel.text = [self formatDate:self.fetchedAnswers.startDate];
+    v.completionDateLabel.text = [self formatDate:self.fetchedAnswers.endDate];
     
     [self.scrollView addSubview:v];
+}
+
+- (NSString *)formatDate:(NSDate *)date {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    NSString *s = [formatter stringFromDate:date];
+    return s;
+    
 }
 - (void)supportTeamView:(int)i  {
     NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];

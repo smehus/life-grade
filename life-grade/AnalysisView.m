@@ -116,7 +116,7 @@
     self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2-50, CGRectGetMaxY(currentGrade.frame) + 10, 100, 100)];
     self.gradeLabel.textAlignment = NSTextAlignmentCenter;
     self.gradeLabel.textColor = [UIColor redColor];
-    self.gradeLabel.font = FONT_AMATIC_BOLD(48);
+    self.gradeLabel.font = FONT_AMATIC_BOLD(75);
     self.gradeLabel.layer.borderWidth = 2.0;
     self.gradeLabel.layer.borderColor = [UIColor redColor].CGColor;
     self.gradeLabel.layer.cornerRadius = 45;
@@ -476,17 +476,21 @@
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
-    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 75, 75)];
-    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
-    self.gradeLabel.textColor = [UIColor redColor];
-    self.gradeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:98];
-    [firstView addSubview:self.gradeLabel];
-    
-    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, 200, 50)];
+    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, 200, 30)];
     currentGrade.text = @"Final Life+Grade";
     currentGrade.font = [UIFont fontWithName:avFont size:24];
     [firstView addSubview:currentGrade];
     [self addSubview:firstView];
+    
+    
+    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2-50, CGRectGetMaxY(currentGrade.frame), 100, 100)];
+    self.gradeLabel.textAlignment = NSTextAlignmentCenter;
+    self.gradeLabel.textColor = [UIColor redColor];
+    self.gradeLabel.font = FONT_AMATIC_BOLD(75);
+    self.gradeLabel.layer.borderWidth = 2.0f;
+    self.gradeLabel.layer.borderColor = [UIColor redColor].CGColor;
+    self.gradeLabel.layer.cornerRadius = 50.0f;
+    [firstView addSubview:self.gradeLabel];
     
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;

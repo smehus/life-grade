@@ -27,6 +27,9 @@
 @property (nonatomic, strong) NSDate *endCalDate;
 @property (nonatomic, strong) Answers *fetchedAnswers;
 
+@property (nonatomic, strong) UILabel *firstSliderLabel;
+@property (nonatomic, strong) UILabel *secondSliderLabel;
+
 @end
 
 @implementation RealisticViewController {
@@ -96,7 +99,7 @@
     descLabel.numberOfLines = 0;
     descLabel.textAlignment = NSTextAlignmentCenter;
     descLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    [self.view addSubview:descLabel];
+//    [self.view addSubview:descLabel];
 
     
     [self setupScreen];
@@ -155,7 +158,7 @@
     UIColor *red = [UIColor colorWithHue:0.0 saturation:0.8 brightness:1.0 alpha:1.0];
     
     
-    firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + 10, screenWidth, 100)];
+    firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + 10, screenWidth, 40)];
     firstLabel.text = @"How Confident Are You?";
     firstLabel.font = [UIFont fontWithName:avFont size:24];
     firstLabel.numberOfLines = 0;
@@ -163,14 +166,21 @@
     firstLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:firstLabel];
     
-    ASValueTrackingSlider *sliderOne = [[ASValueTrackingSlider alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstLabel.frame)+ 10, screenWidth-20, 25)];
+    self.firstSliderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstLabel.frame), self.view.frame.size.width/2-20, 30)];
+    self.firstSliderLabel.font = FONT_AMATIC_REG(18);
+    self.firstSliderLabel.text = @"First Slider";
+    self.firstSliderLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.firstSliderLabel];
+    
+    
+    ASValueTrackingSlider *sliderOne = [[ASValueTrackingSlider alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.firstSliderLabel.frame)+ 30, screenWidth-20, 25)];
 //    sliderOne.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
     sliderOne.font = [UIFont fontWithName:@"GillSans-Bold" size:22];
     sliderOne.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
     sliderOne.dataSource = self;
     [self.view addSubview:sliderOne];
     
-    secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstLabel.frame) + 50, screenWidth, 100)];
+    secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(sliderOne.frame) + 25, screenWidth, 40)];
     secondLabel.text = @"How Confident Are You?";
     secondLabel.font = [UIFont fontWithName:avFont size:24];
     secondLabel.numberOfLines = 0;
@@ -178,13 +188,17 @@
     secondLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:secondLabel];
     
-    
+    self.secondSliderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondLabel.frame), self.view.frame.size.width/2-20, 30)];
+    self.secondSliderLabel.font = FONT_AMATIC_REG(18);
+    self.secondSliderLabel.textAlignment = NSTextAlignmentCenter;
+    self.secondSliderLabel.text = @"Second Slider";
+    [self.view addSubview:self.secondSliderLabel];
 
     [sliderOne setPopUpViewAnimatedColors:@[coldBlue, blue, green, yellow, red]
                                withPositions:@[@-20, @0, @5, @25, @60]];
     
     
-    ASValueTrackingSlider *sliderTwo = [[ASValueTrackingSlider alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondLabel.frame)+ 10, screenWidth-20, 25)];
+    ASValueTrackingSlider *sliderTwo = [[ASValueTrackingSlider alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.secondSliderLabel.frame)+ 10, screenWidth-20, 25)];
     sliderTwo.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
     sliderTwo.font = [UIFont fontWithName:@"GillSans-Bold" size:22];
     sliderTwo.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];

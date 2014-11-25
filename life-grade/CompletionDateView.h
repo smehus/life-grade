@@ -27,6 +27,8 @@
 @property (nonatomic, strong) UIButton *havingTroubleButton;
 @property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, strong) id<CompletionDateViewDelegate>delegate;
+@property (nonatomic, strong) UILabel *completionDateLabel;
+@property (nonatomic, strong) UILabel *startDateLabel;
 
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data;
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data andGoal:(id)goal;

@@ -19,6 +19,13 @@
     self.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self addSubview:self.titleLabel];
     
+    UILabel *clickLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, CGRectGetMaxY(self.frame) - 40, self.frame.size.width-10, 30)];
+    clickLabel.textAlignment = NSTextAlignmentCenter;
+    clickLabel.text = @"CLICK";
+    clickLabel.font = FONT_AMATIC_BOLD(16);
+    clickLabel.textColor = [UIColor whiteColor];
+    [self addSubview:clickLabel];
+    
 }
 
 /*

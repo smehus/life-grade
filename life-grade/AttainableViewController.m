@@ -253,6 +253,8 @@
     self.yesFrame.backgroundColor = [UIColor clearColor];
     self.yesFrame.layer.borderColor = [UIColor greenColor].CGColor;
     self.yesFrame.layer.borderWidth = 1.0f;
+    self.yesFrame.backgroundColor = [UIColor greenColor];
+    self.yesFrame.alpha = 0.5;
     [self.view addSubview:self.yesFrame];
     
     
@@ -266,6 +268,8 @@
     self.noFrame.backgroundColor = [UIColor clearColor];
     self.noFrame.layer.borderColor = [UIColor greenColor].CGColor;
     self.noFrame.layer.borderWidth = 1.0f;
+    self.noFrame.backgroundColor = [UIColor redColor];
+    self.noFrame.alpha = 0.5f;
     self.noFrame.panGesture.delegate = self;
     [self.view addSubview:self.noFrame];
 }

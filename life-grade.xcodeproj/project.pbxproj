@@ -86,6 +86,7 @@
 		A57829BD19DE27D700A4510C /* AnalysisBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A57829BC19DE27D700A4510C /* AnalysisBlock.m */; };
 		A581F2D619C917C600AB9382 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = A581F2D419C917C600AB9382 /* CheckBox.png */; };
 		A581F2D819C917E400AB9382 /* check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = A581F2D719C917E400AB9382 /* check_mark.png */; };
+		A5B8525B1A2437DB003B25A0 /* red-arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B8525A1A2437DB003B25A0 /* red-arrow-up@2x.png */; };
 		A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */; };
 		A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C761939719F00887F83 /* FinalGradeViewController.m */; };
 		A5C08C7B193977D600887F83 /* ActionPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7A193977D600887F83 /* ActionPlanViewController.m */; };
@@ -239,6 +240,7 @@
 		A57829BC19DE27D700A4510C /* AnalysisBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalysisBlock.m; sourceTree = "<group>"; };
 		A581F2D419C917C600AB9382 /* CheckBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckBox.png; sourceTree = "<group>"; };
 		A581F2D719C917E400AB9382 /* check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_mark.png; sourceTree = "<group>"; };
+		A5B8525A1A2437DB003B25A0 /* red-arrow-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-arrow-up@2x.png"; sourceTree = "<group>"; };
 		A5BBB2B6192A1EB000724639 /* PickDesiredGradeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickDesiredGradeController.h; sourceTree = "<group>"; };
 		A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickDesiredGradeController.m; sourceTree = "<group>"; };
 		A5C08C751939719F00887F83 /* FinalGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalGradeViewController.h; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 		65715000191482880034009A /* Iphone assets-2 */ = {
 			isa = PBXGroup;
 			children = (
+				A5B8525A1A2437DB003B25A0 /* red-arrow-up@2x.png */,
 				65715001191482880034009A /* blue-arrow--@2x.png */,
 				65715002191482880034009A /* Blue-box-2-@2x.png */,
 				65715003191482880034009A /* blue-box-3-@2x.png */,
@@ -751,6 +754,7 @@
 				A5CA589C19E069F800940841 /* AmaticSC-Regular.ttf in Resources */,
 				6533F55618E190360017C7D6 /* CollectionCell.xib in Resources */,
 				A5CA589B19E069F800940841 /* Amatic-Bold.ttf in Resources */,
+				A5B8525B1A2437DB003B25A0 /* red-arrow-up@2x.png in Resources */,
 				65715013191482880034009A /* blue-box-3-@2x.png in Resources */,
 				6533F55F18E190630017C7D6 /* DesiredGradeViewController.xib in Resources */,
 				655EC61C18DF5FE20036515F /* Main.storyboard in Resources */,
