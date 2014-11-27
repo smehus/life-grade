@@ -190,7 +190,10 @@
 
 }
 
+// maybe all the grades and final numb aren't set?
+
 - (void)signIn {
+    
     
     NSLog(@"SIGNIN");
     CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
@@ -200,10 +203,13 @@
         [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
             if (user) {
                 
+                
                 PFQuery *query = [PFQuery queryWithClassName:@"Grade"];
                 [query whereKey:@"user" equalTo:user];
                 NSArray *userGrades = [query findObjects];
                 PFObject *grades = [userGrades firstObject];
+                
+                
                 NSNumber* qOne = [grades objectForKey:@"questionOne"];
                 NSNumber* qTwo = [grades objectForKey:@"questionTwo"];
                 NSNumber* qThree = [grades objectForKey:@"questionThree"];

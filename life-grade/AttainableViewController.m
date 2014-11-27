@@ -54,6 +54,8 @@
         self.managedObjectContext = del.managedObjectContext;
     }
     
+    [self performFetch];
+    
     self.attributes = [self loadAttributes];
     
     
@@ -73,18 +75,28 @@
     [barBtnItem setTintColor:grey];
     self.navigationItem.backBarButtonItem = barBtnItem;
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -20, self.view.frame.size.width, 100)];
-    titleLabel.text = @"Tracking Progress";
-    titleLabel.font = [UIFont fontWithName:avFont size:24];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    titleLabel.text = @"Choose Which Traits You need to accomplish your goal";
+    titleLabel.font = [UIFont fontWithName:avFont size:16];
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.view addSubview:titleLabel];
+
+    UILabel *goalLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, CGRectGetMaxY(titleLabel.frame) + 20, self.view.frame.size.width/2 - 5, 100)];
+    goalLabel.text = [NSString stringWithFormat:@"Goal: %@", self.fetchedAnswers.specificFocus];
+
+    goalLabel.textAlignment = NSTextAlignmentCenter;
+    goalLabel.font = FONT_AMATIC_BOLD(28);
+    goalLabel.numberOfLines = 0;
+    goalLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    [self.view addSubview:goalLabel];
+    
     
     [self addAnswerFrames];
     [self addViews];
     [self addButton];
-    [self performFetch];
+
 }
 
 
@@ -214,7 +226,7 @@
 - (void)addViews {
     for (int i = 0; i < 10; i++) {
        
-        originalFrame = CGRectMake(25, 150, 100, 160);
+        originalFrame = CGRectMake(25, 175, 100, 160);
         UIPanGestureRecognizer *panGest = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragView:)];
         
         // Make custom view
@@ -222,8 +234,9 @@
         thing.layer.cornerRadius = 8.0f;
         thing.layer.borderColor = [UIColor blackColor].CGColor;
         thing.layer.borderWidth = 1.0f;
+
         
-        UILabel *at = [[UILabel alloc] initWithFrame:CGRectMake(0, thing.frame.size.height/2-25, originalFrame.size.width - 20, 50)];
+        UILabel *at = [[UILabel alloc] initWithFrame:CGRectMake(0, thing.frame.size.height/2-25, originalFrame.size.width, 50)];
         at.textAlignment = NSTextAlignmentCenter;
         at.font = FONT_AMATIC_REG(24);
         at.lineBreakMode = NSLineBreakByWordWrapping;
@@ -243,13 +256,13 @@
 
 - (void)addAnswerFrames {
     
-    UILabel *yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(175, 50, 110, 25)];
+    UILabel *yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(175, 75, 110, 25)];
     yesLabel.text = @"Yes";
     yesLabel.font = FONT_AVENIR_BLACK(22);
     yesLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:yesLabel];
     
-    self.yesFrame = [[UIView alloc] initWithFrame:CGRectMake(175, 75, 110, 150)];
+    self.yesFrame = [[UIView alloc] initWithFrame:CGRectMake(175, 100, 110, 150)];
     self.yesFrame.backgroundColor = [UIColor clearColor];
     self.yesFrame.layer.borderColor = [UIColor greenColor].CGColor;
     self.yesFrame.layer.borderWidth = 1.0f;

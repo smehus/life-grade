@@ -113,6 +113,7 @@
 
     [self addSubview:self.havingTroubleButton];
     
+    /*
     CGRect nextRect = CGRectMake(20, CGRectGetMaxY(self.havingTroubleButton.frame) + 20, self.frame.size.width - 40, 50);
     self.nextButton = [[BFPaperButton alloc] initWithFrame:nextRect raised:NO];
     [self.nextButton setBackgroundColor:greens];
@@ -122,7 +123,7 @@
     }];
     
     [self addSubview:self.nextButton];
-    
+    */
 }
 
 

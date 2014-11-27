@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/MenuViewController.m"
-            timestampString = "432531382.838647"
+            timestampString = "438721214.87789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "-performFetch"
             landmarkType = "5">
          </BreakpointContent>
@@ -163,28 +163,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "life-grade/SignupViewController.m"
-            timestampString = "438065603.50669"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "-signMeUp"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "life-grade/RealisticViewController.m"
-            timestampString = "438583974.54681"
+            timestampString = "438727538.646547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "467"
+            endingLineNumber = "467"
             landmarkName = "-setupThirdView"
             landmarkType = "5">
          </BreakpointContent>
@@ -196,11 +180,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/RealisticViewController.m"
-            timestampString = "438583974.54681"
+            timestampString = "438727538.646547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
             landmarkName = "-setupThirdView"
             landmarkType = "5">
          </BreakpointContent>
@@ -228,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/InstructionsViewController.m"
-            timestampString = "434514329.636752"
+            timestampString = "438722898.986583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -244,11 +228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/InstructionsViewController.m"
-            timestampString = "434514329.636752"
+            timestampString = "438722898.986583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -260,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/SignupViewController.m"
-            timestampString = "438065603.50669"
+            timestampString = "438727538.646547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
@@ -276,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/OpeningViewController.m"
-            timestampString = "434923633.898715"
+            timestampString = "438719621.448944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
@@ -292,11 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/OpeningViewController.m"
-            timestampString = "434923633.898715"
+            timestampString = "438719621.448944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
@@ -430,11 +414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "435883393.344434"
+            timestampString = "438727538.646547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -462,11 +446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "435883393.344434"
+            timestampString = "438727538.646547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "-fetchGrades"
             landmarkType = "5">
          </BreakpointContent>
@@ -478,11 +462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "435883393.344434"
+            timestampString = "438727538.646547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "-fetchGrades"
             landmarkType = "5">
             <Locations>
@@ -524,11 +508,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "435883393.344434"
+            timestampString = "438727538.646547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "-fetchGrades"
             landmarkType = "5">
          </BreakpointContent>
@@ -604,11 +588,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "435883393.344434"
+            timestampString = "438727538.646547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "-fetchAnswers"
             landmarkType = "5">
          </BreakpointContent>
@@ -620,11 +604,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/SignupViewController.m"
-            timestampString = "438065603.50669"
+            timestampString = "438727538.646547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
@@ -636,11 +620,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/OpeningViewController.m"
-            timestampString = "434921466.569347"
+            timestampString = "438719621.448944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
@@ -652,27 +636,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/OpeningViewController.m"
-            timestampString = "434922404.74775"
+            timestampString = "438719621.448944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "-signIn"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "life-grade/OpeningViewController.m"
-            timestampString = "434922412.111011"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
@@ -684,11 +652,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/OpeningViewController.m"
-            timestampString = "434923652.078269"
+            timestampString = "438719621.448944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
@@ -898,22 +866,6 @@
             startingLineNumber = "283"
             endingLineNumber = "283"
             landmarkName = "-performFetch"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "life-grade/AttributesViewController.m"
-            timestampString = "436547813.70352"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1138,6 +1090,22 @@
             startingLineNumber = "192"
             endingLineNumber = "192"
             landmarkName = "-drawSecondTemplate"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "life-grade/OpeningViewController.m"
+            timestampString = "438719621.448944"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

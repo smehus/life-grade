@@ -87,6 +87,7 @@
 		A581F2D619C917C600AB9382 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = A581F2D419C917C600AB9382 /* CheckBox.png */; };
 		A581F2D819C917E400AB9382 /* check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = A581F2D719C917E400AB9382 /* check_mark.png */; };
 		A5B8525B1A2437DB003B25A0 /* red-arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B8525A1A2437DB003B25A0 /* red-arrow-up@2x.png */; };
+		A5B8525D1A266F68003B25A0 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B8525C1A266F68003B25A0 /* EventKit.framework */; };
 		A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */; };
 		A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C761939719F00887F83 /* FinalGradeViewController.m */; };
 		A5C08C7B193977D600887F83 /* ActionPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7A193977D600887F83 /* ActionPlanViewController.m */; };
@@ -241,6 +242,7 @@
 		A581F2D419C917C600AB9382 /* CheckBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckBox.png; sourceTree = "<group>"; };
 		A581F2D719C917E400AB9382 /* check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_mark.png; sourceTree = "<group>"; };
 		A5B8525A1A2437DB003B25A0 /* red-arrow-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-arrow-up@2x.png"; sourceTree = "<group>"; };
+		A5B8525C1A266F68003B25A0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		A5BBB2B6192A1EB000724639 /* PickDesiredGradeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickDesiredGradeController.h; sourceTree = "<group>"; };
 		A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickDesiredGradeController.m; sourceTree = "<group>"; };
 		A5C08C751939719F00887F83 /* FinalGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalGradeViewController.h; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B8525D1A266F68003B25A0 /* EventKit.framework in Frameworks */,
 				6520A635190A8B56006FD28C /* CoreData.framework in Frameworks */,
 				655EC60B18DF5FE20036515F /* CoreGraphics.framework in Frameworks */,
 				655EC60D18DF5FE20036515F /* UIKit.framework in Frameworks */,
@@ -367,6 +370,7 @@
 		655EC60718DF5FE20036515F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5B8525C1A266F68003B25A0 /* EventKit.framework */,
 				A57829B519DE26FF00A4510C /* libPods-MGBoxKit.a */,
 				A57829B619DE26FF00A4510C /* libPods-MGEvents.a */,
 				A57829B719DE26FF00A4510C /* libPods-MGMushParser.a */,

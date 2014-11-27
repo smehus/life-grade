@@ -14,6 +14,7 @@ typedef void (^CompletionBlock)(void);
 
 @property (nonatomic, strong) CompletionBlock completionBlock;
 @property (nonatomic, strong) UILabel *instructLabel;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 - (id)initWithViewController:(Class)theClass andCompletionBlock:(CompletionBlock)doneBlock;
 

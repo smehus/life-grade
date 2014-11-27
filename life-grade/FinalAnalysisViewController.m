@@ -47,6 +47,7 @@
     MGBox *container;
     CGFloat screenWidth;
     CGFloat screenHeight;
+    UIButton *scrollButton;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -139,6 +140,20 @@
     self.scrollView.delegate = self;
     [self.view addSubview:self.scrollView];
     
+    CGRect screenRct = [[UIScreen mainScreen] bounds];
+    
+    
+    scrollButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [scrollButton setTitle:@"NEXT" forState:UIControlStateNormal];
+    [scrollButton setBackgroundColor:[UIColor clearColor]];
+    [scrollButton.titleLabel setFont:FONT_AMATIC_BOLD(36)];
+    [scrollButton setFrame:CGRectMake(0, self.view.bounds.size.height - 100, self.view.frame.size.width, 30)];
+    [[scrollButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+       
+         [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.origin.x, self.scrollView.contentOffset.y + screenRct.size.height) animated:YES];
+        
+    }];
+    [self.view addSubview: scrollButton];
     
     [self constructAllViews];
 }
@@ -566,7 +581,6 @@
                                              andFinalTips:nil];
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.currentGrade.text = @"Desired Grade";
-    
     [self.scrollView addSubview:v];
 }
 
@@ -577,6 +591,18 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenHeight = screenRect.size.height;
+    
+    CGFloat contentX = scrollView.contentOffset.y;
+    
+    
+    
+    // add the logic to remove next button
+    if (scrollView.contentOffset.y > screenRect.size.height * 7 ) {
+        scrollButton.hidden = YES;
+
+    }
     
     
 }

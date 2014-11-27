@@ -12,8 +12,11 @@
 #import "AttributesViewController.h"
 #import "ActionPlanViewController.h"
 #import "MyActionViewController.h"
+#import "Answers.h"
+#import "MainAppDelegate.h"
 
 @interface InstructionsViewController ()
+@property (nonatomic, strong) Answers *fetchedAnswers;
 
 @property (nonatomic, strong) UIButton *nextButton;
 
@@ -24,6 +27,7 @@
     NSString *instructionString;
     NSString *titleString;
     NSString *subTitleString;
+    MainAppDelegate *del;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -50,6 +54,14 @@
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    if (!self.managedObjectContext) {
+        self.managedObjectContext = del.managedObjectContext;
+    }
+    
+    [self performFetch];
 
     [self setTitleView];
     
@@ -67,10 +79,17 @@
 
     
     if (localClass == [PickDesiredGradeController class]) {
+        
+        NSLog(@"%@", self.fetchedAnswers.finalGrade);
+        
 //        titelLabel.text = @"Desired Grade";
         titleString = @"Step Two";
         subTitleString = @"Desired Grade";
-        instructionString = @"Ok so maybe your current grade isn’t exactly what you were looking for or just maybe life is good right now. Either way, now is your chance to select the grade you want in life! Go ahead, reach for the stars and grab the grade you want.";
+        if ([self.fetchedAnswers.finalGrade floatValue] < 80) {
+            instructionString = @"Ok so maybe your current grade isn’t exactly what you were looking for or just maybe life is good right now. Either way, now is your chance to select the grade you want in life! Go ahead, reach for the stars and grab the grade you want.";
+        } else {
+            instructionString = @"Well Aren't you perfect. Either way, now is your chance to select the grade you want in life! Go ahead, reach for the stars and grab the grade you want";
+        }
         
     } else if (localClass == [MyActionViewController class]) {
 //        titelLabel.text = @"Attributes";
@@ -101,6 +120,31 @@
     [self.view addSubview:self.nextButton];
     
     [self setupView];
+}
+
+- (void)performFetch {
+    
+    del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Answers"];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:del.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *foundObjects = [del.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (foundObjects == nil) {
+        NSLog(@"***CORE_DATA_ERROR*** %@", error);
+        
+        
+        return;
+    }
+    
+    self.fetchedAnswers = [foundObjects lastObject];
+    NSLog(@"question bitch %@", self.fetchedAnswers);
+    
 }
 
 - (void)setTitleView {

@@ -69,9 +69,9 @@
     
     
     
-    UILabel *greeting = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.view.frame.size.width, 50)];
+    UILabel *greeting = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, self.view.frame.size.width-10, 50)];
     greeting.textColor = GREY_COLOR;
-    greeting.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    greeting.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:22];
     greeting.text = @"Sign up to get your Final Grade!";
     
     UIColor *greyC = GREY_COLOR;
@@ -101,7 +101,8 @@
 
     
     self.signUp = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.passwordConfirmation.frame) + 50, self.view.frame.size.width, 50)];
-    [self.signUp setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    [self.signUp setBackgroundColor:[UIColor grayColor]];
+    [self.signUp setUserInteractionEnabled:NO];
     [self.signUp addTarget:self action:@selector(signMeUp) forControlEvents:UIControlEventTouchUpInside];
     [self.signUp setTitle:@"Sign Up" forState:UIControlStateNormal];
     
@@ -156,65 +157,75 @@
     
 
     NSLog(@"***SIGNUP");
-    
-    [indicatorView startAnimating];
-    
-    //1
-    PFUser *user = [PFUser user];
-    //2
-    user.username = self.userNameField.text;
-    user.email = self.userNameField.text;
-    user.password = self.passwordTextField.text;
-    
-    //3
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [indicatorView stopAnimating];
+    if (self.userNameField.text.length > 0 && self.passwordTextField.text.length > 0 && self.passwordConfirmation.text > 0) {
+        [indicatorView startAnimating];
         
+        //1
+        PFUser *user = [PFUser user];
+        //2
+        user.username = self.userNameField.text;
+        user.email = self.userNameField.text;
+        user.password = self.passwordTextField.text;
         
-        if (!error) {
-            //The registration was successful, go to the wall
-            NSLog(@"***SIGNUP SUCCESS");
-            
-            appDelegate.currentUser = user;
-            
-            NSString *email = self.userNameField.text;
-            NSString *pw = self.passwordTextField.text;
-            
-            [[NSUserDefaults standardUserDefaults] setObject:email forKey:@"email"];
-            [[NSUserDefaults standardUserDefaults] setObject:pw forKey:@"password"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+        //3
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [indicatorView stopAnimating];
             
             
-            FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
-            [self.revealViewController setFrontViewController:nav];
-            
-            
-            
-        } else {
-            //Something bad has occurred
-            
-            /*
-            NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [errorAlertView show];
-            */
-            
-            NSString *email = self.userNameField.text;
-            NSString *pw = self.passwordTextField.text;
-            
-            [[NSUserDefaults standardUserDefaults] setObject:email forKey:@"email"];
-            [[NSUserDefaults standardUserDefaults] setObject:pw forKey:@"password"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            
-            
-            FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
-            [self.revealViewController setFrontViewController:nav];
-            
-            
-        }
-    }];
+            if (!error) {
+                //The registration was successful, go to the wall
+                NSLog(@"***SIGNUP SUCCESS");
+                
+                appDelegate.currentUser = user;
+                
+                NSString *email = self.userNameField.text;
+                NSString *pw = self.passwordTextField.text;
+                
+                [[NSUserDefaults standardUserDefaults] setObject:email forKey:@"email"];
+                [[NSUserDefaults standardUserDefaults] setObject:pw forKey:@"password"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                
+                FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
+                [self.revealViewController setFrontViewController:nav];
+                
+                
+                
+            } else {
+                //Something bad has occurred
+                
+                /*
+                 NSString *errorString = [[error userInfo] objectForKey:@"error"];
+                 UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                 [errorAlertView show];
+                 */
+                
+                NSString *email = self.userNameField.text;
+                NSString *pw = self.passwordTextField.text;
+                
+                [[NSUserDefaults standardUserDefaults] setObject:email forKey:@"email"];
+                [[NSUserDefaults standardUserDefaults] setObject:pw forKey:@"password"];
+                [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"signUpFail"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                
+                FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
+                [self.revealViewController setFrontViewController:nav];
+                
+                
+            }
+        }];
+    } else {
+        UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"Oops"
+                                                    message:@"Please fill out all fields" delegate:nil
+                                          cancelButtonTitle:@"Okay!" otherButtonTitles:nil];
+        
+        [v show];
+    }
+    
+
     
     
 }
@@ -301,6 +312,17 @@
     }];
 
 
+
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if (self.userNameField.text.length > 0 && self.passwordTextField.text.length > 0 && self.passwordConfirmation.text > 0) {
+        
+        [self.signUp setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+        [self.signUp setUserInteractionEnabled:YES];
+    }
+    
 
 }
 

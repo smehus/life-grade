@@ -15,6 +15,9 @@
 #import "SignupViewController.h"
 #import "ASValueTrackingSlider.h"
 #import "Answers.h"
+#import "NYSegmentedControl.h"
+#import <EventKit/EventKit.h>
+
 
 @interface RealisticViewController () <THDatePickerDelegate, ASValueTrackingSliderDataSource, ASValueTrackingSliderDelegate>
 
@@ -26,6 +29,8 @@
 @property (nonatomic, strong) NSDate *calDate;
 @property (nonatomic, strong) NSDate *endCalDate;
 @property (nonatomic, strong) Answers *fetchedAnswers;
+
+@property (nonatomic, strong) NYSegmentedControl *switchThing;
 
 @property (nonatomic, strong) UILabel *firstSliderLabel;
 @property (nonatomic, strong) UILabel *secondSliderLabel;
@@ -51,6 +56,10 @@
     UITextField *secondField;
     UITextField *thirdField;
     UIButton *nextButton;
+    
+    UILabel *secondCal;
+    UIButton *nButton;
+    UIButton *calNextButton;
 }
 
 - (void)viewDidLoad {
@@ -160,14 +169,14 @@
     
     firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + 10, screenWidth, 40)];
     firstLabel.text = @"How Confident Are You?";
-    firstLabel.font = [UIFont fontWithName:avFont size:24];
+    firstLabel.font = [UIFont fontWithName:avFont size:20];
     firstLabel.numberOfLines = 0;
     firstLabel.lineBreakMode = NSLineBreakByWordWrapping;
     firstLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:firstLabel];
     
-    self.firstSliderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstLabel.frame), self.view.frame.size.width/2-20, 30)];
-    self.firstSliderLabel.font = FONT_AMATIC_REG(18);
+    self.firstSliderLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2 - 100, CGRectGetMaxY(firstLabel.frame), 200, 30)];
+    self.firstSliderLabel.font = FONT_AMATIC_REG(28);
     self.firstSliderLabel.text = @"First Slider";
     self.firstSliderLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.firstSliderLabel];
@@ -192,24 +201,33 @@
     self.secondSliderLabel.font = FONT_AMATIC_REG(18);
     self.secondSliderLabel.textAlignment = NSTextAlignmentCenter;
     self.secondSliderLabel.text = @"Second Slider";
-    [self.view addSubview:self.secondSliderLabel];
+//    [self.view addSubview:self.secondSliderLabel];
 
     [sliderOne setPopUpViewAnimatedColors:@[coldBlue, blue, green, yellow, red]
                                withPositions:@[@-20, @0, @5, @25, @60]];
     
-    
+    /*
     ASValueTrackingSlider *sliderTwo = [[ASValueTrackingSlider alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.secondSliderLabel.frame)+ 10, screenWidth-20, 25)];
     sliderTwo.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
     sliderTwo.font = [UIFont fontWithName:@"GillSans-Bold" size:22];
     sliderTwo.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
     sliderTwo.dataSource = self;
     [self.view addSubview:sliderTwo];
+    */
+    
+    CGFloat halfScreen = screenWidth/4;
+    
+    self.switchThing = [self getSegment];
+    self.switchThing.frame = CGRectMake(screenWidth/2 - halfScreen, CGRectGetMaxY(self.secondSliderLabel.frame)+ 10, screenWidth/2, 50);
+    [self.view addSubview:self.switchThing];
+    
     
     UIColor *gC = GREEN_COLOR;
     
-    UIButton *nButton = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(sliderTwo.frame) + 10, self.view.frame.size.width - 20, 50)];
+    nButton = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.switchThing.frame) + 30, self.view.frame.size.width - 20, 50)];
     [nButton setTitle:@"Next" forState:UIControlStateNormal];
     [nButton setBackgroundColor:gC];
+    [nButton setUserInteractionEnabled:YES];
     [[nButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
         [self RemoveAllViews];
@@ -217,6 +235,24 @@
         
     }];
     [self.view addSubview:nButton];
+}
+
+- (NYSegmentedControl *)getSegment {
+    
+    NYSegmentedControl *segmentedControl = [[NYSegmentedControl alloc] initWithItems:@[@"Yes", @"No"]];
+    // Customize and size the control
+    segmentedControl.borderWidth = 1.0f;
+    segmentedControl.borderColor = [UIColor colorWithWhite:0.15f alpha:1.0f];
+    segmentedControl.drawsGradientBackground = YES;
+    segmentedControl.segmentIndicatorInset = 2.0f;
+    segmentedControl.drawsSegmentIndicatorGradientBackground = YES;
+    segmentedControl.segmentIndicatorGradientTopColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];;
+    segmentedControl.segmentIndicatorGradientBottomColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+    segmentedControl.segmentIndicatorAnimationDuration = 0.3f;
+    segmentedControl.segmentIndicatorBorderWidth = 0.0f;
+    [segmentedControl sizeToFit];
+    
+    return segmentedControl;
 }
 
 - (void)RemoveAllViews {
@@ -234,6 +270,7 @@
 }
 
 - (void)setupSecondScreen {
+    
     
     titleLabel.text = @"Set a time frame";
     firstField.text = @" Set a date";
@@ -284,10 +321,11 @@
     [self.view addSubview:calBut];
     
     
-    UILabel *secondCal = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(calBut.frame) + 10, self.view.frame.size.width-20, 30)];
+    secondCal = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(calBut.frame) + 10, self.view.frame.size.width-20, 30)];
     secondCal.textAlignment = NSTextAlignmentCenter;
     secondCal.text = @"End Date";
     secondCal.font = FONT_AMATIC_BOLD(24);
+    secondCal.hidden = YES;
     [self.view addSubview:secondCal];
     
     calBut1 = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondCal.frame) + 20, self.view.frame.size.width-20, 75)];
@@ -325,15 +363,17 @@
     
 
     
-    UIButton *b = [self addNextButton];
-    [[b rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+    calNextButton = [self addNextButton];
+    [calNextButton setUserInteractionEnabled:NO];
+    [calNextButton setBackgroundColor:[UIColor grayColor]];
+    [[calNextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
        // go somewhere
         
         [self saveDates];
         [self RemoveAllViews];
         
         
-        titleLabel.text = @"Support";
+        titleLabel.text = self.fetchedAnswers.specificFocus;
         firstLabel.text = @"Support";
         [self setupThirdView];
         
@@ -383,7 +423,7 @@
 
 - (void)setupThirdView {
     
-    titleLabel.text = @"Support";
+    titleLabel.text = self.fetchedAnswers.specificFocus;
     firstLabel.text = @"Name 3 people in your circle";
     [self.view addSubview:firstLabel];
     
@@ -412,13 +452,22 @@
         
         
         [self save];
-       
-        SignupViewController *signUp = [[SignupViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:signUp];
-        [self.revealViewController pushFrontViewController:nav animated:YES];
+        
+    
+        if (del.currentUser) {
+            
+            FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
+            [self.revealViewController setFrontViewController:nav];
+            
+            
+        } else {
+            SignupViewController *signUp = [[SignupViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:signUp];
+            [self.revealViewController pushFrontViewController:nav animated:YES];
+        };
         
     }];
-    
 }
 
 - (UIButton *)addNextButton {
@@ -442,6 +491,26 @@
     NSLog(@"realistic controller dealloc");
 }
 
+- (void)addDatesToCalendar {
+        
+        EKEventStore *store = [[EKEventStore alloc] init];
+        [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+            if (!granted) { return; }
+            
+            EKEvent *event = [EKEvent eventWithEventStore:store];
+            event.title = @"Life+Grade Goal";
+            event.notes = self.fetchedAnswers.specificFocus;
+            event.startDate = self.fetchedAnswers.startDate;
+            event.endDate = self.fetchedAnswers.endDate;
+            
+            [event setCalendar:[store defaultCalendarForNewEvents]];
+            NSError *err = nil;
+            [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
+            NSLog(@"CALENDAR ERROR: %@",err);
+            
+        }];
+}
+
 #pragma mark - thcalendar thing del
 
 -(void)datePickerDonePressed:(THDatePickerViewController *)datePicker {
@@ -457,7 +526,7 @@
         
         [calBut setTitle:stringDate forState:UIControlStateNormal];
         [calBut1 setHidden:NO];
-        
+        secondCal.hidden = NO;
     } else if (datePicker == self.datePicker1) {
         
         
@@ -466,9 +535,11 @@
         [dateFormatter setDateFormat:@"dd-MM-yyyy"];
         NSString *stringDate = [dateFormatter stringFromDate:self.endCalDate];
         
-        
+        UIColor *g = GREEN_COLOR;
         
         [calBut1 setTitle:stringDate forState:UIControlStateNormal];
+        [calNextButton setUserInteractionEnabled:YES];
+        [calNextButton setBackgroundColor:g];
         
     }
 
@@ -487,7 +558,7 @@
     
     self.fetchedAnswers.startDate = self.calDate;
     self.fetchedAnswers.endDate = self.endCalDate;
-
+    [self addDatesToCalendar];
     
     NSError *error;
     if (![self.managedObjectContext save:&error]) {

@@ -20,6 +20,8 @@
 #import "Answers.h"
 #import <CoreData/CoreData.h>
 #import "FinalAnalysisViewController.h"
+#import "TrackingProgressViewController.h"
+#import "MyActionViewController.h"
 
 @interface MenuViewController ()
 
@@ -51,7 +53,7 @@
 {
     del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
     [self performFetch];
-    self.titleArray = @[@"Grading", @"Desired Grade", @"Steps", @"Attributes", @"My Grade", @"About", @"Log Out"];
+    self.titleArray = @[@"Grading", @"Desired Grade", @"Factors", @"Progress", @"My Grade", @"About", @"Log Out"];
     
     NSLog(@"MENU LOADED");
     [super viewDidLoad];
@@ -178,16 +180,25 @@
             
             
         } else if (indexPath.row == 2) {
-            
+            /*
             ActionPlanViewController *desiredController = [[ActionPlanViewController alloc] init];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:desiredController];
             [self.myRevealController pushFrontViewController:nav animated:YES];
-        } else if (indexPath.row == 3) {
+             */
             
+            MyActionViewController *action = [[MyActionViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:action];
+            [self.myRevealController pushFrontViewController:nav animated:YES];
+        
+        } else if (indexPath.row == 3) {
+            /*
             AttributesViewController *attsController = [[AttributesViewController alloc] init];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:attsController];
             [self.myRevealController pushFrontViewController:nav animated:YES];
-            
+            */
+            TrackingProgressViewController *track = [[TrackingProgressViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:track];
+            [self.myRevealController pushFrontViewController:nav animated:YES];
         
         } else if (indexPath.row == 4) {
             

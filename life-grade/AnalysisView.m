@@ -263,7 +263,7 @@
     self.titleLabel.backgroundColor = barColour;
     [self addSubview:self.titleLabel];
     
-    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 100)];
+    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 80)];
     self.quoteLabel.font = [UIFont fontWithName:liteFont size:16];
     self.quoteLabel.textAlignment = NSTextAlignmentCenter;
     self.quoteLabel.numberOfLines = 0;
@@ -272,7 +272,7 @@
     [self addSubview:self.quoteLabel];
     
     container = [MGBox boxWithSize:CGSizeMake(self.size.width, 200)];
-    container.frame = CGRectMake(0, CGRectGetMaxY(self.quoteLabel.frame) + 10, self.frame.size.width, 150);
+    container.frame = CGRectMake(0, CGRectGetMaxY(self.quoteLabel.frame), self.frame.size.width, 150);
     container.contentLayoutMode = MGLayoutGridStyle;
     
     [self addSubview:container];
@@ -476,8 +476,9 @@
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
-    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, 200, 30)];
+    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, self.frame.size.width, 30)];
     currentGrade.text = @"Final Life+Grade";
+    currentGrade.textAlignment = NSTextAlignmentCenter;
     currentGrade.font = [UIFont fontWithName:avFont size:24];
     [firstView addSubview:currentGrade];
     [self addSubview:firstView];
