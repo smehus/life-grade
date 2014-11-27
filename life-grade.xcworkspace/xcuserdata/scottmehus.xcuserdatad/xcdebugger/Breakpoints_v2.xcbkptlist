@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/OpeningViewController.m"
-            timestampString = "438809103.946444"
+            timestampString = "438809989.053687"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
@@ -1106,22 +1106,6 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "-initWithSave:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "life-grade/OpeningViewController.m"
-            timestampString = "438809103.946444"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
-            landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

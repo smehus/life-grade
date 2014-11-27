@@ -504,7 +504,7 @@
     v.currentGrade.text = @"Current Grade";
     v.gradeLabel.text = self.gradeLetter;
     [self.scrollView addSubview:v];
-}
+}   
 
 
 - (void)goalView:(int)i  {
