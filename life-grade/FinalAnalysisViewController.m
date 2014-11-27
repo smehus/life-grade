@@ -33,6 +33,7 @@
 @property (nonatomic, strong) NSMutableArray *lowestFactors;
 @property (nonatomic, strong) NSMutableArray *highestFactors;
 @property (nonatomic, strong) NSMutableArray *grades;
+@property (nonatomic, assign) BOOL shouldSave;
 
 @end
 
@@ -56,6 +57,15 @@
     if (self) {
 
         
+        
+    }
+    return self;
+}
+
+- (id)initWithSave:(BOOL)save {
+    if (self = [super init]) {
+        
+        self.shouldSave = save;
         
     }
     return self;
@@ -257,7 +267,17 @@
     self.fetchedAnswers = [foundObjects lastObject];
     NSLog(@"FETCHED ANS %@", self.fetchedAnswers.endDate);
     
-//    [self saveToParse];
+    if (self.shouldSave == NO) {
+
+        
+        
+    } else {
+        
+        
+        [self saveToParse];
+    }
+    
+    
     NSNumber *num = self.fetchedAnswers.finalGrade;
     float balls = [num floatValue];
     NSLog(@"FINAL GRADE %f", balls);
@@ -602,6 +622,8 @@
     if (scrollView.contentOffset.y > screenRect.size.height * 7 ) {
         scrollButton.hidden = YES;
 
+    } else {
+        scrollButton.hidden = NO;
     }
     
     
@@ -651,6 +673,15 @@
     post[@"questionTen"] = self.fetchedAnswers.questionTen;
     post[@"desiredGrade"] = self.fetchedAnswers.desiredGrade;
     post[@"finalGrade"] = self.fetchedAnswers.finalGrade;
+    post[@"trackingProgressOne"] = self.fetchedAnswers.trackingProgressOne;
+    post[@"trackingProgressTwo"] = self.fetchedAnswers.trackingProgressTwo;
+    post[@"trackingProgressThree"] = self.fetchedAnswers.trackingProgressThree;
+    post[@"startDate"] = self.fetchedAnswers.startDate;
+    post[@"endDate"] = self.fetchedAnswers.endDate;
+    post[@"firstSupport"] = self.fetchedAnswers.firstSupport;
+    post[@"secondSupport"] = self.fetchedAnswers.secondSupport;
+    post[@"thirdSupport"] = self.fetchedAnswers.thirdSupport;
+    
     
     NSLog(@"FINALDESIRE %@", self.fetchedAnswers.finalGrade);
     PFUser *user = [PFUser currentUser];

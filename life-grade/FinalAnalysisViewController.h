@@ -10,4 +10,7 @@
 
 @interface FinalAnalysisViewController : UIViewController
 
+
+- (id)initWithSave:(BOOL)save;
+
 @end

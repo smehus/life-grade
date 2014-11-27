@@ -221,7 +221,14 @@
                 NSNumber* qNine = [grades objectForKey:@"questionNine"];
                 NSNumber* qTen = [grades objectForKey:@"questionTen"];
                 NSNumber *finalNum = [grades objectForKey:@"finalGrade"];
-
+                NSString *trackOne = [grades objectForKey:@"trackingProgressOne"];
+                NSString *trackTwo = [grades objectForKey:@"trackingProgressTwo"];
+                NSString *trackThree = [grades objectForKey:@"trackingProgressThree"];
+                NSDate *startDate = [grades objectForKey:@"startDate"];
+                NSDate *endDate = [grades objectForKey:@"endDate"];
+                NSString *firstSupport = [grades objectForKey:@"firstSupport"];
+                NSString *secondSupport = [grades objectForKey:@"secondSupport"];
+                NSString *thirdSupport = [grades objectForKey:@"thirdSupport"];
                 
                 // NEED TO SAVE TO CORE DATA
                 
@@ -240,7 +247,14 @@
                 answers.questionNine = qNine;
                 answers.questionTen = qTen;
                 answers.finalGrade = finalNum;
-
+                answers.trackingProgressOne = trackOne;
+                answers.trackingProgressTwo = trackTwo;
+                answers.trackingProgressThree = trackThree;
+                answers.firstSupport = firstSupport;
+                answers.secondSupport = secondSupport;
+                answers.thirdSupport = thirdSupport;
+                answers.startDate = startDate;
+                answers.endDate = endDate;
 
                 
                 NSError *error;

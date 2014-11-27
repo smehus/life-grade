@@ -433,18 +433,27 @@
     firstField.layer.borderColor = blueColor.CGColor;
     firstField.layer.borderWidth = 1.0f;
     firstField.backgroundColor = [UIColor whiteColor];
+    firstField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+    firstField.font = FONT_AMATIC_REG(14);
+    firstField.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:firstField];
     
     secondField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstField.frame) + 10, screenWidth - 20, 44)];
     secondField.layer.borderColor = blueColor.CGColor;
     secondField.layer.borderWidth = 1.0f;
     secondField.backgroundColor = [UIColor whiteColor];
+    secondField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+    secondField.font = FONT_AMATIC_REG(18);
+    secondField.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:secondField];
     
     thirdField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondField.frame) + 10, screenWidth - 20, 44)];
     thirdField.layer.borderColor = blueColor.CGColor;
     thirdField.layer.borderWidth = 1.0f;
     thirdField.backgroundColor = [UIColor whiteColor];
+    thirdField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+    thirdField.font = FONT_AMATIC_REG(18);
+    thirdField.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:thirdField];
     
     UIButton *b = [self addNextButton];
@@ -456,7 +465,7 @@
     
         if (del.currentUser) {
             
-            FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] init];
+            FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] initWithSave:YES];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
             [self.revealViewController setFrontViewController:nav];
             

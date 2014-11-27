@@ -186,7 +186,7 @@
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 
                 
-                FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] init];
+                FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] initWithSave:YES];
                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
                 [self.revealViewController setFrontViewController:nav];
                 
@@ -210,7 +210,7 @@
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 
                 
-                FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] init];
+                FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] initWithSave:NO];
                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
                 [self.revealViewController setFrontViewController:nav];
                 
