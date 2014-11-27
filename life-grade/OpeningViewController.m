@@ -229,6 +229,7 @@
                 NSString *firstSupport = [grades objectForKey:@"firstSupport"];
                 NSString *secondSupport = [grades objectForKey:@"secondSupport"];
                 NSString *thirdSupport = [grades objectForKey:@"thirdSupport"];
+                NSString *specificFocus = [grades objectForKey:@"specificFocus"];
                 
                 // NEED TO SAVE TO CORE DATA
                 
@@ -255,6 +256,7 @@
                 answers.thirdSupport = thirdSupport;
                 answers.startDate = startDate;
                 answers.endDate = endDate;
+                answers.specificFocus = specificFocus;
 
                 
                 NSError *error;

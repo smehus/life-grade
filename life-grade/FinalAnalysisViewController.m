@@ -681,6 +681,7 @@
     post[@"firstSupport"] = self.fetchedAnswers.firstSupport;
     post[@"secondSupport"] = self.fetchedAnswers.secondSupport;
     post[@"thirdSupport"] = self.fetchedAnswers.thirdSupport;
+    post[@"specificFocus"] = self.fetchedAnswers.specificFocus;
     
     
     NSLog(@"FINALDESIRE %@", self.fetchedAnswers.finalGrade);
