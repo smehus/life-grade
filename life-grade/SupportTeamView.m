@@ -59,25 +59,34 @@
     self.gradeLabel.font = FONT_AMATIC_BOLD(75);
     [firstView addSubview:self.gradeLabel];
     
-    self.firstSupport = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.gradeLabel.frame) + 10, 110, 40)];
+    self.firstSupport = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.gradeLabel.frame) + 10, 110, 60)];
     self.firstSupport.text = @"";
     self.firstSupport.layer.borderWidth = 1.0f;
     self.firstSupport.layer.borderColor = greens.CGColor;
     self.firstSupport.textAlignment = NSTextAlignmentCenter;
+    self.firstSupport.numberOfLines = 0;
+    self.firstSupport.lineBreakMode = NSLineBreakByWordWrapping;
+    self.firstSupport.font = FONT_AMATIC_BOLD(20);
     [self addSubview:self.firstSupport];
     
-    self.secondSupport = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.firstSupport.frame) + 30, 110, 40)];
+    self.secondSupport = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.firstSupport.frame) + 10, 110, 60)];
     self.secondSupport.text = @"";
     self.secondSupport.layer.borderWidth = 1.0f;
     self.secondSupport.layer.borderColor = greens.CGColor;
     self.secondSupport.textAlignment = NSTextAlignmentCenter;
+    self.secondSupport.numberOfLines = 0;
+    self.secondSupport.lineBreakMode = NSLineBreakByWordWrapping;
+    self.secondSupport.font = FONT_AMATIC_BOLD(20);
     [self addSubview:self.secondSupport];
     
-    self.thirdSupport = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.secondSupport.frame) + 30, 110, 40)];
+    self.thirdSupport = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.secondSupport.frame) + 10, 110, 60)];
     self.thirdSupport.text = @"";
     self.thirdSupport.layer.borderWidth = 1.0f;
     self.thirdSupport.layer.borderColor = greens.CGColor;
     self.thirdSupport.textAlignment = NSTextAlignmentCenter;
+    self.thirdSupport.numberOfLines = 0;
+    self.thirdSupport.lineBreakMode = NSLineBreakByWordWrapping;
+    self.thirdSupport.font = FONT_AMATIC_BOLD(20);
     [self addSubview:self.thirdSupport];
     
     UIImage *arrowImg = [UIImage imageNamed:@"Red-arrow-2-"];
@@ -91,9 +100,9 @@
     secondArrow.frame = CGRectMake(CGRectGetMaxX(self.thirdSupport.frame), self.thirdSupport.frame.origin.y - 40, arrowImg.size.width, arrowImg.size.height);
     [self addSubview:secondArrow];
     
-    UILabel *supportLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.secondSupport.frame) + 60, CGRectGetMaxY(self.firstSupport.frame), 100, 100)];
+    UILabel *supportLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.secondSupport.frame) + 60, CGRectGetMaxY(self.firstSupport.frame)-25, 100, 110)];
     supportLabel.text = @"Support Team";
-    supportLabel.font = FONT_AMATIC_REG(30);
+    supportLabel.font = FONT_AMATIC_REG(40);
     supportLabel.numberOfLines = 0;
     supportLabel.lineBreakMode = NSLineBreakByWordWrapping;
     supportLabel.textAlignment = NSTextAlignmentCenter;
