@@ -29,7 +29,7 @@
 
     
     UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 300)];
-    [planLabel setFont:FONT_AMATIC_REG(18)];
+    [planLabel setFont:FONT_AMATIC_BOLD(18)];
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;

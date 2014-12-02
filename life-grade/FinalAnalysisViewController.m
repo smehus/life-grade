@@ -511,6 +511,7 @@
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a];
+    v.delegate = self;
     v.titleLabel.text = @"Challenges";
     v.currentGrade.text = @"Current Grade";
     v.gradeLabel.text = self.gradeLetter;
