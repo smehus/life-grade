@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UILabel *currentGrade;
 @property (nonatomic, strong) UILabel *quoteLabel;
 @property (nonatomic, strong) UIButton *bottomButton;
+@property (nonatomic, strong) NSMutableArray *questions;
 
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data;
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data andGoal:(id)goal;

@@ -98,6 +98,27 @@
     return self;
 }
 
+- (void)fetchQuestions {
+    
+    self.questions = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSArray *ary = [dict objectForKey:@"questions"];
+    [ary enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+        
+        Grade *grade = [[Grade alloc] init];
+        grade.question = obj[@"question"];
+        grade.goodResponse = obj[@"goodResponse"];
+        
+        grade.badResponse = obj[@"badResponse"];
+        [self.questions addObject:grade];
+        
+        
+        
+    }];
+}
+
 - (void)drawFirstTemplate {
     NSString *avFont = AVENIR_BLACK;
     

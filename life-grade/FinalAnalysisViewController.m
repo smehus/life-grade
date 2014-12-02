@@ -21,6 +21,8 @@
 #import "MDCScrollBarLabel.h"
 #import "CompletionDateView.h"
 #import "SupportTeamView.h"
+#import "ChoseView.h"
+#import "KLCPopup.h"
 
 @interface FinalAnalysisViewController () <UIScrollViewDelegate>
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
@@ -34,6 +36,7 @@
 @property (nonatomic, strong) NSMutableArray *highestFactors;
 @property (nonatomic, strong) NSMutableArray *grades;
 @property (nonatomic, assign) BOOL shouldSave;
+@property (nonatomic, strong) ChoseView *choseView;
 
 @end
 
@@ -49,6 +52,7 @@
     CGFloat screenWidth;
     CGFloat screenHeight;
     UIButton *scrollButton;
+    KLCPopup *popup;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -216,6 +220,8 @@
         Grade *g = [[Grade alloc] init];
         g.gradeNum = [self getGradeForIndex:index];
         g.question = [[self.questions objectAtIndex:idx] question];
+        g.goodResponse = [[self.questions objectAtIndex:idx] goodResponse];
+        g.badResponse = [[self.questions objectAtIndex:idx] badResponse];
         [self.grades addObject:g];
         
     }];
@@ -233,6 +239,8 @@
         
         Grade *grade = [[Grade alloc] init];
         grade.question = obj[@"question"];
+        grade.goodResponse = obj[@"goodResponse"];
+        grade.badResponse = obj[@"badResponse"];
         // questions and good & bad answers
         [self.questions addObject:grade];
         
@@ -703,5 +711,17 @@
 }
 
 
+
+- (void)shit {
+    self.choseView = [[ChoseView alloc] initWithFrame:CGRectMake(30, -300, self.view.frame.size.width-60, self.view.frame.size.height*.6) withAnswers:self.fetchedAnswers completion:^{
+        
+    }];
+    
+    self.choseView.clipsToBounds = YES;
+    self.choseView.delegate = self;
+    popup = [KLCPopup popupWithContentView:self.choseView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
+    [popup show];
+    
+}
 
 @end
