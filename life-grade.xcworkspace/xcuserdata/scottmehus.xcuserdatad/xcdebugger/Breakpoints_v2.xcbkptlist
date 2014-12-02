@@ -398,11 +398,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "438982329.617267"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -414,11 +414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "438982329.617267"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -430,11 +430,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439179263.446"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "-fetchGrades"
             landmarkType = "5">
          </BreakpointContent>
@@ -446,11 +446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439179348.321244"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "-fetchGrades"
             landmarkType = "5">
             <Locations>
@@ -492,11 +492,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439179348.321244"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "-fetchGrades"
             landmarkType = "5">
          </BreakpointContent>
@@ -508,23 +508,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "438982329.617267"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "438982329.617267"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
@@ -540,7 +524,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "438982329.617267"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -556,7 +540,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "438982329.617267"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "140"
@@ -572,11 +556,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439179348.321244"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "life-grade/FinalAnalysisViewController.m"
+            timestampString = "439181359.17374"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "-fetchAnswers"
             landmarkType = "5">
          </BreakpointContent>
@@ -1052,11 +1052,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/AnalysisView.m"
-            timestampString = "439179077.062211"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "-drawSecondTemplate"
             landmarkType = "5">
          </BreakpointContent>
@@ -1068,11 +1068,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "438982329.617267"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "-initWithNibName:bundle:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1084,11 +1084,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439179348.321244"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "-fetchAnswers"
             landmarkType = "5">
          </BreakpointContent>
@@ -1100,11 +1100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "438982329.617267"
+            timestampString = "439181359.17374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-initWithSave:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1112,33 +1112,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439179058.752861"
+            timestampString = "439181349.849747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "-getLowestGrade"
+            startingLineNumber = "720"
+            endingLineNumber = "720"
+            landmarkName = "-openPopUpWithGrade:"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439179286.332787"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "-setAnswersArray"
-            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FinalAnalysisViewController openPopUpWithGrade:]"
+                  moduleName = "life-grade"
+                  urlString = "file:///Users/scottmehus/Documents/LifeGrade/life-grade/life-grade/FinalAnalysisViewController.m"
+                  timestampString = "439181590.252778"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "722"
+                  endingLineNumber = "722"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__50-[FinalAnalysisViewController openPopUpWithGrade:]_block_invoke"
+                  moduleName = "life-grade"
+                  urlString = "file:///Users/scottmehus/Documents/LifeGrade/life-grade/life-grade/FinalAnalysisViewController.m"
+                  timestampString = "439181590.253043"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "725"
+                  endingLineNumber = "725"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

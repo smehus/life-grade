@@ -98,6 +98,8 @@
     return self;
 }
 
+
+// dont use?
 - (void)fetchQuestions {
     
     self.questions = [[NSMutableArray alloc] initWithCapacity:10];
@@ -180,6 +182,8 @@
         box.titleLabel.font = FONT_AMATIC_BOLD(24);
         box.onTap = ^{
             NSLog(@"Box Tapped");
+            
+            [self.delegate openPopUpWithGrade:g];
             
         };
         [container.boxes addObject:box];

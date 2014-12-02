@@ -88,6 +88,7 @@
 		A581F2D819C917E400AB9382 /* check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = A581F2D719C917E400AB9382 /* check_mark.png */; };
 		A5B8525B1A2437DB003B25A0 /* red-arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B8525A1A2437DB003B25A0 /* red-arrow-up@2x.png */; };
 		A5B8525D1A266F68003B25A0 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B8525C1A266F68003B25A0 /* EventKit.framework */; };
+		A5BBA27A1A2D5D6000E104BC /* GoodBadResponseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBA2791A2D5D6000E104BC /* GoodBadResponseView.m */; };
 		A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */; };
 		A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C761939719F00887F83 /* FinalGradeViewController.m */; };
 		A5C08C7B193977D600887F83 /* ActionPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7A193977D600887F83 /* ActionPlanViewController.m */; };
@@ -243,6 +244,8 @@
 		A581F2D719C917E400AB9382 /* check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_mark.png; sourceTree = "<group>"; };
 		A5B8525A1A2437DB003B25A0 /* red-arrow-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-arrow-up@2x.png"; sourceTree = "<group>"; };
 		A5B8525C1A266F68003B25A0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		A5BBA2781A2D5D6000E104BC /* GoodBadResponseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodBadResponseView.h; sourceTree = "<group>"; };
+		A5BBA2791A2D5D6000E104BC /* GoodBadResponseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodBadResponseView.m; sourceTree = "<group>"; };
 		A5BBB2B6192A1EB000724639 /* PickDesiredGradeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickDesiredGradeController.h; sourceTree = "<group>"; };
 		A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickDesiredGradeController.m; sourceTree = "<group>"; };
 		A5C08C751939719F00887F83 /* FinalGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalGradeViewController.h; sourceTree = "<group>"; };
@@ -555,6 +558,8 @@
 				A5254E1519FAFD0300A4BDAB /* CompletionDateView.m */,
 				A5254E1719FB0C5A00A4BDAB /* SupportTeamView.h */,
 				A5254E1819FB0C5A00A4BDAB /* SupportTeamView.m */,
+				A5BBA2781A2D5D6000E104BC /* GoodBadResponseView.h */,
+				A5BBA2791A2D5D6000E104BC /* GoodBadResponseView.m */,
 			);
 			name = FinalGrade;
 			sourceTree = "<group>";
@@ -838,6 +843,7 @@
 				494692B819CB736000869599 /* ChoseView.m in Sources */,
 				A53DA43119C1391700EAC693 /* ChecklistViewController.m in Sources */,
 				494692C119CB7B5900869599 /* BeginGoalViewController.m in Sources */,
+				A5BBA27A1A2D5D6000E104BC /* GoodBadResponseView.m in Sources */,
 				A5CC36FC19EF6274005F899D /* FactorDescriptionViewController.m in Sources */,
 				A57829BD19DE27D700A4510C /* AnalysisBlock.m in Sources */,
 				A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */,

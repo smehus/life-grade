@@ -7,6 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Grade.h"
+
+@class AnalysisView;
+@protocol AnalysisViewDelegate <NSObject>
+
+- (void)openPopUpWithGrade:(Grade *)g;
+
+@end
 
 @interface AnalysisView : UIView
 
@@ -17,6 +25,7 @@
 @property (nonatomic, strong) UILabel *quoteLabel;
 @property (nonatomic, strong) UIButton *bottomButton;
 @property (nonatomic, strong) NSMutableArray *questions;
+@property (nonatomic, strong) id<AnalysisViewDelegate>delegate;
 
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data;
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data andGoal:(id)goal;

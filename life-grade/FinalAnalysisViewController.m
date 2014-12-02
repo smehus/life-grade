@@ -23,8 +23,9 @@
 #import "SupportTeamView.h"
 #import "ChoseView.h"
 #import "KLCPopup.h"
+#import "GoodBadResponseView.h"
 
-@interface FinalAnalysisViewController () <UIScrollViewDelegate>
+@interface FinalAnalysisViewController () <UIScrollViewDelegate, AnalysisViewDelegate>
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, strong) Answers *fetchedAnswers;
 @property (nonatomic, strong) NSArray *fetchedAttributes;
@@ -37,6 +38,7 @@
 @property (nonatomic, strong) NSMutableArray *grades;
 @property (nonatomic, assign) BOOL shouldSave;
 @property (nonatomic, strong) ChoseView *choseView;
+@property (nonatomic, strong) GoodBadResponseView *goodBadView;
 
 @end
 
@@ -498,6 +500,7 @@
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                        andIndex:i andData:a];
+    v.delegate = self;
     v.currentGrade.text = @"Current Grade";
     v.titleLabel.text = @"Strengths";
     v.gradeLabel.text = self.gradeLetter;
@@ -712,16 +715,21 @@
 
 
 
-- (void)shit {
-    self.choseView = [[ChoseView alloc] initWithFrame:CGRectMake(30, -300, self.view.frame.size.width-60, self.view.frame.size.height*.6) withAnswers:self.fetchedAnswers completion:^{
+- (void)openPopUpWithGrade:(Grade *)g {
+    
+ 
+    
+    self.goodBadView = [[GoodBadResponseView alloc] initWithFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andGrade:g andCloseBlock:^{
+       // close this shit
         
     }];
     
-    self.choseView.clipsToBounds = YES;
-    self.choseView.delegate = self;
-    popup = [KLCPopup popupWithContentView:self.choseView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
+    self.goodBadView.clipsToBounds = YES;
+    
+    popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:YES];
     [popup show];
     
 }
+
 
 @end
