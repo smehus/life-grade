@@ -145,7 +145,7 @@
 //    
 
     
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
 
     
     

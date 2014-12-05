@@ -17,6 +17,7 @@
 #import "Answers.h"
 #import "NYSegmentedControl.h"
 #import <EventKit/EventKit.h>
+#import "JMMarkSlider.h"
 
 
 @interface RealisticViewController () <THDatePickerDelegate, ASValueTrackingSliderDataSource, ASValueTrackingSliderDelegate>
@@ -34,6 +35,7 @@
 
 @property (nonatomic, strong) UILabel *firstSliderLabel;
 @property (nonatomic, strong) UILabel *secondSliderLabel;
+@property (nonatomic, strong)  JMMarkSlider *sliderOne;
 
 @end
 
@@ -60,10 +62,18 @@
     UILabel *secondCal;
     UIButton *nButton;
     UIButton *calNextButton;
+   
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIBarButtonItem *newBackButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"Ball"
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
+    [[self navigationItem] setBackBarButtonItem:newBackButton];
 
     avFont = AVENIR_BLACK;
     blueColor = BLUE_COLOR;
@@ -182,15 +192,20 @@
     [self.view addSubview:self.firstSliderLabel];
     
     
-    ASValueTrackingSlider *sliderOne = [[ASValueTrackingSlider alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.firstSliderLabel.frame)+ 30, screenWidth-20, 25)];
-//    sliderOne.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
-    sliderOne.font = [UIFont fontWithName:@"GillSans-Bold" size:22];
-    sliderOne.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
-    sliderOne.dataSource = self;
-    [self.view addSubview:sliderOne];
+    self.sliderOne = [[JMMarkSlider alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.firstSliderLabel.frame)+ 30, screenWidth-20, 40)];
+    self.sliderOne.markColor = [UIColor blackColor];
+    self.sliderOne.markPositions = @[@1,@25,@50,@75,@99];
+    self.sliderOne.markWidth = 4.0;
+    [self.sliderOne addTarget:self action:@selector(sliderMoved:) forControlEvents:UIControlEventValueChanged];
+    [self.sliderOne addTarget:self action:@selector(sliderStopped:) forControlEvents:UIControlEventTouchUpInside];
+    self.sliderOne.selectedBarColor = BLUE_COLOR;
+    self.sliderOne.unselectedBarColor = BLUE_COLOR;
     
-    secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(sliderOne.frame) + 25, screenWidth, 40)];
-    secondLabel.text = @"How Confident Are You?";
+    
+    [self.view addSubview:self.sliderOne];
+    
+    secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.sliderOne.frame) + 25, screenWidth, 40)];
+    secondLabel.text = @"Is this goal realistic?";
     secondLabel.font = [UIFont fontWithName:avFont size:24];
     secondLabel.numberOfLines = 0;
     secondLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -203,8 +218,9 @@
     self.secondSliderLabel.text = @"Second Slider";
 //    [self.view addSubview:self.secondSliderLabel];
 
-    [sliderOne setPopUpViewAnimatedColors:@[coldBlue, blue, green, yellow, red]
-                               withPositions:@[@-20, @0, @5, @25, @60]];
+//    [sliderOne setPopUpViewAnimatedColors:@[coldBlue, blue, green, yellow, red]
+//                               withPositions:@[@-20, @0, @5, @25, @60]];
+    
     
     /*
     ASValueTrackingSlider *sliderTwo = [[ASValueTrackingSlider alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.secondSliderLabel.frame)+ 10, screenWidth-20, 25)];
@@ -230,11 +246,80 @@
     [nButton setUserInteractionEnabled:YES];
     [[nButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
-        [self RemoveAllViews];
-        [self setupSecondScreen];
+        if (self.switchThing.isEnabled) {
+            [self RemoveAllViews];
+            [self setupSecondScreen];
+        }
+
         
     }];
     [self.view addSubview:nButton];
+}
+
+- (void)sliderStopped:(JMMarkSlider *)slider {
+    
+    float newStep = roundf((slider.value) / 0.25f);
+    
+    NSLog(@"newStep %f", newStep);
+    [UIView animateWithDuration:0.3 animations:^{
+        slider.value = newStep * 0.25;
+    } completion:^(BOOL finished) {
+        [self setSliderLabel:slider.value];
+        
+    }];
+}
+
+- (void)setSliderLabel:(CGFloat)val {
+    NSLog(@"FINAL VAL %f", val);
+    int v = val * 100;
+    switch (v) {
+        case 0:
+            self.firstSliderLabel.text = @"Not at all Confident";
+            break;
+        case 25:
+            self.firstSliderLabel.text = @"Not Very Confident ";
+            break;
+        case 50:
+            self.firstSliderLabel.text = @"Moderate Confidence";
+            break;
+        case 75:
+            self.firstSliderLabel.text = @"Somewhat Confident";
+            break;
+        case 100:
+            self.firstSliderLabel.text = @"Very Confident";
+            break;
+        default:
+            self.firstSliderLabel.text = @"Error!";
+            break;
+    }
+    
+}
+
+- (void)sliderMoved:(JMMarkSlider *)slider {
+    
+    NSLog(@"slider: %f", slider.value);
+    self.firstSliderLabel.text = @"...";
+    /*
+    if (slider.value < 0.125) {
+        slider.value = 0.010f;
+    } else if (slider.value > 0.125 && slider.value < 0.375) {
+        slider.value = 0.250f;
+    } else if (slider.value > 0.375 && slider.value < 0.625) {
+        slider.value = 0.500f;
+    } else if (slider.value < 0.875 && slider.value > 0.625) {
+        slider.value = 0.75f;
+    } else {
+        slider.value = 1.0;
+    }
+*/
+}
+
+- (UIView *)createNotchWithXOrigin:(CGFloat)xOrig {
+    
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(xOrig, self.sliderOne.frame.origin.y, 1.0, 25)];
+    v.backgroundColor = [UIColor darkGrayColor];
+    v.layer.cornerRadius = 5.0f;
+    return v;
 }
 
 - (NYSegmentedControl *)getSegment {

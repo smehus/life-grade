@@ -29,6 +29,7 @@ PODS:
   - Facebook-iOS-SDK (3.20.0):
     - Bolts (~> 1.0)
   - IQKeyboardManager (3.2.0.2)
+  - JMMarkSlider (1.0)
   - KNSemiModalViewController (0.3)
   - KVOController (1.0.3)
   - MBAlertView (1.1.0)
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - EMAccordionTableViewController (~> 0.4)
   - Facebook-iOS-SDK (~> 3.13)
   - IQKeyboardManager
+  - JMMarkSlider (~> 1.0)
   - KVOController
   - MBAlertView (~> 1.1.0)
   - MDCScrollBarLabel (~> 0.1.3)
@@ -106,6 +108,7 @@ SPEC CHECKSUMS:
   EMAccordionTableViewController: 1d5c69385e18e7becaa06340d10d81129312f9aa
   Facebook-iOS-SDK: 5854404b4b651f612a8ef79ca06d766858f4cb8e
   IQKeyboardManager: f30f3e98fa36ca1599042c9d0cea2fb4f4ac3df9
+  JMMarkSlider: 85d1956ef6f62738373f3fc4610448542e66a447
   KNSemiModalViewController: 6fb1e2f6a4d84238b524cb705e91118b0fa6bbc9
   KVOController: b1139ef1fc373b6757e4b69493fedd7b56eb1272
   MBAlertView: 0044095d026308882a807e55dd2b4f89f8be5702
