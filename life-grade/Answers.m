@@ -39,5 +39,8 @@
 @dynamic stageQuestionThree;
 @dynamic stageQuestionFour;
 @dynamic specificFocus;
+@dynamic isRealistic;
+@dynamic confidentValue;
+
 
 @end

@@ -44,6 +44,8 @@
 @property (nonatomic, retain) NSString *trackingProgressTwo;
 @property (nonatomic, retain) NSString *trackingProgressThree;
 @property (nonatomic, retain) NSDate * endDate;
+@property (nonatomic) BOOL isRealistic;
+@property (nonatomic, retain) NSNumber *confidentValue;
 
 
 @end

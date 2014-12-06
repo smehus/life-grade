@@ -257,9 +257,10 @@
         if (self.switchThing.selectedSegmentIndex == 0) {
             
             [self RemoveAllViews];
+            [self generalSave];
             [self setupSecondScreen];
         } else {
-            [self openShitConfidencePopup];
+            [self showNotRealistic];
         }
 
         
@@ -316,16 +317,36 @@
 
 - (void)openShitConfidencePopup {
     
-    self.goodBadView = [[GoodBadResponseView alloc] initForRealisticwithFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andRealisticGoal:^(NSString *specificGoal) {
-        self.fetchedAnswers.specificFocus = specificGoal;
+    self.goodBadView = [[GoodBadResponseView alloc] initForConfidenceAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andRealisticGoal:^{
+        
         [popup dismiss:YES];
+        
+    }];
+    
+    self.goodBadView.clipsToBounds = YES;
+    
+    popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:YES];
+    [popup show];
+
+    
+}
+
+- (void)showNotRealistic {
+    
+    self.goodBadView = [[GoodBadResponseView alloc] initForRealisticwithFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andRealisticGoal:^(NSString *specificGoal) {
+        
+        
+        self.fetchedAnswers.specificFocus = specificGoal;
+        [self generalSave];
+        [popup dismiss:YES];
+        [self RemoveAllViews];
+        [self setupSecondScreen];
     }];
     
     self.goodBadView.clipsToBounds = YES;
     
     popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
     [popup show];
-    
 }
 
 - (void)sliderMoved:(JMMarkSlider *)slider {
@@ -692,6 +713,20 @@
         NSLog(@"Error: %@", error);
         abort();
     }
+}
+
+- (void)generalSave {
+    
+    self.fetchedAnswers.isRealistic = self.switchThing.selectedSegmentIndex;
+    self.fetchedAnswers.confidentValue = [NSNumber numberWithFloat:self.sliderOne.value];
+    
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+        abort();
+    }
+    
 }
 
 - (NSString *)slider:(ASValueTrackingSlider *)slider stringForValue:(float)value {
