@@ -560,7 +560,7 @@
     firstField.layer.borderWidth = 1.0f;
     firstField.backgroundColor = [UIColor whiteColor];
     firstField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
-    firstField.font = FONT_AMATIC_REG(14);
+    firstField.font = FONT_AMATIC_REG(24);
     firstField.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:firstField];
     
@@ -569,7 +569,7 @@
     secondField.layer.borderWidth = 1.0f;
     secondField.backgroundColor = [UIColor whiteColor];
     secondField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
-    secondField.font = FONT_AMATIC_REG(18);
+    secondField.font = FONT_AMATIC_REG(24);
     secondField.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:secondField];
     
@@ -578,7 +578,7 @@
     thirdField.layer.borderWidth = 1.0f;
     thirdField.backgroundColor = [UIColor whiteColor];
     thirdField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
-    thirdField.font = FONT_AMATIC_REG(18);
+    thirdField.font = FONT_AMATIC_REG(24);
     thirdField.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:thirdField];
     
