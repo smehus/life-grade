@@ -121,6 +121,11 @@
     }];
 }
 
+- (void)drawTrackingProgress {
+    
+    
+}
+
 - (void)drawFirstTemplate {
     NSString *avFont = AVENIR_BLACK;
     
@@ -325,6 +330,8 @@
         box.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         box.onTap = ^{
             NSLog(@"Box Tapped");
+          
+            [self.delegate openTrackingProgressPopUp];
             
         };
         [container.boxes addObject:box];

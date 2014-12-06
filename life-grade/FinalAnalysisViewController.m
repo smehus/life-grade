@@ -545,6 +545,7 @@
     v.currentGrade.text = @"Desired Grade";
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.titleLabel.text = @"Tracking Progress";
+    v.delegate = self;
     v.quoteLabel.text = @"I'm saying I did an ocular assessment of the situation garnered that he was not a security risk and I cleared him for passage.";
     [self.scrollView addSubview:v];
     
@@ -729,6 +730,20 @@
     
     popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:YES];
     [popup show];
+    
+}
+
+- (void)openTrackingProgressPopUp {
+    
+    self.goodBadView = [[GoodBadResponseView alloc] initForConfidenceAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andRealisticGoal:^{
+        
+        
+    }];
+    
+    popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:YES];
+    [popup show];
+    
+    
     
 }
 
