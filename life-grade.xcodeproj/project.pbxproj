@@ -89,6 +89,7 @@
 		A5B8525B1A2437DB003B25A0 /* red-arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B8525A1A2437DB003B25A0 /* red-arrow-up@2x.png */; };
 		A5B8525D1A266F68003B25A0 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B8525C1A266F68003B25A0 /* EventKit.framework */; };
 		A5BBA27A1A2D5D6000E104BC /* GoodBadResponseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBA2791A2D5D6000E104BC /* GoodBadResponseView.m */; };
+		A5BBA27D1A32CBE800E104BC /* ECEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBA27C1A32CBE800E104BC /* ECEventStore.m */; };
 		A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */; };
 		A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C761939719F00887F83 /* FinalGradeViewController.m */; };
 		A5C08C7B193977D600887F83 /* ActionPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7A193977D600887F83 /* ActionPlanViewController.m */; };
@@ -246,6 +247,8 @@
 		A5B8525C1A266F68003B25A0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		A5BBA2781A2D5D6000E104BC /* GoodBadResponseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodBadResponseView.h; sourceTree = "<group>"; };
 		A5BBA2791A2D5D6000E104BC /* GoodBadResponseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodBadResponseView.m; sourceTree = "<group>"; };
+		A5BBA27B1A32CBE800E104BC /* ECEventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECEventStore.h; sourceTree = "<group>"; };
+		A5BBA27C1A32CBE800E104BC /* ECEventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECEventStore.m; sourceTree = "<group>"; };
 		A5BBB2B6192A1EB000724639 /* PickDesiredGradeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickDesiredGradeController.h; sourceTree = "<group>"; };
 		A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickDesiredGradeController.m; sourceTree = "<group>"; };
 		A5C08C751939719F00887F83 /* FinalGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalGradeViewController.h; sourceTree = "<group>"; };
@@ -345,6 +348,8 @@
 				A5254E1B1A04EA4900A4BDAB /* ProgressMethods.m */,
 				A54ECFA61A17EA4D0083BEBF /* AttributeSwipeView.h */,
 				A54ECFA71A17EA4D0083BEBF /* AttributeSwipeView.m */,
+				A5BBA27B1A32CBE800E104BC /* ECEventStore.h */,
+				A5BBA27C1A32CBE800E104BC /* ECEventStore.m */,
 			);
 			name = MyPlan;
 			sourceTree = "<group>";
@@ -836,6 +841,7 @@
 				655EC61918DF5FE20036515F /* MainAppDelegate.m in Sources */,
 				494692AC19CB45DD00869599 /* ActionCell.m in Sources */,
 				A53DA42319B94B2000EAC693 /* Answers.m in Sources */,
+				A5BBA27D1A32CBE800E104BC /* ECEventStore.m in Sources */,
 				65BFF076190F511E0087511B /* HATransitionController.m in Sources */,
 				6533F56A18E194810017C7D6 /* QuestionView.m in Sources */,
 				494692BD19CB75B300869599 /* KLCPopup.m in Sources */,

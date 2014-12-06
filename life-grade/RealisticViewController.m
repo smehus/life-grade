@@ -21,9 +21,13 @@
 #import "KLCPopup.h"
 #import "IQKeyboardManager.h"
 #import "GoodBadResponseView.h"
+#import "ECEventStore.h"
 
 
-@interface RealisticViewController () <THDatePickerDelegate, ASValueTrackingSliderDataSource, ASValueTrackingSliderDelegate>
+@import EventKitUI;
+
+
+@interface RealisticViewController () <THDatePickerDelegate, ASValueTrackingSliderDataSource, ASValueTrackingSliderDelegate, EKEventEditViewDelegate>
 
 @property (nonatomic, strong) UITextField *firstSupport;
 @property (nonatomic, strong) UITextField *secondSupport;
@@ -40,6 +44,7 @@
 @property (nonatomic, strong) UILabel *secondSliderLabel;
 @property (nonatomic, strong)  JMMarkSlider *sliderOne;
 @property (nonatomic, strong) GoodBadResponseView *goodBadView;
+@property (nonatomic, strong) EKEventStore *eventStore;
 
 @end
 
@@ -418,6 +423,13 @@
     [calBut setTitle:@"Pick Date" forState:UIControlStateNormal];
     [[calBut rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
+        // create event and then input into addEvent
+        [self accessEventStore];
+        [self addEvent:calBut];
+        
+        
+        
+        /*
 //        [self openCalendar:calBut];
         
         if(!self.datePicker)
@@ -442,6 +454,8 @@
                                                                       KNSemiModalOptionKeys.animationDuration : @(1.0),
                                                                       KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
                                                                       }];
+         
+         */
         
     }];
     [self.view addSubview:calBut];
@@ -460,6 +474,12 @@
     [calBut1 setHidden:YES];
     [[calBut1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
+        [self accessEventStore];
+        [self addEvent:calBut1];
+        
+        
+        
+        /*
 //        [self openCalendar:calBut1];
         if(!self.datePicker1)
             self.datePicker1 = [THDatePickerViewController datePicker];
@@ -483,7 +503,7 @@
                                                                       KNSemiModalOptionKeys.animationDuration : @(1.0),
                                                                       KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
                                                                       }];
-        
+     */
     }];
     [self.view addSubview:calBut1];
     
@@ -504,6 +524,40 @@
         [self setupThirdView];
         
     }];
+}
+
+- (IBAction)addEvent:(id)sender {
+    
+    //[self performSegueWithIdentifier:@"AddEvent" sender:nil];
+    
+    EKEvent *event  = [EKEvent eventWithEventStore:self.eventStore];
+    if (sender == calBut) {
+        event.title     = self.fetchedAnswers.specificFocus;
+        event.startDate = self.fetchedAnswers.startDate;
+    } else {
+        event.title     = self.fetchedAnswers.specificFocus;
+        event.startDate = self.fetchedAnswers.endDate;
+    }
+    
+    EKEventEditViewController *editViewController = [[EKEventEditViewController alloc] init];
+    editViewController.eventStore = self.eventStore;
+    editViewController.event = event;
+    editViewController.editViewDelegate = self;
+    
+    [self presentViewController:editViewController animated:YES completion:nil];
+    
+}
+- (void)accessEventStore {
+    
+    
+    
+    self.eventStore = [[ECEventStore sharedInstance] getThisEventStore];
+    NSLog(@"EVENT STORE: %@", self.eventStore);
+    
+    [[ECEventStore sharedInstance] accessEventStore:self.eventStore WithCompletion:^(NSMutableArray *events) {
+        
+    }];
+    
 }
 
 - (UILabel *)createLabelWithFrame:(CGRect)rect andTitle:(NSString *)title {
