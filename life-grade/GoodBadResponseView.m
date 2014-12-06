@@ -8,6 +8,9 @@
 
 #import "GoodBadResponseView.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "AttainCell.h"
+#import "Attributes.h"
+
 
 @implementation GoodBadResponseView {
     NSString *labelString;
@@ -61,8 +64,10 @@
     return self;
 }
 
-- (id)initForAttributesAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock {
+- (id)initForAttributesAndFrame:(CGRect)frame withAttributes:(NSArray *)ats andBlock:(CloseBlock)doneBlock {
     if (self = [super initWithFrame:frame]) {
+        
+        self.attributes = ats;
         self.closeBlock = doneBlock;
         [self constructAttributesView];
     }
@@ -88,10 +93,12 @@
     
     
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(planLabel.frame), self.frame.size.width, 100) collectionViewLayout:layout];
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
-    self.collectionView.backgroundColor = [UIColor blueColor];
+    self.collectionView.backgroundColor = [UIColor clearColor];
+    [self.collectionView registerClass:[AttainCell class] forCellWithReuseIdentifier:@"Cell"];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 10, 0, 0);
+    self.collectionView.showsHorizontalScrollIndicator = NO;
     [self addSubview:self.collectionView];
     
     
@@ -99,7 +106,7 @@
     UIColor *c = GREEN_COLOR;
     
     UIButton *nextbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [nextbutton setFrame:CGRectMake(10, CGRectGetMaxY(self.collectionView.frame) + 10, self.frame.size.width-20, 44)];
+    [nextbutton setFrame:CGRectMake(10, CGRectGetMaxY(self.collectionView.frame) + 20, self.frame.size.width-20, 44)];
     [nextbutton setTitle:@"shit!" forState:UIControlStateNormal];
     [nextbutton setBackgroundColor:c];
     [nextbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -114,7 +121,7 @@
     
     self.backgroundColor = [UIColor whiteColor];
     
-    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 100)];
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 150)];
     [planLabel setFont:FONT_AMATIC_BOLD(18)];
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
@@ -317,19 +324,29 @@
 
 #pragma mark - CollectionView Datasaur
 
+
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 10;
+    return self.attributes.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    AttainCell *cell = (AttainCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.backgroundColor = BLUE_COLOR;
+    
+    Attributes *d = self.attributes[indexPath.row];
+    cell.attributeLabel.text = d.attribute;
+    
     
     return cell;
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return CGSizeMake(100, 100);
+}
 
 
 @end

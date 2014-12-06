@@ -19,12 +19,13 @@ typedef void (^RealisticBlock) (NSString *specificGoal);
 @property (nonatomic, strong) Grade *thisGrade;
 @property (nonatomic, strong) UITextField *specificLabel;
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) NSArray *attributes;
 
 - (id)initWithFrame:(CGRect)frame andGrade:(Grade *)g andCloseBlock:(CloseBlock)doneBlock;
 - (id)initForRealisticwithFrame:(CGRect)frame andRealisticGoal:(RealisticBlock)doneBlock;
 - (id)initForConfidenceAndFrame:(CGRect)frame andRealisticGoal:(CloseBlock)doneBlock;
 - (id)initForQuestionsAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock;
 - (id)initForTrackingAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock;
-- (id)initForAttributesAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock;
+- (id)initForAttributesAndFrame:(CGRect)frame withAttributes:(NSArray *)ats andBlock:(CloseBlock)doneBlock;
 
 @end

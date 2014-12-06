@@ -750,7 +750,7 @@
 
 - (void)openAttributes {
     
-    self.goodBadView = [[GoodBadResponseView alloc] initForAttributesAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andBlock:^{
+    self.goodBadView = [[GoodBadResponseView alloc] initForAttributesAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) withAttributes:self.fetchedAttributes andBlock:^{
         
         [popup dismiss:YES];
     }];
