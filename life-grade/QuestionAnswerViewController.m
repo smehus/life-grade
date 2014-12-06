@@ -19,6 +19,8 @@
 #import "Answers.h"
 #import "MBAlertView.h"
 #import "MyActionViewController.h"
+#import "KLCPopup.h"
+#import "GoodBadResponseView.h"
 
 @interface QuestionAnswerViewController () <ChoseViewDelegate>
 
@@ -29,6 +31,7 @@
 @property (nonatomic, strong) NYSegmentedControl *thirdControl;
 @property (nonatomic, strong) NYSegmentedControl *secondControl;
 @property (nonatomic, strong) NYSegmentedControl *firstControl;
+@property (nonatomic, strong) GoodBadResponseView *goodBadView;
 
 
 @end
@@ -145,7 +148,7 @@
     
     
     UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.secondControl.frame) + 10, self.view.frame.size.width-40, 55)];
-    thirdLabel.text = [NSString stringWithFormat:@"III: %@", @"I am intending to take action in the next month"];
+    thirdLabel.text = [NSString stringWithFormat:@"III: %@", @"I am intending to take action in the next month "];
     thirdLabel.font = FONT_AMATIC_BOLD(24);
     thirdLabel.numberOfLines = 0;
     thirdLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -199,12 +202,7 @@
     
     if (self.firstControl.selectedSegmentIndex == 0) {
         
-        MyActionViewController *actionPlan = [[MyActionViewController alloc] init];
-        actionPlan.managedObjectContext = self.managedObjectContext;
-        
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionPlan];
-        [self.revealViewController setFrontViewController:nav animated:YES];
-        
+        [self openExplanation];
         
     } else if (self.firstControl.selectedSegmentIndex == 1
                && self.secondControl.selectedSegmentIndex == 1
@@ -224,6 +222,27 @@
         popup = [KLCPopup popupWithContentView:self.choseView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
         [popup show];
     }
+}
+
+- (void)openExplanation {
+    
+    self.goodBadView = [[GoodBadResponseView alloc] initForQuestionsAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andBlock:^{
+        
+        
+        [popup dismiss:YES];
+        
+        MyActionViewController *actionPlan = [[MyActionViewController alloc] init];
+        actionPlan.managedObjectContext = self.managedObjectContext;
+        
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:actionPlan];
+        [self.revealViewController setFrontViewController:nav animated:YES];
+        
+    }];
+    
+    self.goodBadView.clipsToBounds = YES;
+    
+    popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
+    [popup show];
 }
 
 - (void)startPlan {

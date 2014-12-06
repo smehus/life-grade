@@ -43,6 +43,42 @@
     return self;
 }
 
+- (id)initForQuestionsAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock {
+    if (self = [super initWithFrame:frame]) {
+        self.closeBlock = doneBlock;
+        [self setupQuestionView];
+        
+    }
+    return self;
+}
+
+- (void)setupQuestionView {
+    
+    self.backgroundColor = [UIColor whiteColor];
+    
+    
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 200)];
+    [planLabel setFont:FONT_AMATIC_BOLD(18)];
+    planLabel.numberOfLines = 0;
+    planLabel.textAlignment = NSTextAlignmentCenter;
+    planLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    planLabel.text = @"Works";
+    [self addSubview:planLabel];
+    
+    
+    UIColor *c = GREEN_COLOR;
+    
+    UIButton *nextbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [nextbutton setFrame:CGRectMake(10, CGRectGetMaxY(planLabel.frame) + 10, self.frame.size.width-20, 44)];
+    [nextbutton setTitle:@"Got It!" forState:UIControlStateNormal];
+    [nextbutton setBackgroundColor:c];
+    [nextbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [[nextbutton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        self.closeBlock();
+    }];
+    [self addSubview:nextbutton];
+}
+
 - (void)setupBasicView {
     self.backgroundColor = [UIColor whiteColor];
     

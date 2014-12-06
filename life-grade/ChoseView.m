@@ -38,6 +38,7 @@
     [titleLabel setFont:FONT_AVENIR_BLACK(14)];
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     titleLabel.numberOfLines = 0;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.text = @"You chose to focus on: ";
     [self addSubview:titleLabel];
     
