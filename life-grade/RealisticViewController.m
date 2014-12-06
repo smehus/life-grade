@@ -27,7 +27,10 @@
 @import EventKitUI;
 
 
-@interface RealisticViewController () <THDatePickerDelegate, ASValueTrackingSliderDataSource, ASValueTrackingSliderDelegate, EKEventEditViewDelegate>
+@interface RealisticViewController () <THDatePickerDelegate,
+                                        ASValueTrackingSliderDataSource,
+                                        ASValueTrackingSliderDelegate,
+                                        EKEventEditViewDelegate>
 
 @property (nonatomic, strong) UITextField *firstSupport;
 @property (nonatomic, strong) UITextField *secondSupport;
@@ -73,6 +76,7 @@
     UIButton *calNextButton;
     KLCPopup *popup;
     BOOL popUpHasOpened;
+    id calendarButton;
    
 }
 
@@ -528,16 +532,19 @@
 
 - (IBAction)addEvent:(id)sender {
     
+    calendarButton = sender;
     //[self performSegueWithIdentifier:@"AddEvent" sender:nil];
     
     EKEvent *event  = [EKEvent eventWithEventStore:self.eventStore];
-    if (sender == calBut) {
-        event.title     = self.fetchedAnswers.specificFocus;
+
+    event.title     = self.fetchedAnswers.specificFocus;
+    if (sender == calBut1) {
         event.startDate = self.fetchedAnswers.startDate;
     } else {
-        event.title     = self.fetchedAnswers.specificFocus;
-        event.startDate = self.fetchedAnswers.endDate;
+        event.startDate = [NSDate date];
     }
+    event.endDate = [NSDate dateWithTimeIntervalSinceNow:30];
+
     
     EKEventEditViewController *editViewController = [[EKEventEditViewController alloc] init];
     editViewController.eventStore = self.eventStore;
@@ -558,6 +565,40 @@
         
     }];
     
+}
+
+#pragma mark - calendar delegate
+
+- (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action {
+    
+    NSLog(@"LSDJF %@", controller.event.startDate);
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    
+    if (calendarButton == calBut) {
+        self.calDate = controller.event.startDate;
+        self.fetchedAnswers.startDate = controller.event.startDate;
+        NSString *stringDate = [dateFormatter stringFromDate:self.calDate];
+        [calBut setTitle:stringDate forState:UIControlStateNormal];
+        [calBut1 setHidden:NO];
+        secondCal.hidden = NO;
+    } else {
+        
+        self.endCalDate = controller.event.startDate;
+        self.fetchedAnswers.endDate = controller.event.startDate;
+        
+        NSString *stringDate = [dateFormatter stringFromDate:self.endCalDate];
+        UIColor *g = GREEN_COLOR;
+        
+        [calBut1 setTitle:stringDate forState:UIControlStateNormal];
+        [calNextButton setUserInteractionEnabled:YES];
+        [calNextButton setBackgroundColor:g];
+        
+        
+    }
+    
+     [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (UILabel *)createLabelWithFrame:(CGRect)rect andTitle:(NSString *)title {
@@ -710,7 +751,7 @@
         
         self.calDate = datePicker.date;
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+        [dateFormatter setDateFormat:@"MM-dd-yyyy"];
         NSString *stringDate = [dateFormatter stringFromDate:self.calDate];
         
         [calBut setTitle:stringDate forState:UIControlStateNormal];
@@ -721,7 +762,7 @@
         
         self.endCalDate = datePicker.date;
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+        [dateFormatter setDateFormat:@"MM-dd-yyyy"];
         NSString *stringDate = [dateFormatter stringFromDate:self.endCalDate];
         
         UIColor *g = GREEN_COLOR;
