@@ -286,9 +286,11 @@
                 m.isSelected = NO;
                 [self.selectedMethods removeObject:m];
             } else {
-                b.backgroundColor = GREEN_COLOR;
-                m.isSelected = YES;
-                [self.selectedMethods addObject:m];
+                if (self.selectedMethods.count < 3) {
+                    b.backgroundColor = GREEN_COLOR;
+                    m.isSelected = YES;
+                    [self.selectedMethods addObject:m];
+                }
             }
             
         };

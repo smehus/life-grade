@@ -107,6 +107,13 @@
 - (void)setupScreen {
     self.backgroundColor = [UIColor whiteColor];
 
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 40)];
+    [titleLabel setFont:FONT_AVENIR_BLACK(18)];
+    titleLabel.numberOfLines = 0;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    titleLabel.text = [NSString stringWithFormat:@"%@ : %@", self.thisGrade.question, self.thisGrade.gradeNum];
+    [self addSubview:titleLabel];
     
     UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 300)];
     [planLabel setFont:FONT_AMATIC_BOLD(18)];
