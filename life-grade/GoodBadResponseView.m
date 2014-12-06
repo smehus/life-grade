@@ -7,6 +7,7 @@
 //
 
 #import "GoodBadResponseView.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation GoodBadResponseView {
     NSString *labelString;
@@ -20,6 +21,15 @@
         self.closeBlock = doneBlock;
         self.thisGrade = g;
         [self setupScreen];
+    }
+    return self;
+}
+
+- (id)initForRealisticwithFrame:(CGRect)frame andRealisticGoal:(RealisticBlock)doneBlock {
+    if (self = [super initWithFrame:frame]) {
+        
+        self.realisticBlock = doneBlock;
+        [self setupRealisticResponse];
     }
     return self;
 }
@@ -38,6 +48,53 @@
     
 }
 
+- (void)setupRealisticResponse {
+    NSLog(@"GOOD BAD REALISTIC");
+    self.backgroundColor = [UIColor whiteColor];
+    UIColor *greenCol = GREEN_COLOR;
+    NSString *font = LIGHT_FONT;
+    UIColor *blueC = BLUE_COLOR;
+    
+    
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 150)];
+    [planLabel setFont:FONT_AMATIC_BOLD(18)];
+    planLabel.numberOfLines = 0;
+    planLabel.textAlignment = NSTextAlignmentCenter;
+    planLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    planLabel.text = @"This Works";
+    planLabel.layer.borderColor = [UIColor redColor].CGColor;
+    planLabel.layer.borderWidth = 1.0f;
+    [self addSubview:planLabel];
+    
+    
+    self.specificLabel = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(planLabel.frame) + 10, self.bounds.size.width - 20, 50)];
+    self.specificLabel.font = FONT_AMATIC_BOLD(24);
+    self.specificLabel.textAlignment = NSTextAlignmentCenter;
+    self.specificLabel.placeholder = @" Example: Lose 10 Pounds";
+    self.specificLabel.layer.borderWidth = 1.0f;
+    self.specificLabel.layer.borderColor = greenCol.CGColor;
+    self.specificLabel.delegate = self;
+    [self addSubview:self.specificLabel];
+    
+    UIColor *c = GREEN_COLOR;
+    
+    UIButton *nextbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [nextbutton setFrame:CGRectMake(10, CGRectGetMaxY(self.specificLabel.frame) + 5, self.frame.size.width-20, 44)];
+    [nextbutton setTitle:@"Done" forState:UIControlStateNormal];
+    [nextbutton setBackgroundColor:c];
+    [nextbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [[nextbutton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        
+        
+        if (self.specificLabel.text.length > 0) {
+            self.realisticBlock(self.specificLabel.text);
+        } else {
+            
+        }
+    }];
+    [self addSubview:nextbutton];
+}
+
 - (NSString *)getResponse {
   
     
@@ -47,11 +104,40 @@
         return self.thisGrade.goodResponse;
     }
 }
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self animateTextField: textField up: YES];
+}
 
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self animateTextField: textField up: NO];
+}
+
+- (void) animateTextField: (UITextField *)textField up: (BOOL) up
+{
+    const int movementDistance = 140; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.frame = CGRectOffset(self.frame, 0, movement);
+    [UIView commitAnimations];
+}
 
 
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.specificLabel resignFirstResponder];
+}
 
+-(BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [self.specificLabel resignFirstResponder];
+    return YES;
+}
 
 
 

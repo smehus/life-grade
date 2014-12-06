@@ -18,6 +18,9 @@
 #import "NYSegmentedControl.h"
 #import <EventKit/EventKit.h>
 #import "JMMarkSlider.h"
+#import "KLCPopup.h"
+#import "IQKeyboardManager.h"
+#import "GoodBadResponseView.h"
 
 
 @interface RealisticViewController () <THDatePickerDelegate, ASValueTrackingSliderDataSource, ASValueTrackingSliderDelegate>
@@ -36,6 +39,7 @@
 @property (nonatomic, strong) UILabel *firstSliderLabel;
 @property (nonatomic, strong) UILabel *secondSliderLabel;
 @property (nonatomic, strong)  JMMarkSlider *sliderOne;
+@property (nonatomic, strong) GoodBadResponseView *goodBadView;
 
 @end
 
@@ -62,10 +66,13 @@
     UILabel *secondCal;
     UIButton *nButton;
     UIButton *calNextButton;
+    KLCPopup *popup;
+    BOOL popUpHasOpened;
    
 }
 
 - (void)viewDidLoad {
+    popUpHasOpened = NO;
     [super viewDidLoad];
     
     UIBarButtonItem *newBackButton =
@@ -187,7 +194,7 @@
     
     self.firstSliderLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2 - 100, CGRectGetMaxY(firstLabel.frame), 200, 30)];
     self.firstSliderLabel.font = FONT_AMATIC_REG(28);
-    self.firstSliderLabel.text = @"First Slider";
+    self.firstSliderLabel.text = @"Slide to your confidence level";
     self.firstSliderLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.firstSliderLabel];
     
@@ -199,7 +206,8 @@
     [self.sliderOne addTarget:self action:@selector(sliderMoved:) forControlEvents:UIControlEventValueChanged];
     [self.sliderOne addTarget:self action:@selector(sliderStopped:) forControlEvents:UIControlEventTouchUpInside];
     self.sliderOne.selectedBarColor = BLUE_COLOR;
-    self.sliderOne.unselectedBarColor = BLUE_COLOR;
+    self.sliderOne.unselectedBarColor = [UIColor darkGrayColor];
+    self.sliderOne.value = 0.50;
     
     
     [self.view addSubview:self.sliderOne];
@@ -246,9 +254,12 @@
     [nButton setUserInteractionEnabled:YES];
     [[nButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
-        if (self.switchThing.isEnabled) {
+        if (self.switchThing.selectedSegmentIndex == 0) {
+            
             [self RemoveAllViews];
             [self setupSecondScreen];
+        } else {
+            [self openShitConfidencePopup];
         }
 
         
@@ -270,6 +281,14 @@
 }
 
 - (void)setSliderLabel:(CGFloat)val {
+    
+    if (val < .50 && popUpHasOpened == NO) {
+        
+        popUpHasOpened = YES;
+        [self openShitConfidencePopup];
+        
+    }
+    
     NSLog(@"FINAL VAL %f", val);
     int v = val * 100;
     switch (v) {
@@ -295,23 +314,24 @@
     
 }
 
+- (void)openShitConfidencePopup {
+    
+    self.goodBadView = [[GoodBadResponseView alloc] initForRealisticwithFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andRealisticGoal:^(NSString *specificGoal) {
+        self.fetchedAnswers.specificFocus = specificGoal;
+        [popup dismiss:YES];
+    }];
+    
+    self.goodBadView.clipsToBounds = YES;
+    
+    popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
+    [popup show];
+    
+}
+
 - (void)sliderMoved:(JMMarkSlider *)slider {
     
     NSLog(@"slider: %f", slider.value);
     self.firstSliderLabel.text = @"...";
-    /*
-    if (slider.value < 0.125) {
-        slider.value = 0.010f;
-    } else if (slider.value > 0.125 && slider.value < 0.375) {
-        slider.value = 0.250f;
-    } else if (slider.value > 0.375 && slider.value < 0.625) {
-        slider.value = 0.500f;
-    } else if (slider.value < 0.875 && slider.value > 0.625) {
-        slider.value = 0.75f;
-    } else {
-        slider.value = 1.0;
-    }
-*/
 }
 
 - (UIView *)createNotchWithXOrigin:(CGFloat)xOrig {
