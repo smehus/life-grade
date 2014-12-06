@@ -23,4 +23,5 @@ typedef void (^RealisticBlock) (NSString *specificGoal);
 - (id)initForRealisticwithFrame:(CGRect)frame andRealisticGoal:(RealisticBlock)doneBlock;
 - (id)initForConfidenceAndFrame:(CGRect)frame andRealisticGoal:(CloseBlock)doneBlock;
 - (id)initForQuestionsAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock;
+- (id)initForTrackingAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock;
 @end

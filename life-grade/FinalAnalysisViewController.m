@@ -735,12 +735,12 @@
 
 - (void)openTrackingProgressPopUp {
     
-    self.goodBadView = [[GoodBadResponseView alloc] initForConfidenceAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andRealisticGoal:^{
+    self.goodBadView = [[GoodBadResponseView alloc] initForTrackingAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andBlock:^{
         
         
     }];
     
-    popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:YES];
+    popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
     [popup show];
     
     
