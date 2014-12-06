@@ -560,6 +560,7 @@
     
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.currentGrade.text = @"Desired Grade";
+    v.delegate = self;
     [v.bottomButton setTitle:@"Click For Your Positive Attributes" forState:UIControlStateNormal];
     [self.scrollView addSubview:v];
 }
@@ -737,7 +738,21 @@
     
     self.goodBadView = [[GoodBadResponseView alloc] initForTrackingAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andBlock:^{
         
+        [popup dismiss:YES];
+    }];
+    
+    popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
+    [popup show];
+    
+    
+    
+}
+
+- (void)openAttributes {
+    
+    self.goodBadView = [[GoodBadResponseView alloc] initForAttributesAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andBlock:^{
         
+        [popup dismiss:YES];
     }];
     
     popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];

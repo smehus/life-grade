@@ -434,7 +434,7 @@
     [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         NSLog(@"OPEN POSITIVE ATTS");
         
-        
+        [self.delegate openAttributes];
         
     }];
     

@@ -61,6 +61,54 @@
     return self;
 }
 
+- (id)initForAttributesAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock {
+    if (self = [super initWithFrame:frame]) {
+        self.closeBlock = doneBlock;
+        [self constructAttributesView];
+    }
+    return self;
+}
+
+- (void)constructAttributesView {
+    
+    self.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 100)];
+    [planLabel setFont:FONT_AMATIC_BOLD(18)];
+    planLabel.numberOfLines = 0;
+    planLabel.textAlignment = NSTextAlignmentCenter;
+    planLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    planLabel.text = @"Works";
+    [self addSubview:planLabel];
+    
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    
+    
+    
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(planLabel.frame), self.frame.size.width, 100) collectionViewLayout:layout];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
+    self.collectionView.backgroundColor = [UIColor blueColor];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    [self addSubview:self.collectionView];
+    
+    
+    
+    UIColor *c = GREEN_COLOR;
+    
+    UIButton *nextbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [nextbutton setFrame:CGRectMake(10, CGRectGetMaxY(self.collectionView.frame) + 10, self.frame.size.width-20, 44)];
+    [nextbutton setTitle:@"shit!" forState:UIControlStateNormal];
+    [nextbutton setBackgroundColor:c];
+    [nextbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [[nextbutton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        self.closeBlock();
+    }];
+    [self addSubview:nextbutton];
+}
+
 - (void)trackingProgressView {
     
     
@@ -83,7 +131,7 @@
     [linkButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [[linkButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
 
-        
+       
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.youtimecoach.com/#!resources/c1tjx"]];
         
     }];
@@ -267,7 +315,20 @@
     return YES;
 }
 
+#pragma mark - CollectionView Datasaur
 
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return 10;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor redColor];
+    
+    return cell;
+}
 
 
 

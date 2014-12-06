@@ -14,6 +14,7 @@
 
 - (void)openPopUpWithGrade:(Grade *)g;
 - (void)openTrackingProgressPopUp;
+- (void)openAttributes;
 
 @end
 
