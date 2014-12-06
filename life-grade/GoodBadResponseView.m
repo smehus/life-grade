@@ -62,7 +62,7 @@
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    planLabel.text = @"Works";
+    planLabel.text = @"Based on your answers, it looks like the challenge you have selected to work on isn't the best for right now. We're going to take you back and let you select a more appropriate challenge";
     [self addSubview:planLabel];
     
     

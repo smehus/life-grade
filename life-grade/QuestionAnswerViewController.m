@@ -209,7 +209,11 @@
                && self.thirdControl.selectedSegmentIndex == 1
                && self.fourthControl.selectedSegmentIndex == 1) {
         
-        // do something
+        
+        // needs to show different content in the pop up than the one below
+        
+        
+        [self openExplanation];
         
     } else {
     
