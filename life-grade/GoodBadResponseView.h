@@ -20,6 +20,7 @@ typedef void (^RealisticBlock) (NSString *specificGoal);
 @property (nonatomic, strong) UITextField *specificLabel;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *attributes;
+@property (nonatomic, strong) NSMutableArray *trackingThings;
 
 - (id)initWithFrame:(CGRect)frame andGrade:(Grade *)g andCloseBlock:(CloseBlock)doneBlock;
 - (id)initForRealisticwithFrame:(CGRect)frame andRealisticGoal:(RealisticBlock)doneBlock;

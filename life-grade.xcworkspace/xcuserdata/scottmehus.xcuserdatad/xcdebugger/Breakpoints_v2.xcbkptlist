@@ -1178,11 +1178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/AnalysisView.m"
-            timestampString = "439693913.432985"
+            timestampString = "439729551.252744"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "506"
-            endingLineNumber = "506"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
             landmarkName = "-drawAttainable"
             landmarkType = "5">
          </BreakpointContent>
@@ -1194,12 +1194,74 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439693913.432985"
+            timestampString = "439729840.928366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "761"
-            endingLineNumber = "761"
+            startingLineNumber = "776"
+            endingLineNumber = "776"
             landmarkName = "-openAttributes"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "life-grade/FinalAnalysisViewController.m"
+            timestampString = "439729826.796174"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "743"
+            endingLineNumber = "743"
+            landmarkName = "-openTrackingProgressPopUp:withMethod:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FinalAnalysisViewController openTrackingProgressPopUp:withMethod:]"
+                  moduleName = "life-grade"
+                  urlString = "file:///Users/scottmehus/Documents/LifeGrade/life-grade/life-grade/FinalAnalysisViewController.m"
+                  timestampString = "439729967.876308"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "759"
+                  endingLineNumber = "759"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__68-[FinalAnalysisViewController openTrackingProgressPopUp:withMethod:]_block_invoke"
+                  moduleName = "life-grade"
+                  urlString = "file:///Users/scottmehus/Documents/LifeGrade/life-grade/life-grade/FinalAnalysisViewController.m"
+                  timestampString = "439729967.876555"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "759"
+                  endingLineNumber = "759"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "life-grade/AnalysisView.m"
+            timestampString = "439729890.378149"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
+            landmarkName = "-drawThirdTemplate"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

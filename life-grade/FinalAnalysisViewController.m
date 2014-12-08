@@ -737,25 +737,26 @@
     
 }
 
-- (void)openTrackingProgressPopUp:(NSInteger)i {
+- (void)openTrackingProgressPopUp:(NSInteger)i withMethod:(ProgressMethods *)method {
     NSString *b;
     
-    switch (i) {
-        case 0:
-            b = self.fetchedAnswers.trackingProgressOne;
-            break;
-        case 1:
-            b = self.fetchedAnswers.trackingProgressTwo;
-            break;
-        case 2:
-            b = self.fetchedAnswers.trackingProgressThree;
-            break;
-            
-        default:
-            break;
-    }
     
-    self.goodBadView = [[GoodBadResponseView alloc] initForTrackingAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) withMethod:self.fetchedAnswers.trackingProgressOne andBlock:^{
+//    switch (i) {
+//        case 0:
+//            b = self.fetchedAnswers.trackingProgressOne;
+//            break;
+//        case 1:
+//            b = self.fetchedAnswers.trackingProgressTwo;
+//            break;
+//        case 2:
+//            b = self.fetchedAnswers.trackingProgressThree ;
+//            break;
+//            
+//        default:
+//            break;
+//    }
+    
+    self.goodBadView = [[GoodBadResponseView alloc] initForTrackingAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) withMethod:b andBlock:^{
         
         [popup dismiss:YES];
     }];
