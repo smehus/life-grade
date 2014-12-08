@@ -32,5 +32,8 @@ typedef void (^RealisticBlock) (NSString *specificGoal);
 - (id)initForTrackingAndFrame:(CGRect)frame withMethod:(ProgressMethods *)mehtod andBlock:(CloseBlock)doneBlock;
 - (id)initForAttributesAndFrame:(CGRect)frame withAttributes:(NSArray *)ats andBlock:(CloseBlock)doneBlock;
 - (id)initForAnalysisRealisticAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock;
+- (id)initForDatesAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock;
+- (id)initForSupportAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock;
+- (id)initForFinalTipsAndFrame:(CGRect)frame withTip:(NSString *)tip andBlock:(CloseBlock)doneBlock;
 
 @end

@@ -83,6 +83,30 @@
     return self;
 }
 
+- (id)initForDatesAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock {
+    if (self = [super initWithFrame:frame]) {
+        self.closeBlock = doneBlock;
+        [self drawCompletionDateView];
+    }
+    return self;
+}
+
+- (id)initForSupportAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock {
+    if (self = [super initWithFrame:frame]) {
+        self.closeBlock = doneBlock;
+        [self drawSupportView];
+    }
+    return self;
+}
+
+- (id)initForFinalTipsAndFrame:(CGRect)frame withTip:(NSString *)tip andBlock:(CloseBlock)doneBlock {
+    if (self = [super initWithFrame:frame]) {
+        self.closeBlock = doneBlock;
+        [self drawFinalTipsView:tip];
+    }
+    return self;
+}
+
 - (void)constructAttributesView {
     
     self.backgroundColor = [UIColor whiteColor];
@@ -336,12 +360,50 @@
     
     
     
-    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 150)];
-    [planLabel setFont:FONT_AMATIC_BOLD(18)];
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 250)];
+    [planLabel setFont:FONT_AMATIC_BOLD(24)];
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    planLabel.text = @"This Works";
+    planLabel.text = @"Being practical isn’t always our strong suit, but we are in the business making some positive change so reality is our friend! Realistic goals will boost your confidence, create direction, and make the journey much more manageable. Stay flexible, the specifics of your goal may change along the way.";
+    [self addSubview:planLabel];
+    
+}
+
+- (void)drawCompletionDateView {
+    self.backgroundColor = [UIColor whiteColor];
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, self.frame.size.height - 20)];
+    [planLabel setFont:FONT_AMATIC_BOLD(24)];
+    planLabel.numberOfLines = 0;
+    planLabel.textAlignment = NSTextAlignmentCenter;
+    planLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    planLabel.text = @"Isaac Newton got it right, bodies in rest tend to stay in rest. So here are some tips to getting in motion and staying there; break the task down into smaller less overwhelming steps, ask one of your support team members to help you, go public and share your intentions with other people, and make a “to do list” with only items you have been avoiding.";
+    [self addSubview:planLabel];
+    
+}
+
+- (void)drawSupportView {
+    self.backgroundColor = [UIColor whiteColor];
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 250)];
+    [planLabel setFont:FONT_AMATIC_BOLD(24)];
+    planLabel.numberOfLines = 0;
+    planLabel.textAlignment = NSTextAlignmentCenter;
+    planLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    planLabel.text = @"Support and helping relationships are critical to your success and change! The support team you have assembled here will help you by;\n•Listening to your needs\n•Keeping you accountable\n•Maintaining positivity\n•Sharing new perspectives";
+    [self addSubview:planLabel];
+    
+    
+}
+
+- (void)drawFinalTipsView:(NSString *)tip {
+    
+    self.backgroundColor = [UIColor whiteColor];
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, self.frame.size.height - 20)];
+    [planLabel setFont:FONT_AMATIC_BOLD(22)];
+    planLabel.numberOfLines = 0;
+    planLabel.textAlignment = NSTextAlignmentCenter;
+    planLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    planLabel.text = tip;
     [self addSubview:planLabel];
     
 }

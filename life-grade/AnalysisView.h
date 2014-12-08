@@ -17,6 +17,7 @@
 - (void)openTrackingProgressPopUp:(NSInteger)i withMethod:(ProgressMethods *)method;
 - (void)openAttributes;
 - (void)openRealisticPopup;
+- (void)finalTipsSelectedAtIndex:(int)idx;
 @end
 
 @interface AnalysisView : UIView

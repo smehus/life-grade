@@ -642,10 +642,10 @@
         box.layer.shadowOffset = CGSizeMake(-5, 5);
         box.layer.shadowRadius = 5;
         box.layer.shadowOpacity = 0.5;
-        box.titleLabel.text = question;
+        box.titleLabel.text = [NSString stringWithFormat:@"Tip# %i", i+1];
         box.onTap = ^{
             NSLog(@"Box Tapped");
-            
+            [self.delegate finalTipsSelectedAtIndex:i];
         };
         [container.boxes addObject:box];
     }

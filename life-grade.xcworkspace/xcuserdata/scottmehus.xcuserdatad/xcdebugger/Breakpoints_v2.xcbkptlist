@@ -1099,52 +1099,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439733697.847478"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "729"
-            endingLineNumber = "729"
-            landmarkName = "-openPopUpWithGrade:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FinalAnalysisViewController openPopUpWithGrade:]"
-                  moduleName = "life-grade"
-                  urlString = "file:///Users/scottmehus/Documents/LifeGrade/life-grade/life-grade/FinalAnalysisViewController.m"
-                  timestampString = "439181590.252778"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "722"
-                  endingLineNumber = "722"
-                  offsetFromSymbolStart = "42">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__50-[FinalAnalysisViewController openPopUpWithGrade:]_block_invoke"
-                  moduleName = "life-grade"
-                  urlString = "file:///Users/scottmehus/Documents/LifeGrade/life-grade/life-grade/FinalAnalysisViewController.m"
-                  timestampString = "439181590.253043"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "725"
-                  endingLineNumber = "725"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "life-grade/RealisticViewController.m"
             timestampString = "439575659.38454"
             startingColumnNumber = "9223372036854775807"
@@ -1194,11 +1148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439733697.847478"
+            timestampString = "439735684.68058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "779"
-            endingLineNumber = "779"
+            startingLineNumber = "782"
+            endingLineNumber = "782"
             landmarkName = "-openAttributes"
             landmarkType = "5">
          </BreakpointContent>
@@ -1226,11 +1180,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439733697.847478"
+            timestampString = "439735684.68058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "881"
-            endingLineNumber = "881"
+            startingLineNumber = "884"
+            endingLineNumber = "884"
             landmarkName = "-havingTroubleSelected"
             landmarkType = "5">
             <Locations>

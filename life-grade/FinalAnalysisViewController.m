@@ -613,6 +613,8 @@
     
     [self.scrollView addSubview:v];
 }
+
+
 - (void)finalTipsView:(int)i {
     NSArray *a = [[self.lowestFactors reverseObjectEnumerator] allObjects];
     
@@ -623,6 +625,7 @@
     v.delegate = self;
     [self.scrollView addSubview:v];
 }
+
 
 
 
@@ -879,7 +882,7 @@
 
 - (void)havingTroubleSelected {
     
-    self.goodBadView = [[GoodBadResponseView alloc] initForAnalysisRealisticAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andBlock:^{
+    self.goodBadView = [[GoodBadResponseView alloc] initForDatesAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andBlock:^{
         [popup dismiss:YES];
         
         
@@ -891,7 +894,7 @@
 
 - (void)whyDoINeedSupport {
     
-    self.goodBadView = [[GoodBadResponseView alloc] initForAnalysisRealisticAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andBlock:^{
+    self.goodBadView = [[GoodBadResponseView alloc] initForSupportAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andBlock:^{
         [popup dismiss:YES];
         
         
@@ -902,5 +905,40 @@
     
 }
 
+
+- (void)finalTipsSelectedAtIndex:(int)idx {
+    
+    self.goodBadView = [[GoodBadResponseView alloc] initForFinalTipsAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) withTip:[self getTipForIndex:idx] andBlock:^{
+        [popup dismiss:YES];
+        
+        
+    }];
+    
+    popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:YES];
+    [popup show];
+}
+
+- (NSString *)getTipForIndex:(int)i {
+    
+    NSString *text;
+    switch (i) {
+        case 0:
+            text = @"This journey you are now on will most likely feel like it has set-backs and can discourage you in moving forward. Keep in mind that just as in shooting a bow and arrow, you must pull the bow backwards before shooting it forwards. The focus should be less on the fact that there is a set-back and more on how you choose to respond to the set-back. ";
+            break;
+        case 1:
+            text = @"When you experience a success or set-back do you listen to your inner-coach talk? How you and your inner Jiminy Cricket  coach yourself should reflect how you would like other people to coach you. Keep tabs on how your inner voice responds to positive and negative experiences. Try and allow yourself to first see things better than they are, then worse than they are, and finally as they actually are.";
+            break;
+        case 2:
+            text = @"Remind yourself frequently why you started. Your motivation may fluctuate throughout pursuing your goal, but constantly remind yourself of the value in what you are doing for yourself.";
+            break;
+            
+        default:
+            break;
+    }
+    
+
+    return text;
+
+}
 
 @end
