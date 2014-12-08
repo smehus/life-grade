@@ -14,7 +14,7 @@
 @protocol AnalysisViewDelegate <NSObject>
 
 - (void)openPopUpWithGrade:(Grade *)g;
-- (void)openTrackingProgressPopUp:(ProgressMethods *)method;
+- (void)openTrackingProgressPopUp:(NSInteger)i;
 - (void)openAttributes;
 - (void)openRealisticPopup;
 @end

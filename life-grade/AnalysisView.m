@@ -338,11 +338,10 @@
           
             // loop through self.progress methods and find the right method
             
-            ProgressMethods *m = self.progressMethods[i];
             
-            
-            
-            [self.delegate openTrackingProgressPopUp:[self.progressMethods objectAtIndex:i]];
+            // i need the text of the description here
+        
+            [self.delegate openTrackingProgressPopUp:i];
             
         };
         [container.boxes addObject:box];
@@ -350,6 +349,10 @@
     
     [container layoutWithDuration:0.3 completion:nil];
 }
+
+
+
+
 /*
 - (void)addArraything
 {
