@@ -117,7 +117,7 @@
     [self.whySupportButton.titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [self.whySupportButton setBackgroundColor:blueC];
     [[self.whySupportButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        
+        [self.delegate whyDoINeedSupport];
     }];
     [self addSubview:self.whySupportButton];
     /*

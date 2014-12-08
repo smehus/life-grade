@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString *group;
 @property (nonatomic, strong) NSString *objectID;
 @property (nonatomic, assign) BOOL isSelected;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *methodDescription;
 
 
 - (id)initWithMethod:(NSString *)method andKey:(NSString *)key;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Grade.h"
+#import "ProgressMethods.h"
 
 typedef void (^CloseBlock) (void);
 typedef void (^RealisticBlock) (NSString *specificGoal);
@@ -21,12 +22,14 @@ typedef void (^RealisticBlock) (NSString *specificGoal);
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *attributes;
 @property (nonatomic, strong) NSMutableArray *trackingThings;
+@property (nonatomic, strong) ProgressMethods *progressMethod;
 
 - (id)initWithFrame:(CGRect)frame andGrade:(Grade *)g andCloseBlock:(CloseBlock)doneBlock;
 - (id)initForRealisticwithFrame:(CGRect)frame andRealisticGoal:(RealisticBlock)doneBlock;
 - (id)initForConfidenceAndFrame:(CGRect)frame andRealisticGoal:(CloseBlock)doneBlock;
 - (id)initForQuestionsAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock;
-- (id)initForTrackingAndFrame:(CGRect)frame withMethod:(NSString *)mehtod andBlock:(CloseBlock)doneBlock;
+
+- (id)initForTrackingAndFrame:(CGRect)frame withMethod:(ProgressMethods *)mehtod andBlock:(CloseBlock)doneBlock;
 - (id)initForAttributesAndFrame:(CGRect)frame withAttributes:(NSArray *)ats andBlock:(CloseBlock)doneBlock;
 - (id)initForAnalysisRealisticAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock;
 

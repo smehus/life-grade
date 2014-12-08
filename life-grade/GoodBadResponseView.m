@@ -55,8 +55,9 @@
     return self;
 }
 
-- (id)initForTrackingAndFrame:(CGRect)frame withMethod:(NSString *)mehtod andBlock:(CloseBlock)doneBlock {
+- (id)initForTrackingAndFrame:(CGRect)frame withMethod:(ProgressMethods *)mehtod andBlock:(CloseBlock)doneBlock {
     if (self = [super initWithFrame:frame]) {
+        self.progressMethod = mehtod;
         self.closeBlock = doneBlock;
         [self trackingProgressView];
         
@@ -129,12 +130,12 @@
     
     self.backgroundColor = [UIColor whiteColor];
     
-    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 150)];
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 200)];
     [planLabel setFont:FONT_AMATIC_BOLD(18)];
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    planLabel.text = @"Works";
+    planLabel.text = self.progressMethod.methodDescription;
     [self addSubview:planLabel];
     
     

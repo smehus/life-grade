@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class SupportTeamView;
+@protocol SupportTeamDelegate <NSObject>
+
+- (void)whyDoINeedSupport;
+
+@end
+
 @interface SupportTeamView : UIView
+
+
+@property (nonatomic, weak) id<SupportTeamDelegate>delegate;
+
 
 @property (nonatomic, strong) NSString *gradeLetter;
 @property (nonatomic, strong) UILabel *gradeLabel;
