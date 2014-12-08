@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "Grade.h"
+#import "ProgressMethods.h"
 
 @class AnalysisView;
 @protocol AnalysisViewDelegate <NSObject>
 
 - (void)openPopUpWithGrade:(Grade *)g;
-- (void)openTrackingProgressPopUp;
+- (void)openTrackingProgressPopUp:(ProgressMethods *)method;
 - (void)openAttributes;
-
+- (void)openRealisticPopup;
 @end
 
 @interface AnalysisView : UIView
@@ -28,6 +29,8 @@
 @property (nonatomic, strong) UIButton *bottomButton;
 @property (nonatomic, strong) NSMutableArray *questions;
 @property (nonatomic, strong) id<AnalysisViewDelegate>delegate;
+@property (nonatomic, strong) NSMutableArray *progressMethods;
+
 
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data;
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data andGoal:(id)goal;

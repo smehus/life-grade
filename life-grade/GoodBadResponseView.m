@@ -55,7 +55,7 @@
     return self;
 }
 
-- (id)initForTrackingAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock {
+- (id)initForTrackingAndFrame:(CGRect)frame withMethod:(NSString *)mehtod andBlock:(CloseBlock)doneBlock {
     if (self = [super initWithFrame:frame]) {
         self.closeBlock = doneBlock;
         [self trackingProgressView];
@@ -74,16 +74,24 @@
     return self;
 }
 
+- (id)initForAnalysisRealisticAndFrame:(CGRect)frame andBlock:(CloseBlock)doneBlock {
+    if (self = [super initWithFrame:frame]) {
+        self.closeBlock= doneBlock;
+        [self setupAnalysisRealisticView];
+    }
+    return self;
+}
+
 - (void)constructAttributesView {
     
     self.backgroundColor = [UIColor whiteColor];
     
     UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 100)];
-    [planLabel setFont:FONT_AMATIC_BOLD(18)];
+    [planLabel setFont:FONT_AMATIC_BOLD(24)];
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    planLabel.text = @"Works";
+    planLabel.text = @"Here are the positive traits you chose to help accomplish your goal";
     [self addSubview:planLabel];
     
     
@@ -97,7 +105,7 @@
     [self.collectionView registerClass:[AttainCell class] forCellWithReuseIdentifier:@"Cell"];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    self.collectionView.contentInset = UIEdgeInsetsMake(0, 10, 0, 0);
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 10, 0, 10);
     self.collectionView.showsHorizontalScrollIndicator = NO;
     [self addSubview:self.collectionView];
     
@@ -107,7 +115,7 @@
     
     UIButton *nextbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [nextbutton setFrame:CGRectMake(10, CGRectGetMaxY(self.collectionView.frame) + 20, self.frame.size.width-20, 44)];
-    [nextbutton setTitle:@"shit!" forState:UIControlStateNormal];
+    [nextbutton setTitle:@"Cool!" forState:UIControlStateNormal];
     [nextbutton setBackgroundColor:c];
     [nextbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [[nextbutton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -320,6 +328,21 @@
 -(BOOL) textFieldShouldReturn:(UITextField *)textField {
     [self.specificLabel resignFirstResponder];
     return YES;
+}
+
+- (void)setupAnalysisRealisticView {
+    self.backgroundColor = [UIColor whiteColor];
+    
+    
+    
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 150)];
+    [planLabel setFont:FONT_AMATIC_BOLD(18)];
+    planLabel.numberOfLines = 0;
+    planLabel.textAlignment = NSTextAlignmentCenter;
+    planLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    planLabel.text = @"This Works";
+    [self addSubview:planLabel];
+    
 }
 
 #pragma mark - CollectionView Datasaur

@@ -24,6 +24,7 @@
 #import "ChoseView.h"
 #import "KLCPopup.h"
 #import "GoodBadResponseView.h"
+#import "ProgressMethods.h";
 
 @interface FinalAnalysisViewController () <UIScrollViewDelegate, AnalysisViewDelegate>
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
@@ -532,7 +533,7 @@
     
     v.gradeLabel.text = dG;
     
-    v.quoteLabel.text = @"Hey you kids are probably saying to yourselves: I'm gonna go out there and grab the world by the tail! and wrap it around and pull it down and put it in my pocket. Well I'm here to tell you that you're probably going to find out, as you go out there, that you're not going to amount to jack squat!";
+    v.quoteLabel.text = @"If you don't know where you are going, you might wind up someplace else. ~Yogi Berra";
     [self.scrollView addSubview:v];
 }
 
@@ -546,7 +547,7 @@
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.titleLabel.text = @"Tracking Progress";
     v.delegate = self;
-    v.quoteLabel.text = @"I'm saying I did an ocular assessment of the situation garnered that he was not a security risk and I cleared him for passage.";
+    v.quoteLabel.text = @"Be not afraid of going slowly, be afraid of standing still. ~Chinese Proverb";
     [self.scrollView addSubview:v];
     
 }
@@ -571,6 +572,7 @@
                                                  andIndex:i andData:a isRealstic:YES];
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.currentGrade.text = @"Desired Grade";
+    v.delegate = self;
     [self.scrollView addSubview:v];
 }
 - (void)completionDateView:(int)i {
@@ -734,9 +736,11 @@
     
 }
 
-- (void)openTrackingProgressPopUp {
+- (void)openTrackingProgressPopUp:(ProgressMethods *)method {
     
-    self.goodBadView = [[GoodBadResponseView alloc] initForTrackingAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andBlock:^{
+    
+    
+    self.goodBadView = [[GoodBadResponseView alloc] initForTrackingAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) withMethod:@"" andBlock:^{
         
         [popup dismiss:YES];
     }];
@@ -746,6 +750,11 @@
     
     
     
+}
+
+- (void)getTrackingMethod {
+    
+    // loop through array (need to build) of progress methods and find a mtach for key
 }
 
 - (void)openAttributes {
@@ -761,6 +770,23 @@
     
     
 }
+
+- (void)openRealisticPopup  {
+    
+    self.goodBadView = [[GoodBadResponseView alloc] initForAnalysisRealisticAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andBlock:^{
+         [popup dismiss:YES];
+       
+        
+    }];
+        
+    
+    
+    popup = [KLCPopup popupWithContentView:self.goodBadView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:YES];
+    [popup show];
+}
+
+
+
 
 
 @end

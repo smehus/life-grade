@@ -13,6 +13,7 @@
 #import "Answers.h"
 #import "AnalysisBlock.h"
 #import "Grade.h"
+#import "ProgressMethods.h"
 
 @implementation AnalysisView {
     
@@ -250,7 +251,7 @@
     [self addSubview:self.quoteLabel];
     
     UILabel *explanationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.quoteLabel.frame) + 5, self.frame.size.width - 20, 100)];
-    explanationLabel.text = @"Having specific goals will help you establish direction & identify exactly what you are trying to accomplish";
+    explanationLabel.text = @"Having specific goals will help you establish direction and identify exactly what you are trying to accomplish.";
     explanationLabel.textAlignment = NSTextAlignmentCenter;
     explanationLabel.backgroundColor = [UIColor clearColor];
     explanationLabel.numberOfLines = 0;
@@ -260,7 +261,11 @@
     
 }
 
+#pragma mark - Tracking Progress I Think
+
 - (void)drawThirdTemplate {
+    
+    [self addMethods];
     
     // GOALS
     NSString *avFont = AVENIR_BLACK;
@@ -331,7 +336,13 @@
         box.onTap = ^{
             NSLog(@"Box Tapped");
           
-            [self.delegate openTrackingProgressPopUp];
+            // loop through self.progress methods and find the right method
+            
+            ProgressMethods *m = self.progressMethods[i];
+            
+            
+            
+            [self.delegate openTrackingProgressPopUp:[self.progressMethods objectAtIndex:i]];
             
         };
         [container.boxes addObject:box];
@@ -339,7 +350,63 @@
     
     [container layoutWithDuration:0.3 completion:nil];
 }
-
+/*
+- (void)addArraything
+{
+    
+    
+    
+    
+    @"Track My Patterns"
+    
+    
+    @"Make 'Task' and 'To Do' Lists"
+    
+    
+    @"Post reminders in Workplace"
+    
+    
+    @"Journal or blog about it"
+    
+    
+    @"Utilize a Calendar"
+    
+    
+    @"Make Mini Goals"
+    
+    
+    @"Use An App On Your Phone"
+    
+    
+    @"Find a Professional"
+    
+    
+    @"One Week Summary Worksheet"
+    
+    
+    @"Track My Behaviors"
+    
+    
+    @"Try One New Thing Hobby Journal"
+    
+    
+    @"Food and/or Exercise Diary" andKey:@"Physical Health"];
+    
+    
+    @"“My Needs” Worksheet" andKey:@"Genuine, Intimate, and Deep Relationships"];
+    
+    
+    @"Who’s Got My Back Worksheet" andKey:@"Social Support & Social Networks"];
+    
+    
+    @"Contribution Bucket List Activity" andKey:@"Contribution & Giving Back"];
+    
+    
+    @"Thought Countering Worksheet" andKey:@"Positive Thinking"];
+    
+    
+}
+*/
 - (void)drawFourthTemplate {
     // TRACKING
     
@@ -427,7 +494,7 @@
     
     UIColor *blues = BLUE_COLOR;
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.quoteLabel.frame) + 44, self.frame.size.width - 40, 66)];
+    BFPaperButton *button = [[BFPaperButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.quoteLabel.frame) + 44, self.frame.size.width - 40, 66) raised:YES];
     [button setBackgroundColor:blues];
     [button setTitle:@"Click for your positive attributes" forState:UIControlStateNormal];
     [button.titleLabel setFont:[UIFont fontWithName:avFont size:16]];
@@ -477,7 +544,7 @@
     [self addSubview:boxImage];
     
     UIImageView *check = [[UIImageView alloc] initWithImage:checkMark];
-    check.frame = CGRectMake(boxImage.frame.origin.x + 7.5, boxImage.center.y - 62, 75, 75);
+    check.frame = CGRectMake(boxImage.frame.origin.x + 3, boxImage.center.y - 62, 75, 75);
     check.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:check];
     
@@ -488,13 +555,18 @@
     
     int f = 200;
     
-    UIButton *realisticButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - f/2, CGRectGetMaxY(boxImage.frame) + 15, f, f)];
+    BFPaperButton *realisticButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - f/2, CGRectGetMaxY(label.frame) + 15, f, f) raised:YES];
     [realisticButton setTitle:@"Read if your goals are realistic" forState:UIControlStateNormal];
     [realisticButton.titleLabel setNumberOfLines:0];
     [realisticButton.titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    [realisticButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [realisticButton setBackgroundColor:blues];
     [realisticButton.titleLabel setFont:FONT_AMATIC_BOLD(36)];
     [realisticButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+    [[realisticButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        
+        [self.delegate openRealisticPopup];
+    }];
     [self addSubview:realisticButton];
     
 }
@@ -568,6 +640,61 @@
     [container layoutWithDuration:0.3 completion:nil];
     
     
+}
+
+
+- (void)addMethods {
+    
+    self.progressMethods = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    
+    ProgressMethods *m1 = [[ProgressMethods alloc] initWithMethod:@"Track My Patterns" andKey:@"general"];
+    [self.progressMethods addObject:m1];
+    
+    ProgressMethods *m2 = [[ProgressMethods alloc] initWithMethod:@"Make 'Task' and 'To Do' Lists" andKey:@"general"];
+        [self.progressMethods addObject:m2];
+    
+    ProgressMethods *m3 = [[ProgressMethods alloc] initWithMethod:@"Post reminders in Workplace" andKey:@"general"];
+        [self.progressMethods addObject:m3];
+    
+    ProgressMethods *m4 = [[ProgressMethods alloc] initWithMethod:@"Journal or blog about it" andKey:@"general"];
+        [self.progressMethods addObject:m4];
+    
+    ProgressMethods *m5 = [[ProgressMethods alloc] initWithMethod:@"Utilize a Calendar" andKey:@"general"];
+    [self.progressMethods addObject:m5];
+    
+    ProgressMethods *m6 = [[ProgressMethods alloc] initWithMethod:@"Make Mini Goals" andKey:@"general"];
+    [self.progressMethods addObject:m6];
+    
+    ProgressMethods *m7 = [[ProgressMethods alloc] initWithMethod:@"Use An App On Your Phone" andKey:@"general"];
+    [self.progressMethods addObject:m7];
+    
+    ProgressMethods *m8 = [[ProgressMethods alloc] initWithMethod:@"Find a Professional" andKey:@"general"];
+    [self.progressMethods addObject:m8];
+    
+    ProgressMethods *m9 = [[ProgressMethods alloc] initWithMethod:@"One Week Summary Worksheet" andKey:@"general"];
+    [self.progressMethods addObject:m9];
+    
+    ProgressMethods *m10 = [[ProgressMethods alloc] initWithMethod:@"Track My Behaviors" andKey:@"Emotional Well-Being"];
+    [self.progressMethods addObject:m10];
+    
+    ProgressMethods *m11 = [[ProgressMethods alloc] initWithMethod:@"Try One New Thing Hobby Journal" andKey:@"Hobbies & Interests"];
+     [self.progressMethods addObject:m11];
+    
+    ProgressMethods *m12 = [[ProgressMethods alloc] initWithMethod:@"Food and/or Exercise Diary" andKey:@"Physical Health"];
+     [self.progressMethods addObject:m12];
+    
+    ProgressMethods *m13 = [[ProgressMethods alloc] initWithMethod:@"“My Needs” Worksheet" andKey:@"Genuine, Intimate, and Deep Relationships"];
+    [self.progressMethods addObject:m13];
+    
+    ProgressMethods *m14 = [[ProgressMethods alloc] initWithMethod:@"Who’s Got My Back Worksheet" andKey:@"Social Support & Social Networks"];
+    [self.progressMethods addObject:m14];
+    
+    ProgressMethods *m15 = [[ProgressMethods alloc] initWithMethod:@"Contribution Bucket List Activity" andKey:@"Contribution & Giving Back"];
+    [self.progressMethods addObject:m15];
+    
+    ProgressMethods *m16 = [[ProgressMethods alloc] initWithMethod:@"Thought Countering Worksheet" andKey:@"Positive Thinking"];
+    [self.progressMethods addObject:m16];
 }
 
 
