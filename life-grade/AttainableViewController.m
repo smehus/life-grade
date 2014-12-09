@@ -265,9 +265,8 @@
     self.yesFrame = [[UIView alloc] initWithFrame:CGRectMake(175, 100, 110, 150)];
     self.yesFrame.backgroundColor = [UIColor clearColor];
     self.yesFrame.layer.borderColor = [UIColor greenColor].CGColor;
-    self.yesFrame.layer.borderWidth = 1.0f;
-    self.yesFrame.backgroundColor = [UIColor greenColor];
-    self.yesFrame.alpha = 0.5;
+    self.yesFrame.backgroundColor = GREEN_COLOR;
+    self.yesFrame.layer.cornerRadius = 8.0f;
     [self.view addSubview:self.yesFrame];
     
     
@@ -279,11 +278,10 @@
     
     self.noFrame = [[UIView alloc] initWithFrame:CGRectMake(175, CGRectGetMaxY(self.yesFrame.frame) + 35, 110, 150)];
     self.noFrame.backgroundColor = [UIColor clearColor];
-    self.noFrame.layer.borderColor = [UIColor greenColor].CGColor;
-    self.noFrame.layer.borderWidth = 1.0f;
     self.noFrame.backgroundColor = [UIColor redColor];
-    self.noFrame.alpha = 0.5f;
+    self.noFrame.alpha = 1.0f;
     self.noFrame.panGesture.delegate = self;
+    self.noFrame.layer.cornerRadius = 8.0f;
     [self.view addSubview:self.noFrame];
 }
 

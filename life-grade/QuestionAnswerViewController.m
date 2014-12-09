@@ -132,6 +132,8 @@
     
     self.firstControl = [self getSegment];
     self.firstControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(firstLabel.frame) + 10, 200, 30);
+    self.firstControl.segmentIndicatorBackgroundColor = BLUE_COLOR;
+    self.firstControl.titleTextColor = [UIColor whiteColor];
     [self.view addSubview:self.firstControl];
 
     UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.firstControl.frame) + 10, self.view.frame.size.width - 40, 55)];
@@ -144,6 +146,8 @@
     
     self.secondControl = [self getSegment];
     self.secondControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(secondLabel.frame) + 10, 200, 30);
+    self.secondControl.segmentIndicatorBackgroundColor = BLUE_COLOR;
+    self.secondControl.titleTextColor = [UIColor whiteColor];
     [self.view addSubview:self.secondControl];
     
     
@@ -157,6 +161,8 @@
     
     self.thirdControl = [self getSegment];
     self.thirdControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(thirdLabel.frame) + 10, 200, 30);
+    self.thirdControl.segmentIndicatorBackgroundColor = BLUE_COLOR;
+    self.thirdControl.titleTextColor = [UIColor whiteColor];
     [self.view addSubview:self.thirdControl];
     
     UILabel *fourthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.thirdControl.frame) + 10, self.view.frame.size.width-40, 55)];
@@ -169,6 +175,8 @@
     
     self.fourthControl = [self getSegment];
     self.fourthControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(fourthLabel.frame) + 10, 200, 30);
+    self.fourthControl.segmentIndicatorBackgroundColor = BLUE_COLOR;
+    self.fourthControl.titleTextColor = [UIColor whiteColor];
     [self.view addSubview:self.fourthControl];
     
     self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.fourthControl.frame) + 20, self.view.frame.size.width, 50)];

@@ -275,11 +275,11 @@
     
     
     UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 150)];
-    [planLabel setFont:FONT_AMATIC_BOLD(18)];
+    [planLabel setFont:FONT_AMATIC_BOLD(22)];
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    planLabel.text = @"This Works";
+    planLabel.text = @"Let’s re-frame your goal by stating it in a more manageable and realistic way. Are you asking too much, too soon? If so, scale back and start with smaller goals.\n\n Enter a more manageable goal below:";
     [self addSubview:planLabel];
     
     

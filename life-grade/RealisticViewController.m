@@ -121,7 +121,7 @@
     self.navigationItem.backBarButtonItem = barBtnItem;
     
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
-    titleLabel.text = @"Attitude Adjustment";
+    titleLabel.text = self.fetchedAnswers.specificFocus;
     titleLabel.font = [UIFont fontWithName:avFont size:24];
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;

@@ -178,10 +178,10 @@
     label.lineBreakMode = NSLineBreakByWordWrapping;
     [self.specificView addSubview:label];
     
-    UILabel *someText = [[UILabel alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x + 10, CGRectGetMaxY(label.frame) + 25, self.specificView.bounds.size.width - 20, 150)];
-    someText.font = FONT_AMATIC_BOLD(32);
+    UILabel *someText = [[UILabel alloc] initWithFrame:CGRectMake(self.specificView.bounds.origin.x + 10, CGRectGetMaxY(label.frame) + 10, self.specificView.bounds.size.width - 20, 150)];
+    someText.font = FONT_AMATIC_BOLD(26);
     someText.textAlignment = NSTextAlignmentCenter;
-    someText.text = @"In order to know exactly what you want to accomplish with this goal, we need you to be more specific";
+    someText.text = @"In order to know exactly what you want to accomplish with this goal, we need you to be more specific.\n\n Type in your specific goal below:";
     someText.numberOfLines = 0;
     someText.lineBreakMode = NSLineBreakByWordWrapping;
     [self.specificView addSubview:someText];

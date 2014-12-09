@@ -20,7 +20,7 @@
         CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
         
         self.userInteractionEnabled = YES;
-        self.factorLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, self.frame.size.height/2 - 25, self.frame.size.width - 10, 100)];
+        self.factorLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, self.frame.size.height/2 - 80, self.frame.size.width - 10, 150)];
         self.factorLabel.backgroundColor = [UIColor clearColor];
         self.factorLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
         self.factorLabel.font = FONT_AMATIC_REG(30);
