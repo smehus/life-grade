@@ -511,12 +511,14 @@
     [v addSubview:iv];
     
     
-    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(iv.frame), self.view.frame.size.width-20, self.view.frame.size.height-120)];
+    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(iv.frame), self.view.frame.size.width-20, self.view.frame.size.height-260)];
     l.text = @"Congratulations on making such a positive first step with completing the Life+Grade. The journey you are embarking on is such a valuable one with wonderful potential payoffs. In many cases, going on this journey with an effective coach can improve your rate of progress. Click below to learn more about Life Coaching.";
-    l.font = FONT_AMATIC_BOLD(30);
+    l.font = FONT_AMATIC_BOLD(26);
     l.numberOfLines = 0;
     l.textAlignment = NSTextAlignmentCenter;
     l.lineBreakMode = NSLineBreakByWordWrapping;
+//    l.layer.borderWidth = 1.0f;
+//    l.layer.borderColor = [UIColor redColor].CGColor;
     [v addSubview:l];
     
     
@@ -527,7 +529,7 @@
     [checkBut setTitle:@"Check It Out" forState:UIControlStateNormal];
     [[checkBut rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.youtimecoac.com"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.youtimecoach.com"]];
         
     }];
     [v addSubview:checkBut];

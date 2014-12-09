@@ -1132,11 +1132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439789761.579217"
+            timestampString = "439790228.652737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "816"
-            endingLineNumber = "816"
+            startingLineNumber = "828"
+            endingLineNumber = "828"
             landmarkName = "-openAttributes"
             landmarkType = "5">
          </BreakpointContent>
@@ -1164,11 +1164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/FinalAnalysisViewController.m"
-            timestampString = "439789761.579217"
+            timestampString = "439790228.652737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "918"
-            endingLineNumber = "918"
+            startingLineNumber = "930"
+            endingLineNumber = "930"
             landmarkName = "-havingTroubleSelected"
             landmarkType = "5">
             <Locations>
