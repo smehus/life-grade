@@ -13,6 +13,7 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, strong) UIImageView *aboutImage;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIWebView *webView;
 
 @end
 
@@ -55,12 +56,28 @@
     self.revealButton = barbut;
     self.title = @"YouTime Coaching";
 
-    [self addImage];
-    [self addScrollView];
+//    [self addImage];
+//    [self addScrollView];
+    [self createWebView];
     [self.revealButton setTarget: self.revealViewController];
     [self.revealButton setAction: @selector( revealToggle: )];
     
 
+}
+
+- (void)createWebView {
+    
+    
+    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height)];
+    self.webView.scalesPageToFit = YES;
+    
+    NSString *url= [NSString stringWithFormat:@"http://www.youtimecoach.com/#!what-is-the-lifegrade/c1xvg"];
+    
+    NSURL *nsurl=[NSURL URLWithString:url];
+    NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
+    [self.webView loadRequest:nsrequest];
+    [self.view addSubview:self.webView];
+    
 }
 
 - (void)addImage{

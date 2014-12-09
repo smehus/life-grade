@@ -17,7 +17,7 @@
                BlueprintIdentifier = "655EC60418DF5FE20036515F"
                BuildableName = "life-grade.app"
                BlueprintName = "life-grade"
-               ReferencedContainer = "container:life-grade.xcodeproj">
+               ReferencedContainer = "container:life+grade.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "655EC62518DF5FE20036515F"
                BuildableName = "life-gradeTests.xctest"
                BlueprintName = "life-gradeTests"
-               ReferencedContainer = "container:life-grade.xcodeproj">
+               ReferencedContainer = "container:life+grade.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "655EC60418DF5FE20036515F"
             BuildableName = "life-grade.app"
             BlueprintName = "life-grade"
-            ReferencedContainer = "container:life-grade.xcodeproj">
+            ReferencedContainer = "container:life+grade.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "655EC60418DF5FE20036515F"
             BuildableName = "life-grade.app"
             BlueprintName = "life-grade"
-            ReferencedContainer = "container:life-grade.xcodeproj">
+            ReferencedContainer = "container:life+grade.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -82,7 +82,7 @@
             BlueprintIdentifier = "655EC60418DF5FE20036515F"
             BuildableName = "life-grade.app"
             BlueprintName = "life-grade"
-            ReferencedContainer = "container:life-grade.xcodeproj">
+            ReferencedContainer = "container:life+grade.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

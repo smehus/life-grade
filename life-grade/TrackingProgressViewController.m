@@ -225,7 +225,17 @@
     m16.methodDescription = @"Turn that frown upside down, well something like that. Positive thinking has a major impact on your happiness and the outcome of your goal. Let’s be honest, you can’t be positive all the time but you can try a counter some of that negative thinking with this handy worksheet. ";
     [self.progressMethods addObject:m16];
 
+    ProgressMethods *m17 = [[ProgressMethods alloc] initWithMethod:@"Who's got my back worksheet" andKey:@"Job Happiness"];
+    m17.methodDescription = @"Social support is undeniably one of the most important factors in accomplishing your goals. You have already identified three people to be on your support team, now let’s figure out how they can support you. Use this worksheet to understand how your support team will help you on your road to change.";
+    [self.progressMethods addObject:m17];
     
+    ProgressMethods *m18 = [[ProgressMethods alloc] initWithMethod:@"Try one new thing worksheet" andKey:@"Productivity Level"];
+    m18.methodDescription = @"Life is driven by emotions and experiences. Whether it is with a group, one other person, or by yourself try to expand those healthy experiences by trying new things. Use this worksheet as a way to keep experiencing new hobbies and interests.";
+    [self.progressMethods addObject:m18];
+    
+    ProgressMethods *m19 = [[ProgressMethods alloc] initWithMethod:@"My needs worksheet" andKey:@"Being Engaged at Work & at Play"];
+    m19.methodDescription = @"Humans are needy people! Whether we are meeting our own needs or another persons we are constantly trying to fulfill them. Sometimes we do this in healthy ways and sometimes not so healthy. One thing is for sure, it drives many of the decisions we make and for that we should take a closer look. Use this worksheet to examine your own needs and how you meet them around your goal.";
+    [self.progressMethods addObject:m19];
     
 }
 

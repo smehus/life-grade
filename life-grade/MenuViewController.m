@@ -67,10 +67,12 @@
     [self performFetch];
     NSLog(@"MENU APPEARED");
     
-    
     if (!self.managedObjectContext) {
         self.managedObjectContext = del.managedObjectContext;
     }
+    
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -153,7 +155,44 @@
         cell.textLabel.font = [UIFont fontWithName:sf size:16];
         cell.textLabel.textColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0f];
     } else {
-        cell.textLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+        
+        switch (indexPath.row) {
+            case 1:
+                
+                
+                if (self.fetchedAnswers.finalGrade) {
+                    cell.textLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+                } else {
+                    cell.textLabel.textColor = [UIColor lightGrayColor];
+                }
+                break;
+            case 2:
+                if (self.fetchedAnswers.desiredGrade) {
+                    cell.textLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+                } else {
+                    cell.textLabel.textColor = [UIColor lightGrayColor];
+                }
+                break;
+            case 3:
+                if (self.fetchedAnswers.focusFactor) {
+                    cell.textLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+                } else {
+                    cell.textLabel.textColor = [UIColor lightGrayColor];
+                }
+                break;
+            case 4:
+                if (self.fetchedAnswers.firstSupport) {
+                    cell.textLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+                } else {
+                    cell.textLabel.textColor = [UIColor lightGrayColor];
+                }
+                break;
+                
+            default:
+                cell.textLabel.textColor = [UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f];
+                break;
+        }
+        
         cell.textLabel.text = [self.titleArray objectAtIndex:indexPath.row];
     }
     return cell;
@@ -173,11 +212,11 @@
             [self.myRevealController pushFrontViewController:nav animated:YES];
             
         } else if (indexPath.row == 1) {
-            
-            PickDesiredGradeController *pickDesire = [[PickDesiredGradeController alloc] init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:pickDesire];
-            [self.myRevealController pushFrontViewController:nav animated:YES];
-            
+            if  (self.fetchedAnswers.finalGrade) {
+                PickDesiredGradeController *pickDesire = [[PickDesiredGradeController alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:pickDesire];
+                [self.myRevealController pushFrontViewController:nav animated:YES];
+            }
             
         } else if (indexPath.row == 2) {
             /*
@@ -186,9 +225,13 @@
             [self.myRevealController pushFrontViewController:nav animated:YES];
              */
             
-            MyActionViewController *action = [[MyActionViewController alloc] init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:action];
-            [self.myRevealController pushFrontViewController:nav animated:YES];
+            
+            // factors
+            if  (self.fetchedAnswers.desiredGrade ) {
+                MyActionViewController *action = [[MyActionViewController alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:action];
+                [self.myRevealController pushFrontViewController:nav animated:YES];
+            }
         
         } else if (indexPath.row == 3) {
             /*
@@ -196,16 +239,18 @@
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:attsController];
             [self.myRevealController pushFrontViewController:nav animated:YES];
             */
-            TrackingProgressViewController *track = [[TrackingProgressViewController alloc] init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:track];
-            [self.myRevealController pushFrontViewController:nav animated:YES];
-        
-        } else if (indexPath.row == 4) {
             
-            FinalAnalysisViewController *finalontroller = [[FinalAnalysisViewController alloc] init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalontroller];
-            [self.myRevealController pushFrontViewController:nav animated:YES];
-        
+            if (self.fetchedAnswers.focusFactor) {
+                TrackingProgressViewController *track = [[TrackingProgressViewController alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:track];
+                [self.myRevealController pushFrontViewController:nav animated:YES];
+            }
+        } else if (indexPath.row == 4) {
+            if  (self.fetchedAnswers.firstSupport) {
+                FinalAnalysisViewController *finalontroller = [[FinalAnalysisViewController alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalontroller];
+                [self.myRevealController pushFrontViewController:nav animated:YES];
+            }
             
         } else if (indexPath.row == 5) {
             
