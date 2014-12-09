@@ -78,7 +78,7 @@
     [self.view addSubview:bg];
 
 
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width *3, viewSize.height);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width *4, viewSize.height);
     self.scrollView.backgroundColor = [UIColor redColor];
     self.scrollView.delegate = self;
     self.myRevealController = [self revealViewController];
@@ -86,12 +86,13 @@
     [self.view addGestureRecognizer:self.myRevealController.panGestureRecognizer];
     
     [self setUpPageOne];
+    [self setupWelcomePage];
     [self setUpPageTwo];
     [self setUpPageThree];
     
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(20, viewHeight - 25, self.view.frame.size.width - 40, 20)];
     self.pageControl.currentPage = 0;
-    self.pageControl.numberOfPages = 3;
+    self.pageControl.numberOfPages = 4;
     self.pageControl.currentPageIndicatorTintColor = GREEN_COLOR;
     self.pageControl.pageIndicatorTintColor = GREY_COLOR;
 
@@ -301,10 +302,53 @@
     
 }
 
-- (void)setUpPageTwo {
+- (void)setupWelcomePage {
     
     NSString *avFont = AVENIR_BLACK;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(viewSize.width, 0, viewSize.width, viewHeight)];
+    view.backgroundColor = [UIColor clearColor];
+    
+    self.title = @"Life+Grade";
+    
+    UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
+    UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
+    
+    self.stepOne = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, view.frame.size.width, 50)];
+    self.stepOne.text = @"3 Life Grade Steps";
+    self.stepOne.textColor = GREY_COLOR;
+    self.stepOne.backgroundColor = GREEN_COLOR;
+    self.stepOne.textAlignment = NSTextAlignmentCenter;
+    self.stepOne.font = [UIFont fontWithName:avFont size:35];
+    [view addSubview:self.stepOne];
+    
+    // FIRST LINE
+    
+    
+    UILabel *romanUno = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.stepOne.frame) + 12, self.view.frame.size.width-40, 300)];
+    romanUno.text = @"Welcome to the Life+Grade! \n\nCongratulations on making a healthy decision for yourself today. During the Life+Grade you will work through 3 steps that will help you get to your higher grade in life. Let’s start by checking those steps out.";
+    romanUno.font = FONT_AMATIC_BOLD(30);
+    romanUno.lineBreakMode = NSLineBreakByWordWrapping;
+    romanUno.numberOfLines = 0;
+    romanUno.textAlignment = NSTextAlignmentCenter;
+    [view addSubview:romanUno];
+
+    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(romanUno.frame) + 40, self.view.frame.size.width - 40, 50) raised:NO];
+    [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+    self.startButton.rippleFromTapLocation = YES;
+    self.startButton.rippleBeyondBounds = YES;
+    [self.startButton addTarget:self action:@selector(scrollToNextPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.startButton setTitle:@"Next" forState:UIControlStateNormal];
+    [self.startButton.titleLabel setFont:[UIFont fontWithName:avFont size:16]];
+    [view addSubview:self.startButton];
+    
+    
+    [self.scrollView addSubview:view];
+}
+
+- (void)setUpPageTwo {
+    
+    NSString *avFont = AVENIR_BLACK;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(viewSize.width*2, 0, viewSize.width, viewHeight)];
     view.backgroundColor = [UIColor clearColor];
 
     self.title = @"Life+Grade";
@@ -382,7 +426,7 @@
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     self.startButton.rippleFromTapLocation = YES;
     self.startButton.rippleBeyondBounds = YES;
-    [self.startButton addTarget:self action:@selector(scrollToNextPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.startButton addTarget:self action:@selector(scrollToFinals) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton setTitle:@"Next" forState:UIControlStateNormal];
     [self.startButton.titleLabel setFont:[UIFont fontWithName:avFont size:16]];
     [view addSubview:self.startButton];
@@ -402,7 +446,7 @@
     UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
     UIImage *checkMark = [UIImage imageNamed:@"check_mark"];
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(viewSize.width * 2, 0, viewSize.width, viewHeight)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(viewSize.width * 3, 0, viewSize.width, viewHeight)];
     view.backgroundColor = [UIColor clearColor];
     
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 66)];
@@ -490,6 +534,12 @@
     
 }
 
+
+- (void)scrollToFinals {
+    
+    [self.scrollView setContentOffset:CGPointMake(self.view.frame.size.width*3, self.view.frame.origin.y) animated:YES];
+    
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     

@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/OpeningViewController.m"
-            timestampString = "438980591.882491"
+            timestampString = "439779008.275221"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
@@ -604,11 +604,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/OpeningViewController.m"
-            timestampString = "438719621.448944"
+            timestampString = "439779008.275221"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
@@ -620,11 +620,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "life-grade/OpeningViewController.m"
-            timestampString = "438719621.448944"
+            timestampString = "439779008.275221"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "-signIn"
             landmarkType = "5">
          </BreakpointContent>
