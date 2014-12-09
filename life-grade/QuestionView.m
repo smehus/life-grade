@@ -228,7 +228,7 @@
     questionTitle.text = self.grade.question;
     
     
-    questionTitle.font = FONT_AMATIC_REG(40);
+    questionTitle.font = FONT_AMATIC_REG(38);
     questionTitle.textColor = [UIColor whiteColor];
     questionTitle.numberOfLines = 0;
     questionTitle.lineBreakMode = NSLineBreakByWordWrapping;

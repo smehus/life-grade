@@ -510,7 +510,7 @@
     instructLabel.textAlignment = NSTextAlignmentCenter;
     instructLabel.numberOfLines = 0;
     instructLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    instructLabel.text = @"Now you are in the driver’s seat! Grade yourself on each of the 10 Life factors. Grade each factor before moving on to the next. Being honest with yourself will produce a more realistic Life+Grade to later work with.";
+    instructLabel.text = @"Now you are in the driver’s seat! Grade yourself on each of the 10 life factors. Grade each factor before moving on to the next. Being honest with yourself will produce a more realistic Life+Grade to later work with.";
     [instructBox addSubview:instructLabel];
     [view addSubview:instructBox];
 

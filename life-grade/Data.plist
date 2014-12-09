@@ -174,7 +174,7 @@
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>Do you get your stuff done each done? When grading this factor thing about your personal and professional goals and efforts on a daily, weekly, and monthly basis. Do you get what you need and want done?</string>
+			<string>Do you get your stuff done each day? When grading this factor thing about your personal and professional goals and efforts on a daily, weekly, and monthly basis. Do you get what you need and want done?</string>
 			<key>badResponse</key>
 			<string>Whistle while you work. Well I guess sometimes that doesn’t help everybody. There are many factors that go into productivity including motivation, support, the environment, your ability, and even task difficulty. Examine the factors and see which ones are limiting you. There are many ways to boost productivity, but understand what underlies your challenges is the first step. Most individuals claim “they don’t have the resources”, although it is truly about who is most “resourceful”.</string>
 			<key>goodResponse</key>

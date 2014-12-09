@@ -76,7 +76,7 @@
     self.navigationItem.backBarButtonItem = barBtnItem;
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-    titleLabel.text = @"Choose Which Traits You need to accomplish your goal";
+    titleLabel.text = @"Hold & Drag which traits you need to accomplish your goal";
     titleLabel.font = [UIFont fontWithName:avFont size:16];
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;
