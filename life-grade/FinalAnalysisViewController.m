@@ -150,7 +150,7 @@
     //**** SETUP SCROLLVIEW ****\\
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    self.scrollView.contentSize = CGSizeMake(screenWidth, screenHeight *9);
+    self.scrollView.contentSize = CGSizeMake(screenWidth, screenHeight *10);
     self.scrollView.scrollEnabled = YES;
     self.scrollView.layer.masksToBounds = NO;
     self.scrollView.layer.shouldRasterize = NO;
@@ -460,7 +460,7 @@
 
 - (void)constructAllViews {
     
-    for (int i = 0; i <= 8; i++) {
+    for (int i = 0; i <= 9; i++) {
         
         switch (i) {
             case 0:
@@ -490,10 +490,50 @@
             case 8:
                 [self finalTipsView:i];
                 break;
+            case 9:
+                [self drawClosingMessageView:i];
+                break;
             default:
                 break;
         }
     }
+}
+
+- (void)drawClosingMessageView:(int)i {
+    
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, screenHeight * i, self.view.frame.size.width, self.view.frame.size.height)];
+    v.backgroundColor = [UIColor clearColor];
+    
+
+    UIImage *cm = [UIImage imageNamed:@"check_mark_2"];
+    UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 50, 20, 100, 100)];
+    iv.image = cm;
+    [v addSubview:iv];
+    
+    
+    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(iv.frame), self.view.frame.size.width-20, self.view.frame.size.height-120)];
+    l.text = @"Congratulations on making such a positive first step with completing the Life+Grade. The journey you are embarking on is such a valuable one with wonderful potential payoffs. In many cases, going on this journey with an effective coach can improve your rate of progress. Click below to learn more about Life Coaching.";
+    l.font = FONT_AMATIC_BOLD(30);
+    l.numberOfLines = 0;
+    l.textAlignment = NSTextAlignmentCenter;
+    l.lineBreakMode = NSLineBreakByWordWrapping;
+    [v addSubview:l];
+    
+    
+    UIColor *g = GREEN_COLOR;
+    
+    UIButton *checkBut = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(l.frame) + 5, self.view.frame.size.width - 20, 44)];
+    [checkBut setBackgroundColor:g];
+    [checkBut setTitle:@"Check It Out" forState:UIControlStateNormal];
+    [[checkBut rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.youtimecoac.com"]];
+        
+    }];
+    [v addSubview:checkBut];
+    
+    
+    [self.scrollView addSubview:v];
 }
 
 - (void)strengthsView:(int)i {
@@ -548,8 +588,10 @@
     v.currentGrade.text = @"Desired Grade";
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.titleLabel.text = @"Tracking Progress";
+    v.titleLabel.font = FONT_AMATIC_BOLD(24);
     v.delegate = self;
     v.quoteLabel.text = @"Be not afraid of going slowly, be afraid of standing still. ~Chinese Proverb";
+    v.quoteLabel.font = FONT_AVENIR_BLACK(18);
     [self.scrollView addSubview:v];
     
 }
@@ -559,8 +601,9 @@
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a attainableQuote:@"Dicks"];
     v.titleLabel.text = @"Attainable";
+    v.titleLabel.font = FONT_AMATIC_REG(24);
     v.quoteLabel.text =  @"In order to attain your goal you must channel your most powerful positive behaviors to make them come true. You must develop an attitude for success to keep the positive momentum going. Remember, you are worthy of this goal so start developing that those positive behaviors.";
-    v.quoteLabel.font = FONT_AVENIR_BLACK(18);
+    v.quoteLabel.font = FONT_AVENIR_BLACK(12);
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.currentGrade.text = @"Desired Grade";
     v.delegate = self;

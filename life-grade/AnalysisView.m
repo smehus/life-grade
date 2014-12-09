@@ -256,7 +256,8 @@
     explanationLabel.backgroundColor = [UIColor clearColor];
     explanationLabel.numberOfLines = 0;
     explanationLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    explanationLabel.font = [UIFont fontWithName:liteFont size:16];
+//    explanationLabel.font = [UIFont fontWithName:liteFont size:16];
+    explanationLabel.font = FONT_AVENIR_BLACK(16);
     [self addSubview:explanationLabel];
     
 }
@@ -613,7 +614,7 @@
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 10, self.frame.size.width - 40, 44)];
-    self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
+    self.titleLabel.font = FONT_AMATIC_REG(24);
     self.titleLabel.text = @"Final Tips";
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.backgroundColor = blueC;
@@ -643,6 +644,7 @@
         box.layer.shadowRadius = 5;
         box.layer.shadowOpacity = 0.5;
         box.titleLabel.text = [NSString stringWithFormat:@"Tip# %i", i+1];
+        box.titleLabel.font = FONT_AVENIR_BLACK(18);
         box.onTap = ^{
             NSLog(@"Box Tapped");
             [self.delegate finalTipsSelectedAtIndex:i];

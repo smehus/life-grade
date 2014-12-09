@@ -228,7 +228,7 @@
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    planLabel.text = @"Works";
+    planLabel.text = @"When you initially click in the first two low confidence levels the pop up should read. Setting manageable and proper goals will build confidence. Although you may not be incredibly confident right now, the Life+Grade process can potentially increase your confidence by making your goals more manageable. Stick with it and if you feel that you are still stuck look into seeing a Life Coach.";
     [self addSubview:planLabel];
     
     

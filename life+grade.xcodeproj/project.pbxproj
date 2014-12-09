@@ -91,6 +91,7 @@
 		A5BBA27A1A2D5D6000E104BC /* GoodBadResponseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBA2791A2D5D6000E104BC /* GoodBadResponseView.m */; };
 		A5BBA27D1A32CBE800E104BC /* ECEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBA27C1A32CBE800E104BC /* ECEventStore.m */; };
 		A5BBA2801A339DB500E104BC /* AttainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBA27F1A339DB500E104BC /* AttainCell.m */; };
+		A5BBA2821A36A7EB00E104BC /* check_mark_2.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BBA2811A36A7EB00E104BC /* check_mark_2.png */; };
 		A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */; };
 		A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C761939719F00887F83 /* FinalGradeViewController.m */; };
 		A5C08C7B193977D600887F83 /* ActionPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C08C7A193977D600887F83 /* ActionPlanViewController.m */; };
@@ -252,6 +253,7 @@
 		A5BBA27C1A32CBE800E104BC /* ECEventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECEventStore.m; sourceTree = "<group>"; };
 		A5BBA27E1A339DB500E104BC /* AttainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttainCell.h; sourceTree = "<group>"; };
 		A5BBA27F1A339DB500E104BC /* AttainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttainCell.m; sourceTree = "<group>"; };
+		A5BBA2811A36A7EB00E104BC /* check_mark_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_mark_2.png; sourceTree = "<group>"; };
 		A5BBB2B6192A1EB000724639 /* PickDesiredGradeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickDesiredGradeController.h; sourceTree = "<group>"; };
 		A5BBB2B7192A1EB000724639 /* PickDesiredGradeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickDesiredGradeController.m; sourceTree = "<group>"; };
 		A5C08C751939719F00887F83 /* FinalGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalGradeViewController.h; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 		65714FFF191482700034009A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5BBA2811A36A7EB00E104BC /* check_mark_2.png */,
 				A5CA589D19E08E1400940841 /* header_image.png */,
 				A5CA589919E069F800940841 /* Amatic-Bold.ttf */,
 				A5CA589A19E069F800940841 /* AmaticSC-Regular.ttf */,
@@ -784,6 +787,7 @@
 				655EC64318DF62550036515F /* MenuViewController.xib in Resources */,
 				A5CA589819E0657E00940841 /* openingImage.png in Resources */,
 				A53DA42819BCA88300EAC693 /* jonsafag in Resources */,
+				A5BBA2821A36A7EB00E104BC /* check_mark_2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

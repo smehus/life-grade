@@ -62,8 +62,9 @@
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.gradeLabel.frame) + 10, self.frame.size.width - 40, 44)];
-    self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
-    self.titleLabel.text = @"Completion Date";
+//    self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
+    self.titleLabel.font = FONT_AMATIC_BOLD(24);
+    self.titleLabel.text = @"My Important Dates";
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.backgroundColor = blueC;
     [self addSubview:self.titleLabel];
