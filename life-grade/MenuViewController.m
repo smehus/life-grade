@@ -53,7 +53,7 @@
 {
     del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
     [self performFetch];
-    self.titleArray = @[@"Grading", @"Desired Grade", @"Factors", @"Progress", @"My Grade", @"About", @"Log Out"];
+    self.titleArray = @[@"Current Grade", @"Desired Grade", @"Action Plan",@"My Final Analysis", @"About", @"Log Out"];
     
     NSLog(@"MENU LOADED");
     [super viewDidLoad];
@@ -234,31 +234,19 @@
             }
         
         } else if (indexPath.row == 3) {
-            /*
-            AttributesViewController *attsController = [[AttributesViewController alloc] init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:attsController];
-            [self.myRevealController pushFrontViewController:nav animated:YES];
-            */
-            
-            if (self.fetchedAnswers.focusFactor) {
-                TrackingProgressViewController *track = [[TrackingProgressViewController alloc] init];
-                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:track];
-                [self.myRevealController pushFrontViewController:nav animated:YES];
-            }
-        } else if (indexPath.row == 4) {
             if  (self.fetchedAnswers.firstSupport) {
                 FinalAnalysisViewController *finalontroller = [[FinalAnalysisViewController alloc] init];
                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalontroller];
                 [self.myRevealController pushFrontViewController:nav animated:YES];
             }
             
-        } else if (indexPath.row == 5) {
+        } else if (indexPath.row == 4) {
             
             AboutViewController *aboutController = [[AboutViewController alloc] init];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:aboutController];
             [self.myRevealController pushFrontViewController:nav animated:YES];
             
-        } else if (indexPath.row == 6) {
+        } else if (indexPath.row == 5) {
             
             NSLog(@"***LOG OUT");
             

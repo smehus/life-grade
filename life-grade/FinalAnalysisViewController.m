@@ -529,6 +529,7 @@
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a andGoal:self.fetchedAnswers.specificFocus];
     v.titleLabel.text = @"Goal";
+    v.titleLabel.font = FONT_AMATIC_BOLD(34);
     v.currentGrade.text = @"Desired Grade";
     NSString *dG = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     
@@ -558,8 +559,8 @@
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a attainableQuote:@"Dicks"];
     v.titleLabel.text = @"Attainable";
-    v.quoteLabel.text =  @"Hey you kids are probably saying to yourselves: I'm gonna go out there and grab the world by the tail! and wrap it around and pull it down and put it in my pocket. Well I'm here to tell you that you're probably going to find out, as you go out there, that you're not going to amount to jack squat!";
-    
+    v.quoteLabel.text =  @"In order to attain your goal you must channel your most powerful positive behaviors to make them come true. You must develop an attitude for success to keep the positive momentum going. Remember, you are worthy of this goal so start developing that those positive behaviors.";
+    v.quoteLabel.font = FONT_AVENIR_BLACK(18);
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.currentGrade.text = @"Desired Grade";
     v.delegate = self;

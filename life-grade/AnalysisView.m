@@ -241,7 +241,7 @@
     goalLabel.font = [UIFont fontWithName:thefont size:24];
     [self addSubview:goalLabel];
     
-    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 150)];
+    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 100)];
     self.quoteLabel.font = [UIFont fontWithName:liteFont size:16];
     self.quoteLabel.textAlignment = NSTextAlignmentCenter;
     self.quoteLabel.backgroundColor = barColour;
