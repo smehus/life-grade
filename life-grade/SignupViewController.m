@@ -178,7 +178,7 @@
                                    withParameters:@{@"email" : self.userNameField.text}
                                             block:^(NSString *result, NSError *error) {
                                                 if (!error) {
-                                                    NSLog(@"%@", result);
+                                                    NSLog(@"Email Success: %@", result);
                                                 } else {
                                                     NSLog(@"ERROR %@ %@", result, error);
                                                 }
