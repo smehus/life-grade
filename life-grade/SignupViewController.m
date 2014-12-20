@@ -175,7 +175,7 @@
             if (!error) {
                 
                 [PFCloud callFunctionInBackground:@"hello"
-                                   withParameters:@{}
+                                   withParameters:@{@"email" : self.userNameField.text}
                                             block:^(NSString *result, NSError *error) {
                                                 if (!error) {
                                                     NSLog(@"%@", result);
