@@ -688,7 +688,7 @@
     
     
     // add the logic to remove next button
-    if (scrollView.contentOffset.y > screenRect.size.height * 7 ) {
+    if (scrollView.contentOffset.y > screenRect.size.height * 8 ) {
         scrollButton.hidden = YES;
 
     } else {

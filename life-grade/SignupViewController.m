@@ -173,6 +173,18 @@
             
             
             if (!error) {
+                
+                [PFCloud callFunctionInBackground:@"hello"
+                                   withParameters:@{}
+                                            block:^(NSString *result, NSError *error) {
+                                                if (!error) {
+                                                    NSLog(@"%@", result);
+                                                } else {
+                                                    NSLog(@"ERROR %@ %@", result, error);
+                                                }
+                                            }];
+                
+                
                 //The registration was successful, go to the wall
                 NSLog(@"***SIGNUP SUCCESS");
                 
