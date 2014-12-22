@@ -114,10 +114,45 @@
     return 2;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    if (section == 0) {
+        
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 44)];
+        
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.tableView.frame.size.width/3, 44)];
+        NSString *sf = LIGHT_FONT;
+        l.font = [UIFont fontWithName:sf size:16];
+        l.textColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0f];
+
+        PFUser *user = [PFUser currentUser];
+        if (user) {
+            l.text = user.email;
+        } else {
+            l.text = @"Not Signed In";
+
+        }
+        
+        [v addSubview:l];
+        return v;
+    }
+        
+        return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    if (section == 0) {
+        return 44;
+    } else {
+        return 0;
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 1;
+        return 0;
     } else {
         return self.titleArray.count;
     }
@@ -154,6 +189,8 @@
         NSString *sf = LIGHT_FONT;
         cell.textLabel.font = [UIFont fontWithName:sf size:16];
         cell.textLabel.textColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0f];
+        
+        
     } else {
         
         switch (indexPath.row) {
@@ -203,6 +240,8 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         NSLog(@"clicked email");
+        
+        
     } else {
     
         if (indexPath.row == 0) {
