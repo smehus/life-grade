@@ -155,11 +155,15 @@
     self.backgroundColor = [UIColor whiteColor];
     
     UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 200)];
-    [planLabel setFont:FONT_AMATIC_BOLD(18)];
+    [planLabel setFont:FONT_AVENIR_BLACK(16)];
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
     planLabel.text = self.progressMethod.methodDescription;
+    
+    
+    
+    
     [self addSubview:planLabel];
     
     
@@ -248,7 +252,7 @@
 - (void)setupScreen {
     self.backgroundColor = [UIColor whiteColor];
 
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 40)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 60)];
     [titleLabel setFont:FONT_AVENIR_BLACK(18)];
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;

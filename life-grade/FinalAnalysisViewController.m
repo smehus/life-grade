@@ -546,7 +546,7 @@
                        andIndex:i andData:a];
     v.delegate = self;
     v.currentGrade.text = @"Current Grade";
-    v.titleLabel.text = @"Strengths";
+    v.titleLabel.text = @"Highest Grade Factors";
     v.gradeLabel.text = self.gradeLetter;
     [self.scrollView addSubview:v];
 }
@@ -556,7 +556,7 @@
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a];
     v.delegate = self;
-    v.titleLabel.text = @"Challenges";
+    v.titleLabel.text = @"Lowest Graded Factors";
     v.currentGrade.text = @"Current Grade";
     v.gradeLabel.text = self.gradeLetter;
     [self.scrollView addSubview:v];
@@ -590,9 +590,9 @@
     v.currentGrade.text = @"Desired Grade";
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.titleLabel.text = @"Tracking Progress";
-    v.titleLabel.font = FONT_AMATIC_BOLD(24);
+    v.titleLabel.font = FONT_AMATIC_BOLD(28);
     v.delegate = self;
-    v.quoteLabel.text = @"Be not afraid of going slowly, be afraid of standing still. ~Chinese Proverb";
+    v.quoteLabel.text = @"Be not afraid of going slowly, be afraid of standing still. \n ~Chinese Proverb";
     v.quoteLabel.font = FONT_AVENIR_BLACK(18);
     [self.scrollView addSubview:v];
     

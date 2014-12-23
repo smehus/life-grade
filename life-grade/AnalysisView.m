@@ -136,7 +136,7 @@
     firstView.layer.borderWidth = 0.0f;
     
     UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.width-20, 50)];
-    currentGrade.text = @"Final Life+Grade";
+    currentGrade.text = @"Current Life+Grade";
     currentGrade.font = [UIFont fontWithName:avFont size:24];
     currentGrade.textAlignment = NSTextAlignmentCenter;
     [firstView addSubview:currentGrade];
@@ -159,6 +159,9 @@
     self.titleLabel.text = @"STRENGTHS";
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.backgroundColor = barColour;
+    self.titleLabel.layer.shadowOffset = CGSizeMake(-5, 5);
+    self.titleLabel.layer.shadowRadius = 5;
+    self.titleLabel.layer.shadowOpacity = 0.5;
     [self addSubview:self.titleLabel];
     
     container = [MGBox boxWithSize:CGSizeMake(self.size.width, 200)];
@@ -228,6 +231,9 @@
     self.titleLabel.text = @"STRENGTHS";
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.backgroundColor = barColour;
+    self.titleLabel.layer.shadowOffset = CGSizeMake(-5, 5);
+    self.titleLabel.layer.shadowRadius = 5;
+    self.titleLabel.layer.shadowOpacity = 0.5;
     [self addSubview:self.titleLabel];
     
     UILabel *goalLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.titleLabel.frame) + 5,
@@ -242,12 +248,15 @@
     [self addSubview:goalLabel];
     
     self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 100)];
-    self.quoteLabel.font = [UIFont fontWithName:liteFont size:16];
+    self.quoteLabel.font = FONT_AMATIC_BOLD(26);
     self.quoteLabel.textAlignment = NSTextAlignmentCenter;
     self.quoteLabel.backgroundColor = barColour;
     self.quoteLabel.numberOfLines = 0;
     self.quoteLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.quoteLabel.textAlignment = NSTextAlignmentCenter;
+    self.quoteLabel.layer.shadowOffset = CGSizeMake(-5, 5);
+    self.quoteLabel.layer.shadowRadius = 5;
+    self.quoteLabel.layer.shadowOpacity = 0.5;
     [self addSubview:self.quoteLabel];
     
     UILabel *explanationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.quoteLabel.frame) + 5, self.frame.size.width - 20, 100)];
@@ -595,7 +604,7 @@
     firstView.layer.borderWidth = 0.0f;
     
     UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, self.frame.size.width, 30)];
-    currentGrade.text = @"Final Life+Grade";
+    currentGrade.text = @"Current Life+Grade";
     currentGrade.textAlignment = NSTextAlignmentCenter;
     currentGrade.font = [UIFont fontWithName:avFont size:24];
     [firstView addSubview:currentGrade];

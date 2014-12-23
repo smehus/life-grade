@@ -30,6 +30,10 @@
 @property (nonatomic, strong) NSMutableArray *titleArray;
 @property (nonatomic, strong) Answers *fetchedAnswers;
 @property (nonatomic, strong) NSMutableArray *allAnswers;
+@property (nonatomic, strong) NSMutableArray *unsubscribeArray;
+@property (nonatomic, assign) BOOL unsubscribeOpen;
+@property (nonatomic, strong) UIImageView *unsubcribeImage;
+
 @end
 
 @implementation MenuViewController {
@@ -54,6 +58,9 @@
     del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
     [self performFetch];
     self.titleArray = @[@"Current Grade", @"Desired Grade", @"Action Plan",@"My Final Analysis", @"About", @"Log Out"];
+    
+    self.unsubscribeArray = [[NSMutableArray alloc] initWithCapacity:2];
+    self.unsubscribeOpen = NO;
     
     NSLog(@"MENU LOADED");
     [super viewDidLoad];
@@ -105,7 +112,30 @@
     
 }
 
+- (void)userNameTapped {
+    NSLog(@"USER NAME TAPPED");
     
+    
+    
+    NSIndexPath *idxs = [NSIndexPath indexPathForRow:0 inSection:0];
+    if (!self.unsubscribeOpen) {
+        self.unsubscribeOpen = YES;
+        [self.unsubscribeArray addObject:@"Unsubscribe"];
+        [self.tableView insertRowsAtIndexPaths:@[idxs] withRowAnimation:UITableViewRowAnimationAutomatic];
+        self.unsubcribeImage.transform = CGAffineTransformMakeScale(1, -1);
+        
+    } else {
+        self.unsubscribeOpen = NO;
+        [self.unsubscribeArray removeLastObject];
+        [self.tableView deleteRowsAtIndexPaths:@[idxs] withRowAnimation:UITableViewRowAnimationAutomatic];
+        self.unsubcribeImage.transform = CGAffineTransformMakeScale(1, 1);
+        
+    }
+    
+
+    
+    
+}
 
 #pragma mark - Table view data source
 
@@ -118,12 +148,21 @@
     
     if (section == 0) {
         
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 44)];
+        UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userNameTapped)];
         
-        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.tableView.frame.size.width/3, 44)];
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 44)];
+        [v addGestureRecognizer:tapGest];
+        
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.tableView.frame.size.width/4, 44)];
         NSString *sf = LIGHT_FONT;
         l.font = [UIFont fontWithName:sf size:16];
         l.textColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0f];
+        
+        UIImage *image = [UIImage imageNamed:@"red-arrow-1-"];
+        self.unsubcribeImage = [[UIImageView alloc] initWithImage:image];
+        self.unsubcribeImage.frame = CGRectMake(CGRectGetMaxX(l.frame), 0, 44, 44);
+        self.unsubcribeImage.contentMode = UIViewContentModeScaleAspectFill;
+        [v addSubview:self.unsubcribeImage];
 
         PFUser *user = [PFUser currentUser];
         if (user) {
@@ -152,7 +191,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 0;
+        return self.unsubscribeArray.count;
     } else {
         return self.titleArray.count;
     }
@@ -178,13 +217,8 @@
     
     
     if (indexPath.section == 0) {
-        PFUser *user = [PFUser currentUser];
-        if (user) {
-            cell.textLabel.text = user.email;
-        } else {
-            cell.textLabel.text = @"Not Signed In";
-            cell.userInteractionEnabled = NO;
-        }
+        
+        cell.textLabel.text = @"Unsubscribe";
 
         NSString *sf = LIGHT_FONT;
         cell.textLabel.font = [UIFont fontWithName:sf size:16];
@@ -235,12 +269,67 @@
     return cell;
 }
 
+//TODO: add code to delete email address from data base
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
-        NSLog(@"clicked email");
+        NSLog(@"UNSUBSCRIBE BITCH");
         
+        
+        
+        
+        // *** LOG OUT PROCESS *** \\
+        
+        PFUser *user = [PFUser currentUser];
+        if (user) {
+            
+            [PFUser logOut];
+            
+            [self.managedObjectContext deleteObject:self.fetchedAnswers];
+            
+            NSError *error = nil;
+            if (![self.managedObjectContext save:&error]) {
+                NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
+                return;
+            }
+            
+            NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+            for (NSString *key in [defaultsDictionary allKeys]) {
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+            }
+            
+            
+            
+            OpeningViewController *opening = [[OpeningViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:opening];
+            [self.myRevealController pushFrontViewController:opening animated:YES];
+        } else {
+            NSLog(@"No Cached User Exists"); // need to do something - maybe if defaults has an email send that to server to unsubscribe    
+            [self.managedObjectContext deleteObject:self.fetchedAnswers];
+            
+            NSError *error = nil;
+            if (![self.managedObjectContext save:&error]) {
+                NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
+                return;
+            }
+            
+            NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+            for (NSString *key in [defaultsDictionary allKeys]) {
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+            }
+            
+            
+            
+            OpeningViewController *opening = [[OpeningViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:opening];
+            [self.myRevealController pushFrontViewController:opening animated:YES];
+            
+            // add pop up to explain they've unsubscribed
+            
+        }
+
         
     } else {
     
