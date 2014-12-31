@@ -406,6 +406,7 @@
 
 - (void)setupSecondScreen {
     
+    [self accessEventStore];
     
     titleLabel.text = @"Set a time frame";
     firstField.text = @" Set a date";
@@ -428,7 +429,7 @@
     [[calBut rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
         // create event and then input into addEvent
-        [self accessEventStore];
+//        [self accessEventStore];
         [self addEvent:calBut];
         
         
@@ -478,7 +479,7 @@
     [calBut1 setHidden:YES];
     [[calBut1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
-        [self accessEventStore];
+//        [self accessEventStore];
         [self addEvent:calBut1];
         
         
@@ -514,6 +515,7 @@
 
     
     calNextButton = [self addNextButton];
+    [calNextButton setFrame:CGRectMake(10, CGRectGetMaxY(self.view.frame) - 175, self.view.frame.size.width-20, 66)];
     [calNextButton setUserInteractionEnabled:NO];
     [calNextButton setBackgroundColor:[UIColor grayColor]];
     [[calNextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -526,8 +528,21 @@
         titleLabel.text = self.fetchedAnswers.specificFocus;
         firstLabel.text = @"Support";
         [self setupThirdView];
+    }];
+    
+    UIButton *skipButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [skipButton setFrame:CGRectMake(0, CGRectGetMaxY(calNextButton.frame) + 15, self.view.frame.size.width, 10)];
+    [skipButton setTitle:@"Skip" forState:UIControlStateNormal];
+    [skipButton setBackgroundColor:[UIColor clearColor]];
+    [skipButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [[skipButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self RemoveAllViews];
+        titleLabel.text = self.fetchedAnswers.specificFocus;
+        firstLabel.text = @"Support";
+        [self setupThirdView];
         
     }];
+    [self.view addSubview:skipButton];
 }
 
 - (IBAction)addEvent:(id)sender {

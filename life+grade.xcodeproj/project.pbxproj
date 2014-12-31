@@ -1025,7 +1025,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Scott mehus (32M8ER9697)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott mehus (32M8ER9697)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/smehus/Documents/life-grade",
@@ -1040,7 +1040,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3da08e75-b36b-4c51-9958-5ca49d79f898";
+				PROVISIONING_PROFILE = "c6982df1-d858-461c-ae45-46ef22ce9a03";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1053,7 +1053,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Scott Mehus (4HWQ95CTCF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott mehus (32M8ER9697)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/smehus/Documents/life-grade",
@@ -1068,13 +1068,14 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3da08e75-b36b-4c51-9958-5ca49d79f898";
+				PROVISIONING_PROFILE = "c6982df1-d858-461c-ae45-46ef22ce9a03";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		655EC63B18DF5FE20036515F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEB94201BB7F1A0F5B9F127B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/life-grade.app/life-grade";
@@ -1098,6 +1099,7 @@
 		};
 		655EC63C18DF5FE20036515F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F52ACA49FF6E37DF48E3A88 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/life-grade.app/life-grade";

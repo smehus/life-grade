@@ -337,7 +337,8 @@
     cell.text.text = textString;
     
     cell.factorLabel.text = [NSString stringWithFormat:@"Factor #%li", indexPath.row + 1];
-    cell.factorLabel.font = FONT_AMATIC_BOLD(50);
+    cell.factorLabel.font = FONT_AVENIR_BLACK(30);
+
     cell.text.font = FONT_AMATIC_BOLD(30);
     cell.gradeLabel.font = FONT_AMATIC_BOLD(24);
     cell.checkbox.image = checkBox;

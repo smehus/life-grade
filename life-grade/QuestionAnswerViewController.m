@@ -10,7 +10,7 @@
 #import "NYSegmentedControl.h"
 #define MCANIMATE_SHORTHAND
 #import <POP+MCAnimate.h>
-#import "UIViewController+CWPopup.h"
+//#import "UIViewController+CWPopup.h"
 #import "ChoseView.h"
 #import "KLCPopup.h"
 #import "BeginGoalViewController.h"

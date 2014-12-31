@@ -10,7 +10,7 @@ pod 'IQKeyboardManager'
 pod 'THCalendarDatePicker', '~> 0.1.1'
 pod 'NYSegmentedControl'
 pod 'POP+MCAnimate', '~> 1.0'
-pod 'CWPopup', '~> 1.2.4'
+#pod 'CWPopup', '~> 1.2.5’
 pod 'MGBoxKit'
 pod 'UIView+draggable'
 pod 'ASValueTrackingSlider'
