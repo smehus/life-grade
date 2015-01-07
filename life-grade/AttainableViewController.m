@@ -82,8 +82,15 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.view addSubview:titleLabel];
+    
+    int sub = 0;
+    if ([self isIpad]) {
+        sub = 5;
+    } else {
+        sub = 20;
+    }
 
-    UILabel *goalLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, CGRectGetMaxY(titleLabel.frame) + 20, self.view.frame.size.width/2 - 5, 100)];
+    UILabel *goalLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, CGRectGetMaxY(titleLabel.frame) + sub, self.view.frame.size.width/2 - 5, 100)];
     goalLabel.text = [NSString stringWithFormat:@"Goal: %@", self.fetchedAnswers.specificFocus];
 
     goalLabel.textAlignment = NSTextAlignmentCenter;
@@ -97,6 +104,17 @@
     [self addViews];
     [self addButton];
 
+}
+
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 
@@ -224,9 +242,20 @@
 }
 
 - (void)addViews {
+    
+    int sub = 0;
+    int ret = 0;
+    if ([self isIpad]) {
+        sub = 125;
+        ret = 120;
+    } else {
+        sub = 175;
+        ret = 160;
+    }
+    
     for (int i = 0; i < 10; i++) {
        
-        originalFrame = CGRectMake(25, 175, 100, 160);
+        originalFrame = CGRectMake(25, sub, 100, ret);
         UIPanGestureRecognizer *panGest = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragView:)];
         
         // Make custom view
@@ -256,13 +285,26 @@
 
 - (void)addAnswerFrames {
     
-    UILabel *yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(175, 75, 110, 25)];
+    int sub = 0;
+    int ret = 0;
+    int hgh = 0;
+    if ([self isIpad]) {
+        sub = 50;
+        ret = 0;
+        hgh = 120;
+    } else {
+        sub = 75;
+        ret = 25;
+        hgh = 150;
+    }
+    
+    UILabel *yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(175, sub, 110, 25)];
     yesLabel.text = @"Yes";
     yesLabel.font = FONT_AVENIR_BLACK(22);
     yesLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:yesLabel];
     
-    self.yesFrame = [[UIView alloc] initWithFrame:CGRectMake(175, 100, 110, 150)];
+    self.yesFrame = [[UIView alloc] initWithFrame:CGRectMake(175, CGRectGetMaxY(yesLabel.frame) + ret, 110, hgh)];
     self.yesFrame.backgroundColor = [UIColor clearColor];
     self.yesFrame.layer.borderColor = [UIColor greenColor].CGColor;
     self.yesFrame.backgroundColor = GREEN_COLOR;
@@ -276,7 +318,7 @@
     noLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:noLabel];
     
-    self.noFrame = [[UIView alloc] initWithFrame:CGRectMake(175, CGRectGetMaxY(self.yesFrame.frame) + 35, 110, 150)];
+    self.noFrame = [[UIView alloc] initWithFrame:CGRectMake(175, CGRectGetMaxY(self.yesFrame.frame) + 35, 110, hgh)];
     self.noFrame.backgroundColor = [UIColor clearColor];
     self.noFrame.backgroundColor = [UIColor redColor];
     self.noFrame.alpha = 1.0f;

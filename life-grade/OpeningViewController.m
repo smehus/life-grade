@@ -20,6 +20,8 @@
 #import "MainAppDelegate.h"
 
 
+
+
 @interface OpeningViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) SWRevealViewController *myRevealController;
 @property (strong, nonatomic) UILabel *LifeLabel;
@@ -34,6 +36,8 @@
 
 
 @end
+
+
 
 @implementation OpeningViewController {
     
@@ -90,7 +94,14 @@
     [self setUpPageTwo];
     [self setUpPageThree];
     
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(20, viewHeight - 25, self.view.frame.size.width - 40, 20)];
+    int sub = 0;
+    if ([self isIpad]) {
+        sub = 85;
+    } else {
+        sub = 25;
+    }
+    
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(20, viewHeight - sub, self.view.frame.size.width - 40, 20)];
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = 4;
     self.pageControl.currentPageIndicatorTintColor = GREEN_COLOR;
@@ -149,6 +160,17 @@
     
 }
 
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 - (void)setUpPageOne {
     
     self.title = @"Welcome";
@@ -180,7 +202,14 @@
     
     NSString *avFont = AVENIR_BLACK;
     UIButton *signInButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [signInButton setFrame:CGRectMake(0, CGRectGetMaxY(self.view.frame) - 110, self.view.frame.size.width, 30)];
+    int sub = 0;
+    if ([self isIpad] == YES)
+    {
+        sub = 150;
+    } else {
+        sub = 110;
+    }
+    [signInButton setFrame:CGRectMake(0, CGRectGetMaxY(self.view.frame) - sub, self.view.frame.size.width, 30)];
     [signInButton setTitle:@"Already a member?" forState:UIControlStateNormal];
     [signInButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [signInButton.titleLabel setFont:[UIFont fontWithName:avFont size:18]];
@@ -332,7 +361,14 @@
     romanUno.textAlignment = NSTextAlignmentCenter;
     [view addSubview:romanUno];
 
-    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(romanUno.frame) + 40, self.view.frame.size.width - 40, 50) raised:NO];
+    int sub = 0;
+    if ([self isIpad]) {
+        sub = 0;
+    } else {
+        sub = 40;
+    }
+    
+    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(romanUno.frame) + sub, self.view.frame.size.width - 40, 50) raised:NO];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     self.startButton.rippleFromTapLocation = YES;
     self.startButton.rippleBeyondBounds = YES;
@@ -422,7 +458,14 @@
     action.font = FONT_AMATIC_BOLD(40);
     [view addSubview:action];
     
-    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(action.frame) + 40, self.view.frame.size.width - 40, 50) raised:NO];
+    int sub = 0;
+    if ([self isIpad]) {
+        
+    } else {
+        sub = 40;
+    }
+    
+    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(action.frame) + sub, self.view.frame.size.width - 40, 50) raised:NO];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     self.startButton.rippleFromTapLocation = YES;
     self.startButton.rippleBeyondBounds = YES;
@@ -485,8 +528,14 @@
     
     CGFloat boxWidth = self.view.frame.size.width;
 
+    int sub = 0;
+    if ([self isIpad]) {
+        
+    } else {
+        sub = 15;
+    }
     
-    UIView *instructBox = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(currentGrade.frame) + 15, boxWidth - 30, boxWidth - 80)];
+    UIView *instructBox = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(currentGrade.frame) + sub, boxWidth - 30, boxWidth - 80)];
     instructBox.backgroundColor = BLUE_COLOR;
     instructBox.layer.masksToBounds = NO;
     instructBox.layer.cornerRadius = 8;
@@ -514,9 +563,14 @@
     [instructBox addSubview:instructLabel];
     [view addSubview:instructBox];
 
-
+    int ret;
+    if ([self isIpad]) {
+        ret = 10;
+    } else {
+        ret = 40;
+    }
   
-    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(instructBox.frame) + 40, self.view.frame.size.width, 50) raised:NO];
+    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(instructBox.frame) + ret, self.view.frame.size.width, 50) raised:NO];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [self.startButton addTarget:self action:@selector(openGradeController) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton setTitle:@"Start Grading" forState:UIControlStateNormal];

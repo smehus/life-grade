@@ -29,6 +29,13 @@
         self.factorLabel.lineBreakMode = NSLineBreakByWordWrapping;
         [self addSubview:self.factorLabel];
         
+        int sub = 0;
+        if ([self isIpad]) {
+            sub = 175;
+        } else {
+            sub = 250;
+        }
+        
         self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.nextButton setBackgroundColor:g];
         [self.nextButton setTitle:@"Select Grade" forState:UIControlStateNormal];
@@ -37,11 +44,22 @@
             [self.cellDelegate didPickFactor:self.grade andIndex:self.theIndex];
             
         }];
-        [self.nextButton setFrame:CGRectMake(10, CGRectGetMaxY(self.factorLabel.frame) + 250, screenWidth - 20, 50)];
+        [self.nextButton setFrame:CGRectMake(10, CGRectGetMaxY(self.factorLabel.frame) + sub, screenWidth - 20, 50)];
         [self addSubview:self.nextButton];
         
     }
     return self;
+}
+
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (void)drawSmallLayout {

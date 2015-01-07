@@ -673,7 +673,17 @@
         
         self.nextButton.enabled = YES;
         if (!self.continueButton) {
-        self.continueButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height - 70, self.view.frame.size.width - 20, 50) raised:NO];
+            int sub = 0;
+            int ret = 0;
+            if ([self isIpad]) {
+                ret = 30;
+                sub = 40;
+            } else {
+                sub = 70;
+                ret = 50;
+            }
+            
+        self.continueButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height - sub, self.view.frame.size.width - 20, ret) raised:NO];
             UIColor *bc = GREEN_COLOR;
             [self.continueButton setTitle:@"Continue" forState:UIControlStateNormal];
             [self.continueButton setBackgroundColor:bc];
@@ -684,6 +694,17 @@
             [self.view addSubview:self.continueButton];
         }
 
+    }
+}
+
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
     }
 }
 

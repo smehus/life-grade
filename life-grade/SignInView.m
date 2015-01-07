@@ -87,9 +87,16 @@
     [self.signIn addTarget:self action:@selector(signMeIn) forControlEvents:UIControlEventTouchUpInside];
     [self.signIn setTitle:@"Sign In" forState:UIControlStateNormal];
     
+    int sub = 0;
+    if ([self isIpad]) {
+        sub = 5;
+    } else {
+        sub = 15;
+    }
+    
     UIButton *exit = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     exit.clipsToBounds = NO;
-    [exit setFrame:CGRectMake(0, CGRectGetMaxY(self.signIn.frame) + 15, self.theView.frame.size.width, 20)];
+    [exit setFrame:CGRectMake(0, CGRectGetMaxY(self.signIn.frame) + sub, self.theView.frame.size.width, 20)];
     [exit setTitle:@"Exit" forState:UIControlStateNormal];
     [exit.titleLabel setTextAlignment:NSTextAlignmentCenter];
     exit.titleLabel.textColor = GREY_COLOR;
@@ -106,6 +113,17 @@
     [self.theView addSubview:self.emailTextField];
     [self.theView addSubview:self.passwordTextField];
     
+}
+
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (void)exitScreen {

@@ -123,8 +123,14 @@
     [self.collectionView registerClass:[ActionCell class] forCellWithReuseIdentifier:@"Cell"];
     [self.view addSubview:self.collectionView];
     
+    int sub = 0;
+    if ([self isIpad]) {
+        sub = 150;
+    } else {
+        sub = 200;
+    }
     
-    self.directionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width-20, 200)];
+    self.directionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width-20, sub)];
     self.directionsLabel.text = @"Choose one factor to focus on";
     self.directionsLabel.textAlignment = NSTextAlignmentCenter;
     self.directionsLabel.font = FONT_AVENIR_BLACK(35);
@@ -143,6 +149,17 @@
     [self.info addSubview:l];
     [self.view addSubview:self.info];
 
+}
+
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (void)setTitleView {

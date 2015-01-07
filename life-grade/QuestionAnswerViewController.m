@@ -62,6 +62,16 @@
     
     [self setupScreen];
 }
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
+}
 
 - (void)performFetch {
     
@@ -122,7 +132,20 @@
     
     NSString *liteFont = LIGHT_FONT;
     
-    UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, self.view.frame.size.width - 40, 30)];
+    int sub = 0;
+    int ret = 0;
+    int hgh = 0;
+    if ([self isIpad]) {
+        sub = 5;
+        ret = 10;
+        hgh = 40;
+    } else {
+        sub = 10;
+        ret = 20;
+        hgh = 50;
+    }
+    
+    UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, sub, self.view.frame.size.width - 40, 30)];
     firstLabel.text = [NSString stringWithFormat:@"I: %@", @"I solved my problem 6 months ago"];
     firstLabel.font = FONT_AMATIC_BOLD(24);
     firstLabel.numberOfLines = 0;
@@ -131,12 +154,12 @@
     [self.view addSubview:firstLabel];
     
     self.firstControl = [self getSegment];
-    self.firstControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(firstLabel.frame) + 10, 200, 30);
+    self.firstControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(firstLabel.frame) + sub, 200, 30);
     self.firstControl.segmentIndicatorBackgroundColor = BLUE_COLOR;
     self.firstControl.titleTextColor = [UIColor whiteColor];
     [self.view addSubview:self.firstControl];
 
-    UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.firstControl.frame) + 10, self.view.frame.size.width - 40, 55)];
+    UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.firstControl.frame) + sub, self.view.frame.size.width - 40, 55)];
     secondLabel.text = [NSString stringWithFormat:@"II: %@", @"I have taken action on my problem within the past 6 months"];
     secondLabel.font = FONT_AMATIC_BOLD(24);
     secondLabel.numberOfLines = 0;
@@ -145,13 +168,13 @@
     [self.view addSubview:secondLabel];
     
     self.secondControl = [self getSegment];
-    self.secondControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(secondLabel.frame) + 10, 200, 30);
+    self.secondControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(secondLabel.frame) + sub, 200, 30);
     self.secondControl.segmentIndicatorBackgroundColor = BLUE_COLOR;
     self.secondControl.titleTextColor = [UIColor whiteColor];
     [self.view addSubview:self.secondControl];
     
     
-    UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.secondControl.frame) + 10, self.view.frame.size.width-40, 55)];
+    UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.secondControl.frame) + sub, self.view.frame.size.width-40, 55)];
     thirdLabel.text = [NSString stringWithFormat:@"III: %@", @"I am intending to take action in the next month "];
     thirdLabel.font = FONT_AMATIC_BOLD(24);
     thirdLabel.numberOfLines = 0;
@@ -160,12 +183,12 @@
     [self.view addSubview:thirdLabel];
     
     self.thirdControl = [self getSegment];
-    self.thirdControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(thirdLabel.frame) + 10, 200, 30);
+    self.thirdControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(thirdLabel.frame) + sub, 200, 30);
     self.thirdControl.segmentIndicatorBackgroundColor = BLUE_COLOR;
     self.thirdControl.titleTextColor = [UIColor whiteColor];
     [self.view addSubview:self.thirdControl];
     
-    UILabel *fourthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.thirdControl.frame) + 10, self.view.frame.size.width-40, 55)];
+    UILabel *fourthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.thirdControl.frame) + sub, self.view.frame.size.width-40, 55)];
     fourthLabel.text = [NSString stringWithFormat:@"IV: %@", @"I am intending to take action in the next 6 months"];
     fourthLabel.font = FONT_AMATIC_BOLD(24);
     fourthLabel.numberOfLines = 0;
@@ -174,12 +197,12 @@
     [self.view addSubview:fourthLabel];
     
     self.fourthControl = [self getSegment];
-    self.fourthControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(fourthLabel.frame) + 10, 200, 30);
+    self.fourthControl.frame = CGRectMake(self.view.frame.size.width/2 - 100, CGRectGetMaxY(fourthLabel.frame) + sub, 200, 30);
     self.fourthControl.segmentIndicatorBackgroundColor = BLUE_COLOR;
     self.fourthControl.titleTextColor = [UIColor whiteColor];
     [self.view addSubview:self.fourthControl];
     
-    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.fourthControl.frame) + 20, self.view.frame.size.width, 50)];
+    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.fourthControl.frame) + ret, self.view.frame.size.width, hgh)];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [self.startButton addTarget:self action:@selector(openNextView) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton setTitle:@"Continue" forState:UIControlStateNormal];

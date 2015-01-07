@@ -306,6 +306,10 @@
     self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.backgroundColor = barColour;
+    self.titleLabel.layer.shadowOffset = CGSizeMake(-5, 5);
+    self.titleLabel.layer.shadowRadius = 5;
+    self.titleLabel.layer.shadowOpacity = 0.5;
+    
     [self addSubview:self.titleLabel];
     
     self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 80)];
@@ -505,9 +509,12 @@
     self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.backgroundColor = barColour;
+    self.titleLabel.layer.shadowOffset = CGSizeMake(-5, 5);
+    self.titleLabel.layer.shadowRadius = 5;
+    self.titleLabel.layer.shadowOpacity = 0.5;
     [self addSubview:self.titleLabel];
     
-    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 100)];
+    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 150)];
     self.quoteLabel.font = [UIFont fontWithName:liteFont size:16];
     self.quoteLabel.textAlignment = NSTextAlignmentCenter;
     self.quoteLabel.numberOfLines = 0;
@@ -517,7 +524,7 @@
     
     UIColor *blues = BLUE_COLOR;
     
-    BFPaperButton *button = [[BFPaperButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.quoteLabel.frame) + 44, self.frame.size.width - 40, 66) raised:YES];
+    BFPaperButton *button = [[BFPaperButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.quoteLabel.frame) + 22, self.frame.size.width - 40, 66) raised:YES];
     [button setBackgroundColor:blues];
     [button setTitle:@"Click for your positive attributes" forState:UIControlStateNormal];
     [button.titleLabel setFont:[UIFont fontWithName:avFont size:16]];
@@ -562,7 +569,7 @@
     UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
     
     UIImageView *boxImage = [[UIImageView alloc] initWithImage:checkBox highlightedImage:nil];
-    boxImage.frame = CGRectMake(15, CGRectGetMaxY(self.gradeLabel.frame) + 20, 75, 75);
+    boxImage.frame = CGRectMake(15, CGRectGetMaxY(self.gradeLabel.frame) + 15, 75, 75);
     boxImage.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:boxImage];
     
@@ -571,9 +578,12 @@
     check.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:check];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(boxImage.frame) + 10, CGRectGetMaxY(self.gradeLabel.frame) + 29, 200, 40)];
-    label.text = @"Your Goal Is Realistic";
-    label.font = FONT_AMATIC_BOLD(36);
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(boxImage.frame), CGRectGetMaxY(self.gradeLabel.frame) + 7.5, 175, 75)];
+    label.text = @"Congratulations! \nYour Goal is Realistic";
+    label.font = FONT_AMATIC_BOLD(30);
+    label.numberOfLines = 0;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.textAlignment = NSTextAlignmentCenter;
     [self addSubview:label];
     
     int f = 200;

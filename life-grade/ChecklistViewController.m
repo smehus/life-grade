@@ -64,6 +64,17 @@
     
 }
 
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 - (void)performFetch {
     
     MainAppDelegate *del = (MainAppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -210,11 +221,19 @@
     [self.view addSubview:action];
     
     
-    
+    int sub = 0;
+    int ret = 0;
+    if ([self isIpad]) {
+        sub = 15;
+        ret = 40;
+    } else {
+        sub = 40;
+        ret = 50;
+    }
     
     // ****** NEXT BUTTON ***** \\
     
-    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(action.frame) + 40, self.view.frame.size.width - 40, 50)];
+    self.startButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(action.frame) + sub, self.view.frame.size.width - 40, ret)];
     [self.startButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [self.startButton addTarget:self action:@selector(openNextView) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton setTitle:@"Continue" forState:UIControlStateNormal];

@@ -120,7 +120,14 @@
     [barBtnItem setTintColor:grey];
     self.navigationItem.backBarButtonItem = barBtnItem;
     
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
+    int sub = 0;
+    if ([self isIpad]) {
+        sub = 40;
+    } else {
+        sub = 60;
+    }
+    
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, sub)];
     titleLabel.text = self.fetchedAnswers.specificFocus;
     titleLabel.font = [UIFont fontWithName:avFont size:24];
     titleLabel.numberOfLines = 0;
@@ -183,6 +190,16 @@
     
     
 }
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
+}
 
 - (void)setupScreen {
     
@@ -192,8 +209,20 @@
     UIColor *yellow = [UIColor colorWithHue:0.15 saturation:0.9 brightness:0.9 alpha:1.0];
     UIColor *red = [UIColor colorWithHue:0.0 saturation:0.8 brightness:1.0 alpha:1.0];
     
+    int ret = 0;
+    int sub = 0;
+    int btnY = 0;
+    if ([self isIpad]) {
+        ret = 0;
+        sub = 30;
+        btnY = 10;
+    } else {
+        ret = 10;
+        sub = 40;
+        btnY = 30;
+    }
     
-    firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + 10, screenWidth, 40)];
+    firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + ret, screenWidth, sub)];
     firstLabel.text = @"How Confident Are You?";
     firstLabel.font = [UIFont fontWithName:avFont size:20];
     firstLabel.numberOfLines = 0;
@@ -208,7 +237,7 @@
     [self.view addSubview:self.firstSliderLabel];
     
     
-    self.sliderOne = [[JMMarkSlider alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.firstSliderLabel.frame)+ 30, screenWidth-20, 40)];
+    self.sliderOne = [[JMMarkSlider alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.firstSliderLabel.frame)+ 30, screenWidth-20, sub)];
     self.sliderOne.markColor = [UIColor blackColor];
     self.sliderOne.markPositions = @[@1,@25,@50,@75,@99];
     self.sliderOne.markWidth = 4.0;
@@ -221,7 +250,7 @@
     
     [self.view addSubview:self.sliderOne];
     
-    secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.sliderOne.frame) + 25, screenWidth, 40)];
+    secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.sliderOne.frame) + 25, screenWidth, sub)];
     secondLabel.text = @"Is this goal realistic?";
     secondLabel.font = [UIFont fontWithName:avFont size:24];
     secondLabel.numberOfLines = 0;
@@ -251,13 +280,13 @@
     CGFloat halfScreen = screenWidth/4;
     
     self.switchThing = [self getSegment];
-    self.switchThing.frame = CGRectMake(screenWidth/2 - halfScreen, CGRectGetMaxY(self.secondSliderLabel.frame)+ 10, screenWidth/2, 50);
+    self.switchThing.frame = CGRectMake(screenWidth/2 - halfScreen, CGRectGetMaxY(self.secondSliderLabel.frame)+ 10, screenWidth/2, sub + 10);
     [self.view addSubview:self.switchThing];
     
     
     UIColor *gC = GREEN_COLOR;
     
-    nButton = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.switchThing.frame) + 30, self.view.frame.size.width - 20, 50)];
+    nButton = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.switchThing.frame) + btnY, self.view.frame.size.width - 20, 50)];
     [nButton setTitle:@"Next" forState:UIControlStateNormal];
     [nButton setBackgroundColor:gC];
     [nButton setUserInteractionEnabled:YES];

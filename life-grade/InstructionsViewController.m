@@ -106,8 +106,15 @@
     
     [self.view addSubview:titelLabel];
     
+    int sub = 0;
+    if ([self isIpad]) {
+        sub = 125;
+    } else {
+        sub = 175;
+    }
+    
     self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.nextButton setFrame:CGRectMake(0, self.view.frame.size.height - 175, self.view.frame.size.width, 44)];
+    [self.nextButton setFrame:CGRectMake(0, self.view.frame.size.height - sub, self.view.frame.size.width, 44)];
     [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     UIColor *color = GREEN_COLOR;
     [self.nextButton setBackgroundColor:color];
@@ -120,6 +127,17 @@
     [self.view addSubview:self.nextButton];
     
     [self setupView];
+}
+
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (void)performFetch {

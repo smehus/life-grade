@@ -288,6 +288,8 @@
             
             [user deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
+                del = (MainAppDelegate *)[[UIApplication sharedApplication] delegate];
+                del.currentUser = nil;
                 [self.managedObjectContext deleteObject:self.fetchedAnswers];
                 
                 NSError *err = nil;
@@ -391,7 +393,7 @@
             if (user) {
                 
                 [PFUser logOut];
-                
+                del.currentUser = nil;
                 [self.managedObjectContext deleteObject:self.fetchedAnswers];
                 
                 NSError *error = nil;

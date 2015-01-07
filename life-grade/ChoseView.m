@@ -30,6 +30,17 @@
     return self;
 }
 
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 - (void)setupScreen {
     self.backgroundColor = [UIColor whiteColor];
     NSString *font = LIGHT_FONT;
@@ -42,8 +53,17 @@
     titleLabel.text = @"You chose to focus on: ";
     [self addSubview:titleLabel];
     
+    int ret = 0;
+    int sub = 0;
+    if ([self isIpad]) {
+        ret = 75;
+        sub = 0;
+    } else {
+        ret = 100;
+        sub = 10;
+    }
     
-    UILabel *focusLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 10, self.frame.size.width - 20, 100)];
+    UILabel *focusLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + sub, self.frame.size.width - 20, ret)];
      [focusLabel setFont:FONT_AMATIC_REG(36)];
     focusLabel.numberOfLines = 0;
     focusLabel.lineBreakMode = NSLineBreakByWordWrapping;

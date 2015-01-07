@@ -116,7 +116,7 @@
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    planLabel.text = @"Here are the positive traits you chose to help accomplish your goal";
+    planLabel.text = @"Here are the positive traits you chose to give you your mindset for success";
     [self addSubview:planLabel];
     
     
@@ -148,20 +148,37 @@
     }];
     [self addSubview:nextbutton];
 }
+- (CGSize)getSizeOfString:(NSString *)txt withWidth:(CGFloat)w {
+    NSString *text = txt;
+    CGFloat width = w;
+    UIFont *font = FONT_AVENIR_BLACK(16);
+    NSAttributedString *attributedText =
+    [[NSAttributedString alloc]
+     initWithString:text
+     attributes:@
+     {
+     NSFontAttributeName: font
+     }];
+    CGRect rect = [attributedText boundingRectWithSize:(CGSize){width, CGFLOAT_MAX}
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                               context:nil];
+    CGSize size = rect.size;
+    return size;
+}
 
 - (void)trackingProgressView {
     
     
     self.backgroundColor = [UIColor whiteColor];
     
-    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 200)];
+    
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 250)];
     [planLabel setFont:FONT_AVENIR_BLACK(16)];
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
     planLabel.text = self.progressMethod.methodDescription;
-    
-    
+//    [planLabel sizeToFit];
     
     
     [self addSubview:planLabel];
@@ -170,7 +187,7 @@
     
     UIButton *linkButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [linkButton setFrame:CGRectMake(10, CGRectGetMaxY(planLabel.frame) + 10, self.frame.size.width-20, 44)];
-    [linkButton setTitle:@"Go To PDF" forState:UIControlStateNormal];
+    [linkButton setTitle:@"Download the Worksheet" forState:UIControlStateNormal];
     [linkButton setBackgroundColor:[UIColor clearColor]];
     [linkButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [[linkButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -190,6 +207,7 @@
     [nextbutton setTitle:@"Got It!" forState:UIControlStateNormal];
     [nextbutton setBackgroundColor:c];
     [nextbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [nextbutton setFont:FONT_AVENIR_BLACK(18)];
     [[nextbutton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         self.closeBlock();
     }];
@@ -197,12 +215,29 @@
     
 }
 
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 - (void)setupQuestionView {
     
     self.backgroundColor = [UIColor whiteColor];
     
+    int ret = 0;
+    if ([self isIpad]) {
+        ret = 40;
+    } else {
+        ret = 20;
+    }
     
-    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 200)];
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - ret, 200)];
     [planLabel setFont:FONT_AMATIC_BOLD(18)];
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
@@ -365,7 +400,7 @@
     
     
     UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 250)];
-    [planLabel setFont:FONT_AMATIC_BOLD(24)];
+    [planLabel setFont:FONT_AVENIR_BLACK(16)];
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -428,6 +463,9 @@
     
     Attributes *d = self.attributes[indexPath.row];
     cell.attributeLabel.text = d.attribute;
+    cell.layer.shadowOffset = CGSizeMake(-5, 5);
+    cell.layer.shadowRadius = 5;
+    cell.layer.shadowOpacity = 0.5;
     
     
     return cell;

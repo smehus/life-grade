@@ -73,7 +73,17 @@
     [barBtnItem setTintColor:grey];
     self.navigationItem.backBarButtonItem = barBtnItem;
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, 100)];
+    int sub = 0;
+    int ret = 0;
+    if ([self isIpad]) {
+        sub = 0;
+        ret = 0;
+    } else {
+        sub = 10;
+        ret = 10;
+    }
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, sub, self.view.frame.size.width, 75)];
     titleLabel.text = self.focusFactor.group;
     titleLabel.font = FONT_AMATIC_BOLD(24);
     titleLabel.numberOfLines = 0;
@@ -82,7 +92,7 @@
     [self.view addSubview:titleLabel];
     
     
-    UILabel *trackLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame), self.view.frame.size.width, 30)];
+    UILabel *trackLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame), self.view.frame.size.width, 25)];
     trackLabel.text = @"Track Your Progress";
     trackLabel.font = [UIFont fontWithName:avFont size:24];
     trackLabel.numberOfLines = 0;
@@ -90,7 +100,7 @@
     trackLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.view addSubview:trackLabel];
     
-    UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(trackLabel.frame)+ 10, self.view.frame.size.width, 30)];
+    UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(trackLabel.frame)+ ret, self.view.frame.size.width, 30)];
     instructLabel.text = @"Select three ways to track your progression";
     instructLabel.font = [UIFont fontWithName:avFont size:14];
     instructLabel.numberOfLines = 0;
@@ -102,6 +112,17 @@
     [self setupGrid];
     [self addNextButton];
     
+}
+
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (void)performFetch {
@@ -270,8 +291,15 @@
 - (void)setupGrid {
     UIColor *greenColor = GREEN_COLOR;
     
+    int sub = 0;
+    if ([self isIpad]) {
+        sub = 125;
+    } else {
+        sub = 200;
+    }
+    
     container = [MGBox boxWithSize:CGSizeMake(self.view.size.width, 200)];
-    container.frame = CGRectMake(0, 200, self.view.frame.size.width, 200);
+    container.frame = CGRectMake(0, sub, self.view.frame.size.width, 200);
     container.contentLayoutMode = MGLayoutGridStyle;
     
     [self.view addSubview:container];

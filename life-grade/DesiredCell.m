@@ -35,11 +35,30 @@
             [self.cellDelegate didPickGrade:self.gradeLabel.text andIndex:self.theIndex];
             
         }];
-        [self.nextButton setFrame:CGRectMake(10, CGRectGetMaxY(self.gradeLabel.frame) + 300, screenWidth - 20, 50)];
+        
+        int sub = 0;
+        if ([self isIpad]) {
+            sub = 225;
+        } else {
+            sub = 300;
+        }
+        
+        [self.nextButton setFrame:CGRectMake(10, CGRectGetMaxY(self.gradeLabel.frame) + sub, screenWidth - 20, 50)];
         [self addSubview:self.nextButton];
         
     }
     return self;
+}
+
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (void)setLargeFrame {

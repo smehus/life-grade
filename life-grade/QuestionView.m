@@ -215,7 +215,14 @@
     
     self.isBig = NO;
     
-    self.directions = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, 300, 150, 100)];
+    int sub = 0;
+    if ([self isIpad]) {
+        sub = 250;
+    } else {
+        sub = 300;
+    }
+    
+    self.directions = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, sub, 150, 50)];
     self.directions.text = @"Select your grade!";
     self.directions.font = FONT_AMATIC_REG(30);
     self.directions.textColor = [UIColor whiteColor];
@@ -255,7 +262,7 @@
     
     NSString *avFont = AVENIR_BLACK;
     
-    self.nextButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, 400, 130, 50) raised:NO];
+    self.nextButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 150, CGRectGetMaxY(self.directions.frame) + 25, 130, 50) raised:NO];
     self.nextButton.tapCircleColor = [UIColor colorWithRed:1 green:0 blue:1 alpha:0.6];
     [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
     [self.nextButton.titleLabel setFont:[UIFont fontWithName:avFont size:24]];
@@ -369,6 +376,16 @@
         
     }];
     
+}
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (CGSize)getSizeOfString:(NSString *)txt withWidth:(CGFloat)w {

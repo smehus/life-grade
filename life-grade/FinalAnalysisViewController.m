@@ -602,10 +602,10 @@
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a attainableQuote:@"Dicks"];
-    v.titleLabel.text = @"Attainable";
+    v.titleLabel.text = @"Mindset for Success";
     v.titleLabel.font = FONT_AMATIC_REG(24);
     v.quoteLabel.text =  @"In order to attain your goal you must channel your most powerful positive behaviors to make them come true. You must develop an attitude for success to keep the positive momentum going. Remember, you are worthy of this goal so start developing that those positive behaviors.";
-    v.quoteLabel.font = FONT_AVENIR_BLACK(12);
+    v.quoteLabel.font = FONT_AVENIR_BLACK(14);
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.currentGrade.text = @"Desired Grade";
     v.delegate = self;
@@ -745,8 +745,8 @@
     post[@"trackingProgressOne"] = self.fetchedAnswers.trackingProgressOne;
     post[@"trackingProgressTwo"] = self.fetchedAnswers.trackingProgressTwo;
     post[@"trackingProgressThree"] = self.fetchedAnswers.trackingProgressThree;
-    post[@"startDate"] = self.fetchedAnswers.startDate;
-    post[@"endDate"] = self.fetchedAnswers.endDate;
+    post[@"startDate"] = (self.fetchedAnswers.startDate) ? self.fetchedAnswers.startDate : [NSDate date];
+    post[@"endDate"] = (self.fetchedAnswers.endDate) ? self.fetchedAnswers.endDate : [NSDate date];
     post[@"firstSupport"] = self.fetchedAnswers.firstSupport;
     post[@"secondSupport"] = self.fetchedAnswers.secondSupport;
     post[@"thirdSupport"] = self.fetchedAnswers.thirdSupport;
