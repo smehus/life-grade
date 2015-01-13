@@ -592,8 +592,8 @@
     v.titleLabel.text = @"Tracking Progress";
     v.titleLabel.font = FONT_AMATIC_BOLD(28);
     v.delegate = self;
-    v.quoteLabel.text = @"Be not afraid of going slowly, be afraid of standing still. \n ~Chinese Proverb";
-    v.quoteLabel.font = FONT_AVENIR_BLACK(18);
+    v.quoteLabel.text = @"Be not afraid of going slowly, be afraid of standing still. ~Chinese Proverb";
+    v.quoteLabel.font = FONT_AVENIR_BLACK(14);
     [self.scrollView addSubview:v];
     
 }

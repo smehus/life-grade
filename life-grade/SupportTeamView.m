@@ -108,7 +108,17 @@
     supportLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:supportLabel];
     
-    CGRect whyFrame = CGRectMake(150, CGRectGetMaxY(self.thirdSupport.frame), 150, 75);
+    int ret = 0;
+    int sub = 0;
+    if ([self isIpad]) {
+        ret = 30;
+        sub = 50;
+    } else {
+        ret = 0;
+        sub = 75;
+    }
+    
+    CGRect whyFrame = CGRectMake(150, CGRectGetMaxY(self.thirdSupport.frame) - ret, 150, sub);
     self.whySupportButton = [[BFPaperButton alloc] initWithFrame:whyFrame raised:NO];
     [self.whySupportButton setTitle:@"Why Do I Need Support?" forState:UIControlStateNormal];
     [self.whySupportButton setTitleFont:FONT_AVENIR_BLACK(16)];
@@ -132,6 +142,17 @@
     
     [self addSubview:self.nextButton];
     */
+}
+
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 @end

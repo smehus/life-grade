@@ -294,7 +294,7 @@
         hgh = 120;
     } else {
         sub = 75;
-        ret = 25;
+        ret = 5;
         hgh = 150;
     }
     

@@ -130,19 +130,31 @@
 - (void)drawFirstTemplate {
     NSString *avFont = AVENIR_BLACK;
     
+    int sub = 0;
+    int ret = 0;
+    int hgh = 0;
     
-    firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 175)];
+    if ([self isIpad]) {
+        sub = 0;
+        hgh = 140;
+        
+    } else {
+        sub = 10;
+        hgh = 175;
+    }
+    
+    firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, hgh)];
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
-    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.width-20, 50)];
+    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(10, sub, self.frame.size.width-20, 50)];
     currentGrade.text = @"Current Life+Grade";
     currentGrade.font = [UIFont fontWithName:avFont size:24];
     currentGrade.textAlignment = NSTextAlignmentCenter;
     [firstView addSubview:currentGrade];
     [self addSubview:firstView];
     
-    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2-50, CGRectGetMaxY(currentGrade.frame) + 10, 100, 100)];
+    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2-50, CGRectGetMaxY(currentGrade.frame) + sub, 100, 100)];
     self.gradeLabel.textAlignment = NSTextAlignmentCenter;
     self.gradeLabel.textColor = [UIColor redColor];
     self.gradeLabel.font = FONT_AMATIC_BOLD(75);
@@ -204,12 +216,25 @@
 - (void)drawSecondTemplate {
     NSString *avFont = AVENIR_BLACK;
     
+    int sub = 0;
+    int ret = 0;
+    int hgh = 0;
+    if ([self isIpad]) {
+        sub = 2;
+        hgh = 140;
+        ret = 44;
+        
+    } else {
+        sub = 10;
+        hgh = 150;
+        ret = 66;
+    }
     
-    firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 150)];
+    firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, hgh)];
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
-    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, self.frame.size.width-40, 40)];
+    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(20, sub, self.frame.size.width-40, 40)];
     self.currentGrade.font = [UIFont fontWithName:avFont size:24];
     self.currentGrade.textAlignment = NSTextAlignmentCenter;
     [firstView addSubview:self.currentGrade];
@@ -226,7 +251,7 @@
     
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 10, self.frame.size.width/3, 66)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + sub, self.frame.size.width/3, ret)];
     self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
     self.titleLabel.text = @"STRENGTHS";
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -238,7 +263,7 @@
     
     UILabel *goalLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.titleLabel.frame) + 5,
                                                                    self.titleLabel.frame.origin.y,
-                                                                   self.frame.size.width - CGRectGetMaxX(self.titleLabel.frame), 66)];
+                                                                   self.frame.size.width - CGRectGetMaxX(self.titleLabel.frame), ret)];
     goalLabel.text = goalString;
     NSString *thefont = AVENIR_BLACK;
     goalLabel.textAlignment = NSTextAlignmentCenter;
@@ -247,7 +272,7 @@
     goalLabel.font = [UIFont fontWithName:thefont size:24];
     [self addSubview:goalLabel];
     
-    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 100)];
+    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + sub, self.frame.size.width - 20, 100)];
     self.quoteLabel.font = FONT_AMATIC_BOLD(26);
     self.quoteLabel.textAlignment = NSTextAlignmentCenter;
     self.quoteLabel.backgroundColor = barColour;
@@ -279,12 +304,25 @@
     
     // GOALS
     NSString *avFont = AVENIR_BLACK;
+    
+    int sub = 0;
+    int ret = 0;
+    int hgh = 0;
+    if ([self isIpad]) {
+        sub = 0;
+        ret = 30;
+        hgh = 50;
+    } else {
+        sub = 10;
+        ret = 50;
+        hgh = 80;
+    }
 
     firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 150)];
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
-    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, self.frame.size.width - 40, 50)];
+    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(20, sub, self.frame.size.width - 40, ret)];
     self.currentGrade.font = [UIFont fontWithName:avFont size:24];
     self.currentGrade.textAlignment = NSTextAlignmentCenter;
     [firstView addSubview:self.currentGrade];
@@ -302,7 +340,7 @@
     
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.gradeLabel.frame) + 10, self.frame.size.width - 40, 44)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.gradeLabel.frame) + sub, self.frame.size.width - 40, 44)];
     self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.backgroundColor = barColour;
@@ -312,7 +350,7 @@
     
     [self addSubview:self.titleLabel];
     
-    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 80)];
+    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + sub, self.frame.size.width - 20, hgh)];
     self.quoteLabel.font = [UIFont fontWithName:liteFont size:16];
     self.quoteLabel.textAlignment = NSTextAlignmentCenter;
     self.quoteLabel.numberOfLines = 0;
@@ -484,11 +522,22 @@
     
     NSString *avFont = AVENIR_BLACK;
     
+    int sub = 0;
+    int ret = 0;
+    int hgh = 0;
+    if ([self isIpad]) {
+        sub = 0;
+        hgh = 100;
+    } else {
+        sub = 10;
+        hgh = 150;
+    }
+    
     firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 150)];
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
-    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, self.frame.size.width-40, 50)];
+    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(20, sub, self.frame.size.width-40, 50)];
     self.currentGrade.font = [UIFont fontWithName:avFont size:24];
     self.currentGrade.textAlignment = NSTextAlignmentCenter;
     [firstView addSubview:self.currentGrade];
@@ -505,7 +554,7 @@
     
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.gradeLabel.frame) + 10, self.frame.size.width - 40, 44)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.gradeLabel.frame) + sub, self.frame.size.width - 40, 44)];
     self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.backgroundColor = barColour;
@@ -514,7 +563,7 @@
     self.titleLabel.layer.shadowOpacity = 0.5;
     [self addSubview:self.titleLabel];
     
-    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + 10, self.frame.size.width - 20, 150)];
+    self.quoteLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.titleLabel.frame) + sub, self.frame.size.width - 20, hgh)];
     self.quoteLabel.font = [UIFont fontWithName:liteFont size:16];
     self.quoteLabel.textAlignment = NSTextAlignmentCenter;
     self.quoteLabel.numberOfLines = 0;
@@ -543,14 +592,30 @@
     
     // REALISTIC PAGE
     
+    int sub = 0;
+    int ret = 0;
+    int hgh = 0;
+    int grdLbl = 0;
+    if ([self isIpad]) {
+        sub = 130;
+        ret = 0;
+        hgh = 30;
+        grdLbl = 5;
+    } else {
+        sub = 150;
+        ret = 10;
+        hgh = 50;
+        grdLbl = 15;
+    }
+    
     NSString *avFont = AVENIR_BLACK;
     UIColor *blues = BLUE_COLOR;
     
-    firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 150)];
+    firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, sub)];
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
-    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, self.frame.size.width-40, 50)];
+    self.currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(20, ret, self.frame.size.width-40, hgh)];
     self.currentGrade.font = [UIFont fontWithName:avFont size:24];
     self.currentGrade.textAlignment = NSTextAlignmentCenter;
     [firstView addSubview:self.currentGrade];
@@ -569,7 +634,7 @@
     UIImage *checkBox = [UIImage imageNamed:@"CheckBox"];
     
     UIImageView *boxImage = [[UIImageView alloc] initWithImage:checkBox highlightedImage:nil];
-    boxImage.frame = CGRectMake(15, CGRectGetMaxY(self.gradeLabel.frame) + 15, 75, 75);
+    boxImage.frame = CGRectMake(15, CGRectGetMaxY(self.gradeLabel.frame) + grdLbl, 75, 75);
     boxImage.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:boxImage];
     
@@ -587,6 +652,9 @@
     [self addSubview:label];
     
     int f = 200;
+    if ([self isIpad]) {
+        f = 150;
+    }
     
     BFPaperButton *realisticButton = [[BFPaperButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - f/2, CGRectGetMaxY(label.frame) + 15, f, f) raised:YES];
     [realisticButton setTitle:@"Read if your goals are realistic" forState:UIControlStateNormal];
@@ -602,6 +670,17 @@
     }];
     [self addSubview:realisticButton];
     
+}
+
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (void)drawFinalTips {

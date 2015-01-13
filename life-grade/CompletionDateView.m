@@ -30,17 +30,39 @@
     }
     return self;
 }
+- (BOOL)isIpad {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        return NO;
+    } else {
+        return YES;
+    }
+}
 
 - (void)constructScreen {
     
     avFont = AVENIR_BLACK;
+    int firstViewHeight = 0;
+    int ttlY = 0;
+    int ret = 0;
+    if ([self isIpad]) {
+        firstViewHeight = 130;
+        ttlY = 0;
+        ret = 5;
+    } else {
+        firstViewHeight = 150;
+        ttlY = 10;
+        ret = 20;
+    }
     
     firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 150)];
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
     
-    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.width-20, 50)];
+    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(10, ttlY, self.frame.size.width-20, 50)];
     currentGrade.text = @"Final Life+Grade";
     currentGrade.textAlignment = NSTextAlignmentCenter;
     currentGrade.font = [UIFont fontWithName:avFont size:24];
@@ -61,7 +83,7 @@
     UIColor *greens = GREEN_COLOR;
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.gradeLabel.frame) + 10, self.frame.size.width - 40, 44)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.gradeLabel.frame) + ttlY, self.frame.size.width - 40, 44)];
 //    self.titleLabel.font = [UIFont fontWithName:liteFont size:24];
     self.titleLabel.font = FONT_AMATIC_BOLD(24);
     self.titleLabel.text = @"My Important Dates";
@@ -104,7 +126,7 @@
     self.completionDateLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.completionDateLabel];
     
-    CGRect buttonRect = CGRectMake(20, CGRectGetMaxY(self.completionDateLabel.frame) + 20, self.frame.size.width - 40, 50);
+    CGRect buttonRect = CGRectMake(20, CGRectGetMaxY(self.completionDateLabel.frame) + ret, self.frame.size.width - 40, 50);
     self.havingTroubleButton = [[BFPaperButton alloc] initWithFrame:buttonRect raised:NO];
     [self.havingTroubleButton setBackgroundColor:blueC];
     [self.havingTroubleButton setTitle:@"Having Trouble Starting?" forState:UIControlStateNormal];

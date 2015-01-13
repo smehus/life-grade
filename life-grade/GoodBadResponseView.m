@@ -134,12 +134,20 @@
     self.collectionView.showsHorizontalScrollIndicator = NO;
     [self addSubview:self.collectionView];
     
-    
+    int sub = 0;
+    int ret = 0;
+    if ([self isIpad]) {
+        sub = 5;
+        ret = 30;
+    } else {
+        sub = 20;
+        ret = 44;
+    }
     
     UIColor *c = GREEN_COLOR;
     
     UIButton *nextbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [nextbutton setFrame:CGRectMake(10, CGRectGetMaxY(self.collectionView.frame) + 20, self.frame.size.width-20, 44)];
+    [nextbutton setFrame:CGRectMake(10, CGRectGetMaxY(self.collectionView.frame) + sub, self.frame.size.width-20, ret)];
     [nextbutton setTitle:@"Cool!" forState:UIControlStateNormal];
     [nextbutton setBackgroundColor:c];
     [nextbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -171,9 +179,21 @@
     
     self.backgroundColor = [UIColor whiteColor];
     
+    int sub = 0;
+    int ret = 0;
+    int fnt = 0;
+    if ([self isIpad]) {
+        sub = 0;
+        ret = 175;
+        fnt = 14;
+    } else {
+        sub = 10;
+        ret = 250;
+        fnt = 16;
+    }
     
-    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, 250)];
-    [planLabel setFont:FONT_AVENIR_BLACK(16)];
+    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  sub, self.frame.size.width - 20, ret)];
+    [planLabel setFont:FONT_AVENIR_BLACK(fnt)];
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -186,7 +206,7 @@
     
     
     UIButton *linkButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [linkButton setFrame:CGRectMake(10, CGRectGetMaxY(planLabel.frame) + 10, self.frame.size.width-20, 44)];
+    [linkButton setFrame:CGRectMake(10, CGRectGetMaxY(planLabel.frame) + sub, self.frame.size.width-20, 44)];
     [linkButton setTitle:@"Download the Worksheet" forState:UIControlStateNormal];
     [linkButton setBackgroundColor:[UIColor clearColor]];
     [linkButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -410,9 +430,17 @@
 }
 
 - (void)drawCompletionDateView {
+    
+    int ret = 0;
+    if ([self isIpad]) {
+        ret = 22;
+    } else {
+        ret = 24;
+    }
+    
     self.backgroundColor = [UIColor whiteColor];
     UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  10, self.frame.size.width - 20, self.frame.size.height - 20)];
-    [planLabel setFont:FONT_AMATIC_BOLD(24)];
+    [planLabel setFont:FONT_AMATIC_BOLD(ret)];
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;

@@ -14,6 +14,9 @@
 		494692BD19CB75B300869599 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 494692BC19CB75B300869599 /* KLCPopup.m */; };
 		494692C119CB7B5900869599 /* BeginGoalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494692C019CB7B5900869599 /* BeginGoalViewController.m */; };
 		65004BA618E7110100749A82 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65004BA518E7110100749A82 /* SWRevealViewController.m */; };
+		650E74461A64B461006594D4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 650E74431A64B461006594D4 /* Default-568h@2x.png */; };
+		650E74471A64B461006594D4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 650E74441A64B461006594D4 /* Default.png */; };
+		650E74481A64B461006594D4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 650E74451A64B461006594D4 /* Default@2x.png */; };
 		6520A6331909FDD5006FD28C /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6520A6321909FDD5006FD28C /* SignupViewController.m */; };
 		6520A635190A8B56006FD28C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6520A634190A8B56006FD28C /* CoreData.framework */; };
 		6533F55618E190360017C7D6 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6533F55318E190360017C7D6 /* CollectionCell.xib */; };
@@ -136,6 +139,9 @@
 		494692C019CB7B5900869599 /* BeginGoalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeginGoalViewController.m; sourceTree = "<group>"; };
 		65004BA418E7110100749A82 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		65004BA518E7110100749A82 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		650E74431A64B461006594D4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		650E74441A64B461006594D4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		650E74451A64B461006594D4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		6520A6311909FDD5006FD28C /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		6520A6321909FDD5006FD28C /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		6520A634190A8B56006FD28C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -450,6 +456,9 @@
 				655EC61118DF5FE20036515F /* InfoPlist.strings */,
 				655EC61418DF5FE20036515F /* main.m */,
 				655EC61618DF5FE20036515F /* life-grade-Prefix.pch */,
+				650E74431A64B461006594D4 /* Default-568h@2x.png */,
+				650E74441A64B461006594D4 /* Default.png */,
+				650E74451A64B461006594D4 /* Default@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -757,6 +766,7 @@
 				655EC64818DF626E0036515F /* OpeningViewController.xib in Resources */,
 				65715012191482880034009A /* Blue-box-2-@2x.png in Resources */,
 				655EC62118DF5FE20036515F /* Images.xcassets in Resources */,
+				650E74471A64B461006594D4 /* Default.png in Resources */,
 				6571501B191482880034009A /* mind-set-blue-@2x.png in Resources */,
 				A581F2D619C917C600AB9382 /* CheckBox.png in Resources */,
 				A50D5DA719AC2A4900A85175 /* life_grade_logo.png in Resources */,
@@ -768,6 +778,7 @@
 				6571501F191482880034009A /* round-about-blue-2-@2x.png in Resources */,
 				6571501C191482880034009A /* mind-set-Green-@2x.png in Resources */,
 				65715014191482880034009A /* Dotted-like-2-@2x.png in Resources */,
+				650E74481A64B461006594D4 /* Default@2x.png in Resources */,
 				6571501A191482880034009A /* logo---copy@2x.png in Resources */,
 				65715017191482880034009A /* empty-Blue-box-@2x.png in Resources */,
 				65715020191482880034009A /* Round-about-blue-@2x.png in Resources */,
@@ -782,6 +793,7 @@
 				655EC61C18DF5FE20036515F /* Main.storyboard in Resources */,
 				65715019191482880034009A /* Lined-Paper-@2x.png in Resources */,
 				A5E85E2B1927B1B500AAA4B6 /* GradeCell.xib in Resources */,
+				650E74461A64B461006594D4 /* Default-568h@2x.png in Resources */,
 				6571501D191482880034009A /* red-arrow-1-@2x.png in Resources */,
 				A5CA589E19E08E1400940841 /* header_image.png in Resources */,
 				655EC64318DF62550036515F /* MenuViewController.xib in Resources */,
@@ -1024,8 +1036,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Scott mehus (32M8ER9697)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott mehus (32M8ER9697)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Scott Mehus (4HWQ95CTCF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Scott Mehus (4HWQ95CTCF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/smehus/Documents/life-grade",
@@ -1040,7 +1052,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c6982df1-d858-461c-ae45-46ef22ce9a03";
+				PROVISIONING_PROFILE = "3aa4d7b0-47ce-4274-a6bf-78cb74361bd2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1053,7 +1065,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Scott Mehus (4HWQ95CTCF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott mehus (32M8ER9697)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Scott Mehus (4HWQ95CTCF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/smehus/Documents/life-grade",
@@ -1068,7 +1080,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c6982df1-d858-461c-ae45-46ef22ce9a03";
+				PROVISIONING_PROFILE = "3aa4d7b0-47ce-4274-a6bf-78cb74361bd2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
