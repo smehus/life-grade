@@ -286,6 +286,7 @@
 
         if (user) {
             
+            
             [user deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
                 del = (MainAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -310,34 +311,47 @@
                 [self.myRevealController pushFrontViewController:opening animated:YES];
                 [PFUser logOut];
                 
-                UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"Account Deleted"
+                [[[UIAlertView alloc] initWithTitle:@"Account Deleted"
                                                             message:@"Your account has been completely removed from our database"
                                                            delegate:nil
-                                                  cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+                                                  cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
             
                 
             }];
 
         } else {
-            NSLog(@"No Cached User Exists"); // need to do something - maybe if defaults has an email send that to server to unsubscribe    
-            [self.managedObjectContext deleteObject:self.fetchedAnswers];
             
-            NSError *error = nil;
-            if (![self.managedObjectContext save:&error]) {
-                NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
-                return;
-            }
+            
+            NSLog(@"No Cached User Exists"); // need to do something - maybe if defaults has an email send that to server to unsubscribe    
+
             
             NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
             for (NSString *key in [defaultsDictionary allKeys]) {
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
             }
             
+            if (self.fetchedAnswers != nil) {
+                
+                [self.managedObjectContext deleteObject:self.fetchedAnswers];
+                NSError *error = nil;
+                if (![self.managedObjectContext save:&error]) {
+                    NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
+                    return;
+                }
+            }
+
+            
             OpeningViewController *opening = [[OpeningViewController alloc] init];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:opening];
             [self.myRevealController pushFrontViewController:opening animated:YES];
             
             // add pop up to explain they've unsubscribed
+            
+            
+            [[[UIAlertView alloc] initWithTitle:@"Account Deleted"
+                                                        message:@"Your account has been completely removed from our database"
+                                                       delegate:nil
+                                               cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
             
         }
 
