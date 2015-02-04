@@ -47,7 +47,7 @@
     int firstViewHeight = 0;
     int ttlY = 0;
     int ret = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         firstViewHeight = 130;
         ttlY = 0;
         ret = 5;

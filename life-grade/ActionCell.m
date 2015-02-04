@@ -30,7 +30,7 @@
         [self addSubview:self.factorLabel];
         
         int sub = 0;
-        if ([self isIpad]) {
+        if ([self isIpad] || IS_IPHONE4) {
             sub = 175;
         } else {
             sub = 250;

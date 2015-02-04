@@ -107,7 +107,7 @@
     [self.view addSubview:titelLabel];
     
     int sub = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 125;
     } else {
         sub = 175;

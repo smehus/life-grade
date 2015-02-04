@@ -124,7 +124,7 @@
     [self.view addSubview:self.collectionView];
     
     int sub = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 150;
     } else {
         sub = 200;

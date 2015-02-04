@@ -62,6 +62,7 @@
 		6571501E191482880034009A /* Red-arrow-2-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6571500E191482880034009A /* Red-arrow-2-@2x.png */; };
 		6571501F191482880034009A /* round-about-blue-2-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6571500F191482880034009A /* round-about-blue-2-@2x.png */; };
 		65715020191482880034009A /* Round-about-blue-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65715010191482880034009A /* Round-about-blue-@2x.png */; };
+		65808B841A7D35FD0058FE42 /* SDiPhoneVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 65808B831A7D35FD0058FE42 /* SDiPhoneVersion.m */; };
 		65BFF070190F4CF90087511B /* HACollectionViewSmallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF06D190F4CF90087511B /* HACollectionViewSmallLayout.m */; };
 		65BFF071190F4CF90087511B /* HACollectionViewLargeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF06F190F4CF90087511B /* HACollectionViewLargeLayout.m */; };
 		65BFF076190F511E0087511B /* HATransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BFF073190F511E0087511B /* HATransitionController.m */; };
@@ -202,6 +203,8 @@
 		6571500E191482880034009A /* Red-arrow-2-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red-arrow-2-@2x.png"; sourceTree = "<group>"; };
 		6571500F191482880034009A /* round-about-blue-2-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-about-blue-2-@2x.png"; sourceTree = "<group>"; };
 		65715010191482880034009A /* Round-about-blue-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Round-about-blue-@2x.png"; sourceTree = "<group>"; };
+		65808B821A7D35FD0058FE42 /* SDiPhoneVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiPhoneVersion.h; sourceTree = "<group>"; };
+		65808B831A7D35FD0058FE42 /* SDiPhoneVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDiPhoneVersion.m; sourceTree = "<group>"; };
 		65BFF06C190F4CF90087511B /* HACollectionViewSmallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACollectionViewSmallLayout.h; sourceTree = "<group>"; };
 		65BFF06D190F4CF90087511B /* HACollectionViewSmallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACollectionViewSmallLayout.m; sourceTree = "<group>"; };
 		65BFF06E190F4CF90087511B /* HACollectionViewLargeLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACollectionViewLargeLayout.h; sourceTree = "<group>"; };
@@ -330,6 +333,7 @@
 		494692B919CB75A600869599 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				65808B811A7D35FD0058FE42 /* SDiPhoneVersion */,
 				494692BA19CB75B300869599 /* KLCPopup */,
 			);
 			name = Libraries;
@@ -520,6 +524,15 @@
 				65715010191482880034009A /* Round-about-blue-@2x.png */,
 			);
 			path = "Iphone assets-2";
+			sourceTree = "<group>";
+		};
+		65808B811A7D35FD0058FE42 /* SDiPhoneVersion */ = {
+			isa = PBXGroup;
+			children = (
+				65808B821A7D35FD0058FE42 /* SDiPhoneVersion.h */,
+				65808B831A7D35FD0058FE42 /* SDiPhoneVersion.m */,
+			);
+			path = SDiPhoneVersion;
 			sourceTree = "<group>";
 		};
 		65BFF06B190F4CE70087511B /* HAPaper */ = {
@@ -875,6 +888,7 @@
 				A5CC36FC19EF6274005F899D /* FactorDescriptionViewController.m in Sources */,
 				A57829BD19DE27D700A4510C /* AnalysisBlock.m in Sources */,
 				A5C08C771939719F00887F83 /* FinalGradeViewController.m in Sources */,
+				65808B841A7D35FD0058FE42 /* SDiPhoneVersion.m in Sources */,
 				6533F57018E195700017C7D6 /* Question.m in Sources */,
 				A5BBB2B8192A1EB000724639 /* PickDesiredGradeController.m in Sources */,
 				494692AF19CB514300869599 /* QuestionAnswerViewController.m in Sources */,
@@ -1046,7 +1060,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "life-grade/life-grade-Prefix.pch";
 				INFOPLIST_FILE = "life-grade/life-grade-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
@@ -1074,7 +1088,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "life-grade/life-grade-Prefix.pch";
 				INFOPLIST_FILE = "life-grade/life-grade-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",

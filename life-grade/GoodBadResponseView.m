@@ -136,7 +136,7 @@
     
     int sub = 0;
     int ret = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 5;
         ret = 30;
     } else {
@@ -182,21 +182,21 @@
     int sub = 0;
     int ret = 0;
     int fnt = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 0;
         ret = 175;
         fnt = 14;
     } else {
         sub = 10;
-        ret = 250;
+        ret = 225;
         fnt = 16;
     }
     
-    UILabel *planLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,  sub, self.frame.size.width - 20, ret)];
+    UITextView *planLabel = [[UITextView alloc] initWithFrame:CGRectMake(10,  sub, self.frame.size.width - 20, ret)];
     [planLabel setFont:FONT_AVENIR_BLACK(fnt)];
-    planLabel.numberOfLines = 0;
+//    planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
-    planLabel.lineBreakMode = NSLineBreakByWordWrapping;
+//    planLabel.lineBreakMode = NSLineBreakByWordWrapping;
     planLabel.text = self.progressMethod.methodDescription;
 //    [planLabel sizeToFit];
     
@@ -251,7 +251,7 @@
     self.backgroundColor = [UIColor whiteColor];
     
     int ret = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         ret = 40;
     } else {
         ret = 20;
@@ -432,7 +432,7 @@
 - (void)drawCompletionDateView {
     
     int ret = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         ret = 22;
     } else {
         ret = 24;

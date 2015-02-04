@@ -18,6 +18,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "ChecklistViewController.h"
 #import "MainAppDelegate.h"
+#import "SDiPhoneVersion.h"
 
 
 
@@ -61,6 +62,7 @@
 {
     [super viewDidLoad];
     
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
 
     UIColor *barColour = GREEN_COLOR;
     self.navigationController.navigationBar.barTintColor = barColour;
@@ -95,7 +97,7 @@
     [self setUpPageThree];
     
     int sub = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 85;
     } else {
         sub = 25;
@@ -203,8 +205,9 @@
     NSString *avFont = AVENIR_BLACK;
     UIButton *signInButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     int sub = 0;
-    if ([self isIpad] == YES)
+    if ([self isIpad] == YES || [SDiPhoneVersion  deviceVersion] == iPhone4 || [SDiPhoneVersion deviceVersion] == iPhone4S || IS_IPHONE4)
     {
+        
         sub = 150;
     } else {
         sub = 110;
@@ -362,7 +365,7 @@
     [view addSubview:romanUno];
 
     int sub = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 0;
     } else {
         sub = 40;
@@ -459,7 +462,7 @@
     [view addSubview:action];
     
     int sub = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         
     } else {
         sub = 40;
@@ -529,7 +532,7 @@
     CGFloat boxWidth = self.view.frame.size.width;
 
     int sub = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         
     } else {
         sub = 15;
@@ -564,7 +567,7 @@
     [view addSubview:instructBox];
 
     int ret;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         ret = 10;
     } else {
         ret = 40;

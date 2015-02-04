@@ -134,7 +134,7 @@
     int ret = 0;
     int hgh = 0;
     
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 0;
         hgh = 140;
         
@@ -219,7 +219,7 @@
     int sub = 0;
     int ret = 0;
     int hgh = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 2;
         hgh = 140;
         ret = 44;
@@ -308,7 +308,7 @@
     int sub = 0;
     int ret = 0;
     int hgh = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 0;
         ret = 30;
         hgh = 50;
@@ -525,7 +525,7 @@
     int sub = 0;
     int ret = 0;
     int hgh = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 0;
         hgh = 100;
     } else {
@@ -596,7 +596,7 @@
     int ret = 0;
     int hgh = 0;
     int grdLbl = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 130;
         ret = 0;
         hgh = 30;
@@ -652,7 +652,7 @@
     [self addSubview:label];
     
     int f = 200;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         f = 150;
     }
     
@@ -766,7 +766,7 @@
     [self.progressMethods addObject:m1];
     
     ProgressMethods *m2 = [[ProgressMethods alloc] initWithMethod:@"Make 'Task' and 'To Do' Lists" andKey:@"general"];
-    m2.methodDescription = @"Keeping lists can save lives! Seriously, just as your doctor, they survive on keeping well organized lists. When making your list make sure to organize, prioritize, and keep the items manageable and specific. This technique will keep you on task and";
+    m2.methodDescription = @"Keeping lists can save lives! Seriously, just as your doctor, they survive on keeping well organized lists. When making your list make sure to organize, prioritize, and keep the items manageable and specific. This technique will keep you on task.";
     [self.progressMethods addObject:m2];
     
     ProgressMethods *m3 = [[ProgressMethods alloc] initWithMethod:@"Post reminders in Workplace" andKey:@"general"];

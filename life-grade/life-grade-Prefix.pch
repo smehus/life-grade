@@ -27,4 +27,7 @@
 #define FONT_AMATIC_BOLD(s) [UIFont fontWithName:@"Amatic-Bold" size:s]
 #define FONT_AVENIR_BLACK(s) [UIFont fontWithName:@"Avenir-Black" size:s]
 
+#define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
+#define IS_IPHONE4 (([[UIScreen mainScreen] bounds].size.height-480)?NO:YES)
+
 #endif

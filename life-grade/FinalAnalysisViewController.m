@@ -775,9 +775,13 @@
 
 - (void)openPopUpWithGrade:(Grade *)g {
     
+    CGFloat h = 0.6;
+    if (IS_IPHONE4) {
+        h = 0.7;
+    }
  
     
-    self.goodBadView = [[GoodBadResponseView alloc] initWithFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andGrade:g andCloseBlock:^{
+    self.goodBadView = [[GoodBadResponseView alloc] initWithFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*h) andGrade:g andCloseBlock:^{
        // close this shit
         
     }];
@@ -808,7 +812,12 @@
 //            break;
 //    }
     
-    self.goodBadView = [[GoodBadResponseView alloc] initForTrackingAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.7) withMethod:method andBlock:^{
+    CGFloat h = 0.7;
+    if (IS_IPHONE4) {
+        h = 0.7;
+    }
+    
+    self.goodBadView = [[GoodBadResponseView alloc] initForTrackingAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*h) withMethod:method andBlock:^{
         
         [popup dismiss:YES];
     }];
@@ -841,7 +850,11 @@
 
 - (void)openRealisticPopup  {
     
-    self.goodBadView = [[GoodBadResponseView alloc] initForAnalysisRealisticAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) andBlock:^{
+    CGFloat h = 0.6;
+    if (IS_IPHONE4) {
+        h = 0.7;
+    }
+    self.goodBadView = [[GoodBadResponseView alloc] initForAnalysisRealisticAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*h) andBlock:^{
          [popup dismiss:YES];
        
         
@@ -954,7 +967,12 @@
 
 - (void)finalTipsSelectedAtIndex:(int)idx {
     
-    self.goodBadView = [[GoodBadResponseView alloc] initForFinalTipsAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*.6) withTip:[self getTipForIndex:idx] andBlock:^{
+    CGFloat h = 0.6;
+    if (IS_IPHONE4) {
+        h = 0.7;
+    }
+    
+    self.goodBadView = [[GoodBadResponseView alloc] initForFinalTipsAndFrame:CGRectMake(30, 0, self.view.frame.size.width-60, self.view.frame.size.height*h) withTip:[self getTipForIndex:idx] andBlock:^{
         [popup dismiss:YES];
         
         

@@ -223,7 +223,7 @@
     
     int sub = 0;
     int ret = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 15;
         ret = 40;
     } else {

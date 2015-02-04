@@ -216,7 +216,7 @@
     self.isBig = NO;
     
     int sub = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 250;
     } else {
         sub = 300;

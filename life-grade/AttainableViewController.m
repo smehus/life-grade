@@ -84,7 +84,7 @@
     [self.view addSubview:titleLabel];
     
     int sub = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 5;
     } else {
         sub = 20;
@@ -245,7 +245,7 @@
     
     int sub = 0;
     int ret = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 125;
         ret = 120;
     } else {
@@ -288,7 +288,7 @@
     int sub = 0;
     int ret = 0;
     int hgh = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 50;
         ret = 0;
         hgh = 120;

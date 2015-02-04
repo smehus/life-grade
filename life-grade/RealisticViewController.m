@@ -121,7 +121,7 @@
     self.navigationItem.backBarButtonItem = barBtnItem;
     
     int sub = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 40;
     } else {
         sub = 60;
@@ -212,7 +212,7 @@
     int ret = 0;
     int sub = 0;
     int btnY = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         ret = 0;
         sub = 30;
         btnY = 10;

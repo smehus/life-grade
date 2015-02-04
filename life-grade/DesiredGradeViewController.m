@@ -675,7 +675,7 @@
         if (!self.continueButton) {
             int sub = 0;
             int ret = 0;
-            if ([self isIpad]) {
+            if ([self isIpad] || IS_IPHONE4) {
                 ret = 30;
                 sub = 40;
             } else {

@@ -135,7 +135,7 @@
     int sub = 0;
     int ret = 0;
     int hgh = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 5;
         ret = 10;
         hgh = 40;

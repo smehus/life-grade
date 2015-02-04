@@ -55,7 +55,7 @@
     
     int ret = 0;
     int sub = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         ret = 75;
         sub = 0;
     } else {
@@ -88,7 +88,12 @@
     planLabel.text = @"Lets work on making a plan!";
     [self addSubview:planLabel];
     
-    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(planLabel.frame) + 10 ,self.frame.size.width - 20, 50)];
+    CGFloat ht = 50;
+    if (IS_IPHONE4 || [self isIpad]) {
+        ht = 30;
+    }
+    
+    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(planLabel.frame) + 10 ,self.frame.size.width - 20, ht)];
     [nextButton setBackgroundColor:[UIColor colorWithRed:176.0/255.0 green:226.0/255.0 blue:0.0/255.0 alpha:1.0f]];
     [nextButton addTarget:self action:@selector(nextButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [nextButton setTitle:@"Start Plan" forState:UIControlStateNormal];

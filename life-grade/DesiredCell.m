@@ -37,7 +37,7 @@
         }];
         
         int sub = 0;
-        if ([self isIpad]) {
+        if ([self isIpad] || IS_IPHONE4) {
             sub = 225;
         } else {
             sub = 300;

@@ -75,7 +75,7 @@
     
     int sub = 0;
     int ret = 0;
-    if ([self isIpad]) {
+    if ([self isIpad]|| IS_IPHONE4) {
         sub = 0;
         ret = 0;
     } else {
@@ -292,7 +292,7 @@
     UIColor *greenColor = GREEN_COLOR;
     
     int sub = 0;
-    if ([self isIpad]) {
+    if ([self isIpad] || IS_IPHONE4) {
         sub = 125;
     } else {
         sub = 200;
