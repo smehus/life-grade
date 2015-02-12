@@ -145,7 +145,7 @@
     l.lineBreakMode = NSLineBreakByWordWrapping;
     l.textAlignment = NSTextAlignmentCenter;
     l.font = FONT_AMATIC_BOLD(50);
-    l.text = @"Choose Your";
+    l.text = @"Click to choose";
     [self.view addSubview:l];
     
     UILabel *exp = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(l.frame) + 5, self.view.frame.size.width-20, 50)];
@@ -153,7 +153,7 @@
     exp.lineBreakMode = NSLineBreakByWordWrapping;
     exp.textAlignment = NSTextAlignmentCenter;
     exp.font = FONT_AMATIC_BOLD(50);
-    exp.text = @"Desired Grade";
+    exp.text = @"your desired grade";
     [self.view addSubview:exp];
 }
 

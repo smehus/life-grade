@@ -75,9 +75,9 @@
     [barBtnItem setTintColor:grey];
     self.navigationItem.backBarButtonItem = barBtnItem;
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, self.view.frame.size.width-10, 50)];
     titleLabel.text = @"Hold & Drag which traits you need to accomplish your goal";
-    titleLabel.font = [UIFont fontWithName:avFont size:16];
+    titleLabel.font = [UIFont fontWithName:avFont size:18];
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -299,8 +299,8 @@
     }
     
     UILabel *yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(175, sub, 110, 25)];
-    yesLabel.text = @"Yes";
-    yesLabel.font = FONT_AVENIR_BLACK(22);
+    yesLabel.text = @"More Useful";
+    yesLabel.font = FONT_AVENIR_BLACK(18);
     yesLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:yesLabel];
     
@@ -313,8 +313,8 @@
     
     
     UILabel *noLabel = [[UILabel alloc] initWithFrame:CGRectMake(175, CGRectGetMaxY(self.yesFrame.frame) + 10, 110, 25)];
-    noLabel.text = @"NO";
-    noLabel.font = FONT_AVENIR_BLACK(22);
+    noLabel.text = @"Less Useful";
+    noLabel.font = FONT_AVENIR_BLACK(18);
     noLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:noLabel];
     
@@ -339,7 +339,7 @@
         if (self.yesFactors.count < 3) {
             
             UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Oops!"
-                                                        message:@"Please select three yes factors" delegate:nil
+                                                        message:@"Please Select 3 Useful Factors" delegate:nil
                                               cancelButtonTitle:@"Okay" otherButtonTitles:nil];
             [a show];
             

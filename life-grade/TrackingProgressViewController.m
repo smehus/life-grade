@@ -101,8 +101,8 @@
     [self.view addSubview:trackLabel];
     
     UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(trackLabel.frame)+ ret, self.view.frame.size.width, 30)];
-    instructLabel.text = @"Select three ways to track your progression";
-    instructLabel.font = [UIFont fontWithName:avFont size:14];
+    instructLabel.text = @"Select Three Techniques";
+    instructLabel.font = [UIFont fontWithName:avFont size:16];
     instructLabel.numberOfLines = 0;
     instructLabel.textAlignment = NSTextAlignmentCenter;
     instructLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -360,9 +360,6 @@
     [button setBackgroundColor:green];
     [button setTitle:@"Next" forState:UIControlStateNormal];
     [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        AttainableViewController *controller = [[AttainableViewController alloc] init];
-        [self.navigationController pushViewController:controller animated:YES];
-        
         [self saveAnswers];
     }];
     [self.view addSubview:button];
@@ -373,36 +370,43 @@
 
     NSLog(@"%@", self.selectedMethods);
     
-    for (int i = 0; i < 3; i++) {
-        
-        ProgressMethods *m = self.selectedMethods[i];
-        
-        switch (i) {
-            case 0:
-                self.fetchedAnswers.trackingProgressOne = m.method;
-                break;
-            case 1:
-                self.fetchedAnswers.trackingProgressTwo = m.method;
-                break;
-            case 2:
-                self.fetchedAnswers.trackingProgressThree = m.method;
-                break;
-            default:
-                break;
+    if (self.selectedMethods.count > 2) {
+        for (int i = 0; i < 3; i++) {
+            
+            ProgressMethods *m = self.selectedMethods[i];
+            
+            switch (i) {
+                case 0:
+                    self.fetchedAnswers.trackingProgressOne = m.method;
+                    break;
+                case 1:
+                    self.fetchedAnswers.trackingProgressTwo = m.method;
+                    break;
+                case 2:
+                    self.fetchedAnswers.trackingProgressThree = m.method;
+                    break;
+                default:
+                    break;
             }
+        }
         
-    }
-    
+        NSError *error;
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"Error: %@", error);
+            
+            
+            abort();
+        }
         
-                
-    
-    
-    NSError *error;
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Error: %@", error);
+        AttainableViewController *controller = [[AttainableViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
         
-        
-        abort();
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Oops"
+                                   message:@"Please select three methods"
+                                  delegate:nil
+                         cancelButtonTitle:@"Okay"
+                          otherButtonTitles:nil] show];
     }
 
 }

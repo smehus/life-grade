@@ -437,7 +437,7 @@
     
     [self accessEventStore];
     
-    titleLabel.text = @"Set a time frame";
+    titleLabel.text = @"SET A TIME FRAME";
     firstField.text = @" Set a date";
     
     // Use reactive cocoa here to watch teh self.caldate object and update label
@@ -445,7 +445,7 @@
     UILabel *firstCal = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 10, self.view.frame.size.width-20, 30)];
     firstCal.textAlignment = NSTextAlignmentCenter;
     firstCal.text = @"Start Date";
-    firstCal.font = FONT_AMATIC_BOLD(24);
+    firstCal.font = FONT_AMATIC_BOLD(28);
     [self.view addSubview:firstCal];
     
     NSString *da = [NSString stringWithFormat:@"%@", self.calDate];
@@ -497,8 +497,8 @@
     
     secondCal = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(calBut.frame) + 10, self.view.frame.size.width-20, 30)];
     secondCal.textAlignment = NSTextAlignmentCenter;
-    secondCal.text = @"End Date";
-    secondCal.font = FONT_AMATIC_BOLD(24);
+    secondCal.text = @"Completion Date";
+    secondCal.font = FONT_AMATIC_BOLD(28);
     secondCal.hidden = YES;
     [self.view addSubview:secondCal];
     
@@ -618,9 +618,11 @@
     NSLog(@"LSDJF %@", controller.event.startDate);
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    [dateFormatter setDateFormat:@"MM-dd-yyyy"];
     
     if (calendarButton == calBut) {
+        
+        
         self.calDate = controller.event.startDate;
         self.fetchedAnswers.startDate = controller.event.startDate;
         NSString *stringDate = [dateFormatter stringFromDate:self.calDate];
@@ -689,7 +691,7 @@
 - (void)setupThirdView {
     
     titleLabel.text = self.fetchedAnswers.specificFocus;
-    firstLabel.text = @"Name 3 people in your circle";
+    firstLabel.text = @"Type in 3 support people";
     [self.view addSubview:firstLabel];
     
     // need text inset - take from priv things
