@@ -424,7 +424,7 @@
     planLabel.numberOfLines = 0;
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    planLabel.text = @"Being practical isn’t always our strong suit, but we are in the business making some positive change so reality is our friend! Realistic goals will boost your confidence, create direction, and make the journey much more manageable. Stay flexible, the specifics of your goal may change along the way.";
+    planLabel.text = @"Being practical isn’t always our strong suit, but we are in the business of making some positive change so reality is our friend! Realistic goals will boost your confidence, create direction, and make the journey much more manageable. Stay flexible, the specifics of your goal may change along the way.";
     [self addSubview:planLabel];
     
 }

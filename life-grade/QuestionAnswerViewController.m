@@ -21,6 +21,7 @@
 #import "MyActionViewController.h"
 #import "KLCPopup.h"
 #import "GoodBadResponseView.h"
+#import "SCLAlertView.h"
 
 @interface QuestionAnswerViewController () <ChoseViewDelegate>
 
@@ -61,6 +62,13 @@
     
     
     [self setupScreen];
+    
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.shouldDismissOnTapOutside = YES;
+//    alert.backgroundType = Blur;
+    alert.showAnimationType = SlideInToCenter;
+    [alert showSuccess:self title:@"Great!" subTitle:@"Let’s get some more info about your problem" closeButtonTitle:@"Okay" duration:0.0f];
+    
 }
 - (BOOL)isIpad {
     NSString *deviceType = [UIDevice currentDevice].model;

@@ -70,6 +70,7 @@ PODS:
   - ReactiveCocoa/no-arc (2.4.2)
   - ReactiveCocoa/UI (2.4.2):
     - ReactiveCocoa/Core
+  - SCLAlertView-Objective-C (0.5.3)
   - THCalendarDatePicker (0.1.1):
     - KNSemiModalViewController (~> 0.3)
   - UIColor+BFPaperColors (1.3.1)
@@ -93,6 +94,7 @@ DEPENDENCIES:
   - pop (~> 1.0)
   - POP+MCAnimate (~> 1.0)
   - ReactiveCocoa (~> 2.3)
+  - SCLAlertView-Objective-C
   - THCalendarDatePicker (~> 0.1.1)
   - UIView+draggable
   - WYPopoverController (~> 0.2.2)
@@ -118,9 +120,10 @@ SPEC CHECKSUMS:
   pop: 2f14a1ea61339767af9e66741b418c831b3844df
   POP+MCAnimate: 3ad540606cbf21547f79585c8d5b63f9da69d52b
   ReactiveCocoa: 8418a82b67af2f1b7587baf29c329040a23c2063
+  SCLAlertView-Objective-C: afb0ebf2a4903a321ac1f0dc334ea910db19ceb5
   THCalendarDatePicker: 400998078c168f4c380e652916a03d1a358eb6bd
   UIColor+BFPaperColors: c7e4c6e4d82e889d507b3c2d09e6caf816529f18
   UIView+draggable: ad1c3a0f862aca1923c45c3e05d68c7852014436
   WYPopoverController: c233d69fdfd5c7e316b481df1060624d7a9e629d
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0.beta.2

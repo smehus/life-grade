@@ -17,6 +17,7 @@
 #import "IQKeyboardReturnKeyHandler.h"
 #import "MainAppDelegate.h"
 #import "Answers.h"
+#import "SCLAlertView.h"
 
 
 @interface SignupViewController () <UITextFieldDelegate>
@@ -123,6 +124,13 @@
     [self.view addSubview:self.userNameField];
     [self.view addSubview:self.passwordTextField];
     [self.view addSubview:self.passwordConfirmation];
+    
+    
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.shouldDismissOnTapOutside = YES;
+    alert.showAnimationType = SlideInToCenter;
+    [alert showSuccess:self title:@"Congratulations!" subTitle:@"ONE STEP AWAY FROM YOUR FINAL ANALYSIS" closeButtonTitle:@"Okay" duration:0.0f];
+    
 }
 
 - (void)setTitleView {

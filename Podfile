@@ -20,3 +20,4 @@ pod 'WYPopoverController', '~> 0.2.2'
 pod 'BFPaperButton', '~> 1.5.4'
 pod 'MBAlertView', '~> 1.1.0'
 pod "JMMarkSlider", "~> 1.0"
+pod 'SCLAlertView-Objective-C'

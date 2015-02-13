@@ -46,7 +46,7 @@
     NSString *font = LIGHT_FONT;
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, self.frame.size.width -20, 30)];
-    [titleLabel setFont:FONT_AVENIR_BLACK(14)];
+    [titleLabel setFont:FONT_AVENIR_BLACK(20)];
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;

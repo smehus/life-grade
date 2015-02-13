@@ -572,7 +572,7 @@
                                                  andIndex:i andData:a andGoal:self.fetchedAnswers.specificFocus];
     v.titleLabel.text = @"Goal";
     v.titleLabel.font = FONT_AMATIC_BOLD(34);
-    v.currentGrade.text = @"Desired Grade";
+    v.currentGrade.text = @"Desired Life+Grade";
     NSString *dG = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     
     v.gradeLabel.text = dG;
@@ -587,7 +587,7 @@
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a andQuote:@"Balls"];
-    v.currentGrade.text = @"Desired Grade";
+    v.currentGrade.text = @"Desired Life+Grade";
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
     v.titleLabel.text = @"Tracking Progress";
     v.titleLabel.font = FONT_AMATIC_BOLD(28);
@@ -604,10 +604,10 @@
                                                  andIndex:i andData:a attainableQuote:@"Dicks"];
     v.titleLabel.text = @"Mindset for Success";
     v.titleLabel.font = FONT_AMATIC_REG(24);
-    v.quoteLabel.text =  @"In order to attain your goal you must channel your most powerful positive behaviors to make them come true. You must develop an attitude for success to keep the positive momentum going. Remember, you are worthy of this goal so start developing that those positive behaviors.";
+    v.quoteLabel.text =  @"In order to attain your goal you must channel your most powerful positive behaviors to make them come true. You must develop an attitude for success to keep the positive momentum going. Remember, you are worthy of this goal so start developing those positive behaviors.";
     v.quoteLabel.font = FONT_AVENIR_BLACK(14);
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
-    v.currentGrade.text = @"Desired Grade";
+    v.currentGrade.text = @"Desired Life+Grade";
     v.delegate = self;
     [v.bottomButton setTitle:@"Click For Your Positive Attributes" forState:UIControlStateNormal];
     [self.scrollView addSubview:v];
@@ -618,7 +618,7 @@
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a isRealstic:YES];
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
-    v.currentGrade.text = @"Desired Grade";
+    v.currentGrade.text = @"Desired Life+Grade";
     v.delegate = self;
     [self.scrollView addSubview:v];
 }
@@ -630,7 +630,7 @@
     
     v.gradeLabel.text = g;
     v.delegate = self;
-    v.currentGrade.text = @"Desired Grade";
+    v.currentGrade.text = @"Desired Life+Grade";
     v.startDateLabel.text = [self formatDate:self.fetchedAnswers.startDate];
     v.completionDateLabel.text = [self formatDate:self.fetchedAnswers.endDate];
     
@@ -651,7 +651,7 @@
     SupportTeamView *v = [[SupportTeamView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)];
     
     v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.desiredGrade intValue]];
-    v.currentGrade.text = @"Desired Grade";
+    v.currentGrade.text = @"Desired Life+Grade";
     v.delegate = self;
     v.firstSupport.text = self.fetchedAnswers.firstSupport;
     v.secondSupport.text = self.fetchedAnswers.secondSupport;
@@ -666,7 +666,7 @@
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                              andFinalTips:nil];
-    v.gradeLabel.text = [self getDesiredGradeString:[self.fetchedAnswers.finalGrade intValue]];
+    v.gradeLabel.text = self.gradeLetter;
     v.currentGrade.text = @"Desired Grade";
     v.delegate = self;
     [self.scrollView addSubview:v];
