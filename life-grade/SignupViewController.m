@@ -73,7 +73,7 @@
     UILabel *greeting = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, self.view.frame.size.width-10, 50)];
     greeting.textColor = GREY_COLOR;
     greeting.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:22];
-    greeting.text = @"Sign up to get your Final Grade!";
+    greeting.text = @"Sign up to get your Final analysis!";
     
     UIColor *greyC = GREY_COLOR;
     

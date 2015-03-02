@@ -691,36 +691,40 @@
 - (void)setupThirdView {
     
     titleLabel.text = self.fetchedAnswers.specificFocus;
-    firstLabel.text = @"Type in 3 support people";
+    firstLabel.text = @"Type in 3 people that will support you in this goal.";
+    firstLabel.frame = CGRectMake(5, 10, self.view.frame.size.width - 10, 75);
     [self.view addSubview:firstLabel];
     
     // need text inset - take from priv things
     
-    firstField = [[UITextField alloc] initWithFrame:CGRectMake(10, 150, screenWidth - 20, 44)];
+    firstField = [[UITextField alloc] initWithFrame:CGRectMake(10, 150, screenWidth - 20, 50)];
     firstField.layer.borderColor = blueColor.CGColor;
-    firstField.layer.borderWidth = 1.0f;
+    firstField.layer.borderWidth = 2.0f;
     firstField.backgroundColor = [UIColor whiteColor];
     firstField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
     firstField.font = FONT_AMATIC_REG(24);
     firstField.textAlignment = NSTextAlignmentCenter;
+    firstField.placeholder = @"exp: John";
     [self.view addSubview:firstField];
     
-    secondField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstField.frame) + 10, screenWidth - 20, 44)];
+    secondField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstField.frame) + 10, screenWidth - 20, 50)];
     secondField.layer.borderColor = blueColor.CGColor;
-    secondField.layer.borderWidth = 1.0f;
+    secondField.layer.borderWidth = 2.0f;
     secondField.backgroundColor = [UIColor whiteColor];
     secondField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
     secondField.font = FONT_AMATIC_REG(24);
     secondField.textAlignment = NSTextAlignmentCenter;
+    secondField.placeholder = @"exp: Kathy";
     [self.view addSubview:secondField];
     
-    thirdField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondField.frame) + 10, screenWidth - 20, 44)];
+    thirdField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondField.frame) + 10, screenWidth - 20, 50)];
     thirdField.layer.borderColor = blueColor.CGColor;
-    thirdField.layer.borderWidth = 1.0f;
+    thirdField.layer.borderWidth = 2.0f;
     thirdField.backgroundColor = [UIColor whiteColor];
     thirdField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
     thirdField.font = FONT_AMATIC_REG(24);
     thirdField.textAlignment = NSTextAlignmentCenter;
+    thirdField.placeholder = @"exp: Francis";
     [self.view addSubview:thirdField];
     
     UIButton *b = [self addNextButton];
