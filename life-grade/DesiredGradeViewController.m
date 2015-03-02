@@ -107,7 +107,7 @@
     }
 
     self.revealViewController.panGestureRecognizer.enabled = YES;
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    [self.collectionView addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     didFetchAnswers = NO;
     self.didSelect = NO;
