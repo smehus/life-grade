@@ -158,9 +158,9 @@
         l.font = [UIFont fontWithName:sf size:16];
         l.textColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0f];
         
-        UIImage *image = [UIImage imageNamed:@"red-arrow-1-"];
+        UIImage *image = [UIImage imageNamed:@"down_arrow"];
         self.unsubcribeImage = [[UIImageView alloc] initWithImage:image];
-        self.unsubcribeImage.frame = CGRectMake(CGRectGetMaxX(l.frame), 0, 44, 44);
+        self.unsubcribeImage.frame = CGRectMake(CGRectGetMaxX(l.frame), l.frame.size.height/2 - 15, 30, 30);
         self.unsubcribeImage.contentMode = UIViewContentModeScaleAspectFill;
         [v addSubview:self.unsubcribeImage];
 
