@@ -88,7 +88,7 @@
         if ([self.fetchedAnswers.finalGrade floatValue] < 80) {
             instructionString = @"Ok so maybe your current grade isn’t exactly what you were looking for or just maybe life is good right now. Either way, now is your chance to select the grade you want in life! Go ahead, reach for the stars and grab the grade you want.";
         } else {
-            instructionString = @"Well aren't you perfect. Either way, now is your chance to select the grade you want in life! Go ahead, reach for the stars and grab the grade you want";
+            instructionString = @"Well, most people aren’t born perfect. Either way, now is your chance to select the grade you want in life! Go ahead, reach for the stars and grab the grade you want.";
         }
         
     } else if (localClass == [MyActionViewController class]) {

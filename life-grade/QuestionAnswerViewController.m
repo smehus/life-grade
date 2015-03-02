@@ -64,6 +64,7 @@
     [self setupScreen];
     
     SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.customViewColor = [UIColor colorWithRed:13.0/255.0 green:196.0/255.0 blue:224.0/255.0 alpha:1.0];
     alert.shouldDismissOnTapOutside = YES;
 //    alert.backgroundType = Blur;
     alert.showAnimationType = SlideInToCenter;
