@@ -83,7 +83,7 @@
         ret = 10;
     }
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, sub, self.view.frame.size.width, 75)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, sub, self.view.frame.size.width, 50)];
     titleLabel.text = self.focusFactor.group;
     titleLabel.font = FONT_AMATIC_BOLD(24);
     titleLabel.numberOfLines = 0;
@@ -102,7 +102,7 @@
     
     UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(trackLabel.frame)+ ret, self.view.frame.size.width, 30)];
     instructLabel.text = @"Select Three Techniques";
-    instructLabel.font = [UIFont fontWithName:avFont size:16];
+    instructLabel.font = [UIFont fontWithName:avFont size:20];
     instructLabel.numberOfLines = 0;
     instructLabel.textAlignment = NSTextAlignmentCenter;
     instructLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -311,7 +311,7 @@
         box.topMargin = 5.0f;
         box.bottomMargin = 5.0f;
         box.backgroundColor = [UIColor whiteColor];
-        box.layer.borderWidth = 1.0f;
+        box.layer.borderWidth = 2.0f;
         box.layer.borderColor = greenColor.CGColor;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, box.frame.size.height/2-50, box.frame.size.width-10, 100)];
         ProgressMethods *m;
