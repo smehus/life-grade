@@ -70,6 +70,8 @@
     self.openingViewController.managedObjectContext = self.managedObjectContext;
     
     self.currentUser = [PFUser currentUser];
+    
+    
     if (self.currentUser) {
         
         NSLog(@"CURRENT USER FOUND");
@@ -157,11 +159,12 @@
 //    self.transitionController = [[HATransitionController alloc] initWithCollectionView:opening.collectionView];
 //    self.transitionController.delegate = self;
 //    
-//    
+   
     mainRevealController.rearViewRevealWidth = 200;
     mainRevealController.rearViewRevealOverdraw = 320;
     mainRevealController.bounceBackOnOverdraw = NO;
     mainRevealController.stableDragOnOverdraw = YES;
+    mainRevealController.panGestureRecognizer.enabled = YES;
     mainRevealController.delegate = self;
     
     self.window.rootViewController = mainRevealController;

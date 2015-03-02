@@ -74,6 +74,8 @@
         self.managedObjectContext = del.managedObjectContext;
     }
     
+    self.revealViewController.panGestureRecognizer.enabled = YES;
+    
     [self performFetch];
     [self constructTitleView];
     UIColor *barColour = BLUE_COLOR;

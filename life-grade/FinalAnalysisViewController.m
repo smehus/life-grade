@@ -112,6 +112,8 @@
     [barbut setTintColor:[UIColor blackColor]];
     self.navigationItem.leftBarButtonItem = barbut;
     
+    self.revealViewController.panGestureRecognizer.enabled = YES;
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     self.revealButton = barbut;
     [self.revealButton setTarget: self.revealViewController];
     [self.revealButton setAction: @selector( revealToggle: )];

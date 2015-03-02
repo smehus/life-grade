@@ -106,9 +106,10 @@
         self.managedObjectContext = delegate.managedObjectContext;
     }
 
+    self.revealViewController.panGestureRecognizer.enabled = YES;
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
     didFetchAnswers = NO;
-    
-    
     self.didSelect = NO;
     
     self.myGrades = [[NSMutableArray alloc] initWithCapacity:1];
