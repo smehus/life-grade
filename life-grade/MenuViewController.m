@@ -387,7 +387,8 @@
             }
         
         } else if (indexPath.row == 3) {
-            if  (self.fetchedAnswers.firstSupport) {
+            PFUser *u = [PFUser currentUser];
+            if  (self.fetchedAnswers.firstSupport && u) {
                 FinalAnalysisViewController *finalontroller = [[FinalAnalysisViewController alloc] init];
                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalontroller];
                 [self.myRevealController pushFrontViewController:nav animated:YES];
