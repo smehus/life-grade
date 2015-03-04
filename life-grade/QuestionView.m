@@ -242,9 +242,15 @@
     [questionTitle sizeToFit];
     [self addSubview:questionTitle];
     
-    definitionButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    definitionButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [definitionButton setTitle:@"i" forState:UIControlStateNormal];
+    [definitionButton.titleLabel setFont:FONT_AVENIR_BLACK(16)];
+    [definitionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [definitionButton setFrame:CGRectMake(CGRectGetMaxX(self.frame) - 60, CGRectGetMaxY(questionTitle.frame) + 20, 30, 30)];
     [definitionButton setBackgroundColor:[UIColor clearColor]];
+    [definitionButton.layer setCornerRadius:15];
+    [definitionButton.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [definitionButton.layer setBorderWidth:1.0f];
     [[definitionButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         NSLog(@"Open Definition Pop Over");
         

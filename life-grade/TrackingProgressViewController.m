@@ -148,6 +148,8 @@
     self.fetchedAnswers = [foundObjects lastObject];
     [self getFocus:self.fetchedAnswers.focusFactor];
     
+    
+    
     NSLog(@"question bitch %@", self.fetchedAnswers);
     
 }

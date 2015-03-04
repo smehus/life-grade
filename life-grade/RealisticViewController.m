@@ -129,7 +129,7 @@
     
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, sub)];
     titleLabel.text = self.fetchedAnswers.specificFocus;
-    titleLabel.font = [UIFont fontWithName:avFont size:24];
+    titleLabel.font = [UIFont fontWithName:avFont size:20];
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -165,7 +165,7 @@
     }
     
     self.fetchedAnswers = [foundObjects lastObject];
-    NSLog(@"question bitch %@", self.fetchedAnswers.questionEight);
+    NSLog(@"question bitch %@", self.fetchedAnswers);
     
 }
 
@@ -433,6 +433,15 @@
     }
 }
 
+#pragma mark - Calendar Screen
+
+- (NSString *)formattedStringForDate:(NSDate *)date {
+    
+    NSDateFormatter *f = [[NSDateFormatter alloc] init];
+    [f setDateStyle:NSDateFormatterShortStyle];
+    return [f stringFromDate:date];
+}
+
 - (void)setupSecondScreen {
     
     [self accessEventStore];
@@ -454,7 +463,11 @@
     UIColor *green = GREEN_COLOR;
     calBut = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstCal.frame) + 20, self.view.frame.size.width-20, 75)];
     [calBut setBackgroundColor:green];
-    [calBut setTitle:@"Pick Date" forState:UIControlStateNormal];
+    if (self.fetchedAnswers.startDate != nil) {
+        [calBut setTitle:[self formattedStringForDate:self.fetchedAnswers.startDate] forState:UIControlStateNormal];
+    } else {
+        [calBut setTitle:@"Pick Date" forState:UIControlStateNormal];
+    }
     [[calBut rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
         // create event and then input into addEvent
@@ -504,8 +517,14 @@
     
     calBut1 = [[UIButton alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondCal.frame) + 20, self.view.frame.size.width-20, 75)];
     [calBut1 setBackgroundColor:green];
-    [calBut1 setTitle:@"Pick Date" forState:UIControlStateNormal];
-    [calBut1 setHidden:YES];
+    if (self.fetchedAnswers.endDate != nil) {
+        [calBut1 setTitle:[self formattedStringForDate:self.fetchedAnswers.endDate] forState:UIControlStateNormal];
+        [calBut1 setHidden:NO];
+    } else {
+        [calBut1 setTitle:@"Pick Date" forState:UIControlStateNormal];
+        [calBut1 setHidden:YES];
+    }
+
     [[calBut1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
 //        [self accessEventStore];
@@ -542,11 +561,19 @@
     [self.view addSubview:calBut1];
     
 
-    
+       UIColor *gc = GREEN_COLOR;
     calNextButton = [self addNextButton];
     [calNextButton setFrame:CGRectMake(10, CGRectGetMaxY(self.view.frame) - 175, self.view.frame.size.width-20, 66)];
-    [calNextButton setUserInteractionEnabled:NO];
-    [calNextButton setBackgroundColor:[UIColor grayColor]];
+    if (self.fetchedAnswers.startDate != nil && self.fetchedAnswers.endDate != nil) {
+        [calNextButton setUserInteractionEnabled:YES];
+        [calNextButton setBackgroundColor:gc];
+    } else {
+        [calNextButton setUserInteractionEnabled:NO];
+        [calNextButton setBackgroundColor:[UIColor grayColor]];
+    }
+ 
+    
+
     [[calNextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
        // go somewhere
         
@@ -691,8 +718,10 @@
 - (void)setupThirdView {
     
     titleLabel.text = self.fetchedAnswers.specificFocus;
+    titleLabel.layer.borderWidth = 1.0f;
+    titleLabel.layer.borderColor = [UIColor blueColor].CGColor;
     firstLabel.text = @"Type in 3 people that will support you in this goal.";
-    firstLabel.frame = CGRectMake(5, 10, self.view.frame.size.width - 10, 75);
+    firstLabel.frame = CGRectMake(5, CGRectGetMaxY(titleLabel.frame), self.view.frame.size.width - 10, 75);
     [self.view addSubview:firstLabel];
     
     // need text inset - take from priv things

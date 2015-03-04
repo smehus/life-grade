@@ -194,6 +194,12 @@
     self.typeLabel.layer.borderColor = greenCol.CGColor;
     [self.specificView addSubview:self.typeLabel];
     
+    if (self.fetchedAnswers.specificFocus != nil) {
+        
+        self.typeLabel.text = self.fetchedAnswers.specificFocus;
+        
+    }
+    
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [nextButton setFrame:CGRectMake(10, CGRectGetMaxY(self.typeLabel.frame) + 25, self.specificView.bounds.size.width - 20, 50)];
     [nextButton setTitle:@"Next" forState:UIControlStateNormal];
