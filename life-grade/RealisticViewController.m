@@ -734,6 +734,9 @@
     firstField.font = FONT_AMATIC_REG(24);
     firstField.textAlignment = NSTextAlignmentCenter;
     firstField.placeholder = @"exp: John";
+    if (self.fetchedAnswers.firstSupport != nil) {
+        firstField.text = self.fetchedAnswers.firstSupport;
+    }
     [self.view addSubview:firstField];
     
     secondField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(firstField.frame) + 10, screenWidth - 20, 50)];
@@ -744,6 +747,9 @@
     secondField.font = FONT_AMATIC_REG(24);
     secondField.textAlignment = NSTextAlignmentCenter;
     secondField.placeholder = @"exp: Kathy";
+    if (self.fetchedAnswers.secondSupport != nil) {
+        secondField.text = self.fetchedAnswers.secondSupport;
+    }
     [self.view addSubview:secondField];
     
     thirdField = [[UITextField alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(secondField.frame) + 10, screenWidth - 20, 50)];
@@ -754,6 +760,9 @@
     thirdField.font = FONT_AMATIC_REG(24);
     thirdField.textAlignment = NSTextAlignmentCenter;
     thirdField.placeholder = @"exp: Francis";
+    if (self.fetchedAnswers.thirdSupport != nil) {
+        thirdField.text = self.fetchedAnswers.thirdSupport;
+    }
     [self.view addSubview:thirdField];
     
     UIButton *b = [self addNextButton];
