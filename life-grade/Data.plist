@@ -97,7 +97,7 @@
 			<key>description</key>
 			<string>When grading this factor focus on the number of hobbies you have and the amount of pleasure you get from engaging in them. Remember, this doesn&apos;t mean there is a &apos;magical number&apos; of hobbies to have.</string>
 			<key>goodResponse</key>
-			<string>Having interests and hobbies add significant value to life as you may know by now. Continue to pursue things that interest you and don&apos;t be afraid to try something new. An individuals interest can increase even after starting a new hobby.</string>
+			<string>Having interests and hobbies add significant value to life, as you may know by now. Continue to pursue things that interest you and don&apos;t be afraid to try something new. An individual&apos;s interest can increase even after starting a new hobby.</string>
 			<key>question</key>
 			<string>Hobbies &amp; Interests</string>
 		</dict>
@@ -107,7 +107,7 @@
 			<key>badResponse</key>
 			<string>Real life for most people does not look like The Notebook or Sex In The City.  There are many reasons why we come up short in these areas, and maybe you already know why. Previous painful baggage, fear of rejection, lack of experience, anxieties, could all add to the challenge of developing these relationships. Start by looking at the strongest relationships you actually do have and examine how you connect with those people. Is it through vulnerability and honesty, similarities, being physically close, or shared experiences?</string>
 			<key>goodResponse</key>
-			<string>You got this down! Having connection and love in our lives is a very important human need. Many people shy away from intimate and deep relationships because of our fear of “rejection” and “not being good enough”. You have allowed yourself to at least get a taste of what kind of value these relationships can bring to your life. Keep it up and continue building new relationships.</string>
+			<string>You got this down! Having connection and love in our lives is a very important human need. Many people shy away from intimate and deep relationships because of our fear of “rejection” and “not being good enough.&quot; You have allowed yourself to at least get a taste of what kind of value these relationships can bring to your life. Keep it up and continue building new relationships.</string>
 			<key>question</key>
 			<string>Genuine, Intimate, and Deep Relationships</string>
 		</dict>
@@ -138,7 +138,7 @@
 			<key>badResponse</key>
 			<string>Okay, maybe finding ways to give back and contribute is a little more tough then originally planned. Studies show contributing outside of yourself  and giving back is a major contributor to an individual’s fulfillment. Things like time, motivation, availability, or even ideas on how to contribute could be the culprits that are holding you back. Start small, simple, and manageable. Do your detective work and find out what factors are holding you back, find new creative ways to contribute, and experience the rush of fulfillment in no time. </string>
 			<key>goodResponse</key>
-			<string>Congratulations! You have found a way to contribute meaningfully. Maybe you volunteer, donate, spend time with individuals that value your company, or even go the (sometimes unrecognized) extra mile at work “just because you want to”. Studies show that giving back outside of yourself is a significant contributor to an individual’s personal fulfillment, so continue finding ways to volunteer, help out other individuals, and give back to your community.</string>
+			<string>Congratulations! You have found a way to contribute meaningfully. Maybe you volunteer, donate, spend time with individuals that value your company, or even go the (sometimes unrecognized) extra mile at work “just because you want to.&quot; Studies show that giving back outside of yourself is a significant contributor to an individual’s personal fulfillment, so continue finding ways to volunteer, help out other individuals, and give back to your community.</string>
 			<key>question</key>
 			<string>Contribution &amp; Giving Back</string>
 		</dict>
@@ -158,7 +158,7 @@
 			<key>badResponse</key>
 			<string>So your job’s a chore, you may not get payed enough, and you love the sound of your next vacation day. Sound about right? Well if only it was that easy to jump ship and get your dream job. While you at your current job, trying “re-writing the job description” and changing your perspective regarding the impact you are having and the value you bring. While your perspective is shifting, get involved in understanding what you “enjoy” doing and not simply what you are “good” at.</string>
 			<key>goodResponse</key>
-			<string>You’re job and you are like peas and carrots, they just fit so well together. Sure you may have your days where you would rather be at the beach, but your job, colleagues, and work environment offer you enough to genuine connection, security, and opportunities for growth that you are happy with where you are at. Remember, there is no ceiling on your happiness, so continue to challenge yourself, build new connections, and contribute in your own way. </string>
+			<string>Your job and you are like peas and carrots, they just fit so well together. Sure you may have your days where you would rather be at the beach, but your job, colleagues, and work environment offer you enough to genuine connection, security, and opportunities for growth that you are happy with where you are at. Remember, there is no ceiling on your happiness, so continue to challenge yourself, build new connections, and contribute in your own way. </string>
 			<key>question</key>
 			<string>Job Happiness</string>
 		</dict>
