@@ -206,11 +206,20 @@
     [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [nextButton setBackgroundColor:greenCol];
     [[nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (self.typeLabel.text.length > 0) {
+            [self save];
+            TrackingProgressViewController *trackController = [[TrackingProgressViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:trackController];
+            [self.revealViewController pushFrontViewController:nav animated:YES];
+        } else {
+            UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Oops"
+                                                        message:@"Please enter a specific goal"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Okay"
+                                              otherButtonTitles:nil];
+            [a show];
+        }
 
-        [self save];
-        TrackingProgressViewController *trackController = [[TrackingProgressViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:trackController];
-        [self.revealViewController pushFrontViewController:nav animated:YES];
 //        [self.navigationController pushViewController:trackController animated:YES];
     }];
     [self.specificView addSubview:nextButton];
