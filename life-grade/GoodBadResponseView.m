@@ -174,6 +174,19 @@
     return size;
 }
 
+- (void)flashScroller:(UITextView *)txtView {
+    
+    [UIView animateWithDuration:3.0 delay:0 options:kNilOptions
+                     animations:^{
+                         [txtView flashScrollIndicators];
+                         
+                     } completion:^(BOOL finished) {
+                         
+                         
+                         [self flashScroller:txtView];
+                     }];
+}
+
 - (void)trackingProgressView {
     
     
@@ -198,9 +211,11 @@
     planLabel.textAlignment = NSTextAlignmentCenter;
 //    planLabel.lineBreakMode = NSLineBreakByWordWrapping;
     planLabel.text = self.progressMethod.methodDescription;
+    planLabel.editable = NO;
+    [self flashScroller:planLabel];
 //    [planLabel sizeToFit];
-    
-    
+
+
     [self addSubview:planLabel];
     
     
@@ -233,6 +248,7 @@
     }];
     [self addSubview:nextbutton];
     
+    [planLabel flashScrollIndicators];
 }
 
 - (BOOL)isIpad {
@@ -321,6 +337,7 @@
     planLabel.textAlignment = NSTextAlignmentCenter;
     planLabel.lineBreakMode = NSLineBreakByWordWrapping;
     planLabel.text = [self getResponse];
+    
     [self addSubview:planLabel];
     
 }

@@ -63,7 +63,7 @@
     
     
     UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(10, ttlY, self.frame.size.width-20, 50)];
-    currentGrade.text = @"Final Life+Grade";
+    currentGrade.text = @"Desired Life+Grade";
     currentGrade.textAlignment = NSTextAlignmentCenter;
     currentGrade.font = [UIFont fontWithName:avFont size:24];
     [firstView addSubview:currentGrade];
