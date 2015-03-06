@@ -181,9 +181,11 @@
                          [txtView flashScrollIndicators];
                          
                      } completion:^(BOOL finished) {
+                         if (finished) {
+                             [self flashScroller:txtView];
+                         }
                          
-                         
-                         [self flashScroller:txtView];
+
                      }];
 }
 

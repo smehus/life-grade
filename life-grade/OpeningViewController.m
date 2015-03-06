@@ -98,6 +98,7 @@
     
     int sub = 0;
     if ([self isIpad] || IS_IPHONE4) {
+        
         sub = 85;
     } else {
         sub = 25;
@@ -108,7 +109,8 @@
     self.pageControl.numberOfPages = 4;
     self.pageControl.currentPageIndicatorTintColor = GREEN_COLOR;
     self.pageControl.pageIndicatorTintColor = GREY_COLOR;
-
+    self.pageControl.userInteractionEnabled = NO;
+    
     [self loadshit];
     [self.view addSubview:self.pageControl];
     [self.view addSubview:self.scrollView];

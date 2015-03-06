@@ -91,7 +91,11 @@
     if ([self isIpad]) {
         sub = 5;
     } else {
-        sub = 15;
+        if (IS_IPHONE4) {
+            sub = 2.5;
+        } else {
+            sub = 15;
+        }
     }
     
     UIButton *exit = [UIButton buttonWithType:UIButtonTypeRoundedRect];
