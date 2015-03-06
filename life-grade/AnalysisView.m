@@ -692,15 +692,23 @@
     firstView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     firstView.layer.borderWidth = 0.0f;
     
-    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gradeLabel.frame) + 20, 10, self.frame.size.width, 30)];
-    currentGrade.text = @"Current Life+Grade";
+    UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.frame.size.width/2, 30)];
+    currentGrade.text = @"Current";
     currentGrade.textAlignment = NSTextAlignmentCenter;
     currentGrade.font = [UIFont fontWithName:avFont size:24];
     [firstView addSubview:currentGrade];
     [self addSubview:firstView];
     
     
-    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2-50, CGRectGetMaxY(currentGrade.frame), 100, 100)];
+    UILabel *desiredGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(currentGrade.frame), currentGrade.frame.origin.y, self.frame.size.width/2, currentGrade.frame.size.height)];
+    desiredGrade.text = @"Desired";
+    desiredGrade.textAlignment = NSTextAlignmentCenter;
+    desiredGrade.font = [UIFont fontWithName:avFont size:24];
+    [firstView addSubview:desiredGrade];
+
+    
+    
+    self.gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/4-50, CGRectGetMaxY(currentGrade.frame), 100, 100)];
     self.gradeLabel.textAlignment = NSTextAlignmentCenter;
     self.gradeLabel.textColor = [UIColor redColor];
     self.gradeLabel.font = FONT_AMATIC_BOLD(75);
@@ -708,6 +716,19 @@
     self.gradeLabel.layer.borderColor = [UIColor redColor].CGColor;
     self.gradeLabel.layer.cornerRadius = 50.0f;
     [firstView addSubview:self.gradeLabel];
+    
+    CGFloat qrt = self.frame.size.width/4;
+    CGFloat half = self.frame.size.width/2;
+    CGFloat threeqrt = half + qrt;
+    
+    self.finalDesiredGrade = [[UILabel alloc] initWithFrame:CGRectMake(threeqrt-50, CGRectGetMaxY(currentGrade.frame), 100, 100)];
+    self.finalDesiredGrade.textAlignment = NSTextAlignmentCenter;
+    self.finalDesiredGrade.textColor = [UIColor redColor];
+    self.finalDesiredGrade.font = FONT_AMATIC_BOLD(75);
+    self.finalDesiredGrade.layer.borderWidth = 2.0f;
+    self.finalDesiredGrade.layer.borderColor = [UIColor redColor].CGColor;
+    self.finalDesiredGrade.layer.cornerRadius = 50.0f;
+    [firstView addSubview:self.finalDesiredGrade];
     
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;

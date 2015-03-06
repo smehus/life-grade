@@ -106,7 +106,7 @@
         self.managedObjectContext = delegate.managedObjectContext;
     }
 
-    self.revealViewController.panGestureRecognizer.enabled = YES;
+//    self.revealViewController.panGestureRecognizer.enabled = YES;
 //    [self.collectionView addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
     
     didFetchAnswers = NO;
@@ -169,7 +169,6 @@
     self.revealButton = barbut;
     [self.revealButton setTarget: self.revealViewController];
     [self.revealButton setAction: @selector( revealToggle: )];
-   
    
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];

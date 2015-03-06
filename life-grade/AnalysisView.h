@@ -32,6 +32,8 @@
 @property (nonatomic, strong) id<AnalysisViewDelegate>delegate;
 @property (nonatomic, strong) NSMutableArray *progressMethods;
 
+@property (nonatomic, strong) UILabel *finalDesiredGrade;
+
 
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data;
 - (id)initWithFrame:(CGRect)frame andIndex:(int)i andData:(NSArray *)data andGoal:(id)goal;
