@@ -80,7 +80,7 @@
         ret = 0;
     } else {
         sub = 10;
-        ret = 10;
+        ret = 40;
     }
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, sub, self.view.frame.size.width, 50)];
@@ -92,7 +92,7 @@
     [self.view addSubview:titleLabel];
     
     
-    UILabel *trackLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame), self.view.frame.size.width, 25)];
+    UILabel *trackLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + 10, self.view.frame.size.width, 25)];
     trackLabel.text = @"Track Your Progress";
     trackLabel.font = [UIFont fontWithName:avFont size:24];
     trackLabel.numberOfLines = 0;
@@ -100,8 +100,9 @@
     trackLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.view addSubview:trackLabel];
     
-    UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(trackLabel.frame)+ ret, self.view.frame.size.width, 30)];
+    UILabel *instructLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(trackLabel.frame)+ ret, self.view.frame.size.width, 50)];
     instructLabel.text = @"Select Three Techniques";
+    instructLabel.backgroundColor = BLUE_COLOR;
     instructLabel.font = [UIFont fontWithName:avFont size:20];
     instructLabel.numberOfLines = 0;
     instructLabel.textAlignment = NSTextAlignmentCenter;
