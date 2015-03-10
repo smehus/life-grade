@@ -718,10 +718,10 @@
 - (void)setupThirdView {
     
     titleLabel.text = self.fetchedAnswers.specificFocus;
-    titleLabel.layer.borderWidth = 1.0f;
-    titleLabel.layer.borderColor = [UIColor blueColor].CGColor;
+//    titleLabel.layer.borderWidth = 1.0f;
+//    titleLabel.layer.borderColor = [UIColor blueColor].CGColor;
     firstLabel.text = @"Type in 3 people that will support you in this goal.";
-    firstLabel.frame = CGRectMake(5, CGRectGetMaxY(titleLabel.frame), self.view.frame.size.width - 10, 75);
+    firstLabel.frame = CGRectMake(5, CGRectGetMaxY(titleLabel.frame) + 10, self.view.frame.size.width - 10, 75);
     [self.view addSubview:firstLabel];
     
     // need text inset - take from priv things
