@@ -176,7 +176,7 @@
 
 - (void)flashScroller:(UITextView *)txtView {
     
-    [UIView animateWithDuration:3.0 delay:0 options:kNilOptions
+    [UIView animateWithDuration:0.3 delay:0 options:kNilOptions
                      animations:^{
                          [txtView flashScrollIndicators];
                          
@@ -249,6 +249,21 @@
         self.closeBlock();
     }];
     [self addSubview:nextbutton];
+    
+    self.line = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(planLabel.frame) - 5, planLabel.frame.origin.y, 1.0, planLabel.frame.size.height)];
+    self.line.backgroundColor = [UIColor lightGrayColor];
+    self.line.alpha = 0.0f;
+    [self addSubview:self.line];
+    [UIView animateWithDuration:5.0 animations:^{
+        
+        self.line.alpha = 1.0f;
+        
+    } completion:^(BOOL finished) {
+//        self.line.alpha = 0.0f;
+        
+//        [self.line removeFromSuperview];
+        
+    }];
     
     [planLabel flashScrollIndicators];
 }

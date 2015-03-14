@@ -23,6 +23,7 @@ typedef void (^RealisticBlock) (NSString *specificGoal);
 @property (nonatomic, strong) NSArray *attributes;
 @property (nonatomic, strong) NSMutableArray *trackingThings;
 @property (nonatomic, strong) ProgressMethods *progressMethod;
+@property (nonatomic, strong) UIView *line;
 
 - (id)initWithFrame:(CGRect)frame andGrade:(Grade *)g andCloseBlock:(CloseBlock)doneBlock;
 - (id)initForRealisticwithFrame:(CGRect)frame andRealisticGoal:(RealisticBlock)doneBlock;
