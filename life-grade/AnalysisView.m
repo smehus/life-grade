@@ -693,17 +693,21 @@
     firstView.layer.borderWidth = 0.0f;
     
     UILabel *currentGrade = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.frame.size.width/2, 30)];
-    currentGrade.text = @"Current";
+    currentGrade.text = @"Current Grade";
     currentGrade.textAlignment = NSTextAlignmentCenter;
-    currentGrade.font = [UIFont fontWithName:avFont size:24];
+    currentGrade.font = [UIFont fontWithName:avFont size:20];
     [firstView addSubview:currentGrade];
     [self addSubview:firstView];
     
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(currentGrade.frame) - 1.0, currentGrade.origin.y, 2.0, 150)];
+    line.backgroundColor = [UIColor blackColor];
+    [self addSubview:line];
+    
     
     UILabel *desiredGrade = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(currentGrade.frame), currentGrade.frame.origin.y, self.frame.size.width/2, currentGrade.frame.size.height)];
-    desiredGrade.text = @"Desired";
+    desiredGrade.text = @"Desired Grade";
     desiredGrade.textAlignment = NSTextAlignmentCenter;
-    desiredGrade.font = [UIFont fontWithName:avFont size:24];
+    desiredGrade.font = [UIFont fontWithName:avFont size:20];
     [firstView addSubview:desiredGrade];
 
     
@@ -732,7 +736,7 @@
     
     UIColor *blueC = BLUE_COLOR;
     NSString *liteFont = LIGHT_FONT;
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 10, self.frame.size.width - 40, 44)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(firstView.frame) + 40, self.frame.size.width - 40, 44)];
     self.titleLabel.font = FONT_AMATIC_REG(24);
     self.titleLabel.text = @"Final Tips";
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -762,8 +766,11 @@
         box.layer.shadowOffset = CGSizeMake(-5, 5);
         box.layer.shadowRadius = 5;
         box.layer.shadowOpacity = 0.5;
-        box.titleLabel.text = [NSString stringWithFormat:@"Tip# %i", i+1];
-        box.titleLabel.font = FONT_AVENIR_BLACK(18);
+        box.titleLabel.text = [NSString stringWithFormat:@"Life Coaching Tip# %i", i+1];
+        box.titleLabel.font = FONT_AVENIR_BLACK(14);
+        box.titleLabel.numberOfLines = 0;
+        box.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        box.titleLabel.textAlignment = NSTextAlignmentCenter;
         box.onTap = ^{
             NSLog(@"Box Tapped");
             [self.delegate finalTipsSelectedAtIndex:i];
