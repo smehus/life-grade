@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.5.0):
-    - AFNetworking/NSURLConnection (= 2.5.0)
-    - AFNetworking/NSURLSession (= 2.5.0)
-    - AFNetworking/Reachability (= 2.5.0)
-    - AFNetworking/Security (= 2.5.0)
-    - AFNetworking/Serialization (= 2.5.0)
-    - AFNetworking/UIKit (= 2.5.0)
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
   - AFNetworking/NSURLConnection (2.5.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -23,10 +23,24 @@ PODS:
   - ASValueTrackingSlider (0.9.4)
   - BFPaperButton (1.5.8):
     - UIColor+BFPaperColors
-  - Bolts (1.1.3)
+  - Bolts (1.1.4)
   - EMAccordionTableViewController (0.5)
-  - Facebook-iOS-SDK (3.21.1):
+  - Facebook-iOS-SDK (4.0.1):
     - Bolts (~> 1.0)
+    - Facebook-iOS-SDK/CoreKit
+    - Facebook-iOS-SDK/LoginKit
+    - Facebook-iOS-SDK/ShareKit
+  - Facebook-iOS-SDK/CoreKit (4.0.1):
+    - Bolts (~> 1.0)
+    - Facebook-iOS-SDK/CoreKit/no-arc
+  - Facebook-iOS-SDK/CoreKit/no-arc (4.0.1):
+    - Bolts (~> 1.0)
+  - Facebook-iOS-SDK/LoginKit (4.0.1):
+    - Bolts (~> 1.0)
+    - Facebook-iOS-SDK/CoreKit
+  - Facebook-iOS-SDK/ShareKit (4.0.1):
+    - Bolts (~> 1.0)
+    - Facebook-iOS-SDK/CoreKit
   - IQKeyboardManager (3.2.0.3)
   - JMMarkSlider (1.0)
   - KNSemiModalViewController (0.3)
@@ -37,17 +51,17 @@ PODS:
     - MGEvents
     - MGMushParser
   - MGEvents (1.0.3)
-  - MGMushParser (1.1.0)
+  - MGMushParser (1.2.1)
   - MONActivityIndicatorView (0.0.1)
   - NYSegmentedControl (1.0.3)
   - pop (1.0.7)
   - POP+MCAnimate (1.1):
     - pop (~> 1.0)
-    - POP+MCAnimate/Animations (= 1.1)
-    - POP+MCAnimate/Group (= 1.1)
-    - POP+MCAnimate/Internal (= 1.1)
-    - POP+MCAnimate/Shorthand (= 1.1)
-    - POP+MCAnimate/Velocity (= 1.1)
+    - POP+MCAnimate/Animations
+    - POP+MCAnimate/Group
+    - POP+MCAnimate/Internal
+    - POP+MCAnimate/Shorthand
+    - POP+MCAnimate/Velocity
   - POP+MCAnimate/Animations (1.1):
     - pop (~> 1.0)
     - POP+MCAnimate/Group
@@ -64,7 +78,7 @@ PODS:
     - pop (~> 1.0)
     - POP+MCAnimate/Internal
   - ReactiveCocoa (2.4.2):
-    - ReactiveCocoa/UI (= 2.4.2)
+    - ReactiveCocoa/UI
   - ReactiveCocoa/Core (2.4.2):
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.4.2)
@@ -82,7 +96,7 @@ DEPENDENCIES:
   - ASValueTrackingSlider
   - BFPaperButton (~> 1.5.4)
   - EMAccordionTableViewController (~> 0.4)
-  - Facebook-iOS-SDK (~> 3.13)
+  - Facebook-iOS-SDK
   - IQKeyboardManager
   - JMMarkSlider (~> 1.0)
   - KVOController
@@ -100,30 +114,30 @@ DEPENDENCIES:
   - WYPopoverController (~> 0.2.2)
 
 SPEC CHECKSUMS:
-  AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
-  ASValueTrackingSlider: 74a4bbf70c8cf43d29b701ff4c7659fc5d0afd99
-  BFPaperButton: cf1d217a91f7f8548b73f0d459a6192cd3621b32
-  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
-  EMAccordionTableViewController: dfe341651aa4e9e8310f632a5cd4d747ea27331d
-  Facebook-iOS-SDK: 18c26e86ab25c17854a2ee2a8f60562099c6600f
-  IQKeyboardManager: e0b33a5d821ab36ec47ce8ca9dc520030d6aac52
-  JMMarkSlider: 85d1956ef6f62738373f3fc4610448542e66a447
-  KNSemiModalViewController: 6fb1e2f6a4d84238b524cb705e91118b0fa6bbc9
-  KVOController: b1139ef1fc373b6757e4b69493fedd7b56eb1272
-  MBAlertView: 0044095d026308882a807e55dd2b4f89f8be5702
-  MDCScrollBarLabel: af15188e64cf76b852e60dc58c0823140e01e519
-  MGBoxKit: 86493ff76fb2164a32426418a1a900c84edd0ffa
-  MGEvents: e6254d7873bcb90b266801d171f9948194010927
-  MGMushParser: a5dbaa08f11b8300f75c72b8b86e82aa1a76af67
-  MONActivityIndicatorView: 728965121e59cef32c1bc4676f6868e35f3c8c61
-  NYSegmentedControl: 74094b886a80bfc4e9f6d415601e9b11797b22b7
-  pop: 2f14a1ea61339767af9e66741b418c831b3844df
-  POP+MCAnimate: 3ad540606cbf21547f79585c8d5b63f9da69d52b
-  ReactiveCocoa: 8418a82b67af2f1b7587baf29c329040a23c2063
-  SCLAlertView-Objective-C: afb0ebf2a4903a321ac1f0dc334ea910db19ceb5
-  THCalendarDatePicker: 400998078c168f4c380e652916a03d1a358eb6bd
-  UIColor+BFPaperColors: c7e4c6e4d82e889d507b3c2d09e6caf816529f18
-  UIView+draggable: ad1c3a0f862aca1923c45c3e05d68c7852014436
-  WYPopoverController: c233d69fdfd5c7e316b481df1060624d7a9e629d
+  AFNetworking: 96ac9bf3eda33582701cb1fcc5b896aa1e20311e
+  ASValueTrackingSlider: 4efbaaf57749868938584439ffd588dfdcdb7899
+  BFPaperButton: 6b2dfb136e8611f57616234b5e814b8682f05e9c
+  Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
+  EMAccordionTableViewController: 9cd1283f8f7f1e2882c390b445eaca4eb79840b4
+  Facebook-iOS-SDK: 6d05532c97e9c542f8d87f94b7f6ee217493d00b
+  IQKeyboardManager: 7b071d1284b47b1c0c19891a042c2c65f118fa85
+  JMMarkSlider: ad3868af6a265df3f6e2e82eb56da6936b15e04c
+  KNSemiModalViewController: 8c0056377714b5170c52c65977d540200405411f
+  KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
+  MBAlertView: 685beb07d8eaeb7b9bc7b9099f684943ef545e93
+  MDCScrollBarLabel: a47c2b8ed73923a11c68db876cd176c4333b9b06
+  MGBoxKit: 3817c0e0bcbed8a2a31bfcafa0f0b627e788a6cd
+  MGEvents: 739ea3e582a8df05bd1044500c7fb6d8f7aff5c8
+  MGMushParser: e5f80531a96a086694103592db4cbad3ffd78fa5
+  MONActivityIndicatorView: db1649bd7855c02b258893a1705779dda28e90fa
+  NYSegmentedControl: c24774be62ed17442595d33f74e6eb23bcff3412
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
+  POP+MCAnimate: f7da55f7bc48caa65c074493045a1755aa7fc9b0
+  ReactiveCocoa: fdf629a7321cc7504936fa86243d8c616faad302
+  SCLAlertView-Objective-C: 361c231cdf6abb7e335e93d59948de98c2d61fa2
+  THCalendarDatePicker: f2db66bd82f34761bf5b083d210b473b407a7095
+  UIColor+BFPaperColors: 0517728d63d8cfd977a112dd5c4627c2d3c12630
+  UIView+draggable: 086590804d79deb07b661ad449d3a317bca1ccab
+  WYPopoverController: 00d879c25bddd1fd873dcc21aa98c8308d7f1555
 
-COCOAPODS: 0.36.0.beta.2
+COCOAPODS: 0.34.1

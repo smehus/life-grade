@@ -18,8 +18,8 @@
 #import "HATransitionController.h"
 #import "HATransitionLayout.h"
 #import "FinalGradeViewController.h"
-
-
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
 @interface MainAppDelegate ()<UINavigationControllerDelegate, HATransitionControllerDelegate>
 
@@ -42,6 +42,7 @@
     [Parse setApplicationId:@"3KyZ4sPQCxqmw2MxEWcwu4HjJi8JH2fcxeOPvDQC"
                   clientKey:@"QCRzp1GVgG2TrlGNhw0j7FCNUAymOyHBB6IDLFNu"];
     
+    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -171,7 +172,8 @@
     [self.window makeKeyAndVisible];
     
     
-    return YES;
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                    didFinishLaunchingWithOptions:launchOptions];
 }
 
 
@@ -241,6 +243,16 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    [FBSDKAppEvents activateApp];
+    
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -301,6 +313,7 @@
     return managedObjectContext;
 }
 
+#pragma mark - Facebook bitches
 
 
 

@@ -1,7 +1,7 @@
 platform :ios , '7.0'
 
 pod 'AFNetworking', '~> 2.2'
-pod 'Facebook-iOS-SDK', '~> 3.13'
+#pod 'Facebook-iOS-SDK', '~> 3.13'
 pod 'pop', '~> 1.0'
 pod 'EMAccordionTableViewController', '~> 0.4'
 pod 'MONActivityIndicatorView', '~> 0.0.1'
@@ -21,3 +21,4 @@ pod 'BFPaperButton', '~> 1.5.4'
 pod 'MBAlertView', '~> 1.1.0'
 pod "JMMarkSlider", "~> 1.0"
 pod 'SCLAlertView-Objective-C'
+pod "Facebook-iOS-SDK"

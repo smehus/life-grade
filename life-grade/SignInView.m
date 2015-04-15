@@ -10,6 +10,15 @@
 #import <POP/POP.h>
 //#import "IQKeyboardManager.h"
 //#import "IQKeyboardReturnKeyHandler.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+
+@interface SignInView() <FBSDKLoginButtonDelegate>
+
+
+
+@end
 
 @implementation SignInView
 
@@ -42,7 +51,7 @@
     self.bgView.alpha = 0.8f;
     [self addSubview:self.bgView];
     
-    self.theView = [[UIView alloc] initWithFrame:CGRectMake(0, -475, self.frame.size.width, self.frame.size.height*.5)];
+    self.theView = [[UIView alloc] initWithFrame:CGRectMake(0, -475, self.frame.size.width, self.frame.size.height*.6)];
     self.theView.backgroundColor = [UIColor whiteColor];
     [self addSubview:self.theView];
     
@@ -108,7 +117,22 @@
     exit.userInteractionEnabled = YES;
     [exit addTarget:self action:@selector(exitScreen) forControlEvents:UIControlEventTouchUpInside];
     
-
+    /*
+    FBSDKLoginButton *fbLogin = [[FBSDKLoginButton alloc] init];
+    fbLogin.center = CGPointMake(self.center.x, CGRectGetMaxY(exit.frame) + 25);
+    fbLogin.delegate = self;
+    [self.theView addSubview:fbLogin];
+     */
+    
+    UIButton *fbButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [fbButton setTitle:@"Balls" forState:UIControlStateNormal];
+    [fbButton setBackgroundColor:[UIColor blueColor]];
+    [fbButton addTarget:self action:@selector(facebookLogin:) forControlEvents:UIControlEventTouchUpInside];
+    [fbButton setFrame:CGRectMake(10, CGRectGetMaxY(exit.frame) + 25, self.theView.frame.size.width- 20, 44)];
+    [fbButton setCenter: CGPointMake(self.center.x, CGRectGetMaxY(exit.frame) + 25)];
+    [self.theView addSubview:fbButton];
+    
+    
     [self.theView addSubview:greeting];
     [self.theView addSubview:self.signIn];
     [self.theView addSubview:exit];
@@ -117,6 +141,19 @@
     [self.theView addSubview:self.emailTextField];
     [self.theView addSubview:self.passwordTextField];
     
+}
+
+- (void)facebookLogin:(id)sender {
+    
+    [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"email"] block:^(PFUser *user, NSError *error) {
+        if (!user) {
+            NSLog(@"Uh oh. The user cancelled the Facebook login.");
+        } else if (user.isNew) {
+            NSLog(@"User signed up and logged in through Facebook!");
+        } else {
+            NSLog(@"User logged in through Facebook!");
+        }
+    }];
 }
 
 - (BOOL)isIpad {
@@ -161,11 +198,18 @@
         self.thisBlock(self.emailTextField.text, self.passwordTextField.text);
         
     }];
+}
 
-
+- (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error {
+    NSLog(@"RESULTS BITCH %@", result);
     
 }
 
+
+- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
+    NSLog(@"LOGGED OUT BITCH");
+    
+}
 
 
 @end
