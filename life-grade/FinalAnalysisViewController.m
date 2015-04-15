@@ -283,11 +283,7 @@
     
     if (self.shouldSave == NO) {
 
-        
-        
     } else {
-        
-        
         [self saveToParse];
     }
     
@@ -584,8 +580,18 @@
 }
 
 - (void)trackingProgress:(int)i {
+    NSArray *a;
+    if (self.fetchedAnswers.trackingProgressOne && self.fetchedAnswers.trackingProgressTwo && self.fetchedAnswers.trackingProgressThree) {
+         a = @[self.fetchedAnswers.trackingProgressOne, self.fetchedAnswers.trackingProgressTwo, self.fetchedAnswers.trackingProgressThree];
+    } else {
+        UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Oops"
+                                                    message:@"Something went wrong. I suggest restarting the app. Sorry!"
+                                                   delegate:nil cancelButtonTitle:@"Okay"
+                                          otherButtonTitles:nil];
+        [a show];
+        return;
+    }
     
-    NSArray *a = @[self.fetchedAnswers.trackingProgressOne, self.fetchedAnswers.trackingProgressTwo, self.fetchedAnswers.trackingProgressThree];
     
     AnalysisView *v = [[AnalysisView alloc] initWithFrame:CGRectMake(0, screenHeight * i, screenWidth, screenHeight)
                                                  andIndex:i andData:a andQuote:@"Balls"];

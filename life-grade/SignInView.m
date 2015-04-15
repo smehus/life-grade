@@ -145,13 +145,20 @@
 
 - (void)facebookLogin:(id)sender {
     
-    [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"email"] block:^(PFUser *user, NSError *error) {
+    NSArray *permissionsArray = @[@"email"];
+    
+    [PFFacebookUtils logInInBackgroundWithReadPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        
         if (!user) {
             NSLog(@"Uh oh. The user cancelled the Facebook login.");
         } else if (user.isNew) {
             NSLog(@"User signed up and logged in through Facebook!");
+            
+            [self.theDelegate signedUpWithFb:user];
         } else {
             NSLog(@"User logged in through Facebook!");
+            
+            [self.theDelegate loggedInWithFB:user];
         }
     }];
 }

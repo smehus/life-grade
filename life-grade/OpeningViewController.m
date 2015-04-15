@@ -19,17 +19,19 @@
 #import "ChecklistViewController.h"
 #import "MainAppDelegate.h"
 #import "SDiPhoneVersion.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import "FBSDKGraphRequest.h"
 
 
-
-
-@interface OpeningViewController () <UIScrollViewDelegate>
+@interface OpeningViewController () <UIScrollViewDelegate, SignInViewDelegate>
 @property (nonatomic, strong) SWRevealViewController *myRevealController;
 @property (strong, nonatomic) UILabel *LifeLabel;
 @property (strong, nonatomic) UILabel *GradeLabel;
 @property (nonatomic, strong) UILabel *stepOne;
 @property (nonatomic, strong) BFPaperButton *startButton;
 @property (nonatomic, strong) UIImageView *logoView;
+@property (nonatomic, strong) SignInView *signInView;
 @property (nonatomic, strong) UIPageControl *pageControl;
 
 
@@ -227,14 +229,116 @@
 
 // maybe all the grades and final numb aren't set?
 
+#pragma mark - SignInView Delegato
+
+
+- (void)signedUpWithFb:(PFUser *)user {
+    NSLog(@"SIGNED IN WTIH FB YO");    
+    [self loadUserData];
+}
+
+- (void)loadUserData {
+    // ...
+    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil];
+    [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        if (!error) {
+            // result is a dictionary with the user's Facebook data
+            NSDictionary *userData = (NSDictionary *)result;
+            
+            NSString *facebookID = userData[@"id"];
+            NSString *name = userData[@"name"];
+            NSString *location = userData[@"location"][@"name"];
+            NSString *gender = userData[@"gender"];
+            NSString *birthday = userData[@"birthday"];
+            NSString *relationship = userData[@"relationship_status"];
+            
+            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+            
+        }
+    }];
+}
+
+- (void)loggedInWithFB:(PFUser *)user {
+    NSLog(@"SIGNED IN WTIH FB YO");
+    
+        PFQuery *query = [PFQuery queryWithClassName:@"Grade"];
+        [query whereKey:@"user" equalTo:user];
+        NSArray *userGrades = [query findObjects];
+        PFObject *grades = [userGrades firstObject];
+        
+        
+        NSNumber* qOne = [grades objectForKey:@"questionOne"];
+        NSNumber* qTwo = [grades objectForKey:@"questionTwo"];
+        NSNumber* qThree = [grades objectForKey:@"questionThree"];
+        NSNumber* qFour = [grades objectForKey:@"questionFour"];
+        NSNumber* qFive = [grades objectForKey:@"questionFive"];
+        NSNumber* qSix = [grades objectForKey:@"questionSix"];
+        NSNumber* qSeven = [grades objectForKey:@"questionSeven"];
+        NSNumber* qEight = [grades objectForKey:@"questionEight"];
+        NSNumber* qNine = [grades objectForKey:@"questionNine"];
+        NSNumber* qTen = [grades objectForKey:@"questionTen"];
+        NSNumber *finalNum = [grades objectForKey:@"finalGrade"];
+        NSString *trackOne = [grades objectForKey:@"trackingProgressOne"];
+        NSString *trackTwo = [grades objectForKey:@"trackingProgressTwo"];
+        NSString *trackThree = [grades objectForKey:@"trackingProgressThree"];
+        NSDate *startDate = [grades objectForKey:@"startDate"];
+        NSDate *endDate = [grades objectForKey:@"endDate"];
+        NSString *firstSupport = [grades objectForKey:@"firstSupport"];
+        NSString *secondSupport = [grades objectForKey:@"secondSupport"];
+        NSString *thirdSupport = [grades objectForKey:@"thirdSupport"];
+        NSString *specificFocus = [grades objectForKey:@"specificFocus"];
+        
+        // NEED TO SAVE TO CORE DATA
+        
+        MainAppDelegate *dela = (MainAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        Answers *answers = [NSEntityDescription insertNewObjectForEntityForName:@"Answers" inManagedObjectContext:dela.managedObjectContext];
+        
+        answers.questionOne = qOne;
+        answers.questionTwo = qTwo;
+        answers.questionThree = qThree;
+        answers.questionFour = qFour;
+        answers.questionFive = qFive;
+        answers.questionSix = qSix;
+        answers.questionSeven = qSeven;
+        answers.questionEight = qEight;
+        answers.questionNine = qNine;
+        answers.questionTen = qTen;
+        answers.finalGrade = finalNum;
+        answers.trackingProgressOne = trackOne;
+        answers.trackingProgressTwo = trackTwo;
+        answers.trackingProgressThree = trackThree;
+        answers.firstSupport = firstSupport;
+        answers.secondSupport = secondSupport;
+        answers.thirdSupport = thirdSupport;
+        answers.startDate = startDate;
+        answers.endDate = endDate;
+        answers.specificFocus = specificFocus;
+        
+        
+        NSError *error;
+        if (![dela.managedObjectContext save:&error]) {
+            NSLog(@"Error: %@", error);
+            abort();
+        }
+        
+        FinalAnalysisViewController *final = [[FinalAnalysisViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:final];
+        [self.revealViewController setFrontViewController:nav];
+        
+        NSLog(@"SIGNIN SUCCESS %@", [userGrades firstObject]);
+        
+        // Need to set fetched grades from parse
+
+
+}
+
 - (void)signIn {
     
     
     NSLog(@"SIGNIN");
     CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    SignInView *view = [[SignInView alloc] initWithFrame:rect withBlock:^(NSString *email, NSString *password) {
-        NSLog(@"SIGNUPDONEBALLS %@ %@", email, password);
-        
+    self.signInView = [[SignInView alloc] initWithFrame:rect withBlock:^(NSString *email, NSString *password) {
         [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
             if (user) {
                 
@@ -319,21 +423,18 @@
         
         
     }];
-    view.alpha = 0.0f;
-    [self.view addSubview:view];
+    
+    self.signInView.theDelegate = self;
+    self.signInView.alpha = 0.0f;
+    [self.view addSubview:self.signInView];
     [UIView animateWithDuration:0.3 animations:^{
         
-        view.alpha = 1.0f;
+        self.signInView.alpha = 1.0f;
         
     } completion:^(BOOL finished) {
         
         
     }];
-    
-
-    
-    
-    
 }
 
 - (void)setupWelcomePage {

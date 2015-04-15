@@ -7,11 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 typedef void (^FinishedBlock) (NSString *email, NSString *password);
 
+@class SignInView;
+@protocol SignInViewDelegate <NSObject>
+
+- (void)loggedInWithFB:(PFUser *)user;
+- (void)signedUpWithFb:(PFUser *)user;
+
+
+@end
+
 @interface SignInView : UIView
 
+@property (nonatomic, weak) id<SignInViewDelegate>theDelegate;
 @property (nonatomic, strong) FinishedBlock thisBlock;
 @property (nonatomic, strong) UITextField *emailTextField;
 @property (nonatomic, strong) UITextField *passwordTextField;
