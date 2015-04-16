@@ -264,6 +264,9 @@
     }];
 }
 
+
+//FIXME: Check if theres any grades and if no - continue as if new user bitch dawg - then need to check for user later when signing up - which i might already do
+
 - (void)loggedInWithFB:(PFUser *)user {
     NSLog(@"SIGNED IN WTIH FB YO");
     
