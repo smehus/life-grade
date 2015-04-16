@@ -106,10 +106,24 @@
             sub = 15;
         }
     }
+
+    UIColor* clr = [UIColor colorWithRed:0x3B/255.0f
+                                   green:0x59/255.0f
+                                    blue:0x98/255.0f alpha:1];
+    
+    UIButton *fbButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [fbButton setTitle:@"Sign In With Facebook" forState:UIControlStateNormal];
+    [fbButton setBackgroundColor:clr];
+    [fbButton addTarget:self action:@selector(facebookLogin:) forControlEvents:UIControlEventTouchUpInside];
+    [fbButton setFrame:CGRectMake(10, CGRectGetMaxY(self.signIn.frame) + sub, self.theView.frame.size.width- 20, 44)];
+    [fbButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [fbButton setCenter: CGPointMake(self.center.x, CGRectGetMaxY(exit.frame) + 25)];
+    [self.theView addSubview:fbButton];
+    
     
     UIButton *exit = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     exit.clipsToBounds = NO;
-    [exit setFrame:CGRectMake(0, CGRectGetMaxY(self.signIn.frame) + sub, self.theView.frame.size.width, 20)];
+    [exit setFrame:CGRectMake(0, CGRectGetMaxY(fbButton.frame) + sub, self.theView.frame.size.width, 20)];
     [exit setTitle:@"Exit" forState:UIControlStateNormal];
     [exit.titleLabel setTextAlignment:NSTextAlignmentCenter];
     exit.titleLabel.textColor = GREY_COLOR;
@@ -124,14 +138,7 @@
     [self.theView addSubview:fbLogin];
      */
     
-    UIButton *fbButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [fbButton setTitle:@"Balls" forState:UIControlStateNormal];
-    [fbButton setBackgroundColor:[UIColor blueColor]];
-    [fbButton addTarget:self action:@selector(facebookLogin:) forControlEvents:UIControlEventTouchUpInside];
-    [fbButton setFrame:CGRectMake(10, CGRectGetMaxY(exit.frame) + 25, self.theView.frame.size.width- 20, 44)];
-    [fbButton setCenter: CGPointMake(self.center.x, CGRectGetMaxY(exit.frame) + 25)];
-    [self.theView addSubview:fbButton];
-    
+
     
     [self.theView addSubview:greeting];
     [self.theView addSubview:self.signIn];

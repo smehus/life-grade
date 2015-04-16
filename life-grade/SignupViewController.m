@@ -110,9 +110,15 @@
     [self.signUp addTarget:self action:@selector(signMeUp) forControlEvents:UIControlEventTouchUpInside];
     [self.signUp setTitle:@"Sign Up" forState:UIControlStateNormal];
     
+    
+    UIColor* clr = [UIColor colorWithRed:0x3B/255.0f
+                                   green:0x59/255.0f
+                                    blue:0x98/255.0f alpha:1];
+    
     UIButton *fbButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [fbButton setTitle:@"Facebook" forState:UIControlStateNormal];
-    [fbButton setBackgroundColor:[UIColor blueColor]];
+    [fbButton setBackgroundColor:clr];
+    [fbButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [fbButton addTarget:self action:@selector(facebookLogin:) forControlEvents:UIControlEventTouchUpInside];
     [fbButton setFrame:CGRectMake(10, CGRectGetMaxY(self.signUp.frame) + 10, self.view.frame.size.width- 20, 44)];
 //    [fbButton setCenter: CGPointMake(self.center.x, CGRectGetMaxY(exit.frame) + 25)];
