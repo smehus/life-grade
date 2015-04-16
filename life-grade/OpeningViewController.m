@@ -234,10 +234,10 @@
 
 - (void)signedUpWithFb:(PFUser *)user {
     NSLog(@"SIGNED IN WTIH FB YO");    
-    [self loadUserData];
+    [self loadUserDataWithUser:user];
 }
 
-- (void)loadUserData {
+- (void)loadUserDataWithUser:(PFUser *)user {
     // ...
     FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil];
     [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
@@ -245,6 +245,7 @@
             // result is a dictionary with the user's Facebook data
             NSDictionary *userData = (NSDictionary *)result;
             
+            NSString *email = userData[@"email"];
             NSString *facebookID = userData[@"id"];
             NSString *name = userData[@"name"];
             NSString *location = userData[@"location"][@"name"];
@@ -253,7 +254,12 @@
             NSString *relationship = userData[@"relationship_status"];
             
             NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
-            
+
+            user.email = email;
+            user.username = email;
+            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                NSLog(@"SAVED USER %i", succeeded);
+            }];
         }
     }];
 }

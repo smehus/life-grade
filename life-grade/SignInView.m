@@ -145,9 +145,11 @@
 
 - (void)facebookLogin:(id)sender {
     
-    NSArray *permissionsArray = @[@"email"];
+    NSArray *permissionsArray = @[@"email", @"user_likes", @"user_birthday"];
     
     [PFFacebookUtils logInInBackgroundWithReadPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        
+        NSString *email = user.email;
         
         if (!user) {
             NSLog(@"Uh oh. The user cancelled the Facebook login.");

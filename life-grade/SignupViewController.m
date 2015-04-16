@@ -18,6 +18,9 @@
 #import "MainAppDelegate.h"
 #import "Answers.h"
 #import "SCLAlertView.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
 
 @interface SignupViewController () <UITextFieldDelegate>
@@ -107,9 +110,17 @@
     [self.signUp addTarget:self action:@selector(signMeUp) forControlEvents:UIControlEventTouchUpInside];
     [self.signUp setTitle:@"Sign Up" forState:UIControlStateNormal];
     
+    UIButton *fbButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [fbButton setTitle:@"Facebook" forState:UIControlStateNormal];
+    [fbButton setBackgroundColor:[UIColor blueColor]];
+    [fbButton addTarget:self action:@selector(facebookLogin:) forControlEvents:UIControlEventTouchUpInside];
+    [fbButton setFrame:CGRectMake(10, CGRectGetMaxY(self.signUp.frame) + 10, self.view.frame.size.width- 20, 44)];
+//    [fbButton setCenter: CGPointMake(self.center.x, CGRectGetMaxY(exit.frame) + 25)];
+
+    
 
     UIButton *signIn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [signIn setFrame:CGRectMake(0, CGRectGetMaxY(self.signUp.frame) + 20, self.view.frame.size.width, 20)];
+    [signIn setFrame:CGRectMake(0, CGRectGetMaxY(fbButton.frame) + 20, self.view.frame.size.width, 20)];
     [signIn setTitle:@"Sign In" forState:UIControlStateNormal];
     [signIn.titleLabel setTintColor:[UIColor blackColor]];
     [signIn addTarget:self action:@selector(signIn) forControlEvents:UIControlEventTouchUpInside];
@@ -121,6 +132,7 @@
     [self.view addSubview:greeting];
     [self.view addSubview:signIn];
     [self.view addSubview:self.signUp];
+    [self.view addSubview:fbButton];
     [self.view addSubview:self.userNameField];
     [self.view addSubview:self.passwordTextField];
     [self.view addSubview:self.passwordConfirmation];
@@ -353,5 +365,60 @@
     
     return YES;
 }
+
+
+#pragma mark - Facebook Login
+
+- (void)facebookLogin:(id)sender {
+    
+    NSArray *permissionsArray = @[@"email"];
+    
+    [PFFacebookUtils logInInBackgroundWithReadPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        
+        if (!user) {
+            NSLog(@"Uh oh. The user cancelled the Facebook login.");
+        } else if (user.isNew) {
+            NSLog(@"User signed up and logged in through Facebook!");
+            [self loadUserDataWithUser:user];
+        } else {
+            NSLog(@"User logged in through Facebook!");
+        }
+    }];
+}
+
+
+- (void)loadUserDataWithUser:(PFUser *)user {
+    // ...
+    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil];
+    [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        if (!error) {
+            // result is a dictionary with the user's Facebook data
+            NSDictionary *userData = (NSDictionary *)result;
+            
+            NSString *email = userData[@"email"];
+            NSString *facebookID = userData[@"id"];
+            NSString *name = userData[@"name"];
+            NSString *location = userData[@"location"][@"name"];
+            NSString *gender = userData[@"gender"];
+            NSString *birthday = userData[@"birthday"];
+            NSString *relationship = userData[@"relationship_status"];
+            
+            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+            
+            user.email = email;
+            user.username = email;
+            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                NSLog(@"SAVED USER %i", succeeded);
+            }];
+        }
+    }];
+}
+
+
+
+
+
+
+
 
 @end
