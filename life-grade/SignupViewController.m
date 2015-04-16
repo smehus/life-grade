@@ -409,6 +409,34 @@
             user.username = email;
             [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 NSLog(@"SAVED USER %i", succeeded);
+                
+                
+                
+                [PFCloud callFunctionInBackground:@"hello"
+                                   withParameters:@{@"email" : user.email}
+                                            block:^(NSString *result, NSError *error) {
+                                                if (!error) {
+                                                    NSLog(@"Email Success: %@", result);
+                                                } else {
+                                                    NSLog(@"ERROR %@ %@", result, error);
+                                                }
+                                            }];
+                
+                
+                //The registration was successful, go to the wall
+                NSLog(@"***SIGNUP SUCCESS");
+                
+                appDelegate.currentUser = user;
+                
+                NSString *email = user.email;
+                
+                [[NSUserDefaults standardUserDefaults] setObject:email forKey:@"email"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                FinalAnalysisViewController *finalController = [[FinalAnalysisViewController alloc] initWithSave:YES];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:finalController];
+                [self.revealViewController setFrontViewController:nav];
+                
             }];
         }
     }];
