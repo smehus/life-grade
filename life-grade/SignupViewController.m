@@ -116,7 +116,7 @@
                                     blue:0x98/255.0f alpha:1];
     
     UIButton *fbButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [fbButton setTitle:@"Facebook" forState:UIControlStateNormal];
+    [fbButton setTitle:@"Sign up with Facebook" forState:UIControlStateNormal];
     [fbButton setBackgroundColor:clr];
     [fbButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [fbButton addTarget:self action:@selector(facebookLogin:) forControlEvents:UIControlEventTouchUpInside];
