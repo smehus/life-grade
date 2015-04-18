@@ -388,6 +388,11 @@
             [self loadUserDataWithUser:user];
         } else {
             NSLog(@"User logged in through Facebook!");
+            FinalAnalysisViewController *final = [[FinalAnalysisViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:final];
+            [self.revealViewController setFrontViewController:nav];
+            
+            
         }
     }];
 }
